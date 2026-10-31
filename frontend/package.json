@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
+    "check:content": "node scripts/validate-latex.cjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

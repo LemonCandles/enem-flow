@@ -65,11 +65,22 @@ class Alternative(Schema):
 class ParagraphBlock(Schema):
     type: Literal["paragraph"]
     text: str = Field(min_length=1, max_length=30000)
+    role: Literal["body", "credit"] | None = None
 
 
 class ImageBlock(Schema):
     type: Literal["image"]
     asset: Asset
+    caption: str = Field(default="", max_length=3000)
+    credit: str = Field(default="", max_length=6000)
+    equations: list[str] = Field(default_factory=list, max_length=10)
+
+    @field_validator("equations")
+    @classmethod
+    def bounded_equations(cls, values):
+        if any(not value.strip() or len(value) > 8000 for value in values):
+            raise ValueError("Cada equação da figura precisa de conteúdo LaTeX limitado a 8000 caracteres.")
+        return values
 
 
 class MathBlock(Schema):
