@@ -36,7 +36,7 @@ Os cartões de ações permanecem unidos por uma única divisória com formato d
 | Painéis | `#171717` | `#F6F5F0` |
 | Barra lateral | `#191919` | `#EEEEE8` |
 | Texto principal | `#F1F0EA` | `#242424` |
-| Texto de apoio | `#AAA79E` | `#706F65` |
+| Texto de apoio | `#AAA79E` | `#69685F` |
 | Bordas discretas | `#383833` | `#D8D6CC` |
 | Contornos das peças e cartões iniciais | `#626158` | `#B0AEA3` |
 | Acento e ação principal | `#009485` | `#009485` |
