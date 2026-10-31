@@ -44,6 +44,7 @@ playwright/.cache/
 /backups/
 /assets-backup/
 /sources-backup/
+*.deployment-state.json
 
 # Temporários, logs e arquivos do sistema/editor.
 tmp/
