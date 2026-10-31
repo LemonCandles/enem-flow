@@ -8,6 +8,8 @@ Origem: conversão do documento de planejamento em PDF, versão 2.0, de 29/10/20
 
 Esta versão em Markdown preserva o conteúdo das 21 páginas, com títulos, listas, tabelas e referências. Os cabeçalhos e rodapés repetidos foram reunidos nos dados do documento acima.
 
+**Acompanhamento em 31/10/2026:** a primeira entrega está em consolidação, com MVP local, revisão de apresentação de 15 questões, LaTeX matemático/químico, ampliação de figuras, navegação por setas com retorno ao topo e preparação generalizada de novas provas implementados. O estado de validação e as pendências estão no [status da implementação](status-implementacao.md); a sequência de execução está em [próximas etapas](proximas-etapas.md). O conteúdo original do plano abaixo continua como referência de escopo e não constitui uma declaração de funcionalidades concluídas.
+
 ## Sumário
 
 - [01. Enem Adaptativo](#01-enem-adaptativo)

@@ -68,8 +68,40 @@ Restaure primeiro em um banco separado e vazio, usando `pg_restore --no-owner --
 
 Mantenha juntos banco, arquivos de conteúdo, configuração e revisão do código. Correções manuais precisam de uma nova versão; os arquivos referenciados por tentativas anteriores devem continuar disponíveis. Em operação contínua, restrinja acesso aos backups e defina retenção de acordo com o uso real.
 
-## Evidências desta versão
+## Atualizações e volume de recursos
 
-Em 30/10/2026, a atualização de apresentação nativa passou com **21 testes no SQLite e 21 no PostgreSQL**, além de **6 testes Playwright** (jornada, falha de salvamento e JSON nativo em desktop e celular). Foram verificadas tabelas HTML, MathML, diagramas nas alternativas, ausência de recortes de texto e preservação de tentativas. O build de produção e a checagem TypeScript passaram. A migração e o alinhamento do esquema continuam verificados com `alembic check`.
+O processo inicial sincroniza os recursos incluídos da imagem para `data/assets/` antes da migração/importação. Só acrescenta arquivos ausentes; arquivos com o mesmo nome e bytes diferentes interrompem a inicialização para evitar invalidar tentativas antigas. Recursos novos devem ter nomes novos. Arquivos próprios no volume são preservados.
 
-O ensaio de `pg_dump`/`pg_restore` foi executado entre dois bancos PostgreSQL temporários e vazios, com o conteúdo inicial e uma tentativa concluída. Na cópia restaurada foram conferidos: 90 versões de questões, a alternativa B na questão 91, resultado de 1 acerto em 89 questões válidas, os 90 snapshots dos itens e 90 eventos, preservando os identificadores. O backup SQLite também passou por `PRAGMA integrity_check` e confirmou as 90 versões. Essas verificações operacionais não são evidência de eficácia educacional ou de um piloto com estudantes.
+## Repetir a validação em contêineres
+
+Use um projeto e variáveis exclusivos de teste. O arquivo `compose.test.yaml` muda a porta da interface para 3300; não utiliza o projeto/volumes da instalação normal.
+
+```bash
+export POSTGRES_DB=enem_ci_test
+export POSTGRES_USER=enem_ci
+export POSTGRES_PASSWORD=uma-senha-exclusiva-deste-ensaio
+export ALLOWED_ORIGINS=http://localhost:3300,http://127.0.0.1:3300
+export COOKIE_SECURE=false
+
+docker compose -p enem-validacao -f compose.yaml -f compose.test.yaml up --build -d --wait
+.venv/bin/python scripts/verify_deployment.py create --url http://localhost:3300 --state tmp/ensaio.deployment-state.json
+
+docker compose -p enem-validacao -f compose.yaml -f compose.test.yaml down
+docker compose -p enem-validacao -f compose.yaml -f compose.test.yaml up -d --wait
+.venv/bin/python scripts/verify_deployment.py check --url http://localhost:3300 --state tmp/ensaio.deployment-state.json
+```
+
+O arquivo de estado contém credenciais descartáveis e é criado com permissão 0600; mantenha-o em `tmp/` ou outro diretório privado fora do Git. Use uma nova saída para cada ensaio. A remoção de volumes só deve ocorrer na limpeza desse projeto descartável, após conferir seu nome; nunca na parada rotineira da aplicação.
+
+Com API/interface de teste iniciadas, rode os navegadores com `E2E_BASE_URL=http://localhost:3300`. O relatório de acessibilidade e as capturas ficam em `frontend/test-results/`. A validação no CI usa Docker Engine. Localmente foi usado o Compose oficial 5.6.1 conectado à API temporária de Podman 5.8.9 rootless, sem alterar os serviços locais da aplicação.
+
+## Evidências da consolidação de 31/10/2026
+
+- 57 testes de API em SQLite e 57 em PostgreSQL 17.7; migrações e `alembic check` aprovados.
+- Build em Python 3.13/Node 22 com instalação de dependências em ambiente isolado, sem copiar `.venv`, `node_modules`, `.env` ou o banco de execução.
+- Compose com três serviços saudáveis. Banco e recursos sobreviveram à substituição dos contêineres; recurso próprio permaneceu no volume após atualização.
+- `verify_deployment.py` confirmou resposta B, resultado 1/89, histórico, figura, 90 snapshots e finalização idempotente antes/depois da substituição.
+- Backup SQLite restaurado em caminho separado: integridade `ok`, 195 versões de questões, uma prova e uma tentativa preservadas. A origem não foi modificada.
+- Dump/restauração PostgreSQL em banco separado: linhas e hashes do conteúdo completo de questões, provas, tentativas, eventos e revisões idênticos no momento da comparação.
+
+As verificações de navegador e CI estão em [primeira entrega](primeira-entrega.md). Estes são ensaios técnicos com dados descartáveis, sem evidência de aprendizagem ou de piloto educacional. Repetir os procedimentos no ambiente escolhido para hospedagem continua parte da implantação.
