@@ -36,9 +36,9 @@ O [manifesto de exemplo](examples/manifesto-prova.json) permite ensaiar questõe
 .venv/bin/python scripts/structure_questions.py
 ```
 
-O comando lê `data/sources/enem-2024-dia2-azul-extraction.json`, a cópia preservada da transcrição inicial. Todo o texto vem desse JSON. O PDF associado é consultado apenas para isolar fotografias e diagramas; os enunciados não são rasterizados. O resultado estruturado fica em `data/enem-2024-dia2-azul.json` e as figuras isoladas em `assets/enem-2024-dia2-azul/native/`.
+O comando lê `data/derived/baselines/enem-2024-dia2-azul-extraction.json`, a cópia preservada da transcrição inicial. Todo o texto vem desse JSON. O PDF associado é consultado apenas para isolar fotografias e diagramas; os enunciados não são rasterizados. O resultado estruturado fica em `data/enem-2024-dia2-azul.json` e as figuras isoladas em `assets/enem-2024-dia2-azul/native/`.
 
-A estruturação aplica também as correções de `scripts/review_presentation.py`. Para reconstruir somente este lote a partir da apresentação anterior preservada em `sources/enem-2024-dia2-azul-native-v1.json`, execute:
+A estruturação aplica também as correções de `scripts/review_presentation.py`. Para reconstruir somente este lote a partir da apresentação anterior preservada em `derived/baselines/enem-2024-dia2-azul-native-v1.json`, execute:
 
 ```bash
 .venv/bin/python scripts/review_presentation.py
@@ -69,7 +69,7 @@ Novos arquivos podem ser importados pela interface de curadoria conforme `docs/c
 
 Data: **31/10/2026**. Lote: `native-v2-2026-10-31`.
 
-Este lote iniciou a etapa 1 do [roteiro](../docs/plano-implementacao/proximas-etapas.md). Mantém o enunciado em texto selecionável, com fórmulas matemáticas e químicas em LaTeX, figuras originais e legendas associadas. A conferência técnica compara este lote com o [caderno fonte](sources/enem-2024-dia2-azul.pdf); não é revisão pedagógica independente.
+Este lote iniciou a etapa 1 do [roteiro](../docs/plano-implementacao/proximas-etapas.md). Mantém o enunciado em texto selecionável, com fórmulas matemáticas e químicas em LaTeX, figuras originais e legendas associadas. A conferência técnica compara este lote com o [caderno fonte](sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf); não é revisão pedagógica independente.
 
 ### Questões alteradas
 
@@ -105,7 +105,7 @@ As outras **75 questões não tiveram seu JSON alterado neste lote**. O visualiz
 
 ### Reprodução e segurança das versões
 
-`data/sources/enem-2024-dia2-azul-native-v1.json` preserva a apresentação anterior. `scripts/review_presentation.py` reproduz o lote a partir dela e também é aplicado pela estruturação completa. Cada questão guarda data, motivo, página e hash do conteúdo anterior em `layout.presentation_review`.
+`data/derived/baselines/enem-2024-dia2-azul-native-v1.json` preserva a apresentação anterior. `scripts/review_presentation.py` reproduz o lote a partir dela e também é aplicado pela estruturação completa. Cada questão guarda data, motivo, página e hash do conteúdo anterior em `layout.presentation_review`.
 
 ```bash
 .venv/bin/python scripts/review_presentation.py
@@ -131,3 +131,11 @@ Este lote passou a integrar a [consolidação técnica da primeira entrega](../d
 ## Origem e direitos
 
 Preservam-se as referências e os créditos contidos nas questões oficiais. A licença MIT do código não se estende automaticamente aos textos e às imagens desses documentos. Não foi atribuída uma licença aberta nova ao conteúdo de terceiros. Os PDFs originais permitem conferir os avisos e a procedência; alterações e futuras erratas devem criar versões, sem substituir tentativas antigas. A plataforma não é um produto oficial do Inep.
+
+## Ampliação do acervo e classificação
+
+A organização atual das fontes está em [sources/README.md](sources/README.md). As transcrições de 2024 antes guardadas em `sources/` passaram, sem alteração de bytes, para `derived/baselines/`; somente originais permanecem em `sources`.
+
+O [relatório do acervo](../docs/cobertura-acervo.md) apresenta a cobertura de 1998–2025 e as falhas registradas. O banco textual histórico fica em `bank/raw/`, em JSON comprimido por ano, com ocorrências e fonte rastreável. Ele é gerado localmente por `scripts/build_bank.py` a partir do acervo sincronizado e não é versionado. Extração pendente não é publicação aprovada.
+
+O [catálogo conferido](catalog/manifest.json) instala o segundo dia azul de 2024 e Matemática azul de 2023: 135 questões, 133 válidas. A curadoria de 2023 abrange as questões 136–180, com a 164 anulada. O conjunto de referência tem 89 questões válidas de Matemática em oito temas. Disciplinas/temas e propostas de habilidades têm [evidências próprias](classification/annotations-v1.json), separadas da matriz oficial e sem reescrever snapshots anteriores. Consulte o [processo de classificação](../docs/banco-classificacao.md).

@@ -1,6 +1,6 @@
 # Enem Flow
 
-MVP local da plataforma descrita no [plano do projeto](docs/plano-implementacao/enem_adaptativo_plano_do_projeto.md): conta individual, provas oficiais, respostas editáveis, correção, histórico, painel e curadoria versionada. A consolidação técnica da primeira entrega está concluída; o [status atual](docs/plano-implementacao/status-implementacao.md) reúne as funcionalidades, validações e pendências.
+MVP local da plataforma descrita no [plano do projeto](docs/plano-implementacao/enem_adaptativo_plano_do_projeto.md): conta individual, provas oficiais, respostas editáveis, correção, histórico, painel e curadoria versionada. A consolidação técnica da primeira entrega e a ampliação técnica do banco estão implementadas; o [status atual](docs/plano-implementacao/status-implementacao.md) reúne as funcionalidades, validações e pendências.
 
 ![Visão geral da plataforma](docs/screenshots/desktop.png)
 
@@ -8,7 +8,7 @@ Novas provas têm um [fluxo geral de preparação](docs/preparacao-provas.md): a
 
 ## Executar localmente
 
-Requisitos: Python 3.13 ou 3.14, Node.js 22 e npm. A execução local usa SQLite e não exige contas externas. Fontes e conteúdo estão incluídos no projeto.
+Requisitos: Python 3.13 ou 3.14, Node.js 22 e npm. A execução local usa SQLite e não exige contas externas. Os dois lotes conferidos estão incluídos. O banco textual do acervo e o espelho histórico de PDFs não são versionados: são reconstruídos localmente a partir do manifesto, como descrito nas [fontes oficiais](data/sources/README.md#o-que-fica-no-git-e-na-imagem-da-aplicação).
 
 ```bash
 make setup
@@ -36,7 +36,7 @@ npm run build
 npm run start
 ```
 
-Ao alterar o frontend nessa modalidade, gere um novo build e reinicie esse processo. Uma instalação existente recebe as versões revisadas do caderno com `make seed`; faça [backup](docs/operations.md) antes de atualizar seu banco.
+Ao alterar o frontend nessa modalidade, gere um novo build e reinicie esse processo. Uma instalação existente recebe as versões revisadas e os rótulos com `make migrate seed`; faça [backup](docs/operations.md) antes de atualizar seu banco.
 
 ## Executar com PostgreSQL e Docker
 
@@ -54,7 +54,9 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 
 - Cadastro, login, sessão por cookie HttpOnly, saída, preferências e recuperação assistida por link de uso único.
 - Catálogo com busca e filtros por ano, área, aplicação e caderno; distinção entre caderno completo, seção e coleção.
-- Caderno oficial completo **ENEM 2024, segundo dia, azul: 90 questões**. Original e gabarito preservados com SHA-256. A questão 129 está anulada e não entra no desempenho.
+- **135 questões publicadas:** segundo dia azul de 2024 (90) e seção de Matemática azul de 2023 (45). Fontes e gabaritos com SHA-256; anuladas 129/2024 e 164/2023.
+- Acervo oficial de **1998–2025**, com todas as aplicações e formatos vinculados pelo Inep, fontes organizadas e extrações consultáveis na curadoria. Veja a [cobertura real e as pendências](docs/cobertura-acervo.md).
+- Identidade canônica separada de cada ocorrência; taxonomia versionada, 135 anotações técnicas e referência de 89 questões válidas de Matemática em oito temas.
 - Enunciados e alternativas selecionáveis a partir do JSON; tabelas HTML e fórmulas matemáticas/químicas em LaTeX com KaTeX, mhchem e MathML.
 - Figuras com legendas, fontes e rodapé de equações associados; ampliação dentro da página, com zoom, Escape e retorno do foco.
 - Navegação por botões, mapa e setas **← / →**, respeitando primeira e última questão e voltando ao topo a cada troca. Quando o foco está nas alternativas, as setas preservam sua seleção nativa.
@@ -67,7 +69,7 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 
 O lote de apresentação de **31/10/2026** alterou as questões **91, 92, 94, 97, 99, 100, 114, 116, 118, 123, 128, 132, 133, 135 e 170**, preservando gabaritos e histórico. O [registro técnico da revisão](data/README.md#revisão-de-apresentação) reúne os motivos, páginas da fonte, evidências e limites.
 
-As classificações temáticas e habilidades não foram inventadas: o conjunto inicial tem área e a disciplina Matemática identificadas pelo próprio caderno. Os demais rótulos ficam explicitamente pendentes. Classificadores, adaptação, tutor com LLM e layouts dinâmicos pertencem às próximas etapas.
+Disciplinas e temas têm curadoria técnica assistida com evidências. Os vínculos com habilidades são propostas separadas e aguardam segunda revisão; não entram como habilidades aprovadas no painel. Veja o [banco e a classificação](docs/banco-classificacao.md). Classificadores, adaptação, tutor com LLM e layouts dinâmicos permanecem nas próximas etapas.
 
 ## Curadoria
 
@@ -100,7 +102,7 @@ Para um PDF textual, adapte o [manifesto de exemplo](data/examples/manifesto-pro
 
 Confira o relatório, os recursos em `data/assets/` e as questões contra a fonte antes de importar o JSON preparado pela Curadoria. A importação pela interface também aplica a preparação; `POST /admin/imports/prepare` permite obter uma prévia sem gravar no banco. A CLI não publica provas nem substitui entradas; saídas existentes exigem `--force`.
 
-As regras são reutilizáveis e registram transformações e ambiguidades. Fórmulas espaciais incompletas, relações de figuras inferidas e PDFs digitalizados ainda exigem tratamento e revisão; OCR não está automatizado nesse fluxo. O catálogo continua com um caderno: a generalização da preparação não adiciona outras provas por si só.
+As regras são reutilizáveis e registram transformações e ambiguidades. Fórmulas espaciais incompletas, relações de figuras inferidas e PDFs digitalizados ainda exigem tratamento e revisão; OCR não está automatizado nesse fluxo. A indexação do acervo não publica extrações automaticamente: os dois lotes conferidos são instalados separadamente.
 
 ## Verificar
 
@@ -131,6 +133,9 @@ Use também um banco separado para os testes de navegador. As [validações e se
 - [Arquitetura, contratos e decisões](docs/architecture.md)
 - [Operação, backup e recuperação](docs/operations.md)
 - [Origem do conteúdo e conferência](data/README.md)
+- [Banco, taxonomia e referência de Matemática](docs/banco-classificacao.md)
+- [Cobertura dos anos e aplicações](docs/cobertura-acervo.md)
+- [Organização das fontes oficiais](data/sources/README.md)
 - [Contrato JSON de importação](docs/content-schema.json)
 - [Design implementado — Conhecimento em construção](docs/propostas-design/README.md)
 - [Interface em tema escuro](docs/screenshots/desktop-escuro.png)
