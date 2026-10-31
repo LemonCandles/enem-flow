@@ -1,0 +1,157 @@
+import { expect, test } from '@playwright/test';
+
+test('cadastro, navegação, retomada, correção e histórico individual', async ({ page }, info) => {
+  // This full journey includes page loads, screenshots and recorded video.
+  test.setTimeout(60_000);
+  const email = `e2e-${info.project.name}-${Date.now()}@example.com`;
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Criar conta', exact: true }).click();
+  await page.getByLabel('Seu nome').fill('Estudante de Teste');
+  await page.getByLabel('E-mail', { exact: true }).fill(email);
+  await page.getByLabel('Senha', { exact: true }).fill('senha-teste-segura-2026');
+  await page.getByRole('button', { name: 'Criar minha conta' }).click();
+  await expect(page.getByRole('heading', { name: /Aprender, no seu tempo\./ })).toBeVisible();
+  await expect(page.getByText('Provas concluídas', { exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  await page.screenshot({ path: `test-results/${info.project.name}-dashboard.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  const runUrl = page.url();
+  await page.getByRole('radio', { name: /^B absorve/ }).check();
+  await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
+  await expect(page.locator('.question-figure img').first()).toHaveJSProperty('complete', true);
+  await expect(page.locator('.native-paragraph').first()).toContainText('Muitas pessoas ainda se espantam');
+  await expect(page.locator('.original-question')).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  await page.getByRole('button', { name: 'Próxima questão' }).click();
+  await expect(page.getByRole('heading', { name: 'Questão 92', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Anterior', exact: true }).click();
+  await expect(page.getByRole('radio', { name: /^B absorve/ })).toBeChecked();
+  // Native radios must be operable by keyboard and the changed answer must persist.
+  await page.getByRole('radio', { name: /^B absorve/ }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('radio', { name: /^C consome/ })).toBeChecked();
+  await page.reload();
+  await expect(page.getByRole('radio', { name: /^C consome/ })).toBeChecked();
+  await page.getByRole('radio', { name: /^B absorve/ }).check();
+  await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
+  await page.screenshot({ path: `test-results/${info.project.name}-question.png`, fullPage: true });
+  if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
+  await page.getByRole('button', { name: 'Finalizar prova', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText('1 de 90 questões');
+  await page.getByRole('button', { name: 'Confirmar finalização' }).click();
+  await expect(page.getByText('1 de 89 questões válidas')).toBeVisible();
+  await expect(page.getByText('Resultado definitivo', { exact: true })).toBeVisible();
+  const repeat = await page.request.post(`${runUrl.replace(/.*\/runs\//, '/api/exam-runs/')}/finish`);
+  expect(repeat.status()).toBe(200);
+  expect((await repeat.json()).result.correct).toBe(1);
+  await page.screenshot({ path: `test-results/${info.project.name}-result.png`, fullPage: true });
+  await page.getByRole('link', { name: 'Voltar ao histórico' }).click();
+  await expect(page.getByRole('link', { name: /Ver resultado/ })).toHaveCount(1);
+  await page.goto('/progress');
+  await page.getByRole('button', { name: 'Habilidade', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Ainda não classificado' })).toBeVisible();
+  await expect(page.getByText('0/89 tentativas · 0%')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  // Delete the disposable test history so the live development DB has no fictitious learning logs.
+  expect((await page.request.delete('/api/me/history')).status()).toBe(204);
+});
+
+test('tema persiste na navegação e retomada, com menu acessível no celular', async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.emulateMedia({ colorScheme: 'dark' });
+  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Design', email: `e2e-design-${info.project.name}-${Date.now()}@example.com`, password: 'senha-design-persistente' } })).status()).toBe(201);
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: /Aprender, no seu tempo\./ })).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(19, 19, 19)');
+  await expect(page.getByRole('button', { name: 'Iniciar prova', exact: true })).toHaveCSS('background-color', 'rgb(0, 148, 133)');
+  await page.getByRole('button', { name: 'Alternar tema' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(246, 245, 240)');
+  await page.reload();
+  await expect(page.getByRole('heading', { name: /Aprender/ })).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  if (info.project.name === 'mobile') {
+    await page.getByRole('button', { name: 'Abrir menu' }).click();
+    await expect(page.getByRole('link', { name: 'Enem Flow — Início' })).toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await expect(page.getByRole('button', { name: 'Sair da conta' })).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Enem Flow — Início' })).toBeFocused();
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('button', { name: 'Abrir menu' })).toBeFocused();
+    await expect(page.getByRole('link', { name: 'Provas', exact: true })).not.toBeVisible();
+    await page.getByRole('button', { name: 'Abrir menu' }).click();
+  }
+  await page.getByRole('link', { name: 'Provas', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Banco de provas' })).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await page.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  const runUrl = page.url();
+  await page.getByRole('radio', { name: /^B absorve/ }).check();
+  await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Alternar tema' }).click();
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.getByRole('radio', { name: /^B absorve/ })).toBeChecked();
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'Continuar prova' })).toHaveAttribute('href', new URL(runUrl).pathname);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  expect(errors).toEqual([]);
+  expect((await page.request.delete('/api/me/history')).status()).toBe(204);
+});
+
+test('falha ao salvar preserva a última escolha confirmada', async ({ page }, info) => {
+  const registered = await page.request.post('/api/auth/register', { data: { name: 'Teste de Conexão', email: `e2e-failure-${info.project.name}-${Date.now()}@example.com`, password: 'senha-falha-de-conexao' } });
+  expect(registered.status()).toBe(201);
+  const created = await page.request.post('/api/exam-runs', { data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `failure-${Date.now()}` } });
+  const run = await created.json();
+  await page.goto(`/runs/${run.id}`);
+  await page.getByRole('radio', { name: /^B absorve/ }).check();
+  await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
+  await page.route('**/api/exam-runs/*/answers/*', route => route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ detail: 'Falha temporária de conexão.' }) }));
+  await page.getByRole('radio', { name: /^C consome/ }).click();
+  await expect(page.getByRole('alert').filter({ hasText: 'Falha temporária de conexão.' })).toContainText('A alteração não foi salva');
+  await expect(page.getByRole('radio', { name: /^B absorve/ })).toBeChecked();
+  const persisted = await page.request.get(`/api/exam-runs/${run.id}`);
+  expect((await persisted.json()).answers[run.items[0].id]).toBe('B');
+  expect((await page.request.delete('/api/me/history')).status()).toBe(204);
+});
+
+test('JSON renderiza texto, tabelas, fórmulas e figuras separadas', async ({ page }, info) => {
+  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Conteúdo', email: `e2e-native-${info.project.name}-${Date.now()}@example.com`, password: 'senha-conteudo-nativo' } })).status()).toBe(201);
+  const response = await page.request.post('/api/exam-runs', { data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `native-${Date.now()}` } });
+  const run = await response.json();
+  expect(run.items.every((q: { original_layout: boolean; blocks: unknown[] }) => !q.original_layout && q.blocks.length)).toBeTruthy();
+  await page.goto(`/runs/${run.id}`);
+  async function open(number: number) {
+    if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
+    await page.getByRole('button', { name: new RegExp(`^Questão ${number}(,|$)`) }).click();
+    await expect(page.getByRole('heading', { name: `Questão ${number}`, exact: true })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+  }
+  await open(93);
+  await expect(page.locator('.question-content img')).toHaveCount(0);
+  await expect(page.getByRole('radio', { name: /^E contendo carbono/ })).toBeVisible();
+  await open(112);
+  await expect(page.getByRole('table')).toContainText('Mulher não daltônica');
+  await expect(page.locator('.alternatives img')).toHaveCount(5);
+  await open(139);
+  await expect(page.getByRole('columnheader', { name: 'Componente X (R$)' })).toBeVisible();
+  await expect(page.getByRole('table')).toContainText('3,00');
+  await page.screenshot({ path: `test-results/${info.project.name}-native-table.png`, fullPage: true });
+  await open(148);
+  await expect(page.locator('.katex')).toHaveCount(6);
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+  await open(170);
+  await expect(page.locator('.native-equation .katex')).toBeVisible();
+  await expect(page.locator('.question-content img')).toHaveCount(0);
+  await page.screenshot({ path: `test-results/${info.project.name}-native-math.png`, fullPage: true });
+  await open(180);
+  await expect(page.locator('.alternatives .katex')).toHaveCount(5);
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+  expect((await page.request.delete('/api/me/history')).status()).toBe(204);
+});
