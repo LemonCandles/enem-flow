@@ -18,3 +18,9 @@ docs
 **/blob-report
 **/.ruff_cache
 *.deployment-state.json
+data/sources/catalogo/paginas
+data/sources/enem/**/*.*
+!data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf
+!data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf
+data/derived/archive
+data/derived/assets

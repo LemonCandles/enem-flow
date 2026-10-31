@@ -22,8 +22,8 @@ def content_fingerprint(content):
 @lru_cache(maxsize=1)
 def previous_fingerprints():
     versions = {}
-    sources = [ROOT / 'data/sources/enem-2024-dia2-azul-extraction.json',
-               ROOT / 'data/sources/enem-2024-dia2-azul-native-v1.json']
+    sources = [ROOT / 'data/derived/baselines/enem-2024-dia2-azul-extraction.json',
+               ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json']
     for path in sources:
         if not path.is_file(): continue
         for question in json.loads(path.read_text())['questions']:

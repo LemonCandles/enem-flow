@@ -37,8 +37,8 @@ Copie [o manifesto de exemplo](../data/examples/manifesto-prova.json) e altere m
 ```bash
 .venv/bin/python scripts/prepare_exam.py \
   --manifest data/examples/manifesto-prova.json \
-  --pdf data/sources/enem-2024-dia2-azul.pdf \
-  --answer-key data/sources/enem-2024-dia2-azul-gabarito.pdf \
+  --pdf data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf \
+  --answer-key data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf \
   --output tmp/exemplo-preparado.json
 ```
 
