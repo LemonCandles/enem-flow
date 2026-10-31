@@ -70,6 +70,26 @@
         },
         "asset": {
           "$ref": "#/$defs/Asset"
+        },
+        "caption": {
+          "default": "",
+          "maxLength": 3000,
+          "title": "Caption",
+          "type": "string"
+        },
+        "credit": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Credit",
+          "type": "string"
+        },
+        "equations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Equations",
+          "type": "array"
         }
       },
       "required": [
@@ -181,6 +201,22 @@
           "minLength": 1,
           "title": "Text",
           "type": "string"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "enum": [
+                "body",
+                "credit"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
         }
       },
       "required": [

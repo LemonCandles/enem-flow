@@ -1,49 +1,65 @@
-# Design — Conhecimento em construção
+# Design atual — Conhecimento em construção
 
-Proposta atual: **Encaixes no layout**, refinada em 30/10/2026. As peças de leitura, raciocínio e prática compartilham superfícies, curvas e ícones com a interface. Seus contornos continuam até os cartões de ações, que recebem encaixes complementares.
+Atualizado em **31/10/2026**. Esta pasta reúne o design aplicado ao site, com prévias obtidas da implementação atual.
 
-## Temas
+## Prévias
 
-| Escuro | Claro |
+| Tema escuro | Tema claro |
 | --- | --- |
-| ![Encaixes no layout escuro](proposta-escura.png) | ![Encaixes no layout claro](proposta-clara.png) |
+| ![Página inicial no tema escuro](proposta-escura.png) | ![Página inicial no tema claro](proposta-clara.png) |
 
-As duas artes têm **1536 × 1024**. Mantêm a barra lateral à esquerda, a tipografia grande e fina e os fundos neutros. O verde `#009485` aparece nas junções, nos indicadores e na ação principal.
+[Ver a versão para celular](proposta-mobile.png).
 
-## Paleta
+As capturas desktop têm 1536 × 1366; a captura móvel tem 390 × 1481. Os nomes e indicadores exibidos são dados de demonstração.
 
-| Uso | Escuro | Claro |
+## Identidade visual
+
+- Fundos neutros, verde `#009485` e tipografia Manrope.
+- Título de entrada grande e leve, com peso 300; textos em peso regular e botões em peso 600.
+- Barra lateral fixa no desktop e menu recolhido em telas menores.
+- Cartões de ações lado a lado no desktop e em coluna no celular.
+- Ilustrações em SVG, com o mesmo traço e as mesmas cores dos componentes.
+
+## Geometria dos encaixes
+
+As três peças representam leitura, raciocínio e prática. Cada uma tem um contorno fechado, com pinos de pescoço estreito e cavidades correspondentes. Há dois perfis: cabeça arredondada e cabeça mais larga.
+
+As peças aparecem afastadas. Cada par vizinho usa exatamente a mesma curva em sentidos opostos; ao voltar à grade comum, suas bordas coincidem. A separação não depende de sobreposições nem de linhas soltas para sugerir uma conexão.
+
+Os cartões de ações permanecem unidos por uma única divisória com formato de encaixe. O detalhe da marca usa o mesmo perfil arredondado.
+
+## Paleta implementada
+
+| Uso | Tema escuro | Tema claro |
 | --- | --- | --- |
 | Fundo | `#131313` | `#F6F5F0` |
+| Painéis | `#171717` | `#F6F5F0` |
 | Barra lateral | `#191919` | `#EEEEE8` |
 | Texto principal | `#F1F0EA` | `#242424` |
 | Texto de apoio | `#AAA79E` | `#706F65` |
-| Bordas | `#383833` | `#D8D6CC` |
-| Acento / ação | `#009485` | `#009485` |
-| Texto da ação | `#131313` | `#131313` |
+| Bordas discretas | `#383833` | `#D8D6CC` |
+| Contornos das peças e cartões iniciais | `#626158` | `#B0AEA3` |
+| Acento e ação principal | `#009485` | `#009485` |
+| Texto da ação principal | `#131313` | `#131313` |
 
-[Ver paletas](paletas.svg). Os códigos são a referência para implementação; os pixels das artes podem variar pela geração.
+[Ver paletas](paletas.svg). A preferência de tema é salva no navegador; na primeira visita, o site acompanha a preferência do sistema.
 
-## Diretrizes de implementação
+## Arquivos da implementação
 
-- Fonte sugerida: Manrope, peso 300 no título de entrada e 400–500 nos textos e controles.
-- Construir os contornos em SVG/CSS, compartilhando cores, raios e espessuras com os componentes.
-- Manter textos e controles em HTML, com áreas de clique e foco preservadas.
-- Renderizar enunciados, alternativas, tabelas e fórmulas como conteúdo nativo do JSON.
-- Deixar a área de leitura das questões livre de decoração.
-- Adaptar a composição para celular, reduzindo os encaixes quando necessário. Os mockups atuais mostram apenas o desktop.
+- [Geometria compartilhada](../../frontend/src/lib/puzzle-geometry.ts).
+- [Marca, peças e divisória dos cartões](../../frontend/src/components/design.tsx).
+- [Página inicial](../../frontend/src/components/dashboard.tsx).
+- [Estilos e adaptação para telas menores](../../frontend/src/app/globals.css).
+- [Troca de tema](../../frontend/src/components/theme-toggle.tsx).
 
-## Geração
+Os textos e controles da interface são elementos HTML. Os enunciados e as alternativas continuam sendo conteúdo nativo do JSON; a decoração permanece fora da área de leitura das questões.
 
-As artes foram geradas com a ferramenta integrada **ImageGen**. Os prompts foram preservados para novos refinamentos:
+## Conteúdo desta pasta
 
-- [Prompt escuro](prompt-escuro.txt).
-- [Prompt claro](prompt-claro.txt).
+- `proposta-escura.png`: captura atual do desktop no tema escuro.
+- `proposta-clara.png`: captura atual do desktop no tema claro.
+- `proposta-mobile.png`: captura atual do celular.
+- `paletas.svg`: cores da implementação.
+- `README.md`: direção visual e caminhos do código.
 
-## Implementação
-
-O design foi aplicado ao site: página inicial com encaixes em SVG, navegação lateral, tipografia Manrope e temas claro/escuro. A preferência de tema é salva no navegador; a primeira visita acompanha a preferência do sistema. As demais páginas compartilham as cores e os componentes da direção escolhida.
-
-No celular, o menu é recolhido e os cartões se organizam em uma coluna. As questões mantêm texto selecionável, tabelas HTML, fórmulas e figuras separadas. O texto de apoio claro usa `#706F65` para melhorar o contraste em relação ao estudo inicial.
-
-O código fica em `frontend/src/components/design.tsx`, `theme-toggle.tsx`, `dashboard.tsx`, `app.tsx` e `frontend/src/app/globals.css`. Os PNGs desta pasta são referências de design; a interface implementada usa elementos nativos.
+As imagens do estudo inicial, seus prompts e a pasta de referências foram retirados desta pasta.

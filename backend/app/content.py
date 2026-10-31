@@ -6,6 +6,7 @@ from .db import ROOT
 from .models import Exam, QuestionVersion, Review
 from .schemas import ExamImport
 from .presentation import readable_content
+from .preparation import blocking_issues
 
 
 def validate_assets(content: dict):
@@ -57,6 +58,8 @@ def publish_exam(db: Session, exam: Exam, user_id: str, reason: str):
         question = db.get(QuestionVersion, key)
         if not question or question.status != "approved":
             raise HTTPException(409, "Todas as versões precisam de aprovação antes da publicação.")
+        if blocking_issues(question.content):
+            raise HTTPException(409, "Há pendências bloqueantes de preparação. Corrija e revise as versões antes de publicar.")
         validate_assets(question.content)
     exam.status = "published"
     db.add(Review(user_id=user_id, target_id=exam.id, action="publish", reason=reason))

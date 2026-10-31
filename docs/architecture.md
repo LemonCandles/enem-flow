@@ -25,7 +25,9 @@ flowchart LR
 
 `schemas.py` define o contrato 1.0 de conteúdo: item canônico, versão, enunciado, imagens com descrição, alternativas, área, rótulos, página e layout separado. O campo opcional `blocks` estende o contrato com parágrafos, imagens, tabelas e fórmulas tipados, sem quebrar importações antigas. O texto do JSON é renderizado como HTML; KaTeX usa entrada não confiável, expansão limitada e saída HTML/MathML. Não se aceita HTML arbitrário. O gabarito existe apenas no backend até a conclusão. As respostas públicas usam uma lista explícita de campos permitidos; o layout e os links de gabarito não são expostos durante a prova.
 
-`presentation.py` adapta apenas snapshots antigos da transcrição incluída que coincidam pelo SHA-256 do texto. Ela substitui somente os campos de apresentação por seus blocos nativos; versões, escolhas, gabaritos e resultados permanecem os do snapshot. A atualização do catálogo cria novas versões com `seed --publish-reviewed --refresh-bundled`, recusando transcrições com edição própria.
+Fórmulas explícitas usam `$...$`, `$$...$$`, `\(...\)` ou `\[...\]`; química usa mhchem (`\ce{...}`). Texto comum permanece selecionável. `image.caption`, `image.credit` e `image.equations` associam legenda, fonte e rodapé matemático à figura em `figure`/`figcaption`. A mesma apresentação acompanha a ampliação em diálogo nativo, com zoom e rolagem internos, Escape e restauração do foco. Não há navegação para uma nova guia ao ampliar.
+
+`presentation.py` adapta apenas snapshots antigos conhecidos que coincidam pelo SHA-256 do conteúdo completo normalizado pelo contrato. Extração inicial e apresentação native-v1 ficam preservadas em `data/sources/`. A adaptação também confere número, área, gabarito, anulação, rótulos e página. Substitui somente os campos de apresentação; identificadores, versões, escolhas e resultados permanecem os do snapshot. A atualização do catálogo cria novas versões com `seed --publish-reviewed --refresh-bundled`, recusando edições próprias e alterações de dados de avaliação. O lote native-v2 tem motivos por questão em `layout.presentation_review` e na trilha `reviews` do banco.
 
 `content.py` valida recursos existentes, importa rascunhos e impede publicação incompleta ou sem revisão. Correções geram novas versões; a prova fica em revisão até aprovação e republicação. Rejeitar uma versão vinculada a uma prova publicada também suspende sua publicação. A trilha `reviews` guarda autor, ação, justificativa e instante. Reutilizar um item canônico permite ligá-lo a vários cadernos; detecção automática de duplicatas permanece futura.
 
@@ -34,6 +36,12 @@ flowchart LR
 Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da execução. Funciona no PostgreSQL e no SQLite, onde SELECT FOR UPDATE seria ignorado. A finalização verifica o estado após obter o bloqueio: chamadas concorrentes retornam o mesmo resultado, com uma única série de eventos. O início usa chave de idempotência única por usuário; reutilizá-la para outra prova retorna conflito.
 
 `scoring.py` corrige exclusivamente por gabarito: brancos contam no denominador e não como respostas; anuladas ficam fora do desempenho. O painel soma tentativas de provas concluídas, inclusive repetições; não deduplica um item que o aluno resolveu novamente. Rótulos múltiplos podem sobrepor grupos. Cobertura significa a fração de tentativas válidas com pelo menos um rótulo do tipo considerado, não domínio de conhecimento.
+
+## Preparação de conteúdo
+
+`backend/app/preparation/` é o preparador compartilhado de JSON, sem dependência de PDF/Node nas requisições da API e sem regras por número de questão. `POST /admin/imports` e a edição de versões o executam automaticamente; `/admin/imports/prepare` oferece prévia sem gravação. Converte notação reconhecida, associa blocos adjacentes às figuras e registra hashes, operações e pendências em `layout.preparation`. Agrupamentos/delimitadores LaTeX inválidos e perdas de layout conhecidas bloqueiam aprovação e publicação. Os avisos ficam na curadoria; o aluno recebe a lista permitida de campos de apresentação.
+
+O adaptador offline `scripts/exam_pdf.py` usa PyMuPDF, regiões, cabeçalhos, posição dos caracteres e marcadores A–E para preparar PDFs textuais. `scripts/prepare_exam.py` aceita JSON ou manifesto, produz um rascunho e relatório, confere recursos e compila o LaTeX com o KaTeX/mhchem do frontend. Saída automática não equivale a aprovação. [Uso e limites](preparacao-provas.md).
 
 ## HTTP
 

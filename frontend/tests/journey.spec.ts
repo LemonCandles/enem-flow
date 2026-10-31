@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('cadastro, navegação, retomada, correção e histórico individual', async ({ page }, info) => {
   // This full journey includes page loads, screenshots and recorded video.
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
   const email = `e2e-${info.project.name}-${Date.now()}@example.com`;
   await page.goto('/');
   await page.getByRole('button', { name: 'Criar conta', exact: true }).click();
@@ -13,9 +13,20 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   await expect(page.getByRole('heading', { name: /Aprender, no seu tempo\./ })).toBeVisible();
   await expect(page.getByText('Provas concluídas', { exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
-  await page.screenshot({ path: `test-results/${info.project.name}-dashboard.png`, fullPage: true });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-dashboard.png`, fullPage: true });
   await page.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  await page.getByRole('heading', { name: 'Questão 91', exact: true }).focus();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 92', exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   const runUrl = page.url();
   await page.getByRole('radio', { name: /^B absorve/ }).check();
   await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
@@ -25,6 +36,7 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   await page.getByRole('button', { name: 'Próxima questão' }).click();
   await expect(page.getByRole('heading', { name: 'Questão 92', exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   await page.getByRole('button', { name: 'Anterior', exact: true }).click();
   await expect(page.getByRole('radio', { name: /^B absorve/ })).toBeChecked();
   // Native radios must be operable by keyboard and the changed answer must persist.
@@ -35,7 +47,7 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   await expect(page.getByRole('radio', { name: /^C consome/ })).toBeChecked();
   await page.getByRole('radio', { name: /^B absorve/ }).check();
   await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
-  await page.screenshot({ path: `test-results/${info.project.name}-question.png`, fullPage: true });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-question.png`, fullPage: true });
   if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
   await page.getByRole('button', { name: 'Finalizar prova', exact: true }).click();
   await expect(page.getByRole('dialog')).toContainText('1 de 90 questões');
@@ -45,7 +57,7 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   const repeat = await page.request.post(`${runUrl.replace(/.*\/runs\//, '/api/exam-runs/')}/finish`);
   expect(repeat.status()).toBe(200);
   expect((await repeat.json()).result.correct).toBe(1);
-  await page.screenshot({ path: `test-results/${info.project.name}-result.png`, fullPage: true });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-result.png`, fullPage: true });
   await page.getByRole('link', { name: 'Voltar ao histórico' }).click();
   await expect(page.getByRole('link', { name: /Ver resultado/ })).toHaveCount(1);
   await page.goto('/progress');
@@ -131,6 +143,7 @@ test('JSON renderiza texto, tabelas, fórmulas e figuras separadas', async ({ pa
     if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
     await page.getByRole('button', { name: new RegExp(`^Questão ${number}(,|$)`) }).click();
     await expect(page.getByRole('heading', { name: `Questão ${number}`, exact: true })).toBeVisible();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   }
   await open(93);
@@ -142,15 +155,22 @@ test('JSON renderiza texto, tabelas, fórmulas e figuras separadas', async ({ pa
   await open(139);
   await expect(page.getByRole('columnheader', { name: 'Componente X (R$)' })).toBeVisible();
   await expect(page.getByRole('table')).toContainText('3,00');
-  await page.screenshot({ path: `test-results/${info.project.name}-native-table.png`, fullPage: true });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-native-table.png`, fullPage: true });
   await open(148);
   await expect(page.locator('.katex')).toHaveCount(6);
   await expect(page.locator('.katex-error')).toHaveCount(0);
   await open(170);
   await expect(page.locator('.native-equation .katex')).toBeVisible();
   await expect(page.locator('.question-content img')).toHaveCount(0);
-  await page.screenshot({ path: `test-results/${info.project.name}-native-math.png`, fullPage: true });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-native-math.png`, fullPage: true });
   await open(180);
+  await page.getByRole('heading', { name: 'Questão 180', exact: true }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 180', exact: true })).toBeVisible();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('heading', { name: 'Questão 179', exact: true })).toBeVisible();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 180', exact: true })).toBeVisible();
   await expect(page.locator('.alternatives .katex')).toHaveCount(5);
   await expect(page.locator('.katex-error')).toHaveCount(0);
   expect((await page.request.delete('/api/me/history')).status()).toBe(204);
