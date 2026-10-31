@@ -1,0 +1,72 @@
+name: MVP checks
+on: [push, pull_request]
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        database: [sqlite, postgres]
+    services:
+      postgres:
+        image: postgres:17.7-alpine
+        env:
+          POSTGRES_USER: enem
+          POSTGRES_PASSWORD: test-password
+          POSTGRES_DB: enem_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U enem -d enem_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r backend/requirements-dev.lock
+      - name: SQLite tests and migrations
+        if: matrix.database == 'sqlite'
+        run: |
+          alembic upgrade head
+          alembic check
+          pytest -q
+      - name: PostgreSQL tests and migrations
+        if: matrix.database == 'postgres'
+        env:
+          DATABASE_URL: postgresql+psycopg://enem:test-password@localhost:5432/enem_test
+          TEST_DATABASE_URL: postgresql+psycopg://enem:test-password@localhost:5432/enem_test
+        run: |
+          alembic upgrade head
+          alembic check
+          pytest -q
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r backend/requirements.lock
+      - run: |
+          alembic upgrade head
+          python -m backend.app.cli seed --publish-reviewed
+          uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 > /tmp/enem-api.log 2>&1 &
+      - run: npm ci && npm run typecheck && npm run build
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: |
+          npm run start > /tmp/enem-web.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://localhost:3000/api/health && break || sleep 2; done
+          npm run test:e2e
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-traces
+          path: frontend/test-results
