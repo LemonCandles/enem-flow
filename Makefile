@@ -22,6 +22,7 @@ web:
 test:
 	.venv/bin/pytest -q
 	cd frontend && npm run typecheck
+	cd frontend && npm run check:content
 
 build:
 	cd frontend && npm run build
