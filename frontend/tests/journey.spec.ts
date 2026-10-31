@@ -16,6 +16,17 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   await page.screenshot({ path: `test-results/${info.project.name}-dashboard.png`, fullPage: true });
   await page.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  await page.getByRole('heading', { name: 'Questão 91', exact: true }).focus();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 92', exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   const runUrl = page.url();
   await page.getByRole('radio', { name: /^B absorve/ }).check();
   await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
@@ -25,6 +36,7 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   await page.getByRole('button', { name: 'Próxima questão' }).click();
   await expect(page.getByRole('heading', { name: 'Questão 92', exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   await page.getByRole('button', { name: 'Anterior', exact: true }).click();
   await expect(page.getByRole('radio', { name: /^B absorve/ })).toBeChecked();
   // Native radios must be operable by keyboard and the changed answer must persist.
@@ -131,6 +143,7 @@ test('JSON renderiza texto, tabelas, fórmulas e figuras separadas', async ({ pa
     if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
     await page.getByRole('button', { name: new RegExp(`^Questão ${number}(,|$)`) }).click();
     await expect(page.getByRole('heading', { name: `Questão ${number}`, exact: true })).toBeVisible();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   }
   await open(93);
@@ -151,6 +164,13 @@ test('JSON renderiza texto, tabelas, fórmulas e figuras separadas', async ({ pa
   await expect(page.locator('.question-content img')).toHaveCount(0);
   await page.screenshot({ path: `test-results/${info.project.name}-native-math.png`, fullPage: true });
   await open(180);
+  await page.getByRole('heading', { name: 'Questão 180', exact: true }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 180', exact: true })).toBeVisible();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('heading', { name: 'Questão 179', exact: true })).toBeVisible();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 180', exact: true })).toBeVisible();
   await expect(page.locator('.alternatives .katex')).toHaveCount(5);
   await expect(page.locator('.katex-error')).toHaveCount(0);
   expect((await page.request.delete('/api/me/history')).status()).toBe(204);
