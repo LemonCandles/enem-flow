@@ -1,0 +1,38 @@
+{
+  "id": "enem-2024-dia2-azul",
+  "title": "ENEM 2024 · 2º dia",
+  "year": 2024,
+  "application": "Regular",
+  "booklet": "Caderno 7 · Azul",
+  "day": 2,
+  "kind": "complete",
+  "expected_items": 90,
+  "duration_minutes": 300,
+  "source": {
+    "url": "https://download.inep.gov.br/enem/provas_e_gabaritos/2024_PV_impresso_D2_CD7.pdf",
+    "answer_key_url": "https://download.inep.gov.br/enem/provas_e_gabaritos/2024_GB_impresso_D2_CD7.pdf",
+    "publisher": "Inep"
+  },
+  "layout": {
+    "pages": [
+      2,
+      31
+    ],
+    "top": 64,
+    "bottom": 746,
+    "columns": "auto"
+  },
+  "areas": [
+    {
+      "first": 91,
+      "last": 135,
+      "area": "Ciências da Natureza"
+    },
+    {
+      "first": 136,
+      "last": 180,
+      "area": "Matemática",
+      "discipline": "Matemática"
+    }
+  ]
+}

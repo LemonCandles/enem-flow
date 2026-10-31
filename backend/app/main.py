@@ -17,6 +17,7 @@ from . import models as m, schemas as s
 from .content import exam_summary, import_exam, public_question, publish_exam, validate_assets
 from .db import ROOT, get_db
 from .scoring import aggregate, score
+from .preparation import blocking_issues, prepare_content, prepare_exam
 from .security import COOKIE, admin_user, current_user, digest, hash_password, new_session, user_data, verify_password
 
 logger = logging.getLogger("enem_flow")
@@ -298,9 +299,23 @@ def admin_exams(user: m.User = Depends(admin_user), db: Session = Depends(get_db
 
 @app.post("/admin/imports", status_code=201)
 def admin_import(payload: s.ExamImport, user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
-    exam = import_exam(db, payload)
-    db.add(m.Review(user_id=user.id, target_id=exam.id, action="import", reason="Importação validada pelo contrato 1.0; aguardando revisão humana."))
-    return exam_summary(db, exam)
+    try:
+        prepared, report = prepare_exam(payload)
+    except ValueError as error:
+        raise HTTPException(422, str(error))
+    exam = import_exam(db, prepared)
+    db.add(m.Review(user_id=user.id, target_id=exam.id, action="import", reason=f"Preparação {report['version']}: {report['changes']} operações, {report['warnings']} avisos, {report['errors']} pendências bloqueantes; aguardando revisão humana."))
+    return {**exam_summary(db, exam), 'preparation': report}
+
+
+@app.post("/admin/imports/prepare")
+def preview_import(payload: s.ExamImport, user: m.User = Depends(admin_user)):
+    """Read-only preview uses the exact same preparation as the actual import."""
+    try:
+        prepared, report = prepare_exam(payload)
+    except ValueError as error:
+        raise HTTPException(422, str(error))
+    return {'exam': prepared.model_dump(), 'report': report}
 
 
 @app.get("/admin/exams/{exam_id}")
@@ -318,13 +333,17 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: m.User = Depen
     previous = db.get(m.QuestionVersion, version_id)
     if not previous:
         raise HTTPException(404, "Versão não encontrada.")
-    validate_assets(payload.content.model_dump())
+    try:
+        content = prepare_content(payload.content.model_dump())
+    except ValueError as error:
+        raise HTTPException(422, str(error))
+    validate_assets(content)
     last = db.scalar(select(func.max(m.QuestionVersion.version)).where(m.QuestionVersion.question_id == previous.question_id))
     if last != previous.version:
         raise HTTPException(409, "Há uma versão mais recente. Atualize a tela antes de editar.")
     version = last + 1
     question = m.QuestionVersion(id=f"{previous.question_id}:{version}", question_id=previous.question_id,
-                                version=version, content=payload.content.model_dump())
+                                version=version, content=content)
     db.add(question)
     # Published exams are withdrawn until the new version is reviewed and published again.
     for exam in db.scalars(select(m.Exam)):
@@ -356,6 +375,8 @@ def review(target_id: str, payload: s.ReviewRequest, user: m.User = Depends(admi
         raise HTTPException(404, "Alvo da revisão não encontrado.")
     if payload.action not in {"approve", "reject"}:
         raise HTTPException(422, "Para questões, use aprovar ou rejeitar.")
+    if payload.action == 'approve' and blocking_issues(question.content):
+        raise HTTPException(409, 'Corrija as pendências bloqueantes da preparação e salve uma nova versão antes de aprovar.')
     question.status = "approved" if payload.action == "approve" else "in_review"
     if payload.action == "reject":
         for linked in db.scalars(select(m.Exam).where(m.Exam.status == "published")):
