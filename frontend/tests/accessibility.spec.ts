@@ -2,6 +2,9 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
 
+// Axe opens temporary aggregation tabs; JSON reports are the evidence here.
+test.use({ video: 'off' });
+
 test('acessibilidade automática, teclado, temas e reflow da jornada', async ({ page }, info) => {
   test.setTimeout(180_000);
   const violations: unknown[] = [];

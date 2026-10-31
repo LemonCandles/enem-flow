@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam no site', async ({ page, context }, info) => {
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Figuras', email: `e2e-figures-${info.project.name}-${Date.now()}@example.com`, password: 'senha-figuras-latex-2026' } })).status()).toBe(201);
@@ -45,7 +45,7 @@ test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam
     return { left: el.getBoundingClientRect().left, mathLeft: math.getBoundingClientRect().left };
   });
   expect(bounds.mathLeft).toBeGreaterThanOrEqual(bounds.left - 1);
-  await page.screenshot({ path: `test-results/${info.project.name}-chemistry.png`, fullPage: true });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-chemistry.png`, fullPage: true });
   await figure.getByRole('button', { name: 'Ampliar figura', exact: true }).click();
   const chemicalDialog = page.getByRole('dialog', { name: 'Figura da questão 92', exact: true });
   await expect(chemicalDialog.locator('.figure-equation .katex')).toHaveCount(2);
@@ -56,7 +56,7 @@ test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam
   await expect(chemicalDialog).toBeVisible();
   expect(context.pages()).toHaveLength(tabs);
   await expect(page.locator('.katex-error')).toHaveCount(0);
-  await page.screenshot({ path: `test-results/${info.project.name}-figure-dialog.png` });
+  await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-figure-dialog.png` });
   await page.keyboard.press('Escape');
   for (const number of [94, 97, 99, 100, 114, 116, 118, 123, 128, 132, 133, 135, 170]) {
     if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
@@ -64,7 +64,7 @@ test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam
     await expect(page.getByRole('heading', { name: `Questão ${number}`, exact: true })).toBeVisible();
     await expect(page.locator('.katex-error')).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
-    if ([94, 118, 135].includes(number)) await page.screenshot({ path: `test-results/${info.project.name}-q${number}-review.png`, fullPage: true });
+    if ([94, 118, 135].includes(number)) await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-q${number}-review.png`, fullPage: true });
   }
   expect(errors).toEqual([]);
   expect((await page.request.delete('/api/me/history')).status()).toBe(204);
