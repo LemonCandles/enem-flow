@@ -1,0 +1,511 @@
+{
+  "$defs": {
+    "Alternative": {
+      "additionalProperties": false,
+      "properties": {
+        "letter": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "title": "Letter",
+          "type": "string"
+        },
+        "text": {
+          "default": "",
+          "maxLength": 10000,
+          "title": "Text",
+          "type": "string"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Asset"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "letter"
+      ],
+      "title": "Alternative",
+      "type": "object"
+    },
+    "Asset": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "pattern": "^/assets/[a-zA-Z0-9_./-]+\\.(png|jpg|webp)$",
+          "title": "Path",
+          "type": "string"
+        },
+        "alt": {
+          "maxLength": 3000,
+          "minLength": 5,
+          "title": "Alt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "alt"
+      ],
+      "title": "Asset",
+      "type": "object"
+    },
+    "ImageBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "image",
+          "title": "Type",
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/$defs/Asset"
+        }
+      },
+      "required": [
+        "type",
+        "asset"
+      ],
+      "title": "ImageBlock",
+      "type": "object"
+    },
+    "ImportQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,80}$",
+          "title": "Question Id",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/QuestionContent"
+        }
+      },
+      "required": [
+        "question_id",
+        "content"
+      ],
+      "title": "ImportQuestion",
+      "type": "object"
+    },
+    "Labels": {
+      "additionalProperties": false,
+      "properties": {
+        "discipline": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Discipline"
+        },
+        "themes": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Themes",
+          "type": "array"
+        },
+        "skills": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Skills",
+          "type": "array"
+        },
+        "taxonomy_version": {
+          "default": "manual-v1",
+          "maxLength": 80,
+          "title": "Taxonomy Version",
+          "type": "string"
+        },
+        "provenance": {
+          "default": "Revisão manual",
+          "maxLength": 200,
+          "title": "Provenance",
+          "type": "string"
+        }
+      },
+      "title": "Labels",
+      "type": "object"
+    },
+    "MathBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "math",
+          "title": "Type",
+          "type": "string"
+        },
+        "tex": {
+          "maxLength": 8000,
+          "minLength": 1,
+          "title": "Tex",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "tex"
+      ],
+      "title": "MathBlock",
+      "type": "object"
+    },
+    "ParagraphBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "paragraph",
+          "title": "Type",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 30000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ],
+      "title": "ParagraphBlock",
+      "type": "object"
+    },
+    "QuestionContent": {
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Number",
+          "type": "integer"
+        },
+        "area": {
+          "enum": [
+            "Matemática",
+            "Ciências da Natureza",
+            "Ciências Humanas",
+            "Linguagens"
+          ],
+          "title": "Area",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 30000,
+          "minLength": 5,
+          "title": "Statement",
+          "type": "string"
+        },
+        "blocks": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "image": "#/$defs/ImageBlock",
+                "math": "#/$defs/MathBlock",
+                "paragraph": "#/$defs/ParagraphBlock",
+                "table": "#/$defs/TableBlock"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ParagraphBlock"
+              },
+              {
+                "$ref": "#/$defs/ImageBlock"
+              },
+              {
+                "$ref": "#/$defs/MathBlock"
+              },
+              {
+                "$ref": "#/$defs/TableBlock"
+              }
+            ]
+          },
+          "maxItems": 100,
+          "title": "Blocks",
+          "type": "array"
+        },
+        "images": {
+          "items": {
+            "$ref": "#/$defs/Asset"
+          },
+          "maxItems": 20,
+          "title": "Images",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative"
+          },
+          "maxItems": 5,
+          "minItems": 5,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "correct_answer": {
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Correct Answer"
+        },
+        "annulled": {
+          "default": false,
+          "title": "Annulled",
+          "type": "boolean"
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "original_layout": {
+          "default": false,
+          "title": "Original Layout",
+          "type": "boolean"
+        },
+        "layout": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layout"
+        }
+      },
+      "required": [
+        "number",
+        "area",
+        "statement",
+        "alternatives",
+        "correct_answer",
+        "page"
+      ],
+      "title": "QuestionContent",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "maxLength": 1000,
+          "pattern": "^https://",
+          "title": "Url",
+          "type": "string"
+        },
+        "answer_key_url": {
+          "maxLength": 1000,
+          "pattern": "^https://",
+          "title": "Answer Key Url",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "answer_key_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Answer Key Sha256",
+          "type": "string"
+        },
+        "publisher": {
+          "maxLength": 100,
+          "title": "Publisher",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "maxLength": 3000,
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "answer_key_url",
+        "sha256",
+        "answer_key_sha256",
+        "publisher"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "TableBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "table",
+          "title": "Type",
+          "type": "string"
+        },
+        "headers": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Headers",
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Rows",
+          "type": "array"
+        },
+        "caption": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Caption",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "headers",
+        "rows",
+        "caption"
+      ],
+      "title": "TableBlock",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-zA-Z0-9_-]{1,80}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 160,
+      "minLength": 5,
+      "title": "Title",
+      "type": "string"
+    },
+    "year": {
+      "maximum": 2100,
+      "minimum": 1998,
+      "title": "Year",
+      "type": "integer"
+    },
+    "application": {
+      "maxLength": 80,
+      "minLength": 2,
+      "title": "Application",
+      "type": "string"
+    },
+    "booklet": {
+      "maxLength": 80,
+      "minLength": 2,
+      "title": "Booklet",
+      "type": "string"
+    },
+    "day": {
+      "maximum": 2,
+      "minimum": 1,
+      "title": "Day",
+      "type": "integer"
+    },
+    "kind": {
+      "enum": [
+        "complete",
+        "section",
+        "collection"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "expected_items": {
+      "maximum": 200,
+      "minimum": 1,
+      "title": "Expected Items",
+      "type": "integer"
+    },
+    "duration_minutes": {
+      "maximum": 600,
+      "minimum": 1,
+      "title": "Duration Minutes",
+      "type": "integer"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "questions": {
+      "items": {
+        "$ref": "#/$defs/ImportQuestion"
+      },
+      "maxItems": 200,
+      "minItems": 1,
+      "title": "Questions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "year",
+    "application",
+    "booklet",
+    "day",
+    "kind",
+    "expected_items",
+    "duration_minutes",
+    "source",
+    "questions"
+  ],
+  "title": "ExamImport",
+  "type": "object"
+}
