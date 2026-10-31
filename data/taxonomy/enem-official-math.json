@@ -1,0 +1,192 @@
+{
+  "version": "inep-enem-matriz-2009",
+  "source": {
+    "publisher": "Inep",
+    "url": "https://download.inep.gov.br/download/enem/matriz_referencia.pdf",
+    "path": "referencias/matriz-referencia-enem.pdf",
+    "sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1",
+    "notes": "Fonte das definições oficiais. Os vínculos de questões são propostas editoriais, não atribuições oficiais do Inep."
+  },
+  "skills": [
+    {
+      "id": "MT.H1",
+      "competency": "MT.C1",
+      "text": "Reconhecer, no contexto social, diferentes significados e representações dos números e operações - naturais, inteiros, racionais ou reais.",
+      "page": 5
+    },
+    {
+      "id": "MT.H2",
+      "competency": "MT.C1",
+      "text": "Identificar padrões numéricos ou princípios de contagem.",
+      "page": 5
+    },
+    {
+      "id": "MT.H3",
+      "competency": "MT.C1",
+      "text": "Resolver situação-problema envolvendo conhecimentos numéricos.",
+      "page": 5
+    },
+    {
+      "id": "MT.H4",
+      "competency": "MT.C1",
+      "text": "Avaliar a razoabilidade de um resultado numérico na construção de argumentos sobre afirmações quantitativas.",
+      "page": 5
+    },
+    {
+      "id": "MT.H5",
+      "competency": "MT.C1",
+      "text": "Avaliar propostas de intervenção na realidade utilizando conhecimentos numéricos.",
+      "page": 5
+    },
+    {
+      "id": "MT.H6",
+      "competency": "MT.C2",
+      "text": "Interpretar a localização e a movimentação de pessoas/objetos no espaço tridimensional e sua representação no espaço bidimensional.",
+      "page": 5
+    },
+    {
+      "id": "MT.H7",
+      "competency": "MT.C2",
+      "text": "Identificar características de figuras planas ou espaciais.",
+      "page": 5
+    },
+    {
+      "id": "MT.H8",
+      "competency": "MT.C2",
+      "text": "Resolver situação-problema que envolva conhecimentos geométricos de espaço e forma.",
+      "page": 5
+    },
+    {
+      "id": "MT.H9",
+      "competency": "MT.C2",
+      "text": "Utilizar conhecimentos geométricos de espaço e forma na seleção de argumentos propostos como solução de problemas do cotidiano.",
+      "page": 5
+    },
+    {
+      "id": "MT.H10",
+      "competency": "MT.C3",
+      "text": "Identificar relações entre grandezas e unidades de medida.",
+      "page": 5
+    },
+    {
+      "id": "MT.H11",
+      "competency": "MT.C3",
+      "text": "Utilizar a noção de escalas na leitura de representação de situação do cotidiano.",
+      "page": 5
+    },
+    {
+      "id": "MT.H12",
+      "competency": "MT.C3",
+      "text": "Resolver situação-problema que envolva medidas de grandezas.",
+      "page": 5
+    },
+    {
+      "id": "MT.H13",
+      "competency": "MT.C3",
+      "text": "Avaliar o resultado de uma medição na construção de um argumento consistente.",
+      "page": 5
+    },
+    {
+      "id": "MT.H14",
+      "competency": "MT.C3",
+      "text": "Avaliar proposta de intervenção na realidade utilizando conhecimentos geométricos relacionados a grandezas e medidas.",
+      "page": 5
+    },
+    {
+      "id": "MT.H15",
+      "competency": "MT.C4",
+      "text": "Identificar a relação de dependência entre grandezas.",
+      "page": 6
+    },
+    {
+      "id": "MT.H16",
+      "competency": "MT.C4",
+      "text": "Resolver situação-problema envolvendo a variação de grandezas, direta ou inversamente proporcionais.",
+      "page": 6
+    },
+    {
+      "id": "MT.H17",
+      "competency": "MT.C4",
+      "text": "Analisar informações envolvendo a variação de grandezas como recurso para a construção de argumentação.",
+      "page": 6
+    },
+    {
+      "id": "MT.H18",
+      "competency": "MT.C4",
+      "text": "Avaliar propostas de intervenção na realidade envolvendo variação de grandezas.",
+      "page": 6
+    },
+    {
+      "id": "MT.H19",
+      "competency": "MT.C5",
+      "text": "Identificar representações algébricas que expressem a relação entre grandezas.",
+      "page": 6
+    },
+    {
+      "id": "MT.H20",
+      "competency": "MT.C5",
+      "text": "Interpretar gráfico cartesiano que represente relações entre grandezas.",
+      "page": 6
+    },
+    {
+      "id": "MT.H21",
+      "competency": "MT.C5",
+      "text": "Resolver situação-problema cuja modelagem envolva conhecimentos algébricos.",
+      "page": 6
+    },
+    {
+      "id": "MT.H22",
+      "competency": "MT.C5",
+      "text": "Utilizar conhecimentos algébricos/geométricos como recurso para a construção de argumentação.",
+      "page": 6
+    },
+    {
+      "id": "MT.H23",
+      "competency": "MT.C5",
+      "text": "Avaliar propostas de intervenção na realidade utilizando conhecimentos algébricos.",
+      "page": 6
+    },
+    {
+      "id": "MT.H24",
+      "competency": "MT.C6",
+      "text": "Utilizar informações expressas em gráficos ou tabelas para fazer inferências.",
+      "page": 6
+    },
+    {
+      "id": "MT.H25",
+      "competency": "MT.C6",
+      "text": "Resolver problema com dados apresentados em tabelas ou gráficos.",
+      "page": 6
+    },
+    {
+      "id": "MT.H26",
+      "competency": "MT.C6",
+      "text": "Analisar informações expressas em gráficos ou tabelas como recurso para a construção de argumentos.",
+      "page": 6
+    },
+    {
+      "id": "MT.H27",
+      "competency": "MT.C7",
+      "text": "Calcular medidas de tendência central ou de dispersão de um conjunto de dados expressos em uma tabela de frequências de dados agrupados (não em classes) ou em gráficos.",
+      "page": 7
+    },
+    {
+      "id": "MT.H28",
+      "competency": "MT.C7",
+      "text": "Resolver situação-problema que envolva conhecimentos de estatística e probabilidade.",
+      "page": 7
+    },
+    {
+      "id": "MT.H29",
+      "competency": "MT.C7",
+      "text": "Utilizar conhecimentos de estatística e probabilidade como recurso para a construção de argumentação.",
+      "page": 7
+    },
+    {
+      "id": "MT.H30",
+      "competency": "MT.C7",
+      "text": "Avaliar propostas de intervenção na realidade utilizando conhecimentos de estatística e probabilidade.",
+      "page": 7
+    }
+  ]
+}

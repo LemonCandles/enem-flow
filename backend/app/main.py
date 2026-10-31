@@ -391,3 +391,9 @@ def audit(user: m.User = Depends(admin_user), db: Session = Depends(get_db, scop
     return [{"id": r.id, "target_id": r.target_id, "action": r.action, "reason": r.reason,
              "reviewer_id": r.user_id, "created_at": r.created_at}
             for r in db.scalars(select(m.Review).order_by(m.Review.created_at.desc()).limit(200))]
+
+
+@app.get('/admin/taxonomy')
+def content_taxonomy(user: m.User = Depends(admin_user)):
+    from .taxonomy import taxonomy
+    return taxonomy()

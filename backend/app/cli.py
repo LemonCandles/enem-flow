@@ -24,6 +24,8 @@ def main():
     seed = subs.add_parser("seed")
     seed.add_argument("--publish-reviewed", action="store_true", help="Publicar o conjunto incluído e conferido com os PDFs oficiais")
     seed.add_argument("--refresh-bundled", action="store_true", help="Atualizar a apresentação incluída criando versões; preservar as tentativas")
+    catalog = subs.add_parser("catalog", help="Instalar lotes e rótulos conferidos, preservando versões e tentativas")
+    catalog.add_argument("--publish-curated", action="store_true")
     reset = subs.add_parser("recovery-link")
     reset.add_argument("email")
     reset.add_argument("--base-url", default="http://localhost:3000")
@@ -39,6 +41,10 @@ def main():
             path = ROOT / "data/enem-2024-dia2-azul.json"
             payload = ExamImport.model_validate(json.loads(path.read_text()))
             existing = db.get(Exam, payload.id)
+            if args.publish_reviewed and (not existing or args.refresh_bundled) and (ROOT/'data/catalog/manifest.json').exists():
+                from .catalog import install_catalog
+                print(json.dumps(install_catalog(db,publish=True),ensure_ascii=False))
+                return
             if existing:
                 if args.refresh_bundled and args.publish_reviewed:
                     count = refresh_bundle(db, existing, payload, bundled_reviewer(db))
@@ -56,6 +62,9 @@ def main():
                     db.add(Review(user_id=reviewer.id, target_id=key, action="approve", reason=reason))
                 publish_exam(db, exam, reviewer.id, reason)
             print(f"Importadas {len(exam.items)} questões; estado: {exam.status}.")
+        elif args.command == "catalog":
+            from .catalog import install_catalog
+            print(json.dumps(install_catalog(db,publish=args.publish_curated),ensure_ascii=False))
         elif args.command == "recovery-link":
             user = db.scalar(select(User).where(User.email == args.email.casefold()))
             if not user:

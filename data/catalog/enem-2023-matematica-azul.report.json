@@ -1,0 +1,459 @@
+{
+  "version": "generic-v1",
+  "exam_id": "enem-2023-matematica-azul",
+  "questions": [
+    {
+      "question_id": "enem-2023-dia2-azul-q136",
+      "number": 136,
+      "version": "generic-v1",
+      "input_sha256": "aff45ee3b479c975f58b8c6283825e5c2cca769704dff423b99ccf96e462cabc",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "aff45ee3b479c975f58b8c6283825e5c2cca769704dff423b99ccf96e462cabc"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q137",
+      "number": 137,
+      "version": "generic-v1",
+      "input_sha256": "34279befad86bc7aee35fdea2d9241605816ed2002fad89d0a739c9df25b65ec",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "34279befad86bc7aee35fdea2d9241605816ed2002fad89d0a739c9df25b65ec"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q138",
+      "number": 138,
+      "version": "generic-v1",
+      "input_sha256": "d6d124154faf1c8d192cc1dc5f6f653b4b64af8317352cb7c1e36cf10d9fcba1",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "d6d124154faf1c8d192cc1dc5f6f653b4b64af8317352cb7c1e36cf10d9fcba1"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q139",
+      "number": 139,
+      "version": "generic-v1",
+      "input_sha256": "124acc20cd2d417246b71227f6c3dd8ab3c3e9538d8868e4a563765fd11c39ce",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "124acc20cd2d417246b71227f6c3dd8ab3c3e9538d8868e4a563765fd11c39ce"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q140",
+      "number": 140,
+      "version": "generic-v1",
+      "input_sha256": "639c004ff16dd07a79070ff4513f9bb05c8cb0bb9d2773f7cab63395993d1018",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "639c004ff16dd07a79070ff4513f9bb05c8cb0bb9d2773f7cab63395993d1018"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q141",
+      "number": 141,
+      "version": "generic-v1",
+      "input_sha256": "2342b2904e8a496dbe98d097c91c3b231d7facb54a4af8e3bbe1a65e190555b9",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "2342b2904e8a496dbe98d097c91c3b231d7facb54a4af8e3bbe1a65e190555b9"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q142",
+      "number": 142,
+      "version": "generic-v1",
+      "input_sha256": "e3b31f8b5dda08205e5bf6c196b59b7dbd649ad356d26d9700484af939f7e8fa",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "e3b31f8b5dda08205e5bf6c196b59b7dbd649ad356d26d9700484af939f7e8fa"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q143",
+      "number": 143,
+      "version": "generic-v1",
+      "input_sha256": "6fd6362786dadf92f3151f287de642c66f002318d9c0e8697417d911137963fe",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "6fd6362786dadf92f3151f287de642c66f002318d9c0e8697417d911137963fe"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q144",
+      "number": 144,
+      "version": "generic-v1",
+      "input_sha256": "89e9996eb139746c00098aa3b9f29ae055df5fe9f4858676fd541c0d35c77199",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "89e9996eb139746c00098aa3b9f29ae055df5fe9f4858676fd541c0d35c77199"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q145",
+      "number": 145,
+      "version": "generic-v1",
+      "input_sha256": "34b72b5fb11679d9284d9fa00a96ac61d063e6566475e3268ab9fe3cd2dd6f51",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "34b72b5fb11679d9284d9fa00a96ac61d063e6566475e3268ab9fe3cd2dd6f51"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q146",
+      "number": 146,
+      "version": "generic-v1",
+      "input_sha256": "75efe1975161551952a73fc59301ecc05eeed458e2455f4a91697974f319605c",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "75efe1975161551952a73fc59301ecc05eeed458e2455f4a91697974f319605c"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q147",
+      "number": 147,
+      "version": "generic-v1",
+      "input_sha256": "31d25e106a63a75dd065871ffde80560b866f0705734c5e352da2fb388354cb4",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "31d25e106a63a75dd065871ffde80560b866f0705734c5e352da2fb388354cb4"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q148",
+      "number": 148,
+      "version": "generic-v1",
+      "input_sha256": "969dc346118f513315b8be97bdfadbe251f6183e096eb3e7a51f68b590091bc6",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "969dc346118f513315b8be97bdfadbe251f6183e096eb3e7a51f68b590091bc6"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q149",
+      "number": 149,
+      "version": "generic-v1",
+      "input_sha256": "4337512efc1378394f46fb2b887559dbff73c7ff0ac00f21c6bbfe2fe7538657",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "4337512efc1378394f46fb2b887559dbff73c7ff0ac00f21c6bbfe2fe7538657"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q150",
+      "number": 150,
+      "version": "generic-v1",
+      "input_sha256": "0f207eeeffe2a2ff59856896c0f899e102a8a73f42a6ca4db02b48cf6e68e0f1",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "0f207eeeffe2a2ff59856896c0f899e102a8a73f42a6ca4db02b48cf6e68e0f1"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q151",
+      "number": 151,
+      "version": "generic-v1",
+      "input_sha256": "0e5ff1279df090b0324a87c9452c0b8c9d2e46f1a3fbcb11e0b166b71df92ad0",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "0e5ff1279df090b0324a87c9452c0b8c9d2e46f1a3fbcb11e0b166b71df92ad0"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q152",
+      "number": 152,
+      "version": "generic-v1",
+      "input_sha256": "dd6e8941169a4e5b8213eea5c2cda7bb35b6dbbb1c6d3a670c70e3ef87e96f44",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "dd6e8941169a4e5b8213eea5c2cda7bb35b6dbbb1c6d3a670c70e3ef87e96f44"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q153",
+      "number": 153,
+      "version": "generic-v1",
+      "input_sha256": "e2905cee1ce787f30da94a7bfdbfdcd62c01c8b7ff9239ed56b94db6ef2ec714",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "e2905cee1ce787f30da94a7bfdbfdcd62c01c8b7ff9239ed56b94db6ef2ec714"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q154",
+      "number": 154,
+      "version": "generic-v1",
+      "input_sha256": "260bb41b050159ce6e2071da3f9f2b389368a6ea9a5891dc0bf8c133154f6fc8",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "260bb41b050159ce6e2071da3f9f2b389368a6ea9a5891dc0bf8c133154f6fc8"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q155",
+      "number": 155,
+      "version": "generic-v1",
+      "input_sha256": "046a1b5ff28451bac378eb0fda86043b44093e127f78a5ef9821c37f2c8eedb1",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "046a1b5ff28451bac378eb0fda86043b44093e127f78a5ef9821c37f2c8eedb1"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q156",
+      "number": 156,
+      "version": "generic-v1",
+      "input_sha256": "b81f4e732b6162c2d344977c648592a1d6f1d1a43a4bd22722ab54a79b9e97f8",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "b81f4e732b6162c2d344977c648592a1d6f1d1a43a4bd22722ab54a79b9e97f8"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q157",
+      "number": 157,
+      "version": "generic-v1",
+      "input_sha256": "ab2a457a94cb9f82f9e0932f66088c080d152ab57e50ef3159c4fb2b23a839f1",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "ab2a457a94cb9f82f9e0932f66088c080d152ab57e50ef3159c4fb2b23a839f1"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q158",
+      "number": 158,
+      "version": "generic-v1",
+      "input_sha256": "2af9e69aa5d3d40938142b49ec3dc13b0257da7bbf23368bc100f936a97bb52f",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "2af9e69aa5d3d40938142b49ec3dc13b0257da7bbf23368bc100f936a97bb52f"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q159",
+      "number": 159,
+      "version": "generic-v1",
+      "input_sha256": "2e37d2b31a28aeea7cd8018c4d0f99fd79e2a15ed9f34dbf80760e11cc0c396f",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "2e37d2b31a28aeea7cd8018c4d0f99fd79e2a15ed9f34dbf80760e11cc0c396f"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q160",
+      "number": 160,
+      "version": "generic-v1",
+      "input_sha256": "a7e0f503f0924d13295093da6ca814dc60dfb5d4ac57095e4f0a950a30700dc0",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "a7e0f503f0924d13295093da6ca814dc60dfb5d4ac57095e4f0a950a30700dc0"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q161",
+      "number": 161,
+      "version": "generic-v1",
+      "input_sha256": "69b7c3c95a9e760cb5f42eefdea97dd75853a85da18eb8979cd0ee3ea594d9b5",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "69b7c3c95a9e760cb5f42eefdea97dd75853a85da18eb8979cd0ee3ea594d9b5"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q162",
+      "number": 162,
+      "version": "generic-v1",
+      "input_sha256": "df5825879f7912d3cf23c892e0353ff31eab0c74d1caf242465131c111228d42",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "df5825879f7912d3cf23c892e0353ff31eab0c74d1caf242465131c111228d42"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q163",
+      "number": 163,
+      "version": "generic-v1",
+      "input_sha256": "39a25d27a972d48f6c6e1eb2b2640ad1041db0663550c476ff8c90fd75dd64b7",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "39a25d27a972d48f6c6e1eb2b2640ad1041db0663550c476ff8c90fd75dd64b7"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q164",
+      "number": 164,
+      "version": "generic-v1",
+      "input_sha256": "9c88e7005ce493dc9ffa004c0b85b9ef2f09dd22983fe5f530570be1e96f0e8f",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "9c88e7005ce493dc9ffa004c0b85b9ef2f09dd22983fe5f530570be1e96f0e8f"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q165",
+      "number": 165,
+      "version": "generic-v1",
+      "input_sha256": "7c7a7c0e70676cab02f6caabf2e9d00016d8b1c94c3d3d12e49259cc2edbf096",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "7c7a7c0e70676cab02f6caabf2e9d00016d8b1c94c3d3d12e49259cc2edbf096"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q166",
+      "number": 166,
+      "version": "generic-v1",
+      "input_sha256": "58ff5deb8ce84aebbcd3253c899e588a6a9756f0ce7fe6d8f85bc841c94e377d",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "58ff5deb8ce84aebbcd3253c899e588a6a9756f0ce7fe6d8f85bc841c94e377d"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q167",
+      "number": 167,
+      "version": "generic-v1",
+      "input_sha256": "1c2716a7daf04bd126a2eda15e5c7d0c0a99897653bda5c9319251c007650f32",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "1c2716a7daf04bd126a2eda15e5c7d0c0a99897653bda5c9319251c007650f32"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q168",
+      "number": 168,
+      "version": "generic-v1",
+      "input_sha256": "9b13a23282158b5754dfc118dadbb718d1813313c5ef402b0e75f5f8876cdc19",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "9b13a23282158b5754dfc118dadbb718d1813313c5ef402b0e75f5f8876cdc19"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q169",
+      "number": 169,
+      "version": "generic-v1",
+      "input_sha256": "0b0ce699a5205deac0a3f946191eaf5cb0c24e3c86ba2daff9e9a78be558e38c",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "0b0ce699a5205deac0a3f946191eaf5cb0c24e3c86ba2daff9e9a78be558e38c"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q170",
+      "number": 170,
+      "version": "generic-v1",
+      "input_sha256": "58868d67737b4eeae58a4c471f1aae8996c2476729a3f714d903cb94119f7222",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "58868d67737b4eeae58a4c471f1aae8996c2476729a3f714d903cb94119f7222"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q171",
+      "number": 171,
+      "version": "generic-v1",
+      "input_sha256": "f356cd7b985b66be8557aaa6c2627ccd86c7a07084dd6bd1151c6eaaa3ab4210",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "f356cd7b985b66be8557aaa6c2627ccd86c7a07084dd6bd1151c6eaaa3ab4210"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q172",
+      "number": 172,
+      "version": "generic-v1",
+      "input_sha256": "d0a49e218b0c105d7688c06448f9999c3677064e5fdacade4dda3f93ac4b5222",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "d0a49e218b0c105d7688c06448f9999c3677064e5fdacade4dda3f93ac4b5222"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q173",
+      "number": 173,
+      "version": "generic-v1",
+      "input_sha256": "90c79babc713cae5095b8b2bc4772332b7f807a28ac732a13f38e4f67397a483",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "90c79babc713cae5095b8b2bc4772332b7f807a28ac732a13f38e4f67397a483"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q174",
+      "number": 174,
+      "version": "generic-v1",
+      "input_sha256": "a9d5263e0b70f1b8710ed5fd29cd0add6156cc9e722337b5eda789879925c56f",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "a9d5263e0b70f1b8710ed5fd29cd0add6156cc9e722337b5eda789879925c56f"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q175",
+      "number": 175,
+      "version": "generic-v1",
+      "input_sha256": "a1ddf07358fa5d2c476decacd4b1cafb054bb7be1d5abfef52dbf256329714a6",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "a1ddf07358fa5d2c476decacd4b1cafb054bb7be1d5abfef52dbf256329714a6"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q176",
+      "number": 176,
+      "version": "generic-v1",
+      "input_sha256": "f44b3aa2dadac86655f80d383f209f47c742f755d694b8b05ed8af196ab37cc1",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "f44b3aa2dadac86655f80d383f209f47c742f755d694b8b05ed8af196ab37cc1"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q177",
+      "number": 177,
+      "version": "generic-v1",
+      "input_sha256": "2f075a7bd0fe1ead85cab12e7b2a79e9fb1ee4497ecf490056977693e3d8233c",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "2f075a7bd0fe1ead85cab12e7b2a79e9fb1ee4497ecf490056977693e3d8233c"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q178",
+      "number": 178,
+      "version": "generic-v1",
+      "input_sha256": "905db683e0e590eb40bbe6c0776d56a23d171ffd30792837d90c8390630cd26b",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "905db683e0e590eb40bbe6c0776d56a23d171ffd30792837d90c8390630cd26b"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q179",
+      "number": 179,
+      "version": "generic-v1",
+      "input_sha256": "72ad5df0cc5eb7b120c60aabdc74a324b7282f492514746b32b0ccdb1eef830b",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "72ad5df0cc5eb7b120c60aabdc74a324b7282f492514746b32b0ccdb1eef830b"
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q180",
+      "number": 180,
+      "version": "generic-v1",
+      "input_sha256": "484eeb9c53f20f37857df90f50ba4f5b0149ec36a390846a0eeb9ad94b5fe3e9",
+      "changes": [],
+      "issues": [],
+      "review_required": true,
+      "output_sha256": "484eeb9c53f20f37857df90f50ba4f5b0149ec36a390846a0eeb9ad94b5fe3e9"
+    }
+  ],
+  "changes": 0,
+  "warnings": 0,
+  "errors": 0
+}

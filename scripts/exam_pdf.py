@@ -17,7 +17,7 @@ def diagnostic(code, message, location, severity='warning', excerpt=''):
 
 def lines(page, rect):
     result = []
-    for bi,b in enumerate(page.get_text('dict', clip=rect)['blocks']):
+    for bi,b in enumerate(page.get_text('dict', clip=rect, flags=fitz.TEXTFLAGS_DICT & ~fitz.TEXT_PRESERVE_IMAGES)['blocks']):
         if b['type'] != 0: continue
         for line in b['lines']:
             spans = line['spans']
@@ -36,6 +36,13 @@ def lines(page, rect):
                 parts.append(text)
             marker=re.match(r'^([ABCDE])(?:\t|[.)]\s)', spans[0]['text']) if spans else None
             result.append(dict(text=''.join(parts).strip(), bbox=list(line['bbox']), group=bi, size=size, uncertain=uncertain, option=marker[1] if marker else None))
+    # Some official PDFs overlay an accessible A–E text layer on the visible
+    # option glyph. Keep the complete line once, without turning A A B B into
+    # ten alternatives. Only remove a single-letter line inside its rich peer.
+    result = [line for line in result if not (line.get('option') and line['text'] == line['option'] and any(
+        other is not line and other.get('option') == line['option'] and len(other['text']) > 2
+        and abs(other['bbox'][0]-line['bbox'][0]) < 3
+        and fitz.Rect(other['bbox']).intersects(fitz.Rect(line['bbox'])) for other in result))]
     return sorted(result, key=lambda l: (round(l['bbox'][1], 1), l['bbox'][0]))
 
 

@@ -37,6 +37,9 @@ jobs:
           alembic upgrade head
           alembic check
           python scripts/audit_content.py
+          python scripts/audit_content.py --exam data/catalog/enem-2023-matematica-azul.json
+          python scripts/export_reference.py
+          git diff --exit-code -- data/datasets/adaptive-math-reference-v1.json
           pytest -q
       - name: PostgreSQL tests and migrations
         if: matrix.database == 'postgres'
@@ -64,7 +67,7 @@ jobs:
           alembic upgrade head
           python -m backend.app.cli seed --publish-reviewed
           uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 > /tmp/enem-api.log 2>&1 &
-      - run: npm ci && npm run check:content && npm run typecheck && npm run build
+      - run: npm ci && npm run check:content && node scripts/validate-latex.cjs ../data/catalog/enem-2023-matematica-azul.json && npm run typecheck && npm run build
         working-directory: frontend
       - run: npx playwright install --with-deps chromium
         working-directory: frontend

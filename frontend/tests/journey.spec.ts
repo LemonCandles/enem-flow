@@ -100,7 +100,7 @@ test('tema persiste na navegação e retomada, com menu acessível no celular', 
   await page.getByRole('link', { name: 'Provas', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Banco de provas' })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
-  await page.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
+  await page.locator('.exam-card').filter({ hasText: 'ENEM 2024' }).getByRole('button', { name: 'Iniciar prova', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
   const runUrl = page.url();
   await page.getByRole('radio', { name: /^B absorve/ }).check();

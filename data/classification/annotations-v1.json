@@ -1,0 +1,3561 @@
+{
+  "version": "reference-v1",
+  "policy": "Temas curados tecnicamente. Habilidades são propostas com evidência, não rótulos oficiais atribuídos pelo Inep nem segunda revisão independente.",
+  "annotations": [
+    {
+      "question_id": "enem-2023-dia2-azul-q136",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 136,
+      "page": 16,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "766a21c8aa9e9216094df12ccc14eadc31e9fa3e1f8d2c4b841c4ec1b6f4fae9",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um artista plástico esculpe uma escultura a partir de um bloco de madeira de lei, em etapas. Inicialmente, esculpe um cone reto com $36\\,\\mathrm{cm}$ de altura e diâmetro da base medindo $18\\,\\mathrm{cm}$. Em seguida, remove desse cone um cone menor, cujo diâmetro da base mede $6\\,\\mathrm{cm}$, obtendo, assim, um tronco de cone, conforme ilustrado ",
+      "rationale": "Combinar volumes de tronco de cone e cilindro com a densidade da madeira.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Combinar volumes de tronco de cone e cilindro com a densidade da madeira.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q137",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 137,
+      "page": 16,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "3ba6181a45525598da4152b6618c579647e9c2b9b771ab1058770d9db279438e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Os 100 funcionários de uma empresa estão distribuídos em dois setores: Produção e Administração. Os funcionários de um mesmo setor recebem salários com valores iguais. O quadro apresenta a quantidade de funcionários por setor e seus respectivos salários.\n\nA média dos salários dos 100 funcionários dessa empresa, em real, é",
+      "rationale": "Calcular média salarial ponderada pelas quantidades de funcionários.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Calcular média salarial ponderada pelas quantidades de funcionários.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q138",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 138,
+      "page": 16,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "7569e9ba1aa3253ee9f336ee52b78ac66ae55f40195b76fa8b800e824c8af07f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Visando atrair mais clientes, o gerente de uma loja anunciou uma promoção em que cada cliente que realizar uma compra pode ganhar um voucher para ser usado em sua próxima compra. Para ganhar seu voucher, o cliente precisa retirar, ao acaso, uma bolinha de dentro de cada uma das duas urnas A e B disponibilizadas pelo gerente, nas quais há apenas bol",
+      "rationale": "Relacionar probabilidades de duas urnas e determinar a quantidade de bolas brancas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H28",
+          "status": "proposed",
+          "rationale": "Relacionar probabilidades de duas urnas e determinar a quantidade de bolas brancas.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q139",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 139,
+      "page": 17,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "373ff1cc3e00b933a133a89aa0bcf9226ffd8571ad4b7420457d9d88d1c9816a",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O gerente de uma fábrica pretende comparar a evolução das vendas de dois produtos similares (I e II). Para isso, passou a verificar o número de unidades vendidas de cada um desses produtos em cada mês. Os resultados dessa verificação, para os meses de abril a junho, são apresentados na tabela.\n\nO gerente estava decidido a cessar a produção do produ",
+      "rationale": "Extrapolar progressões das vendas e comparar os meses de ultrapassagem.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H24",
+          "status": "proposed",
+          "rationale": "Extrapolar progressões das vendas e comparar os meses de ultrapassagem.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q140",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 140,
+      "page": 17,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "d65ede12caf6eca76f1174f6afea6909b75bc734af91023e2b69367579c33838",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma empresa de transporte faz regularmente um levantamento do número de viagens realizadas durante o dia por todos os 160 motoristas cadastrados em seu aplicativo. Em um certo dia, foi gerado um relatório, por meio de um gráfico de barras, no qual se relacionaram a quantidade de motoristas com a quantidade de viagens realizadas até aquele instante ",
+      "rationale": "Comparar média, mediana e moda da distribuição de viagens no gráfico.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Comparar média, mediana e moda da distribuição de viagens no gráfico.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q141",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 141,
+      "page": 18,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "a5358e258bd269da39dc5e19e3cd97683114629ee9ea1ca586b45e8619b015a8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "No alojamento de uma universidade, há alguns quartos com o padrão superior ao dos demais. Um desses quartos ficou disponível, e muitos estudantes se candidataram para morar no local. Para escolher quem ficará com o quarto, um sorteio será realizado. Para esse sorteio, cartões individuais com os nomes de todos os estudantes inscritos serão depositad",
+      "rationale": "Contar cartões por ano de curso e calcular a probabilidade ponderada.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H28",
+          "status": "proposed",
+          "rationale": "Contar cartões por ano de curso e calcular a probabilidade ponderada.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q142",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 142,
+      "page": 18,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "99f0b103cb8696393880833d5e562e78d39cf5cc16f4145d905d00e4bd6717c7",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A água utilizada pelos 75 moradores de um vilarejo provém de um reservatório de formato cilíndrico circular reto cujo raio da base mede 5 metros, sempre abastecido no primeiro dia de cada mês por caminhões-pipa. Cada morador desse vilarejo consome, em média, 200 litros de água por dia.\n\nNo mês de junho de um determinado ano, o vilarejo festejou o d",
+      "rationale": "Calcular o volume cilíndrico restante e o consumo diário por pessoa.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Calcular o volume cilíndrico restante e o consumo diário por pessoa.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q143",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 143,
+      "page": 18,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "f09024d6661dc05d644f70cbbe58896cda6f57e0605c7c4ea40438b8241ff600",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em janeiro do ano passado, a direção de uma fábrica abriu uma creche para os filhos de seus funcionários, com 10 salas, cada uma com capacidade para atender 10 crianças a cada ano. As vagas são sorteadas entre os filhos dos funcionários inscritos, enquanto os não contemplados pelo sorteio formam uma lista de espera. No ano passado, a lista de esper",
+      "rationale": "Aplicar aumentos e reduções percentuais à lista de espera da creche.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H3",
+          "status": "proposed",
+          "rationale": "Aplicar aumentos e reduções percentuais à lista de espera da creche.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q144",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 144,
+      "page": 19,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "41d506832e44aa57dcdcafefe4fd11c1147d5facba4f2954beea19714f27f50c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A foto mostra a construção de uma cisterna destinada ao armazenamento de água. Uma cisterna como essa, na forma de cilindro circular reto com $3\\,\\mathrm{m^{2}}$ de área da base, foi abastecida por um curso-d’água com vazão constante. O seu proprietário registrou a altura do nível da água no interior da cisterna durante o abastecimento em diferente",
+      "rationale": "Relacionar altura, área da base e tempo para obter vazão constante.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Relacionar altura, área da base e tempo para obter vazão constante.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q145",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 145,
+      "page": 19,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "b015a7f0d6eeccdee629b9fc7055d59080e55684aa07ee85567b5e49d87d7ca3",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Num certo momento de um jogo digital, a tela apresenta a imagem representada na figura. O ponto $Q_1$ representa a posição de um jogador que está com a bola, os pontos $Q_2$, $Q_3$, $Q_4$, $Q_5$ e $Q_6$ também indicam posições de jogadores da mesma equipe, e os pontos $A$ e $B$ indicam os dois pés da trave mais próxima deles. No momento da partida ",
+      "rationale": "Relacionar ângulos inscritos que enxergam o mesmo segmento AB.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H8",
+          "status": "proposed",
+          "rationale": "Relacionar ângulos inscritos que enxergam o mesmo segmento AB.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q146",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 146,
+      "page": 19,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "2c67fb9d20d9e9753603511f5a70e24fd91f9c0dcb51f0bde14b47bd15c5b281",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O triângulo da figura é denominado triângulo mágico. Nos círculos, escrevem-se os números de 1 a 6, sem repetição, com um número em cada círculo. O objetivo é distribuir os números de forma que as somas dos números em cada lado do triângulo sejam iguais.\n\nConsidere que os números colocados nos vértices do triângulo estejam em progressão aritmética ",
+      "rationale": "Investigar somas no triângulo usando os números de 1 a 6 e uma progressão aritmética.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H2",
+          "status": "proposed",
+          "rationale": "Investigar somas no triângulo usando os números de 1 a 6 e uma progressão aritmética.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q147",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 147,
+      "page": 20,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "a0af858d4bd7373407cbe3b7ad5c51ac649dbf4d4c931bdbca2d35c5a044405e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Alguns estudos comprovam que os carboidratos fornecem energia ao corpo, preservam as proteínas estruturais dos músculos durante a prática de atividade física e ainda dão força para o cérebro coordenar os movimentos, o que de fato tem impacto positivo no desenvolvimento do praticante. O ideal é consumir 1 grama de carboidrato para cada minuto de cam",
+      "rationale": "Converter tempo de caminhada em carboidratos, fatias e pacotes para duas pessoas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Converter tempo de caminhada em carboidratos, fatias e pacotes para duas pessoas.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q148",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 148,
+      "page": 20,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "93eb41fbc301e7de88fe87ff6477c8ff5a19422576c80ec20f9b8b01b04e8a72",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O mastro de uma bandeira foi instalado perpendicularmente ao solo em uma região plana. Devido aos fortes ventos, três cabos de aço, de mesmo comprimento, serão instalados para dar sustentação ao mastro. Cada cabo de aço ficará perfeitamente esticado, com uma extremidade num ponto P do mastro, a uma altura h do solo, e a outra extremidade, num ponto",
+      "rationale": "Comparar comprimentos de cabos com razões trigonométricas dos três ângulos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H8",
+          "status": "proposed",
+          "rationale": "Comparar comprimentos de cabos com razões trigonométricas dos três ângulos.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q149",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 149,
+      "page": 20,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "b61f1f1ba52d8aa85205ca7e713655df46021a1a1316dae4f3ec93c360ce6038",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um controlador de voo dispõe de um instrumento que descreve a altitude de uma aeronave em voo, em função da distância em solo. Essa distância em solo é a medida na horizontal entre o ponto de origem do voo até o ponto que representa a projeção ortogonal da posição da aeronave, em voo, no solo. Essas duas grandezas são dadas numa mesma unidade de me",
+      "rationale": "Relacionar centímetro da malha e altitude real para determinar a escala.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H11",
+          "status": "proposed",
+          "rationale": "Relacionar centímetro da malha e altitude real para determinar a escala.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q150",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 150,
+      "page": 21,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "c28fdeca7ec75bcc0d2b62f27526bfc78e8aae3c35e15c62c1e61d16f4ada037",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Dirigir após ingerir bebidas alcoólicas é uma atitude extremamente perigosa, uma vez que, a partir da primeira dose, a pessoa já começa a ter perda de sensibilidade de movimentos e de reflexos. Apesar de a eliminação e absorção do álcool depender de cada pessoa e de como o organismo consegue metabolizar a substância, ao final da primeira hora após ",
+      "rationale": "Traduzir noventa por cento da quantidade ingerida em expressão algébrica.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H19",
+          "status": "proposed",
+          "rationale": "Traduzir noventa por cento da quantidade ingerida em expressão algébrica.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q151",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 151,
+      "page": 21,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "71ee065eaa156da0bdf41a6e2956e9565e6307f87743833c1ead75b276b558e5",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um investidor iniciante observou o gráfico que apresenta a evolução dos valores de duas criptomoedas A e B em relação ao tempo.\n\nDurante horas consecutivas, esses valores foram observados em nove instantes, representados por horas exatas.\n\nEm quantos desses instantes a criptomoeda A estava mais valorizada do que a criptomoeda B?",
+      "rationale": "Comparar coordenadas dos nove pontos do gráfico de criptomoedas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H24",
+          "status": "proposed",
+          "rationale": "Comparar coordenadas dos nove pontos do gráfico de criptomoedas.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q152",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 152,
+      "page": 21,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "31040d9aad1b7d29546c5dca23cb6c99b6d83515381001fdfe8f4c55a140b778",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A exposição a alguns níveis sonoros pode causar lesões auditivas. Por isso, em uma indústria, são adotadas medidas preventivas de acordo com a máquina que o funcionário opera e o nível $N$ de intensidade do som, medido em decibel (dB), a que o operário é exposto, sendo $N=\\log_{10} I^{10}-\\log_{10} I_0^{10}$, $I$ a intensidade do som e $I_0=10^{-12",
+      "rationale": "Usar expressão logarítmica da intensidade sonora e enquadrar o resultado em intervalos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Usar expressão logarítmica da intensidade sonora e enquadrar o resultado em intervalos.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q153",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 153,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "124c184fb5e10ea45be0ecbf5fe1e1c3505fde74a8b72f8b832dc700ab71ea44",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um supermercado conta com cinco caixas disponíveis para pagamento. Foram instaladas telas que apresentam o tempo médio gasto por cada caixa para iniciar e finalizar o atendimento de cada cliente, e o número de pessoas presentes na fila de cada caixa em tempo real. Um cliente, na hora de passar sua compra, sabendo que cada um dos cinco caixas inicia",
+      "rationale": "Combinar número de pessoas e duração de atendimento para comparar tempos de espera.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H3",
+          "status": "proposed",
+          "rationale": "Combinar número de pessoas e duração de atendimento para comparar tempos de espera.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q154",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 154,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "3dbcf5348c6ebc97f8712df26f0659757abc2b326d02fe6527e0e76a85dbc549",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "As figuras pintadas no quadro da sala de estar de uma residência representam as silhuetas de parte das torres de um castelo e, ao fundo, a de uma lua cheia. A lua foi pintada na forma de um círculo, e o telhado da torre mais alta, na forma de triângulo equilátero, foi pintado sobrepondo parte da lua. O centro da lua coincide com um dos vértices do ",
+      "rationale": "Reconhecer a região circular escondida pelo telhado triangular.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H7",
+          "status": "proposed",
+          "rationale": "Reconhecer a região circular escondida pelo telhado triangular.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q155",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 155,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "98181b6b8bc2b0e979d9b3292ea47fa35473705532abed1c3bfe687972f13189",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Na planta baixa de um clube, a piscina é representada por um quadrado cuja área real mede $400\\,\\mathrm{m^{2}}$. Ao redor dessa piscina, será construída uma calçada, de largura constante igual a $5\\,\\mathrm{m}$.\n\nQual é a medida da área, em metro quadrado, ocupada pela calçada?",
+      "rationale": "Calcular a diferença das áreas dos quadrados da piscina e da borda externa.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Calcular a diferença das áreas dos quadrados da piscina e da borda externa.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q156",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 156,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "8ee2210bef172261b238345b01b0382f974f61b21e1e21d6991e1be7619854a8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma pessoa caminha por 30 minutos e utiliza um aplicativo instalado em seu celular para monitorar a variação da intensidade do sinal de internet recebido pelo aparelho durante o deslocamento. Chegando ao seu destino, o aplicativo forneceu este gráfico:\n\nPor quantos minutos, durante essa caminhada, o celular dessa pessoa ficou sem receber sinal de i",
+      "rationale": "Somar intervalos de tempo em que o gráfico de sinal permanece nulo.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H24",
+          "status": "proposed",
+          "rationale": "Somar intervalos de tempo em que o gráfico de sinal permanece nulo.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q157",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 157,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "44e4bc54daa3a96578629253385384e51a3751700eedeee470213981d21f0617",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um professor, para promover a aprendizagem dos estudantes em estatística, propôs uma atividade. O objetivo era verificar o percentual de estudantes com massa corporal abaixo da média e altura acima da média de um grupo de estudantes. Para isso, usando uma balança e uma fita métrica, avaliou uma amostra de dez estudantes, anotando as medidas observa",
+      "rationale": "Contar pontos abaixo da massa média e acima da altura média na dispersão.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Contar pontos abaixo da massa média e acima da altura média na dispersão.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q158",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 158,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "5b07335206c35b3aa69cd5e25beab46af96cfd4e1a9b3de249f8bfc52de8580e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um pescador tem um custo fixo diário de R$ 900,00 com combustível, iscas, manutenção de seu barco e outras pequenas despesas. Ele vende cada quilograma de peixe por R$ 5,00. Sua meta é obter um lucro mínimo de R$ 800,00 por dia. Sozinho, ele consegue, ao final de um dia de trabalho, pescar $180\\,\\mathrm{kg}$ de peixe, o que é suficiente apenas para",
+      "rationale": "Modelar receita, custos fixos, diárias e comissão para satisfazer lucro mínimo.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Modelar receita, custos fixos, diárias e comissão para satisfazer lucro mínimo.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q159",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 159,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "901952d3a639cad02158698714990a759e3c868bb5671914b60b31fa5e6ca5a6",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um agricultor é informado sobre um método de proteção para sua lavoura que consiste em inserir larvas específicas, de rápida reprodução. A reprodução dessas larvas faz com que sua população multiplique-se por 10 a cada 3 dias e, para evitar eventuais desequilíbrios, é possível cessar essa reprodução aplicando-se um produto X. O agricultor decide in",
+      "rationale": "Relacionar crescimento exponencial da população e capacidade total do produto.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Relacionar crescimento exponencial da população e capacidade total do produto.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q160",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 160,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "bb0a122a11ba4ba0f9c9fc0264e093d26cf439820025e61ff1ad13d3518198a1",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Ao realizar o cadastro em um aplicativo de investimentos, foi solicitado ao usuário que criasse uma senha, sendo permitido o uso somente dos seguintes caracteres:\n\n•\t algarismos de 0 a 9;\n\n•\t 26 letras minúsculas do alfabeto;\n\n•\t 26 letras maiúsculas do alfabeto;\n\n•\t 6 caracteres especiais !, @, #, \\$, *, &.\n\nTrês tipos de estruturas para senha for",
+      "rationale": "Comparar contagens de senhas com restrições e sem repetição de caracteres.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H2",
+          "status": "proposed",
+          "rationale": "Comparar contagens de senhas com restrições e sem repetição de caracteres.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q161",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 161,
+      "page": 24,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "902d250f4d1b74ffd26016cbfd2b77ed328ddd899534d48e27611eb11fff70b8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma loja vende seus produtos de duas formas: à vista ou financiado em três parcelas mensais iguais. Para definir o valor dessas parcelas nas vendas financiadas, a loja aumenta em $20\\%$ o valor do produto à vista e divide esse novo valor por 3. A primeira parcela deve ser paga no ato da compra, e as duas últimas, em 30 e 60 dias após a compra.\n\nUm ",
+      "rationale": "Modelar equivalência financeira das três parcelas com juros compostos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Modelar equivalência financeira das três parcelas com juros compostos.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q162",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 162,
+      "page": 24,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "44e3e0d11cb07d012f7f1363127270cde86d21d3e09d9c5622ec041d14e140f2",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Para concretar a laje de sua residência, uma pessoa contratou uma construtora. Tal empresa informa que o preço y do concreto bombeado é composto de duas partes: uma fixa, chamada de taxa de bombeamento, e uma variável, que depende do volume x de concreto utilizado. Sabe-se que a taxa de bombeamento custa R$ 500,00 e que o metro cúbico do concreto b",
+      "rationale": "Representar preço como função afim com parcela fixa e coeficiente do volume.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H19",
+          "status": "proposed",
+          "rationale": "Representar preço como função afim com parcela fixa e coeficiente do volume.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q163",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 163,
+      "page": 24,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "cae3d7a22dc9bdae31350183740295d8a2c491df333fdc1c88a5df4f9465b58c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma empresa de segurança domiciliar oferece o serviço de patrulha noturna, no qual vigilantes em motocicletas fazem o monitoramento periódico de residências. A empresa conta com uma base, de onde acompanha o trajeto realizado pelos vigilantes durante as patrulhas e orienta o deslocamento de equipes de reforço quando necessário. Numa patrulha rotine",
+      "rationale": "Relacionar gráfico distância-tempo a possíveis trajetórias a velocidade constante.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H20",
+          "status": "proposed",
+          "rationale": "Relacionar gráfico distância-tempo a possíveis trajetórias a velocidade constante.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q164",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 164,
+      "page": 25,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "5e4cf12e33be7f12fa4a349c1a7b98672652d5ea7db61cfc5edab967df714f75",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O gráfico expõe alguns números da gripe A-H1N1. Entre as categorias que estão em processo de imunização, uma já está completamente imunizada, a dos trabalhadores da saúde.\n\nDe acordo com o gráfico, entre as demais categorias, a que está mais exposta ao vírus da gripe A-H1N1 é a categoria de",
+      "rationale": "Comparar percentuais de imunização por categoria. Item anulado, fora dos experimentos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H26",
+          "status": "proposed",
+          "rationale": "Comparar percentuais de imunização por categoria. Item anulado, fora dos experimentos.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q165",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 165,
+      "page": 25,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "5327a04d345f0693621082b65472fde2c88d94ed8ae641b7b70664a7f1c0ef9e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A figura representa uma escada com três degraus, construída em concreto maciço, com suas medidas especificadas.\n\nNessa escada, pisos e espelhos têm formato retangular, e as paredes laterais têm formato de um polígono cujos lados adjacentes são perpendiculares. Pisos, espelhos e paredes laterais serão revestidos em cerâmica.\n\nA área a ser revestida ",
+      "rationale": "Somar áreas de pisos, espelhos e laterais dos três degraus.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Somar áreas de pisos, espelhos e laterais dos três degraus.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q166",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 166,
+      "page": 26,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "5f660943aee53335478a05d83540c92014fe79d5c82270bab317dff1dcc7315c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma pessoa pratica quatro atividades físicas — caminhar, correr, andar de bicicleta e jogar futebol — como parte de seu programa de emagrecimento. Essas atividades são praticadas semanalmente de acordo com o quadro, que apresenta o número de horas diárias por atividade.\n\nEla deseja comemorar seu aniversário e escolhe o dia da semana em que o gasto ",
+      "rationale": "Combinar tabelas de horas e gasto por atividade para comparar totais diários.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H25",
+          "status": "proposed",
+          "rationale": "Combinar tabelas de horas e gasto por atividade para comparar totais diários.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q167",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 167,
+      "page": 26,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "a89ffcdc58870185c966634ea642674dabc198ebf42180deee8d613fd4bd4332",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A cada bimestre, a diretora de uma escola compra uma quantidade de folhas de papel ofício proporcional ao número de alunos matriculados. No bimestre passado, ela comprou 6 000 folhas para serem utilizadas pelos 1 200 alunos matriculados. Neste bimestre, alguns alunos cancelaram suas matrículas e a escola tem, agora, 1 150 alunos. A diretora só pode",
+      "rationale": "Ajustar consumo proporcional de papel e obter desconto relativo ao orçamento.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Ajustar consumo proporcional de papel e obter desconto relativo ao orçamento.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q168",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 168,
+      "page": 27,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "4bb4b54464758d5583a7199256a063493f4172888f4329addb611ec5e46da682",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em um colégio público, a admissão no primeiro ano se dá por sorteio. Neste ano há 55 candidatos, cujas inscrições são numeradas de 01 a 55. O sorteio de cada número de inscrição será realizado em etapas, utilizando-se duas urnas. Da primeira urna será sorteada uma bola, dentre bolas numeradas de 0 a 9, que representará o algarismo das unidades do n",
+      "rationale": "Calcular probabilidades em sorteios sucessivos com composição condicional da segunda urna.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H28",
+          "status": "proposed",
+          "rationale": "Calcular probabilidades em sorteios sucessivos com composição condicional da segunda urna.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q169",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 169,
+      "page": 27,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "f5f8e83de3b2acdfec5f1c268368372aa56ae677ab4f0f4ba83c4d0d7a7a4bb1",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O esquema mostra como a intensidade luminosa decresce com o aumento da profundidade em um rio, sendo $L_0$ a intensidade na sua superfície.\n\nConsidere que a intensidade luminosa diminui, a cada metro acrescido na profundidade, segundo o mesmo padrão do esquema.\n\nA intensidade luminosa correspondente à profundidade de $6\\,\\mathrm{m}$ é igual a",
+      "rationale": "Aplicar uma razão geométrica constante à intensidade luminosa por profundidade.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Aplicar uma razão geométrica constante à intensidade luminosa por profundidade.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q170",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 170,
+      "page": 27,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "0a1f8eddab27f42008167bb292591b58d64ab73ee5df46da43e9efd213821717",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Analisando as vendas de uma empresa, o gerente concluiu que o montante diário arrecadado, em milhar de real, poderia ser calculado pela expressão $V(x)=\\frac{x^2}{4}-10x+105$, em que os valores de $x$ representam os dias do mês, variando de 1 a 30.\n\nUm dos fatores para avaliar o desempenho mensal da empresa é verificar qual é o menor montante diári",
+      "rationale": "Obter mínimo da função quadrática no intervalo e comparar com categorias.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Obter mínimo da função quadrática no intervalo e comparar com categorias.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q171",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 171,
+      "page": 28,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "e917a377e56a58eb3a17381e5758992b77102dd694aa046e57a5b9a15b882226",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O calendário maia apresenta duas contagens simultâneas de anos, o chamado ano Tzolkim, composto por 260 dias e que determinava o calendário religioso, e o ano Haab, composto por 365 dias e que determinava o calendário agrícola. Um historiador encontrou evidências de que gerações de uma mesma família governaram certa comunidade maia pelo período de ",
+      "rationale": "Converter ciclos Haab em dias e depois em anos Tzolkim.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H10",
+          "status": "proposed",
+          "rationale": "Converter ciclos Haab em dias e depois em anos Tzolkim.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q172",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 172,
+      "page": 28,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "9e9c16fc2007148e6331355394c5ef5dd119230c696c83339f889136467c3b63",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Sejam $a$, $b$ e $c$ as medidas dos lados de um triângulo retângulo, tendo $a$ como medida da hipotenusa. Esses valores $a$, $b$ e $c$ são, respectivamente, os diâmetros dos círculos $C_1$, $C_2$ e $C_3$, como apresentados na figura.\n\nObserve que essa construção assegura, pelo teorema de Pitágoras, que área $(C_1)$ = área $(C_2)$ + área $(C_3)$.\n\nU",
+      "rationale": "Argumentar sobre áreas de círculos a partir do ângulo entre diâmetros.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H22",
+          "status": "proposed",
+          "rationale": "Argumentar sobre áreas de círculos a partir do ângulo entre diâmetros.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q173",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 173,
+      "page": 28,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "6579469a5775c8a1c930da49c253a0250f3bd14d1670c7bdb8be10559c5c34b7",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Entre maratonistas, um parâmetro utilizado é o de economia de corrida (EC). O valor desse parâmetro é calculado pela razão entre o consumo de oxigênio, em mililitro (mL) por minuto (min), e a massa, em quilograma (kg), do atleta correndo a uma velocidade constante.\n\nDisponível em: www.treinamentoonline.com.br. Acesso em: 23 out. 2019 (adaptado).\n\nU",
+      "rationale": "Compor a unidade da razão entre consumo por tempo e massa corporal.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H10",
+          "status": "proposed",
+          "rationale": "Compor a unidade da razão entre consumo por tempo e massa corporal.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q174",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 174,
+      "page": 29,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "37deee353e0b6116259e7f84dc36455c3b41a2d448cf8782830d5e32cfa9dbf1",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma pessoa comprou um ingresso para o cinema em cuja entrada está afixado um mapa com a representação bidimensional do posicionamento das poltronas, conforme a figura. Essa pessoa, após consultar o mapa, começou a subir uma das escadas e parou na posição indicada pela estrela, direcionada para o norte. Ela conferiu seu bilhete e observou que, para ",
+      "rationale": "Localizar fileira e posição da poltrona seguindo orientação norte e direita.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H6",
+          "status": "proposed",
+          "rationale": "Localizar fileira e posição da poltrona seguindo orientação norte e direita.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q175",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 175,
+      "page": 29,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "24e2293744b1a722c970430e81e60dab8ccf776f34ef720778fc3812999b3b95",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O metrô de um município oferece dois tipos de tíquetes com colorações diferentes, azul e vermelha, sendo vendidos em cartelas, cada qual com nove tíquetes da mesma cor e mesmo valor unitário. Duas cartelas de tíquetes azuis e uma cartela de tíquetes vermelhos são vendidas por R$ 32,40. Sabe-se que o preço de um tíquete azul menos o preço de um tíqu",
+      "rationale": "Resolver sistema de relações entre os preços dos tíquetes e das cartelas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Resolver sistema de relações entre os preços dos tíquetes e das cartelas.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q176",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 176,
+      "page": 30,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "b4c9dd84d1ee452e17aa11edd14be4e5d80bdccf02f542ecdbecc65dc8669341",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Os números figurados pentagonais provavelmente foram introduzidos pelos pitagóricos por volta do século V a.C. As figuras ilustram como obter os seis primeiros deles, sendo os demais obtidos seguindo o mesmo padrão geométrico.\n\nO oitavo número pentagonal é",
+      "rationale": "Identificar o padrão de crescimento dos números figurados pentagonais.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H2",
+          "status": "proposed",
+          "rationale": "Identificar o padrão de crescimento dos números figurados pentagonais.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q177",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 177,
+      "page": 30,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "f5578dff5568ca6fed3196989999b5ec43cbc32390c6f8cbf41ab10a451e645d",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A figura ilustra uma roda-gigante no exato instante em que a cadeira onde se encontra a pessoa P está no ponto mais alto dessa roda-gigante.\n\nCom o passar do tempo, à medida que a roda-gigante gira, com velocidade angular constante e no sentido horário, a altura da cadeira onde se encontra a pessoa P, em relação ao solo, vai se alterando.\n\nO gráfic",
+      "rationale": "Relacionar movimento circular uniforme e gráfico periódico suave de altura.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H20",
+          "status": "proposed",
+          "rationale": "Relacionar movimento circular uniforme e gráfico periódico suave de altura.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q178",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 178,
+      "page": 31,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "7b3e5f05f23089588b6f1d659bbfd3a9c5db57f3227d67b6e4a235908c9f119f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Estudantes trabalhando com robótica criaram uma “torneira inteligente” que automatiza sua abertura e seu fechamento durante a limpeza das mãos. A tecnologia funciona da seguinte forma: ao se colocarem as mãos sob a torneira, ela libera água durante 3 segundos para que a pessoa possa molhá-las. Em seguida, interrompe o fornecimento de água por 5 seg",
+      "rationale": "Representar volume acumulado com trechos crescentes e intervalo de vazão nula.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H20",
+          "status": "proposed",
+          "rationale": "Representar volume acumulado com trechos crescentes e intervalo de vazão nula.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q179",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 179,
+      "page": 31,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "e3c6d804265e03519b07af112aa5fe25fc88e6614038596d5a5338076562691c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "As características culturais variam de povo para povo. Há notícias de um povo que possuía formas de contar diferentes das nossas, como indicado no quadrinho a seguir.\n\nSegundo o padrão de contagem indicado na figura, as representações dos numerais cinco e sete, nessa cultura, devem ser, respectivamente,",
+      "rationale": "Interpretar representação aditiva de números em outro sistema de contagem.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H1",
+          "status": "proposed",
+          "rationale": "Interpretar representação aditiva de números em outro sistema de contagem.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q180",
+      "exam_id": "enem-2023-matematica-azul",
+      "year": 2023,
+      "number": 180,
+      "page": 31,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "f03c8a279c52c6df10d7d5ad7e9ddb204b6e4414dcd286311ef5c7a4fa0294c2",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um tipo de semente necessita de bastante água nos dois primeiros meses após o plantio. Um produtor pretende estabelecer o melhor momento para o plantio desse tipo de semente, nos meses de outubro a março. Após consultar a previsão do índice mensal de precipitação de chuva (ImPC) da região onde ocorrerá o plantio, para o período chuvoso de 2020 - 20",
+      "rationale": "Comparar médias de precipitação de pares de meses consecutivos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Comparar médias de precipitação de pares de meses consecutivos.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q91",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 91,
+      "page": 2,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "1721f8d2301ff25405b2a1bdf66ffaffdc16f2be94b394ba3a91a1db483d4c2e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Mecânica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Muitas pessoas ainda se espantam com o fato de um passageiro sair ileso de um acidente de carro enquanto o veículo onde estava teve perda total. Essas pessoas talvez considerem, equivocadamente, que os carros mais seguros são os que têm as estruturas mais rígidas, ou seja, estruturas, que durante uma colisão, apresentam menor deformação. Na verdade",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Mecânica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q92",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 92,
+      "page": 2,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "918fc6bcbfc8e86707f9d6a0c8fbe2ad8a180c5b39a8f2c86de419c2711100e7",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Eletroquímica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Células a combustível microbianas (CCM) são capazes de gerar eletricidade a partir de águas residuárias urbanas e agroindustriais. As CCM são compostas de duas câmaras.\n\nNuma delas, onde ocorre o tratamento da matéria orgânica, as bactérias eletrogênicas crescem formando um biofilme e se alimentam dos poluentes presentes no efluente. Ao se alimenta",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Eletroquímica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q93",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 93,
+      "page": 2,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "77e1901fba3a3dd7b0a106b825156393ced13b92eea065e4c1bac7b1278c243c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Química orgânica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "No senso comum, considera-se, ainda hoje, que compostos orgânicos são substâncias presentes nos seres vivos. Na Química, a expressão “compostos orgânicos” tem um uso histórico de mais de 200 anos, adquirindo diferentes conotações ao longo do desenvolvimento dessa ciência.\n\nAtualmente, atribui-se a essa expressão outro significado.\n\nA concepção cien",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Química orgânica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q94",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 94,
+      "page": 3,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7c0837d5df36be208ed297e5e71647a54f71719e38bbd182ff62e620850d5e15",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Equilíbrios químicos"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A nimesulida é um fármaco pouco solúvel em água, utilizado como anti-inflamatório, analgésico e antitérmico.\n\nEssa substância pode ser convertida em uma espécie eletricamente carregada, de maior solubilidade em água, mediante o tratamento com uma base de Brönsted-Lowry, isto é, uma espécie química capaz de capturar um próton ($\\ce{H+}$). Na figura ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Equilíbrios químicos. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q95",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 95,
+      "page": 3,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "74828fdc1b95e9e6dbbc6d9352ec321db44d92fd021244675ddd0df7b4f6f371",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Biotecnologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O desenvolvimento da biotecnologia e da clonagem gênica em procariotos fez com que a produção de proteínas se tornasse mais intensa, rápida e econômica. Para a produção de hormônios, enzimas e proteínas de resistência a drogas, uma variação da técnica de reação em cadeia pela polimerase (PCR, na sigla em inglês) utiliza a enzima transcriptase rever",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Biotecnologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q96",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 96,
+      "page": 3,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "21c757a006c1f94a9b27ec82ede3df711f21575bdfb61007a5701d97cbd6e110",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Mecânica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Nos automóveis, é importante garantir que o centro de massa (CM) de cada conjunto roda/pneu coincida com o seu centro geométrico. Esse processo é realizado em uma máquina de balanceamento, na qual o conjunto roda e pneu é colocado para girar a uma velocidade de valor constante.\n\nCom base nas oscilações medidas, a máquina indica a posição do centro ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Mecânica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q97",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 97,
+      "page": 3,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "e35d856cefa318da8702c7ade685ffd23e3293c60f5d00e707b410e1c76c4e8c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Soluções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O soro caseiro serve para combater a desidratação por meio da reposição da água e sais minerais perdidos, por exemplo, por diarreia. Uma receita simples para a sua preparação consiste em utilizar duas colheres grandes (de sopa) de açúcar e duas colheres pequenas (de café) de sal de cozinha, dissolvidos em $2\\,\\mathrm{L}$ de água fervida, obtendo-se",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Soluções. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q98",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 98,
+      "page": 4,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ab2f1e5327a9b57c00e9f3a9375539ddada29b40e53a2bbaefcc1d9cf2660690",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Evolução e diversidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Apesar de os animais representados no cladograma compartilharem um mesmo ancestral, eles se caracterizam por distintos padrões de reprodução ou de nutrição dos embriões e descendentes.\n\nDIXSON, A. F. Mammalian Sexuality: The Act of Mating and the Evolution of Reproduction. Disponível em: www.cambridge.org.\n\nAcesso em: 2 jul. 2024 (adaptado).\n\nAo lo",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Evolução e diversidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q99",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 99,
+      "page": 4,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7f547ad53a12c0f29a3e813bc528d91b3a84ea882dc9f24cd07ef81ab0303235",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Ondas e acústica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma ambulância em alta velocidade com a sirene ligada desloca-se em direção a um radar operado por uma pessoa.\n\nO radar emite ondas de rádio com frequência $f_0$ que são refletidas pela dianteira da ambulância, retornando para o detector com frequência $f_r$. A percepção do operador do radar, em relação ao som emitido pela sirene, é de que este se ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Ondas e acústica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q100",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 100,
+      "page": 4,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "d7f3fa40521720290d0d8dcb427d8e8fc72966258e7de004196a0d6c591f030f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Óptica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Mirascópio 3D: produtor de ilusão instantânea\n\nO equipamento ilustrado na figura, de dimensões apresentadas no esquema, é composto por dois espelhos côncavos $E_1$ e $E_2$, apoiados um sobre o outro por suas bordas, de tal forma que o vértice de $E_1$ coincide com o foco de $E_2$ e vice-versa. Na abertura circular de $E_2$, é formada uma imagem tri",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Óptica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q101",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 101,
+      "page": 5,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "eb2382931564f307e30a144ee38751059c70eaa4c635a4da714b1ad707859752",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Ondas e acústica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A saúde do professor: acústica arquitetônica Dentre os parâmetros acústicos que afetam a inteligibilidade dos sons emitidos em ambientes fechados, destacam-se o ruído de fundo do ambiente e o decréscimo do nível sonoro com a distância da fonte emissora. Assim, sentar-se no fundo da sala de aula pode prejudicar a aprendizagem dos estudantes, por imp",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Ondas e acústica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q102",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 102,
+      "page": 5,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "e5a9fcb099c48235a6c38dcfac9d9ffcd6c04e38f2a5de4a74bb1b6d4da8660b",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Citologia e metabolismo"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma agricultora, com a intenção de comercializar o milho recém-colhido, testou uma forma de preservar o sabor adocicado do seu produto. O melhor resultado foi obtido quando ela imergiu as espigas em água fervente durante alguns minutos e, em seguida, em água gelada.\n\nCom esse procedimento, parte da glicose do milho não foi transformada em amido, ma",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Citologia e metabolismo. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q103",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 103,
+      "page": 5,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b8bdbcc7cfad7c96be6f38503b5a4625510ca3c27e7f5db075261057a2111767",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Termologia e termodinâmica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Aquecedores solares são equipamentos utilizados para o aquecimento de água pelo calor do Sol. São compostos por coletores solares, nos quais ocorre o aquecimento da água, e por um reservatório térmico, em que é armazenada a água quente para ser utilizada posteriormente. A figura ilustra esquematicamente como funciona esse equipamento.\n\n5 dicas de i",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Termologia e termodinâmica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q104",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 104,
+      "page": 5,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9513c691d83c11dd147b614bbd7f163276cdee6b857c34b9023cef937b9866f6",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Saúde e imunologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "As autoridades sanitárias brasileiras têm se preocupado muito nos últimos anos com o aumento da ocorrência de doenças transmitidas por mosquitos, principalmente arboviroses como chikungunya e zika, que se tornaram epidêmicas ou endêmicas em áreas urbanas. Parte de uma análise da relação entre a urbanização e a incidência dessas doenças está represe",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Saúde e imunologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q105",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 105,
+      "page": 6,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "4acd146b7f0fa718dab1a181bd516abd76e949fc2bdb13a146897c510b5f566e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Química ambiental"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Impactos do microplástico A ação de fatores abióticos aliada à biodeterioração contribuem para a formação de microplásticos, os quais se aderem a outros poluentes orgânicos apolares persistentes, como os derivados de pesticidas lipossolúveis. Há uma proporcionalidade direta entre a solubilidade desses tipos de poluentes e sua concentração nos tecid",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Química ambiental. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q106",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 106,
+      "page": 6,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "c9ddf1325fcc301bdce77cd3685c167a6566027e9fb047bb263916e942068b50",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Radiações e matéria"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em aeroportos, por razões de segurança, os passageiros devem ter suas bagagens de mão examinadas antes do embarque, passando-as em esteiras para sua inspeção por aparelhos de raios X. Nessas inspeções, os passageiros são orientados a retirar seus computadores portáteis (notebooks ou laptops) de malas, mochilas ou bolsas para passá-los isoladamente ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Radiações e matéria. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q107",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 107,
+      "page": 6,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "62359362849f8e220ffbdb8f8ce17af07f4c30de141e5e3a66c8dc2756dcce58",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Química orgânica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Com base em testes realizados em ratos, concluiu-se que os compostos nitrosos são substâncias mutagênicas, ou seja, produzem mutações nas células e possivelmente câncer. Esses compostos podem ser obtidos pela reação entre o nitrito de sódio, que é um conservante adicionado às carnes, e o ácido clorídrico. O ácido nitroso produzido irá reagir com co",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Química orgânica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q108",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 108,
+      "page": 6,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "3f65cf80aeb77524d4c8ffddce67f56cee76cd8bac377e364e6daebfec0dd791",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Ecologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Sistemas agroflorestais (SAFs) Os sistemas agroflorestais alinham os interesses econômicos aos ecológicos. Esses sistemas podem ser usados na recuperação ambiental de áreas degradadas que se tornaram pouco produtivas, como as utilizadas por muito tempo para pastagem. Para isso, num primeiro momento, as árvores nativas são plantadas em conjunto com ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Ecologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q109",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 109,
+      "page": 6,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "552ffaa5b853d9ced2ce52af6156baebafbe199a1e69e8eb6f526d64709695e4",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Fisiologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "As fibras musculares esqueléticas não são todas iguais. As fibras lentas, também conhecidas como fibras vermelhas, apresentam muitas mitocôndrias e são bem supridas por vasos sanguíneos. Já as fibras rápidas, ou fibras brancas, apresentam poucas mitocôndrias e recebem menor suprimento sanguíneo. Dessa forma, a distribuição das fibras nos músculos e",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Fisiologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q110",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 110,
+      "page": 7,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ecd23e5b1ddf845386cd552199902a4d46a32903a98e1c2185986932a868c23e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Evolução e diversidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O Cerrado e a Amazônia abrigam grande número de serpentes popularmente conhecidas como cobras-corais.\n\nNa Amazônia predominam as corais-verdadeiras, que são peçonhentas, enquanto no Cerrado prevalecem as falsas-corais, que não possuem peçonha. Essas espécies apresentam um padrão de coloração muito semelhante.\n\nEssa similaridade traz uma vantagem ta",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Evolução e diversidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q111",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 111,
+      "page": 7,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "3a1b0a783f7caf5d00d47a5a0aed6bc73e5f07d98dfc81668a6f287cf0afd4be",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Evolução e diversidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O exoesqueleto dos crustáceos é formado por quitina e impregnações de sais calcários e, por isso, é mais duro quando comparado com o exoesqueleto de outros artrópodes. Esse revestimento externo confere proteção, mas, por ser duro, limita o crescimento desses animais.\n\nPara superar essa limitação, o exoesqueleto deve ser",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Evolução e diversidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q112",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 112,
+      "page": 7,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "5d395338fa2dafc85fcfc2faeb98db8f2dd2c9e2248e879e101b461848b0b2cb",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Genética"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um dos exemplos mais conhecidos de herança recessiva ligada ao cromossomo X é o daltonismo.\n\nComo em qualquer distúrbio recessivo ligado ao cromossomo X, existem muito mais homens apresentando o fenótipo com esse tipo de daltonismo do que mulheres.\n\nUm casal formado por um homem não daltônico e por uma mulher gestante também não daltônica, mas port",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Genética. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q113",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 113,
+      "page": 8,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9f59863c12c95a693739100c9bfa3b5bfcd41af0c2be2681466a86b67f48ff7f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Ecologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Metabolismo de procariontes O esquema representa a ação de organismos no ciclo do nitrogênio e no ciclo do carbono. Os números correspondem a algumas etapas dos dois ciclos distintos.\n\nDisponível em: https://pt.khanacademy.org.\n\nAcesso em: 27 jun. 2024 (adaptado).\n\nEm qual etapa numerada ocorre uma transformação redox como a que ocorre nos procario",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Ecologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q114",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 114,
+      "page": 8,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "c455e527545b5d8af557347e0b8fd2c444e4c7bfbd8e7d5d2f1eda4431f5f60c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Química ambiental"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um dos agentes que mais contribui para a poluição do ar é o automóvel a combustão interna. Em áreas urbanas, isso é demonstrado dramaticamente pela fumaça fotoquímica, resultante da interação entre óxidos de nitrogênio, hidrocarbonetos e luz solar, para formar produtos de oxidação, que causam irritação aos olhos, ao aparelho respiratório e danos às",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Química ambiental. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q115",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 115,
+      "page": 9,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "5867ff0c6f728574819e5977a1e1bbc284ed7d85b2e493901a59c3d059996677",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Citologia e metabolismo"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O esquema representa um experimento feito com células do protozoário Amoeba proteus. Nele, um grupo de células foi tratado com a droga citocalasina B, enquanto outro grupo não foi tratado, servindo como controle.\n\nO formato e o movimento das células tratadas foram comprometidos.\n\nSADAVA, D. et al. Vida: a ciência da biologia — volume I: célula e he",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Citologia e metabolismo. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q116",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 116,
+      "page": 9,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "050d1253ed01f368f5025c1bc4eee8e65f7c0dedaf699683a2937ddea58ea2c4",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Reações e estequiometria"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O magnésio metálico utilizado em ligas leves é produzido em um processo que envolve várias etapas e utiliza água do mar como matéria-prima. A primeira etapa desse processo consiste na reação entre o íon $\\ce{Mg^2+}$ e hidróxido de cálcio, $\\ce{Ca(OH)2}$, obtendo uma mistura que contém hidróxido de magnésio, pouco solúvel, e íons $\\ce{Ca^2+}$, de ac",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Reações e estequiometria. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q117",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 117,
+      "page": 9,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "0bde097e473fac6afaed8059b07a014f71d006f06977cbbbc13f5ae7508d36bd",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Ecologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Moradores do Brooklin, bairro de São Paulo, perdem o sono com um som alto, constante e estridente. O barulho é causado por anfíbios anuros trazidos do Caribe, da espécie Eleutherodactylus jahnstonei, que têm tamanho um pouco maior que o de um grão de feijão e que encontraram na capital um ambiente favorável. Cientistas foram até o local e encontrar",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Ecologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q118",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 118,
+      "page": 9,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7f691a46df73c53c1ee7d6aa66867aee65599526ffd0a5aa7a55afe5933e3472",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Equilíbrios químicos"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A hidroxiapatita, $\\ce{Ca5(PO4)3OH}$, é um mineral constituinte do esmalte dos dentes. Entre as diversas reações que ocorrem no meio bucal, encontram-se em equilíbrio as reações de desmineralização e mineralização da hidroxiapatita em meio aquoso, ilustradas a seguir.\n\nA desmineralização está associada à fragilização do esmalte do dente e à formaçã",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Equilíbrios químicos. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q119",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 119,
+      "page": 10,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7b1341c81dee0b6f7a524ae9912ebb48e7b233ee71e4ba125d92b945f7ccfaaf",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Óptica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Para os circuitos de maratonas aquáticas realizadas em mares calmos e próximos à praia, é montado um sistema de boias que determinam o trajeto a ser seguido pelos nadadores. Uma das dificuldades desse tipo de circuito é compensar os efeitos da corrente marinha. O diagrama contém o circuito em que deve ser realizada uma volta no sentido anti-horário",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Óptica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q120",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 120,
+      "page": 10,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "e8a41b9f3bacfc7bc65904659800fd5de6e41757b9c5ba02c1501343b98d0429",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Saúde e imunologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O vírus linfotrópico de células T humanas tipo 1 (HTLV-1) é um retrovírus do mesmo grupo do vírus da imunodeficiência humana (HIV). Ambos são transmitidos da mesma forma e infectam as mesmas células de defesa do organismo, os linfócitos T. A diferença entre eles é que o HTLV-1 estimula o aumento da produção desses linfócitos, enquanto o HIV causa d",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Saúde e imunologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q121",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 121,
+      "page": 10,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "4a4b2b0e014f3e4bd863d0520df7d8c8f69d9cb69a6f309b682eb3e4ac7573a4",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Mecânica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Na tirinha, Calvin se divertia em um balanço antes de soltar-se dele e cair ao chão. Em sua fala, ele demonstra ter imaginado que permaneceria em movimento circular. Porém, a força gravitacional, que permanece atuando no garoto, modifica a direção de sua velocidade, fazendo com que ele chegue ao chão da maneira ilustrada no último quadrinho.\n\nWATTE",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Mecânica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q122",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 122,
+      "page": 11,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "e8acfea06ae26cf2d1092186fed43e306c87427d424b9f577c58f0d59e11bf73",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Termologia e termodinâmica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A tirinha ilustra esquimós dentro de um iglu, habitação de formato hemisférico construída durante o inverno a partir de neve ou blocos de gelo. Essa estrutura de construção se justifica pelo fato de esse povo habitar as regiões mais setentrionais da Groenlândia, Canadá e Alasca.\n\nLAERTE. Disponível em: https://artedafisicapibid.blogspot.com.\n\nAcess",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Termologia e termodinâmica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q123",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 123,
+      "page": 11,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9c7c8ec91a0f408377afebfcf20f4a123a27b032a248033beec02b73977ae21e",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Química orgânica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Os pesticidas naturais vêm sendo utilizados no controle de pragas e doenças agrícolas como substituintes de pesticidas sintéticos tradicionais, por serem menos nocivos ao ambiente, biodegradáveis e minimizarem custos e riscos relativos à lavoura. Por exemplo, os compostos 1 e 2 estão envolvidos nas respostas de defesa das plantas. Os grupos funcion",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Química orgânica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q124",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 124,
+      "page": 11,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f150f312409f2232c9f435351bc13ea986b6ca3644907ea04af5c22424802fd8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Citologia e metabolismo"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Utilizando-se um mesmo meio nutritivo, três gêneros bacterianos diferentes foram submetidos ao cultivo em tubos de ensaio. Após certo período de crescimento da cultura bacteriana em condições físico-químicas ideais, observou-se que o padrão de distribuição das células (representadas por pontos na figura) ao longo dos tubos era diferente em cada um ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Citologia e metabolismo. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q125",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 125,
+      "page": 12,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "85387b1bb15361565e1e0cb18ad021a45e7a8760273e8349a13bf2eada9dc5a9",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Estrutura da matéria"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "As placas que indicam saída de emergência brilham no escuro, pois apresentam substâncias que fosforecem na cor amarelo-esverdeada após exposição à luz ambiente, conforme a figura.\n\nEsse fenômeno ocorre pela presença do sulfeto de zinco (ZnS), dopado com prata ou cobre, na superfície da placa.\n\nZinc Sulphide Phosphorescence. Disponível em:\n\nhttps://",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Estrutura da matéria. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q126",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 126,
+      "page": 12,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "acf7f0f78fcebbb3782a8e3d3202d1774ce645ac0cbac2159728ee0f17b829e3",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Saúde e imunologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Indústrias farmacêuticas e instituições científicas têm trabalhado no desenvolvimento de diferentes vacinas contra a covid-19. Em algumas dessas vacinas, a principal estrutura antigênica é uma proteína de superfície viral chamada espícula (spike, em inglês). Essa proteína só existe em coronavírus, incluindo o SARS-CoV-2. Ela se liga a receptores de",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Saúde e imunologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q127",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 127,
+      "page": 12,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ed41a4863d38bf0ad78560458ed4825ab51217141c833eeb637dd35ef57be128",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Eletricidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em um experimento de laboratório, duas barras metálicas, A e B, são carregadas com cargas opostas e imersas em óleo. Farelo de milho é jogado sobre o óleo e, após um certo tempo, o farelo assume o formato das linhas de campo elétrico entre as barras. A figura representa a vista superior desse experimento.\n\nALMEIDA, M. A. T. Introdução às ciências f",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Eletricidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q128",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 128,
+      "page": 13,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9e3d937f0094bc6ba2e94a5de2248ab0abc31f56fc94e62fa7e8ac8688bec6fa",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Eletricidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Placas solares comuns dependem de dias ensolarados para gerar energia. Mas podemos gerar eletricidade com a ajuda de gotas de chuva, revestindo placas solares com uma fina camada de grafeno. Os íons dissociados a partir da água da chuva ($A^{m+}$ e $B^{n-}$) tornam a combinação grafeno e água da chuva um par perfeito para geração de energia. O proc",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Eletricidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q129",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 129,
+      "page": 13,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "8ce9870bd2c2b8183bf4559e9b824da3a7a5922a90735c18a4e5911280dd083f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Termologia e termodinâmica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um estudante comprou uma cafeteira elétrica de 700 W de potência e com capacidade de 0,5 L de água (500 g).\n\nEnquanto o café estava em preparação na capacidade máxima da cafeteira, ele marcou que demorou 3 minutos para a cafeteira ferver toda a água (100 °C) a partir da temperatura ambiente de 20 °C. Em seguida, para avaliar a eficiência da cafetei",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Termologia e termodinâmica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q130",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 130,
+      "page": 13,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "2e4a6303e8fbd4d1a81ecd1434d4f4d0ceb63fba6a4ebec0fb918b78ce429bbd",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Termologia e termodinâmica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O diagrama P-V a seguir representa o ciclo de Otto para um motor de combustão interna, como os motores a gasolina ou a etanol, utilizados nos automóveis.\n\nAs etapas representadas no diagrama estão descritas no quadro.\n\nDisponível em: www.mspc.eng.br.\n\nAcesso em: 24 fev. 2013 (adaptado).\n\nA transformação da energia térmica em energia útil ocorre na ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Termologia e termodinâmica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q131",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 131,
+      "page": 14,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "987ada37dbd633e1c8937fa29e71e03732c74e96a01ff81ab3c4b3777215ca73",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Eletricidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O LED é um dispositivo eletrônico que conduz corrente elétrica em um único sentido, sendo caracterizado por uma tensão e uma corrente máxima de funcionamento, Imáx. Um LED acende apenas se a corrente que o percorre está no sentido permitido e se a diferença de potencial à qual está submetido é igual ou superior à sua tensão de funcionamento. A figu",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Eletricidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q132",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 132,
+      "page": 14,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "be687ac9c4e5189ba1eba99c8702b899bc79d24353941b9310a637c3ceda9efc",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Eletricidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma caixa decorativa utiliza duas pequenas lâmpadas, $L_1$ (6 V – 9 W) e $L_2$ (12 V – 18 W), ligadas em série a uma bateria de tensão $V_{QR}$. Um fio resistivo QR, de 48 centímetros, está ligado em paralelo à bateria. Cinco pontos, A, B, C, D e E, dividem o fio QR em seis segmentos de comprimentos iguais. O circuito também tem um amperímetro com ",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Eletricidade. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q133",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 133,
+      "page": 14,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f8ead8136785b5764b101c08ad9b93793f40620c808bd49719c3bc4f80dcf350",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Física",
+      "themes": [
+        "Termologia e termodinâmica"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O biogás é uma alternativa energética muito importante, pois, além de reduzir a dependência por combustíveis fósseis, sua obtenção pode ser realizada a partir de resíduos da produção agroindustrial. Considere que o biogás produzido em um empreendimento de suinocultura contém $70\\%$ em volume de metano (massa molar $16\\,\\mathrm{g/mol}$; volume molar",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Física, tema Termologia e termodinâmica. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q134",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 134,
+      "page": 15,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7ee5494e0135de22612fde3aa3d115ba73720474e676923a3b08dd1bc2ec25a5",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Biologia",
+      "themes": [
+        "Ecologia"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A fitorremediação é uma técnica que utiliza plantas para a remediação de ambientes contaminados. A descontaminação de solos pode ocorrer por descarte, absorção e metabolização, imobilização, extração ou volatilização do poluente, conforme representado na figura.\n\nLUIZ, E. P. Avaliação dos métodos de fitorremediação [...] na remoção de chumbo, cobre",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Biologia, tema Ecologia. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q135",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 135,
+      "page": 15,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "006cfb9a4311d1c2773bf46850c42cef137761e19202888b6a65ea099acb83c3",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Química",
+      "themes": [
+        "Reações e estequiometria"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Brasil fecha 2020 entre os maiores recicladores de latas de alumínio\n\nA bauxita contém alumina ($\\ce{Al2O3}$), que é a matéria-prima para produção do alumínio ($\\ce{Al}$). De forma geral, são necessários $50\\,\\mathrm{kg}$ de bauxita para produzir $10\\,\\mathrm{kg}$ de alumínio. O Brasil fechou 2020 como um dos principais líderes mundiais em reciclag",
+      "rationale": "Conferência do objeto e do comando do item com a fonte; disciplina principal Química, tema Reações e estequiometria. Casos interdisciplinares permanecem sujeitos a segunda revisão.",
+      "skill_candidates": [],
+      "eligible_for_experiments": false
+    },
+    {
+      "question_id": "enem-2024-regular-q136",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 136,
+      "page": 16,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "303bd9711c12bc4294a7ffc9d7f0dc4fd613ebf91832b5227c42c07a4511bacf",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O tamanho mínimo que a visão humana é capaz de visualizar sem o uso de equipamento auxiliar é equivalente a 100 micrômetros (1 micrômetro = 10⁻³ milímetros).\n\nUma estudante pretende visualizar e analisar hemácias do sangue humano, que medem 0,007 mm de diâmetro.\n\nEla adquiriu um microscópio óptico que tem uma lente ocular que amplia em 10 vezes a i",
+      "rationale": "Relacionar micrômetros, milímetros e fatores de ampliação do microscópio.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H10",
+          "status": "proposed",
+          "rationale": "Relacionar micrômetros, milímetros e fatores de ampliação do microscópio.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q137",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 137,
+      "page": 16,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "0fb007a2967ab584ae6cb9b707b921a519a98570d653d1b438cb4385f5fee404",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Ao calcular a média de suas notas em 4 provas, um estudante dividiu, por engano, a soma das notas por 5.\n\nCom isso, a média obtida foi 1 unidade menor do que deveria ser, caso fosse calculada corretamente.\n\nO valor correto da média das notas desse estudante é",
+      "rationale": "Relacionar soma de notas e médias com denominadores quatro e cinco.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Relacionar soma de notas e médias com denominadores quatro e cinco.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q138",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 138,
+      "page": 16,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "4638e7a768f2f61ff3d6f81cd1f5999cc4d9304f88c09f802cf6a8d9047a73d5",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Para abrir a porta de uma empresa, cada funcionário deve cadastrar uma senha utilizando um teclado alfanumérico como o representado na figura.\n\nPor exemplo: a tecla que contém o número 2 traz as letras correlacionadas A, B e C. Cada toque nessa tecla mostra, sequencialmente, os seguintes caracteres: 2, A, B e C. Para os próximos toques, essa sequên",
+      "rationale": "Contar escolhas ordenadas de algarismos e letras distintos em senha.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H2",
+          "status": "proposed",
+          "rationale": "Contar escolhas ordenadas de algarismos e letras distintos em senha.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q139",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 139,
+      "page": 17,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "d2236975fb5304f25e3a502f8b0438f85a4b7bc016fab6a626f5dd62cd3a5d9f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um artesão utiliza dois tipos de componentes, X e Y, nos enfeites que produz. Ele sempre compra todos os componentes em uma mesma loja. O quadro apresenta os preços dos dois tipos de componentes nas lojas I e II.\n\nEle confeccionará enfeites formados por duas unidades do componente X e uma unidade do componente Y e efetuará a compra na loja que ofer",
+      "rationale": "Comparar custo de duas unidades de X e uma de Y nas duas lojas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H3",
+          "status": "proposed",
+          "rationale": "Comparar custo de duas unidades de X e uma de Y nas duas lojas.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q140",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 140,
+      "page": 17,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ff688dc5a0664ca449874f1f844e719261d9d823460110a405ea7d024e8561ce",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "João e Felipe participaram, na escola, de uma maratona de matemática na qual, durante uma semana, resolveram 200 questões cada. Nessa maratona, a porcentagem P de acertos de cada participante é convertida em um conceito:\n\n• insatisfatório: se 0 ≤ P < 50;\n\n• regular: se 50 ≤ P < 60;\n\n• bom: se 60 ≤ P < 75;\n\n• muito bom: se 75 ≤ P < 90;\n\n• excelente:",
+      "rationale": "Aplicar porcentagem sobre a quantidade de acertos e interpretar intervalos de conceito.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H3",
+          "status": "proposed",
+          "rationale": "Aplicar porcentagem sobre a quantidade de acertos e interpretar intervalos de conceito.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q141",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 141,
+      "page": 17,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "8856e5b4ba00c463bd2b897be40736558dbd703a8aa207b0d065a96b54a18028",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Três grandezas (I, II e III) se relacionam entre si.\n\nOs gráficos a seguir, formados por segmentos de reta, descrevem as relações de dependência existentes entre as grandezas I e II, e entre as grandezas II e III.\n\nO valor máximo assumido pela grandeza III, quando a grandeza I varia de 1 a 3, é",
+      "rationale": "Compor relações entre grandezas em dois gráficos para determinar máximo.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H20",
+          "status": "proposed",
+          "rationale": "Compor relações entre grandezas em dois gráficos para determinar máximo.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q142",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 142,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "eebcdcccca0557328fcaed6c7ea99dc7c6644c930accc0a093a7ea0a2c6a94ef",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma criança, utilizando um aplicativo, escreveu uma mensagem para enviar a um amigo. Essa mensagem foi escrita seguindo estas etapas:\n\nA criança seguiu copiando e colando, em cada etapa, o que tinha no visor na etapa imediatamente anterior, até concluir a 20ª etapa. Em seguida, enviou a mensagem.\n\nQual foi o total de figuras contidas na mensagem en",
+      "rationale": "Reconhecer crescimento por duplicação em etapas sucessivas de uma mensagem.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H2",
+          "status": "proposed",
+          "rationale": "Reconhecer crescimento por duplicação em etapas sucessivas de uma mensagem.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q143",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 143,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f57b8bb0a79314f17379638a83600c0bf8f7c1a1592dbeaa03e398b02a0be98d",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma casa de shows terá um evento cujo custo total de produção é de R$ 34 350,00, sendo que comporta 500 pessoas. O preço do ingresso será de R$ 130,00 e, normalmente, 60% das pessoas adquirem meia-entrada, pagando R$ 65,00 pelo ingresso. Além do faturamento proveniente da venda de ingressos, a casa de shows vende, com 60% de lucro, bebidas e petisc",
+      "rationale": "Avaliar receita de ingressos e lucro necessário de bebidas para atingir equilíbrio.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H5",
+          "status": "proposed",
+          "rationale": "Avaliar receita de ingressos e lucro necessário de bebidas para atingir equilíbrio.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q144",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 144,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "68f6bc9d2a636805699bb7fae2fa52ecfaf4196d045a9c9d7395ee343a4f8bc4",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Para obter um sólido de revolução (rotação de 360° em torno de um eixo fixo), uma professora realizou as seguintes etapas:\n\n• recortou o trapézio retângulo PQRS de um material rígido;\n\n• afixou o lado PS do trapézio em uma vareta fixa retilínea (eixo de rotação);\n\n• girou o trapézio 360° em torno da vareta e obteve um sólido de revolução.\n\nObserve ",
+      "rationale": "Identificar o sólido de revolução gerado pela rotação de trapézio.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H7",
+          "status": "proposed",
+          "rationale": "Identificar o sólido de revolução gerado pela rotação de trapézio.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q145",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 145,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ce2313e788ef2cc7bd232709752a37ddea54473a4b9929dbcaca2e57a1be7383",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O estádio do Maracanã passou por algumas modificações estruturais para a realização da Copa do Mundo de 2014, como, por exemplo, as dimensões do campo retangular. Para se adaptar aos padrões da Fifa, as dimensões do campo foram reduzidas de 110 m × 75 m para 105 m × 68 m.\n\nDisponível em: http://virgula.uol.com.br.\n\nAcesso em: 14 ago. 2013 (adaptado",
+      "rationale": "Comparar áreas de dois retângulos com dimensões do campo.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Comparar áreas de dois retângulos com dimensões do campo.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q146",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 146,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "e9359c57314edf5d0c0b088aa0507eabe85efb46616ca386ce383d0c7f04a37c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um fazendeiro pretende construir um galinheiro ocupando uma região plana de formato retangular, com lados de comprimentos L metro e C metro. Os lados serão cercados por telas de tipos diferentes. Nos lados de comprimento L metro, será utilizada uma tela cujo metro linear custa R$ 20,00, enquanto, nos outros dois lados, uma que custa R$ 15,00. O faz",
+      "rationale": "Maximizar área retangular sob restrição linear de custo de telas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Maximizar área retangular sob restrição linear de custo de telas.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q147",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 147,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7db6d6754fc92919a5f83893e730a1ad0c9b0ccd34c31eb2b3bf00bb2c883ec5",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma professora de matemática utiliza em suas aulas uma “máquina caça-números” para verificar os conhecimentos de seus estudantes sobre representações de números racionais. Essa máquina tem um visor dividido em seis compartimentos e, na lateral, uma alavanca. Cada estudante puxa a alavanca e espera que os compartimentos parem de girar. A partir daí,",
+      "rationale": "Identificar representações equivalentes de números racionais no visor.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H1",
+          "status": "proposed",
+          "rationale": "Identificar representações equivalentes de números racionais no visor.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q148",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 148,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "74981eb8302edea10365988de57f1399a1d8ec3f8e8c190b85f55128095d855a",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma caneca com água fervendo é retirada de um forno de micro-ondas. A temperatura T, em grau Celsius, da caneca, em função do tempo t, em minuto, pode ser modelada pela função $T(t) = a + 80b^t$, representada no gráfico a seguir.\n\nOs valores das constantes a e b são",
+      "rationale": "Determinar parâmetros da função exponencial a partir do gráfico de temperatura.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Determinar parâmetros da função exponencial a partir do gráfico de temperatura.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q149",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 149,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "8a970f340a48d6b7e33aad6a3edb3b13271e124d8f69fbcacdbc05143e858ee2",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em uma empresa é comercializado um produto em embalagens em formato de cilindro circular reto, com raio medindo 3 cm, e altura medindo 15 cm. Essa empresa planeja comercializar o mesmo produto em embalagens em formato de cubo, com capacidade igual a 80% da capacidade da embalagem cilíndrica utilizada atualmente.\n\nUse 3 como valor aproximado para π.",
+      "rationale": "Converter fração de volume de cilindro em volume de cubo.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Converter fração de volume de cilindro em volume de cubo.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q150",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 150,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "5da1183e0001a005ed89c71c8c1034a914ecdd257c9c150804360ade4d619697",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma sala com piso no formato retangular, com lados de medidas 3 m e 6 m, será dividida em dois ambientes.\n\nPara isso, serão utilizadas colunas em formato cilíndrico, dispostas perpendicularmente ao piso e representadas na figura pelos círculos de cor azul. Os centros desses círculos estarão sobre uma reta paralela aos lados de menor medida do piso ",
+      "rationale": "Combinar diâmetros, vãos e comprimento disponível para comparar orçamentos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Combinar diâmetros, vãos e comprimento disponível para comparar orçamentos.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q151",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 151,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "d37d3e9418597a2ee39d44569ae03be5072da5035d377ca18be30dd944ecfd39",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O arquiteto Renzo Piano exibiu a maquete da nova sede do Museu Whitney de Arte Americana, um prédio assimétrico que tem um vão aberto para a galeria principal, cuja medida da área é 1 672 m².\n\nConsidere que a escala da maquete exibida é 1 : 200.\n\nÉpoca, n. 682, jun. 2011 (adaptado).\n\nA medida da área do vão aberto nessa maquete, em centímetro quadr",
+      "rationale": "Aplicar o quadrado da escala linear à área da maquete e converter unidades.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H11",
+          "status": "proposed",
+          "rationale": "Aplicar o quadrado da escala linear à área da maquete e converter unidades.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q152",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 152,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "a27f9c91fdcdf707e91112fc4cb46054885c3060b9b1c0c25e48c560c2a9d3be",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O gráfico apresenta o valor total de exportações e o valor total de importações, ao longo de um período, em bilhão de dólares. O saldo da balança comercial brasileira é dado pelo valor total de exportações menos o valor total de importações num mesmo período.\n\nValor total de exportações e importações Disponível em: http://blogs.estadao.com.br.\n\nAce",
+      "rationale": "Calcular saldos entre exportações e importações e ordená-los.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H24",
+          "status": "proposed",
+          "rationale": "Calcular saldos entre exportações e importações e ordená-los.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q153",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 153,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ff12f07b65a1a777cf57e02b1f4217d97321307eddcb37f217be0907691732c1",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um instituto de pesquisa constatou que, nos últimos dez anos, o crescimento populacional de uma cidade foi de 135,25%.\n\nQual é a representação decimal da taxa percentual desse crescimento populacional?",
+      "rationale": "Converter uma taxa percentual em representação decimal.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H1",
+          "status": "proposed",
+          "rationale": "Converter uma taxa percentual em representação decimal.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q154",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 154,
+      "page": 21,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f8959372b281890825402c9690259affc3bbda7f1965d36954485fe8df474d8a",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Contratos de vários serviços disponíveis na internet apresentam uma quantidade excessiva de informações.\n\nIsso faz com que o tempo necessário para a leitura desses contratos possa ser longo.\n\nO quadro apresenta uma amostra do tempo considerado necessário para a leitura completa do contrato de alguns serviços digitais.\n\nROMERO, L. Não li e concordo.",
+      "rationale": "Calcular a média dos tempos de leitura apresentados em tabela.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Calcular a média dos tempos de leitura apresentados em tabela.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q155",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 155,
+      "page": 21,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "c3d0e0751868e48e129b7b25ca39a47cf2ccf174a3804138f6bf9a578ebd1730",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um proprietário pretende instalar um sensor de presença para a proteção de seu imóvel. O sensor deverá detectar movimentos de objetos e pessoas numa determinada região plana. A figura ilustra a vista superior da área de cobertura (setor circular em azul) de um sensor colocado no ponto S. Essa área depende da medida do ângulo α, em grau, e do raio R",
+      "rationale": "Comparar áreas de setores circulares sob restrição de cobertura mínima.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Comparar áreas de setores circulares sob restrição de cobertura mínima.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q156",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 156,
+      "page": 21,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "8b16fcd702dd8186bd979da189f304c2eb46b01e42b4d4365ce90dd6f206d721",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "O uso de aplicativos de transporte tem sido uma alternativa à população que busca preços mais competitivos para se locomover, principalmente nas grandes cidades.\n\nAs formas usadas para determinar o valor cobrado por cada viagem variam de um aplicativo para outro, mas, em geral, o valor V a ser pago, em real, varia em função de:\n\n• tarifa base F: va",
+      "rationale": "Construir expressão com tarifa fixa, tempo e distância.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H19",
+          "status": "proposed",
+          "rationale": "Construir expressão com tarifa fixa, tempo e distância.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q157",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 157,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7defb249d115cad211ba3a892060e289a34374a600195cc96d37962ca3f4f23f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma doceira vende e entrega, em seu bairro, porções de 100 g de docinhos de aniversário. Atualmente, a taxa única de entrega é R$ 10,00, e o valor cobrado por uma porção é R$ 25,00. Por uma estratégia de vendas, a partir da próxima semana, a taxa única de entrega será R$ 15,00, e um novo valor será cobrado por uma porção, de maneira que o valor tot",
+      "rationale": "Manter o preço total ao alterar a taxa fixa de entrega.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Manter o preço total ao alterar a taxa fixa de entrega.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q158",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 158,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "18f10fe112e38691e9a0bf09c32fb49f81efdf6c074bd5394b6404f31bfb6912",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em uma loja de defensivos agrícolas, os preços de alguns produtos foram divulgados em um cartaz.\n\nSabe-se que 1 litro de defensivo do Tipo A é suficiente para aplicação em 0,5 hectare (ha), enquanto que 1 litro de defensivo do Tipo B é suficiente para aplicação em 0,4 ha.\n\nUm agricultor precisa comprar, nessa loja, uma quantidade de litros de defen",
+      "rationale": "Comparar despesas com defensivos por área e máscara obrigatória.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H5",
+          "status": "proposed",
+          "rationale": "Comparar despesas com defensivos por área e máscara obrigatória.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q159",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 159,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "489b5d2af058a9a1f67764666f043028f6d4c8b4c74bb93055f514ca032cedb3",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma tubulação despeja sempre o mesmo volume de água por unidade de tempo em uma caixa-d’água, o que significa dizer que a vazão de água nessa tubulação é constante. Na junção dessa tubulação com a caixa-d’água, está instalada uma membrana de filtragem cujo objetivo é filtrar eventuais impurezas presentes na água, combinado a um bom fluxo de água. O",
+      "rationale": "Compor unidade do fluxo como vazão por área da membrana.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H10",
+          "status": "proposed",
+          "rationale": "Compor unidade do fluxo como vazão por área da membrana.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q160",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 160,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "96b6ff481e9dd314bc8b6e0ce6f0ac8c80010518979fe34a59471a9be57d7ff5",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma piscina tem capacidade de 2 500 000 litros.\n\nSeu sistema de abastecimento foi regulado para ter uma vazão constante de 6 000 litros de água por minuto.\n\nO mesmo sistema foi instalado em uma segunda piscina, com capacidade de 2 750 000 litros, e regulado para ter uma vazão, também constante, capaz de enchê-la em um tempo 20% maior que o gasto pa",
+      "rationale": "Relacionar volume, vazão e tempo com aumento percentual do tempo.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Relacionar volume, vazão e tempo com aumento percentual do tempo.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q161",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 161,
+      "page": 23,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "0cb0772726be3782b5c9603224f2ee4f5e43419a2c776143015b35363215b6b7",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um tanque, em formato de paralelepípedo reto retângulo, tem em seu interior dois anteparos verticais, fixados na sua base e em duas paredes opostas, sendo perpendiculares a elas, conforme a figura.\n\nEsses anteparos, de espessuras desprezíveis, estão instalados de maneira a dividir a base do tanque em três retângulos congruentes, tendo suas alturas ",
+      "rationale": "Relacionar enchimento de compartimentos e gráfico da maior coluna de água.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H20",
+          "status": "proposed",
+          "rationale": "Relacionar enchimento de compartimentos e gráfico da maior coluna de água.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q162",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 162,
+      "page": 24,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "4b08dd97b951e27bfd4cc8ab3a47745b00cd85dae166b520f63a993edd3cff14",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma imobiliária iniciou uma campanha de divulgação para promover a venda de apartamentos que podem ser pagos em 100 parcelas mensais. O valor da primeira delas é fixado no momento da compra, com o pagamento dessa primeira parcela. A partir da segunda parcela, o valor é determinado pela aplicação de um acréscimo percentual fixo ao valor da parcela a",
+      "rationale": "Comparar parcelas em progressão geométrica e meses de isenção.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Comparar parcelas em progressão geométrica e meses de isenção.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q163",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 163,
+      "page": 24,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "0349800e6ba292e3e4f432899303bd057094197e9b05474b6df856090588745d",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um sistema de polias circulares e correias é um dos mecanismos responsáveis pela transmissão de movimento em máquinas rotativas. O manual de um motor traz uma figura representando um sistema composto por duas polias e uma correia de transmissão, tensionada e perfeitamente ajustada sobre as polias, de modo a não apresentar folgas nos contatos com as",
+      "rationale": "Relacionar tangência e arcos das polias ao comprimento de correia.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H8",
+          "status": "proposed",
+          "rationale": "Relacionar tangência e arcos das polias ao comprimento de correia.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q164",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 164,
+      "page": 24,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b012ade787e6ffa994c35e894db399b5f13257cfd8e8da7ca02b15a9031535da",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A prefeitura de uma cidade planeja construir três postos de saúde. Esses postos devem ser construídos em locais equidistantes entre si e de forma que as distâncias desses três postos ao hospital dessa cidade sejam iguais. Foram conseguidos três locais para a construção dos postos de saúde que apresentam as características desejadas, e que distam 10",
+      "rationale": "Relacionar centro de triângulo equilátero à distância dos vértices.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H8",
+          "status": "proposed",
+          "rationale": "Relacionar centro de triângulo equilátero à distância dos vértices.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q165",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 165,
+      "page": 25,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "bcc99009d8128ed7a1a71412b7816a9c90c295b93fe3469c8c7fe9c88af8350c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Para melhorar o fluxo de ônibus em uma avenida que tem dois semáforos, a prefeitura reduzirá o tempo em que cada sinal ficará vermelho, que atualmente é de 15 segundos a cada 60 segundos. Admita que o instante de chegada de um ônibus a cada semáforo é aleatório.\n\nO engenheiro de tráfego da prefeitura calculou a probabilidade de um ônibus encontrar ",
+      "rationale": "Combinar probabilidades independentes de encontrar dois semáforos vermelhos.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H28",
+          "status": "proposed",
+          "rationale": "Combinar probabilidades independentes de encontrar dois semáforos vermelhos.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q166",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 166,
+      "page": 25,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "cdbf03a190b2947f344d795b46954b2fa1402d58c9ee564b53c98613ede051a2",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A densidade demográfica de uma região é definida como sendo a razão entre o número de habitantes dessa região e sua área, expressa na unidade habitantes por quilômetro quadrado.\n\nUma região R é subdividida em várias outras, sendo uma delas a região Q. A área de Q é igual a três quartos da área de R, e o número de habitantes de Q é igual à metade do",
+      "rationale": "Relacionar razões de população e área às densidades demográficas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Relacionar razões de população e área às densidades demográficas.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q167",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 167,
+      "page": 25,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "0c6e2ad639acb3c1cefb53b4eacf34250ca50c1a631094284f1038a32df95479",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Atualmente, há telefones celulares com telas de diversos tamanhos e em formatos retangulares. Alguns deles apresentam telas medindo $3\\frac{1}{2}$ polegadas, com determinadas especificações técnicas. Além disso, em muitos modelos, com a inclusão de novas funções no celular, suas telas ficaram maiores, sendo muito comum encontrarmos atualmente telas",
+      "rationale": "Subtrair medidas dadas por números mistos em polegadas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H3",
+          "status": "proposed",
+          "rationale": "Subtrair medidas dadas por números mistos em polegadas.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q168",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 168,
+      "page": 26,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b37f82a4b06bc5f98ac2ab82cfda3b7832ddf6ec4587cec99d4863a799565702",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Projetistas de uma fábrica de amortecedores realizaram uma série de experimentos que produziram oscilações semelhantes ao comportamento do gráfico de uma senoide, para qualquer tipo de estrada. Cada experimento teve duração de 20 minutos, sendo os 9 primeiros minutos em superfície que simula uma rodovia asfaltada, e os 11 minutos restantes em super",
+      "rationale": "Interpretar amplitudes de gráficos senoidais em dois intervalos de superfície.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H20",
+          "status": "proposed",
+          "rationale": "Interpretar amplitudes de gráficos senoidais em dois intervalos de superfície.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q169",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 169,
+      "page": 27,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "09c8b497dd43ceb3ddfeff9295ce3d6903675c11a5a76d2702b83ae20603ccb2",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A criptografia refere-se à construção e análise de protocolos que impedem terceiros de lerem mensagens privadas.\n\nJúlio César, imperador romano, utilizava um código para proteger as mensagens enviadas a seus generais. Assim, se a mensagem caísse em mãos inimigas, a informação não poderia ser compreendida. Nesse código, cada letra do alfabeto era su",
+      "rationale": "Calcular probabilidade de sucesso na terceira tentativa sem reposição.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H28",
+          "status": "proposed",
+          "rationale": "Calcular probabilidade de sucesso na terceira tentativa sem reposição.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q170",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 170,
+      "page": 27,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "df749a0e048b9cfc5351f380589490aedc2aa12a0872f85835c471446e4746d8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em uma região com grande incidência de terremotos, observou-se que dois terremotos ocorridos apresentaram magnitudes $M_1$ e $M_2$, medidos segundo a escala Richter, e liberaram energias iguais a $E_1$ e $E_2$, respectivamente. Entre os estudiosos do assunto, é conhecida uma expressão algébrica relacionando esses valores dada por\n\nEstudos mais abra",
+      "rationale": "Aplicar a relação logarítmica entre energia liberada e magnitude Richter.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Aplicar a relação logarítmica entre energia liberada e magnitude Richter.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q171",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 171,
+      "page": 28,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "39674ddfd42723db3342d574e1e720e2db58971dadf3a71cd1359c79245a376d",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um jardineiro dispõe de k metros lineares de cerca baixa para fazer um jardim ornamental. O jardim, delimitado por essa cerca, deve ter a forma de um triângulo equilátero, um quadrado ou um hexágono regular. A escolha será pela forma que resulte na maior área.\n\nO jardineiro escolherá a forma de",
+      "rationale": "Comparar áreas de polígonos regulares de mesmo perímetro.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H9",
+          "status": "proposed",
+          "rationale": "Comparar áreas de polígonos regulares de mesmo perímetro.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q172",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 172,
+      "page": 28,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "da91b6b2c957bc95854c15f1ce5dd9a711fbee5dd23658ee8ba314493af1001f",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um aeroporto disponibiliza o serviço de transporte gratuito entre seus dois terminais utilizando os ônibus A e B, que partem simultaneamente, de hora em hora, de terminais diferentes. A distância entre os terminais é de 9 000 metros, e o percurso total dos ônibus, de um terminal ao outro, é monitorado por um sistema de cinco câmeras que cobrem dife",
+      "rationale": "Combinar velocidades e frações do percurso para localizar o encontro dos ônibus.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Combinar velocidades e frações do percurso para localizar o encontro dos ônibus.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q173",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 173,
+      "page": 29,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "07921ffd617fc6023a4673279f68b87ae642ea6e80c16836dd9cdce321d38fb8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma empresa tem 400 funcionários, distribuídos em três setores: administrativo, logística e produção. O gráfico apresenta a distribuição quantitativa desses funcionários, por setor e por faixa etária.\n\nUma viagem de férias será sorteada entre esses funcionários, de forma que todos terão igual probabilidade de serem sorteados.\n\nA maior probabilidade",
+      "rationale": "Somar funcionários por faixa etária para comparar probabilidades de sorteio.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H28",
+          "status": "proposed",
+          "rationale": "Somar funcionários por faixa etária para comparar probabilidades de sorteio.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q174",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 174,
+      "page": 29,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "d552a34682c4ec24890e5fc5cefc4411f9b5f9ddf79977cdea8f56c01747789c",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Em um jogo virtual para celular, um personagem pode percorrer trajetórias retilíneas voando ou se deslocando ao longo de paredes. Considere que o personagem descreve a trajetória ABCDEF, em que os pontos A, D e E estão em um plano paralelo ao que contém os pontos B e C, sendo esses dois planos ortogonais ao plano da base que contém o ponto F, confo",
+      "rationale": "Identificar projeção ortogonal de trajetória espacial sobre o plano da base.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H6",
+          "status": "proposed",
+          "rationale": "Identificar projeção ortogonal de trajetória espacial sobre o plano da base.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q175",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 175,
+      "page": 30,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b5b39f2d64f80b7b0fcc8fa55b4989c0d9f2326a349bb0ae36e18f8cd6b87381",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma indústria faz uma parceria com uma distribuidora de sucos para lançar no mercado dois tipos de embalagens. Para a fabricação dessas embalagens, a indústria dispõe de folhas de alumínio retangulares, de dimensões 10 cm por 20 cm. Cada uma dessas folhas é utilizada para formar a superfície lateral da embalagem, em formato de cilindro circular ret",
+      "rationale": "Comparar volumes de cilindros formados pelas duas orientações de uma folha.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H12",
+          "status": "proposed",
+          "rationale": "Comparar volumes de cilindros formados pelas duas orientações de uma folha.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q176",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 176,
+      "page": 30,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "dda1759bcfea4863b4b0c80b400d7a97a802aaf34176aae4b2b1763faea8e9b8",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "As receitas anuais obtidas por uma indústria no período de 2014 a 2021, em milhão de reais, foram registradas, por pontos, em um gráfico. Nele, também está representada a reta que descreve a tendência de evolução das receitas.\n\nEssa reta pode ser utilizada para estimar as receitas dos anos seguintes.\n\nA estimativa da receita, em milhão de reais, de",
+      "rationale": "Extrapolar a reta de tendência de receitas para o ano pedido.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H24",
+          "status": "proposed",
+          "rationale": "Extrapolar a reta de tendência de receitas para o ano pedido.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q177",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 177,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "cef3c7bcfaa42f7eb16f2c8093bcfd9f707767bd15a0785f43e53ecf0dba96d6",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma empresa produz mochilas escolares sob encomenda. Essa empresa tem um custo total de produção, composto por um custo fixo, que não depende do número de mochilas, mais um custo variável, que é proporcional ao número de mochilas produzidas. O custo total cresce de forma linear, e a tabela apresenta esse custo para três quantidades de mochilas prod",
+      "rationale": "Determinar custo fixo e variável em uma relação linear dada por tabela.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H21",
+          "status": "proposed",
+          "rationale": "Determinar custo fixo e variável em uma relação linear dada por tabela.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q178",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 178,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "a8526b51d38d7eff7d1ceb32c08832ff8f9dae538dbdb22199f26a2583b4ac7d",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "A umidade relativa do ar é um dos indicadores utilizados na meteorologia para fazer previsões sobre o clima.\n\nO quadro apresenta as médias mensais, em porcentagem, da umidade relativa do ar em um período de seis meses consecutivos em uma cidade.\n\nNessa cidade, a mediana desses dados, em porcentagem, da umidade relativa do ar no período considerado ",
+      "rationale": "Ordenar seis percentuais de umidade e calcular a mediana.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H27",
+          "status": "proposed",
+          "rationale": "Ordenar seis percentuais de umidade e calcular a mediana.",
+          "matrix_page": 7,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q179",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 179,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "d054508f877c6be6a03b51d3cbf0ddf0ca108f7c8222a7809d88c37616af11cb",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Uma empresa de engenharia foi contratada para realizar um serviço no valor de R$ 71 250,00. Os sócios da empresa decidiram que 40% desse valor seria destinado ao pagamento de três engenheiros que gerenciaram o serviço.\n\nO pagamento para cada um deles será feito de forma diretamente proporcional ao total de horas trabalhadas.\n\nO número de dias e o n",
+      "rationale": "Repartir pagamento proporcionalmente às horas trabalhadas dos engenheiros.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H16",
+          "status": "proposed",
+          "rationale": "Repartir pagamento proporcionalmente às horas trabalhadas dos engenheiros.",
+          "matrix_page": 6,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    },
+    {
+      "question_id": "enem-2024-regular-q180",
+      "exam_id": "enem-2024-dia2-azul",
+      "year": 2024,
+      "number": 180,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "01b9b7cf152a6323bd2bc1079da0002f0fe09c6ef71ed3e7caaa3608939be162",
+      "taxonomy_version": "enem-content-v1",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "status": "curated",
+      "reviewer": "Codex — curadoria técnica assistida",
+      "independent_review": false,
+      "evidence": "Um hospital tem 7 médicos cardiologistas e 6 médicos neurologistas em seu quadro de funcionários. Para executar determinada atividade, a direção desse hospital formará uma equipe com 5 médicos, sendo, pelo menos, 3 cardiologistas.\n\nA expressão numérica que representa o número máximo de maneiras distintas de formar essa equipe é",
+      "rationale": "Contar equipes com restrição de quantidade mínima de cardiologistas.",
+      "skill_candidates": [
+        {
+          "skill": "MT.H2",
+          "status": "proposed",
+          "rationale": "Contar equipes com restrição de quantidade mínima de cardiologistas.",
+          "matrix_page": 5,
+          "source_sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1"
+        }
+      ],
+      "eligible_for_experiments": true
+    }
+  ]
+}
