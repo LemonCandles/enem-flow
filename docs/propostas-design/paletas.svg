@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+<title id="title">Editorial verde — paletas clara e escura</title>
+<desc id="desc">Fundos da proposta 04 preservados, com o acento #009485 nos dois temas.</desc>
+<rect width="1120" height="620" fill="#FAF8F4"/>
+<text x="40" y="48" font-family="Arial, sans-serif" font-size="26" fill="#292722">Editorial verde · #009485</text>
+<text x="40" y="76" font-family="Arial, sans-serif" font-size="15" fill="#625D56">Os fundos originais permanecem neutros nos dois temas</text>
+<rect x="20" y="100" width="1080" height="230" rx="16" fill="#131313"/>
+<text x="40" y="134" font-family="Arial, sans-serif" font-size="22" fill="#F1F0EA">Escuro</text>
+<rect x="40" y="156" width="132" height="80" rx="8" fill="#131313" stroke="#383833"/>
+<text x="40" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Fundo</text>
+<text x="40" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#131313</text>
+<rect x="191" y="156" width="132" height="80" rx="8" fill="#191919" stroke="#383833"/>
+<text x="191" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Menu lateral</text>
+<text x="191" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#191919</text>
+<rect x="342" y="156" width="132" height="80" rx="8" fill="#F1F0EA" stroke="#383833"/>
+<text x="342" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Texto principal</text>
+<text x="342" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#F1F0EA</text>
+<rect x="493" y="156" width="132" height="80" rx="8" fill="#AAA79E" stroke="#383833"/>
+<text x="493" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Texto de apoio</text>
+<text x="493" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#AAA79E</text>
+<rect x="644" y="156" width="132" height="80" rx="8" fill="#383833" stroke="#383833"/>
+<text x="644" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Bordas</text>
+<text x="644" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#383833</text>
+<rect x="795" y="156" width="132" height="80" rx="8" fill="#009485" stroke="#383833"/>
+<text x="795" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Verde / ação</text>
+<text x="795" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#009485</text>
+<rect x="946" y="156" width="132" height="80" rx="8" fill="#131313" stroke="#383833"/>
+<text x="946" y="264" font-family="Arial, sans-serif" font-size="14" fill="#F1F0EA">Texto da ação</text>
+<text x="946" y="290" font-family="monospace" font-size="16" fill="#F1F0EA">#131313</text>
+<rect x="20" y="350" width="1080" height="230" rx="16" fill="#F6F5F0"/>
+<text x="40" y="384" font-family="Arial, sans-serif" font-size="22" fill="#242424">Claro</text>
+<rect x="40" y="406" width="132" height="80" rx="8" fill="#F6F5F0" stroke="#D8D6CC"/>
+<text x="40" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Fundo</text>
+<text x="40" y="540" font-family="monospace" font-size="16" fill="#242424">#F6F5F0</text>
+<rect x="191" y="406" width="132" height="80" rx="8" fill="#EEEEE8" stroke="#D8D6CC"/>
+<text x="191" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Menu lateral</text>
+<text x="191" y="540" font-family="monospace" font-size="16" fill="#242424">#EEEEE8</text>
+<rect x="342" y="406" width="132" height="80" rx="8" fill="#242424" stroke="#D8D6CC"/>
+<text x="342" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Texto principal</text>
+<text x="342" y="540" font-family="monospace" font-size="16" fill="#242424">#242424</text>
+<rect x="493" y="406" width="132" height="80" rx="8" fill="#706F65" stroke="#D8D6CC"/>
+<text x="493" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Texto de apoio</text>
+<text x="493" y="540" font-family="monospace" font-size="16" fill="#242424">#706F65</text>
+<rect x="644" y="406" width="132" height="80" rx="8" fill="#D8D6CC" stroke="#D8D6CC"/>
+<text x="644" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Bordas</text>
+<text x="644" y="540" font-family="monospace" font-size="16" fill="#242424">#D8D6CC</text>
+<rect x="795" y="406" width="132" height="80" rx="8" fill="#009485" stroke="#D8D6CC"/>
+<text x="795" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Verde / ação</text>
+<text x="795" y="540" font-family="monospace" font-size="16" fill="#242424">#009485</text>
+<rect x="946" y="406" width="132" height="80" rx="8" fill="#131313" stroke="#D8D6CC"/>
+<text x="946" y="514" font-family="Arial, sans-serif" font-size="14" fill="#242424">Texto da ação</text>
+<text x="946" y="540" font-family="monospace" font-size="16" fill="#242424">#131313</text>
+</svg>
