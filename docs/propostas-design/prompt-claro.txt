@@ -1,8 +1,0 @@
-Use case: lighting-weather with constrained theme recoloring.
-Asset type: light-theme counterpart of an integrated website design.
-Input Image 1: EDIT TARGET, the finished "Encaixes no layout" dark design.
-Input Image 2: PALETTE REFERENCE ONLY, the prior light screenshot. Preserve only its neutral background colors and legible text palette; its freestanding ivory sculpture MUST NOT appear.
-Create the exact light counterpart of Image 1. Preserve all composition, component positions, headline size and line breaks, sidebar, content, paths, puzzle joins, icons and UI outline continuity.
-Main background #F6F5F0, sidebar #EEEEE8. Main text #242424, secondary #77766D, neutral borders #D8D6CC. The integrated puzzle surfaces use the SAME main background or sidebar neutrals; never add beige ceramic, white product lighting or a separate 3D object. Requested accent #009485 retained on small seams and primary button, with button label #131313. No green page wash.
-Keep completely flat vector-like outlines and integrated card contours, no relief, no texture, no shadow.
-Preserve every existing Portuguese word and navigation item. Single 1536x1024 clean desktop screenshot. No new text, no annotations, no devices, no floral decoration, no standalone artwork pasted on the page.
