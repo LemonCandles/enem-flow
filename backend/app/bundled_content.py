@@ -43,7 +43,7 @@ def refresh_bundle(db, exam, payload, reviewer):
         latest = db.scalar(select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id == old.question_id))
         version = latest + 1
         new = QuestionVersion(id=f"{old.question_id}:{version}", question_id=old.question_id,
-                              version=version, content=desired, status="approved")
+                              canonical_id=old.canonical_id, version=version, content=desired, status="approved")
         db.add(new)
         review = (desired.get('layout') or {}).get('presentation_review', {})
         detail = f"Questão {desired['number']}, página {desired['page']}: {review.get('reason', reason)}"

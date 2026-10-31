@@ -7,6 +7,7 @@ from .models import Exam, QuestionVersion, Review
 from .schemas import ExamImport
 from .presentation import readable_content
 from .preparation import blocking_issues
+from .identity import identify
 
 
 def validate_assets(content: dict):
@@ -23,16 +24,22 @@ def validate_assets(content: dict):
 def import_exam(db: Session, payload: ExamImport):
     if db.get(Exam, payload.id):
         raise HTTPException(409, "Esta prova já foi importada. Use a edição versionada.")
-    items = []
+    items, canonical_ids = [], set()
     for question in payload.questions:
         content = question.content.model_dump()
         validate_assets(content)
+        canonical_id = identify(db, content)
+        if canonical_id in canonical_ids:
+            raise HTTPException(409, "A prova contém duas ocorrências da mesma questão canônica.")
+        canonical_ids.add(canonical_id)
         version_id = f"{question.question_id}:1"
         previous = db.get(QuestionVersion, version_id)
         if previous and previous.content != content:
             raise HTTPException(409, "Questão canônica existente com conteúdo diferente.")
         if not previous:
-            db.add(QuestionVersion(id=version_id, question_id=question.question_id, version=1, content=content))
+            db.add(QuestionVersion(id=version_id, question_id=question.question_id, canonical_id=canonical_id, version=1, content=content))
+        elif previous.canonical_id is None:
+            previous.canonical_id = canonical_id
         items.append(version_id)
     exam = Exam(**payload.model_dump(exclude={"questions", "schema_version"}), items=items, status="draft")
     db.add(exam)
@@ -70,7 +77,7 @@ def public_question(item: dict, finished: bool):
     content = readable_content(item['question_id'], item["content"])
     out = {key: content[key] for key in ("number", "area", "statement", "images", "alternatives", "labels", "page", "original_layout")}
     out['blocks'] = content.get('blocks', [])
-    out.update(id=item["id"], question_id=item["question_id"], version=item["version"])
+    out.update(id=item["id"], question_id=item["question_id"], canonical_id=item.get('canonical_id') or item['question_id'], version=item["version"])
     if finished:
         out.update(correct_answer=content["correct_answer"], annulled=content["annulled"])
     return out

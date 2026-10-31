@@ -66,7 +66,7 @@ def admin(database):
 def exam_payload():
     def question(number, answer, annulled=False):
         return {"question_id": f"teste-q{number}", "content": {
-            "number": number, "area": "Matemática", "statement": "Questão sintética exclusiva para teste: escolha a alternativa.",
+            "number": number, "area": "Matemática", "statement": f"Questão sintética {number} exclusiva para teste: escolha a alternativa.",
             "images": [], "alternatives": [{"letter": l, "text": f"Opção {l}"} for l in "ABCDE"],
             "correct_answer": answer, "annulled": annulled, "page": 2,
             "labels": {"discipline": "Matemática", "themes": ["Teste"] if number == 1 else [], "skills": []}

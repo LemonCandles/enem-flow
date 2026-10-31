@@ -189,7 +189,7 @@ def exam_detail(exam_id: str, db: Session = Depends(get_db, scope="function")):
     exam = visible_exam(db, exam_id)
     return {**summary(db, exam), "items": [public_question({"id": key,
             "question_id": (question := db.get(m.QuestionVersion, key)).question_id,
-            "version": question.version, "content": question.content}, False) for key in exam.items]}
+            "canonical_id": question.canonical_id, "version": question.version, "content": question.content}, False) for key in exam.items]}
 
 
 @app.post("/exam-runs", status_code=201)
@@ -204,7 +204,7 @@ def start_run(payload: s.StartRun, user: m.User = Depends(current_user), db: Ses
     for key in exam.items:
         question = db.get(m.QuestionVersion, key)
         items.append({"id": key, "question_id": question.question_id, "version": question.version,
-                      "content": copy.deepcopy(question.content)})
+                      "canonical_id": question.canonical_id, "content": copy.deepcopy(question.content)})
     run = m.ExamRun(user_id=user.id, exam_id=exam.id, start_key=payload.idempotency_key,
                     exam_info=summary(db, exam), items=items, answers={})
     db.add(run)
@@ -266,7 +266,7 @@ def finish_run(run_id: str, user: m.User = Depends(current_user), db: Session = 
         answer = run.answers.get(item["id"])
         db.add(m.LearningEvent(user_id=user.id, run_id=run.id, item_id=item["id"], position=position,
               answer=answer, correct=None if content["annulled"] else answer == content["correct_answer"],
-              context={"schema_version": "1.0", "content_version": item["version"], "mode": "exam",
+              context={"schema_version": "1.0", "content_version": item["version"], "canonical_id": item.get('canonical_id') or item['question_id'], "mode": "exam",
                        "help_used": False, "labels": content["labels"]}))
     db.flush()
     return run_data(run)
@@ -343,7 +343,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: m.User = Depen
         raise HTTPException(409, "Há uma versão mais recente. Atualize a tela antes de editar.")
     version = last + 1
     question = m.QuestionVersion(id=f"{previous.question_id}:{version}", question_id=previous.question_id,
-                                version=version, content=content)
+                                canonical_id=previous.canonical_id, version=version, content=content)
     db.add(question)
     # Published exams are withdrawn until the new version is reviewed and published again.
     for exam in db.scalars(select(m.Exam)):
