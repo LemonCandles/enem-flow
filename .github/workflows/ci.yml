@@ -24,11 +24,19 @@ jobs:
         with:
           python-version: '3.13'
       - run: pip install -r backend/requirements-dev.lock
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
       - name: SQLite tests and migrations
         if: matrix.database == 'sqlite'
         run: |
           alembic upgrade head
           alembic check
+          python scripts/audit_content.py
           pytest -q
       - name: PostgreSQL tests and migrations
         if: matrix.database == 'postgres'
@@ -56,7 +64,7 @@ jobs:
           alembic upgrade head
           python -m backend.app.cli seed --publish-reviewed
           uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 > /tmp/enem-api.log 2>&1 &
-      - run: npm ci && npm run typecheck && npm run build
+      - run: npm ci && npm run check:content && npm run typecheck && npm run build
         working-directory: frontend
       - run: npx playwright install --with-deps chromium
         working-directory: frontend
@@ -70,3 +78,40 @@ jobs:
         with:
           name: browser-traces
           path: frontend/test-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          retention-days: 7
+          path: |
+            frontend/test-results/**/*.json
+            frontend/test-results/**/*.png
+  containers:
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_DB: enem_ci_test
+      POSTGRES_USER: enem_ci
+      ALLOWED_ORIGINS: http://localhost:3300,http://127.0.0.1:3300
+      COOKIE_SECURE: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Configure disposable environment
+        run: python -c "import secrets; print('POSTGRES_PASSWORD=' + secrets.token_hex(24))" >> "$GITHUB_ENV"
+      - name: Build and boot a clean Compose installation
+        run: docker compose -p enem-ci -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
+      - name: Create persisted attempt
+        run: python scripts/verify_deployment.py create --url http://localhost:3300 --state /tmp/enem-ci-state.json
+      - name: Replace containers and verify persistent volumes
+        run: |
+          docker compose -p enem-ci -f compose.yaml -f compose.test.yaml down
+          docker compose -p enem-ci -f compose.yaml -f compose.test.yaml up -d --wait --wait-timeout 180
+          python scripts/verify_deployment.py check --url http://localhost:3300 --state /tmp/enem-ci-state.json
+      - name: Container logs on failure
+        if: failure()
+        run: docker compose -p enem-ci -f compose.yaml -f compose.test.yaml logs --no-color --tail 100
+      - name: Remove disposable CI containers and volumes
+        if: always()
+        run: docker compose -p enem-ci -f compose.yaml -f compose.test.yaml down -v
