@@ -23,7 +23,7 @@
       "content": {
         "number": 91,
         "area": "Ciências da Natureza",
-        "statement": "Muitas pessoas ainda se espantam com o fato de um passageiro sair ileso de um acidente de carro enquanto o veículo onde estava teve perda total. Essas pessoas talvez considerem, equivocadamente, que os carros mais seguros são os que têm as estruturas mais rígidas, ou seja, estruturas, que durante uma colisão, apresentam menor deformação. Na verdade, o que ocorre é o contrário. Por isso, a partir de 1958, passaram a ser produzidos carros com partes que se deformam facilmente.\n\nDAY, C. Crumple Zones. Disponível em: https://pubs.aip.org.\n\nAcesso em: 2 jul. 2024 (adaptado).\n\nAssim, além dos cintos de segurança e dos airbags, os carros modernos passaram a contar com o dispositivo de segurança conhecido como crumple zone (região deformável, em inglês), conforme a figura.\n\nMomentum and Car safety. GCSE Physics Revision.\n\nDisponível em: www.shalom-education.com.\n\nAcesso em: 5 jul. 2024 (adaptado).\n\nConsiderando o carro, seus ocupantes e o muro da figura como um sistema isolado, o crumple zone aumenta a segurança dos passageiros porque, durante uma colisão, a deformação da estrutura do carro",
+        "statement": "Muitas pessoas ainda se espantam com o fato de um passageiro sair ileso de um acidente de carro enquanto o veículo onde estava teve perda total. Essas pessoas talvez considerem, equivocadamente, que os carros mais seguros são os que têm as estruturas mais rígidas, ou seja, estruturas, que durante uma colisão, apresentam menor deformação. Na verdade, o que ocorre é o contrário. Por isso, a partir de 1958, passaram a ser produzidos carros com partes que se deformam facilmente.\n\nDAY, C. Crumple Zones. Disponível em: https://pubs.aip.org.\n\nAcesso em: 2 jul. 2024 (adaptado).\n\nAssim, além dos cintos de segurança e dos airbags, os carros modernos passaram a contar com o dispositivo de segurança conhecido como crumple zone (região deformável, em inglês), conforme a figura.\n\nConsiderando o carro, seus ocupantes e o muro da figura como um sistema isolado, o crumple zone aumenta a segurança dos passageiros porque, durante uma colisão, a deformação da estrutura do carro",
         "images": [],
         "alternatives": [
           {
@@ -80,50 +80,52 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "abdc95bfbc8c38302e47b8398b1726c867a0259ae433299ef0f15a332781b4b5",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Título e crédito da figura associados ao diagrama; crédito do texto separado.",
+            "source_page": 2,
+            "previous_content_sha256": "2e527828c3ec6c6df673716ca41a08cffd7b18b988c7f605156429e6a0762977"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Muitas pessoas ainda se espantam com o fato de um passageiro sair ileso de um acidente de carro enquanto o veículo onde estava teve perda total. Essas pessoas talvez considerem, equivocadamente, que os carros mais seguros são os que têm as estruturas mais rígidas, ou seja, estruturas, que durante uma colisão, apresentam menor deformação. Na verdade, o que ocorre é o contrário. Por isso, a partir de 1958, passaram a ser produzidos carros com partes que se deformam facilmente."
+            "text": "Muitas pessoas ainda se espantam com o fato de um passageiro sair ileso de um acidente de carro enquanto o veículo onde estava teve perda total. Essas pessoas talvez considerem, equivocadamente, que os carros mais seguros são os que têm as estruturas mais rígidas, ou seja, estruturas, que durante uma colisão, apresentam menor deformação. Na verdade, o que ocorre é o contrário. Por isso, a partir de 1958, passaram a ser produzidos carros com partes que se deformam facilmente.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "DAY, C. Crumple Zones. Disponível em: https://pubs.aip.org."
+            "text": "DAY, C. Crumple Zones. Disponível em: https://pubs.aip.org.",
+            "role": "credit"
           },
           {
             "type": "paragraph",
-            "text": "Acesso em: 2 jul. 2024 (adaptado)."
+            "text": "Acesso em: 2 jul. 2024 (adaptado).",
+            "role": "credit"
           },
           {
             "type": "paragraph",
-            "text": "Assim, além dos cintos de segurança e dos airbags, os carros modernos passaram a contar com o dispositivo de segurança conhecido como crumple zone (região deformável, em inglês), conforme a figura."
-          },
-          {
-            "type": "paragraph",
-            "text": "Momentum and Car safety. GCSE Physics Revision."
-          },
-          {
-            "type": "paragraph",
-            "text": "Disponível em: www.shalom-education.com."
-          },
-          {
-            "type": "paragraph",
-            "text": "Acesso em: 5 jul. 2024 (adaptado)."
+            "text": "Assim, além dos cintos de segurança e dos airbags, os carros modernos passaram a contar com o dispositivo de segurança conhecido como crumple zone (região deformável, em inglês), conforme a figura.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q91-figure-1.png",
               "alt": "Diagrama de colisão de um carro, com a região deformável, o airbag e os cintos de segurança identificados."
-            }
+            },
+            "caption": "Momentum and Car safety. GCSE Physics Revision.",
+            "credit": "Disponível em: www.shalom-education.com.\nAcesso em: 5 jul. 2024 (adaptado).",
+            "equations": []
           },
           {
             "type": "paragraph",
-            "text": "Considerando o carro, seus ocupantes e o muro da figura como um sistema isolado, o crumple zone aumenta a segurança dos passageiros porque, durante uma colisão, a deformação da estrutura do carro"
+            "text": "Considerando o carro, seus ocupantes e o muro da figura como um sistema isolado, o crumple zone aumenta a segurança dos passageiros porque, durante uma colisão, a deformação da estrutura do carro",
+            "role": "body"
           }
         ]
       }
@@ -133,32 +135,32 @@
       "content": {
         "number": 92,
         "area": "Ciências da Natureza",
-        "statement": "Células a combustível microbianas (CCM) são capazes de gerar eletricidade a partir de águas residuárias urbanas e agroindustriais. As CCM são compostas de duas câmaras.\n\nNuma delas, onde ocorre o tratamento da matéria orgânica, as bactérias eletrogênicas crescem formando um biofilme e se alimentam dos poluentes presentes no efluente. Ao se alimentarem, essas bactérias geram uma corrente elétrica que percorre o material sobre o qual elas formaram o biofilme.\n\nUm fio condutor externo possibilita a migração dessa corrente para uma segunda câmara, promovendo uma reação química.\n\nA figura esquematiza uma CCM e as reações envolvidas.\n\nCH₃COO⁻ (aq) + 2 H₂O (I) → 2 CO₂ (g) + 7 H⁺ (aq) + 8 e⁻ 4 H⁺ (aq) + O₂ (g) + 4 e⁻ → 2 H₂O (I) QUINTO, A. C. Biobaterias geram eletricidade a partir de esgoto sanitário e efluentes agroindustriais. Disponível em:\n\nhttps://jornal.usp.br. Acesso em: 1 dez. 2021 (adaptado).\n\nQual das equações representa a reação global que ocorre durante o funcionamento dessa CCM?",
+        "statement": "Células a combustível microbianas (CCM) são capazes de gerar eletricidade a partir de águas residuárias urbanas e agroindustriais. As CCM são compostas de duas câmaras.\n\nNuma delas, onde ocorre o tratamento da matéria orgânica, as bactérias eletrogênicas crescem formando um biofilme e se alimentam dos poluentes presentes no efluente. Ao se alimentarem, essas bactérias geram uma corrente elétrica que percorre o material sobre o qual elas formaram o biofilme.\n\nUm fio condutor externo possibilita a migração dessa corrente para uma segunda câmara, promovendo uma reação química.\n\nA figura esquematiza uma CCM e as reações envolvidas.\n\nQual das equações representa a reação global que ocorre durante o funcionamento dessa CCM?",
         "images": [],
         "alternatives": [
           {
             "letter": "A",
-            "text": "CH₃COO⁻ (aq) + O₂ (g) → 2 CO₂ (g) + 3 H⁺ (aq)",
+            "text": "$\\ce{CH3COO- (aq)} + \\ce{O2 (g)} \\longrightarrow \\ce{2 CO2 (g)} + \\ce{3 H+ (aq)}$",
             "image": null
           },
           {
             "letter": "B",
-            "text": "CO₂ (g) + O₂ (g) + H⁺ (aq) → H₂O (l) + CH₃COO⁻ (aq)",
+            "text": "$\\ce{CO2 (g)} + \\ce{O2 (g)} + \\ce{H+ (aq)} \\longrightarrow \\ce{H2O (l)} + \\ce{CH3COO- (aq)}$",
             "image": null
           },
           {
             "letter": "C",
-            "text": "CH₃COO⁻ (aq) + H⁺ (aq) + 2 O₂ (g) → 2 CO₂ (g) + 2 H₂O (l)",
+            "text": "$\\ce{CH3COO- (aq)} + \\ce{H+ (aq)} + \\ce{2 O2 (g)} \\longrightarrow \\ce{2 CO2 (g)} + \\ce{2 H2O (l)}$",
             "image": null
           },
           {
             "letter": "D",
-            "text": "CH₃COO⁻ (aq) + 6 H₂O (l) → 2 CO₂ (g) + 2 O₂ (g) + 15 H⁺ (aq)",
+            "text": "$\\ce{CH3COO- (aq)} + \\ce{6 H2O (l)} \\longrightarrow \\ce{2 CO2 (g)} + \\ce{2 O2 (g)} + \\ce{15 H+ (aq)}$",
             "image": null
           },
           {
             "letter": "E",
-            "text": "2 CO₂ (g) + 11 H⁺ (aq) + O₂ (g) → CH₃COO⁻ (aq) + 4 H₂O (l)",
+            "text": "$\\ce{2 CO2 (g)} + \\ce{11 H+ (aq)} + \\ce{O2 (g)} \\longrightarrow \\ce{CH3COO- (aq)} + \\ce{4 H2O (l)}$",
             "image": null
           }
         ],
@@ -190,46 +192,55 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "5df68517849a7f373886ca8ff41f7ed2093c386bac301b0f5949e251564a088d",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Semirreações em LaTeX no rodapé da figura, crédito separado e alternativas químicas em LaTeX; fase líquida l conferida no original.",
+            "source_page": 2,
+            "previous_content_sha256": "163366928dba81e9b37140207ea14295899389e05ec54606dd9b7578a3922750"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Células a combustível microbianas (CCM) são capazes de gerar eletricidade a partir de águas residuárias urbanas e agroindustriais. As CCM são compostas de duas câmaras."
+            "text": "Células a combustível microbianas (CCM) são capazes de gerar eletricidade a partir de águas residuárias urbanas e agroindustriais. As CCM são compostas de duas câmaras.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Numa delas, onde ocorre o tratamento da matéria orgânica, as bactérias eletrogênicas crescem formando um biofilme e se alimentam dos poluentes presentes no efluente. Ao se alimentarem, essas bactérias geram uma corrente elétrica que percorre o material sobre o qual elas formaram o biofilme."
+            "text": "Numa delas, onde ocorre o tratamento da matéria orgânica, as bactérias eletrogênicas crescem formando um biofilme e se alimentam dos poluentes presentes no efluente. Ao se alimentarem, essas bactérias geram uma corrente elétrica que percorre o material sobre o qual elas formaram o biofilme.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Um fio condutor externo possibilita a migração dessa corrente para uma segunda câmara, promovendo uma reação química."
+            "text": "Um fio condutor externo possibilita a migração dessa corrente para uma segunda câmara, promovendo uma reação química.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "A figura esquematiza uma CCM e as reações envolvidas."
-          },
-          {
-            "type": "paragraph",
-            "text": "CH₃COO⁻ (aq) + 2 H₂O (I) → 2 CO₂ (g) + 7 H⁺ (aq) + 8 e⁻ 4 H⁺ (aq) + O₂ (g) + 4 e⁻ → 2 H₂O (I) QUINTO, A. C. Biobaterias geram eletricidade a partir de esgoto sanitário e efluentes agroindustriais. Disponível em:"
-          },
-          {
-            "type": "paragraph",
-            "text": "https://jornal.usp.br. Acesso em: 1 dez. 2021 (adaptado)."
+            "text": "A figura esquematiza uma CCM e as reações envolvidas.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q92-figure-1.png",
               "alt": "Esquema das duas câmaras da célula a combustível microbiana, com ânodo, cátodo, membrana e fluxo de elétrons."
-            }
+            },
+            "caption": "Célula a combustível microbiana (CCM).",
+            "credit": "QUINTO, A. C. Biobaterias geram eletricidade a partir de esgoto sanitário e efluentes agroindustriais. Disponível em:\nhttps://jornal.usp.br. Acesso em: 1 dez. 2021 (adaptado).",
+            "equations": [
+              "\\ce{CH3COO- (aq)} + \\ce{2 H2O (l)} \\longrightarrow \\ce{2 CO2 (g)} + \\ce{7 H+ (aq)} + \\ce{8 e-}",
+              "\\ce{4 H+ (aq)} + \\ce{O2 (g)} + \\ce{4 e-} \\longrightarrow \\ce{2 H2O (l)}"
+            ]
           },
           {
             "type": "paragraph",
-            "text": "Qual das equações representa a reação global que ocorre durante o funcionamento dessa CCM?"
+            "text": "Qual das equações representa a reação global que ocorre durante o funcionamento dessa CCM?",
+            "role": "body"
           }
         ]
       }
@@ -322,7 +333,7 @@
       "content": {
         "number": 94,
         "area": "Ciências da Natureza",
-        "statement": "A nimesulida é um fármaco pouco solúvel em água, utilizado como anti-inflamatório, analgésico e antitérmico.\n\nEssa substância pode ser convertida em uma espécie eletricamente carregada, de maior solubilidade em água, mediante o tratamento com uma base de Brönsted-Lowry, isto é, uma espécie química capaz de capturar um próton (H⁺). Na figura são apresentados os grupamentos presentes na estrutura química da nimesulida.\n\nNimesulida GONÇALVES, A. A. et al. Contextualizando reações ácido-base de acordo com a teoria protônica de Brönsted-Lowry usando comprimidos de propranolol e nimesulida.\n\nQuímica Nova, n. 3, 2013 (adaptado).\n\nNa estrutura desse fármaco, o grupamento capaz de reagir com a base de Brönsted-Lowry é o grupo",
+        "statement": "A nimesulida é um fármaco pouco solúvel em água, utilizado como anti-inflamatório, analgésico e antitérmico.\n\nEssa substância pode ser convertida em uma espécie eletricamente carregada, de maior solubilidade em água, mediante o tratamento com uma base de Brönsted-Lowry, isto é, uma espécie química capaz de capturar um próton ($\\ce{H+}$). Na figura são apresentados os grupamentos presentes na estrutura química da nimesulida.\n\nNa estrutura desse fármaco, o grupamento capaz de reagir com a base de Brönsted-Lowry é o grupo",
         "images": [],
         "alternatives": [
           {
@@ -379,38 +390,42 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "cbddbdbd913d44313980da76111e7c50955883d0d6e1b9f622a26012d101d256",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Carga do próton em LaTeX; legenda Nimesulida e crédito associados à estrutura química.",
+            "source_page": 3,
+            "previous_content_sha256": "b573a588db92f675721ed10be957e48fd0935d7baf8ecc46681626e21efc7962"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "A nimesulida é um fármaco pouco solúvel em água, utilizado como anti-inflamatório, analgésico e antitérmico."
+            "text": "A nimesulida é um fármaco pouco solúvel em água, utilizado como anti-inflamatório, analgésico e antitérmico.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Essa substância pode ser convertida em uma espécie eletricamente carregada, de maior solubilidade em água, mediante o tratamento com uma base de Brönsted-Lowry, isto é, uma espécie química capaz de capturar um próton (H⁺). Na figura são apresentados os grupamentos presentes na estrutura química da nimesulida."
-          },
-          {
-            "type": "paragraph",
-            "text": "Nimesulida GONÇALVES, A. A. et al. Contextualizando reações ácido-base de acordo com a teoria protônica de Brönsted-Lowry usando comprimidos de propranolol e nimesulida."
-          },
-          {
-            "type": "paragraph",
-            "text": "Química Nova, n. 3, 2013 (adaptado)."
+            "text": "Essa substância pode ser convertida em uma espécie eletricamente carregada, de maior solubilidade em água, mediante o tratamento com uma base de Brönsted-Lowry, isto é, uma espécie química capaz de capturar um próton ($\\ce{H+}$). Na figura são apresentados os grupamentos presentes na estrutura química da nimesulida.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q94-figure-1.png",
               "alt": "Estrutura química da nimesulida com os grupamentos sulfonamida, metila, fenila, nitro e éter destacados."
-            }
+            },
+            "caption": "Nimesulida",
+            "credit": "GONÇALVES, A. A. et al. Contextualizando reações ácido-base de acordo com a teoria protônica de Brönsted-Lowry usando comprimidos de propranolol e nimesulida.\nQuímica Nova, n. 3, 2013 (adaptado).",
+            "equations": []
           },
           {
             "type": "paragraph",
-            "text": "Na estrutura desse fármaco, o grupamento capaz de reagir com a base de Brönsted-Lowry é o grupo"
+            "text": "Na estrutura desse fármaco, o grupamento capaz de reagir com a base de Brönsted-Lowry é o grupo",
+            "role": "body"
           }
         ]
       }
@@ -589,32 +604,32 @@
       "content": {
         "number": 97,
         "area": "Ciências da Natureza",
-        "statement": "O soro caseiro serve para combater a desidratação por meio da reposição da água e sais minerais perdidos, por exemplo, por diarreia. Uma receita simples para a sua preparação consiste em utilizar duas colheres grandes (de sopa) de açúcar e duas colheres pequenas (de café) de sal de cozinha, dissolvidos em 2 L de água fervida, obtendo-se uma solução com concentração de íon sódio de 1,4 mg/mL.\n\nConsidere as massas molares: NaCl = 58,5 g/mol;\n\nNa = 23 g/mol.\n\nQual é o valor mais próximo da massa, em grama, de cloreto de sódio presente em uma única colher pequena?",
+        "statement": "O soro caseiro serve para combater a desidratação por meio da reposição da água e sais minerais perdidos, por exemplo, por diarreia. Uma receita simples para a sua preparação consiste em utilizar duas colheres grandes (de sopa) de açúcar e duas colheres pequenas (de café) de sal de cozinha, dissolvidos em $2\\,\\mathrm{L}$ de água fervida, obtendo-se uma solução com concentração de íon sódio de $1{,}4\\,\\mathrm{mg/mL}$.\n\nConsidere as massas molares: $\\ce{NaCl} = 58{,}5\\,\\mathrm{g/mol}$; $\\ce{Na} = 23\\,\\mathrm{g/mol}$.\n\nQual é o valor mais próximo da massa, em grama, de cloreto de sódio presente em uma única colher pequena?",
         "images": [],
         "alternatives": [
           {
             "letter": "A",
-            "text": "0,7 g",
+            "text": "$0{,}7\\,\\mathrm{g}$",
             "image": null
           },
           {
             "letter": "B",
-            "text": "1,8 g",
+            "text": "$1{,}8\\,\\mathrm{g}$",
             "image": null
           },
           {
             "letter": "C",
-            "text": "2,8 g",
+            "text": "$2{,}8\\,\\mathrm{g}$",
             "image": null
           },
           {
             "letter": "D",
-            "text": "3,6 g",
+            "text": "$3{,}6\\,\\mathrm{g}$",
             "image": null
           },
           {
             "letter": "E",
-            "text": "7,0 g",
+            "text": "$7{,}0\\,\\mathrm{g}$",
             "image": null
           }
         ],
@@ -646,27 +661,32 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "d60151804fae860639e16d7843fb014cf07dd2b598538ab1a61ee4d8ea41fa75",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Massas molares, concentração e unidades em LaTeX; parênteses e ordem do texto preservados.",
+            "source_page": 3,
+            "previous_content_sha256": "00e9a17c740446bb35896528c63a50c5d9b17bb7a2e6e3df3643bab7037ae950"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "O soro caseiro serve para combater a desidratação por meio da reposição da água e sais minerais perdidos, por exemplo, por diarreia. Uma receita simples para a sua preparação consiste em utilizar duas colheres grandes (de sopa) de açúcar e duas colheres pequenas (de café) de sal de cozinha, dissolvidos em 2 L de água fervida, obtendo-se uma solução com concentração de íon sódio de 1,4 mg/mL."
+            "text": "O soro caseiro serve para combater a desidratação por meio da reposição da água e sais minerais perdidos, por exemplo, por diarreia. Uma receita simples para a sua preparação consiste em utilizar duas colheres grandes (de sopa) de açúcar e duas colheres pequenas (de café) de sal de cozinha, dissolvidos em $2\\,\\mathrm{L}$ de água fervida, obtendo-se uma solução com concentração de íon sódio de $1{,}4\\,\\mathrm{mg/mL}$.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Considere as massas molares: NaCl = 58,5 g/mol;"
+            "text": "Considere as massas molares: $\\ce{NaCl} = 58{,}5\\,\\mathrm{g/mol}$; $\\ce{Na} = 23\\,\\mathrm{g/mol}$.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Na = 23 g/mol."
-          },
-          {
-            "type": "paragraph",
-            "text": "Qual é o valor mais próximo da massa, em grama, de cloreto de sódio presente em uma única colher pequena?"
+            "text": "Qual é o valor mais próximo da massa, em grama, de cloreto de sódio presente em uma única colher pequena?",
+            "role": "body"
           }
         ]
       }
@@ -770,32 +790,32 @@
       "content": {
         "number": 99,
         "area": "Ciências da Natureza",
-        "statement": "Uma ambulância em alta velocidade com a sirene ligada desloca-se em direção a um radar operado por uma pessoa.\n\nO radar emite ondas de rádio com frequência f₀ que são refletidas pela dianteira da ambulância, retornando para o detector com frequência fᵣ. A percepção do operador do radar, em relação ao som emitido pela sirene, é de que este se altera à medida que a ambulância se aproxima ou se afasta.\n\nDurante a aproximação, como o operador percebe o som da sirene e qual é a relação entre as frequências fᵣ e f₀ medidas pelo radar?",
+        "statement": "Uma ambulância em alta velocidade com a sirene ligada desloca-se em direção a um radar operado por uma pessoa.\n\nO radar emite ondas de rádio com frequência $f_0$ que são refletidas pela dianteira da ambulância, retornando para o detector com frequência $f_r$. A percepção do operador do radar, em relação ao som emitido pela sirene, é de que este se altera à medida que a ambulância se aproxima ou se afasta.\n\nDurante a aproximação, como o operador percebe o som da sirene e qual é a relação entre as frequências $f_r$ e $f_0$ medidas pelo radar?",
         "images": [],
         "alternatives": [
           {
             "letter": "A",
-            "text": "Mais grave do que o som emitido e fᵣ < f₀.",
+            "text": "Mais grave do que o som emitido e $f_r < f_0$.",
             "image": null
           },
           {
             "letter": "B",
-            "text": "Mais agudo do que o som emitido e fᵣ < f₀.",
+            "text": "Mais agudo do que o som emitido e $f_r < f_0$.",
             "image": null
           },
           {
             "letter": "C",
-            "text": "Mais agudo do que o som emitido e fᵣ = f₀.",
+            "text": "Mais agudo do que o som emitido e $f_r = f_0$.",
             "image": null
           },
           {
             "letter": "D",
-            "text": "Mais agudo do que o som emitido e fᵣ > f₀.",
+            "text": "Mais agudo do que o som emitido e $f_r > f_0$.",
             "image": null
           },
           {
             "letter": "E",
-            "text": "Mais grave do que o som emitido e fᵣ > f₀.",
+            "text": "Mais grave do que o som emitido e $f_r > f_0$.",
             "image": null
           }
         ],
@@ -827,23 +847,32 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "60b69e1b85b06c4a26d6bc91db5f7ed02e014b149bdc16163f30a9e92cfbd5b1",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Índices das frequências e comparações das alternativas em LaTeX.",
+            "source_page": 4,
+            "previous_content_sha256": "c7afd10979804254d8bca8d67e5cf3af59d21a3390685a6d6bddbbe19ca93f43"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Uma ambulância em alta velocidade com a sirene ligada desloca-se em direção a um radar operado por uma pessoa."
+            "text": "Uma ambulância em alta velocidade com a sirene ligada desloca-se em direção a um radar operado por uma pessoa.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "O radar emite ondas de rádio com frequência f₀ que são refletidas pela dianteira da ambulância, retornando para o detector com frequência fᵣ. A percepção do operador do radar, em relação ao som emitido pela sirene, é de que este se altera à medida que a ambulância se aproxima ou se afasta."
+            "text": "O radar emite ondas de rádio com frequência $f_0$ que são refletidas pela dianteira da ambulância, retornando para o detector com frequência $f_r$. A percepção do operador do radar, em relação ao som emitido pela sirene, é de que este se altera à medida que a ambulância se aproxima ou se afasta.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Durante a aproximação, como o operador percebe o som da sirene e qual é a relação entre as frequências fᵣ e f₀ medidas pelo radar?"
+            "text": "Durante a aproximação, como o operador percebe o som da sirene e qual é a relação entre as frequências $f_r$ e $f_0$ medidas pelo radar?",
+            "role": "body"
           }
         ]
       }
@@ -853,7 +882,7 @@
       "content": {
         "number": 100,
         "area": "Ciências da Natureza",
-        "statement": "Mirascópio 3D: produtor de ilusão instantânea O equipamento ilustrado na figura, de dimensões apresentadas no esquema, é composto por dois espelhos côncavos E₁ e E₂, apoiados um sobre o outro por suas bordas, de tal forma que o vértice de E₁ coincide com o foco de E₂ e vice-versa. Na abertura circular de E₂, é formada uma imagem tridimensional de um objeto posicionado sobre o vértice de E₁. Essa imagem é formada a partir dos raios procedentes do objeto, refletidos por E₂ e E₁, respectivamente, conforme o esquema.\n\nOs observadores julgam visualizar o objeto quando estão, de fato, visualizando sua imagem. O efeito só é possível porque as superfícies de ambos os espelhos são de extrema qualidade.\n\nSALZMANN, W. Disponível em: https://wissenstexte.de.\n\nAcesso em: 27 jun. 2024 (adaptado).\n\nA natureza da imagem formada e a distância vertical entre cada ponto objeto e seu correspondente ponto imagem são",
+        "statement": "Mirascópio 3D: produtor de ilusão instantânea\n\nO equipamento ilustrado na figura, de dimensões apresentadas no esquema, é composto por dois espelhos côncavos $E_1$ e $E_2$, apoiados um sobre o outro por suas bordas, de tal forma que o vértice de $E_1$ coincide com o foco de $E_2$ e vice-versa. Na abertura circular de $E_2$, é formada uma imagem tridimensional de um objeto posicionado sobre o vértice de $E_1$. Essa imagem é formada a partir dos raios procedentes do objeto, refletidos por $E_2$ e $E_1$, respectivamente, conforme o esquema.\n\nOs observadores julgam visualizar o objeto quando estão, de fato, visualizando sua imagem. O efeito só é possível porque as superfícies de ambos os espelhos são de extrema qualidade.\n\nA natureza da imagem formada e a distância vertical entre cada ponto objeto e seu correspondente ponto imagem são",
         "images": [],
         "alternatives": [
           {
@@ -910,38 +939,47 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "2dfaf0068380f4c4ee18d992719211267e5fef3e3e9cef313bf4c8e37fc6c4ed",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Índices dos espelhos em LaTeX; título do texto e crédito do esquema separados.",
+            "source_page": 4,
+            "previous_content_sha256": "b410be912a08a22ffef9d692f5f8f0e367d7408ccd48ff5af8daa54fb7fd6ed8"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Mirascópio 3D: produtor de ilusão instantânea O equipamento ilustrado na figura, de dimensões apresentadas no esquema, é composto por dois espelhos côncavos E₁ e E₂, apoiados um sobre o outro por suas bordas, de tal forma que o vértice de E₁ coincide com o foco de E₂ e vice-versa. Na abertura circular de E₂, é formada uma imagem tridimensional de um objeto posicionado sobre o vértice de E₁. Essa imagem é formada a partir dos raios procedentes do objeto, refletidos por E₂ e E₁, respectivamente, conforme o esquema."
+            "text": "Mirascópio 3D: produtor de ilusão instantânea",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Os observadores julgam visualizar o objeto quando estão, de fato, visualizando sua imagem. O efeito só é possível porque as superfícies de ambos os espelhos são de extrema qualidade."
+            "text": "O equipamento ilustrado na figura, de dimensões apresentadas no esquema, é composto por dois espelhos côncavos $E_1$ e $E_2$, apoiados um sobre o outro por suas bordas, de tal forma que o vértice de $E_1$ coincide com o foco de $E_2$ e vice-versa. Na abertura circular de $E_2$, é formada uma imagem tridimensional de um objeto posicionado sobre o vértice de $E_1$. Essa imagem é formada a partir dos raios procedentes do objeto, refletidos por $E_2$ e $E_1$, respectivamente, conforme o esquema.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "SALZMANN, W. Disponível em: https://wissenstexte.de."
-          },
-          {
-            "type": "paragraph",
-            "text": "Acesso em: 27 jun. 2024 (adaptado)."
+            "text": "Os observadores julgam visualizar o objeto quando estão, de fato, visualizando sua imagem. O efeito só é possível porque as superfícies de ambos os espelhos são de extrema qualidade.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q100-figure-1.png",
               "alt": "Mirascópio e esquema dos espelhos côncavos E1 e E2, com suas dimensões e os raios de luz."
-            }
+            },
+            "caption": "",
+            "credit": "SALZMANN, W. Disponível em: https://wissenstexte.de.\nAcesso em: 27 jun. 2024 (adaptado).",
+            "equations": []
           },
           {
             "type": "paragraph",
-            "text": "A natureza da imagem formada e a distância vertical entre cada ponto objeto e seu correspondente ponto imagem são"
+            "text": "A natureza da imagem formada e a distância vertical entre cada ponto objeto e seu correspondente ponto imagem são",
+            "role": "body"
           }
         ]
       }
@@ -2167,32 +2205,32 @@
       "content": {
         "number": 114,
         "area": "Ciências da Natureza",
-        "statement": "Um dos agentes que mais contribui para a poluição do ar é o automóvel a combustão interna. Em áreas urbanas, isso é demonstrado dramaticamente pela fumaça fotoquímica, resultante da interação entre óxidos de nitrogênio, hidrocarbonetos e luz solar, para formar produtos de oxidação, que causam irritação aos olhos, ao aparelho respiratório e danos às plantas. As condições de operação de motores a combustão, como a razão da mistura ar/combustível no cilindro, influenciam na composição dos gases lançados pelo escapamento na atmosfera.\n\nO gráfico ilustra a variação nas composições dos principais gases, dióxido de carbono (CO₂), hidrocarbonetos (HC), monóxido de carbono (CO), monóxido de nitrogênio (NO) e oxigênio molecular (O₂), emitidos por um motor a gasolina, em diferentes razões ar/combustível, em massa.\n\nRANGEL, M. C.; CARVALHO, M. F. A. Impacto dos catalisadores automotivos no controle da qualidade do ar. Química Nova, v. 26, 2003 (adaptado).\n\nNa condição de razão ar/combustível igual a 18, haverá uma emissão",
+        "statement": "Um dos agentes que mais contribui para a poluição do ar é o automóvel a combustão interna. Em áreas urbanas, isso é demonstrado dramaticamente pela fumaça fotoquímica, resultante da interação entre óxidos de nitrogênio, hidrocarbonetos e luz solar, para formar produtos de oxidação, que causam irritação aos olhos, ao aparelho respiratório e danos às plantas. As condições de operação de motores a combustão, como a razão da mistura ar/combustível no cilindro, influenciam na composição dos gases lançados pelo escapamento na atmosfera.\n\nO gráfico ilustra a variação nas composições dos principais gases, dióxido de carbono ($\\ce{CO2}$), hidrocarbonetos ($\\ce{HC}$), monóxido de carbono ($\\ce{CO}$), monóxido de nitrogênio ($\\ce{NO}$) e oxigênio molecular ($\\ce{O2}$), emitidos por um motor a gasolina, em diferentes razões ar/combustível, em massa.\n\nNa condição de razão ar/combustível igual a 18, haverá uma emissão",
         "images": [],
         "alternatives": [
           {
             "letter": "A",
-            "text": "baixa de O₂ e alta de NO.",
+            "text": "baixa de $\\ce{O2}$ e alta de $\\ce{NO}$.",
             "image": null
           },
           {
             "letter": "B",
-            "text": "baixa de NO e alta de HC.",
+            "text": "baixa de $\\ce{NO}$ e alta de $\\ce{HC}$.",
             "image": null
           },
           {
             "letter": "C",
-            "text": "baixa de CO e alta de CO₂.",
+            "text": "baixa de $\\ce{CO}$ e alta de $\\ce{CO2}$.",
             "image": null
           },
           {
             "letter": "D",
-            "text": "baixa de HC e alta de CO.",
+            "text": "baixa de $\\ce{HC}$ e alta de $\\ce{CO}$.",
             "image": null
           },
           {
             "letter": "E",
-            "text": "baixa de CO₂ e alta de HC.",
+            "text": "baixa de $\\ce{CO2}$ e alta de $\\ce{HC}$.",
             "image": null
           }
         ],
@@ -2224,34 +2262,42 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "b6f5be5ce74aa1afae4a29f20f8969ad902e82969739a44da8ad81c6b4aa0f9d",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Espécies químicas em LaTeX e crédito associado ao gráfico.",
+            "source_page": 8,
+            "previous_content_sha256": "a9454de4feff583f93b0f0192790997c2412ecbd66c1096abd136154d52d1fe6"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Um dos agentes que mais contribui para a poluição do ar é o automóvel a combustão interna. Em áreas urbanas, isso é demonstrado dramaticamente pela fumaça fotoquímica, resultante da interação entre óxidos de nitrogênio, hidrocarbonetos e luz solar, para formar produtos de oxidação, que causam irritação aos olhos, ao aparelho respiratório e danos às plantas. As condições de operação de motores a combustão, como a razão da mistura ar/combustível no cilindro, influenciam na composição dos gases lançados pelo escapamento na atmosfera."
+            "text": "Um dos agentes que mais contribui para a poluição do ar é o automóvel a combustão interna. Em áreas urbanas, isso é demonstrado dramaticamente pela fumaça fotoquímica, resultante da interação entre óxidos de nitrogênio, hidrocarbonetos e luz solar, para formar produtos de oxidação, que causam irritação aos olhos, ao aparelho respiratório e danos às plantas. As condições de operação de motores a combustão, como a razão da mistura ar/combustível no cilindro, influenciam na composição dos gases lançados pelo escapamento na atmosfera.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "O gráfico ilustra a variação nas composições dos principais gases, dióxido de carbono (CO₂), hidrocarbonetos (HC), monóxido de carbono (CO), monóxido de nitrogênio (NO) e oxigênio molecular (O₂), emitidos por um motor a gasolina, em diferentes razões ar/combustível, em massa."
-          },
-          {
-            "type": "paragraph",
-            "text": "RANGEL, M. C.; CARVALHO, M. F. A. Impacto dos catalisadores automotivos no controle da qualidade do ar. Química Nova, v. 26, 2003 (adaptado)."
+            "text": "O gráfico ilustra a variação nas composições dos principais gases, dióxido de carbono ($\\ce{CO2}$), hidrocarbonetos ($\\ce{HC}$), monóxido de carbono ($\\ce{CO}$), monóxido de nitrogênio ($\\ce{NO}$) e oxigênio molecular ($\\ce{O2}$), emitidos por um motor a gasolina, em diferentes razões ar/combustível, em massa.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q114-figure-1.png",
               "alt": "Gráfico das emissões de gases CO2, HC, CO, NO e O2 em função da razão ar/combustível."
-            }
+            },
+            "caption": "",
+            "credit": "RANGEL, M. C.; CARVALHO, M. F. A. Impacto dos catalisadores automotivos no controle da qualidade do ar. Química Nova, v. 26, 2003 (adaptado).",
+            "equations": []
           },
           {
             "type": "paragraph",
-            "text": "Na condição de razão ar/combustível igual a 18, haverá uma emissão"
+            "text": "Na condição de razão ar/combustível igual a 18, haverá uma emissão",
+            "role": "body"
           }
         ]
       }
@@ -2355,7 +2401,7 @@
       "content": {
         "number": 116,
         "area": "Ciências da Natureza",
-        "statement": "O magnésio metálico utilizado em ligas leves é produzido em um processo que envolve várias etapas e utiliza água do mar como matéria-prima. A primeira etapa desse processo consiste na reação entre o íon Mg²⁺ e hidróxido de cálcio, Ca(OH)₂, obtendo uma mistura que contém hidróxido de magnésio, pouco solúvel, e íons Ca²⁺, de acordo com a equação química:\n\nMg²⁺ (aq) + Ca(OH)₂ (aq) → Mg(OH)₂ (s) + Ca²⁺ (aq) O método adequado para separar o Mg(OH)₂ dessa mistura é a",
+        "statement": "O magnésio metálico utilizado em ligas leves é produzido em um processo que envolve várias etapas e utiliza água do mar como matéria-prima. A primeira etapa desse processo consiste na reação entre o íon $\\ce{Mg^2+}$ e hidróxido de cálcio, $\\ce{Ca(OH)2}$, obtendo uma mistura que contém hidróxido de magnésio, pouco solúvel, e íons $\\ce{Ca^2+}$, de acordo com a equação química:\n\nO método adequado para separar o $\\ce{Mg(OH)2}$ dessa mistura é a",
         "images": [],
         "alternatives": [
           {
@@ -2412,19 +2458,31 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "1210fa6e5d844ae0146ff6c16a879f388283207137c6181b66b4a3373a71a6e6",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Equação química separada do comando e renderizada em LaTeX, com cargas e estados físicos.",
+            "source_page": 9,
+            "previous_content_sha256": "5c55805134482d0c006d3f49425378293937e8008c38aa915b55ac09e2d09c3d"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "O magnésio metálico utilizado em ligas leves é produzido em um processo que envolve várias etapas e utiliza água do mar como matéria-prima. A primeira etapa desse processo consiste na reação entre o íon Mg²⁺ e hidróxido de cálcio, Ca(OH)₂, obtendo uma mistura que contém hidróxido de magnésio, pouco solúvel, e íons Ca²⁺, de acordo com a equação química:"
+            "text": "O magnésio metálico utilizado em ligas leves é produzido em um processo que envolve várias etapas e utiliza água do mar como matéria-prima. A primeira etapa desse processo consiste na reação entre o íon $\\ce{Mg^2+}$ e hidróxido de cálcio, $\\ce{Ca(OH)2}$, obtendo uma mistura que contém hidróxido de magnésio, pouco solúvel, e íons $\\ce{Ca^2+}$, de acordo com a equação química:",
+            "role": "body"
+          },
+          {
+            "type": "math",
+            "tex": "\\ce{Mg^2+ (aq)} + \\ce{Ca(OH)2 (aq)} \\longrightarrow \\ce{Mg(OH)2 (s)} + \\ce{Ca^2+ (aq)}"
           },
           {
             "type": "paragraph",
-            "text": "Mg²⁺ (aq) + Ca(OH)₂ (aq) → Mg(OH)₂ (s) + Ca²⁺ (aq) O método adequado para separar o Mg(OH)₂ dessa mistura é a"
+            "text": "O método adequado para separar o $\\ce{Mg(OH)2}$ dessa mistura é a",
+            "role": "body"
           }
         ]
       }
@@ -2521,7 +2579,7 @@
       "content": {
         "number": 118,
         "area": "Ciências da Natureza",
-        "statement": "A hidroxiapatita, Ca₅(PO₄)₃OH, é um mineral constituinte do esmalte dos dentes. Entre as diversas reações que ocorrem no meio bucal, encontram-se em equilíbrio as reações de desmineralização e mineralização da hidroxiapatita em meio aquoso, ilustradas a seguir.\n\nA desmineralização está associada à fragilização do esmalte do dente e à formação de cáries.\n\nO uso de creme dental pode minimizar a perda da hidroxiapatita. O quadro apresenta o agente de polimento e o pH de alguns cremes dentais comerciais.\n\nSTORGATTO, G. A.; BRAIBANTE, M. E. F.; BRAIBANTE, H. T. S.\n\nA química na odontologia. Química Nova na Escola, v. 39, fev. 2017 (adaptado).\n\nConsiderando o equilíbrio químico envolvido, qual creme dental promove a maior desmineralização do esmalte do dente?",
+        "statement": "A hidroxiapatita, $\\ce{Ca5(PO4)3OH}$, é um mineral constituinte do esmalte dos dentes. Entre as diversas reações que ocorrem no meio bucal, encontram-se em equilíbrio as reações de desmineralização e mineralização da hidroxiapatita em meio aquoso, ilustradas a seguir.\n\nA desmineralização está associada à fragilização do esmalte do dente e à formação de cáries.\n\nO uso de creme dental pode minimizar a perda da hidroxiapatita. O quadro apresenta o agente de polimento e o pH de alguns cremes dentais comerciais.\n\nSTORGATTO, G. A.; BRAIBANTE, M. E. F.; BRAIBANTE, H. T. S.\n\nA química na odontologia. Química Nova na Escola, v. 39, fev. 2017 (adaptado).\n\nConsiderando o equilíbrio químico envolvido, qual creme dental promove a maior desmineralização do esmalte do dente?",
         "images": [],
         "alternatives": [
           {
@@ -2578,27 +2636,36 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "dacce2c11d917535cd53212cd1e63e8c05a07240a5524d163b49c684d0436e9b",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Hidroxiapatita, cargas e equilíbrio em LaTeX químico, preservando os rótulos dos dois sentidos.",
+            "source_page": 9,
+            "previous_content_sha256": "d7014b0988b255cfe055d2e9146b40e3745707a10ffe0098f4f2513061e47156"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "A hidroxiapatita, Ca₅(PO₄)₃OH, é um mineral constituinte do esmalte dos dentes. Entre as diversas reações que ocorrem no meio bucal, encontram-se em equilíbrio as reações de desmineralização e mineralização da hidroxiapatita em meio aquoso, ilustradas a seguir."
+            "text": "A hidroxiapatita, $\\ce{Ca5(PO4)3OH}$, é um mineral constituinte do esmalte dos dentes. Entre as diversas reações que ocorrem no meio bucal, encontram-se em equilíbrio as reações de desmineralização e mineralização da hidroxiapatita em meio aquoso, ilustradas a seguir.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "A desmineralização está associada à fragilização do esmalte do dente e à formação de cáries."
+            "text": "A desmineralização está associada à fragilização do esmalte do dente e à formação de cáries.",
+            "role": "body"
           },
           {
             "type": "math",
-            "tex": "\\mathrm{Ca_5(PO_4)_3OH\\,(s)+H^+\\,(aq)}\\ \\underset{\\text{Mineralização}}{\\overset{\\text{Desmineralização}}{\\rightleftharpoons}}\\ \\mathrm{5\\,Ca^{2+}\\,(aq)+3\\,PO_4^{3-}\\,(aq)+H_2O\\,(l)}"
+            "tex": "\\ce{Ca5(PO4)3OH (s)} + \\ce{H+ (aq)}\\ \\underset{\\text{Mineralização}}{\\overset{\\text{Desmineralização}}{\\rightleftharpoons}}\\ \\ce{5 Ca^2+ (aq)} + \\ce{3 PO4^3- (aq)} + \\ce{H2O (l)}"
           },
           {
             "type": "paragraph",
-            "text": "O uso de creme dental pode minimizar a perda da hidroxiapatita. O quadro apresenta o agente de polimento e o pH de alguns cremes dentais comerciais."
+            "text": "O uso de creme dental pode minimizar a perda da hidroxiapatita. O quadro apresenta o agente de polimento e o pH de alguns cremes dentais comerciais.",
+            "role": "body"
           },
           {
             "type": "table",
@@ -2638,15 +2705,18 @@
           },
           {
             "type": "paragraph",
-            "text": "STORGATTO, G. A.; BRAIBANTE, M. E. F.; BRAIBANTE, H. T. S."
+            "text": "STORGATTO, G. A.; BRAIBANTE, M. E. F.; BRAIBANTE, H. T. S.",
+            "role": "credit"
           },
           {
             "type": "paragraph",
-            "text": "A química na odontologia. Química Nova na Escola, v. 39, fev. 2017 (adaptado)."
+            "text": "A química na odontologia. Química Nova na Escola, v. 39, fev. 2017 (adaptado).",
+            "role": "credit"
           },
           {
             "type": "paragraph",
-            "text": "Considerando o equilíbrio químico envolvido, qual creme dental promove a maior desmineralização do esmalte do dente?"
+            "text": "Considerando o equilíbrio químico envolvido, qual creme dental promove a maior desmineralização do esmalte do dente?",
+            "role": "body"
           }
         ]
       }
@@ -3028,7 +3098,7 @@
       "content": {
         "number": 123,
         "area": "Ciências da Natureza",
-        "statement": "Os pesticidas naturais vêm sendo utilizados no controle de pragas e doenças agrícolas como substituintes de pesticidas sintéticos tradicionais, por serem menos nocivos ao ambiente, biodegradáveis e minimizarem custos e riscos relativos à lavoura. Por exemplo, os compostos 1 e 2 estão envolvidos nas respostas de defesa das plantas. Os grupos funcionais presentes nesses compostos são importantes para suas propriedades no controle de pragas.\n\nPINTO-ZEVALLOS, D. M.; ZARBIN, P. H. G. A química na agricultura:\n\nperspectivas para o desenvolvimento de tecnologias sustentáveis.\n\nQuímica Nova, n. 10, 2013 (adaptado).\n\nQual é a função orgânica correspondente ao grupo funcional comum presente nesses dois compostos?",
+        "statement": "Os pesticidas naturais vêm sendo utilizados no controle de pragas e doenças agrícolas como substituintes de pesticidas sintéticos tradicionais, por serem menos nocivos ao ambiente, biodegradáveis e minimizarem custos e riscos relativos à lavoura. Por exemplo, os compostos 1 e 2 estão envolvidos nas respostas de defesa das plantas. Os grupos funcionais presentes nesses compostos são importantes para suas propriedades no controle de pragas.\n\nQual é a função orgânica correspondente ao grupo funcional comum presente nesses dois compostos?",
         "images": [],
         "alternatives": [
           {
@@ -3085,38 +3155,37 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "9a6db5d4c22ed3052360f35491e8b5e1ecca12bc8b6656ecbcf77c40f68947c8",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Crédito bibliográfico associado às fórmulas estruturais preservadas como figura.",
+            "source_page": 11,
+            "previous_content_sha256": "ab515e986ee6cedb7fcad0c5c14440c5914b4ab2874da3f73de8fdb9e9cc74af"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Os pesticidas naturais vêm sendo utilizados no controle de pragas e doenças agrícolas como substituintes de pesticidas sintéticos tradicionais, por serem menos nocivos ao ambiente, biodegradáveis e minimizarem custos e riscos relativos à lavoura. Por exemplo, os compostos 1 e 2 estão envolvidos nas respostas de defesa das plantas. Os grupos funcionais presentes nesses compostos são importantes para suas propriedades no controle de pragas."
-          },
-          {
-            "type": "paragraph",
-            "text": "PINTO-ZEVALLOS, D. M.; ZARBIN, P. H. G. A química na agricultura:"
-          },
-          {
-            "type": "paragraph",
-            "text": "perspectivas para o desenvolvimento de tecnologias sustentáveis."
-          },
-          {
-            "type": "paragraph",
-            "text": "Química Nova, n. 10, 2013 (adaptado)."
+            "text": "Os pesticidas naturais vêm sendo utilizados no controle de pragas e doenças agrícolas como substituintes de pesticidas sintéticos tradicionais, por serem menos nocivos ao ambiente, biodegradáveis e minimizarem custos e riscos relativos à lavoura. Por exemplo, os compostos 1 e 2 estão envolvidos nas respostas de defesa das plantas. Os grupos funcionais presentes nesses compostos são importantes para suas propriedades no controle de pragas.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q123-figure-1.png",
               "alt": "Fórmulas estruturais dos compostos orgânicos 1 e 2 usados na defesa das plantas."
-            }
+            },
+            "caption": "",
+            "credit": "PINTO-ZEVALLOS, D. M.; ZARBIN, P. H. G. A química na agricultura:\nperspectivas para o desenvolvimento de tecnologias sustentáveis.\nQuímica Nova, n. 10, 2013 (adaptado).",
+            "equations": []
           },
           {
             "type": "paragraph",
-            "text": "Qual é a função orgânica correspondente ao grupo funcional comum presente nesses dois compostos?"
+            "text": "Qual é a função orgânica correspondente ao grupo funcional comum presente nesses dois compostos?",
+            "role": "body"
           }
         ]
       }
@@ -3510,7 +3579,7 @@
       "content": {
         "number": 128,
         "area": "Ciências da Natureza",
-        "statement": "Placas solares comuns dependem de dias ensolarados para gerar energia. Mas podemos gerar eletricidade com a ajuda de gotas de chuva, revestindo placas solares com uma fina camada de grafeno. Os íons dissociados a partir da água da chuva (Am+ e Bn−) tornam a combinação grafeno e água da chuva um par perfeito para geração de energia. O processo requer apenas uma camada de grafeno para que grande quantidade de elétrons (e⁻) se movimente ao longo da superfície.\n\nTANG, Q. et al. A Solar Cell that is Triggered by Sun and Rain.\n\nAngewandte Chemie International Edition, n. 55, 2016 (adaptado).\n\nAo produzir eletricidade em dias chuvosos, o grafeno",
+        "statement": "Placas solares comuns dependem de dias ensolarados para gerar energia. Mas podemos gerar eletricidade com a ajuda de gotas de chuva, revestindo placas solares com uma fina camada de grafeno. Os íons dissociados a partir da água da chuva ($A^{m+}$ e $B^{n-}$) tornam a combinação grafeno e água da chuva um par perfeito para geração de energia. O processo requer apenas uma camada de grafeno para que grande quantidade de elétrons ($\\ce{e-}$) se movimente ao longo da superfície.\n\nAo produzir eletricidade em dias chuvosos, o grafeno",
         "images": [],
         "alternatives": [
           {
@@ -3567,34 +3636,37 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "a04463ad23fda72ea3542882cbd267dc261376c7157e56da48e0bd72663bde6b",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Cargas genéricas m+ e n− e elétron em LaTeX; crédito associado à figura.",
+            "source_page": 13,
+            "previous_content_sha256": "f952298fec5099c81f42b98d327e018fea74877269f544e55cf793fda768d95a"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Placas solares comuns dependem de dias ensolarados para gerar energia. Mas podemos gerar eletricidade com a ajuda de gotas de chuva, revestindo placas solares com uma fina camada de grafeno. Os íons dissociados a partir da água da chuva (Am+ e Bn−) tornam a combinação grafeno e água da chuva um par perfeito para geração de energia. O processo requer apenas uma camada de grafeno para que grande quantidade de elétrons (e⁻) se movimente ao longo da superfície."
-          },
-          {
-            "type": "paragraph",
-            "text": "TANG, Q. et al. A Solar Cell that is Triggered by Sun and Rain."
-          },
-          {
-            "type": "paragraph",
-            "text": "Angewandte Chemie International Edition, n. 55, 2016 (adaptado)."
+            "text": "Placas solares comuns dependem de dias ensolarados para gerar energia. Mas podemos gerar eletricidade com a ajuda de gotas de chuva, revestindo placas solares com uma fina camada de grafeno. Os íons dissociados a partir da água da chuva ($A^{m+}$ e $B^{n-}$) tornam a combinação grafeno e água da chuva um par perfeito para geração de energia. O processo requer apenas uma camada de grafeno para que grande quantidade de elétrons ($\\ce{e-}$) se movimente ao longo da superfície.",
+            "role": "body"
           },
           {
             "type": "image",
             "asset": {
               "path": "/assets/enem-2024-dia2-azul/native/q128-figure-1.png",
               "alt": "Diagrama de uma placa de grafeno em contato com água da chuva e seus íons, indicando baixo potencial e movimentação de elétrons."
-            }
+            },
+            "caption": "",
+            "credit": "TANG, Q. et al. A Solar Cell that is Triggered by Sun and Rain.\nAngewandte Chemie International Edition, n. 55, 2016 (adaptado).",
+            "equations": []
           },
           {
             "type": "paragraph",
-            "text": "Ao produzir eletricidade em dias chuvosos, o grafeno"
+            "text": "Ao produzir eletricidade em dias chuvosos, o grafeno",
+            "role": "body"
           }
         ]
       }
@@ -3931,7 +4003,7 @@
       "content": {
         "number": 132,
         "area": "Ciências da Natureza",
-        "statement": "Uma caixa decorativa utiliza duas pequenas lâmpadas, L₁ (6 V – 9 W) e L₂ (12 V – 18 W), ligadas em série a uma bateria de tensão V_QR. Um fio resistivo QR, de 48 centímetros, está ligado em paralelo à bateria. Cinco pontos, A, B, C, D e E, dividem o fio QR em seis segmentos de comprimentos iguais. O circuito também tem um amperímetro com dois terminais. Um dos terminais (P) está ligado ao fio entre as duas lâmpadas. O outro terminal (S) está livre e será ligado ao fio QR. Dependendo do ponto em que esse terminal livre for conectado, ocorrerá a mudança na tensão à qual as lâmpadas são submetidas. Os demais fios do circuito têm resistências elétricas desprezíveis.\n\nA figura ilustra esse circuito.\n\nEm qual desses pontos o amperímetro deve ser conectado para que as lâmpadas acendam exatamente segundo as especificações de tensão e potência elétricas fornecidas?",
+        "statement": "Uma caixa decorativa utiliza duas pequenas lâmpadas, $L_1$ (6 V – 9 W) e $L_2$ (12 V – 18 W), ligadas em série a uma bateria de tensão $V_{QR}$. Um fio resistivo QR, de 48 centímetros, está ligado em paralelo à bateria. Cinco pontos, A, B, C, D e E, dividem o fio QR em seis segmentos de comprimentos iguais. O circuito também tem um amperímetro com dois terminais. Um dos terminais (P) está ligado ao fio entre as duas lâmpadas. O outro terminal (S) está livre e será ligado ao fio QR. Dependendo do ponto em que esse terminal livre for conectado, ocorrerá a mudança na tensão à qual as lâmpadas são submetidas. Os demais fios do circuito têm resistências elétricas desprezíveis.\n\nA figura ilustra esse circuito.\n\nEm qual desses pontos o amperímetro deve ser conectado para que as lâmpadas acendam exatamente segundo as especificações de tensão e potência elétricas fornecidas?",
         "images": [],
         "alternatives": [
           {
@@ -3988,19 +4060,27 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "f7880552b200332b15bebfa91ada88df98c2070ae3cf3a56129e9cf64ccecfdc",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Índices das lâmpadas e da tensão V_QR em LaTeX.",
+            "source_page": 14,
+            "previous_content_sha256": "7ddd132683d881aa269c5d409d12ea31140002ffed3868ce09e39f752b32569f"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Uma caixa decorativa utiliza duas pequenas lâmpadas, L₁ (6 V – 9 W) e L₂ (12 V – 18 W), ligadas em série a uma bateria de tensão V_QR. Um fio resistivo QR, de 48 centímetros, está ligado em paralelo à bateria. Cinco pontos, A, B, C, D e E, dividem o fio QR em seis segmentos de comprimentos iguais. O circuito também tem um amperímetro com dois terminais. Um dos terminais (P) está ligado ao fio entre as duas lâmpadas. O outro terminal (S) está livre e será ligado ao fio QR. Dependendo do ponto em que esse terminal livre for conectado, ocorrerá a mudança na tensão à qual as lâmpadas são submetidas. Os demais fios do circuito têm resistências elétricas desprezíveis."
+            "text": "Uma caixa decorativa utiliza duas pequenas lâmpadas, $L_1$ (6 V – 9 W) e $L_2$ (12 V – 18 W), ligadas em série a uma bateria de tensão $V_{QR}$. Um fio resistivo QR, de 48 centímetros, está ligado em paralelo à bateria. Cinco pontos, A, B, C, D e E, dividem o fio QR em seis segmentos de comprimentos iguais. O circuito também tem um amperímetro com dois terminais. Um dos terminais (P) está ligado ao fio entre as duas lâmpadas. O outro terminal (S) está livre e será ligado ao fio QR. Dependendo do ponto em que esse terminal livre for conectado, ocorrerá a mudança na tensão à qual as lâmpadas são submetidas. Os demais fios do circuito têm resistências elétricas desprezíveis.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "A figura ilustra esse circuito."
+            "text": "A figura ilustra esse circuito.",
+            "role": "body"
           },
           {
             "type": "image",
@@ -4011,7 +4091,8 @@
           },
           {
             "type": "paragraph",
-            "text": "Em qual desses pontos o amperímetro deve ser conectado para que as lâmpadas acendam exatamente segundo as especificações de tensão e potência elétricas fornecidas?"
+            "text": "Em qual desses pontos o amperímetro deve ser conectado para que as lâmpadas acendam exatamente segundo as especificações de tensão e potência elétricas fornecidas?",
+            "role": "body"
           }
         ]
       }
@@ -4021,32 +4102,32 @@
       "content": {
         "number": 133,
         "area": "Ciências da Natureza",
-        "statement": "O biogás é uma alternativa energética muito importante, pois, além de reduzir a dependência por combustíveis fósseis, sua obtenção pode ser realizada a partir de resíduos da produção agroindustrial. Considere que o biogás produzido em um empreendimento de suinocultura contém 70% em volume de metano (massa molar 16 g/mol;\n\nvolume molar 22 L/mol). Ele será utilizado para geração de energia em substituição ao etanol (massa molar 46 g/mol) em um gerador no qual 1 m³ de biogás de origem suína substitui 0,59 L de etanol anidro (densidade 0,78 g/mL).\n\nNessas condições, a massa de metano necessária para substituir 10 mol de etanol na produção de energia é mais próxima de",
+        "statement": "O biogás é uma alternativa energética muito importante, pois, além de reduzir a dependência por combustíveis fósseis, sua obtenção pode ser realizada a partir de resíduos da produção agroindustrial. Considere que o biogás produzido em um empreendimento de suinocultura contém $70\\%$ em volume de metano (massa molar $16\\,\\mathrm{g/mol}$; volume molar $22\\,\\mathrm{L/mol}$). Ele será utilizado para geração de energia em substituição ao etanol (massa molar $46\\,\\mathrm{g/mol}$) em um gerador no qual $1\\,\\mathrm{m^3}$ de biogás de origem suína substitui $0{,}59\\,\\mathrm{L}$ de etanol anidro (densidade $0{,}78\\,\\mathrm{g/mL}$).\n\nNessas condições, a massa de metano necessária para substituir $10\\,\\mathrm{mol}$ de etanol na produção de energia é mais próxima de",
         "images": [],
         "alternatives": [
           {
             "letter": "A",
-            "text": "300 g.",
+            "text": "$300\\,\\mathrm{g}$.",
             "image": null
           },
           {
             "letter": "B",
-            "text": "400 g.",
+            "text": "$400\\,\\mathrm{g}$.",
             "image": null
           },
           {
             "letter": "C",
-            "text": "510 g.",
+            "text": "$510\\,\\mathrm{g}$.",
             "image": null
           },
           {
             "letter": "D",
-            "text": "590 g.",
+            "text": "$590\\,\\mathrm{g}$.",
             "image": null
           },
           {
             "letter": "E",
-            "text": "720 g.",
+            "text": "$720\\,\\mathrm{g}$.",
             "image": null
           }
         ],
@@ -4078,23 +4159,27 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "6c23853c76828e1f14b02050f078b56e55d1fc54af001bf16efd086a5fc40443",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Continuidade do parágrafo, grandezas e unidades em LaTeX.",
+            "source_page": 14,
+            "previous_content_sha256": "5db6c4e239cd3f75856147dfe1ac364f1d80c52484e7844966f30e7ebe5bb2bc"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "O biogás é uma alternativa energética muito importante, pois, além de reduzir a dependência por combustíveis fósseis, sua obtenção pode ser realizada a partir de resíduos da produção agroindustrial. Considere que o biogás produzido em um empreendimento de suinocultura contém 70% em volume de metano (massa molar 16 g/mol;"
+            "text": "O biogás é uma alternativa energética muito importante, pois, além de reduzir a dependência por combustíveis fósseis, sua obtenção pode ser realizada a partir de resíduos da produção agroindustrial. Considere que o biogás produzido em um empreendimento de suinocultura contém $70\\%$ em volume de metano (massa molar $16\\,\\mathrm{g/mol}$; volume molar $22\\,\\mathrm{L/mol}$). Ele será utilizado para geração de energia em substituição ao etanol (massa molar $46\\,\\mathrm{g/mol}$) em um gerador no qual $1\\,\\mathrm{m^3}$ de biogás de origem suína substitui $0{,}59\\,\\mathrm{L}$ de etanol anidro (densidade $0{,}78\\,\\mathrm{g/mL}$).",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "volume molar 22 L/mol). Ele será utilizado para geração de energia em substituição ao etanol (massa molar 46 g/mol) em um gerador no qual 1 m³ de biogás de origem suína substitui 0,59 L de etanol anidro (densidade 0,78 g/mL)."
-          },
-          {
-            "type": "paragraph",
-            "text": "Nessas condições, a massa de metano necessária para substituir 10 mol de etanol na produção de energia é mais próxima de"
+            "text": "Nessas condições, a massa de metano necessária para substituir $10\\,\\mathrm{mol}$ de etanol na produção de energia é mais próxima de",
+            "role": "body"
           }
         ]
       }
@@ -4194,32 +4279,32 @@
       "content": {
         "number": 135,
         "area": "Ciências da Natureza",
-        "statement": "Brasil fecha 2020 entre os maiores recicladores de latas de alumínio A bauxita contém alumina (Al₂O₃), que é a matéria-prima para produção do alumínio (Al). De forma geral, são necessários 50 kg de bauxita para produzir 10 kg de alumínio. O Brasil fechou 2020 como um dos principais líderes mundiais em reciclagem de latas de alumínio. De acordo com levantamento da Associação Brasileira dos Fabricantes de Latas de Alumínio (Abralatas), o país obteve um índice de reciclagem de 97,4%, de um total de 4,0 × 10⁵ toneladas de latas vendidas. Considere que a lata é constituída de alumínio puro.\n\nDisponível em: https://agenciabrasil.ebc.com.br. Acesso em: 30 nov. 2021 (adaptado).\n\nLevando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?",
+        "statement": "Brasil fecha 2020 entre os maiores recicladores de latas de alumínio\n\nA bauxita contém alumina ($\\ce{Al2O3}$), que é a matéria-prima para produção do alumínio ($\\ce{Al}$). De forma geral, são necessários $50\\,\\mathrm{kg}$ de bauxita para produzir $10\\,\\mathrm{kg}$ de alumínio. O Brasil fechou 2020 como um dos principais líderes mundiais em reciclagem de latas de alumínio. De acordo com levantamento da Associação Brasileira dos Fabricantes de Latas de Alumínio (Abralatas), o país obteve um índice de reciclagem de $97{,}4\\%$, de um total de $4{,}0\\times10^5$ toneladas de latas vendidas. Considere que a lata é constituída de alumínio puro.\n\nDisponível em: https://agenciabrasil.ebc.com.br. Acesso em: 30 nov. 2021 (adaptado).\n\nLevando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?",
         "images": [],
         "alternatives": [
           {
             "letter": "A",
-            "text": "1,0 × 10⁴ ton",
+            "text": "$1{,}0\\times10^4\\,\\mathrm{ton}$",
             "image": null
           },
           {
             "letter": "B",
-            "text": "3,9 × 10⁵ ton",
+            "text": "$3{,}9\\times10^5\\,\\mathrm{ton}$",
             "image": null
           },
           {
             "letter": "C",
-            "text": "5,0 × 10⁵ ton",
+            "text": "$5{,}0\\times10^5\\,\\mathrm{ton}$",
             "image": null
           },
           {
             "letter": "D",
-            "text": "1,9 × 10⁶ ton",
+            "text": "$1{,}9\\times10^6\\,\\mathrm{ton}$",
             "image": null
           },
           {
             "letter": "E",
-            "text": "2,0 × 10⁷ ton",
+            "text": "$2{,}0\\times10^7\\,\\mathrm{ton}$",
             "image": null
           }
         ],
@@ -4251,23 +4336,37 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "6f9dce770cf772914fcf7d3c47d988ee094e3fa4f3130f6c7ee0c765a3fe25b8",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Título separado; alumina, unidades, porcentagem e notação científica em LaTeX.",
+            "source_page": 15,
+            "previous_content_sha256": "b1603ab0664a7db403e1ade5e33456930068abe9323227359ecff4e21baea8ff"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Brasil fecha 2020 entre os maiores recicladores de latas de alumínio A bauxita contém alumina (Al₂O₃), que é a matéria-prima para produção do alumínio (Al). De forma geral, são necessários 50 kg de bauxita para produzir 10 kg de alumínio. O Brasil fechou 2020 como um dos principais líderes mundiais em reciclagem de latas de alumínio. De acordo com levantamento da Associação Brasileira dos Fabricantes de Latas de Alumínio (Abralatas), o país obteve um índice de reciclagem de 97,4%, de um total de 4,0 × 10⁵ toneladas de latas vendidas. Considere que a lata é constituída de alumínio puro."
+            "text": "Brasil fecha 2020 entre os maiores recicladores de latas de alumínio",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Disponível em: https://agenciabrasil.ebc.com.br. Acesso em: 30 nov. 2021 (adaptado)."
+            "text": "A bauxita contém alumina ($\\ce{Al2O3}$), que é a matéria-prima para produção do alumínio ($\\ce{Al}$). De forma geral, são necessários $50\\,\\mathrm{kg}$ de bauxita para produzir $10\\,\\mathrm{kg}$ de alumínio. O Brasil fechou 2020 como um dos principais líderes mundiais em reciclagem de latas de alumínio. De acordo com levantamento da Associação Brasileira dos Fabricantes de Latas de Alumínio (Abralatas), o país obteve um índice de reciclagem de $97{,}4\\%$, de um total de $4{,}0\\times10^5$ toneladas de latas vendidas. Considere que a lata é constituída de alumínio puro.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "Levando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?"
+            "text": "Disponível em: https://agenciabrasil.ebc.com.br. Acesso em: 30 nov. 2021 (adaptado).",
+            "role": "credit"
+          },
+          {
+            "type": "paragraph",
+            "text": "Levando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?",
+            "role": "body"
           }
         ]
       }
@@ -7658,7 +7757,7 @@
       "content": {
         "number": 170,
         "area": "Matemática",
-        "statement": "Em uma região com grande incidência de terremotos, observou-se que dois terremotos ocorridos apresentaram magnitudes M1 e M2, medidos segundo a escala Richter, e liberaram energias iguais a E₁ e E₂, respectivamente. Entre os estudiosos do assunto, é conhecida uma expressão algébrica relacionando esses valores dada por\n\nEstudos mais abrangentes observaram que o primeiro terremoto apresentou a magnitude M1 = 6,9 e a energia liberada foi um décimo da observada no segundo terremoto.\n\nO valor aproximado da magnitude M2 do segundo terremoto, expresso com uma casa decimal, é igual a",
+        "statement": "Em uma região com grande incidência de terremotos, observou-se que dois terremotos ocorridos apresentaram magnitudes $M_1$ e $M_2$, medidos segundo a escala Richter, e liberaram energias iguais a $E_1$ e $E_2$, respectivamente. Entre os estudiosos do assunto, é conhecida uma expressão algébrica relacionando esses valores dada por\n\nEstudos mais abrangentes observaram que o primeiro terremoto apresentou a magnitude $M_1 = 6{,}9$ e a energia liberada foi um décimo da observada no segundo terremoto.\n\nO valor aproximado da magnitude $M_2$ do segundo terremoto, expresso com uma casa decimal, é igual a",
         "images": [],
         "alternatives": [
           {
@@ -7715,15 +7814,22 @@
               "coordinate_system": "PDF points, top-left origin"
             }
           ],
-          "review_status": "native_json_reviewed",
-          "presentation_version": "native-v1",
+          "review_status": "source_compared_presentation",
+          "presentation_version": "native-v2-2026-10-31",
           "legacy_text_sha256": "8ee2cbbe4c3eac4873353c799f893718b644bf4d3303b031c92bc415d69fa917",
-          "text_source": "enem-2024-dia2-azul-extraction.json"
+          "text_source": "enem-2024-dia2-azul-extraction.json",
+          "presentation_review": {
+            "date": "2026-10-31",
+            "reason": "Índices de magnitudes e energias e valor M_1 em LaTeX no texto, de acordo com a equação.",
+            "source_page": 27,
+            "previous_content_sha256": "883773c59621334985bcf10bad1eb869f8a0544a1cbf41dde8a7fd507ef585f6"
+          }
         },
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Em uma região com grande incidência de terremotos, observou-se que dois terremotos ocorridos apresentaram magnitudes M1 e M2, medidos segundo a escala Richter, e liberaram energias iguais a E₁ e E₂, respectivamente. Entre os estudiosos do assunto, é conhecida uma expressão algébrica relacionando esses valores dada por"
+            "text": "Em uma região com grande incidência de terremotos, observou-se que dois terremotos ocorridos apresentaram magnitudes $M_1$ e $M_2$, medidos segundo a escala Richter, e liberaram energias iguais a $E_1$ e $E_2$, respectivamente. Entre os estudiosos do assunto, é conhecida uma expressão algébrica relacionando esses valores dada por",
+            "role": "body"
           },
           {
             "type": "math",
@@ -7731,11 +7837,13 @@
           },
           {
             "type": "paragraph",
-            "text": "Estudos mais abrangentes observaram que o primeiro terremoto apresentou a magnitude M1 = 6,9 e a energia liberada foi um décimo da observada no segundo terremoto."
+            "text": "Estudos mais abrangentes observaram que o primeiro terremoto apresentou a magnitude $M_1 = 6{,}9$ e a energia liberada foi um décimo da observada no segundo terremoto.",
+            "role": "body"
           },
           {
             "type": "paragraph",
-            "text": "O valor aproximado da magnitude M2 do segundo terremoto, expresso com uma casa decimal, é igual a"
+            "text": "O valor aproximado da magnitude $M_2$ do segundo terremoto, expresso com uma casa decimal, é igual a",
+            "role": "body"
           }
         ]
       }

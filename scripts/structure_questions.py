@@ -8,6 +8,7 @@ import copy
 import hashlib
 import json
 import re
+import sys
 from pathlib import Path
 
 import pymupdf
@@ -286,6 +287,10 @@ def main():
         assert not re.search(r'[\x00-\x08\x0b-\x1f]', content['statement']), number
         assert all(option['text'] or option['image'] for option in content['alternatives']), number
     data['source']['notes'] = 'Caderno completo do segundo dia (90 questões). Questão 129 anulada no gabarito oficial. Enunciados, alternativas, tabelas e fórmulas renderizados a partir do JSON; imagens restritas às figuras e aos diagramas. Temas e habilidades ainda não classificados. Produto independente, sem vínculo com o Inep.'
+    # Apply the source-compared presentation review after reconstructing native-v1.
+    sys.path.insert(0, str(ROOT))
+    from scripts.review_presentation import apply_review
+    data = apply_review(data)
     TARGET.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
     print(f"Estruturadas {len(data['questions'])} questões do JSON com texto nativo, tabelas e fórmulas.")
 
