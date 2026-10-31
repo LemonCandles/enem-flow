@@ -72,6 +72,8 @@ Mantenha juntos banco, arquivos de conteúdo, configuração e revisão do códi
 
 O processo inicial sincroniza os recursos incluídos da imagem para `data/assets/` antes da migração/importação. Só acrescenta arquivos ausentes; arquivos com o mesmo nome e bytes diferentes interrompem a inicialização para evitar invalidar tentativas antigas. Recursos novos devem ter nomes novos. Arquivos próprios no volume são preservados.
 
+Depois da preparação, o servidor substitui o processo de inicialização com `exec`, recebendo o sinal de parada diretamente. O CI exige saída normal da API antes de recriar os contêineres, além de conferir a persistência dos dados.
+
 ## Repetir a validação em contêineres
 
 Use um projeto e variáveis exclusivos de teste. O arquivo `compose.test.yaml` muda a porta da interface para 3300; não utiliza o projeto/volumes da instalação normal.

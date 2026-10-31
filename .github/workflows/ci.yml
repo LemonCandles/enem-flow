@@ -104,6 +104,12 @@ jobs:
         run: docker compose -p enem-ci -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
       - name: Create persisted attempt
         run: python scripts/verify_deployment.py create --url http://localhost:3300 --state /tmp/enem-ci-state.json
+      - name: Verify graceful API shutdown
+        run: |
+          docker compose -p enem-ci -f compose.yaml -f compose.test.yaml stop --timeout 10 api
+          api_container_id="$(docker compose -p enem-ci -f compose.yaml -f compose.test.yaml ps -a -q api)"
+          api_exit_code="$(docker inspect --format '{{.State.ExitCode}}' "$api_container_id")"
+          case "$api_exit_code" in 0|143) ;; *) echo "Unexpected API exit code: $api_exit_code"; exit 1 ;; esac
       - name: Replace containers and verify persistent volumes
         run: |
           docker compose -p enem-ci -f compose.yaml -f compose.test.yaml down

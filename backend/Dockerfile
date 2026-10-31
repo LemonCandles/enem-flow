@@ -9,4 +9,4 @@ COPY data/sources data/sources
 COPY data/assets /opt/enem-bundled-assets
 ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
-CMD ["sh", "-c", "python -m backend.app.assets && alembic upgrade head && python -m backend.app.cli seed --publish-reviewed --refresh-bundled && uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --log-level info"]
+CMD ["sh", "-c", "python -m backend.app.assets && alembic upgrade head && python -m backend.app.cli seed --publish-reviewed --refresh-bundled && exec uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --log-level info"]
