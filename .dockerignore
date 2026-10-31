@@ -9,3 +9,12 @@
 tmp
 *.db*
 .env
+.env.*
+!.env.example
+backups
+docs
+**/*.tsbuildinfo
+**/*.log
+**/blob-report
+**/.ruff_cache
+*.deployment-state.json
