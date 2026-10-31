@@ -10,6 +10,7 @@ COPY data/derived/baselines data/derived/baselines
 COPY data/catalog data/catalog
 COPY data/classification data/classification
 COPY data/taxonomy data/taxonomy
+COPY data/sources/catalogo/acervo.json data/sources/catalogo/acervo.json
 COPY data/assets /opt/enem-bundled-assets
 ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
