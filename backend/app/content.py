@@ -28,7 +28,7 @@ def import_exam(db: Session, payload: ExamImport):
     for question in payload.questions:
         content = question.content.model_dump()
         validate_assets(content)
-        canonical_id = identify(db, content)
+        canonical_id = identify(db, content, (payload.source.sha256, question.content.number))
         if canonical_id in canonical_ids:
             raise HTTPException(409, "A prova contém duas ocorrências da mesma questão canônica.")
         canonical_ids.add(canonical_id)

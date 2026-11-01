@@ -48,7 +48,7 @@ def install_catalog(db,publish=False):
                 if old.question_id!=target.question_id:raise HTTPException(409,'Ordem do lote existente foi alterada.')
                 validate_assets(wanted)
                 if QuestionContent.model_validate(old.content).model_dump()==wanted:
-                    if old.canonical_id is None:old.canonical_id=identify(db,wanted)
+                    if old.canonical_id is None:old.canonical_id=identify(db,wanted,(desired.source.sha256,target.content.number))
                     new_keys.append(old.id);continue
                 trusted=content_fingerprint(old.content)==content_fingerprint(original.content.model_dump())
                 if base.id=='enem-2024-dia2-azul':trusted=trusted or is_previous_bundled_content(old.question_id,old.content)
@@ -57,14 +57,14 @@ def install_catalog(db,publish=False):
                 if any(old.content[k]!=wanted[k] for k in ('number','area','page','correct_answer','annulled')):
                     raise HTTPException(409,'Mudança de avaliação exige revisão manual.')
                 latest=db.scalar(select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id==old.question_id))
-                canonical_id=old.canonical_id or identify(db,wanted)
+                canonical_id=old.canonical_id or identify(db,wanted,(desired.source.sha256,target.content.number))
                 new=QuestionVersion(id=f'{old.question_id}:{latest+1}',question_id=old.question_id,canonical_id=canonical_id,version=latest+1,content=wanted,status='draft')
                 db.add(new);new_keys.append(new.id);stats['new_versions']+=1;changed=True
             db.flush();exam.items=new_keys
         # Backfill identity only; do not rewrite old content or run snapshots.
         for q,key in zip(desired.questions,exam.items):
             current=db.get(QuestionVersion,key)
-            canonical_id=current.canonical_id or identify(db,q.content.model_dump())
+            canonical_id=current.canonical_id or identify(db,q.content.model_dump(),(desired.source.sha256,q.content.number))
             for previous in db.scalars(select(QuestionVersion).where(QuestionVersion.question_id==q.question_id,QuestionVersion.canonical_id.is_(None))):
                 previous.canonical_id=canonical_id
         if changed:

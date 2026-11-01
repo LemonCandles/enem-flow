@@ -1,4 +1,5 @@
 """Conservative identity across occurrences; numbering/order stay in each version."""
+from functools import lru_cache
 import hashlib
 import json
 import re
@@ -36,9 +37,32 @@ def signatures(content,assets_root=None):
     return signature,choices.get(content['correct_answer'])
 
 
-def identify(db,content):
+@lru_cache(maxsize=1)
+def booklet_links():
+    """(SHA-256 da fonte, número) -> (identidade, gabarito oficial) das cores vinculadas."""
+    path=ROOT/'data/catalog/occurrences-v1.json'
+    if not path.is_file():return {}
+    data=json.loads(path.read_text())
+    return {(o['source_sha256'],o['number']):(q['canonical_id'],o['answer']) for q in data['questions'] for o in q['occurrences']}
+
+
+def identify(db,content,occurrence=None):
+    """Resolve a identidade canônica; `occurrence` é (SHA-256 da fonte, número da questão)."""
     signature,answer=signatures(content)
-    identity=db.scalar(select(CanonicalQuestion).where(CanonicalQuestion.signature==signature))
+    same_content=db.scalar(select(CanonicalQuestion).where(CanonicalQuestion.signature==signature))
+    linked=booklet_links().get(occurrence) if occurrence else None
+    if linked:
+        canonical_id,official=linked
+        if official!=(None if content['annulled'] else content['correct_answer']):
+            raise HTTPException(409,'O gabarito difere do registrado para esta ocorrência no vínculo entre cores. Confira a fonte.')
+        if same_content and same_content.id!=canonical_id:
+            raise HTTPException(409,'O conteúdo já tem outra identidade canônica; revise o vínculo entre cores antes de importar.')
+        identity=db.get(CanonicalQuestion,canonical_id)
+        if identity:return identity.id
+        identity=CanonicalQuestion(id=canonical_id,signature=signature,answer_signature=answer)
+        db.add(identity);db.flush()
+        return identity.id
+    identity=same_content or db.get(CanonicalQuestion,'enem-'+signature[:32])
     if identity:
         if identity.answer_signature and answer and identity.answer_signature!=answer:
             raise HTTPException(409,'O mesmo conteúdo tem gabaritos conflitantes entre ocorrências. Confira a fonte antes de unir.')

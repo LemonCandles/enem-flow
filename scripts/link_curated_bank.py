@@ -15,12 +15,16 @@ def link(sources,occurrences,canonical):
     by_source_number=defaultdict(list)
     for row in occurrences:by_source_number[(row['source_id'],row['number'])].append(row)
     manifest=json.loads((ROOT/'data/catalog/manifest.json').read_text());aliases={};links=[]
+    linked=ROOT/'data/catalog/occurrences-v1.json'
+    booklets={q['question_id']:[(o['source_sha256'],o['number']) for o in q['occurrences']] for q in (json.loads(linked.read_text())['questions'] if linked.is_file() else [])}
     approved={}
     for entry in manifest['exams']:
         payload=classified(json.loads((ROOT/entry['path']).read_text()))
         for q in payload.questions:
             digest,_=signatures(q.content.model_dump());target='enem-'+digest[:32];approved[target]=digest
-            matches=[row for sid in by_sha[payload.source.sha256] for row in by_source_number[(sid,q.content.number)]]
+            # Same item in the other colors, when the booklet links were verified.
+            places=booklets.get(q.question_id) or [(payload.source.sha256,q.content.number)]
+            matches=[row for sha,number in places for sid in by_sha[sha] for row in by_source_number[(sid,number)]]
             for row in matches:
                 old=row['canonical_id']
                 if old in aliases and aliases[old]!=target:raise ValueError('Identidade de extração conflita com duas questões curadas; reveja o agrupamento.')
