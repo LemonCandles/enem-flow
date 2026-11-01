@@ -56,7 +56,7 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 - Catálogo com busca e filtros por ano, área, aplicação e caderno; distinção entre caderno completo, seção e coleção.
 - **135 questões publicadas:** segundo dia azul de 2024 (90) e seção de Matemática azul de 2023 (45). Fontes e gabaritos com SHA-256; anuladas 129/2024 e 164/2023.
 - Acervo oficial de **1998–2025**, com todas as aplicações e formatos vinculados pelo Inep, fontes organizadas e extrações consultáveis na curadoria. Veja a [cobertura real e as pendências](docs/cobertura-acervo.md).
-- Identidade canônica separada de cada ocorrência; taxonomia versionada, 135 anotações técnicas e referência de 89 questões válidas de Matemática em oito temas.
+- Identidade canônica separada de cada ocorrência, com os 135 itens vinculados às quatro cores de sua aplicação; taxonomia versionada, 135 anotações técnicas e referência de 89 questões válidas de Matemática em oito temas.
 - Enunciados e alternativas selecionáveis a partir do JSON; tabelas HTML e fórmulas matemáticas/químicas em LaTeX com KaTeX, mhchem e MathML.
 - Figuras com legendas, fontes e rodapé de equações associados; ampliação dentro da página, com zoom, Escape e retorno do foco.
 - Navegação por botões, mapa e setas **← / →**, respeitando primeira e última questão e voltando ao topo a cada troca. Quando o foco está nas alternativas, as setas preservam sua seleção nativa.
@@ -102,7 +102,7 @@ Para um PDF textual, adapte o [manifesto de exemplo](data/examples/manifesto-pro
 
 Confira o relatório, os recursos em `data/assets/` e as questões contra a fonte antes de importar o JSON preparado pela Curadoria. A importação pela interface também aplica a preparação; `POST /admin/imports/prepare` permite obter uma prévia sem gravar no banco. A CLI não publica provas nem substitui entradas; saídas existentes exigem `--force`.
 
-As regras são reutilizáveis e registram transformações e ambiguidades. Fórmulas espaciais incompletas, relações de figuras inferidas e PDFs digitalizados ainda exigem tratamento e revisão; OCR não está automatizado nesse fluxo. A indexação do acervo não publica extrações automaticamente: os dois lotes conferidos são instalados separadamente.
+As regras são reutilizáveis e registram transformações e ambiguidades. Fórmulas espaciais incompletas e relações de figuras inferidas ainda exigem revisão. PDFs com codificação de texto quebrada são bloqueados e devem ser preparados por outra cor legível; o fluxo não usa OCR. A indexação do acervo não publica extrações automaticamente: os dois lotes conferidos são instalados separadamente.
 
 ## Verificar
 

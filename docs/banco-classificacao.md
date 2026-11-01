@@ -24,6 +24,24 @@ O comando verifica os hashes das fontes antes de extrair. PDFs e TXT/DOSVOX perm
 
 Na importação nativa, a assinatura ignora número, página, rótulos e ordem das alternativas. Considera texto, fórmulas, tabelas e hashes das figuras. A resposta é comparada pelo conteúdo da alternativa correta, mantendo a letra de cada caderno. Um conflito de gabarito ou duas ocorrências do mesmo item no mesmo caderno gera 409. A ordem e as letras permanecem nos snapshots usados pela correção.
 
+Os itens conferidos também estão vinculados às outras cores da mesma aplicação e dia: amarelo, cinza e verde em 2024; amarelo, cinza e rosa em 2023. São 540 ocorrências para 135 itens, registradas em [`occurrences-v1.json`](../data/catalog/occurrences-v1.json). Uma ocorrência só é vinculada quando cumpre todos os critérios:
+
+- o texto nativo conferido está contido na extração da cor (pelo menos 40% dos trigramas) com folga de 30 pontos sobre o segundo candidato;
+- o pareamento é único;
+- o gabarito oficial daquela cor coincide, inclusive a anulação;
+- as figuras raster são equivalentes em miniatura.
+
+Três figuras do caderno amarelo de 2024 foram reprocessadas pelo Inep em outra resolução e ficaram acima do limite automático. Elas foram conferidas visualmente, e o motivo está registrado no script. Desenhos vetoriais não são comparados.
+
+A importação de uma cor vinculada reaproveita a identidade canônica e recusa gabarito divergente. O banco do acervo usa o mesmo vínculo, então a curadoria mostra as quatro ocorrências de cada item. O vínculo é gerado a partir do espelho local:
+
+```bash
+.venv/bin/python scripts/link_booklets.py
+.venv/bin/python scripts/link_booklets.py --check
+```
+
+Os testes conferem o arquivo versionado sem os PDFs: cada item tem uma ocorrência por cor, cada cor é uma permutação dos mesmos números e a identidade coincide com a do conteúdo conferido.
+
 No acervo ainda não revisado, somente texto exatamente normalizado pode ser agrupado automaticamente. Dependências visuais mantêm a identidade vinculada à fonte para evitar juntar gráficos diferentes. Esses casos exigem comparação visual antes da união. As ocorrências dos 135 itens conferidos se ligam às mesmas identidades usadas pelo banco e pelo conjunto de referência. Deduplicação conservadora pode deixar duplicatas por revisar; não é alegada deduplicação semântica completa de todo o acervo.
 
 ## Taxonomia e anotações
@@ -65,10 +83,12 @@ Rótulos novos valem para tentativas iniciadas depois da atualização. O histó
 
 ## Processo da segunda revisão
 
+Faz parte da curadoria, concentrada na [etapa 8 do roteiro](plano-implementacao/proximas-etapas.md#8-curadoria-do-conteúdo-e-dos-rótulos).
+
 1. Um segundo revisor compara a versão exata com o PDF e anota disciplina, tema e habilidades sem consultar a primeira decisão.
 2. Registrar `question_id`, hash da versão, rótulos, evidência, justificativa e identificação do revisor.
 3. Comparar decisões, medir concordância e registrar cada divergência. Casos como 139/2023 (função versus leitura de tabela), 163/2023 (trajetória versus gráfico) e itens interdisciplinares de Natureza merecem atenção.
 4. Adjudicar com justificativa e referência à matriz. Publicar habilidades apenas após esse aceite, por novas versões.
 5. Atualizar referência, cobertura e protocolo experimental. Preservar decisões anteriores para auditoria.
 
-Os aceites ainda pendentes estão no final das [próximas etapas](plano-implementacao/proximas-etapas.md).
+Os aceites ainda pendentes estão na etapa 8 e no final das [próximas etapas](plano-implementacao/proximas-etapas.md).

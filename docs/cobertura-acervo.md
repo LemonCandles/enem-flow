@@ -7,7 +7,7 @@ Coleta de **31/10/2026**, reproduzida a partir de `data/sources/catalogo/acervo.
 - **884 referências obtidas**; **2 URLs indisponíveis**.
 - **2.51 GB** de originais organizados, incluindo cópias de arquivos compartilhados por mais de um caderno/formato.
 - **480 PDFs e 10 TXT de prova indexados**; **44311 ocorrências extraídas**.
-- **43628 identidades conservadoras**; **683 ocorrências agrupadas**. Essa contagem inclui identidades provisórias e não é a quantidade comprovada de questões semanticamente únicas de todo o ENEM.
+- **43226 identidades conservadoras**; **1085 ocorrências agrupadas**. Essa contagem inclui identidades provisórias e não é a quantidade comprovada de questões semanticamente únicas de todo o ENEM.
 - **21 fontes com observações de integridade da extração**. Todas as extrações históricas aguardam conferência de conteúdo, inclusive quando a numeração foi reconhecida.
 - **135 questões publicadas**, em dois lotes conferidos: segundo dia azul de 2024 e Matemática azul de 2023. Anuladas 129/2024 e 164/2023; 133 itens válidos.
 - **89 questões válidas de Matemática em oito temas** na referência exploratória. Habilidades candidatas aguardam segunda revisão e não foram publicadas como rótulos.
