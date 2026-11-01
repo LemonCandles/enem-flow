@@ -28,8 +28,10 @@ coverage.xml
 /htmlcov/
 
 # Node.js e Next.js: dependências, builds e arquivos gerados pelo framework.
+# next-env.d.ts é reescrito por `next dev` e `next build`; o typecheck não depende dele.
 node_modules/
 .next/
+/frontend/next-env.d.ts
 /frontend/out/
 /frontend/coverage/
 *.tsbuildinfo
