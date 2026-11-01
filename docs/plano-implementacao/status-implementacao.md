@@ -4,9 +4,9 @@ Atualizado em **31/10/2026**. Visão geral do andamento do [plano do projeto](en
 
 ## Situação atual
 
-**A consolidação técnica da primeira entrega foi concluída.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
+**A consolidação técnica da primeira entrega e a parte técnica da etapa 2 foram concluídas.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
 
-O catálogo disponível contém o segundo dia do ENEM 2024, caderno azul, com 90 questões de Natureza e Matemática. Revisão pedagógica independente, leitores de tela e aparelhos reais continuam como critérios externos antes da publicação e do piloto, reunidos no final das próximas etapas.
+O catálogo versionado tem 135 questões conferidas: o segundo dia do ENEM 2024, caderno azul, com 90 questões de Natureza e Matemática, e a seção de Matemática azul de 2023, com 45. Cada item está vinculado às quatro cores da sua aplicação. Com o acervo local, `make acervo` publica sem curadoria mais 96 provas de 2009 a 2025, com 8.595 questões. Toda a curadoria, inclusive a revisão pedagógica independente, está concentrada na etapa 8, antes da publicação e do piloto. Leitores de tela e aparelhos reais continuam como pendências externas.
 
 ## O que já está disponível
 
@@ -14,15 +14,16 @@ O catálogo disponível contém o segundo dia do ENEM 2024, caderno azul, com 90
 - **Experiência de resolução:** texto selecionável, fórmulas matemáticas e químicas em LaTeX, figuras com legendas e ampliação dentro do site, navegação por botões, mapa e teclado, com retorno ao topo ao trocar de questão.
 - **Acompanhamento:** resultados e evolução pessoal, com recortes conforme a classificação disponível no banco.
 - **Gestão do conteúdo:** preparação de novas provas, sinalização de ambiguidades, revisão, aprovação, publicação e controle de versões, preservando tentativas anteriores.
+- **Banco e classificação:** acervo oficial de 1998–2025 consultável na curadoria, identidade canônica com as ocorrências de cada cor, taxonomia versionada, 135 anotações com evidências e referência de 89 questões de Matemática para os experimentos.
 - **Interface e operação local:** temas claro e escuro, navegação adaptada a telas menores e recursos de backup e recuperação.
 
 ## O que está parcial
 
 | Frente | Estado atual | O que falta |
 | --- | --- | --- |
-| Conteúdo | Um caderno disponível e melhorias de fidelidade na apresentação. | Revisão pedagógica independente e ampliação para outros anos, aplicações e áreas. |
-| Preparação de provas | Processo reutilizável para organizar novos conteúdos e apontar dúvidas para revisão. | Validar a qualidade em outros cadernos e tratar layouts complexos e documentos digitalizados. |
-| Classificação e painel | Estrutura pronta para acompanhar desempenho por diferentes recortes. | Ampliar e revisar os rótulos de disciplina, tema e habilidade para tornar esses recortes úteis. |
+| Conteúdo | Dois lotes conferidos (2024, 2º dia azul; Matemática 2023 azul) e 96 provas do acervo publicadas sem curadoria, geradas localmente. | Na etapa 8 (curadoria): revisão pedagógica independente e importação de outros anos, aplicações e áreas. |
+| Preparação de provas | Processo reutilizável, ensaiado em cadernos de layouts diferentes (1º dia com opção de língua, PPL, 2012–2024), todos lidos por completo; texto com codificação quebrada é bloqueado. | Para a etapa 3: estruturar tabelas mescladas e relações espaciais e reconstruir fontes com codificação quebrada sem cor legível. Na etapa 8 (curadoria): revisar e importar os cadernos preparados. |
+| Classificação e painel | Disciplina e tema publicados com curadoria técnica; o painel mostra a cobertura real. Habilidades estão como propostas. | Na etapa 8 (curadoria): segunda anotação independente, adjudicação e publicação das habilidades. |
 | Acessibilidade e usabilidade | Texto nativo, ampliação de figuras e navegação por teclado e em telas menores. | Conferência com leitores de tela, aparelhos reais e estudantes. |
 | Operação | Instalação isolada em contêineres, regressão em SQLite/PostgreSQL, volumes persistentes e restauração conferidos; verificações da versão registradas. | Preparar a hospedagem e ensaiar a operação no ambiente escolhido. |
 
@@ -34,16 +35,16 @@ Também continuam previstos a expansão para docentes, os recursos multimodais e
 
 ## Prioridades imediatas
 
-1. Selecionar o próximo caderno e conferir sua preparação pelo fluxo geral.
-2. Ampliar a classificação revisada para sustentar o painel e os futuros recursos adaptativos.
-3. Encaminhar os aceites externos: revisão pedagógica independente, leitores de tela e aparelhos reais.
-4. Preparar a publicação e o piloto conforme as dependências do roteiro.
+1. Iniciar a etapa 3: linha de base de classificação temática com a referência de 89 questões e anotação de layout dos cadernos preparados no ensaio.
+2. Seguir para o diagnóstico por tema e a política adaptativa (etapas 4 e 5) com os rótulos já publicados.
+3. Encaminhar os aceites externos: leitores de tela e aparelhos reais.
+4. Reunir toda a curadoria na etapa 8, antes da publicação e do piloto (etapas 9 e 10).
 
 A sequência e os critérios de aceite estão em [próximas etapas](proximas-etapas.md).
 
 ## Validação e limites
 
-A versão integrada passou por 57 testes de API em SQLite e 57 em PostgreSQL, auditoria do caderno e validação da instalação em contêineres, persistência e recuperação. Os testes de navegador incluem o caderno inteiro, a jornada e a auditoria automática de acessibilidade. Procedimentos e execuções estão em [primeira entrega](../primeira-entrega.md). Os testes de celular realizados até aqui usam emulação de tela e não substituem o uso em aparelhos reais.
+A consolidação passou por 57 testes de API em SQLite e 57 em PostgreSQL; com a etapa 2, a suíte tem 78 testes, executados em SQLite. Também passou pela auditoria do caderno e validação da instalação em contêineres, persistência e recuperação. Os testes de navegador incluem o caderno inteiro, a jornada e a auditoria automática de acessibilidade. Procedimentos e execuções estão em [primeira entrega](../primeira-entrega.md). Os testes de celular realizados até aqui usam emulação de tela e não substituem o uso em aparelhos reais.
 
 Essas evidências demonstram o funcionamento técnico dos incrementos verificados. A revisão pedagógica independente, a validação manual de acessibilidade e o piloto continuam necessários. Ainda não há resultados de aprendizagem ou avaliação de eficácia educacional.
 

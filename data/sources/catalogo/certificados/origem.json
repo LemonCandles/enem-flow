@@ -1,0 +1,5 @@
+{
+  "url": "https://secure.globalsign.com/cacert/rnpicpedugr46ovtlsca2025.crt",
+  "pem_sha256": "c5bdf436a7984e244eeacc7d500469d651d13df28d0267e84264f2d94e59443e",
+  "verification": "openssl verify -CAfile /etc/ssl/certs/ca-certificates.crt: OK; emissor GlobalSign Root R46; uso opcional via --ca-file."
+}

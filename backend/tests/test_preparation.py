@@ -22,6 +22,8 @@ ROOT = Path(__file__).resolve().parents[2]
     ('22 L/mol e 0,78 g/mL', r'$22\,\mathrm{L/mol}$ e $0{,}78\,\mathrm{g/mL}$'),
     ('4,0 × 10⁵ e M₂', r'$4{,}0\times10^{5}$ e $M_{2}$'),
     ('R$ 10,00 em 3/4/2024. NO título de CO autores.', 'R$ 10,00 em 3/4/2024. NO título de CO autores.'),
+    ('Dólar (US$) 39 000, A$ 40 000 e C$ 41 000.', 'Dólar (US$) 39 000, A$ 40 000 e C$ 41 000.'),
+    ('A reação química subiu o preço para US$ 800.', 'A reação química subiu o preço para US$ 800.'),
     (r'Já $\ce{CO2}$ e \(f_0\) e $$x^2$$.', r'Já $\ce{CO2}$ e \(f_0\) e $$x^2$$.'),
     ('Na Química, as fórmulas. No texto de revisão. As moléculas.', 'Na Química, as fórmulas. No texto de revisão. As moléculas.'),
     ('Frequências fᵣ e f₀, 10⁻³ e 70%.', r'Frequências $f_{r}$ e $f_{0}$, $10^{-3}$ e $70\%$.'),
@@ -110,17 +112,18 @@ def test_preview_and_import_share_preparation_and_draft_status(admin, exam_paylo
         assert r'\ce{Mg^2+}' in actual.content['statement']
 
 
-def test_unpositioned_images_block_approval_and_publication(admin, exam_payload, monkeypatch):
-    # Resource existence is separate from the inability to position this image.
-    monkeypatch.setattr('backend.app.content.validate_assets',lambda _: None)
-    monkeypatch.setattr('backend.app.main.validate_assets',lambda _: None)
+def test_unpositioned_images_block_approval_and_publication(admin, exam_payload):
+    # An existing resource still blocks approval when its position is missing.
+    fig=figure()
+    source=json.loads((ROOT/'data/enem-2024-dia2-azul.json').read_text())
+    fig['asset']=next(b['asset'] for b in source['questions'][0]['content']['blocks'] if b['type']=='image')
     c=exam_payload['questions'][0]['content']
-    c['images']=[figure()['asset']]
+    c['images']=[fig['asset']]
     assert admin.post('/admin/imports',json=exam_payload).status_code==201
     assert admin.post('/admin/reviews/teste-q1:1',json={'action':'approve','reason':'Conferência sem resolver a posição'}).status_code==409
     assert admin.post('/admin/reviews/prova-teste',json={'action':'publish','reason':'Tentar publicar antes de corrigir'}).status_code==409
     # Correcting placement creates a new draft; it does not modify the old one.
-    c['images']=[];c['blocks']=[{'type':'paragraph','text':c['statement']},figure()]
+    c['images']=[];c['blocks']=[{'type':'paragraph','text':c['statement']},fig]
     assert admin.put('/admin/questions/teste-q1:1',json={'content':c,'reason':'Posicionar a figura conforme a fonte'}).status_code==200
     assert admin.post('/admin/reviews/teste-q1:2',json={'action':'approve','reason':'Posição e descrição conferidas na fonte'}).status_code==200
 
@@ -149,9 +152,9 @@ def test_generic_cli_does_not_overwrite_sources_and_accepts_new_files(tmp_path, 
 
 def test_pdf_adapter_uses_geometry_and_preserves_source(tmp_path):
     from scripts.exam_pdf import extract_exam
-    source=ROOT/'data/sources/enem-2024-dia2-azul.pdf'
+    source=ROOT/'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf'
     before=hashlib.sha256(source.read_bytes()).hexdigest()
-    data=json.loads((ROOT/'data/sources/enem-2024-dia2-azul-extraction.json').read_text())
+    data=json.loads((ROOT/'data/derived/baselines/enem-2024-dia2-azul-extraction.json').read_text())
     data['questions']=data['questions'][:2];data['expected_items']=2;data['kind']='collection'
     result,report=prepare_exam(extract_exam(data,source,tmp_path/'assets'))
     assert len(result.questions)==2 and report['errors']==0
@@ -170,18 +173,18 @@ def test_manifest_rejects_mismatched_key_and_discovers_columns():
     base=json.loads((ROOT/'data/enem-2024-dia2-azul.json').read_text())
     manifest={k:v for k,v in base.items() if k not in ['questions','schema_version']}
     manifest.update(expected_items=3,kind='collection',layout={'pages':[2,2]},answers={'91':'B','92':'C','93':'E'},areas=[{'first':91,'last':93,'area':'Ciências da Natureza'}])
-    actual=from_manifest(manifest,ROOT/'data/sources/enem-2024-dia2-azul.pdf')
+    actual=from_manifest(manifest,ROOT/'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf')
     assert [q['content']['number'] for q in actual['questions']]==[91,92,93]
     manifest['answers'].pop('93')
-    with pytest.raises(ValueError,match='não coincidem'): from_manifest(manifest,ROOT/'data/sources/enem-2024-dia2-azul.pdf')
+    with pytest.raises(ValueError,match='não coincidem'): from_manifest(manifest,ROOT/'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf')
 
 
 def test_full_question_bitmap_is_not_used_as_a_figure(tmp_path, monkeypatch):
     from scripts.exam_pdf import extract_exam
     monkeypatch.setattr('scripts.exam_pdf.graphics', lambda page,clip:[clip])
-    data=json.loads((ROOT/'data/sources/enem-2024-dia2-azul-extraction.json').read_text())
+    data=json.loads((ROOT/'data/derived/baselines/enem-2024-dia2-azul-extraction.json').read_text())
     data['questions']=data['questions'][:1];data['expected_items']=1;data['kind']='collection'
-    result,report=prepare_exam(extract_exam(data,ROOT/'data/sources/enem-2024-dia2-azul.pdf',tmp_path))
+    result,report=prepare_exam(extract_exam(data,ROOT/'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf',tmp_path))
     assert any(i['code']=='whole_region_image' and i['severity']=='error' for i in report['questions'][0]['issues'])
     assert not list(tmp_path.rglob('*.png'))
 
@@ -189,11 +192,11 @@ def test_full_question_bitmap_is_not_used_as_a_figure(tmp_path, monkeypatch):
 @pytest.mark.parametrize('source_number',[127,161,174])
 def test_graphical_options_are_assigned_by_geometry_not_question_id(tmp_path, source_number):
     from scripts.exam_pdf import extract_exam
-    data=json.loads((ROOT/'data/sources/enem-2024-dia2-azul-extraction.json').read_text())
+    data=json.loads((ROOT/'data/derived/baselines/enem-2024-dia2-azul-extraction.json').read_text())
     data['questions']=[q for q in data['questions'] if q['content']['number']==source_number]
     data['questions'][0]['content']['number']=37
     data['questions'][0]['question_id']='outra-prova-q37'
     data['expected_items']=1;data['kind']='collection'
-    result,report=prepare_exam(extract_exam(data,ROOT/'data/sources/enem-2024-dia2-azul.pdf',tmp_path))
+    result,report=prepare_exam(extract_exam(data,ROOT/'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf',tmp_path))
     assert all(a.image for a in result.questions[0].content.alternatives)
     assert not any(i['code']=='alternative_layout' for i in report['questions'][0]['issues'])

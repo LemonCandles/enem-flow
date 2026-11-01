@@ -4,9 +4,14 @@
 !.env.example
 !.env.*.example
 
-# Python: ambientes, bytecode, caches e empacotamento.
-.venv/
-venv/
+# Credenciais e estado local de ferramentas externas ao projeto.
+/.aws/
+/.agents/
+/.codex/
+
+# Python: ambientes, bytecode, caches, cobertura e empacotamento.
+/.venv/
+/venv/
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -15,25 +20,30 @@ __pycache__/
 .ruff_cache/
 .tox/
 .nox/
-build/
-dist/
-
-# Node.js, Next.js e resultados de testes.
-node_modules/
-.next/
-out/
-*.tsbuildinfo
-coverage/
+/build/
+/dist/
 .coverage
 .coverage.*
 coverage.xml
-htmlcov/
+/htmlcov/
+
+# Node.js e Next.js: dependências, builds e arquivos gerados pelo framework.
+# next-env.d.ts é reescrito por `next dev` e `next build`; o typecheck não depende dele.
+node_modules/
+.next/
+/frontend/next-env.d.ts
+/frontend/out/
+/frontend/coverage/
+*.tsbuildinfo
+
+# Resultados do Playwright: vídeos, traces e capturas de cada execução.
 playwright-report/
 test-results/
 blob-report/
 playwright/.cache/
 
 # Bancos de execução, arquivos auxiliares do SQLite e backups locais.
+# O padrão *.db também cobre o Thumbs.db do Windows.
 *.db
 *.db-*
 *.sqlite
@@ -46,14 +56,61 @@ playwright/.cache/
 /sources-backup/
 *.deployment-state.json
 
-# Temporários, logs e arquivos do sistema/editor.
-tmp/
-*.log
+# Temporários, downloads interrompidos, logs e arquivos do sistema/editor.
+/tmp/
 *.tmp
+*.part
+*.log
 *.bak
 *.swp
 *.swo
 .DS_Store
-Thumbs.db
 Desktop.ini
 .idea/
+
+# Dados: entram os dois lotes conferidos (ENEM 2024, 2º dia azul, e
+# Matemática 2023 azul), com figuras, PDFs de prova e gabarito, bases de
+# revisão, anotações e o dataset de referência, além de documentação, exemplo
+# de manifesto, taxonomia e catálogo de fontes. O restante do acervo, o banco
+# textual e os caches são recuperados pelo catálogo com SHA-256 ou regenerados
+# pelos scripts. Novos arquivos e pastas em data/ ficam locais até serem
+# liberados explicitamente aqui.
+/data/*
+!/data/README.md
+!/data/enem-2024-dia2-azul.json
+!/data/assets/
+# Figuras: só as dos lotes conferidos; as das provas geradas do acervo ficam locais.
+/data/assets/*
+!/data/assets/enem-2024-dia2-azul/
+!/data/assets/enem-2023-matematica-azul/
+!/data/catalog/
+!/data/classification/
+!/data/datasets/
+!/data/examples/
+!/data/taxonomy/
+
+# Derivados: só as bases imutáveis de revisão; archive/ e assets/ são caches.
+!/data/derived/
+/data/derived/*
+!/data/derived/baselines/
+
+# Nenhum PDF de data/ entra, exceto as fontes dos lotes conferidos abaixo.
+/data/**/*.pdf
+
+# Fontes oficiais: guia, inventário do acervo (URLs, SHA-256, páginas oficiais
+# preservadas e intermediário TLS), manifesto da matriz de referência e PDFs
+# dos lotes conferidos. Os demais originais são recuperados pelo catálogo.
+!/data/sources/
+/data/sources/*
+!/data/sources/README.md
+!/data/sources/catalogo/
+!/data/sources/referencias/
+/data/sources/referencias/*
+!/data/sources/referencias/manifesto.json
+!/data/sources/enem/
+/data/sources/enem/**
+!/data/sources/enem/**/
+!/data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf
+!/data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf
+!/data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf
+!/data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf

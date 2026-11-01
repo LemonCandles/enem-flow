@@ -1,14 +1,14 @@
 """Conservative notation conversion. Never balance reactions or infer lost exponents."""
 import re
 
-LATEX = re.compile(r'(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![R\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)')
+LATEX = re.compile(r'(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![A-Z\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)')
 SUB = str.maketrans('₀₁₂₃₄₅₆₇₈₉', '0123456789')
 SUB_LETTERS = str.maketrans('ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ', 'aehijklmnoprstuvx')
 SUP = str.maketrans('⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻', '0123456789+-')
 ELEMENTS = set('H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og'.split())
 CHEM_CONTEXT = re.compile(r'\b(?:qu[ií]mic\w*|[ií]ons?|c[aá]tions?|[aâ]nions?|molar\w*|mol[eé]cul\w*|hidroxi\w*|[aá]cido\w*|rea[çc][aã]o|rea[çc][oõ]es|pr[oó]tons?|el[eé]trons?|composto\w*|gases|oxida\w*|redu[çc]\w*|f[oó]rmula\w*)\b', re.I)
 SPECIES = r'(?:[A-Z][a-z]?|\([A-Za-z0-9₀-₉]+\))[A-Za-z0-9₀-₉()^⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻+−–-]*'
-CANDIDATE = re.compile(r'(?<![\w\\])' + SPECIES + r'(?!\w)')
+CANDIDATE = re.compile(r'(?<![\w\\])' + SPECIES + r'(?![\w$])')
 REACTION = re.compile(r'[^\n.;:]+?(?:⟶|→|⇌|↔|->|<=>)[^\n.;:]+')
 
 
@@ -119,7 +119,7 @@ def normalize(text, chemistry=False):
         if LATEX.fullmatch(token):
             if tex_shape_issue(token): issues.append(('invalid_latex', token))
             if r'\ce{' in token and '(I)' in token: issues.append(('ambiguous_liquid_state', token))
-        elif re.search(r'(?<![R\\])\$|\\[\[(]', token): issues.append(('invalid_latex', token))
+        elif re.search(r'(?<![A-Z\\])\$|\\[\[(]', token): issues.append(('invalid_latex', token))
     result = ''.join(part if LATEX.fullmatch(part) else plain(part) for part in tokens)
     if '\ufffd' in result: issues.append(('replacement_character', '�'))
     return result, list(dict.fromkeys(issues))

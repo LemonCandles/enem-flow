@@ -1,0 +1,11 @@
+{
+  "version": "catalog-v1",
+  "exams": [
+    {
+      "path": "data/enem-2024-dia2-azul.json"
+    },
+    {
+      "path": "data/catalog/enem-2023-matematica-azul.json"
+    }
+  ]
+}

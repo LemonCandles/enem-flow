@@ -210,5 +210,5 @@ def test_bundled_official_exam_integrity():
         assert q.content.layout['blocks']
         for image in q.content.images:
             assert (root / 'data' / image.path.lstrip('/')).is_file()
-    assert hashlib.sha256((root / 'data/sources/enem-2024-dia2-azul.pdf').read_bytes()).hexdigest() == data.source.sha256
-    assert hashlib.sha256((root / 'data/sources/enem-2024-dia2-azul-gabarito.pdf').read_bytes()).hexdigest() == data.source.answer_key_sha256
+    assert hashlib.sha256((root / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf').read_bytes()).hexdigest() == data.source.sha256
+    assert hashlib.sha256((root / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf').read_bytes()).hexdigest() == data.source.answer_key_sha256

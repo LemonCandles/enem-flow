@@ -1,0 +1,1538 @@
+{
+  "version": "adaptive-math-reference-v1",
+  "purpose": "Referência exploratória de temas; não é benchmark pedagógico independente ou calibração TRI.",
+  "taxonomy_version": "enem-content-v1",
+  "eligible_items": 89,
+  "excluded": [
+    {
+      "question_id": "enem-2023-dia2-azul-q164",
+      "reason": "Anulada no gabarito oficial."
+    }
+  ],
+  "split_policy": "Separar desenvolvimento/teste por split_group após segunda anotação e adjudicação. Nenhum split de avaliação foi declarado aqui.",
+  "theme_counts": {
+    "Estatística": 8,
+    "Geometria espacial": 6,
+    "Geometria plana": 12,
+    "Grandezas e medidas": 7,
+    "Gráficos e coordenadas": 8,
+    "Números e proporcionalidade": 18,
+    "Probabilidade e combinatória": 9,
+    "Álgebra e funções": 21
+  },
+  "items": [
+    {
+      "canonical_id": "enem-868afd30f8f15fb963d5640320caf9b1",
+      "split_group": "enem-868afd30f8f15fb963d5640320caf9b1",
+      "question_id": "enem-2024-regular-q136",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 136,
+      "page": 16,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "bac9785049569c12805f960a13d9cc180a1661b81cde298b21c7697c4c152426",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-de7260d1c6bd823aad5027c94fc0fcc9",
+      "split_group": "enem-de7260d1c6bd823aad5027c94fc0fcc9",
+      "question_id": "enem-2024-regular-q137",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 137,
+      "page": 16,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9165a3cafff25265b57df187eecea38e7af376468bcfc53510a367c297daee3a",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-00966403720833934e4249ce4adc3b81",
+      "split_group": "enem-00966403720833934e4249ce4adc3b81",
+      "question_id": "enem-2024-regular-q138",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 138,
+      "page": 16,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9e73f16727ea5abcb83cf8e860411587d59c6d53fe301c227c49cebd98826c8c",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-1761a47e26d340fa441863928f3a7c3d",
+      "split_group": "enem-1761a47e26d340fa441863928f3a7c3d",
+      "question_id": "enem-2024-regular-q139",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 139,
+      "page": 17,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "711c8586e13fe6b5578ca439236d77cc597843d443a3e0c8ada27c5e410755b9",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-6f2fbde12ba37e0fa89915a8f0ade8b2",
+      "split_group": "enem-6f2fbde12ba37e0fa89915a8f0ade8b2",
+      "question_id": "enem-2024-regular-q140",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 140,
+      "page": 17,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "fbb8a4caed40d5a015dca34fa36b05914bec59b5a6f451bc2bdcda4482fd17cd",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-9f1b8310306f773621786512d6b065c7",
+      "split_group": "enem-9f1b8310306f773621786512d6b065c7",
+      "question_id": "enem-2024-regular-q141",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 141,
+      "page": 17,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "cc0929c64411a614204a8dfe473cbd43d75d914c83569ce795c2fbee6458a8df",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-e276334cbd860785f2fd179413d4a009",
+      "split_group": "enem-e276334cbd860785f2fd179413d4a009",
+      "question_id": "enem-2024-regular-q142",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 142,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "9ec70c7b8eb7522a4ae5f43c051535d5f29b1b06c5889b0cdd5a4e67222e9298",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-d91ba0da88febd0ca14ec4cd0134025b",
+      "split_group": "enem-d91ba0da88febd0ca14ec4cd0134025b",
+      "question_id": "enem-2024-regular-q143",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 143,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "c67d5f261b2167551612349fa3763213c05f4bbb2356402141e7cb33effbbabb",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-4e9776d6eb4f8d34fa6c2b9bf121537c",
+      "split_group": "enem-4e9776d6eb4f8d34fa6c2b9bf121537c",
+      "question_id": "enem-2024-regular-q144",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 144,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f73f3986937c3c136f4a609e04d67062e2e536131e13822ce3ea00a2825f7eec",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-49f445f3170e357b3045999558fc24db",
+      "split_group": "enem-49f445f3170e357b3045999558fc24db",
+      "question_id": "enem-2024-regular-q145",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 145,
+      "page": 18,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ee30776716aa5f1c1a71822ed211b7987600461d6379520a7237893e41b04b06",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-3af4bd18506872d3d228d0c5d608042e",
+      "split_group": "enem-3af4bd18506872d3d228d0c5d608042e",
+      "question_id": "enem-2024-regular-q146",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 146,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "653e6caf8790d5cb472c7e7f29f0d8633fa4ebcac06f75df8f3c814171d1476a",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-31ab44b418a3d1fc20f3d5a96ba87bb8",
+      "split_group": "enem-31ab44b418a3d1fc20f3d5a96ba87bb8",
+      "question_id": "enem-2024-regular-q147",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 147,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "cf029259c626ec85f3603368cfd35347856fb0df1b1227c591a9ef7ad11243b3",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-04414c8fc9b4af45b7fdc6672d7494d2",
+      "split_group": "enem-04414c8fc9b4af45b7fdc6672d7494d2",
+      "question_id": "enem-2024-regular-q148",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 148,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "8bd47bdde616b7822cba4fa36e56b683aae76ab8771eedcb59ebf865d611f37b",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-401c5d170786dfcf4c1e769f9bde5d92",
+      "split_group": "enem-401c5d170786dfcf4c1e769f9bde5d92",
+      "question_id": "enem-2024-regular-q149",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 149,
+      "page": 19,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "07c8cb0b253c04b6c4d2aa9976788bc4ec90d3244236a750d8379b0e29b8453a",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-2cdccc809924129442fd49d406cb0a19",
+      "split_group": "enem-2cdccc809924129442fd49d406cb0a19",
+      "question_id": "enem-2024-regular-q150",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 150,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "3418799e4dc7eea5a10951dc52232b36ed0cc292adeca8e2a65f5dd8ed59fb45",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-0aed69f467066da76d6afbd40f0ffb21",
+      "split_group": "enem-0aed69f467066da76d6afbd40f0ffb21",
+      "question_id": "enem-2024-regular-q151",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 151,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "fbe07b91659a139ba21d9f2d8718dbcdaf4b578ee59b28ab5fd188a7c59c0d33",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-6ef0072700f02ca20312b917f6ed4919",
+      "split_group": "enem-6ef0072700f02ca20312b917f6ed4919",
+      "question_id": "enem-2024-regular-q152",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 152,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f5174e7b356c79e95aaf6f9029c0c8c4e8a81dc515f83abe37654f2a3c660eef",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-48b380f3e9c0bd1b545b89172a9af0f7",
+      "split_group": "enem-48b380f3e9c0bd1b545b89172a9af0f7",
+      "question_id": "enem-2024-regular-q153",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 153,
+      "page": 20,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "1ef6d40dc0c4147a80b5528ea90cce421d6f9b625341c8618915b7deaa6d2a5f",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-43498623766bd48676092865f055c33a",
+      "split_group": "enem-43498623766bd48676092865f055c33a",
+      "question_id": "enem-2024-regular-q154",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 154,
+      "page": 21,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b98005fdb5007ebd1216cd852bc3b7edc85603c18345748f466b7ecc0b70049d",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-30bbfcc3b0226903cc66c65671403274",
+      "split_group": "enem-30bbfcc3b0226903cc66c65671403274",
+      "question_id": "enem-2024-regular-q155",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 155,
+      "page": 21,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "5571aeb0225731f4f2d8151cfb5bce50ea81afa8bbba0bfd8e8735a5d28e6d51",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-cde47e899a907aa6ef19bdea8015a562",
+      "split_group": "enem-cde47e899a907aa6ef19bdea8015a562",
+      "question_id": "enem-2024-regular-q156",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 156,
+      "page": 21,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "764f10bd95652e880c0ae831891a80eea67573986bacb4a75380fcdade28e4e9",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-cfd0883e5de8eb1cc4656670fe038fea",
+      "split_group": "enem-cfd0883e5de8eb1cc4656670fe038fea",
+      "question_id": "enem-2024-regular-q157",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 157,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b12612f44ffe0220df5c321a414228246d185847fe23d54ed8e3e7f4544a0a33",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ec1f5e8f45606d60e7c9f0ca87ee7d55",
+      "split_group": "enem-ec1f5e8f45606d60e7c9f0ca87ee7d55",
+      "question_id": "enem-2024-regular-q158",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 158,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "3657231bd10548e7814c494584bcd66afae088af345be434c7af0d49508f5e65",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-77edda89fd1d0909df5a962cd81a162e",
+      "split_group": "enem-77edda89fd1d0909df5a962cd81a162e",
+      "question_id": "enem-2024-regular-q159",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 159,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "1a89a6890b294bd77313c96868101abd266422b0f435bc7566042cfc4851c063",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-a0b1d1d7194e054b7c4f644dc495ed53",
+      "split_group": "enem-a0b1d1d7194e054b7c4f644dc495ed53",
+      "question_id": "enem-2024-regular-q160",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 160,
+      "page": 22,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ae4dfcf4fe0afb0d6a15bd0084ae3b084983988b444a83c924bc9b71eae3c9bf",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-feba45a5c5f32862a81968f569aaf051",
+      "split_group": "enem-feba45a5c5f32862a81968f569aaf051",
+      "question_id": "enem-2024-regular-q161",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 161,
+      "page": 23,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "30f69e49483e940d40be6a3ddb70acd5899ed50e2367cbf5802161b65adc3ca0",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-39ed5414cb19618921f3cd24890a9e59",
+      "split_group": "enem-39ed5414cb19618921f3cd24890a9e59",
+      "question_id": "enem-2024-regular-q162",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 162,
+      "page": 24,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "fe1340b2eb32cc770f57f6d2bcca240e29435c080d67a88ebd0b7ec75cabef36",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-5010d2d70ee3517fe678b85e1cd82e4f",
+      "split_group": "enem-5010d2d70ee3517fe678b85e1cd82e4f",
+      "question_id": "enem-2024-regular-q163",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 163,
+      "page": 24,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "02f68370e9fcf9fe21b18ee35a881b91824b3268ac5f8fed9a3507b47f8715fc",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-328ac6748ce5978a923f3c0098a5974b",
+      "split_group": "enem-328ac6748ce5978a923f3c0098a5974b",
+      "question_id": "enem-2024-regular-q164",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 164,
+      "page": 24,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "6ae3664aae826d058c43cf1d2f8ff2329ee9d04115ec0f6e992f7fcbc8ce8f9d",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-4134a5ae2d630fb72c87edd05c78788e",
+      "split_group": "enem-4134a5ae2d630fb72c87edd05c78788e",
+      "question_id": "enem-2024-regular-q165",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 165,
+      "page": 25,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "acd1f20922d669945d008740720842f3cfcf99f3c93600d091af74f57163c1fd",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-7ddef528c32b302c0747b2dfb972f72d",
+      "split_group": "enem-7ddef528c32b302c0747b2dfb972f72d",
+      "question_id": "enem-2024-regular-q166",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 166,
+      "page": 25,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "d892fe4b766f78d6a0ad11660800122279efb1e77ea5c4fc3fa03689c8809707",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-3fad6b805c69aa60488828b85522a8a1",
+      "split_group": "enem-3fad6b805c69aa60488828b85522a8a1",
+      "question_id": "enem-2024-regular-q167",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 167,
+      "page": 25,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "584e330c67d7a9798741dc82ea4c0135da64675cfd902c74a271957f64e703f3",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-a554cb0c78442b9acddb0db59c8248e0",
+      "split_group": "enem-a554cb0c78442b9acddb0db59c8248e0",
+      "question_id": "enem-2024-regular-q168",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 168,
+      "page": 26,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f05ac5b03ee6208293ad9b64c629cacc50350b9d91db2457c8fddd38e2e9f1c1",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ab1bfd5f54609777829c8ce663102c8b",
+      "split_group": "enem-ab1bfd5f54609777829c8ce663102c8b",
+      "question_id": "enem-2024-regular-q169",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 169,
+      "page": 27,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "82316047ad8a44c939e6a65012a6e975bc1504b0303b6e9f7fc60ccfd7aaeb3b",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-add0a55bef127a7c2729f294c9661869",
+      "split_group": "enem-add0a55bef127a7c2729f294c9661869",
+      "question_id": "enem-2024-regular-q170",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 170,
+      "page": 27,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "7751cbb6f045c2798622a25d7c6e68527f6aefb2f8fd30fd00cec890eafb1922",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-6410744746604282b2674c658a20a6ce",
+      "split_group": "enem-6410744746604282b2674c658a20a6ce",
+      "question_id": "enem-2024-regular-q171",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 171,
+      "page": 28,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "160e1ef5260be6b294dda5d2eb83d6947507907496b56aa02f0927740b3c4f37",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-39a9f71b5081ad83ec8f66f5e4802017",
+      "split_group": "enem-39a9f71b5081ad83ec8f66f5e4802017",
+      "question_id": "enem-2024-regular-q172",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 172,
+      "page": 28,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "3599e7d2ce6a2fe4e39b93c25642acd5ad40e5b9163dbb3b1330f7416613c6af",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-4d91cec7bbb64cf85e8979709356bcd1",
+      "split_group": "enem-4d91cec7bbb64cf85e8979709356bcd1",
+      "question_id": "enem-2024-regular-q173",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 173,
+      "page": 29,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "2c6fbb472d05d5c809327b06ac73333920fdf37ad658fb992e3da662dc10fd7d",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-381a13671e7759d9a874c8037d73b90d",
+      "split_group": "enem-381a13671e7759d9a874c8037d73b90d",
+      "question_id": "enem-2024-regular-q174",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 174,
+      "page": 29,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "59e0ab5a03947cef11eb33da9fdccb5e200ebeb452a0480be097abe28d6761e0",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-06a656bd21ec953756f8fc47984a3ddf",
+      "split_group": "enem-06a656bd21ec953756f8fc47984a3ddf",
+      "question_id": "enem-2024-regular-q175",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 175,
+      "page": 30,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "f0d168c7dbd4c63a6ac990e9b5a4ac7886581d607dc20d88781a9ec748e86d4f",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ac1e1e810376d1844d73dab70dce5d24",
+      "split_group": "enem-ac1e1e810376d1844d73dab70dce5d24",
+      "question_id": "enem-2024-regular-q176",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 176,
+      "page": 30,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "4788eb2fb36158943c3f7d6d840f77de5beb5421a36a8f679d3a23a5ac7f0fe7",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-152fac0d51c37b91447d82f163b434d7",
+      "split_group": "enem-152fac0d51c37b91447d82f163b434d7",
+      "question_id": "enem-2024-regular-q177",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 177,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "b1916679cd601252987517d77ea531e9f8e34fc28a58e6f44b805043af2935ce",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ec0c4321b4ab14eda381cb8a85bdcdac",
+      "split_group": "enem-ec0c4321b4ab14eda381cb8a85bdcdac",
+      "question_id": "enem-2024-regular-q178",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 178,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "8e20646146d931a28aef235e7fbf202859a42fd35c6dc27935b7341af2de90af",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-e77dc0ba9b6b4bafffa4eee031956ded",
+      "split_group": "enem-e77dc0ba9b6b4bafffa4eee031956ded",
+      "question_id": "enem-2024-regular-q179",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 179,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "68b8d057da8052a3b0fb1f5d2e399eec23ec069ba7dce33dddf9f2bc217f5e54",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-b77007219afc26cf0e9756bd5fd6eabb",
+      "split_group": "enem-b77007219afc26cf0e9756bd5fd6eabb",
+      "question_id": "enem-2024-regular-q180",
+      "exam_id": "enem-2024-dia2-azul",
+      "number": 180,
+      "page": 31,
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "content_sha256": "ec4f10fe5f2b93384ee1dd9075f002d287691442ca17f31dda765d33236cd661",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-1430a67f5620935c69ea8b1f4dc075c1",
+      "split_group": "enem-1430a67f5620935c69ea8b1f4dc075c1",
+      "question_id": "enem-2023-dia2-azul-q136",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 136,
+      "page": 16,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "666cc6445104614cab0add6aa72aa340092e7c4535e369d25a8d7bf8d27a237a",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-13d3336a76cd9b1842816123705f89c5",
+      "split_group": "enem-13d3336a76cd9b1842816123705f89c5",
+      "question_id": "enem-2023-dia2-azul-q137",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 137,
+      "page": 16,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "011137b4da40570f47ad4fa4da03e02f7c6d3157003ee6011f4c689321c1eaca",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ccb532bf794d417bcf6c4f884af5685e",
+      "split_group": "enem-ccb532bf794d417bcf6c4f884af5685e",
+      "question_id": "enem-2023-dia2-azul-q138",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 138,
+      "page": 16,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "2ee43bc552feddbb149c5883641365f835a74aa73fee2de25e2929f31f45a87e",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-569cb87703903c4d21f1885b9eb2beb2",
+      "split_group": "enem-569cb87703903c4d21f1885b9eb2beb2",
+      "question_id": "enem-2023-dia2-azul-q139",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 139,
+      "page": 17,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "03fcdcf00e3d5a80f8cfb5194a13ae2da519f4846acb1b8b1f0b31e3e0963c28",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-f5da32678547fdac76ea0d9220a0b46f",
+      "split_group": "enem-f5da32678547fdac76ea0d9220a0b46f",
+      "question_id": "enem-2023-dia2-azul-q140",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 140,
+      "page": 17,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "1b967a22b5c9bf6c0c66f759e4aaf70f002fecaeb1b9769ef5b35566031d4cf1",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-b4a45ab264b159c85394d9c5b9eb6a01",
+      "split_group": "enem-b4a45ab264b159c85394d9c5b9eb6a01",
+      "question_id": "enem-2023-dia2-azul-q141",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 141,
+      "page": 18,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "37ff43ad4f61ea066e8ec20d54c70298b3d9c5e6de6eb605d7408141bafc6153",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-0978709a02d5419f8ffb566aa5df4358",
+      "split_group": "enem-0978709a02d5419f8ffb566aa5df4358",
+      "question_id": "enem-2023-dia2-azul-q142",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 142,
+      "page": 18,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "532e49c39653fbe1ffc2678de60b79bbd275694c85690f21391a01319e32d752",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria espacial"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-2f790efc70dc164e2fa4bdd2b00dc20a",
+      "split_group": "enem-2f790efc70dc164e2fa4bdd2b00dc20a",
+      "question_id": "enem-2023-dia2-azul-q143",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 143,
+      "page": 18,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "d5477581c3f36a59b397f86cc9573d5781ede5db7583e8e1c8f225bfb7ae1687",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-1a9b53d016894178028d6971bec23c49",
+      "split_group": "enem-1a9b53d016894178028d6971bec23c49",
+      "question_id": "enem-2023-dia2-azul-q144",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 144,
+      "page": 19,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "7cb55af7313885279d53ba1a3ecdf70e03838b5f45bbe0dd01252908ceb76fb4",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-a784c69088a38290eec2e2809a8802d2",
+      "split_group": "enem-a784c69088a38290eec2e2809a8802d2",
+      "question_id": "enem-2023-dia2-azul-q145",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 145,
+      "page": 19,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "d844d13445cfeff72904a1d0c4aeeadd550453ff4672c9f7a8041a6c7d82e0cc",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-276e40aad20544b05a5e23c40be3fb9d",
+      "split_group": "enem-276e40aad20544b05a5e23c40be3fb9d",
+      "question_id": "enem-2023-dia2-azul-q146",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 146,
+      "page": 19,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "9403dfbf09a1bfed5cbb0de458c941af826843175fc983be899d145617070730",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-e8d9003ec72d2cee58fe70a2da7ee7f6",
+      "split_group": "enem-e8d9003ec72d2cee58fe70a2da7ee7f6",
+      "question_id": "enem-2023-dia2-azul-q147",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 147,
+      "page": 20,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "98cff98099b71dd7ff5f0eace88885a3119e50effcae31b1697303911772b192",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-cfd372fc001df116c1408d94c41050df",
+      "split_group": "enem-cfd372fc001df116c1408d94c41050df",
+      "question_id": "enem-2023-dia2-azul-q148",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 148,
+      "page": 20,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "2eda3e89ec085f9bb3dd010c6ace4dd04c879111d12ce5158b813b2f1b6fbd7b",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-6bf062cb264f17eae252a6a8de70dca8",
+      "split_group": "enem-6bf062cb264f17eae252a6a8de70dca8",
+      "question_id": "enem-2023-dia2-azul-q149",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 149,
+      "page": 20,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "b714fec2d4344f767c733ec6ee57748bf080cdbc9755f0e3eb4f889e4a921267",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-5350ef7d0901595e68aa5d104b644491",
+      "split_group": "enem-5350ef7d0901595e68aa5d104b644491",
+      "question_id": "enem-2023-dia2-azul-q150",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 150,
+      "page": 21,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "c3b8be119118493be4f7642cb0fc264ea34d42fb0e4dc3bfe72ffda35ed44db2",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-7e23da72fd5dda2ff3923502cb0aec89",
+      "split_group": "enem-7e23da72fd5dda2ff3923502cb0aec89",
+      "question_id": "enem-2023-dia2-azul-q151",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 151,
+      "page": 21,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "466fae3f7d560c6e52a7ba32f9207566fe9d8776b62a3c5b6784e96348868b8f",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-46abf15ec95f67c4bbc59573e18fd168",
+      "split_group": "enem-46abf15ec95f67c4bbc59573e18fd168",
+      "question_id": "enem-2023-dia2-azul-q152",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 152,
+      "page": 21,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "a7253cc706020bd25e8a0274661f6d2972ea4f6186ac97fead39f32ea3aea3ff",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ff21b8de7d7da6f7fcbec5383f57ec41",
+      "split_group": "enem-ff21b8de7d7da6f7fcbec5383f57ec41",
+      "question_id": "enem-2023-dia2-azul-q153",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 153,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "78d2f3c174929dcbb0d83c52f9cd261c2bea89d7718caa26f36e3ecd7094dd40",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-1ecfa7ac837401e9b7b1af3d7b4d1666",
+      "split_group": "enem-1ecfa7ac837401e9b7b1af3d7b4d1666",
+      "question_id": "enem-2023-dia2-azul-q154",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 154,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "af47b6f1ce061a975aabca36f91e22d89d9f4783bbdc04fb1da07f28d21289ff",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-f7d73792b4d0390e666d3a18cf9d4dca",
+      "split_group": "enem-f7d73792b4d0390e666d3a18cf9d4dca",
+      "question_id": "enem-2023-dia2-azul-q155",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 155,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "684b3335951740e2ec7a437b2b8ad16abee8adb512ef70761df428f2123a0cca",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-b531b891efdd74ca59bfa0b8e95130fd",
+      "split_group": "enem-b531b891efdd74ca59bfa0b8e95130fd",
+      "question_id": "enem-2023-dia2-azul-q156",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 156,
+      "page": 22,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "46c1460aeb4b9ab93ec3f15abf7c5c551df10abd62363f9be005c9c25b8a538d",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-9fb541e2f4ef2785dab77a2bbf07b228",
+      "split_group": "enem-9fb541e2f4ef2785dab77a2bbf07b228",
+      "question_id": "enem-2023-dia2-azul-q157",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 157,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "493166c5035798a4422cb7fe8ee5fd1cbbebcdf34876e79c35f7c007ec8d04b5",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-7d4155e295feee9c731e0b150c53c28e",
+      "split_group": "enem-7d4155e295feee9c731e0b150c53c28e",
+      "question_id": "enem-2023-dia2-azul-q158",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 158,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "aaa3ef9e733a9cbf191542cdcaf29735ef72eb10e14cc2619e3b0aa028d4672e",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-90c776b97fa950093363dcf634b09d67",
+      "split_group": "enem-90c776b97fa950093363dcf634b09d67",
+      "question_id": "enem-2023-dia2-azul-q159",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 159,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "318a55c7d38e8ead54d8bddaf63b4b521b9abaaaffb3ccfff9c47f6bb8d5e88a",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-1c78e9ee657d57d0ecb6464554381386",
+      "split_group": "enem-1c78e9ee657d57d0ecb6464554381386",
+      "question_id": "enem-2023-dia2-azul-q160",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 160,
+      "page": 23,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "a4d835b10107decc79c57c168021347ae31dd60a20cce95793915b4936c41868",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-e7ed84771c4aa636e5344312ccfcb45f",
+      "split_group": "enem-e7ed84771c4aa636e5344312ccfcb45f",
+      "question_id": "enem-2023-dia2-azul-q161",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 161,
+      "page": 24,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "5d839d4b6c82d66844c91237b73f9f6e947cf969153d9b874ba4beacfd1e2e7d",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-77dc87984f44d0ba3d8ef27166ec6a57",
+      "split_group": "enem-77dc87984f44d0ba3d8ef27166ec6a57",
+      "question_id": "enem-2023-dia2-azul-q162",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 162,
+      "page": 24,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "8b2363f027ff704a6208555311f949a36928b29e67542a7b481ecd6d6018ac1a",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-887d68907ac8ab7fca78b4a94d8dd531",
+      "split_group": "enem-887d68907ac8ab7fca78b4a94d8dd531",
+      "question_id": "enem-2023-dia2-azul-q163",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 163,
+      "page": 24,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "aca772b20c0b8f5eead4e5c1e2bad8c480b7f7dcee6bbf0a9aa70a6ad07a5c93",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-6c52f6c0e027477dea5fac446e8408da",
+      "split_group": "enem-6c52f6c0e027477dea5fac446e8408da",
+      "question_id": "enem-2023-dia2-azul-q165",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 165,
+      "page": 25,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "d20bcaac6f1bf6fcdf3cb080d4665458c53325ed70106571a5eff622ad92057a",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-d6179ee3896706a6f658a3b2b9873342",
+      "split_group": "enem-d6179ee3896706a6f658a3b2b9873342",
+      "question_id": "enem-2023-dia2-azul-q166",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 166,
+      "page": 26,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "20bed7569772f2e7cc5c5e58d2a007272ab0c7bbde22f8d1ab48d099127df90a",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-9770e64bbd49c4e020ed75adb35894f1",
+      "split_group": "enem-9770e64bbd49c4e020ed75adb35894f1",
+      "question_id": "enem-2023-dia2-azul-q167",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 167,
+      "page": 26,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "028c729600b3fc2f4bf1115843749649677bf5c050252112b8b28d43f66f0a26",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ab36cb729269a69390574e21d6587bc4",
+      "split_group": "enem-ab36cb729269a69390574e21d6587bc4",
+      "question_id": "enem-2023-dia2-azul-q168",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 168,
+      "page": 27,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "5cda0a20fc33d342b3773192bef73d57771ba0c3520066498725660970972406",
+      "discipline": "Matemática",
+      "themes": [
+        "Probabilidade e combinatória"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-32d9957ccb93075409c86aefee56d979",
+      "split_group": "enem-32d9957ccb93075409c86aefee56d979",
+      "question_id": "enem-2023-dia2-azul-q169",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 169,
+      "page": 27,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "f75036f2207ba8bcb1e2266efb5feb6d1b891d159e8910a90b641b8b6f4f279b",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-39e5b85497bbf5ab8667fc71da8b973f",
+      "split_group": "enem-39e5b85497bbf5ab8667fc71da8b973f",
+      "question_id": "enem-2023-dia2-azul-q170",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 170,
+      "page": 27,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "3a6f0fdd8c288771066adc14cf79e906c4082f3c9ef0c4fc0bf3870094ad15de",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-36d45d9a840f4bcc9a9746764af57f08",
+      "split_group": "enem-36d45d9a840f4bcc9a9746764af57f08",
+      "question_id": "enem-2023-dia2-azul-q171",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 171,
+      "page": 28,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "0abf79a193d0a21ca5b06f7b371bbcb2cb86e8513b3f852e72479d5b27a56689",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-05af1c8332f4ab4e2e0272497cc2b913",
+      "split_group": "enem-05af1c8332f4ab4e2e0272497cc2b913",
+      "question_id": "enem-2023-dia2-azul-q172",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 172,
+      "page": 28,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "1cf1cca3b8d4d6282bf119355b5b9119a81fc62d6d517d3fa264c947f975ecf0",
+      "discipline": "Matemática",
+      "themes": [
+        "Geometria plana"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-a870975725933463ef4e5c942f652dad",
+      "split_group": "enem-a870975725933463ef4e5c942f652dad",
+      "question_id": "enem-2023-dia2-azul-q173",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 173,
+      "page": 28,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "7d31499ecb5e3528865a3abb3ca80c73f700b874ecc8b04a8c6a0fc2f1085882",
+      "discipline": "Matemática",
+      "themes": [
+        "Grandezas e medidas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-3d83cf7a9268db9c5e90aa0f1b3bd0e5",
+      "split_group": "enem-3d83cf7a9268db9c5e90aa0f1b3bd0e5",
+      "question_id": "enem-2023-dia2-azul-q174",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 174,
+      "page": 29,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "ecd2180d67a899d723562efc37c2fd71edc3b45c9a1da6cc66af827ddad1d284",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-ba0828ed54ba863b3c66ee762d97c67d",
+      "split_group": "enem-ba0828ed54ba863b3c66ee762d97c67d",
+      "question_id": "enem-2023-dia2-azul-q175",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 175,
+      "page": 29,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "093d736fce03f1e9918d2dca670cec5470e4aa3b96da941f929767eb4dd14a6e",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-dc9d87e8915dcd8a61bb4fa7d6fa57a6",
+      "split_group": "enem-dc9d87e8915dcd8a61bb4fa7d6fa57a6",
+      "question_id": "enem-2023-dia2-azul-q176",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 176,
+      "page": 30,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "912c95e935c7ef5f42db6780a75375d9e09c98883edc79a095a107fa231a5f78",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-0e63e9c5eed3a385bf5baa7b7c80990d",
+      "split_group": "enem-0e63e9c5eed3a385bf5baa7b7c80990d",
+      "question_id": "enem-2023-dia2-azul-q177",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 177,
+      "page": 30,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "323c43c3627b43f1b7b2898833e205f7d28b28fca5185404082120b8bf544a6d",
+      "discipline": "Matemática",
+      "themes": [
+        "Álgebra e funções"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-610a62585b116d397ae60aca7a91fb75",
+      "split_group": "enem-610a62585b116d397ae60aca7a91fb75",
+      "question_id": "enem-2023-dia2-azul-q178",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 178,
+      "page": 31,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "097cd2ddc39c082a5325467dab0015832d5aee48e4d8557e8bd7f7cc321c7122",
+      "discipline": "Matemática",
+      "themes": [
+        "Gráficos e coordenadas"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-775b38ca813d5349d414f17678a80f06",
+      "split_group": "enem-775b38ca813d5349d414f17678a80f06",
+      "question_id": "enem-2023-dia2-azul-q179",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 179,
+      "page": 31,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "dc6eed688f1f330f660f6f48cbfaa8dfd85522ba993fe379d99214e782e19e6d",
+      "discipline": "Matemática",
+      "themes": [
+        "Números e proporcionalidade"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    },
+    {
+      "canonical_id": "enem-30c7060daaa7c16129366a781fde588f",
+      "split_group": "enem-30c7060daaa7c16129366a781fde588f",
+      "question_id": "enem-2023-dia2-azul-q180",
+      "exam_id": "enem-2023-matematica-azul",
+      "number": 180,
+      "page": 31,
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "content_sha256": "6e15b71916050ad1d3ac14e69385240576997909dfde78cb1d7cead396429ccb",
+      "discipline": "Matemática",
+      "themes": [
+        "Estatística"
+      ],
+      "taxonomy_version": "enem-content-v1",
+      "review_status": "technical_curation",
+      "independent_review": false
+    }
+  ]
+}

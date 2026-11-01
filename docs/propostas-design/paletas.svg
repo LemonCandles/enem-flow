@@ -47,9 +47,9 @@
 <rect x="388" y="406" width="94" height="80" rx="8" fill="#242424" stroke="#B0AEA3"/>
 <text x="388" y="514" font-family="Arial, sans-serif" font-size="12" fill="#242424">Texto</text>
 <text x="388" y="540" font-family="monospace" font-size="14" fill="#242424">#242424</text>
-<rect x="504" y="406" width="94" height="80" rx="8" fill="#706F65" stroke="#B0AEA3"/>
+<rect x="504" y="406" width="94" height="80" rx="8" fill="#69685F" stroke="#B0AEA3"/>
 <text x="504" y="514" font-family="Arial, sans-serif" font-size="12" fill="#242424">Apoio</text>
-<text x="504" y="540" font-family="monospace" font-size="14" fill="#242424">#706F65</text>
+<text x="504" y="540" font-family="monospace" font-size="14" fill="#242424">#69685F</text>
 <rect x="620" y="406" width="94" height="80" rx="8" fill="#D8D6CC" stroke="#B0AEA3"/>
 <text x="620" y="514" font-family="Arial, sans-serif" font-size="12" fill="#242424">Bordas</text>
 <text x="620" y="540" font-family="monospace" font-size="14" fill="#242424">#D8D6CC</text>

@@ -139,6 +139,8 @@ class QuestionContent(Schema):
             raise ValueError("Alternativas vazias exigem uma representação original.")
         if any(len(v) > 150 for v in self.labels.themes + self.labels.skills):
             raise ValueError("Rótulo longo demais.")
+        from .taxonomy import validate_labels
+        validate_labels(self.labels.model_dump(), self.area)
         return self
 
 

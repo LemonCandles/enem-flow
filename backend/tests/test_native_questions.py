@@ -39,7 +39,7 @@ def test_bundled_json_is_native_and_keeps_only_figures():
 
 
 def test_legacy_view_uses_json_without_changing_answers_or_snapshots():
-    legacy = json.loads((ROOT / 'data/sources/enem-2024-dia2-azul-extraction.json').read_text())['questions'][0]
+    legacy = json.loads((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-extraction.json').read_text())['questions'][0]
     before = copy.deepcopy(legacy['content'])
     public = public_question({'id': legacy['question_id'] + ':1', 'question_id': legacy['question_id'],
                               'version': 1, 'content': legacy['content']}, False)
@@ -96,7 +96,7 @@ def test_refresh_creates_versions_and_preserves_runs(admin, student, exam_payloa
 
 def test_review_is_reproducible_and_changes_only_the_reported_questions():
     from scripts.review_presentation import apply_review, REASONS
-    baseline = json.loads((ROOT / 'data/sources/enem-2024-dia2-azul-native-v1.json').read_text())
+    baseline = json.loads((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())
     current = json.loads((ROOT / 'data/enem-2024-dia2-azul.json').read_text())
     assert apply_review(copy.deepcopy(baseline)) == current
     assert apply_review(copy.deepcopy(current)) == current
@@ -125,7 +125,7 @@ def test_review_is_reproducible_and_changes_only_the_reported_questions():
 
 
 def test_previous_native_snapshot_adapts_without_rewriting_or_overriding_edits():
-    question = json.loads((ROOT / 'data/sources/enem-2024-dia2-azul-native-v1.json').read_text())['questions'][0]
+    question = json.loads((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())['questions'][0]
     original = copy.deepcopy(question['content'])
     adapted = readable_content(question['question_id'], original)
     assert any(b.get('caption', '').startswith('Momentum') for b in adapted['blocks'])
@@ -141,7 +141,7 @@ def test_previous_native_snapshot_adapts_without_rewriting_or_overriding_edits()
 def test_refresh_native_v1_publishes_only_fifteen_versions(database):
     from backend.app.content import import_exam
     from backend.app.models import QuestionVersion, Review
-    before = ExamImport.model_validate_json((ROOT / 'data/sources/enem-2024-dia2-azul-native-v1.json').read_text())
+    before = ExamImport.model_validate_json((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())
     after = ExamImport.model_validate_json((ROOT / 'data/enem-2024-dia2-azul.json').read_text())
     with database.begin() as db:
         exam = import_exam(db, before)
@@ -160,7 +160,7 @@ def test_refresh_native_v1_publishes_only_fifteen_versions(database):
 def test_refresh_refuses_custom_content_even_if_statement_is_unchanged(database, edit):
     from backend.app.content import import_exam
     from backend.app.models import QuestionVersion
-    before = ExamImport.model_validate_json((ROOT / 'data/sources/enem-2024-dia2-azul-native-v1.json').read_text())
+    before = ExamImport.model_validate_json((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())
     after = ExamImport.model_validate_json((ROOT / 'data/enem-2024-dia2-azul.json').read_text())
     with database.begin() as db:
         exam = import_exam(db, before)

@@ -1,5 +1,6 @@
 """Audit the active booklet against its declared source and official answer key."""
 import hashlib
+import argparse
 import json
 import re
 import sys
@@ -11,16 +12,25 @@ from backend.app.content import validate_assets
 from backend.app.schemas import ExamImport
 
 
-def audit():
+def audit(path=None):
     import pymupdf
-    payload = ExamImport.model_validate_json((ROOT/'data/enem-2024-dia2-azul.json').read_text())
-    source, key = ROOT/'data/sources/enem-2024-dia2-azul.pdf', ROOT/'data/sources/enem-2024-dia2-azul-gabarito.pdf'
+    payload = ExamImport.model_validate_json((path or ROOT/'data/enem-2024-dia2-azul.json').read_text())
+    catalog=json.loads((ROOT/'data/sources/catalogo/acervo.json').read_text())
+    def locate(url,digest):
+        matches=[ROOT/'data/sources'/r['path'] for r in catalog['files'] if r['url']==url and r.get('sha256')==digest]
+        existing=next((p for p in matches if p.is_file()),None)
+        if not existing:raise ValueError(f'Fonte declarada não encontrada no catálogo local: {url}')
+        return existing
+    source=locate(payload.source.url,payload.source.sha256)
+    key=locate(payload.source.answer_key_url,payload.source.answer_key_sha256)
     assert hashlib.sha256(source.read_bytes()).hexdigest() == payload.source.sha256
     assert hashlib.sha256(key.read_bytes()).hexdigest() == payload.source.answer_key_sha256
     with pymupdf.open(key) as doc:
         text = '\n'.join(p.get_text() for p in doc)
     answers = {int(n): None if a.upper().startswith('ANULAD') else a.upper() for n,a in re.findall(r'\b(\d{1,3})\s+(ANULAD[AO]|[ABCDE])\b',text,re.I)}
-    assert set(answers) == {q.content.number for q in payload.questions}
+    numbers={q.content.number for q in payload.questions}
+    assert numbers <= set(answers)
+    if payload.kind=='complete':assert set(answers)==numbers
     assert len(payload.questions) == payload.expected_items
     figures = tables = math = 0
     for q in payload.questions:
@@ -43,4 +53,6 @@ def audit():
             'source_hashes':'verified','answer_key':'verified','assets':'verified','review':'technical_integrity_only'}
 
 
-if __name__ == '__main__': print(json.dumps(audit(), ensure_ascii=False, indent=2))
+if __name__ == '__main__':
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--exam',type=Path)
+    print(json.dumps(audit(parser.parse_args().exam),ensure_ascii=False,indent=2))

@@ -11,10 +11,10 @@ from pathlib import Path
 import pymupdf as fitz
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ROOT / "data/sources"
+SOURCES = ROOT / "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul"
 OUT = ROOT / "data/assets/enem-2024-dia2-azul"
-PDF = SOURCES / "enem-2024-dia2-azul.pdf"
-KEY = SOURCES / "enem-2024-dia2-azul-gabarito.pdf"
+PDF = SOURCES / "prova.pdf"
+KEY = SOURCES / "gabarito.pdf"
 FULL_WIDTH_PAGES = {15, 23, 26, 27, 28}
 
 

@@ -189,7 +189,7 @@ def exam_detail(exam_id: str, db: Session = Depends(get_db, scope="function")):
     exam = visible_exam(db, exam_id)
     return {**summary(db, exam), "items": [public_question({"id": key,
             "question_id": (question := db.get(m.QuestionVersion, key)).question_id,
-            "version": question.version, "content": question.content}, False) for key in exam.items]}
+            "canonical_id": question.canonical_id, "version": question.version, "content": question.content}, False) for key in exam.items]}
 
 
 @app.post("/exam-runs", status_code=201)
@@ -204,7 +204,7 @@ def start_run(payload: s.StartRun, user: m.User = Depends(current_user), db: Ses
     for key in exam.items:
         question = db.get(m.QuestionVersion, key)
         items.append({"id": key, "question_id": question.question_id, "version": question.version,
-                      "content": copy.deepcopy(question.content)})
+                      "canonical_id": question.canonical_id, "content": copy.deepcopy(question.content)})
     run = m.ExamRun(user_id=user.id, exam_id=exam.id, start_key=payload.idempotency_key,
                     exam_info=summary(db, exam), items=items, answers={})
     db.add(run)
@@ -266,7 +266,7 @@ def finish_run(run_id: str, user: m.User = Depends(current_user), db: Session = 
         answer = run.answers.get(item["id"])
         db.add(m.LearningEvent(user_id=user.id, run_id=run.id, item_id=item["id"], position=position,
               answer=answer, correct=None if content["annulled"] else answer == content["correct_answer"],
-              context={"schema_version": "1.0", "content_version": item["version"], "mode": "exam",
+              context={"schema_version": "1.0", "content_version": item["version"], "canonical_id": item.get('canonical_id') or item['question_id'], "mode": "exam",
                        "help_used": False, "labels": content["labels"]}))
     db.flush()
     return run_data(run)
@@ -343,7 +343,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: m.User = Depen
         raise HTTPException(409, "Há uma versão mais recente. Atualize a tela antes de editar.")
     version = last + 1
     question = m.QuestionVersion(id=f"{previous.question_id}:{version}", question_id=previous.question_id,
-                                version=version, content=content)
+                                canonical_id=previous.canonical_id, version=version, content=content)
     db.add(question)
     # Published exams are withdrawn until the new version is reviewed and published again.
     for exam in db.scalars(select(m.Exam)):
@@ -391,3 +391,32 @@ def audit(user: m.User = Depends(admin_user), db: Session = Depends(get_db, scop
     return [{"id": r.id, "target_id": r.target_id, "action": r.action, "reason": r.reason,
              "reviewer_id": r.user_id, "created_at": r.created_at}
             for r in db.scalars(select(m.Review).order_by(m.Review.created_at.desc()).limit(200))]
+
+
+@app.get('/admin/archive')
+def archive_inventory(year: int | None = None, application: str | None = None, user: m.User = Depends(admin_user)):
+    from .archive import inventory
+    return inventory(year,application)
+
+
+@app.get('/admin/archive/questions')
+def archive_questions(year: int, application: str | None = None, number: int | None = None,
+                      offset: int = 0, limit: int = 25, user: m.User = Depends(admin_user)):
+    from .archive import questions
+    if not 1998<=year<=2100 or not 0<=offset or not 1<=limit<=100 or (number is not None and not 1<=number<=1000):
+        raise HTTPException(422,'Filtros do acervo inválidos.')
+    return questions(year,application,number,offset,limit)
+
+
+@app.get('/admin/archive/questions/{occurrence_id}')
+def archive_question(occurrence_id: str, user: m.User = Depends(admin_user)):
+    from .archive import detail
+    result=detail(occurrence_id)
+    if not result:raise HTTPException(404,'Extração não encontrada neste ambiente; sincronize o banco do acervo.')
+    return result
+
+
+@app.get('/admin/taxonomy')
+def content_taxonomy(user: m.User = Depends(admin_user)):
+    from .taxonomy import taxonomy
+    return taxonomy()

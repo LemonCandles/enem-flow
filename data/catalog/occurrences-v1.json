@@ -1,0 +1,5762 @@
+{
+  "version": "booklet-links-v1",
+  "catalog": "catalog-v1",
+  "method": "Cores da mesma aplicação e dia: contenção de trigramas do texto nativo, pareamento único, gabarito oficial de cada cor e figuras raster equivalentes.",
+  "criteria": {
+    "min_text_containment": 0.4,
+    "min_margin": 0.3,
+    "max_figure_distance": 8.0
+  },
+  "limits": "Desenhos vetoriais não são comparados; a equivalência deles decorre do texto, do pareamento e do gabarito.",
+  "exams": [
+    {
+      "exam_id": "enem-2024-dia2-azul",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "booklets": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_path": "enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "answer_key_sha256": "8d27b5a447061e9a1c181d00a916d10f45e1c6c1da68d628b3ae8bdfedbf5c92",
+          "linked": 90,
+          "pending": 0
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_path": "enem/2024/regular/impresso/dia-2/caderno-5-amarelo/prova.pdf",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "answer_key_sha256": "342edd1d18c0266812b9e379c7b9b2ebfcdd739857445bd03cf3c55951861297",
+          "linked": 90,
+          "pending": 0
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_path": "enem/2024/regular/impresso/dia-2/caderno-6-cinza/prova.pdf",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "answer_key_sha256": "ab57e0405d0c57ebacef4aeff3e69113c571d3f343269ca1d3b1e984cd345308",
+          "linked": 90,
+          "pending": 0
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_path": "enem/2024/regular/impresso/dia-2/caderno-8-verde/prova.pdf",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "answer_key_sha256": "49f9d861218f1e6ff28037f3bad07a6920a54de85aea9101ebd36cec30619e53",
+          "linked": 90,
+          "pending": 0
+        }
+      ]
+    },
+    {
+      "exam_id": "enem-2023-matematica-azul",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "booklets": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_path": "enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "answer_key_sha256": "cf40c0c8b19145440132673b11ec682ceef2e047eb1cfa1a2f19a0f908c12410",
+          "linked": 45,
+          "pending": 0
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_path": "enem/2023/regular/impresso/dia-2/caderno-5-amarelo/prova.pdf",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "answer_key_sha256": "597ab9fab55c19351f1ac98d9d722ddbae6789943d9ae8da34e7776c28f532a4",
+          "linked": 45,
+          "pending": 0
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_path": "enem/2023/regular/impresso/dia-2/caderno-6-cinza/prova.pdf",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "answer_key_sha256": "72fc19e80f56a33a522a846372aa8de3bb01dafe986161ead36c0ccba14a06bd",
+          "linked": 45,
+          "pending": 0
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_path": "enem/2023/regular/impresso/dia-2/caderno-8-rosa/prova.pdf",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "answer_key_sha256": "e85440fd23603178c8e869df24481c02ccae93e3cf982eff925de05ae464af54",
+          "linked": 45,
+          "pending": 0
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "enem-2024-regular-q91",
+      "canonical_id": "enem-d09be52b40e768cbdba8a2a29da4bba0",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 91,
+          "answer": "B",
+          "text_containment": 0.927,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 119,
+          "answer": "B",
+          "text_containment": 0.927,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 126,
+          "answer": "B",
+          "text_containment": 0.927,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 105,
+          "answer": "B",
+          "text_containment": 0.927,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q92",
+      "canonical_id": "enem-c906ab22b642e87a3732ba64538b339c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 92,
+          "answer": "C",
+          "text_containment": 0.963,
+          "margin": 0.954,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 120,
+          "answer": "C",
+          "text_containment": 0.963,
+          "margin": 0.954,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 127,
+          "answer": "C",
+          "text_containment": 0.963,
+          "margin": 0.954,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 106,
+          "answer": "C",
+          "text_containment": 0.963,
+          "margin": 0.954,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q93",
+      "canonical_id": "enem-d3390a53e0530b983a7bbc33443abc0c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 93,
+          "answer": "E",
+          "text_containment": 0.854,
+          "margin": 0.829,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 121,
+          "answer": "E",
+          "text_containment": 0.854,
+          "margin": 0.829,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 128,
+          "answer": "E",
+          "text_containment": 0.854,
+          "margin": 0.829,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 107,
+          "answer": "E",
+          "text_containment": 0.854,
+          "margin": 0.829,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q94",
+      "canonical_id": "enem-08ca4bae56e81f3bb5e3bab201922939",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 94,
+          "answer": "A",
+          "text_containment": 0.88,
+          "margin": 0.88,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 112,
+          "answer": "A",
+          "text_containment": 0.88,
+          "margin": 0.88,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 132,
+          "answer": "A",
+          "text_containment": 0.88,
+          "margin": 0.88,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 111,
+          "answer": "A",
+          "text_containment": 0.88,
+          "margin": 0.88,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q95",
+      "canonical_id": "enem-1ed1d3a4e393cb2e25eda0045d807fb5",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 95,
+          "answer": "A",
+          "text_containment": 0.916,
+          "margin": 0.892,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 113,
+          "answer": "A",
+          "text_containment": 0.916,
+          "margin": 0.892,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 133,
+          "answer": "A",
+          "text_containment": 0.916,
+          "margin": 0.892,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 112,
+          "answer": "A",
+          "text_containment": 0.916,
+          "margin": 0.892,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q96",
+      "canonical_id": "enem-6315c71700d492c0fb1f535dd17a0f4c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 96,
+          "answer": "C",
+          "text_containment": 0.948,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 114,
+          "answer": "C",
+          "text_containment": 0.948,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 134,
+          "answer": "C",
+          "text_containment": 0.948,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 113,
+          "answer": "C",
+          "text_containment": 0.948,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q97",
+      "canonical_id": "enem-04f2508628052aeb24159eb19bae7406",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 97,
+          "answer": "D",
+          "text_containment": 0.909,
+          "margin": 0.841,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 115,
+          "answer": "D",
+          "text_containment": 0.909,
+          "margin": 0.841,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 135,
+          "answer": "D",
+          "text_containment": 0.909,
+          "margin": 0.841,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 114,
+          "answer": "D",
+          "text_containment": 0.909,
+          "margin": 0.841,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q98",
+      "canonical_id": "enem-1a3f3a3163002e1a3ca2c699afffa9f4",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 98,
+          "answer": "E",
+          "text_containment": 0.905,
+          "margin": 0.853,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 116,
+          "answer": "E",
+          "text_containment": 0.905,
+          "margin": 0.853,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 129,
+          "answer": "E",
+          "text_containment": 0.905,
+          "margin": 0.853,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 108,
+          "answer": "E",
+          "text_containment": 0.905,
+          "margin": 0.853,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q99",
+      "canonical_id": "enem-68d5eeabc5e4095bc1c21f70b0489557",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 99,
+          "answer": "D",
+          "text_containment": 0.877,
+          "margin": 0.868,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 117,
+          "answer": "D",
+          "text_containment": 0.877,
+          "margin": 0.868,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 130,
+          "answer": "D",
+          "text_containment": 0.877,
+          "margin": 0.868,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 109,
+          "answer": "D",
+          "text_containment": 0.877,
+          "margin": 0.868,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q100",
+      "canonical_id": "enem-6940f06a4df0517bf3e60a78abbf9b4a",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 100,
+          "answer": "C",
+          "text_containment": 0.828,
+          "margin": 0.821,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 118,
+          "answer": "C",
+          "text_containment": 0.828,
+          "margin": 0.821,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 131,
+          "answer": "C",
+          "text_containment": 0.828,
+          "margin": 0.821,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 110,
+          "answer": "C",
+          "text_containment": 0.828,
+          "margin": 0.821,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q101",
+      "canonical_id": "enem-939be65da05e14ee945d4201c1c48fd2",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 101,
+          "answer": "A",
+          "text_containment": 0.939,
+          "margin": 0.923,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 124,
+          "answer": "A",
+          "text_containment": 0.939,
+          "margin": 0.923,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 115,
+          "answer": "A",
+          "text_containment": 0.939,
+          "margin": 0.923,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 99,
+          "answer": "A",
+          "text_containment": 0.939,
+          "margin": 0.923,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q102",
+      "canonical_id": "enem-07bd2035a50c1dbfb2cf4cf0392bebfd",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 102,
+          "answer": "A",
+          "text_containment": 0.889,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 125,
+          "answer": "A",
+          "text_containment": 0.889,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 116,
+          "answer": "A",
+          "text_containment": 0.889,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 100,
+          "answer": "A",
+          "text_containment": 0.889,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q103",
+      "canonical_id": "enem-3f05b5919ced1998082ff7e9c5ae3ebb",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 103,
+          "answer": "E",
+          "text_containment": 0.923,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 126,
+          "answer": "E",
+          "text_containment": 0.923,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 117,
+          "answer": "E",
+          "text_containment": 0.923,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 101,
+          "answer": "E",
+          "text_containment": 0.923,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q104",
+      "canonical_id": "enem-9cc5a1179171027dbc6e9b943986c922",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 104,
+          "answer": "D",
+          "text_containment": 0.902,
+          "margin": 0.885,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 127,
+          "answer": "D",
+          "text_containment": 0.902,
+          "margin": 0.885,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 118,
+          "answer": "D",
+          "text_containment": 0.902,
+          "margin": 0.885,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 102,
+          "answer": "D",
+          "text_containment": 0.902,
+          "margin": 0.885,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q105",
+      "canonical_id": "enem-c7f34f6c76b679ea3dc1726c55e0506f",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 105,
+          "answer": "D",
+          "text_containment": 0.916,
+          "margin": 0.843,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 128,
+          "answer": "D",
+          "text_containment": 0.916,
+          "margin": 0.843,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 119,
+          "answer": "D",
+          "text_containment": 0.916,
+          "margin": 0.843,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 94,
+          "answer": "D",
+          "text_containment": 0.916,
+          "margin": 0.843,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q106",
+      "canonical_id": "enem-3047f0e1de2572e1d062e5d48e7faaaa",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 106,
+          "answer": "D",
+          "text_containment": 0.914,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 129,
+          "answer": "D",
+          "text_containment": 0.914,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 120,
+          "answer": "D",
+          "text_containment": 0.914,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 95,
+          "answer": "D",
+          "text_containment": 0.914,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q107",
+      "canonical_id": "enem-405381f22384edb77437818d9ea4474d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 107,
+          "answer": "E",
+          "text_containment": 0.909,
+          "margin": 0.896,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 130,
+          "answer": "E",
+          "text_containment": 0.909,
+          "margin": 0.896,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 121,
+          "answer": "E",
+          "text_containment": 0.909,
+          "margin": 0.896,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 96,
+          "answer": "E",
+          "text_containment": 0.909,
+          "margin": 0.896,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q108",
+      "canonical_id": "enem-f33837be631e263a9c6f3eb20bf16509",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 108,
+          "answer": "B",
+          "text_containment": 0.921,
+          "margin": 0.881,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 131,
+          "answer": "B",
+          "text_containment": 0.921,
+          "margin": 0.881,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 122,
+          "answer": "B",
+          "text_containment": 0.921,
+          "margin": 0.881,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 97,
+          "answer": "B",
+          "text_containment": 0.921,
+          "margin": 0.881,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q109",
+      "canonical_id": "enem-5dce9fe3a5ebb0ff87bd70ccf3855c76",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 109,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 132,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 123,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 98,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q110",
+      "canonical_id": "enem-25b540af5302424c992d69e84ce71732",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 110,
+          "answer": "D",
+          "text_containment": 0.925,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 133,
+          "answer": "D",
+          "text_containment": 0.925,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 105,
+          "answer": "D",
+          "text_containment": 0.925,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 91,
+          "answer": "D",
+          "text_containment": 0.925,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q111",
+      "canonical_id": "enem-9f40240e53415d3b74a427f4b27e4c33",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 111,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 134,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 106,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 92,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q112",
+      "canonical_id": "enem-e2a76649b5f8336abce799ffef39da3d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 112,
+          "answer": "B",
+          "text_containment": 0.799,
+          "margin": 0.791,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 135,
+          "answer": "B",
+          "text_containment": 0.799,
+          "margin": 0.791,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 107,
+          "answer": "B",
+          "text_containment": 0.799,
+          "margin": 0.791,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 93,
+          "answer": "B",
+          "text_containment": 0.799,
+          "margin": 0.791,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q113",
+      "canonical_id": "enem-ad06fbbad7733a31f55ec6fbf049c78c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 113,
+          "answer": "E",
+          "text_containment": 0.85,
+          "margin": 0.767,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 122,
+          "answer": "E",
+          "text_containment": 0.85,
+          "margin": 0.767,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 124,
+          "answer": "E",
+          "text_containment": 0.85,
+          "margin": 0.767,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 103,
+          "answer": "E",
+          "text_containment": 0.85,
+          "margin": 0.767,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q114",
+      "canonical_id": "enem-52e74f9e0c3a7591a99b5d7afef2e098",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 114,
+          "answer": "C",
+          "text_containment": 0.861,
+          "margin": 0.832,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 123,
+          "answer": "C",
+          "text_containment": 0.861,
+          "margin": 0.832,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 125,
+          "answer": "C",
+          "text_containment": 0.861,
+          "margin": 0.832,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 104,
+          "answer": "C",
+          "text_containment": 0.861,
+          "margin": 0.832,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q115",
+      "canonical_id": "enem-c5b26a0897f59071d8efcfd7e1d6131e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 115,
+          "answer": "C",
+          "text_containment": 0.886,
+          "margin": 0.747,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 91,
+          "answer": "C",
+          "text_containment": 0.886,
+          "margin": 0.747,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 108,
+          "answer": "C",
+          "text_containment": 0.886,
+          "margin": 0.747,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 132,
+          "answer": "C",
+          "text_containment": 0.886,
+          "margin": 0.747,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q116",
+      "canonical_id": "enem-a2ae9fcbe0caf6578a42399ae30be9da",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 116,
+          "answer": "A",
+          "text_containment": 0.764,
+          "margin": 0.736,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 92,
+          "answer": "A",
+          "text_containment": 0.764,
+          "margin": 0.736,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 109,
+          "answer": "A",
+          "text_containment": 0.764,
+          "margin": 0.736,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 133,
+          "answer": "A",
+          "text_containment": 0.764,
+          "margin": 0.736,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q117",
+      "canonical_id": "enem-42e8ead4b67591d7f774785e3ef2f811",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 117,
+          "answer": "E",
+          "text_containment": 0.902,
+          "margin": 0.893,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 93,
+          "answer": "E",
+          "text_containment": 0.902,
+          "margin": 0.893,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 110,
+          "answer": "E",
+          "text_containment": 0.902,
+          "margin": 0.893,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 134,
+          "answer": "E",
+          "text_containment": 0.902,
+          "margin": 0.893,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q118",
+      "canonical_id": "enem-6167f7d813a8d7e654ec9e7672c8ba61",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 118,
+          "answer": "D",
+          "text_containment": 0.924,
+          "margin": 0.918,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 94,
+          "answer": "D",
+          "text_containment": 0.924,
+          "margin": 0.918,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 111,
+          "answer": "D",
+          "text_containment": 0.924,
+          "margin": 0.918,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 135,
+          "answer": "D",
+          "text_containment": 0.924,
+          "margin": 0.918,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q119",
+      "canonical_id": "enem-4218ba36cf6d1520b30dc043c9e961ea",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 119,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.918,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 104,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.918,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 96,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.918,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 120,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.918,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q120",
+      "canonical_id": "enem-8b1c4c0d4e3dad2a9f96fdeb28e0bc80",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 120,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 105,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 97,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 121,
+          "answer": "B",
+          "text_containment": 0.925,
+          "margin": 0.907,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q121",
+      "canonical_id": "enem-3146dfd8b71502aa217e1a57d92a472c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 121,
+          "answer": "A",
+          "text_containment": 0.978,
+          "margin": 0.957,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 106,
+          "answer": "A",
+          "text_containment": 0.978,
+          "margin": 0.957,
+          "figures": "conferidas visualmente: Mesma tirinha em quatro quadros; a imagem embutida no caderno amarelo tem outra resolução."
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 98,
+          "answer": "A",
+          "text_containment": 0.978,
+          "margin": 0.957,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 122,
+          "answer": "A",
+          "text_containment": 0.978,
+          "margin": 0.957,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q122",
+      "canonical_id": "enem-f4857d45b1b316bfbf23988fccbef672",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 122,
+          "answer": "A",
+          "text_containment": 0.923,
+          "margin": 0.9,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 95,
+          "answer": "A",
+          "text_containment": 0.923,
+          "margin": 0.9,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 112,
+          "answer": "A",
+          "text_containment": 0.923,
+          "margin": 0.9,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 129,
+          "answer": "A",
+          "text_containment": 0.923,
+          "margin": 0.9,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q123",
+      "canonical_id": "enem-643515987b5a5a5251160a4690bc1613",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 123,
+          "answer": "A",
+          "text_containment": 0.878,
+          "margin": 0.866,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 96,
+          "answer": "A",
+          "text_containment": 0.878,
+          "margin": 0.866,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 113,
+          "answer": "A",
+          "text_containment": 0.878,
+          "margin": 0.866,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 130,
+          "answer": "A",
+          "text_containment": 0.878,
+          "margin": 0.866,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q124",
+      "canonical_id": "enem-fc0906f864b64dd99e56d4bd0880fd1b",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 124,
+          "answer": "C",
+          "text_containment": 0.957,
+          "margin": 0.936,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 97,
+          "answer": "C",
+          "text_containment": 0.957,
+          "margin": 0.936,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 114,
+          "answer": "C",
+          "text_containment": 0.957,
+          "margin": 0.936,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 131,
+          "answer": "C",
+          "text_containment": 0.957,
+          "margin": 0.936,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q125",
+      "canonical_id": "enem-65dd50cb93220afc7fbf25c7ba4de936",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 125,
+          "answer": "C",
+          "text_containment": 0.854,
+          "margin": 0.817,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 98,
+          "answer": "C",
+          "text_containment": 0.854,
+          "margin": 0.817,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 102,
+          "answer": "C",
+          "text_containment": 0.854,
+          "margin": 0.817,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 126,
+          "answer": "C",
+          "text_containment": 0.854,
+          "margin": 0.817,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q126",
+      "canonical_id": "enem-4820a51c87681bb0876788579825eacf",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 126,
+          "answer": "A",
+          "text_containment": 0.919,
+          "margin": 0.89,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 99,
+          "answer": "A",
+          "text_containment": 0.919,
+          "margin": 0.89,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 103,
+          "answer": "A",
+          "text_containment": 0.919,
+          "margin": 0.89,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 127,
+          "answer": "A",
+          "text_containment": 0.919,
+          "margin": 0.89,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q127",
+      "canonical_id": "enem-8a3aca9bdb4819abe2c3f1ee22465315",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 127,
+          "answer": "E",
+          "text_containment": 0.979,
+          "margin": 0.958,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 100,
+          "answer": "E",
+          "text_containment": 0.979,
+          "margin": 0.958,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 104,
+          "answer": "E",
+          "text_containment": 0.979,
+          "margin": 0.958,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 128,
+          "answer": "E",
+          "text_containment": 0.979,
+          "margin": 0.958,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q128",
+      "canonical_id": "enem-becbb4db0418933419d16877300d5ce5",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 128,
+          "answer": "E",
+          "text_containment": 0.859,
+          "margin": 0.844,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 101,
+          "answer": "E",
+          "text_containment": 0.859,
+          "margin": 0.844,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 99,
+          "answer": "E",
+          "text_containment": 0.859,
+          "margin": 0.844,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 123,
+          "answer": "E",
+          "text_containment": 0.859,
+          "margin": 0.844,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q129",
+      "canonical_id": "enem-8c5814d541d623f5ec4e80ce5874fe2e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 129,
+          "answer": null,
+          "text_containment": 0.913,
+          "margin": 0.904,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 102,
+          "answer": null,
+          "text_containment": 0.913,
+          "margin": 0.904,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 100,
+          "answer": null,
+          "text_containment": 0.913,
+          "margin": 0.904,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 124,
+          "answer": null,
+          "text_containment": 0.913,
+          "margin": 0.904,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q130",
+      "canonical_id": "enem-472c9b9e19654ca42501128844f10787",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 130,
+          "answer": "C",
+          "text_containment": 0.93,
+          "margin": 0.898,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 103,
+          "answer": "C",
+          "text_containment": 0.93,
+          "margin": 0.898,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 101,
+          "answer": "C",
+          "text_containment": 0.93,
+          "margin": 0.898,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 125,
+          "answer": "C",
+          "text_containment": 0.93,
+          "margin": 0.898,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q131",
+      "canonical_id": "enem-d2bc9ab8b6a9a097b2878cf7e0c71da7",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 131,
+          "answer": "B",
+          "text_containment": 0.986,
+          "margin": 0.979,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 109,
+          "answer": "B",
+          "text_containment": 0.986,
+          "margin": 0.979,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 91,
+          "answer": "B",
+          "text_containment": 0.986,
+          "margin": 0.979,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 115,
+          "answer": "B",
+          "text_containment": 0.986,
+          "margin": 0.979,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q132",
+      "canonical_id": "enem-7518e955c64e5ae50f21d7e3da2ebae6",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 132,
+          "answer": "B",
+          "text_containment": 0.939,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 110,
+          "answer": "B",
+          "text_containment": 0.939,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 92,
+          "answer": "B",
+          "text_containment": 0.939,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 116,
+          "answer": "B",
+          "text_containment": 0.939,
+          "margin": 0.912,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q133",
+      "canonical_id": "enem-77280aee0896124e8c8632fd539d8bd9",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 133,
+          "answer": "C",
+          "text_containment": 0.811,
+          "margin": 0.789,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 111,
+          "answer": "C",
+          "text_containment": 0.811,
+          "margin": 0.789,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 93,
+          "answer": "C",
+          "text_containment": 0.811,
+          "margin": 0.789,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 117,
+          "answer": "C",
+          "text_containment": 0.811,
+          "margin": 0.789,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q134",
+      "canonical_id": "enem-98812fce1978147773b464f12037c179",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 134,
+          "answer": "E",
+          "text_containment": 0.938,
+          "margin": 0.931,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 107,
+          "answer": "E",
+          "text_containment": 0.938,
+          "margin": 0.931,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 94,
+          "answer": "E",
+          "text_containment": 0.938,
+          "margin": 0.931,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 118,
+          "answer": "E",
+          "text_containment": 0.938,
+          "margin": 0.931,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q135",
+      "canonical_id": "enem-122fcf8a03d4a5c52ec45843c161ab7c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 135,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.845,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 108,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.845,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 95,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.845,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 119,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.845,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q136",
+      "canonical_id": "enem-868afd30f8f15fb963d5640320caf9b1",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 136,
+          "answer": "A",
+          "text_containment": 0.961,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 163,
+          "answer": "A",
+          "text_containment": 0.961,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 146,
+          "answer": "A",
+          "text_containment": 0.961,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 154,
+          "answer": "A",
+          "text_containment": 0.961,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q137",
+      "canonical_id": "enem-de7260d1c6bd823aad5027c94fc0fcc9",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 137,
+          "answer": "B",
+          "text_containment": 0.868,
+          "margin": 0.698,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 164,
+          "answer": "B",
+          "text_containment": 0.868,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 147,
+          "answer": "B",
+          "text_containment": 0.868,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 155,
+          "answer": "B",
+          "text_containment": 0.868,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q138",
+      "canonical_id": "enem-00966403720833934e4249ce4adc3b81",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 138,
+          "answer": "B",
+          "text_containment": 0.915,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 165,
+          "answer": "B",
+          "text_containment": 0.915,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 148,
+          "answer": "B",
+          "text_containment": 0.915,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 156,
+          "answer": "B",
+          "text_containment": 0.915,
+          "margin": 0.901,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q139",
+      "canonical_id": "enem-1761a47e26d340fa441863928f3a7c3d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 139,
+          "answer": "A",
+          "text_containment": 0.472,
+          "margin": 0.456,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 166,
+          "answer": "A",
+          "text_containment": 0.472,
+          "margin": 0.456,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 174,
+          "answer": "A",
+          "text_containment": 0.472,
+          "margin": 0.456,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 151,
+          "answer": "A",
+          "text_containment": 0.472,
+          "margin": 0.456,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q140",
+      "canonical_id": "enem-6f2fbde12ba37e0fa89915a8f0ade8b2",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 140,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.874,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 167,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.874,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 175,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.874,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 152,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.874,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q141",
+      "canonical_id": "enem-9f1b8310306f773621786512d6b065c7",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 141,
+          "answer": "B",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 168,
+          "answer": "B",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 176,
+          "answer": "B",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 153,
+          "answer": "B",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q142",
+      "canonical_id": "enem-e276334cbd860785f2fd179413d4a009",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 142,
+          "answer": "A",
+          "text_containment": 0.819,
+          "margin": 0.819,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 169,
+          "answer": "A",
+          "text_containment": 0.819,
+          "margin": 0.819,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 177,
+          "answer": "A",
+          "text_containment": 0.819,
+          "margin": 0.819,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 147,
+          "answer": "A",
+          "text_containment": 0.819,
+          "margin": 0.819,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q143",
+      "canonical_id": "enem-d91ba0da88febd0ca14ec4cd0134025b",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 143,
+          "answer": "D",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 170,
+          "answer": "D",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 178,
+          "answer": "D",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 148,
+          "answer": "D",
+          "text_containment": 0.81,
+          "margin": 0.778,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q144",
+      "canonical_id": "enem-4e9776d6eb4f8d34fa6c2b9bf121537c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 144,
+          "answer": "D",
+          "text_containment": 0.894,
+          "margin": 0.894,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 171,
+          "answer": "D",
+          "text_containment": 0.894,
+          "margin": 0.894,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 179,
+          "answer": "D",
+          "text_containment": 0.894,
+          "margin": 0.894,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 149,
+          "answer": "D",
+          "text_containment": 0.894,
+          "margin": 0.894,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q145",
+      "canonical_id": "enem-49f445f3170e357b3045999558fc24db",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 145,
+          "answer": "D",
+          "text_containment": 0.886,
+          "margin": 0.848,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 172,
+          "answer": "D",
+          "text_containment": 0.886,
+          "margin": 0.848,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 180,
+          "answer": "D",
+          "text_containment": 0.886,
+          "margin": 0.848,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 150,
+          "answer": "D",
+          "text_containment": 0.886,
+          "margin": 0.848,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q146",
+      "canonical_id": "enem-3af4bd18506872d3d228d0c5d608042e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 146,
+          "answer": "B",
+          "text_containment": 0.835,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 177,
+          "answer": "B",
+          "text_containment": 0.835,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 163,
+          "answer": "B",
+          "text_containment": 0.835,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 143,
+          "answer": "B",
+          "text_containment": 0.835,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q147",
+      "canonical_id": "enem-31ab44b418a3d1fc20f3d5a96ba87bb8",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 147,
+          "answer": "B",
+          "text_containment": 0.91,
+          "margin": 0.902,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 178,
+          "answer": "B",
+          "text_containment": 0.91,
+          "margin": 0.902,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 164,
+          "answer": "B",
+          "text_containment": 0.91,
+          "margin": 0.902,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 144,
+          "answer": "B",
+          "text_containment": 0.91,
+          "margin": 0.902,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q148",
+      "canonical_id": "enem-04414c8fc9b4af45b7fdc6672d7494d2",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 148,
+          "answer": "C",
+          "text_containment": 0.913,
+          "margin": 0.87,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 179,
+          "answer": "C",
+          "text_containment": 0.913,
+          "margin": 0.87,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 165,
+          "answer": "C",
+          "text_containment": 0.913,
+          "margin": 0.87,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 145,
+          "answer": "C",
+          "text_containment": 0.913,
+          "margin": 0.87,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q149",
+      "canonical_id": "enem-401c5d170786dfcf4c1e769f9bde5d92",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 149,
+          "answer": "E",
+          "text_containment": 0.968,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 180,
+          "answer": "E",
+          "text_containment": 0.968,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 166,
+          "answer": "E",
+          "text_containment": 0.968,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 146,
+          "answer": "E",
+          "text_containment": 0.968,
+          "margin": 0.889,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q150",
+      "canonical_id": "enem-2cdccc809924129442fd49d406cb0a19",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 150,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.915,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 173,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.915,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 170,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.915,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 139,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.915,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q151",
+      "canonical_id": "enem-0aed69f467066da76d6afbd40f0ffb21",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 151,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 174,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 171,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 140,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q152",
+      "canonical_id": "enem-6ef0072700f02ca20312b917f6ed4919",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 152,
+          "answer": "A",
+          "text_containment": 0.915,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 175,
+          "answer": "A",
+          "text_containment": 0.915,
+          "margin": 0.89,
+          "figures": "conferidas visualmente: Mesmo gráfico de importações e exportações (jun. 2009 a jun. 2010); muda só a resolução."
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 172,
+          "answer": "A",
+          "text_containment": 0.915,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 141,
+          "answer": "A",
+          "text_containment": 0.915,
+          "margin": 0.89,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q153",
+      "canonical_id": "enem-48b380f3e9c0bd1b545b89172a9af0f7",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 153,
+          "answer": "D",
+          "text_containment": 0.714,
+          "margin": 0.69,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 176,
+          "answer": "D",
+          "text_containment": 0.714,
+          "margin": 0.69,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 173,
+          "answer": "D",
+          "text_containment": 0.714,
+          "margin": 0.69,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 142,
+          "answer": "D",
+          "text_containment": 0.714,
+          "margin": 0.69,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q154",
+      "canonical_id": "enem-43498623766bd48676092865f055c33a",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 154,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.811,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 154,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.811,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 167,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.811,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 136,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.811,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q155",
+      "canonical_id": "enem-30bbfcc3b0226903cc66c65671403274",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 155,
+          "answer": "E",
+          "text_containment": 0.952,
+          "margin": 0.93,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 155,
+          "answer": "E",
+          "text_containment": 0.952,
+          "margin": 0.93,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 168,
+          "answer": "E",
+          "text_containment": 0.952,
+          "margin": 0.93,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 137,
+          "answer": "E",
+          "text_containment": 0.952,
+          "margin": 0.871,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q156",
+      "canonical_id": "enem-cde47e899a907aa6ef19bdea8015a562",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 156,
+          "answer": "B",
+          "text_containment": 0.891,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 156,
+          "answer": "B",
+          "text_containment": 0.891,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 169,
+          "answer": "B",
+          "text_containment": 0.891,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 138,
+          "answer": "B",
+          "text_containment": 0.891,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q157",
+      "canonical_id": "enem-cfd0883e5de8eb1cc4656670fe038fea",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 157,
+          "answer": "C",
+          "text_containment": 0.8,
+          "margin": 0.76,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 160,
+          "answer": "C",
+          "text_containment": 0.8,
+          "margin": 0.76,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 159,
+          "answer": "C",
+          "text_containment": 0.8,
+          "margin": 0.76,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 158,
+          "answer": "C",
+          "text_containment": 0.8,
+          "margin": 0.76,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q158",
+      "canonical_id": "enem-ec1f5e8f45606d60e7c9f0ca87ee7d55",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 158,
+          "answer": "C",
+          "text_containment": 0.87,
+          "margin": 0.848,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 159,
+          "answer": "C",
+          "text_containment": 0.87,
+          "margin": 0.848,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 157,
+          "answer": "C",
+          "text_containment": 0.87,
+          "margin": 0.848,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 157,
+          "answer": "C",
+          "text_containment": 0.87,
+          "margin": 0.848,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q159",
+      "canonical_id": "enem-77edda89fd1d0909df5a962cd81a162e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 159,
+          "answer": "C",
+          "text_containment": 0.981,
+          "margin": 0.972,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 158,
+          "answer": "C",
+          "text_containment": 0.981,
+          "margin": 0.972,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 160,
+          "answer": "C",
+          "text_containment": 0.981,
+          "margin": 0.972,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 160,
+          "answer": "C",
+          "text_containment": 0.981,
+          "margin": 0.972,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q160",
+      "canonical_id": "enem-a0b1d1d7194e054b7c4f644dc495ed53",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 160,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.852,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 157,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.852,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 158,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.852,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 159,
+          "answer": "D",
+          "text_containment": 0.864,
+          "margin": 0.852,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q161",
+      "canonical_id": "enem-feba45a5c5f32862a81968f569aaf051",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 161,
+          "answer": "B",
+          "text_containment": 0.983,
+          "margin": 0.975,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 153,
+          "answer": "B",
+          "text_containment": 0.983,
+          "margin": 0.975,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 162,
+          "answer": "B",
+          "text_containment": 0.983,
+          "margin": 0.975,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 180,
+          "answer": "B",
+          "text_containment": 0.983,
+          "margin": 0.975,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q162",
+      "canonical_id": "enem-39ed5414cb19618921f3cd24890a9e59",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 162,
+          "answer": "A",
+          "text_containment": 0.95,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 143,
+          "answer": "A",
+          "text_containment": 0.95,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 154,
+          "answer": "A",
+          "text_containment": 0.95,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 177,
+          "answer": "A",
+          "text_containment": 0.95,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q163",
+      "canonical_id": "enem-5010d2d70ee3517fe678b85e1cd82e4f",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 163,
+          "answer": "D",
+          "text_containment": 0.936,
+          "margin": 0.891,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 144,
+          "answer": "D",
+          "text_containment": 0.936,
+          "margin": 0.891,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 155,
+          "answer": "D",
+          "text_containment": 0.936,
+          "margin": 0.891,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 178,
+          "answer": "D",
+          "text_containment": 0.936,
+          "margin": 0.891,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q164",
+      "canonical_id": "enem-328ac6748ce5978a923f3c0098a5974b",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 164,
+          "answer": "C",
+          "text_containment": 0.91,
+          "margin": 0.893,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 145,
+          "answer": "C",
+          "text_containment": 0.91,
+          "margin": 0.893,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 156,
+          "answer": "C",
+          "text_containment": 0.91,
+          "margin": 0.893,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 179,
+          "answer": "C",
+          "text_containment": 0.91,
+          "margin": 0.893,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q165",
+      "canonical_id": "enem-4134a5ae2d630fb72c87edd05c78788e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 165,
+          "answer": "B",
+          "text_containment": 0.872,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 140,
+          "answer": "B",
+          "text_containment": 0.872,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 151,
+          "answer": "B",
+          "text_containment": 0.872,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 174,
+          "answer": "B",
+          "text_containment": 0.872,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q166",
+      "canonical_id": "enem-7ddef528c32b302c0747b2dfb972f72d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 166,
+          "answer": "E",
+          "text_containment": 0.989,
+          "margin": 0.966,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 141,
+          "answer": "E",
+          "text_containment": 0.989,
+          "margin": 0.966,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 152,
+          "answer": "E",
+          "text_containment": 0.989,
+          "margin": 0.966,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 175,
+          "answer": "E",
+          "text_containment": 0.989,
+          "margin": 0.966,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q167",
+      "canonical_id": "enem-3fad6b805c69aa60488828b85522a8a1",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 167,
+          "answer": "D",
+          "text_containment": 0.85,
+          "margin": 0.82,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 142,
+          "answer": "D",
+          "text_containment": 0.85,
+          "margin": 0.82,
+          "figures": "conferidas visualmente: Mesma ilustração dos celulares de 3 1/2 e 4 5/6 polegadas; muda só a resolução."
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 153,
+          "answer": "D",
+          "text_containment": 0.85,
+          "margin": 0.82,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 176,
+          "answer": "D",
+          "text_containment": 0.85,
+          "margin": 0.82,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q168",
+      "canonical_id": "enem-a554cb0c78442b9acddb0db59c8248e0",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 168,
+          "answer": "A",
+          "text_containment": 0.983,
+          "margin": 0.974,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 146,
+          "answer": "A",
+          "text_containment": 0.983,
+          "margin": 0.974,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 161,
+          "answer": "A",
+          "text_containment": 0.983,
+          "margin": 0.974,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 173,
+          "answer": "A",
+          "text_containment": 0.983,
+          "margin": 0.974,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q169",
+      "canonical_id": "enem-ab1bfd5f54609777829c8ce663102c8b",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 169,
+          "answer": "E",
+          "text_containment": 0.752,
+          "margin": 0.744,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 149,
+          "answer": "E",
+          "text_containment": 0.752,
+          "margin": 0.744,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 149,
+          "answer": "E",
+          "text_containment": 0.752,
+          "margin": 0.744,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 171,
+          "answer": "E",
+          "text_containment": 0.752,
+          "margin": 0.744,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q170",
+      "canonical_id": "enem-add0a55bef127a7c2729f294c9661869",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 170,
+          "answer": "C",
+          "text_containment": 0.753,
+          "margin": 0.72,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 150,
+          "answer": "C",
+          "text_containment": 0.753,
+          "margin": 0.72,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 150,
+          "answer": "C",
+          "text_containment": 0.753,
+          "margin": 0.72,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 172,
+          "answer": "C",
+          "text_containment": 0.753,
+          "margin": 0.72,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q171",
+      "canonical_id": "enem-6410744746604282b2674c658a20a6ce",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 171,
+          "answer": "A",
+          "text_containment": 0.87,
+          "margin": 0.855,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 147,
+          "answer": "A",
+          "text_containment": 0.87,
+          "margin": 0.855,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 144,
+          "answer": "A",
+          "text_containment": 0.87,
+          "margin": 0.855,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 169,
+          "answer": "A",
+          "text_containment": 0.87,
+          "margin": 0.855,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q172",
+      "canonical_id": "enem-39a9f71b5081ad83ec8f66f5e4802017",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 172,
+          "answer": "D",
+          "text_containment": 0.88,
+          "margin": 0.873,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 148,
+          "answer": "D",
+          "text_containment": 0.88,
+          "margin": 0.873,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 145,
+          "answer": "D",
+          "text_containment": 0.88,
+          "margin": 0.873,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 170,
+          "answer": "D",
+          "text_containment": 0.88,
+          "margin": 0.873,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q173",
+      "canonical_id": "enem-4d91cec7bbb64cf85e8979709356bcd1",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 173,
+          "answer": "A",
+          "text_containment": 0.937,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 161,
+          "answer": "A",
+          "text_containment": 0.937,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 142,
+          "answer": "A",
+          "text_containment": 0.937,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 167,
+          "answer": "A",
+          "text_containment": 0.937,
+          "margin": 0.925,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q174",
+      "canonical_id": "enem-381a13671e7759d9a874c8037d73b90d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 174,
+          "answer": "C",
+          "text_containment": 0.975,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 162,
+          "answer": "C",
+          "text_containment": 0.975,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 143,
+          "answer": "C",
+          "text_containment": 0.975,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 168,
+          "answer": "C",
+          "text_containment": 0.975,
+          "margin": 0.95,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q175",
+      "canonical_id": "enem-06a656bd21ec953756f8fc47984a3ddf",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 175,
+          "answer": "D",
+          "text_containment": 0.98,
+          "margin": 0.939,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 151,
+          "answer": "D",
+          "text_containment": 0.98,
+          "margin": 0.939,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 136,
+          "answer": "D",
+          "text_containment": 0.98,
+          "margin": 0.939,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 165,
+          "answer": "D",
+          "text_containment": 0.98,
+          "margin": 0.939,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q176",
+      "canonical_id": "enem-ac1e1e810376d1844d73dab70dce5d24",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 176,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.908,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 152,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.908,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 137,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.816,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 166,
+          "answer": "B",
+          "text_containment": 0.908,
+          "margin": 0.908,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q177",
+      "canonical_id": "enem-152fac0d51c37b91447d82f163b434d7",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 177,
+          "answer": "C",
+          "text_containment": 0.77,
+          "margin": 0.75,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 136,
+          "answer": "C",
+          "text_containment": 0.77,
+          "margin": 0.75,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 138,
+          "answer": "C",
+          "text_containment": 0.77,
+          "margin": 0.75,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 161,
+          "answer": "C",
+          "text_containment": 0.77,
+          "margin": 0.75,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q178",
+      "canonical_id": "enem-ec0c4321b4ab14eda381cb8a85bdcdac",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 178,
+          "answer": "E",
+          "text_containment": 0.68,
+          "margin": 0.667,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 137,
+          "answer": "E",
+          "text_containment": 0.68,
+          "margin": 0.667,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 139,
+          "answer": "E",
+          "text_containment": 0.68,
+          "margin": 0.667,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 162,
+          "answer": "E",
+          "text_containment": 0.68,
+          "margin": 0.667,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q179",
+      "canonical_id": "enem-e77dc0ba9b6b4bafffa4eee031956ded",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 179,
+          "answer": "C",
+          "text_containment": 0.918,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 138,
+          "answer": "C",
+          "text_containment": 0.918,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 140,
+          "answer": "C",
+          "text_containment": 0.918,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 163,
+          "answer": "C",
+          "text_containment": 0.918,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2024-regular-q180",
+      "canonical_id": "enem-b77007219afc26cf0e9756bd5fd6eabb",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+          "number": 180,
+          "answer": "E",
+          "text_containment": 0.96,
+          "margin": 0.94,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "ec4e704ab4017762ffb1eba84c55285a429d3d02ed0e58258c1171315cb34937",
+          "number": 139,
+          "answer": "E",
+          "text_containment": 0.96,
+          "margin": 0.94,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "f8c847149547e220344882118ec0dcef160dbe0d49a7812faf747172e7201db6",
+          "number": 141,
+          "answer": "E",
+          "text_containment": 0.96,
+          "margin": 0.94,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-verde",
+          "source_sha256": "155437f9166dfff5d8b84072dff574f47a0f1bd0638de1574dcfdc898d64bc9a",
+          "number": 164,
+          "answer": "E",
+          "text_containment": 0.96,
+          "margin": 0.94,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q136",
+      "canonical_id": "enem-1430a67f5620935c69ea8b1f4dc075c1",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 136,
+          "answer": "B",
+          "text_containment": 0.829,
+          "margin": 0.8,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 164,
+          "answer": "B",
+          "text_containment": 0.829,
+          "margin": 0.8,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 166,
+          "answer": "B",
+          "text_containment": 0.829,
+          "margin": 0.8,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 150,
+          "answer": "B",
+          "text_containment": 0.829,
+          "margin": 0.8,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q137",
+      "canonical_id": "enem-13d3336a76cd9b1842816123705f89c5",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 137,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 165,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 167,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 151,
+          "answer": "C",
+          "text_containment": 0.829,
+          "margin": 0.817,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q138",
+      "canonical_id": "enem-ccb532bf794d417bcf6c4f884af5685e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 138,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.911,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 166,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.911,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 168,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.911,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 152,
+          "answer": "C",
+          "text_containment": 0.936,
+          "margin": 0.911,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q139",
+      "canonical_id": "enem-569cb87703903c4d21f1885b9eb2beb2",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 139,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.876,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 144,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.876,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 161,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.876,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 171,
+          "answer": "D",
+          "text_containment": 0.891,
+          "margin": 0.876,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q140",
+      "canonical_id": "enem-f5da32678547fdac76ea0d9220a0b46f",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 140,
+          "answer": "E",
+          "text_containment": 0.86,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 145,
+          "answer": "E",
+          "text_containment": 0.86,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 162,
+          "answer": "E",
+          "text_containment": 0.86,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 172,
+          "answer": "E",
+          "text_containment": 0.86,
+          "margin": 0.849,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q141",
+      "canonical_id": "enem-b4a45ab264b159c85394d9c5b9eb6a01",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 141,
+          "answer": "E",
+          "text_containment": 0.984,
+          "margin": 0.944,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 149,
+          "answer": "E",
+          "text_containment": 0.984,
+          "margin": 0.944,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 156,
+          "answer": "E",
+          "text_containment": 0.984,
+          "margin": 0.944,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 165,
+          "answer": "E",
+          "text_containment": 0.984,
+          "margin": 0.944,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q142",
+      "canonical_id": "enem-0978709a02d5419f8ffb566aa5df4358",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 142,
+          "answer": "A",
+          "text_containment": 0.949,
+          "margin": 0.91,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 150,
+          "answer": "A",
+          "text_containment": 0.949,
+          "margin": 0.91,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 157,
+          "answer": "A",
+          "text_containment": 0.949,
+          "margin": 0.91,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 166,
+          "answer": "A",
+          "text_containment": 0.949,
+          "margin": 0.91,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q143",
+      "canonical_id": "enem-2f790efc70dc164e2fa4bdd2b00dc20a",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 143,
+          "answer": "B",
+          "text_containment": 0.926,
+          "margin": 0.913,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 151,
+          "answer": "B",
+          "text_containment": 0.926,
+          "margin": 0.913,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 158,
+          "answer": "B",
+          "text_containment": 0.926,
+          "margin": 0.913,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 167,
+          "answer": "B",
+          "text_containment": 0.926,
+          "margin": 0.913,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q144",
+      "canonical_id": "enem-1a9b53d016894178028d6971bec23c49",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 144,
+          "answer": "C",
+          "text_containment": 0.851,
+          "margin": 0.842,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 146,
+          "answer": "C",
+          "text_containment": 0.851,
+          "margin": 0.842,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 147,
+          "answer": "C",
+          "text_containment": 0.851,
+          "margin": 0.842,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 168,
+          "answer": "C",
+          "text_containment": 0.851,
+          "margin": 0.842,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q145",
+      "canonical_id": "enem-a784c69088a38290eec2e2809a8802d2",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 145,
+          "answer": "B",
+          "text_containment": 0.809,
+          "margin": 0.798,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 147,
+          "answer": "B",
+          "text_containment": 0.809,
+          "margin": 0.798,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 148,
+          "answer": "B",
+          "text_containment": 0.809,
+          "margin": 0.798,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 169,
+          "answer": "B",
+          "text_containment": 0.809,
+          "margin": 0.798,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q146",
+      "canonical_id": "enem-276e40aad20544b05a5e23c40be3fb9d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 146,
+          "answer": "E",
+          "text_containment": 0.917,
+          "margin": 0.9,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 148,
+          "answer": "E",
+          "text_containment": 0.917,
+          "margin": 0.9,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 149,
+          "answer": "E",
+          "text_containment": 0.917,
+          "margin": 0.9,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 170,
+          "answer": "E",
+          "text_containment": 0.917,
+          "margin": 0.9,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q147",
+      "canonical_id": "enem-e8d9003ec72d2cee58fe70a2da7ee7f6",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 147,
+          "answer": "D",
+          "text_containment": 0.959,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 136,
+          "answer": "D",
+          "text_containment": 0.959,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 150,
+          "answer": "D",
+          "text_containment": 0.959,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 175,
+          "answer": "D",
+          "text_containment": 0.959,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q148",
+      "canonical_id": "enem-cfd372fc001df116c1408d94c41050df",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 148,
+          "answer": "C",
+          "text_containment": 0.88,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 137,
+          "answer": "C",
+          "text_containment": 0.88,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 151,
+          "answer": "C",
+          "text_containment": 0.88,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 176,
+          "answer": "C",
+          "text_containment": 0.88,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q149",
+      "canonical_id": "enem-6bf062cb264f17eae252a6a8de70dca8",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 149,
+          "answer": "E",
+          "text_containment": 0.885,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 138,
+          "answer": "E",
+          "text_containment": 0.885,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 152,
+          "answer": "E",
+          "text_containment": 0.885,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 177,
+          "answer": "E",
+          "text_containment": 0.885,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q150",
+      "canonical_id": "enem-5350ef7d0901595e68aa5d104b644491",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 150,
+          "answer": "A",
+          "text_containment": 0.966,
+          "margin": 0.957,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 161,
+          "answer": "A",
+          "text_containment": 0.966,
+          "margin": 0.957,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 175,
+          "answer": "A",
+          "text_containment": 0.966,
+          "margin": 0.957,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 153,
+          "answer": "A",
+          "text_containment": 0.966,
+          "margin": 0.957,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q151",
+      "canonical_id": "enem-7e23da72fd5dda2ff3923502cb0aec89",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 151,
+          "answer": "B",
+          "text_containment": 0.839,
+          "margin": 0.821,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 162,
+          "answer": "B",
+          "text_containment": 0.839,
+          "margin": 0.821,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 176,
+          "answer": "B",
+          "text_containment": 0.839,
+          "margin": 0.821,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 154,
+          "answer": "B",
+          "text_containment": 0.839,
+          "margin": 0.821,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q152",
+      "canonical_id": "enem-46abf15ec95f67c4bbc59573e18fd168",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 152,
+          "answer": "B",
+          "text_containment": 0.782,
+          "margin": 0.765,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 163,
+          "answer": "B",
+          "text_containment": 0.782,
+          "margin": 0.765,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 177,
+          "answer": "B",
+          "text_containment": 0.782,
+          "margin": 0.765,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 155,
+          "answer": "B",
+          "text_containment": 0.782,
+          "margin": 0.765,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q153",
+      "canonical_id": "enem-ff21b8de7d7da6f7fcbec5383f57ec41",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 153,
+          "answer": "E",
+          "text_containment": 0.949,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 173,
+          "answer": "E",
+          "text_containment": 0.949,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 136,
+          "answer": "E",
+          "text_containment": 0.949,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 140,
+          "answer": "E",
+          "text_containment": 0.949,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q154",
+      "canonical_id": "enem-1ecfa7ac837401e9b7b1af3d7b4d1666",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 154,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 174,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 137,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 141,
+          "answer": "B",
+          "text_containment": 0.883,
+          "margin": 0.872,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q155",
+      "canonical_id": "enem-f7d73792b4d0390e666d3a18cf9d4dca",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 155,
+          "answer": "D",
+          "text_containment": 0.75,
+          "margin": 0.729,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 175,
+          "answer": "D",
+          "text_containment": 0.75,
+          "margin": 0.729,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 138,
+          "answer": "D",
+          "text_containment": 0.75,
+          "margin": 0.729,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 142,
+          "answer": "D",
+          "text_containment": 0.75,
+          "margin": 0.729,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q156",
+      "canonical_id": "enem-b531b891efdd74ca59bfa0b8e95130fd",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 156,
+          "answer": "A",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 176,
+          "answer": "A",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 139,
+          "answer": "A",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 143,
+          "answer": "A",
+          "text_containment": 0.864,
+          "margin": 0.864,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q157",
+      "canonical_id": "enem-9fb541e2f4ef2785dab77a2bbf07b228",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 157,
+          "answer": "B",
+          "text_containment": 0.887,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 154,
+          "answer": "B",
+          "text_containment": 0.887,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 171,
+          "answer": "B",
+          "text_containment": 0.887,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 159,
+          "answer": "B",
+          "text_containment": 0.887,
+          "margin": 0.877,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q158",
+      "canonical_id": "enem-7d4155e295feee9c731e0b150c53c28e",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 158,
+          "answer": "D",
+          "text_containment": 0.839,
+          "margin": 0.804,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 155,
+          "answer": "D",
+          "text_containment": 0.839,
+          "margin": 0.804,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 172,
+          "answer": "D",
+          "text_containment": 0.839,
+          "margin": 0.804,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 160,
+          "answer": "D",
+          "text_containment": 0.839,
+          "margin": 0.804,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q159",
+      "canonical_id": "enem-90c776b97fa950093363dcf634b09d67",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 159,
+          "answer": "D",
+          "text_containment": 0.941,
+          "margin": 0.933,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 156,
+          "answer": "D",
+          "text_containment": 0.941,
+          "margin": 0.933,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 173,
+          "answer": "D",
+          "text_containment": 0.941,
+          "margin": 0.933,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 161,
+          "answer": "D",
+          "text_containment": 0.941,
+          "margin": 0.933,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q160",
+      "canonical_id": "enem-1c78e9ee657d57d0ecb6464554381386",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 160,
+          "answer": "A",
+          "text_containment": 0.876,
+          "margin": 0.859,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 157,
+          "answer": "A",
+          "text_containment": 0.876,
+          "margin": 0.859,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 174,
+          "answer": "A",
+          "text_containment": 0.876,
+          "margin": 0.859,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 162,
+          "answer": "A",
+          "text_containment": 0.876,
+          "margin": 0.859,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q161",
+      "canonical_id": "enem-e7ed84771c4aa636e5344312ccfcb45f",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 161,
+          "answer": "D",
+          "text_containment": 0.873,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 170,
+          "answer": "D",
+          "text_containment": 0.873,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 140,
+          "answer": "D",
+          "text_containment": 0.873,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 144,
+          "answer": "D",
+          "text_containment": 0.873,
+          "margin": 0.863,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q162",
+      "canonical_id": "enem-77dc87984f44d0ba3d8ef27166ec6a57",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 162,
+          "answer": "D",
+          "text_containment": 0.971,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 171,
+          "answer": "D",
+          "text_containment": 0.971,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 141,
+          "answer": "D",
+          "text_containment": 0.971,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 145,
+          "answer": "D",
+          "text_containment": 0.971,
+          "margin": 0.942,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q163",
+      "canonical_id": "enem-887d68907ac8ab7fca78b4a94d8dd531",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 163,
+          "answer": "A",
+          "text_containment": 0.835,
+          "margin": 0.818,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 172,
+          "answer": "A",
+          "text_containment": 0.835,
+          "margin": 0.818,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 142,
+          "answer": "A",
+          "text_containment": 0.835,
+          "margin": 0.818,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 146,
+          "answer": "A",
+          "text_containment": 0.835,
+          "margin": 0.818,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q164",
+      "canonical_id": "enem-01b71f1b47ac6780ecdd48fa14aafe4c",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 164,
+          "answer": null,
+          "text_containment": 0.836,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 177,
+          "answer": null,
+          "text_containment": 0.836,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 169,
+          "answer": null,
+          "text_containment": 0.836,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 138,
+          "answer": null,
+          "text_containment": 0.836,
+          "margin": 0.806,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q165",
+      "canonical_id": "enem-6c52f6c0e027477dea5fac446e8408da",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 165,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 178,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 170,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 139,
+          "answer": "E",
+          "text_containment": 0.838,
+          "margin": 0.824,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q166",
+      "canonical_id": "enem-d6179ee3896706a6f658a3b2b9873342",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 166,
+          "answer": "C",
+          "text_containment": 0.896,
+          "margin": 0.883,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 139,
+          "answer": "C",
+          "text_containment": 0.896,
+          "margin": 0.883,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 159,
+          "answer": "C",
+          "text_containment": 0.896,
+          "margin": 0.883,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 173,
+          "answer": "C",
+          "text_containment": 0.896,
+          "margin": 0.883,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q167",
+      "canonical_id": "enem-9770e64bbd49c4e020ed75adb35894f1",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 167,
+          "answer": "A",
+          "text_containment": 0.911,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 140,
+          "answer": "A",
+          "text_containment": 0.911,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 160,
+          "answer": "A",
+          "text_containment": 0.911,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 174,
+          "answer": "A",
+          "text_containment": 0.911,
+          "margin": 0.902,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q168",
+      "canonical_id": "enem-ab36cb729269a69390574e21d6587bc4",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 168,
+          "answer": "A",
+          "text_containment": 0.97,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 158,
+          "answer": "A",
+          "text_containment": 0.97,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 178,
+          "answer": "A",
+          "text_containment": 0.97,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 156,
+          "answer": "A",
+          "text_containment": 0.97,
+          "margin": 0.947,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q169",
+      "canonical_id": "enem-32d9957ccb93075409c86aefee56d979",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 169,
+          "answer": "D",
+          "text_containment": 0.833,
+          "margin": 0.812,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 159,
+          "answer": "D",
+          "text_containment": 0.833,
+          "margin": 0.812,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 179,
+          "answer": "D",
+          "text_containment": 0.833,
+          "margin": 0.812,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 157,
+          "answer": "D",
+          "text_containment": 0.833,
+          "margin": 0.812,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q170",
+      "canonical_id": "enem-39e5b85497bbf5ab8667fc71da8b973f",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 170,
+          "answer": "D",
+          "text_containment": 0.844,
+          "margin": 0.823,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 160,
+          "answer": "D",
+          "text_containment": 0.844,
+          "margin": 0.823,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 180,
+          "answer": "D",
+          "text_containment": 0.844,
+          "margin": 0.823,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 158,
+          "answer": "D",
+          "text_containment": 0.844,
+          "margin": 0.823,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q171",
+      "canonical_id": "enem-36d45d9a840f4bcc9a9746764af57f08",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 171,
+          "answer": "C",
+          "text_containment": 0.888,
+          "margin": 0.867,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 141,
+          "answer": "C",
+          "text_containment": 0.888,
+          "margin": 0.867,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 153,
+          "answer": "C",
+          "text_containment": 0.888,
+          "margin": 0.867,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 178,
+          "answer": "C",
+          "text_containment": 0.888,
+          "margin": 0.867,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q172",
+      "canonical_id": "enem-05af1c8332f4ab4e2e0272497cc2b913",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 172,
+          "answer": "C",
+          "text_containment": 0.866,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 142,
+          "answer": "C",
+          "text_containment": 0.866,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 154,
+          "answer": "C",
+          "text_containment": 0.866,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 179,
+          "answer": "C",
+          "text_containment": 0.866,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q173",
+      "canonical_id": "enem-a870975725933463ef4e5c942f652dad",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 173,
+          "answer": "B",
+          "text_containment": 0.981,
+          "margin": 0.951,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 143,
+          "answer": "B",
+          "text_containment": 0.981,
+          "margin": 0.951,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 155,
+          "answer": "B",
+          "text_containment": 0.981,
+          "margin": 0.951,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 180,
+          "answer": "B",
+          "text_containment": 0.981,
+          "margin": 0.951,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q174",
+      "canonical_id": "enem-3d83cf7a9268db9c5e90aa0f1b3bd0e5",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 174,
+          "answer": "E",
+          "text_containment": 0.929,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 179,
+          "answer": "E",
+          "text_containment": 0.929,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 143,
+          "answer": "E",
+          "text_containment": 0.929,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 136,
+          "answer": "E",
+          "text_containment": 0.929,
+          "margin": 0.929,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q175",
+      "canonical_id": "enem-ba0828ed54ba863b3c66ee762d97c67d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 175,
+          "answer": "B",
+          "text_containment": 0.884,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 180,
+          "answer": "B",
+          "text_containment": 0.884,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 144,
+          "answer": "B",
+          "text_containment": 0.884,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 137,
+          "answer": "B",
+          "text_containment": 0.884,
+          "margin": 0.86,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q176",
+      "canonical_id": "enem-dc9d87e8915dcd8a61bb4fa7d6fa57a6",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 176,
+          "answer": "E",
+          "text_containment": 0.795,
+          "margin": 0.773,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 152,
+          "answer": "E",
+          "text_containment": 0.795,
+          "margin": 0.773,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 145,
+          "answer": "E",
+          "text_containment": 0.795,
+          "margin": 0.773,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 163,
+          "answer": "E",
+          "text_containment": 0.795,
+          "margin": 0.773,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q177",
+      "canonical_id": "enem-0e63e9c5eed3a385bf5baa7b7c80990d",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 177,
+          "answer": "A",
+          "text_containment": 0.625,
+          "margin": 0.545,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 153,
+          "answer": "A",
+          "text_containment": 0.625,
+          "margin": 0.545,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 146,
+          "answer": "A",
+          "text_containment": 0.625,
+          "margin": 0.545,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 164,
+          "answer": "A",
+          "text_containment": 0.625,
+          "margin": 0.545,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q178",
+      "canonical_id": "enem-610a62585b116d397ae60aca7a91fb75",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 178,
+          "answer": "B",
+          "text_containment": 0.962,
+          "margin": 0.954,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 167,
+          "answer": "B",
+          "text_containment": 0.962,
+          "margin": 0.954,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 163,
+          "answer": "B",
+          "text_containment": 0.962,
+          "margin": 0.954,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 147,
+          "answer": "B",
+          "text_containment": 0.962,
+          "margin": 0.954,
+          "figures": "sem imagens raster"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q179",
+      "canonical_id": "enem-775b38ca813d5349d414f17678a80f06",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 179,
+          "answer": "C",
+          "text_containment": 0.903,
+          "margin": 0.887,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 168,
+          "answer": "C",
+          "text_containment": 0.903,
+          "margin": 0.887,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 164,
+          "answer": "C",
+          "text_containment": 0.903,
+          "margin": 0.887,
+          "figures": "equivalentes"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 148,
+          "answer": "C",
+          "text_containment": 0.903,
+          "margin": 0.887,
+          "figures": "equivalentes"
+        }
+      ]
+    },
+    {
+      "question_id": "enem-2023-dia2-azul-q180",
+      "canonical_id": "enem-30c7060daaa7c16129366a781fde588f",
+      "occurrences": [
+        {
+          "booklet": "caderno-7-azul",
+          "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+          "number": 180,
+          "answer": "C",
+          "text_containment": 0.842,
+          "margin": 0.833,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-5-amarelo",
+          "source_sha256": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+          "number": 169,
+          "answer": "C",
+          "text_containment": 0.842,
+          "margin": 0.833,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-6-cinza",
+          "source_sha256": "3d0d864f9309c6ec582ecbade019910f6061a892745eda54c34f960ce45e1d92",
+          "number": 165,
+          "answer": "C",
+          "text_containment": 0.842,
+          "margin": 0.833,
+          "figures": "sem imagens raster"
+        },
+        {
+          "booklet": "caderno-8-rosa",
+          "source_sha256": "77cea1137da19d031b6bcf3faa3bc156248f588528f4fae4055cfa8863f2ee27",
+          "number": 149,
+          "answer": "C",
+          "text_containment": 0.842,
+          "margin": 0.833,
+          "figures": "sem imagens raster"
+        }
+      ]
+    }
+  ],
+  "pending": []
+}

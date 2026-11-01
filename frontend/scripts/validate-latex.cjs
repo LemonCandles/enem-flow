@@ -6,7 +6,7 @@ require('katex/contrib/mhchem');
 
 const input = process.argv.includes('--stdin') ? 0 : (process.argv[2] || path.resolve(__dirname, '../../data/enem-2024-dia2-azul.json'));
 const data = JSON.parse(fs.readFileSync(input, 'utf8'));
-const expressions = /(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![R\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)/g;
+const expressions = /(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![A-Z\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)/g;
 let count = 0;
 const errors = [];
 function compile(tex, number) {

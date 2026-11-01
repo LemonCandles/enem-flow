@@ -43,11 +43,19 @@ class RecoveryToken(Base):
     expires_at: Mapped[float] = mapped_column(Float)
 
 
+class CanonicalQuestion(Base):
+    __tablename__ = "canonical_questions"
+    id: Mapped[str] = mapped_column(String(80), primary_key=True)
+    signature: Mapped[str] = mapped_column(String(64), unique=True)
+    answer_signature: Mapped[str | None] = mapped_column(String(64), nullable=True)
+
+
 class QuestionVersion(Base):
     __tablename__ = "question_versions"
     __table_args__ = (UniqueConstraint("question_id", "version"),)
     id: Mapped[str] = mapped_column(String(100), primary_key=True)
     question_id: Mapped[str] = mapped_column(String(80), index=True)
+    canonical_id: Mapped[str | None] = mapped_column(ForeignKey("canonical_questions.id"), nullable=True, index=True)
     version: Mapped[int] = mapped_column(Integer)
     content: Mapped[dict] = mapped_column(JSON)
     status: Mapped[str] = mapped_column(String(20), default="draft")

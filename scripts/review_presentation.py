@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BASELINE = ROOT / 'data/sources/enem-2024-dia2-azul-native-v1.json'
+BASELINE = ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json'
 TARGET = ROOT / 'data/enem-2024-dia2-azul.json'
 VERSION = 'native-v2-2026-10-31'
 REASONS = {

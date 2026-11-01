@@ -1,0 +1,7 @@
+{
+  "publisher": "Inep",
+  "url": "https://download.inep.gov.br/download/enem/matriz_referencia.pdf",
+  "path": "referencias/matriz-referencia-enem.pdf",
+  "sha256": "6b56d523ccb85f74f7ed33e0cd679f3dd178ed6f13a5b0948bcfdfe8964ce6a1",
+  "notes": "Fonte das definições oficiais. Os vínculos de questões são propostas editoriais, não atribuições oficiais do Inep."
+}

@@ -15,7 +15,7 @@ import pymupdf
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "data/enem-2024-dia2-azul.json"
-SOURCE = ROOT / "data/sources/enem-2024-dia2-azul-extraction.json"
+SOURCE = ROOT / "data/derived/baselines/enem-2024-dia2-azul-extraction.json"
 ASSETS = ROOT / "data/assets/enem-2024-dia2-azul/native"
 GRAPHIC_OPTIONS = {112, 121, 127, 131, 161, 168, 174}
 
@@ -258,7 +258,7 @@ def main():
     raw = json.loads(SOURCE.read_text())
     data = copy.deepcopy(raw)
     ASSETS.mkdir(parents=True, exist_ok=True)
-    pdf = ROOT / "data/sources/enem-2024-dia2-azul.pdf"
+    pdf = ROOT / "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf"
     assert hashlib.sha256(pdf.read_bytes()).hexdigest() == raw['source']['sha256']
     doc = pymupdf.open(pdf)
     for question in data['questions']:

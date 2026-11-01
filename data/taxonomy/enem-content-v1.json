@@ -1,0 +1,127 @@
+{
+  "version": "enem-content-v1",
+  "kind": "Taxonomia editorial do projeto; não é a matriz oficial de habilidades.",
+  "policy": "Uma disciplina principal e um ou mais temas; casos interdisciplinares registram alternativas na evidência. Alterações de significado exigem nova versão.",
+  "disciplines": [
+    {
+      "name": "Matemática",
+      "area": "Matemática",
+      "themes": [
+        "Números e proporcionalidade",
+        "Álgebra e funções",
+        "Geometria plana",
+        "Geometria espacial",
+        "Gráficos e coordenadas",
+        "Estatística",
+        "Probabilidade e combinatória",
+        "Grandezas e medidas"
+      ]
+    },
+    {
+      "name": "Física",
+      "area": "Ciências da Natureza",
+      "themes": [
+        "Mecânica",
+        "Ondas e acústica",
+        "Óptica",
+        "Termologia e termodinâmica",
+        "Eletricidade",
+        "Radiações e matéria"
+      ]
+    },
+    {
+      "name": "Química",
+      "area": "Ciências da Natureza",
+      "themes": [
+        "Química orgânica",
+        "Eletroquímica",
+        "Soluções",
+        "Equilíbrios químicos",
+        "Estrutura da matéria",
+        "Reações e estequiometria",
+        "Química ambiental"
+      ]
+    },
+    {
+      "name": "Biologia",
+      "area": "Ciências da Natureza",
+      "themes": [
+        "Biotecnologia",
+        "Genética",
+        "Evolução e diversidade",
+        "Citologia e metabolismo",
+        "Fisiologia",
+        "Ecologia",
+        "Saúde e imunologia"
+      ]
+    },
+    {
+      "name": "História",
+      "area": "Ciências Humanas",
+      "themes": [
+        "Formações históricas",
+        "Estado e cidadania"
+      ]
+    },
+    {
+      "name": "Geografia",
+      "area": "Ciências Humanas",
+      "themes": [
+        "Espaço geográfico",
+        "Geopolítica",
+        "Sociedade e ambiente"
+      ]
+    },
+    {
+      "name": "Filosofia",
+      "area": "Ciências Humanas",
+      "themes": [
+        "Conhecimento e ética"
+      ]
+    },
+    {
+      "name": "Sociologia",
+      "area": "Ciências Humanas",
+      "themes": [
+        "Cultura e relações sociais"
+      ]
+    },
+    {
+      "name": "Língua Portuguesa",
+      "area": "Linguagens",
+      "themes": [
+        "Leitura e interpretação",
+        "Variação linguística",
+        "Gêneros e discurso"
+      ]
+    },
+    {
+      "name": "Literatura",
+      "area": "Linguagens",
+      "themes": [
+        "Leitura literária"
+      ]
+    },
+    {
+      "name": "Língua Estrangeira",
+      "area": "Linguagens",
+      "themes": [
+        "Leitura em língua estrangeira"
+      ]
+    },
+    {
+      "name": "Artes",
+      "area": "Linguagens",
+      "themes": [
+        "Linguagens artísticas"
+      ]
+    },
+    {
+      "name": "Educação Física",
+      "area": "Linguagens",
+      "themes": [
+        "Práticas corporais"
+      ]
+    }
+  ]
+}
