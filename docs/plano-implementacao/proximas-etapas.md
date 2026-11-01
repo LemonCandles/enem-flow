@@ -178,6 +178,7 @@ Itens fora das etapas, sem data, para retomar quando houver oportunidade.
 | Item | O que fazer | Por quê |
 | --- | --- | --- |
 | Integrar a checagem das provas geradas ao fluxo | O ensaio integral foi executado em 01/11/2026 nas 96 provas, com respostas pelo gabarito e finalização idempotente, usando uma cópia isolada. Transformá-lo em comando versionado após `make acervo`, incluindo fontes, língua, figuras e texto ilegível; pular em clones sem o acervo. | A validação deste lote está registrada, mas a execução ainda precisa ser incorporada ao fluxo reutilizável. O teste verifica instalação/correção; a fidelidade visual e pedagógica continua na etapa 8. |
+| Regras de domínio sem dependência de HTTP | Trocar o `HTTPException` lançado por `services/` e `installers/` (conteúdo, identidade canônica e lotes conferidos) por exceções de domínio, como conflito e não encontrado. Um tratador em `main.py` as converte nos mesmos códigos e mensagens de hoje. Verificar com os testes de 401, 404, 409, 422 e 429 e com uma comparação das respostas de erro antes e depois. | Esses módulos também são usados pela CLI e pelos scripts, onde não há requisição HTTP. É a fase 2 da reorganização do backend, cuja fase 1 dividiu o código em `core/`, `models/`, `schemas/`, `services/` e `installers/`. |
 
 ## Referências locais
 

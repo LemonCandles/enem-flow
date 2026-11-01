@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from backend.app.content import validate_assets
+from backend.app.services.content import validate_assets
 from backend.app.schemas import ExamImport
 
 

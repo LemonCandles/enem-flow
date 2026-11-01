@@ -1,8 +1,10 @@
 import copy
 from pathlib import Path
 
-from backend.app.catalog import classified, install_catalog
-from backend.app.content import import_exam
+import pytest
+
+from backend.app.installers.curated import classified, install_catalog
+from backend.app.services.content import import_exam
 from backend.app.models import QuestionVersion
 from backend.app.schemas import ExamImport
 
@@ -81,3 +83,22 @@ def test_catalog_upgrade_keeps_a_previous_rejection_pending(database):
             exam=db.get(Exam,base.id)
             assert exam.status=='in_review'
             assert db.get(QuestionVersion,exam.items[0]).status=='in_review'
+
+
+@pytest.mark.parametrize('publish', [False, True])
+def test_catalog_upgrade_preserves_withdrawal(database, publish):
+    from backend.app.models import Exam
+    base=ExamImport.model_validate_json((ROOT/'data/catalog/enem-2023-matematica-azul.json').read_text())
+    previous=classified(base,refresh_preparation_audit=False)
+    with database.begin() as db:
+        exam=import_exam(db,previous)
+        exam.status='withdrawn'
+        old_items=list(exam.items)
+    with database.begin() as db:
+        assert install_catalog(db,publish=publish)['new_versions']==45
+        exam=db.get(Exam,base.id)
+        assert exam.status=='withdrawn'
+        assert exam.items!=old_items
+    with database.begin() as db:
+        assert install_catalog(db,publish=True)['new_versions']==0
+        assert db.get(Exam,base.id).status=='withdrawn'

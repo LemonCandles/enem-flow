@@ -5,9 +5,9 @@ from pathlib import Path
 import sys
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from backend.app.catalog import classified
-from backend.app.identity import signatures
-from backend.app.presentation import content_fingerprint
+from backend.app.installers.curated import classified
+from backend.app.services.identity import signatures
+from backend.app.services.presentation import content_fingerprint
 
 
 def build():

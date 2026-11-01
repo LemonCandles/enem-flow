@@ -20,8 +20,8 @@ import unicodedata
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import pymupdf
-from backend.app.catalog import classified
-from backend.app.identity import signatures
+from backend.app.installers.curated import classified
+from backend.app.services.identity import signatures
 from scripts.archive_enem import CATALOG, SOURCE_ROOT, sha, write_json
 from scripts.build_bank import extract
 

@@ -1,38 +1,9 @@
-import re
+"""Exam JSON contract: source, blocks, alternatives, labels and question content."""
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import Field, field_validator, model_validator
 
-
-class Schema(BaseModel):
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
-
-
-class Login(Schema):
-    email: str = Field(min_length=5, max_length=254)
-    password: str = Field(min_length=10, max_length=128)
-
-    @field_validator("email")
-    @classmethod
-    def email_address(cls, value):
-        if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", value):
-            raise ValueError("Informe um e-mail válido.")
-        return value.casefold()
-
-
-class Register(Login):
-    name: str = Field(min_length=2, max_length=80)
-
-
-class Preferences(Schema):
-    name: str = Field(min_length=2, max_length=80)
-    target_course: str = Field(default="", max_length=120)
-    daily_goal: int = Field(default=10, ge=1, le=100)
-
-
-class ResetPassword(Schema):
-    token: str = Field(min_length=20, max_length=200)
-    password: str = Field(min_length=10, max_length=128)
+from .base import Schema
 
 
 class Source(Schema):
@@ -139,7 +110,7 @@ class QuestionContent(Schema):
             raise ValueError("Alternativas vazias exigem uma representação original.")
         if any(len(v) > 150 for v in self.labels.themes + self.labels.skills):
             raise ValueError("Rótulo longo demais.")
-        from .taxonomy import validate_labels
+        from ..services.taxonomy import validate_labels
         validate_labels(self.labels.model_dump(), self.area)
         return self
 
@@ -172,22 +143,3 @@ class ExamImport(Schema):
         if len(self.questions) > self.expected_items:
             raise ValueError("Há mais itens que o total declarado.")
         return self
-
-
-class StartRun(Schema):
-    exam_id: str = Field(max_length=80)
-    idempotency_key: str = Field(min_length=8, max_length=80)
-
-
-class Answer(Schema):
-    choice: Literal["A", "B", "C", "D", "E"] | None
-
-
-class ReviewRequest(Schema):
-    action: Literal["approve", "reject", "withdraw", "publish"]
-    reason: str = Field(min_length=10, max_length=2000)
-
-
-class EditQuestion(Schema):
-    content: QuestionContent
-    reason: str = Field(min_length=10, max_length=2000)

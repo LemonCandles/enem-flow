@@ -4,10 +4,10 @@ import json
 import pytest
 from fastapi import HTTPException
 
-from backend.app.archive_exams import publish_generated
+from backend.app.installers.generated import publish_generated
 from backend.app.models import Exam, QuestionVersion
-from backend.app.bundled_content import bundled_reviewer
-from backend.app.content import exam_summary, public_question, publish_exam
+from backend.app.installers.bundled import bundled_reviewer
+from backend.app.services.content import exam_summary, public_question, publish_exam
 from backend.app.preparation import blocking_issues, prepare_exam
 from scripts.build_archive_exams import areas, booklet_label, exam_id
 from scripts.exam_pdf import answer_key_rows

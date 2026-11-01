@@ -3,7 +3,7 @@ from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
 from backend.app.main import app
 from backend.app.models import User
-from backend.app.security import hash_password
+from backend.app.core.security import hash_password
 
 PROXY = '172.30.246.254'
 

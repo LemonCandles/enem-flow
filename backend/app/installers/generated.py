@@ -6,12 +6,12 @@ are kept in each version's report instead of preventing publication.
 """
 from fastapi import HTTPException
 
-from .bundled_content import bundled_reviewer
-from .content import import_exam, publish_exam
-from .db import ROOT
-from .models import Exam, QuestionVersion, Review
-from .schemas import ExamImport
-from .preparation import blocking_issues
+from .bundled import bundled_reviewer
+from ..services.content import import_exam, publish_exam
+from ..core.config import ROOT
+from ..models import Exam, QuestionVersion, Review
+from ..schemas import ExamImport
+from ..preparation import blocking_issues
 
 GENERATED = ROOT / 'data/derived/exams'
 REASON = ('Publicação automática do acervo oficial: texto e figuras extraídos do PDF, sem curadoria. '

@@ -4,11 +4,11 @@ import secrets
 from fastapi import HTTPException
 from sqlalchemy import func, select
 
-from .content import publish_exam, validate_assets
-from .models import QuestionVersion, Review, User
-from .schemas import QuestionContent
-from .security import hash_password
-from .presentation import ASSESSMENT_FIELDS, is_previous_bundled_content
+from ..services.content import publish_exam, validate_assets
+from ..models import QuestionVersion, Review, User
+from ..schemas import QuestionContent
+from ..core.security import hash_password
+from ..services.presentation import ASSESSMENT_FIELDS, is_previous_bundled_content
 
 
 def bundled_reviewer(db):

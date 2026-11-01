@@ -1,5 +1,5 @@
 from alembic import context
-from backend.app.db import Base, engine
+from backend.app.core.db import Base, engine
 from backend.app import models  # noqa: F401
 
 target_metadata = Base.metadata
