@@ -1,5 +1,6 @@
 """Content contracts, publication gates, and immutable versions."""
 from fastapi import HTTPException
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .db import ROOT
@@ -48,13 +49,16 @@ def import_exam(db: Session, payload: ExamImport):
 
 
 def exam_summary(db: Session, exam: Exam):
-    questions = [db.get(QuestionVersion, key) for key in exam.items]
+    # Only area and status are needed; loading every full content made large catalogs slow.
+    rows = db.execute(select(QuestionVersion.id, QuestionVersion.status, QuestionVersion.content["area"].as_string())
+                      .where(QuestionVersion.id.in_(exam.items))).all() if exam.items else []
+    found = {key: (status, area) for key, status, area in rows}
     return {"id": exam.id, "title": exam.title, "year": exam.year,
             "application": exam.application, "booklet": exam.booklet, "day": exam.day,
             "kind": exam.kind, "expected_items": exam.expected_items, "item_count": len(exam.items),
             "duration_minutes": exam.duration_minutes, "status": exam.status,
-            "areas": sorted({q.content["area"] for q in questions}),
-            "approved_items": sum(q.status == "approved" for q in questions),
+            "areas": sorted({found[key][1] for key in exam.items if key in found}),
+            "approved_items": sum(found[key][0] == "approved" for key in exam.items if key in found),
             "source": exam.source}
 
 
