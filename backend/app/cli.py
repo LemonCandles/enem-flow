@@ -26,6 +26,7 @@ def main():
     seed.add_argument("--refresh-bundled", action="store_true", help="Atualizar a apresentação incluída criando versões; preservar as tentativas")
     catalog = subs.add_parser("catalog", help="Instalar lotes e rótulos conferidos, preservando versões e tentativas")
     catalog.add_argument("--publish-curated", action="store_true")
+    subs.add_parser("archive", help="Publicar as provas geradas do acervo oficial, sem curadoria")
     reset = subs.add_parser("recovery-link")
     reset.add_argument("email")
     reset.add_argument("--base-url", default="http://localhost:3000")
@@ -62,6 +63,9 @@ def main():
                     db.add(Review(user_id=reviewer.id, target_id=key, action="approve", reason=reason))
                 publish_exam(db, exam, reviewer.id, reason)
             print(f"Importadas {len(exam.items)} questões; estado: {exam.status}.")
+        elif args.command == "archive":
+            from .archive_exams import publish_generated
+            print(json.dumps(publish_generated(db), ensure_ascii=False))
         elif args.command == "catalog":
             from .catalog import install_catalog
             print(json.dumps(install_catalog(db,publish=args.publish_curated),ensure_ascii=False))

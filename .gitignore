@@ -79,6 +79,10 @@ Desktop.ini
 !/data/README.md
 !/data/enem-2024-dia2-azul.json
 !/data/assets/
+# Figuras: só as dos lotes conferidos; as das provas geradas do acervo ficam locais.
+/data/assets/*
+!/data/assets/enem-2024-dia2-azul/
+!/data/assets/enem-2023-matematica-azul/
 !/data/catalog/
 !/data/classification/
 !/data/datasets/

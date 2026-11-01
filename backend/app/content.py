@@ -62,14 +62,15 @@ def exam_summary(db: Session, exam: Exam):
             "source": exam.source}
 
 
-def publish_exam(db: Session, exam: Exam, user_id: str, reason: str):
+def publish_exam(db: Session, exam: Exam, user_id: str, reason: str, allow_pending: bool = False):
+    """`allow_pending` is reserved for the automatic archive publication, which has no curation step."""
     if len(exam.items) != exam.expected_items:
         raise HTTPException(409, "A prova está incompleta para o total declarado.")
     for key in exam.items:
         question = db.get(QuestionVersion, key)
         if not question or question.status != "approved":
             raise HTTPException(409, "Todas as versões precisam de aprovação antes da publicação.")
-        if blocking_issues(question.content):
+        if not allow_pending and blocking_issues(question.content):
             raise HTTPException(409, "Há pendências bloqueantes de preparação. Corrija e revise as versões antes de publicar.")
         validate_assets(question.content)
     exam.status = "published"

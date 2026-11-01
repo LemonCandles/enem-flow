@@ -1,4 +1,4 @@
-.PHONY: setup migrate seed api web test build
+.PHONY: setup migrate seed acervo api web test build
 PYTHON = .venv/bin/python
 
 setup:
@@ -12,6 +12,11 @@ migrate:
 
 seed:
 	$(PYTHON) -m backend.app.cli seed --publish-reviewed --refresh-bundled
+
+# Provas do acervo extraídas sem curadoria; exige o espelho local (archive_enem.py sync).
+acervo:
+	$(PYTHON) scripts/build_archive_exams.py
+	$(PYTHON) -m backend.app.cli archive
 
 api:
 	.venv/bin/uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
