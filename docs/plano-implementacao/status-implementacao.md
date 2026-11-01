@@ -10,7 +10,7 @@ O catálogo versionado tem 135 questões conferidas: o segundo dia do ENEM 2024,
 
 O lote processado recebido foi incorporado em 01/11/2026: **98 provas e 8.730 questões estão publicadas na instalação local**, incluindo os dois lotes conferidos. As 96 provas automáticas passaram pela conferência de fontes, gabaritos, LaTeX e figuras e pelo ensaio de resolução em uma cópia isolada. Há 506 pendências de apresentação em 489 questões, identificadas no site. Os detalhes estão em [incorporação do acervo](../banco-classificacao.md#incorporação-do-acervo-processado).
 
-As cinco inconsistências encontradas na revisão posterior foram corrigidas, com regressão em SQLite/PostgreSQL (97 testes em cada), navegador (28 cenários), gateway real e persistência após recriação dos contêineres. Os ajustes preservam os dados históricos e estão descritos no [fechamento da revisão](../revisao-projeto-2026-11-01.md#fechamento-das-correções).
+As cinco inconsistências encontradas na revisão posterior foram corrigidas, com regressão em SQLite/PostgreSQL (97 testes em cada), navegador (28 cenários), gateway real e persistência após recriação dos contêineres. Os ajustes preservam os dados históricos e estão descritos no [fechamento da revisão](../revisoes/revisao-projeto-2026-11-01.md#fechamento-das-correções).
 
 ## O que já está disponível
 
@@ -48,7 +48,7 @@ A sequência e os critérios de aceite estão em [próximas etapas](proximas-eta
 
 ## Validação e limites
 
-A regressão atual passou por 97 testes de backend em SQLite, 97 em PostgreSQL e 28 testes Playwright no build de produção. A instalação Compose sobre Podman também passou pelos testes de identificação de clientes, proteção contra cabeçalhos falsificados e persistência após recriação dos contêineres. As verificações das correções estão no [fechamento da revisão](../revisao-projeto-2026-11-01.md#fechamento-das-correções); a validação anterior da integração está em [banco e classificação](../banco-classificacao.md#validação-da-integração), e os procedimentos da consolidação em [primeira entrega](../primeira-entrega.md). Os testes de celular usam emulação de tela e não substituem o uso em aparelhos reais.
+A regressão atual passou por 97 testes de backend em SQLite, 97 em PostgreSQL e 28 testes Playwright no build de produção. A instalação Compose sobre Podman também passou pelos testes de identificação de clientes, proteção contra cabeçalhos falsificados e persistência após recriação dos contêineres. As verificações das correções estão no [fechamento da revisão](../revisoes/revisao-projeto-2026-11-01.md#fechamento-das-correções); a validação anterior da integração está em [banco e classificação](../banco-classificacao.md#validação-da-integração), e os procedimentos da consolidação em [primeira entrega](../primeira-entrega.md). Os testes de celular usam emulação de tela e não substituem o uso em aparelhos reais.
 
 Essas evidências demonstram o funcionamento técnico dos incrementos verificados. A revisão pedagógica independente, a validação manual de acessibilidade e o piloto continuam necessários. Ainda não há resultados de aprendizagem ou avaliação de eficácia educacional.
 

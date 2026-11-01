@@ -6,7 +6,7 @@ Foram confirmadas **cinco inconsistências**, descritas abaixo. Os reprodutores 
 
 ## R1 — Alta: auditoria recebida no JSON pode contornar os bloqueios de preparação
 
-**Local:** [preparação](../backend/app/preparation/__init__.py), `prepare_content`, linha 51; aprovação em [main.py](../backend/app/main.py), linha 378.
+**Local:** [preparação](../../backend/app/preparation/__init__.py), `prepare_content`, linha 51; aprovação em [main.py](../../backend/app/main.py), linha 378.
 
 O preparador retorna o conteúdo sem inspecioná-lo quando a versão e o fingerprint recebidos coincidem. O fingerprint exclui a própria auditoria. Assim, o JSON pode declarar `issues: []`, embora o conteúdo contenha uma expressão inválida. A aprovação consulta essa lista recebida, sem validar novamente o conteúdo.
 
@@ -20,7 +20,7 @@ O preparador retorna o conteúdo sem inspecioná-lo quando a versão e o fingerp
 
 ## R2 — Alta no Docker: limite de autenticação compartilhado entre usuários
 
-**Local:** [main.py](../backend/app/main.py), `throttle`, linha 72; [Dockerfile da API](../backend/Dockerfile), linha 17; [Compose](../compose.yaml).
+**Local:** [main.py](../../backend/app/main.py), `throttle`, linha 72; [Dockerfile da API](../../backend/Dockerfile), linha 17; [Compose](../../compose.yaml).
 
 O contador usa exclusivamente `request.client.host`. Na topologia Compose, as requisições chegam pelo contêiner do Next. A API não recebe configuração de proxies confiáveis, e o Uvicorn instalado confia por padrão apenas em loopback. O endereço do contêiner web fica, portanto, como identificador comum dos clientes.
 
@@ -34,7 +34,7 @@ O contador usa exclusivamente `request.client.host`. Na topologia Compose, as re
 
 ## R3 — Média: edição contorna a deduplicação e deixa a identidade inconsistente
 
-**Local:** [main.py](../backend/app/main.py), `edit_question`, linha 345; publicação em [content.py](../backend/app/content.py), linha 70.
+**Local:** [main.py](../../backend/app/main.py), `edit_question`, linha 345; publicação em [content.py](../../backend/app/content.py), linha 70.
 
 A edição copia o `canonical_id` anterior, independentemente do conteúdo novo. A publicação verifica aprovação, total e recursos, mas não reconcilia a assinatura do conteúdo editado nem detecta a duplicata resultante.
 
@@ -48,7 +48,7 @@ A edição copia o `canonical_id` anterior, independentemente do conteúdo novo.
 
 ## R4 — Média: publicar o catálogo depende de haver conteúdo novo
 
-**Local:** [catalog.py](../backend/app/catalog.py), `install_catalog`, linha 80; opção `--publish-curated` em [cli.py](../backend/app/cli.py), linha 28.
+**Local:** [catalog.py](../../backend/app/catalog.py), `install_catalog`, linha 80; opção `--publish-curated` em [cli.py](../../backend/app/cli.py), linha 28.
 
 A aprovação/publicação fica dentro de `if changed`. Quando o catálogo foi instalado sem publicação, uma segunda execução com publicação solicitada encontra conteúdos iguais, mantém `changed=False` e ignora a solicitação.
 
@@ -62,7 +62,7 @@ A aprovação/publicação fica dentro de `if changed`. Quando o catálogo foi i
 
 ## R5 — Média: recuperação de senha não abre com sessão ativa
 
-**Local:** [app.tsx](../frontend/src/components/app.tsx), linha 77; leitura do token em [auth.tsx](../frontend/src/components/auth.tsx), linha 16.
+**Local:** [app.tsx](../../frontend/src/components/app.tsx), linha 77; leitura do token em [auth.tsx](../../frontend/src/components/auth.tsx), linha 16.
 
 A leitura de `?recovery=...` ocorre somente no componente `Auth`, que não é montado quando `/me` retorna uma sessão válida.
 
