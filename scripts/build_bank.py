@@ -22,8 +22,8 @@ from scripts.archive_enem import CATALOG, SOURCE_ROOT, write_json, sha
 
 OUTPUT = ROOT / 'data/derived/archive'
 BANK = ROOT / 'data/bank'
-VERSION = 'archive-text-v3'
-HEADING = re.compile(r'^\s*QUEST[ÃA]O\s*(\d{1,3})\b',re.I)
+VERSION = 'archive-text-v4'
+HEADING = re.compile(r'^\s*Q\s*U\s*E\s*S\s*T\s*[ÃA]\s*O\s*(\d(?:\s*\d){0,2})\b',re.I)
 
 
 def normalized(text):
@@ -70,7 +70,7 @@ def boundaries(doc,year):
         page=doc[pi];found=[]
         for l in ls:
             m=HEADING.match(l['text'])
-            if m:number=int(m[1])
+            if m:number=int(re.sub(r'\s+','',m[1]))
             elif legacy and re.fullmatch(r'\d{1,2}\.?',l['text']) and l['bbox'][1]<page.rect.height-38 and (
                 re.sub(r'[ ,_-]','',l['font']).lower().replace('mediumc','medium')==family or
                 (re.search(r'bold|heavy|demi',l['font'],re.I) and l['size']>=size*.95 and any(abs(l['bbox'][0]-x)<8 for x in edges))):
@@ -102,7 +102,7 @@ def extract(record):
     dest=OUTPUT / str(record['year']) / f'{record["id"]}.json'
     if dest.exists():
         previous=json.loads(dest.read_text())
-        if previous.get('source_sha256')==record['sha256'] and previous.get('adapter')==VERSION:
+        if previous.get('source_sha256')==record['sha256'] and previous.get('source_path')==record['path'] and (previous.get('adapter')==VERSION or (previous.get('adapter')=='archive-text-v3' and not previous.get('issues'))):
             return previous
     base=dict(source_id=record['id'],source_path=record['path'],source_sha256=record['sha256'],adapter=VERSION,
               year=record['year'],application=record['application'],day=record['day'],booklet=record['booklet'],variant=record['variant'],questions=[],issues=[])

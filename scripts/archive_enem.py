@@ -121,8 +121,10 @@ def parse_year(html, year, page_url):
             if not re.search(r'\.(pdf|zip|txt|docx?)(?:\?|$)', url, re.I): continue
             info = metadata(year, heading, title, text)
             role = 'gabarito' if 'gabarito' in text.casefold() else 'prova' if ('prova' in text.casefold() or 'leitor de tela' in text.casefold()) else 'anexo'
-            section_match=re.search(r'_(CH|LC|CN|MT)_',url)
-            section={'CH':'ciencias-humanas','LC':'linguagens','CN':'ciencias-da-natureza','MT':'matematica'}.get(section_match[1]) if section_match else None
+            # A name such as LC_CH or CH_CN denotes a combined booklet. Only a
+            # single area code can identify a file split by area.
+            section_codes=re.findall(r'_(CH|LC|CN|MT)(?=[_.])',url)
+            section={'CH':'ciencias-humanas','LC':'linguagens','CN':'ciencias-da-natureza','MT':'matematica'}.get(section_codes[0]) if len(section_codes)==1 else None
             info['section']=section
             if 'redação' in text.casefold():info.update(day=None,booklet='proposta-de-redacao',section='redacao')
             extension = Path(unquote(urlparse(url).path)).suffix.lower()
