@@ -134,7 +134,7 @@ def logout(request: Request, response: Response, db: Session = Depends(get_db, s
 
 
 @app.post("/auth/reset-password")
-def reset_password(payload: s.ResetPassword, request: Request, db: Session = Depends(get_db, scope="function")):
+def reset_password(payload: s.ResetPassword, request: Request, response: Response, db: Session = Depends(get_db, scope="function")):
     throttle(db, request)
     # Consume with a conditional DELETE so concurrent replays cannot both succeed.
     token = db.execute(delete(m.RecoveryToken).where(m.RecoveryToken.token_hash == digest(payload.token),
@@ -143,6 +143,7 @@ def reset_password(payload: s.ResetPassword, request: Request, db: Session = Dep
         raise HTTPException(400, "Link de recuperação inválido ou expirado.")
     db.get(m.User, token).password_hash = hash_password(payload.password)
     db.execute(delete(m.AuthSession).where(m.AuthSession.user_id == token))
+    response.delete_cookie(COOKIE, path="/")
     return {"message": "Senha atualizada. Entre novamente."}
 
 
