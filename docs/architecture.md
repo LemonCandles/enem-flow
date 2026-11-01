@@ -2,14 +2,17 @@
 
 Monólito modular em dois processos: Next.js 16 / React 19 / TypeScript para a experiência e FastAPI / SQLAlchemy para domínio, autorização e persistência. Os manifests têm versões diretas fixadas e os lockfiles do npm e Python fixam também as transitivas. PostgreSQL é a referência de implantação. SQLite, com WAL e chaves estrangeiras, permite desenvolvimento local sem serviços extras.
 
-O frontend encaminha `/api/*` para a API configurada por `API_INTERNAL_URL`. Esse destino é definido no build de produção; ao mudá-lo, gere um novo build. O navegador usa uma única origem, sem tokens em localStorage ou exposição de credenciais de banco. As fontes são servidas pelo próprio frontend.
+No modo local, o frontend encaminha `/api/*` para a API configurada por `API_INTERNAL_URL`. Esse destino é definido no build de produção; ao mudá-lo, gere um novo build. No Compose, o gateway Nginx encaminha páginas ao Next e `/api/*` à API, substituindo cabeçalhos de origem recebidos do cliente. Somente o gateway é um proxy confiável da API. O navegador usa uma única origem, sem tokens em localStorage ou exposição de credenciais de banco. As fontes são servidas pelo próprio frontend.
 
 A unidade de trabalho confirma a transação antes de enviar a resposta HTTP, usando o [escopo de função das dependências FastAPI](https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/#early-exit-and-scope). Uma falha de commit pode assim retornar erro ao cliente antes de indicar sucesso.
 
 ```mermaid
 flowchart LR
-  Aluno[Aluno / Curadoria] --> Web[Next.js]
-  Web --> API[FastAPI]
+  Aluno[Aluno / Curadoria] -->|Compose| Gateway[Nginx]
+  Aluno -->|Local| Web[Next.js]
+  Gateway -->|Páginas| Web
+  Gateway -->|/api| API[FastAPI]
+  Web -->|/api local| API
   API --> Auth[Contas e sessões]
   API --> Content[Banco e revisão]
   API --> Runs[Execuções e correção]
@@ -31,6 +34,8 @@ Fórmulas explícitas usam `$...$`, `$$...$$`, `\(...\)` ou `\[...\]`; química 
 
 `content.py` valida recursos existentes, importa rascunhos e impede publicação incompleta ou sem revisão. Correções geram novas versões; a prova fica em revisão até aprovação e republicação. Rejeitar uma versão vinculada a uma prova publicada também suspende sua publicação. A trilha `reviews` guarda autor, ação, justificativa e instante. `identity.py` identifica conteúdo igual entre cadernos sem confundir número, ordem das alternativas e letra correta de cada ocorrência. A tabela `canonical_questions` liga identidades às versões; gabaritos conflitantes e duplicatas dentro de uma prova são recusados. A deduplicação de extrações com figuras é conservadora e ainda exige revisão visual.
 
+A edição verifica colisões com assinaturas canônicas conhecidas e duplicidade entre os conteúdos atuais da prova. A publicação repete a verificação de identidades e conteúdo, incluindo versões antigas. Uma correção legítima preserva a identidade estável e os snapshots; copiar outra questão exige resolver a colisão antes de salvar ou publicar.
+
 `archive_exams.py` é a exceção explícita de publicação automática local: admite pendências de preparação, preserva os relatórios e registra origem e revisão pendente em `source.automatic_archive`. `content_quality` leva esse estado ao catálogo e ao snapshot da prova; `preparation_errors` expõe apenas a contagem de erros da questão, sem abrir layout interno ou gabarito. O site identifica esses cadernos e vincula as pendências à fonte. O fluxo manual mantém seus bloqueios. O resumo do catálogo consulta apenas identificador, estado e área das versões, sem carregar os enunciados completos.
 
 `exam_runs` fixa ordem, conteúdo completo, versão e metadados da prova no início. Isso preserva também as tentativas ainda abertas quando uma questão é corrigida ou uma prova é retirada. O resultado, as escolhas definitivas e os eventos são registrados na mesma transação.
@@ -42,6 +47,8 @@ Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da
 ## Preparação de conteúdo
 
 `backend/app/preparation/` é o preparador compartilhado de JSON, sem dependência de PDF/Node nas requisições da API e sem regras por número de questão. `POST /admin/imports` e a edição de versões o executam automaticamente; `/admin/imports/prepare` oferece prévia sem gravação. Converte notação reconhecida, associa blocos adjacentes às figuras e registra hashes, operações e pendências em `layout.preparation`. Agrupamentos/delimitadores LaTeX inválidos e perdas de layout conhecidas bloqueiam aprovação e publicação. Os avisos ficam na curadoria; o aluno recebe a lista permitida de campos de apresentação.
+
+O fingerprint permite reaproveitar apresentação e operações anteriores, mas não autentica a auditoria recebida. A validação independente examina os campos renderizados, imagens sem posição e diagnósticos de extração. Aprovação e publicação também a executam para impedir que relatórios alterados ou antigos suprimam bloqueios. O catálogo pode publicar uma instalação anterior sem criar novas versões; retiradas, rejeições e edições manuais pendentes permanecem preservadas.
 
 O adaptador offline `scripts/exam_pdf.py` usa PyMuPDF, regiões, cabeçalhos, posição dos caracteres e marcadores A–E para preparar PDFs textuais. `scripts/prepare_exam.py` aceita JSON ou manifesto, produz um rascunho e relatório, confere recursos e compila o LaTeX com o KaTeX/mhchem do frontend. Saída automática não equivale a aprovação. [Uso e limites](preparacao-provas.md).
 

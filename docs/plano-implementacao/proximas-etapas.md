@@ -57,6 +57,8 @@ A integração das duas frentes preserva os vínculos entre cores e os relatóri
 
 Em 01/11/2026, o acervo processado recebido foi incorporado: a instalação local tem 98 provas e 8.730 questões. As 96 provas automáticas passaram pela conferência de fontes, gabaritos, LaTeX e figuras e pelo ensaio integral de resolução em uma cópia isolada. Permanecem 506 pendências de apresentação em 489 questões, para as etapas 3 e 8. [Registro e limites](../banco-classificacao.md#incorporação-do-acervo-processado).
 
+A [revisão de consistência](../revisao-projeto-2026-11-01.md#fechamento-das-correções) encontrou e corrigiu cinco falhas em auditoria de preparo, identificação de clientes no Docker, deduplicação durante edição/publicação, publicação posterior do catálogo e recuperação de senha com sessão ativa. Foram aprovados 97 testes em cada banco e 28 testes de navegador, além do ensaio real de proxy e persistência. A próxima frente permanece a etapa 3; a curadoria permanece na etapa 8.
+
 ## 3. Iniciar os experimentos de Dados e IA
 
 **Próxima frente de desenvolvimento. Dependências: contratos da etapa 2 e a referência técnica `adaptive-math-reference-v1`. A revisão humana das amostras fica na etapa 8. Duas frentes podem avançar em paralelo.**

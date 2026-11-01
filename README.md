@@ -46,7 +46,7 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Abra **http://localhost:3000**. Migrações e importação do conjunto revisado são executadas no início, sem duplicar conteúdo. PostgreSQL e imagens têm volumes persistentes; a API fica na rede interna dos contêineres.
+Abra **http://localhost:3000**. Migrações e importação do conjunto revisado são executadas no início, sem duplicar conteúdo. PostgreSQL e imagens têm volumes persistentes; o gateway Nginx é a entrada pública, enquanto Next, API e banco ficam nas redes internas. Ele preserva a identificação de cada cliente e substitui cabeçalhos de origem falsificados. Se a rede privada padrão conflitar com outra rede local, ajuste `ENEM_PROXY_SUBNET` e `ENEM_PROXY_IP` conforme o [guia de operação](docs/operations.md).
 
 A instalação isolada foi validada com Compose sobre Podman e o CI inclui um ensaio com Docker Engine, incluindo recriação dos contêineres sem remover volumes. Consulte [procedimentos, evidências e limites](docs/primeira-entrega.md).
 

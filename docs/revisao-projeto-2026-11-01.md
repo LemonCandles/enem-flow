@@ -2,7 +2,7 @@
 
 Revisão de 01/11/2026 sobre a versão `b66fd06`, na branch `codex/consolidacao-primeira-entrega`. Foram examinados backend, interface, contratos, identidade das questões, preparação, catálogo, acervo, persistência, configuração de contêineres, CI e documentação. A alteração paralela de `CLAUDE.md` foi preservada.
 
-Foram confirmadas **cinco inconsistências**, descritas abaixo. Os reprodutores usaram bancos descartáveis e respostas simuladas de autenticação no navegador. Não foram executadas alterações, exclusões, redefinições de senha ou tentativas fictícias no banco do site. As correções de aplicação ainda estão pendentes.
+Foram confirmadas **cinco inconsistências**, descritas abaixo. Os reprodutores usaram bancos descartáveis e respostas simuladas de autenticação no navegador. Não foram executadas alterações, exclusões, redefinições de senha ou tentativas fictícias no banco do site. **Os cinco pontos foram corrigidos e validados em 01/11/2026.** A descrição original e seus locais correspondem à versão revisada; o fechamento registra a implementação posterior.
 
 ## R1 — Alta: auditoria recebida no JSON pode contornar os bloqueios de preparação
 
@@ -93,4 +93,23 @@ Os reprodutores e relatórios temporários desta sessão estão em `tmp/revisao-
 
 As 506 pendências de apresentação em 489 questões, as fontes oficiais indisponíveis, os casos sem gabarito/texto legível e os aceites de leitores de tela/aparelhos reais continuam descritos nos documentos anteriores. São pendências conhecidas, não achados novos desta revisão. A conferência humana permanece na etapa 8.
 
-A ordem sugerida é corrigir R1 e R2, depois R3 e R4, e completar R5 antes da publicação externa. Cada correção deve acrescentar a regressão do cenário correspondente. O registro de uma falha aqui não altera a aprovação dos snapshots e resultados históricos existentes.
+## Fechamento das correções
+
+| Achado | Implementação | Commit |
+| --- | --- | --- |
+| R1 | Validação independente dos campos renderizados e dos diagnósticos estruturais, inclusive ao reaproveitar uma auditoria. Aprovação e publicação revalidam registros antigos; apresentação e operações válidas são preservadas. | `2cdd5cb` |
+| R2 | Gateway Nginx 1.30.6 como única entrada do Compose. Substitui cabeçalhos enviados pelo cliente; a API confia apenas no IP privado do gateway. Redes e teste de integração com dois clientes incluídos no CI. | `63e9577` |
+| R3 | Edição recusa colisões com identidades conhecidas e conteúdo repetido na prova. Publicação verifica identidades e assinaturas atuais, incluindo duplicatas legadas. Revisões legítimas preservam identidade e snapshots. | `db7c810` |
+| R4 | Publicação explícita também atende um catálogo já instalado, sem criar versões ou decisões duplicadas. Retiradas, rejeições e edições pendentes continuam preservadas, inclusive durante atualizações do catálogo. | `d1aafe7` |
+| R5 | Token tratado antes de carregar a sessão, retirado da URL e encaminhado ao formulário. Após o reset, o backend remove o cookie e a interface solicita login. | `766ee7a` |
+
+Validação posterior às correções:
+
+- **97 testes de backend em SQLite e 97 em PostgreSQL**, com regressões para auditoria alterada, edições duplicadas, versões legadas, publicação posterior e decisões manuais.
+- **28 testes Playwright**, em desktop e celular, no build de produção da instalação Compose sobre Podman, com gateway e PostgreSQL. Quatro cenários verificam recuperação com/sem sessão e retorno ao login.
+- **Proxy real:** um cliente foi bloqueado após 30 tentativas, mesmo alternando cabeçalhos falsificados; outro contêiner conseguiu cadastrar e entrar. Os mesmos comandos foram incluídos no workflow de CI.
+- **Persistência:** API encerrada com código 0; contêineres removidos e recriados sem apagar volumes. Login, resposta, resultado, histórico, 90 snapshots, figura e finalização idempotente preservados.
+- **Compatibilidade:** as 98 provas da instalação local continuam compatíveis com a nova verificação de identidade. Os lotes conferidos continuam sem bloqueios; as 506 pendências do acervo automático mantiveram os mesmos tipos e contagens.
+- TypeScript e build de produção aprovados. API e frontend locais reiniciados com as correções; backup anterior em `backups/enem-flow-antes-correcoes-2026-11-01.db`.
+
+Os resultados acima foram obtidos localmente. O workflow foi atualizado, mas uma nova execução remota do GitHub Actions não foi verificada nesta etapa. A publicação externa e os aceites humanos continuam nas etapas previstas. O registro e as correções não reescrevem os snapshots nem os resultados históricos.
