@@ -10,7 +10,7 @@ import pymupdf as fitz
 SUB = str.maketrans('0123456789+-−', '₀₁₂₃₄₅₆₇₈₉₊₋₋')
 SUP = str.maketrans('0123456789+-−', '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁻')
 HEADING = re.compile(r'^QUEST[ÃA]O\s+(\d+)\b', re.I)
-LANGUAGE = re.compile(r'^Quest[õo]es\s+de\s+(\d+)\s+a\s+(\d+)\s*\(\s*op[çc][ãa]o\s+([^)]+?)\s*\)', re.I)
+LANGUAGE = re.compile(r'^Quest[õo]es\s+de\s+(\d+)\s+a\s+(\d+)\s*\(\s*op[çc][ãa]o\s*:?\s*([^)]+?)\s*\)', re.I)
 # Glyphs that Portuguese, Spanish and English text practically never uses; a font
 # without a character map turns ordinary letters into them ("fÜ éîèÜèê").
 SUSPECT = re.compile(r'[\x00-\x08\x0b-\x1f†‡¶§¤¢£•™ÜÛÙîìèòùåæøßÆØÅ]')
@@ -24,6 +24,11 @@ def garbled(text):
 
 def diagnostic(code, message, location, severity='warning', excerpt=''):
     return dict(code=code, message=message, location=location, severity=severity, excerpt=excerpt[:500])
+
+
+def literal(text):
+    """PDF text never carries LaTeX: escape a dollar sign unless a currency code precedes it (R$, US$)."""
+    return re.sub(r'(?<![A-Z\\])\$', r'\\$', text)
 
 
 def watermark(line):
@@ -67,7 +72,17 @@ def lines(page, rect):
     unique = {}
     for line in result:
         unique.setdefault((line['text'], *(round(v) for v in line['bbox'])), line)
-    return sorted(unique.values(), key=lambda l: (round(l['bbox'][1], 1), l['bbox'][0]))
+    result = list(unique.values())
+    # Some layouts print "Questão" and its number as separate lines on the same baseline.
+    for line in [l for l in result if re.fullmatch(r'QUEST[ÃA]O', l['text'], re.I)]:
+        number = next((n for n in result if re.fullmatch(r'\d{1,3}', n['text']) and abs(n['bbox'][1]-line['bbox'][1]) < 3
+                       and 0 <= n['bbox'][0]-line['bbox'][2] < 60), None)
+        if number:
+            line['text'] = f"{line['text']} {number['text']}"
+            line['bbox'] = [min(line['bbox'][0], number['bbox'][0]), min(line['bbox'][1], number['bbox'][1]),
+                            max(line['bbox'][2], number['bbox'][2]), max(line['bbox'][3], number['bbox'][3])]
+            result.remove(number)
+    return sorted(result, key=lambda l: (round(l['bbox'][1], 1), l['bbox'][0]))
 
 
 def mark_bare_options(source_lines):
@@ -161,6 +176,30 @@ def margin_headings(doc, config, numbers):
     return found[:8]
 
 
+def answer_key_rows(text, language=None, numbers=None):
+    """Number -> answer. Language options print one column per language ("1 C D").
+
+    "*A" marks an answer rectified by the Inep. `numbers` limits the key to the
+    booklet's questions, since some keys also list the other day.
+    """
+    text = text.replace('\xa0', ' ')
+    columns = [key for _, key in sorted((m.start(), language_key(m[0])) for m in re.finditer(r'INGL[ÊE]S|ESPANHOL', text, re.I))]
+    columns = list(dict.fromkeys(columns))
+    chosen = language_key(language) if language else None
+    answers = {}
+    for n, first, second in re.findall(r'\b(\d{1,3})\s+\*?(ANULAD[AO]|[ABCDE])\b(?:[ \t]*\n?[ \t]*\*?(ANULAD[AO]|[ABCDE])(?=[ \t]*(?:\n|$)))?', text, re.I):
+        if numbers is not None and int(n) not in numbers: continue
+        value = first
+        if second:
+            if len(columns) != 2: raise ValueError(f'Gabarito com duas respostas na questão {int(n)} sem colunas de língua identificadas.')
+            if not chosen: raise ValueError(f'O gabarito tem colunas por língua ({", ".join(columns)}): declare "language" no manifesto.')
+            if chosen not in columns: raise ValueError(f'Língua "{language}" ausente no gabarito ({", ".join(columns)}).')
+            value = (first, second)[columns.index(chosen)]
+        value = value.upper()
+        answers[int(n)] = None if value.startswith('ANULAD') else value
+    return answers
+
+
 def from_manifest(manifest, pdf, answer_key=None):
     """Metadata/area ranges are explicit; answer keys never come from heuristics."""
     config = dict(manifest)
@@ -168,10 +207,8 @@ def from_manifest(manifest, pdf, answer_key=None):
     if answer_key:
         with fitz.open(answer_key) as doc:
             text = '\n'.join(p.get_text() for p in doc)
-        found = re.findall(r'\b(\d{1,3})\s+(ANULAD[AO]|[ABCDE])\b', text, re.I)
-        for n,a in found:
-            n = int(n); a = a.upper()
-            answer = None if a.startswith('ANULAD') else a
+        covered = {n for area in config.get('areas', []) for n in range(area['first'], area['last']+1)} or None
+        for n,answer in answer_key_rows(text, config.get('language'), covered).items():
             if n in answers and answers[n] != answer: raise ValueError(f'Gabaritos conflitantes na questão {n}.')
             answers[n] = answer
     if not answers: raise ValueError('Informe answers no manifesto ou --answer-key com gabarito textual.')
@@ -179,6 +216,11 @@ def from_manifest(manifest, pdf, answer_key=None):
     with fitz.open(pdf) as doc:
         languages = {}
         regions = discover_regions(doc, config, languages)
+        if config.get('range'):
+            # A section of the booklet: only these numbers are prepared.
+            first, last = config['range']
+            regions = {n: r for n, r in regions.items() if first <= n <= last}
+            answers = {n: a for n, a in answers.items() if first <= n <= last}
         if not regions: raise ValueError('Nenhum cabeçalho textual encontrado: confira páginas e margens. Sem camada de texto, o PDF exige OCR; com codificação quebrada, use outra cor legível da mesma aplicação.')
         if set(regions) != set(answers):
             missing = sorted(set(answers)-set(regions))
@@ -300,7 +342,7 @@ def extract_exam(data, pdf, assets_root):
                     if len(rows)>1 and 1<len(rows[0])<=12 and all(len(r)==len(rows[0]) for r in rows):
                         if any(cell is None for row in rows for cell in row):
                             issues.append(diagnostic('merged_table_cells','Tabela com células mescladas ou ausentes: confira a estrutura antes de aprovar.',f'page:{pn}','error'))
-                        tables.append((fitz.Rect(table.bbox), {'type':'table','caption':'Tabela extraída da prova; conferir cabeçalhos.', 'headers':[str(v or '') for v in rows[0]],'rows':[[str(v or '') for v in row] for row in rows[1:]]}))
+                        tables.append((fitz.Rect(table.bbox), {'type':'table','caption':'Tabela extraída da prova; conferir cabeçalhos.', 'headers':[literal(str(v or '')) for v in rows[0]],'rows':[[literal(str(v or '')) for v in row] for row in rows[1:]]}))
                 figs = [r for r in figs if not any(t[0].intersects(r) and (t[0]&r).get_area() > r.get_area()*.8 for t in tables)]
                 for r,block in tables: entries.append(dict(type='block', block=block, page=pn, bbox=list(r), text=''))
                 labelled_figs=alternative_graphics(figs,source_lines,clip)
@@ -340,7 +382,7 @@ def extract_exam(data, pdf, assets_root):
                     if line['uncertain']: issues.append(diagnostic('spatial_math','Índice/expoente não numérico precisa de transcrição LaTeX.',f'page:{pn}',excerpt=line['text']))
                     if re.search(r'[√∫∑]|\b\d+\s+\d+\s*/',line['text']):
                         issues.append(diagnostic('complex_math','Expressão espacial precisa de conferência e transcrição LaTeX; expoentes e frações não são inferidos de texto achatado.',f'page:{pn}',excerpt=line['text']))
-                    entries.append({**line,'type':'text','page':pn})
+                    entries.append({**line,'text':literal(line['text']),'type':'text','page':pn})
             # Regions already encode column/page reading order. Do not globally
             # sort columns by y, which would interleave independent questions.
             ordered=[]

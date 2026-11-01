@@ -14,6 +14,7 @@ export function RichText({ text }: { text: string }) {
   return <>{text.split(expressions).map((part, i) => {
     const display = part.startsWith('$$') || part.startsWith('\\[');
     const math = display || part.startsWith('\\(') || (part.startsWith('$') && part.endsWith('$'));
-    return math ? <Formula key={i} tex={part.slice(display || part.startsWith('\\(') ? 2 : 1, display || part.startsWith('\\(') ? -2 : -1)} display={display}/> : part;
+    // Plain text escapes literal dollar signs (\$) so they never open a formula.
+    return math ? <Formula key={i} tex={part.slice(display || part.startsWith('\\(') ? 2 : 1, display || part.startsWith('\\(') ? -2 : -1)} display={display}/> : part.replace(/\\\$/g, '$');
   })}</>;
 }
