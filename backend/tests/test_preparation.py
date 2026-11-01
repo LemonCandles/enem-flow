@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[2]
     ('22 L/mol e 0,78 g/mL', r'$22\,\mathrm{L/mol}$ e $0{,}78\,\mathrm{g/mL}$'),
     ('4,0 × 10⁵ e M₂', r'$4{,}0\times10^{5}$ e $M_{2}$'),
     ('R$ 10,00 em 3/4/2024. NO título de CO autores.', 'R$ 10,00 em 3/4/2024. NO título de CO autores.'),
+    ('Dólar (US$) 39 000, A$ 40 000 e C$ 41 000.', 'Dólar (US$) 39 000, A$ 40 000 e C$ 41 000.'),
     (r'Já $\ce{CO2}$ e \(f_0\) e $$x^2$$.', r'Já $\ce{CO2}$ e \(f_0\) e $$x^2$$.'),
     ('Na Química, as fórmulas. No texto de revisão. As moléculas.', 'Na Química, as fórmulas. No texto de revisão. As moléculas.'),
     ('Frequências fᵣ e f₀, 10⁻³ e 70%.', r'Frequências $f_{r}$ e $f_{0}$, $10^{-3}$ e $70\%$.'),

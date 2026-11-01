@@ -1,7 +1,7 @@
 """Conservative notation conversion. Never balance reactions or infer lost exponents."""
 import re
 
-LATEX = re.compile(r'(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![R\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)')
+LATEX = re.compile(r'(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![A-Z\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)')
 SUB = str.maketrans('₀₁₂₃₄₅₆₇₈₉', '0123456789')
 SUB_LETTERS = str.maketrans('ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ', 'aehijklmnoprstuvx')
 SUP = str.maketrans('⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻', '0123456789+-')
@@ -119,7 +119,7 @@ def normalize(text, chemistry=False):
         if LATEX.fullmatch(token):
             if tex_shape_issue(token): issues.append(('invalid_latex', token))
             if r'\ce{' in token and '(I)' in token: issues.append(('ambiguous_liquid_state', token))
-        elif re.search(r'(?<![R\\])\$|\\[\[(]', token): issues.append(('invalid_latex', token))
+        elif re.search(r'(?<![A-Z\\])\$|\\[\[(]', token): issues.append(('invalid_latex', token))
     result = ''.join(part if LATEX.fullmatch(part) else plain(part) for part in tokens)
     if '\ufffd' in result: issues.append(('replacement_character', '�'))
     return result, list(dict.fromkeys(issues))

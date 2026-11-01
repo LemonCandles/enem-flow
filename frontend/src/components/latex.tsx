@@ -7,8 +7,8 @@ export function Formula({ tex, display = false }: { tex: string; display?: boole
   return <span className={display ? 'math-display' : 'math-inline'} dangerouslySetInnerHTML={{ __html: html }}/>;
 }
 
-// Currency R$ stays ordinary text; math delimiters are explicit and never HTML.
-const expressions = /(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![R\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)/g;
+// Currency codes (R$, US$, A$) stay ordinary text; math delimiters are explicit and never HTML.
+const expressions = /(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<![A-Z\\])\$(?!\$)(?:\\.|[^$\\\n])+\$)/g;
 
 export function RichText({ text }: { text: string }) {
   return <>{text.split(expressions).map((part, i) => {
