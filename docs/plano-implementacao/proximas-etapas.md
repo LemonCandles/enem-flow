@@ -170,6 +170,7 @@ Itens fora das etapas, sem data, para retomar quando houver oportunidade.
 | Item | O que fazer | Por quê |
 | --- | --- | --- |
 | Checagem automática das provas geradas | Para cada prova publicada por `make acervo`, sem navegador: iniciar uma tentativa, marcar o gabarito em todas as questões, finalizar e conferir 100% de acerto (anuladas à parte). Conferir também a quantidade de questões, as figuras servidas e a ausência de texto embaralhado. Roda depois do `make acervo` e é pulada em clones sem o acervo. | Os testes de navegador cobrem só os dois lotes conferidos. Essa checagem pega erros de gabarito e numeração nas provas geradas, como o do gabarito do espanhol corrigido em 31/10/2026. |
+| Regras de domínio sem dependência de HTTP | Trocar o `HTTPException` lançado por `services/` e `installers/` (conteúdo, identidade canônica e lotes conferidos) por exceções de domínio, como conflito e não encontrado. Um tratador em `main.py` as converte nos mesmos códigos e mensagens de hoje. Verificar com os testes de 401, 404, 409, 422 e 429 e com uma comparação das respostas de erro antes e depois. | Esses módulos também são usados pela CLI e pelos scripts, onde não há requisição HTTP. É a fase 2 da reorganização do backend, cuja fase 1 dividiu o código em `core/`, `models/`, `schemas/`, `services/` e `installers/`. |
 
 ## Referências locais
 

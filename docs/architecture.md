@@ -23,19 +23,19 @@ flowchart LR
 
 ## Limites e contratos
 
-`schemas.py` define o contrato 1.0 de conteúdo: item canônico, versão, enunciado, imagens com descrição, alternativas, área, rótulos, página e layout separado. O campo opcional `blocks` estende o contrato com parágrafos, imagens, tabelas e fórmulas tipados, sem quebrar importações antigas. O texto do JSON é renderizado como HTML; KaTeX usa entrada não confiável, expansão limitada e saída HTML/MathML. Não se aceita HTML arbitrário. O gabarito existe apenas no backend até a conclusão. As respostas públicas usam uma lista explícita de campos permitidos; o layout e os links de gabarito não são expostos durante a prova.
+`schemas/content.py` define o contrato 1.0 de conteúdo: item canônico, versão, enunciado, imagens com descrição, alternativas, área, rótulos, página e layout separado. O campo opcional `blocks` estende o contrato com parágrafos, imagens, tabelas e fórmulas tipados, sem quebrar importações antigas. O texto do JSON é renderizado como HTML; KaTeX usa entrada não confiável, expansão limitada e saída HTML/MathML. Não se aceita HTML arbitrário. O gabarito existe apenas no backend até a conclusão. As respostas públicas usam uma lista explícita de campos permitidos; o layout e os links de gabarito não são expostos durante a prova.
 
 Fórmulas explícitas usam `$...$`, `$$...$$`, `\(...\)` ou `\[...\]`; química usa mhchem (`\ce{...}`). Texto comum permanece selecionável. `image.caption`, `image.credit` e `image.equations` associam legenda, fonte e rodapé matemático à figura em `figure`/`figcaption`. A mesma apresentação acompanha a ampliação em diálogo nativo, com zoom e rolagem internos, Escape e restauração do foco. Não há navegação para uma nova guia ao ampliar.
 
-`presentation.py` adapta apenas snapshots antigos conhecidos que coincidam pelo SHA-256 do conteúdo completo normalizado pelo contrato. Extração inicial e apresentação native-v1 ficam preservadas em `data/derived/baselines/`. A adaptação também confere número, área, gabarito, anulação, rótulos e página. Substitui somente os campos de apresentação; identificadores, versões, escolhas e resultados permanecem os do snapshot. A atualização do catálogo cria novas versões com `seed --publish-reviewed --refresh-bundled`, recusando edições próprias e alterações de dados de avaliação. O lote native-v2 tem motivos por questão em `layout.presentation_review` e na trilha `reviews` do banco.
+`services/presentation.py` adapta apenas snapshots antigos conhecidos que coincidam pelo SHA-256 do conteúdo completo normalizado pelo contrato. Extração inicial e apresentação native-v1 ficam preservadas em `data/derived/baselines/`. A adaptação também confere número, área, gabarito, anulação, rótulos e página. Substitui somente os campos de apresentação; identificadores, versões, escolhas e resultados permanecem os do snapshot. A atualização do catálogo cria novas versões com `seed --publish-reviewed --refresh-bundled`, recusando edições próprias e alterações de dados de avaliação. O lote native-v2 tem motivos por questão em `layout.presentation_review` e na trilha `reviews` do banco.
 
-`content.py` valida recursos existentes, importa rascunhos e impede publicação incompleta ou sem revisão. Correções geram novas versões; a prova fica em revisão até aprovação e republicação. Rejeitar uma versão vinculada a uma prova publicada também suspende sua publicação. A trilha `reviews` guarda autor, ação, justificativa e instante. Reutilizar um item canônico permite ligá-lo a vários cadernos; detecção automática de duplicatas permanece futura.
+`services/content.py` valida recursos existentes, importa rascunhos e impede publicação incompleta ou sem revisão. Correções geram novas versões; a prova fica em revisão até aprovação e republicação. Rejeitar uma versão vinculada a uma prova publicada também suspende sua publicação. A trilha `reviews` guarda autor, ação, justificativa e instante. Reutilizar um item canônico permite ligá-lo a vários cadernos; detecção automática de duplicatas permanece futura.
 
 `exam_runs` fixa ordem, conteúdo completo, versão e metadados da prova no início. Isso preserva também as tentativas ainda abertas quando uma questão é corrigida ou uma prova é retirada. O resultado, as escolhas definitivas e os eventos são registrados na mesma transação.
 
 Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da execução. Funciona no PostgreSQL e no SQLite, onde SELECT FOR UPDATE seria ignorado. A finalização verifica o estado após obter o bloqueio: chamadas concorrentes retornam o mesmo resultado, com uma única série de eventos. O início usa chave de idempotência única por usuário; reutilizá-la para outra prova retorna conflito.
 
-`scoring.py` corrige exclusivamente por gabarito: brancos contam no denominador e não como respostas; anuladas ficam fora do desempenho. O painel soma tentativas de provas concluídas, inclusive repetições; não deduplica um item que o aluno resolveu novamente. Rótulos múltiplos podem sobrepor grupos. Cobertura significa a fração de tentativas válidas com pelo menos um rótulo do tipo considerado, não domínio de conhecimento.
+`services/scoring.py` corrige exclusivamente por gabarito: brancos contam no denominador e não como respostas; anuladas ficam fora do desempenho. O painel soma tentativas de provas concluídas, inclusive repetições; não deduplica um item que o aluno resolveu novamente. Rótulos múltiplos podem sobrepor grupos. Cobertura significa a fração de tentativas válidas com pelo menos um rótulo do tipo considerado, não domínio de conhecimento.
 
 ## Preparação de conteúdo
 
@@ -47,20 +47,21 @@ O adaptador offline `scripts/exam_pdf.py` usa PyMuPDF, regiões, cabeçalhos, po
 
 A especificação OpenAPI executável está em `/openapi.json` e `/docs` na API. Erros usam `detail`; validações acrescentam `errors`, sem devolver a entrada bruta de senhas.
 
-As rotas seguem a organização de [aplicações maiores do FastAPI](https://fastapi.tiangolo.com/pt/tutorial/bigger-applications/). `backend/app/main.py` só monta a aplicação: log, política de requisições, tratamento de validação, arquivos de `/assets` e inclusão dos routers. Cada funcionalidade tem seu router em `backend/app/routers/`:
+O backend segue a organização de [aplicações maiores do FastAPI](https://fastapi.tiangolo.com/pt/tutorial/bigger-applications/), com dependências declaradas via `Annotated`, como no [tutorial de bancos SQL](https://fastapi.tiangolo.com/pt/tutorial/sql-databases/). Os caminhos abaixo são relativos a `backend/app/`.
 
-| Router | Rotas |
+| Caminho | Responsabilidade |
 | --- | --- |
-| `health.py` | `/health` |
-| `auth.py` | `/auth/*` e limite de tentativas |
-| `account.py` | `/me` e `/me/preferences` |
-| `exams.py` | `/exams` e `/exams/{id}` |
-| `runs.py` | `/exam-runs/*` |
-| `progress.py` | `/me/history` e `/me/progress` |
-| `admin/content.py` | importação, edição, revisão, publicação e auditoria em `/admin` |
-| `admin/archive.py` | `/admin/archive/*` e `/admin/taxonomy` |
-
-A lógica de domínio continua nos módulos de `backend/app/`, como `content.py`, `scoring.py`, `security.py` e `preparation/`, que também servem a CLI e os scripts.
+| `main.py` | Monta a aplicação: ciclo de vida, middleware, tratamento de validação, arquivos de `/assets`, descrições das tags e inclusão dos routers. |
+| `middleware.py` | Política de requisições: origem e tamanho, cabeçalhos de segurança e log de acesso, num só middleware para manter a ordem. |
+| `dependencies.py` | `SessionDep`, `CurrentUser` e `AdminUser`. |
+| `core/` | `config.py` (caminhos e variáveis de ambiente), `db.py` (engine, `Base`, unidade de trabalho) e `security.py` (senhas, sessão por cookie, usuário atual e papel de curadoria). |
+| `models/` | Tabelas por domínio: `accounts.py`, `content.py` e `runs.py`. O pacote registra todas no `Base.metadata`. |
+| `schemas/` | Esquemas de requisição por funcionalidade: `account.py`, `content.py` (contrato JSON), `runs.py` e `curation.py`. O pacote reexporta todos, e os scripts continuam importando de `backend.app.schemas`. |
+| `routers/` | Uma funcionalidade por arquivo: `health.py`, `auth.py`, `account.py`, `exams.py`, `runs.py` e `progress.py`. Em `admin/`, ficam `content.py` (importação, edição, revisão, publicação e auditoria) e `archive.py` (acervo e taxonomia). O papel de curadoria é exigido uma vez no router `/admin`. |
+| `services/` | Regras de domínio usadas pela API, pela CLI e pelos scripts: `content.py`, `identity.py`, `presentation.py`, `scoring.py`, `taxonomy.py` e `archive_reader.py`. |
+| `installers/` | Conteúdo que entra no banco fora da API: `curated.py` (lotes conferidos), `bundled.py` (atualização do conjunto incluído), `generated.py` (publicação automática do acervo) e `assets.py` (figuras no volume do Docker). |
+| `preparation/` | Preparador de JSON compartilhado. |
+| `cli.py` | Comandos locais (`python -m backend.app.cli`). |
 
 | Operação | Acesso | Comportamento |
 | --- | --- | --- |
