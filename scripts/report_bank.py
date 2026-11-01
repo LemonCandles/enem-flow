@@ -21,9 +21,9 @@ def report():
         f'- **{bank["pdfs"]} PDFs e {bank.get("txts",0)} TXT de prova indexados**; **{bank["occurrences"]} ocorrências extraídas**.',
         f'- **{bank["canonical_questions"]} identidades conservadoras**; **{bank["duplicate_occurrences"]} ocorrências agrupadas**. Essa contagem inclui identidades provisórias e não é a quantidade comprovada de questões semanticamente únicas de todo o ENEM.',
         f'- **{bank["sources_with_issues"]} fontes com observações de integridade da extração**. Todas as extrações históricas aguardam conferência de conteúdo, inclusive quando a numeração foi reconhecida.',
-        '- **135 questões publicadas**, em dois lotes conferidos: segundo dia azul de 2024 e Matemática azul de 2023. Anuladas 129/2024 e 164/2023; 133 itens válidos.',
+        '- **135 questões nos dois lotes conferidos**: segundo dia azul de 2024 e Matemática azul de 2023. Anuladas 129/2024 e 164/2023; 133 itens válidos. As quatro cores desses lotes têm 540 ocorrências vinculadas.',
         '- **89 questões válidas de Matemática em oito temas** na referência exploratória. Habilidades candidatas aguardam segunda revisão e não foram publicadas como rótulos.','',
-        'Arquivos originais, ocorrências e questões aprovadas são contagens diferentes. Cores, aplicações e versões acessíveis podem repetir itens. Somente texto exatamente normalizado é agrupado automaticamente; figuras são tratadas conservadoramente. Os índices se ligam às identidades do catálogo conferido por fonte e número.','',
+        'Arquivos originais, ocorrências, provas geradas e questões conferidas são contagens diferentes. Cores, aplicações, línguas e versões acessíveis podem repetir itens. Fora dos vínculos conferidos entre cores, somente texto exatamente normalizado é agrupado automaticamente; figuras são tratadas conservadoramente. Os índices se ligam às identidades do catálogo conferido por fonte e número. A geração e a publicação automática, com pendências explícitas, estão documentadas em [banco e classificação](banco-classificacao.md#publicação-automática-do-acervo).','',
         '## Cobertura por ano','',
         '| Ano | Referências | Obtidas | Aplicações do acervo | Fontes de questões indexadas | Ocorrências extraídas |',
         '| --- | ---: | ---: | --- | ---: | ---: |']

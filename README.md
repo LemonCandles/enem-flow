@@ -55,7 +55,7 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 - Cadastro, login, sessão por cookie HttpOnly, saída, preferências e recuperação assistida por link de uso único.
 - Catálogo com busca e filtros por ano, área, aplicação e caderno; distinção entre caderno completo, seção e coleção.
 - **135 questões conferidas:** segundo dia azul de 2024 (90) e seção de Matemática azul de 2023 (45). Fontes e gabaritos com SHA-256; anuladas 129/2024 e 164/2023.
-- **Provas do acervo de 2009 a 2025 publicadas sem curadoria**, geradas localmente com `make acervo`: 96 provas e 8.595 questões, com texto e figuras extraídos dos cadernos oficiais. Veja [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
+- **Geração e publicação local de provas de 2009 a 2025 sem curadoria**, com `make acervo`: o ensaio inicial registrou 96 provas e 8.595 questões, com texto e figuras extraídos dos cadernos oficiais. O site identifica a extração automática e as pendências conhecidas. Veja [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
 - Acervo oficial de **1998–2025**, com todas as aplicações e formatos vinculados pelo Inep, fontes organizadas e extrações consultáveis na curadoria. Veja a [cobertura real e as pendências](docs/cobertura-acervo.md).
 - Identidade canônica separada de cada ocorrência, com os 135 itens vinculados às quatro cores de sua aplicação; taxonomia versionada, 135 anotações técnicas e referência de 89 questões válidas de Matemática em oito temas.
 - Enunciados e alternativas selecionáveis a partir do JSON; tabelas HTML e fórmulas matemáticas/químicas em LaTeX com KaTeX, mhchem e MathML.

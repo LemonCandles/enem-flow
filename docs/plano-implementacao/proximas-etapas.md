@@ -31,6 +31,8 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
   - alternativas em grade;
   - marca d'água girada e faixas decorativas;
   - linhas duplicadas pela camada acessível;
+  - cabeçalhos com letras e números espaçados, pela mesma regra usada no banco textual;
+  - a ordem das áreas de 2009 e os metadados compartilhados entre ensaio e geração;
   - moedas como `US$`;
   - texto com codificação quebrada, que é bloqueado.
 
@@ -39,7 +41,7 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 - [x] **4. Definir uma taxonomia versionada** de disciplinas e temas, separada das competências e habilidades oficiais: `enem-content-v1` e matriz oficial de Matemática.
 - [x] **5. Anotar uma amostra de referência** com evidências dos vínculos com habilidades: 135 anotações técnicas e 90 habilidades candidatas. *Curadoria (etapa 8):* segunda anotação independente, discussão das divergências e adjudicação.
 - [x] **6. Publicar os rótulos** para que o painel mostre recortes com cobertura útil: disciplina e tema publicados, com a cobertura real no painel. *Curadoria (etapa 8):* revisar e publicar as habilidades.
-- [x] **Publicação automática do acervo (decisão de 31/10/2026).** As provas de 2009 a 2025 são geradas e publicadas sem curadoria com `make acervo`. São 96 provas e 8.595 questões, que ficam locais, fora do Git; os detalhes estão em [publicação automática](../preparacao-provas.md#publicação-automática-do-acervo). As 506 pendências registradas (layout espacial, alternativas não separadas e tabelas mescladas) ficam para a etapa 3. A conferência fica para a etapa 8.
+- [x] **Publicação automática do acervo (decisão de 31/10/2026).** As provas de 2009 a 2025 podem ser geradas e publicadas sem curadoria com `make acervo`. O ensaio inicial registrou 96 provas, 8.595 questões e 506 pendências; os arquivos ficam locais, fora do Git. Os detalhes estão em [publicação automática](../preparacao-provas.md#publicação-automática-do-acervo). O site identifica a origem automática e as pendências conhecidas; o fluxo manual mantém seus bloqueios. A melhoria da extração fica para a etapa 3 e a conferência para a etapa 8.
 - [x] **7. Construir o conjunto inicial dos experimentos adaptativos:** `adaptive-math-reference-v1` tem 89 questões válidas de Matemática em oito temas, dentro da referência de 80–150 questões em 6–8 temas.
 
 **Critério de aceite:** o novo conteúdo tem origem e versões rastreáveis, não duplica itens canônicos e apresenta a cobertura real dos rótulos no painel. Testes verificam esses pontos, inclusive a ausência de duplicação entre cores. A revisão humana do conteúdo e das habilidades é critério da etapa 8.
@@ -50,6 +52,8 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 - vínculo entre cores: `scripts/link_booklets.py`.
 
 A normalização usa regras e contexto, sem depender dos números das questões. Notação perdida e estruturas ambíguas continuam sinalizadas para a curadoria.
+
+A integração das duas frentes preserva os vínculos entre cores e os relatórios de preparação ao acrescentar classificação. O índice reconstruído reúne 44.524 ocorrências e 43.439 identidades conservadoras, com duas fontes sinalizadas; dois links oficiais permanecem indisponíveis. A matriz oficial pode ser recuperada pelo manifesto e o banco local pode ser montado somente para leitura. Evidências e limites da integração estão em [banco e classificação](../banco-classificacao.md#validação-da-integração).
 
 ## 3. Iniciar os experimentos de Dados e IA
 

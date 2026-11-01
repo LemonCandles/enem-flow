@@ -6,7 +6,7 @@ Implementação de **31/10/2026**, correspondente à etapa 2 do [roteiro](plano-
 
 O espelho contém as fontes de todos os anos e aplicações vinculados pelo [acervo oficial do Inep](https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos). Cada referência preserva a aplicação, o formato, a URL, o caminho e o hash; a [organização das fontes](../data/sources/README.md) explica a hierarquia.
 
-O catálogo publicado contém **135 questões**: o segundo dia azul de 2024, com 90 itens, e a seção de Matemática azul de 2023, com 45. São **133 itens válidos**: anuladas a 129 de 2024 e a 164 de 2023. A nova seção é identificada como seção completa de 45 itens, com duração de prática de 150 minutos; esse tempo não é uma duração oficial isolada da área.
+O catálogo versionado e conferido contém **135 questões**: o segundo dia azul de 2024, com 90 itens, e a seção de Matemática azul de 2023, com 45. São **133 itens válidos**: anuladas a 129 de 2024 e a 164 de 2023. A nova seção é identificada como seção completa de 45 itens, com duração de prática de 150 minutos; esse tempo não é uma duração oficial isolada da área. Provas geradas automaticamente podem ser instaladas à parte, conforme o processo abaixo.
 
 As extrações históricas ficam disponíveis na **Curadoria → Acervo oficial para curadoria**, com filtros por ano, aplicação e número. A consulta preserva texto selecionável e informa página, fonte, variantes e identidades repetidas. **Uma extração não é uma questão aprovada.** Cabeçalhos, textos compartilhados, figuras, fórmulas, tabelas e alternativas ainda precisam ser conferidos antes de virar um lote publicável. A indexação não importa gabaritos por adivinhação nem publica seus resultados automaticamente.
 
@@ -17,6 +17,16 @@ O banco textual completo fica em `data/bank/raw/{ano}.json.gz`; cada arquivo con
 ```
 
 O comando verifica os hashes das fontes antes de extrair. PDFs e TXT/DOSVOX permanecem originais. Numeração repetida de língua estrangeira é preservada como ocorrência separada; o índice não decide sozinho qual variante publicar. Casos sem cabeçalho reconhecido ficam explicitamente no relatório.
+
+## Publicação automática do acervo
+
+`make acervo` preserva a geração e a publicação local implementadas na outra frente: escolhe uma cor legível por ano, aplicação, dia e língua a partir de 2009, prepara texto e figuras e registra os relatórios. O ensaio inicial dessa frente registrou 96 provas, 8.595 questões e 506 pendências. Essas quantidades descrevem aquela execução; não são uma garantia de instalação em qualquer banco ou clone. Os anos anteriores continuam disponíveis no banco textual, aguardando adaptação de layout.
+
+A API informa `content_quality` com origem, estado de revisão e número de erros registrados. O catálogo identifica **Extração automática** e a resolução informa que o caderno aguarda conferência. Questões com erros conhecidos recebem aviso e vínculo à página original; o gabarito continua privado até finalizar. O conteúdo automático pode conter falhas de texto, figuras ou alternativas mesmo quando não há erro detectado.
+
+Essa publicação usa uma exceção explícita, com identidade de serviço, justificativa e origem registradas. Aprovação e publicação manuais continuam bloqueadas por pendências; a importação normal cria rascunhos. A conferência de conteúdo permanece na etapa 8. Arquivos inválidos falham individualmente sem impedir a instalação dos demais cadernos. Instalações automáticas anteriores recebem o registro de origem sem substituir versões; uma publicação manual válida marca a revisão como concluída.
+
+JSONs, relatórios e figuras gerados permanecem locais e ignorados pelo Git e pelo contexto Docker. Gerar novamente um JSON não substitui questões já instaladas: correções de conteúdo exigem versões e revisão. O [guia da preparação](preparacao-provas.md#publicação-automática-do-acervo) descreve escolhas e limites.
 
 ## Identidade e preservação das ocorrências
 
@@ -100,3 +110,15 @@ A integração preserva o vínculo dos 135 itens às quatro cores (540 ocorrênc
 A curadoria permanece na etapa 8. A referência técnica mantém 89 itens válidos em oito temas; os vínculos com habilidades continuam propostas. O banco textual local pode ser montado somente para leitura com `compose.archive.yaml`.
 
 Antes de reproduzir as anotações, recupere a matriz, se necessário, com `python scripts/archive_enem.py reference` (o intermediário TLS opcional está no guia das fontes).
+
+## Validação da integração
+
+Integração concluída em **01/11/2026**, na branch `codex/consolidacao-primeira-entrega`, preservando os históricos das duas frentes.
+
+- **81 testes do backend em SQLite e 81 em PostgreSQL**, incluindo identidade entre cores, classificação, auditoria, cabeçalhos acessíveis, origem automática, falhas isoladas e publicação manual com bloqueios. Migrações e `alembic check` aprovados no PostgreSQL, com instalação dos dois lotes.
+- **24 testes Playwright**, 12 em desktop e 12 em celular emulado, aprovados no build de produção. Incluem os 90 itens de 2024, a seção de 2023, acessibilidade automatizada, figuras, teclado, retomada e indicação de conteúdo automático. TypeScript aprovado; 150 expressões LaTeX de 2024 e 159 de 2023 compiladas.
+- **Índice reconstruído:** 480 PDFs, 10 TXT, 44.524 ocorrências, 43.439 identidades conservadoras e 1.085 ocorrências agrupadas. O vínculo de 540 ocorrências conferidas foi preservado. A auditoria confirmou os hashes disponíveis e manteve as duas URLs oficiais indisponíveis já registradas na cobertura. Os caminhos antigos duplicados das fontes com áreas combinadas foram preservados em `tmp/integracao-fontes-caminhos-antigos/`, fora do espelho organizado.
+- **Amostra de geração e instalação:** sete cadernos completos, 630 questões e 67 pendências registradas. Abrange os dois dias de 2009, os dois dias de 2011 (espanhol no segundo), PPL 2012 e as duas línguas do primeiro dia PPL 2024. Todos foram instalados em uma cópia isolada do banco, sem falhas. Essa amostra não substitui a reprodução integral das 96 provas do ensaio inicial nem a conferência humana.
+- **Compatibilidade:** migração, atualização do catálogo e instalação do acervo na cópia preservaram a tentativa existente, seus 90 snapshots, respostas e resultado, comparados por hash. O banco de uso foi apenas lido. A configuração Compose com banco textual somente para leitura foi validada; não foi repetido o ensaio completo de persistência em contêineres da consolidação.
+
+A conferência automática de todas as provas geradas continua nas melhorias do roteiro. Leitores de tela, aparelhos reais e segunda revisão permanecem pendentes; a curadoria continua na etapa 8.

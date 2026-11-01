@@ -171,11 +171,12 @@ make acervo                                              # os dois passos
 
 - Importa, aprova e publica cada prova com a identidade de serviço, registrando o motivo "publicação automática sem curadoria".
 - As pendências bloqueantes ficam nos relatórios das versões, mas não impedem a publicação. Só esse comando pode publicar com pendências; a API e a curadoria continuam bloqueando.
-- Cada prova é publicada ou recusada sozinha, e provas já existentes não são tocadas.
+- Cada prova é publicada ou recusada sozinha, inclusive quando um JSON é inválido. Conteúdo e versões já existentes não são substituídos. Instalações automáticas antigas recebem apenas o registro de origem e revisão pendente quando ausente.
+- O catálogo informa **Extração automática**, a resolução sinaliza que o caderno aguarda conferência e questões com erros conhecidos mostram vínculo à página original. A API expõe `content_quality` na prova e `preparation_errors` na questão; os gabaritos continuam privados até finalizar. A publicação manual válida encerra o estado pendente.
 
-**Resultado em 31/10/2026:**
+**Resultado do ensaio inicial da frente integrada, em 31/10/2026:**
 
-- **96 provas geradas, com 8.595 questões.** Somadas aos dois lotes conferidos, o site local tem 98 provas e 8.730 questões, de 2009 a 2025.
+- **96 provas geradas, com 8.595 questões.** Uma instalação desses arquivos, somada aos dois lotes conferidos, oferece 98 provas e 8.730 questões, de 2009 a 2025. Os arquivos não acompanham o clone; a quantidade instalada depende da geração e da publicação no banco escolhido. A integração posterior revalidou uma amostra, sem repetir o ensaio integral.
 - **Pendências registradas:** 506, sendo 222 de layout espacial, 154 alternativas não separadas e 130 tabelas com células mescladas.
 - **Alternativas não separadas:** essas questões mostram "Alternativa não extraída; conferir original." e continuam corrigidas pela letra do gabarito.
 - **Fora do site:**
@@ -191,6 +192,7 @@ make acervo                                              # os dois passos
 - Validador: `node frontend/scripts/validate-latex.cjs caminho/prova.json` ou `--stdin`.
 - Testes cobrem notação, palavras comuns, idempotência, dados de avaliação, prévia/importação, bloqueios, CLI e PDF. Testes gráficos trocam a numeração para confirmar que ela não seleciona regras especiais.
 - `backend/tests/test_pdf_layouts.py` reproduz em PDFs sintéticos os layouts encontrados no ensaio: opção de língua, marca d'água girada, alternativas em grade, figuras em coluna, faixa decorativa, cabeçalhos fora das margens e codificação quebrada. Esses testes não dependem do acervo local.
+- `scripts/pdf_headings.py` compartilha o reconhecimento de cabeçalhos espaçados entre o banco textual e o adaptador nativo; `test_archive_layouts.py` verifica ambos com o mesmo PDF. Geração e ensaio compartilham áreas e duração, incluindo Natureza antes de Humanas em 2009.
 - O ensaio completo usa os 90 itens em arquivos temporários e mantém pendências visíveis. O resultado não substitui o JSON revisado nem é publicado automaticamente.
 
 Validação local em 31/10/2026: 55 testes de API em SQLite e 14 testes Playwright aprovados no build de produção, com TypeScript aprovado. No ensaio genérico dos 90 itens, 176 expressões compilaram e o relatório apontou cinco bloqueios: células mescladas na 139 e relações espaciais nas 148, 169, 170 e 180. Também há avisos de descrições, vínculos inferidos e notação ambígua. Esses números identificam os casos encontrados no ensaio; não selecionam regras do preparador. Nenhum desses rascunhos foi importado no banco local.
