@@ -21,13 +21,8 @@ import pymupdf
 from scripts.archive_enem import CATALOG, SOURCE_ROOT
 
 OUTPUT = ROOT / 'tmp/ensaio-preparacao'
-# Divisão das áreas por dia: até 2016, Humanas e Natureza no 1º dia; desde 2017, Linguagens e Humanas.
-AREAS = {
-    ('atual', 1): [dict(first=1, last=45, area='Linguagens'), dict(first=46, last=90, area='Ciências Humanas')],
-    ('atual', 2): [dict(first=91, last=135, area='Ciências da Natureza'), dict(first=136, last=180, area='Matemática', discipline='Matemática')],
-    ('anterior', 1): [dict(first=1, last=45, area='Ciências Humanas'), dict(first=46, last=90, area='Ciências da Natureza')],
-    ('anterior', 2): [dict(first=91, last=135, area='Linguagens'), dict(first=136, last=180, area='Matemática', discipline='Matemática')],
-}
+from scripts.build_archive_exams import areas, duration
+
 # (ano, aplicação, dia, caderno, língua estrangeira, margem superior em pontos)
 TARGETS = [
     (2024, 'regular', 1, 'caderno-1-azul', 'ingles', 64),
@@ -63,10 +58,10 @@ def run(files, target):
         # Last page with a question heading; later pages hold the essay sheet or blanks.
         last = max(n + 1 for n, page in enumerate(doc) if re.search(r'QUEST[ÃA]O\s+\d+', page.get_text(), re.I))
     manifest = dict(id=f'ensaio-{name}', title=f'Ensaio {name}', year=year, application=application, booklet=booklet, day=day,
-                    kind='complete', expected_items=90, duration_minutes=300,
+                    kind='complete', expected_items=90, duration_minutes=duration(year, day),
                     source=dict(url=prova['url'], answer_key_url=gabarito['url'], publisher='Inep'),
                     layout=dict(pages=[2, last], top=top, bottom=round(height) - 35, columns='auto'),
-                    areas=AREAS[('atual' if year >= 2017 else 'anterior', day)], **({'language': language} if language else {}))
+                    areas=areas(year, day), **({'language': language} if language else {}))
     OUTPUT.mkdir(parents=True, exist_ok=True)
     path, output, report = OUTPUT / f'{name}.manifest.json', OUTPUT / f'{name}.json', OUTPUT / f'{name}.report.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=1))

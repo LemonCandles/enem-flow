@@ -34,9 +34,12 @@ LANGUAGES = {'ingles': 'Inglês', 'espanhol': 'Espanhol'}
 
 
 def areas(year, day):
-    """Até 2016: Humanas e Natureza no 1º dia; Linguagens e Matemática no 2º. Desde 2017, Linguagens e Humanas no 1º."""
+    """Metadados da época; em 2009, Natureza precedia Humanas no primeiro dia."""
     names = (('Linguagens', 'Ciências Humanas'), ('Ciências da Natureza', 'Matemática')) if year >= 2017 else \
             (('Ciências Humanas', 'Ciências da Natureza'), ('Linguagens', 'Matemática'))
+    if year == 2009:
+        # Caderno azul de 2009, página 2: Natureza, questões 1–45.
+        names = (('Ciências da Natureza', 'Ciências Humanas'), ('Linguagens', 'Matemática'))
     first = 1 if day == 1 else 91
     result = [dict(first=first, last=first + 44, area=names[day - 1][0]), dict(first=first + 45, last=first + 89, area=names[day - 1][1])]
     for area in result:

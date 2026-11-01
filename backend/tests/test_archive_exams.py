@@ -22,6 +22,7 @@ def test_answer_key_reads_the_declared_language_column():
 
 
 def test_generated_exam_metadata_follows_the_period_of_the_exam():
+    assert [a['area'] for a in areas(2009, 1)] == ['Ciências da Natureza', 'Ciências Humanas']
     assert [a['area'] for a in areas(2016, 1)] == ['Ciências Humanas', 'Ciências da Natureza']
     assert [(a['first'], a['area']) for a in areas(2016, 2)] == [(91, 'Linguagens'), (136, 'Matemática')]
     assert [a['area'] for a in areas(2017, 1)] == ['Linguagens', 'Ciências Humanas']
