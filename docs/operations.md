@@ -107,3 +107,25 @@ Com API/interface de teste iniciadas, rode os navegadores com `E2E_BASE_URL=http
 - Dump/restauração PostgreSQL em banco separado: linhas e hashes do conteúdo completo de questões, provas, tentativas, eventos e revisões idênticos no momento da comparação.
 
 As verificações de navegador e CI estão em [primeira entrega](primeira-entrega.md). Estes são ensaios técnicos com dados descartáveis, sem evidência de aprendizagem ou de piloto educacional. Repetir os procedimentos no ambiente escolhido para hospedagem continua parte da implantação.
+
+## Atualizar os lotes e a classificação
+
+Faça backup do banco e dos recursos antes de atualizar. Na versão da etapa 2:
+
+```bash
+.venv/bin/alembic upgrade head
+.venv/bin/python -m backend.app.cli catalog --publish-curated
+```
+
+`make migrate seed` também aplica as migrações e o catálogo incluído. A migração `f831ef101a02` acrescenta a identidade canônica sem reescrever o conteúdo ou os snapshots. A instalação cria versões dos rótulos dos 90 itens de 2024 e acrescenta os 45 de Matemática de 2023. É idempotente; uma edição própria não reconhecida interrompe a transação em vez de ser sobrescrita. Novas classificações valem para novas tentativas; o histórico mantém seus rótulos originais.
+
+## Instalar o banco histórico local na curadoria
+
+O espelho de PDFs e o banco textual histórico são locais e recuperáveis; não integram a imagem por padrão. Primeiro execute a sincronização e a indexação descritas em [fontes oficiais](../data/sources/README.md). Depois, opcionalmente, monte o banco gerado como somente leitura:
+
+```bash
+# Exige data/bank/ já gerado por scripts/build_bank.py.
+docker compose -f compose.yaml -f compose.archive.yaml up --build -d
+```
+
+Essa composição mantém o volume de figuras e acrescenta `data/bank/` para consulta administrativa. Os PDFs continuam acessíveis pelas URLs oficiais registradas; o banco textual não se torna público. Sem o banco local, a aplicação mantém o catálogo conferido e o inventário de fontes, com zero ocorrências extraídas instaladas nesse ambiente. Não confundir essa ausência local com cobertura histórica vazia.

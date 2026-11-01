@@ -1,0 +1,5 @@
+# Opcional: banco textual gerado localmente, sem incluí-lo no Git/imagem.
+services:
+  api:
+    volumes:
+      - ./data/bank:/app/data/bank:ro

@@ -6,9 +6,9 @@ Coleta de **31/10/2026**, reproduzida a partir de `data/sources/catalogo/acervo.
 - **886 referências**, correspondentes a **822 URLs** de arquivos.
 - **884 referências obtidas**; **2 URLs indisponíveis**.
 - **2.51 GB** de originais organizados, incluindo cópias de arquivos compartilhados por mais de um caderno/formato.
-- **480 PDFs e 10 TXT de prova indexados**; **44311 ocorrências extraídas**.
-- **43226 identidades conservadoras**; **1085 ocorrências agrupadas**. Essa contagem inclui identidades provisórias e não é a quantidade comprovada de questões semanticamente únicas de todo o ENEM.
-- **21 fontes com observações de integridade da extração**. Todas as extrações históricas aguardam conferência de conteúdo, inclusive quando a numeração foi reconhecida.
+- **480 PDFs e 10 TXT de prova indexados**; **44524 ocorrências extraídas**.
+- **43841 identidades conservadoras**; **683 ocorrências agrupadas**. Essa contagem inclui identidades provisórias e não é a quantidade comprovada de questões semanticamente únicas de todo o ENEM.
+- **2 fontes com observações de integridade da extração**. Todas as extrações históricas aguardam conferência de conteúdo, inclusive quando a numeração foi reconhecida.
 - **135 questões publicadas**, em dois lotes conferidos: segundo dia azul de 2024 e Matemática azul de 2023. Anuladas 129/2024 e 164/2023; 133 itens válidos.
 - **89 questões válidas de Matemática em oito temas** na referência exploratória. Habilidades candidatas aguardam segunda revisão e não foram publicadas como rótulos.
 
@@ -45,7 +45,7 @@ Arquivos originais, ocorrências e questões aprovadas são contagens diferentes
 | 2022 | 92 | 92 | digital, reaplicacao-ppl, regular | 46 | 4226 |
 | 2023 | 70 | 70 | reaplicacao-ppl, regular | 42 | 3515 |
 | 2024 | 65 | 64 | reaplicacao-ppl, regular | 37 | 3425 |
-| 2025 | 94 | 93 | belem-ananindeua-marituba, reaplicacao, regular | 62 | 5522 |
+| 2025 | 94 | 93 | belem-ananindeua-marituba, reaplicacao, regular | 62 | 5735 |
 
 A coluna de fontes indexadas inclui TXT quando presentes; os nomes de aplicação normalizados preservam a distinção dos títulos oficiais, disponíveis no manifesto. Ausência de arquivo no índice não autoriza concluir que uma aplicação nunca existiu.
 
@@ -63,26 +63,7 @@ Não foi usado gabarito de outra aplicação como substituto. Uma URL de nome pa
 | Fonte | Questões extraídas | Observação |
 | --- | ---: | --- |
 | `enem/2010/reaplicacao-ppl/impresso/dia-2/caderno-7-azul/prova.pdf` | 95 | Quantidade de números distintos diferente da referência 90; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-1/caderno-1-azul/ciencias-humanas/prova.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-1/caderno-2-amarelo/ciencias-humanas/prova.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-1/caderno-3-branco/ciencias-humanas/prova.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-1/caderno-4-rosa/ciencias-humanas/prova.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-2/caderno-5-amarelo/linguagens/prova.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-2/caderno-6-cinza/linguagens/prova.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-2/caderno-7-azul/linguagens/prova.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2016/segunda-aplicacao/impresso/dia-2/caderno-8-rosa/linguagens/prova.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
 | `enem/2021/reaplicacao-ppl/impresso/dia-1/caderno-3-branco/prova.pdf` | 0 | Cabeçalhos não reconhecidos de forma completa; exige adaptação/OCR e conferência. |
-| `enem/2024/regular/impresso/dia-1/caderno-9-laranja/linguagens/prova-nvda.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2024/regular/impresso/dia-2/caderno-11-laranja/ciencias-da-natureza/prova-nvda.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/belem-ananindeua-marituba/impresso/dia-1/caderno-9-laranja/linguagens/prova-nvda.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/belem-ananindeua-marituba/impresso/dia-2/caderno-11-laranja/ciencias-da-natureza/prova-nvda.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/reaplicacao/impresso/dia-1/caderno-9-laranja/prova-ampliada.pdf` | 80 | Quantidade de números distintos diferente da referência 90; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/reaplicacao/impresso/dia-1/caderno-9-laranja/prova-ledor.pdf` | 0 | Cabeçalhos não reconhecidos de forma completa; exige adaptação/OCR e conferência. |
-| `enem/2025/reaplicacao/impresso/dia-1/caderno-9-laranja/prova-superampliada.pdf` | 88 | Quantidade de números distintos diferente da referência 90; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/reaplicacao/impresso/dia-2/caderno-11-laranja/prova-ledor.pdf` | 0 | Cabeçalhos não reconhecidos de forma completa; exige adaptação/OCR e conferência. |
-| `enem/2025/reaplicacao/impresso/dia-2/caderno-11-laranja/prova-superampliada.pdf` | 84 | Quantidade de números distintos diferente da referência 90; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/regular/impresso/dia-1/caderno-9-laranja/linguagens/prova-nvda.pdf` | 95 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
-| `enem/2025/regular/impresso/dia-2/caderno-11-laranja/ciencias-da-natureza/prova-nvda.pdf` | 90 | Quantidade de números distintos diferente da referência 45; conferir faltas, anulação e atendimento especializado. |
 
 Uma observação de contagem não resolve OCR, leitura de fórmulas, tabelas ou textos compartilhados. O texto bruto permanece consultável na curadoria e não é usado como questão aprovada sem preparação.
 

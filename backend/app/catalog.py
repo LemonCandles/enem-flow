@@ -12,9 +12,10 @@ from .schemas import ExamImport, QuestionContent
 from .presentation import content_fingerprint, is_previous_bundled_content
 from .identity import identify
 from .bundled_content import bundled_reviewer
+from .preparation import fingerprint as preparation_fingerprint
 
 
-def classified(payload):
+def classified(payload, *, refresh_preparation_audit=True):
     """Labels apply only to the exact reviewed content and declared source."""
     data=copy.deepcopy(payload.model_dump() if isinstance(payload,ExamImport) else payload)
     records=json.loads((ROOT/'data/classification/annotations-v1.json').read_text())
@@ -26,6 +27,13 @@ def classified(payload):
         if a['status']!='curated':raise ValueError('Anotação sem curadoria não pode ser instalada como lote revisado.')
         q['content']['labels']=dict(discipline=a['discipline'],themes=a['themes'],skills=[],taxonomy_version=a['taxonomy_version'],provenance='reference-v1: curadoria técnica assistida; segunda revisão independente pendente.')
         q['content']['layout']={**(q['content'].get('layout') or {}),'classification':dict(version=records['version'],status=a['status'],independent_review=False,evidence=a['evidence'],rationale=a['rationale'],skill_candidates=a['skill_candidates'])}
+        preparation=q['content']['layout'].get('preparation')
+        if preparation and refresh_preparation_audit:
+            # Labels change the full-content fingerprint, although source-reviewed
+            # prose/formulas did not change. Retain the original audit and link
+            # the classified output so import does not reinterpret it again.
+            q['content']['layout']['classification']['source_preparation_output_sha256']=preparation['output_sha256']
+            preparation['output_sha256']=preparation_fingerprint(q['content'])
     return ExamImport.model_validate(data)
 
 
@@ -37,13 +45,14 @@ def install_catalog(db,publish=False):
         path=(ROOT/entry['path']).resolve()
         if not path.is_relative_to(ROOT.resolve()):raise ValueError('Caminho do catálogo fora do projeto.')
         base=ExamImport.model_validate_json(path.read_text());desired=classified(base)
+        previous_profile=classified(base,refresh_preparation_audit=False)
         exam=db.get(Exam,desired.id);changed=False
         if not exam:
             exam=import_exam(db,desired);stats['imported_exams']+=1;changed=True
         else:
             if len(exam.items)!=len(desired.questions):raise HTTPException(409,'Lote existente foi reorganizado; exige revisão manual.')
             new_keys=[]
-            for key,original,target in zip(exam.items,base.questions,desired.questions):
+            for key,original,target,previous_target in zip(exam.items,base.questions,desired.questions,previous_profile.questions):
                 old=db.get(QuestionVersion,key);wanted=target.content.model_dump()
                 if old.question_id!=target.question_id:raise HTTPException(409,'Ordem do lote existente foi alterada.')
                 validate_assets(wanted)
@@ -51,6 +60,7 @@ def install_catalog(db,publish=False):
                     if old.canonical_id is None:old.canonical_id=identify(db,wanted,(desired.source.sha256,target.content.number))
                     new_keys.append(old.id);continue
                 trusted=content_fingerprint(old.content)==content_fingerprint(original.content.model_dump())
+                trusted=trusted or content_fingerprint(old.content)==content_fingerprint(previous_target.content.model_dump())
                 if base.id=='enem-2024-dia2-azul':trusted=trusted or is_previous_bundled_content(old.question_id,old.content)
                 if not trusted:raise HTTPException(409,f'{old.question_id} tem edição própria; nenhuma substituição automática permitida.')
                 # Source curation changes labels/presentation, never assessment.

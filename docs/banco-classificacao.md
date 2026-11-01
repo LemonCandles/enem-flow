@@ -92,3 +92,11 @@ Faz parte da curadoria, concentrada na [etapa 8 do roteiro](plano-implementacao/
 5. Atualizar referência, cobertura e protocolo experimental. Preservar decisões anteriores para auditoria.
 
 Os aceites ainda pendentes estão na etapa 8 e no final das [próximas etapas](plano-implementacao/proximas-etapas.md).
+
+## Integração das frentes da etapa 2
+
+A integração preserva o vínculo dos 135 itens às quatro cores (540 ocorrências), a preparação por língua estrangeira, os adaptadores de layout e a geração local das provas do acervo. Acrescenta cabeçalhos espaçados de versões acessíveis, identificação correta de cadernos com áreas combinadas, recuperação da matriz pelo manifesto, auditoria limitada aos itens de cada seção e preservação da auditoria de preparação ao acrescentar os rótulos.
+
+A curadoria permanece na etapa 8. A referência técnica mantém 89 itens válidos em oito temas; os vínculos com habilidades continuam propostas. O banco textual local pode ser montado somente para leitura com `compose.archive.yaml`.
+
+Antes de reproduzir as anotações, recupere a matriz, se necessário, com `python scripts/archive_enem.py reference` (o intermediário TLS opcional está no guia das fontes).

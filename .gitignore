@@ -10,7 +10,7 @@
 /.codex/
 
 # Python: ambientes, bytecode, caches, cobertura e empacotamento.
-/.venv/
+/.venv
 /venv/
 __pycache__/
 *.py[cod]
@@ -29,7 +29,7 @@ coverage.xml
 
 # Node.js e Next.js: dependências, builds e arquivos gerados pelo framework.
 # next-env.d.ts é reescrito por `next dev` e `next build`; o typecheck não depende dele.
-node_modules/
+node_modules
 .next/
 /frontend/next-env.d.ts
 /frontend/out/

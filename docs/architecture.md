@@ -23,13 +23,13 @@ flowchart LR
 
 ## Limites e contratos
 
-`schemas.py` define o contrato 1.0 de conteúdo: item canônico, versão, enunciado, imagens com descrição, alternativas, área, rótulos, página e layout separado. O campo opcional `blocks` estende o contrato com parágrafos, imagens, tabelas e fórmulas tipados, sem quebrar importações antigas. O texto do JSON é renderizado como HTML; KaTeX usa entrada não confiável, expansão limitada e saída HTML/MathML. Não se aceita HTML arbitrário. O gabarito existe apenas no backend até a conclusão. As respostas públicas usam uma lista explícita de campos permitidos; o layout e os links de gabarito não são expostos durante a prova.
+`schemas.py` define o contrato 1.0 de conteúdo: ocorrência, versão, enunciado, imagens com descrição, alternativas, área, rótulos, página e layout separado. O campo opcional `blocks` estende o contrato com parágrafos, imagens, tabelas e fórmulas tipados, sem quebrar importações antigas. O texto do JSON é renderizado como HTML; KaTeX usa entrada não confiável, expansão limitada e saída HTML/MathML. Não se aceita HTML arbitrário. O gabarito existe apenas no backend até a conclusão. As respostas públicas usam uma lista explícita de campos permitidos; o layout e os links de gabarito não são expostos durante a prova.
 
 Fórmulas explícitas usam `$...$`, `$$...$$`, `\(...\)` ou `\[...\]`; química usa mhchem (`\ce{...}`). Texto comum permanece selecionável. `image.caption`, `image.credit` e `image.equations` associam legenda, fonte e rodapé matemático à figura em `figure`/`figcaption`. A mesma apresentação acompanha a ampliação em diálogo nativo, com zoom e rolagem internos, Escape e restauração do foco. Não há navegação para uma nova guia ao ampliar.
 
 `presentation.py` adapta apenas snapshots antigos conhecidos que coincidam pelo SHA-256 do conteúdo completo normalizado pelo contrato. Extração inicial e apresentação native-v1 ficam preservadas em `data/derived/baselines/`. A adaptação também confere número, área, gabarito, anulação, rótulos e página. Substitui somente os campos de apresentação; identificadores, versões, escolhas e resultados permanecem os do snapshot. A atualização do catálogo cria novas versões com `seed --publish-reviewed --refresh-bundled`, recusando edições próprias e alterações de dados de avaliação. O lote native-v2 tem motivos por questão em `layout.presentation_review` e na trilha `reviews` do banco.
 
-`content.py` valida recursos existentes, importa rascunhos e impede publicação incompleta ou sem revisão. Correções geram novas versões; a prova fica em revisão até aprovação e republicação. Rejeitar uma versão vinculada a uma prova publicada também suspende sua publicação. A trilha `reviews` guarda autor, ação, justificativa e instante. Reutilizar um item canônico permite ligá-lo a vários cadernos; detecção automática de duplicatas permanece futura.
+`content.py` valida recursos existentes, importa rascunhos e impede publicação incompleta ou sem revisão. Correções geram novas versões; a prova fica em revisão até aprovação e republicação. Rejeitar uma versão vinculada a uma prova publicada também suspende sua publicação. A trilha `reviews` guarda autor, ação, justificativa e instante. `identity.py` identifica conteúdo igual entre cadernos sem confundir número, ordem das alternativas e letra correta de cada ocorrência. A tabela `canonical_questions` liga identidades às versões; gabaritos conflitantes e duplicatas dentro de uma prova são recusados. A deduplicação de extrações com figuras é conservadora e ainda exige revisão visual.
 
 `exam_runs` fixa ordem, conteúdo completo, versão e metadados da prova no início. Isso preserva também as tentativas ainda abertas quando uma questão é corrigida ou uma prova é retirada. O resultado, as escolhas definitivas e os eventos são registrados na mesma transação.
 
@@ -64,6 +64,9 @@ A especificação OpenAPI executável está em `/openapi.json` e `/docs` na API.
 | `PUT /admin/questions/{version_id}` | Curadoria | Nova versão, com justificativa |
 | `POST /admin/reviews/{target_id}` | Curadoria | Aprovar, rejeitar, publicar ou retirar |
 | `GET /admin/audit` | Curadoria | Últimas 200 decisões |
+| `GET /admin/archive` | Curadoria | Inventário de fontes e cobertura |
+| `GET /admin/archive/questions`, `/{occurrence_id}` | Curadoria | Consulta paginada e texto bruto para revisão |
+| `GET /admin/taxonomy` | Curadoria | Vocabulário editorial versionado |
 
 Respostas: 401 para sessão inválida; 403 para papel/origem inadequados; 404 para recurso inacessível (inclusive execução alheia); 409 para conflito de estado/idempotência; 422 para contrato inválido; 429 para excesso de autenticações. Os testes verificam essas fronteiras.
 
@@ -74,3 +77,9 @@ Senhas usam scrypt com sal individual; tokens opacos têm apenas o hash persisti
 O banco, os arquivos originais e o gabarito nunca entram no diretório público do frontend. A API serve apenas `data/assets`. Campos de importação rejeitam chaves extras; caminhos de recursos não aceitam travessia de diretório. Não há chamadas a provedores de IA nem jobs pesados na requisição do aluno.
 
 Cada requisição recebe `X-Request-ID`, controle de cache e registro de método, caminho, status e latência. A autenticação por recuperação é assistida pelo operador, sem envio de e-mail nesta versão. Observabilidade p50/p95, trabalhadores de extração genérica e provedores externos serão acrescentados conforme o volume exigir.
+
+## Banco histórico e rótulos
+
+O [banco e a classificação](banco-classificacao.md) separam o acervo local de 1998–2025 dos dois lotes conferidos instalados em SQLite/PostgreSQL. `catalog.py` valida os hashes das anotações, cria novas versões para os rótulos e mantém os snapshots anteriores. `archive.py` lê o banco textual local, sem aprovar ou publicar extrações. A preparação comum permanece em `backend/app/preparation/`, `scripts/exam_pdf.py` e `scripts/prepare_exam.py`; é chamada automaticamente na importação e na edição da curadoria.
+
+Temas editoriais usam `enem-content-v1`. Competências e habilidades oficiais usam outro namespace, como `MT.C3` e `MT.H12`. Propostas de vínculos são metadados privados de curadoria; não são promovidas a habilidades publicadas sem segunda revisão. O conjunto exploratório de Matemática contém 89 itens válidos em oito temas.
