@@ -2,11 +2,11 @@
 
 Revisão de 01/11/2026 sobre a versão `b66fd06`, na branch `codex/consolidacao-primeira-entrega`. Foram examinados backend, interface, contratos, identidade das questões, preparação, catálogo, acervo, persistência, configuração de contêineres, CI e documentação. A alteração paralela de `CLAUDE.md` foi preservada.
 
-Foram confirmadas **cinco inconsistências**, descritas abaixo. Os reprodutores usaram bancos descartáveis e respostas simuladas de autenticação no navegador. Não foram executadas alterações, exclusões, redefinições de senha ou tentativas fictícias no banco do site. **Os cinco pontos foram corrigidos e validados em 01/11/2026.** A descrição original e seus locais correspondem à versão revisada; o fechamento registra a implementação posterior.
+Foram confirmadas **cinco inconsistências**, descritas abaixo. Os reprodutores usaram bancos descartáveis e respostas simuladas de autenticação no navegador. Não foram executadas alterações, exclusões, redefinições de senha ou tentativas fictícias no banco do site. **Os cinco pontos foram corrigidos e validados em 01/11/2026.** A descrição original corresponde à versão revisada; o fechamento registra a implementação posterior. Os links de código apontam para os módulos atuais após a refatoração do backend.
 
 ## R1 — Alta: auditoria recebida no JSON pode contornar os bloqueios de preparação
 
-**Local:** [preparação](../../backend/app/preparation/__init__.py), `prepare_content`, linha 51; aprovação em [main.py](../../backend/app/main.py), linha 378.
+**Local:** [preparação](../../backend/app/preparation/__init__.py), `prepare_content`, linha 51; aprovação em [routers/admin/content.py](../../backend/app/routers/admin/content.py), `review`.
 
 O preparador retorna o conteúdo sem inspecioná-lo quando a versão e o fingerprint recebidos coincidem. O fingerprint exclui a própria auditoria. Assim, o JSON pode declarar `issues: []`, embora o conteúdo contenha uma expressão inválida. A aprovação consulta essa lista recebida, sem validar novamente o conteúdo.
 
@@ -20,7 +20,7 @@ O preparador retorna o conteúdo sem inspecioná-lo quando a versão e o fingerp
 
 ## R2 — Alta no Docker: limite de autenticação compartilhado entre usuários
 
-**Local:** [main.py](../../backend/app/main.py), `throttle`, linha 72; [Dockerfile da API](../../backend/Dockerfile), linha 17; [Compose](../../compose.yaml).
+**Local:** [routers/auth.py](../../backend/app/routers/auth.py), `throttle`; [Dockerfile da API](../../backend/Dockerfile), linha 17; [Compose](../../compose.yaml).
 
 O contador usa exclusivamente `request.client.host`. Na topologia Compose, as requisições chegam pelo contêiner do Next. A API não recebe configuração de proxies confiáveis, e o Uvicorn instalado confia por padrão apenas em loopback. O endereço do contêiner web fica, portanto, como identificador comum dos clientes.
 
@@ -34,7 +34,7 @@ O contador usa exclusivamente `request.client.host`. Na topologia Compose, as re
 
 ## R3 — Média: edição contorna a deduplicação e deixa a identidade inconsistente
 
-**Local:** [main.py](../../backend/app/main.py), `edit_question`, linha 345; publicação em [content.py](../../backend/app/content.py), linha 70.
+**Local:** [routers/admin/content.py](../../backend/app/routers/admin/content.py), `edit_question`; publicação em [services/content.py](../../backend/app/services/content.py), `publish_exam`.
 
 A edição copia o `canonical_id` anterior, independentemente do conteúdo novo. A publicação verifica aprovação, total e recursos, mas não reconcilia a assinatura do conteúdo editado nem detecta a duplicata resultante.
 
@@ -48,7 +48,7 @@ A edição copia o `canonical_id` anterior, independentemente do conteúdo novo.
 
 ## R4 — Média: publicar o catálogo depende de haver conteúdo novo
 
-**Local:** [catalog.py](../../backend/app/catalog.py), `install_catalog`, linha 80; opção `--publish-curated` em [cli.py](../../backend/app/cli.py), linha 28.
+**Local:** [installers/curated.py](../../backend/app/installers/curated.py), `install_catalog`; opção `--publish-curated` em [cli.py](../../backend/app/cli.py), linha 28.
 
 A aprovação/publicação fica dentro de `if changed`. Quando o catálogo foi instalado sem publicação, uma segunda execução com publicação solicitada encontra conteúdos iguais, mantém `changed=False` e ignora a solicitação.
 
@@ -113,3 +113,22 @@ Validação posterior às correções:
 - TypeScript e build de produção aprovados. API e frontend locais reiniciados com as correções; backup anterior em `backups/enem-flow-antes-correcoes-2026-11-01.db`.
 
 Os resultados acima foram obtidos localmente. O workflow foi atualizado, mas uma nova execução remota do GitHub Actions não foi verificada nesta etapa. A publicação externa e os aceites humanos continuam nas etapas previstas. O registro e as correções não reescrevem os snapshots nem os resultados históricos.
+
+
+## Integração com a refatoração remota
+
+Em 01/11/2026, a versão local `63b1967` foi integrada à refatoração remota `daae829`, incluindo os commits `39df9c6` e `fb41baa`. O merge `e4b70c8` preserva os dois históricos na branch `codex/consolidacao-primeira-entrega`. A [arquitetura](../architecture.md#http) descreve a organização em routers, dependências, serviços, modelos, esquemas, instaladores e configuração centralizada.
+
+As correções anteriores foram adaptadas aos novos módulos: edição e revisão em `routers/admin/content.py`, recuperação em `routers/auth.py`, identidade e publicação em `services/`, catálogo e publicação automática em `installers/`. A preparação compartilhada, a identificação das extrações automáticas, o gateway e os arquivos locais do acervo foram preservados. A atualização do catálogo mantém também uma retirada manual quando cria novas versões.
+
+Validação da integração:
+
+- **101 testes de backend em SQLite e 101 em PostgreSQL**, incluindo os dois estados de publicação na atualização de um lote retirado e o bloqueio das 11 rotas administrativas para visitantes e alunos.
+- Contratos OpenAPI dos 26 caminhos iguais, exceto pelas tags de documentação. JSON Schema versionado, 10 tabelas dos modelos e índices PostgreSQL idênticos à versão anterior; migrações e `alembic check` aprovados.
+- Cópia consistente do banco local atualizada com migrações e comandos de catálogo/acervo: **98 provas e 8.730 questões**, zero importações ou versões novas e nenhuma falha. O conteúdo das 11 tabelas, incluindo snapshots, respostas e resultados existentes, ficou idêntico antes e depois.
+- Auditoria dos dois lotes conferidos, compilação das 150 expressões de 2024 e das 159 de 2023, TypeScript e reprodução exata da referência de 89 questões aprovados.
+- **28 testes Playwright aprovados** em desktop e celular, sobre o build de produção da instalação isolada, incluindo recuperação com e sem sessão, figuras, LaTeX e acessibilidade automatizada.
+- **Persistência após recriação:** a API encerrou com código 0; os contêineres foram substituídos preservando volumes. Login, histórico, resposta, resultado, 90 snapshots, figura e finalização idempotente conferidos.
+- A instalação Compose foi construída e iniciada isoladamente na porta 3300, com PostgreSQL e gateway. O ensaio de dois clientes confirmou bloqueio após 30 tentativas mesmo com cabeçalhos falsificados, sem bloquear o cadastro e o login do segundo cliente.
+
+As evidências locais desta integração ficam em `tmp/integracao-refatoracao-evidencias/`, fora do Git. O backup anterior está em `backups/enem-flow-antes-refatoracao-63b1967.db`. A fase 2, para retirar a dependência de HTTP das regras de domínio, continua nas [próximas etapas](../plano-implementacao/proximas-etapas.md#pendências-e-melhorias); os aceites humanos e a revisão do acervo continuam pendentes nas etapas previstas.

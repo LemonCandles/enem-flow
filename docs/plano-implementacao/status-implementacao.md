@@ -12,6 +12,8 @@ O lote processado recebido foi incorporado em 01/11/2026: **98 provas e 8.730 qu
 
 As cinco inconsistências encontradas na revisão posterior foram corrigidas, com regressão em SQLite/PostgreSQL (97 testes em cada), navegador (28 cenários), gateway real e persistência após recriação dos contêineres. Os ajustes preservam os dados históricos e estão descritos no [fechamento da revisão](../revisoes/revisao-projeto-2026-11-01.md#fechamento-das-correções).
 
+A refatoração remota do backend foi integrada preservando essas correções, o contrato HTTP e o banco instalado. A regressão passou a **101 testes em SQLite e 101 em PostgreSQL**; a atualização foi ensaiada em uma cópia das 98 provas, sem modificar os registros existentes. Veja a [validação da integração](../revisoes/revisao-projeto-2026-11-01.md#integração-com-a-refatoração-remota).
+
 ## O que já está disponível
 
 - **Jornada do estudante:** conta individual, preferências, catálogo, resolução de provas, respostas salvas, retomada, correção e histórico.
