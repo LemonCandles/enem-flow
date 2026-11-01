@@ -31,6 +31,8 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
   - alternativas em grade;
   - marca d'água girada e faixas decorativas;
   - linhas duplicadas pela camada acessível;
+  - cabeçalhos com letras e números espaçados, pela mesma regra usada no banco textual;
+  - a ordem das áreas de 2009 e os metadados compartilhados entre ensaio e geração;
   - moedas como `US$`;
   - texto com codificação quebrada, que é bloqueado.
 
@@ -39,7 +41,7 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 - [x] **4. Definir uma taxonomia versionada** de disciplinas e temas, separada das competências e habilidades oficiais: `enem-content-v1` e matriz oficial de Matemática.
 - [x] **5. Anotar uma amostra de referência** com evidências dos vínculos com habilidades: 135 anotações técnicas e 90 habilidades candidatas. *Curadoria (etapa 8):* segunda anotação independente, discussão das divergências e adjudicação.
 - [x] **6. Publicar os rótulos** para que o painel mostre recortes com cobertura útil: disciplina e tema publicados, com a cobertura real no painel. *Curadoria (etapa 8):* revisar e publicar as habilidades.
-- [x] **Publicação automática do acervo (decisão de 31/10/2026).** As provas de 2009 a 2025 são geradas e publicadas sem curadoria com `make acervo`. São 96 provas e 8.595 questões, que ficam locais, fora do Git; os detalhes estão em [publicação automática](../preparacao-provas.md#publicação-automática-do-acervo). As 506 pendências registradas (layout espacial, alternativas não separadas e tabelas mescladas) ficam para a etapa 3. A conferência fica para a etapa 8.
+- [x] **Publicação automática do acervo (decisão de 31/10/2026).** As provas de 2009 a 2025 podem ser geradas e publicadas sem curadoria com `make acervo`. O ensaio inicial registrou 96 provas, 8.595 questões e 506 pendências; os arquivos ficam locais, fora do Git. Os detalhes estão em [publicação automática](../preparacao-provas.md#publicação-automática-do-acervo). O site identifica a origem automática e as pendências conhecidas; o fluxo manual mantém seus bloqueios. A melhoria da extração fica para a etapa 3 e a conferência para a etapa 8.
 - [x] **7. Construir o conjunto inicial dos experimentos adaptativos:** `adaptive-math-reference-v1` tem 89 questões válidas de Matemática em oito temas, dentro da referência de 80–150 questões em 6–8 temas.
 
 **Critério de aceite:** o novo conteúdo tem origem e versões rastreáveis, não duplica itens canônicos e apresenta a cobertura real dos rótulos no painel. Testes verificam esses pontos, inclusive a ausência de duplicação entre cores. A revisão humana do conteúdo e das habilidades é critério da etapa 8.
@@ -50,6 +52,12 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 - vínculo entre cores: `scripts/link_booklets.py`.
 
 A normalização usa regras e contexto, sem depender dos números das questões. Notação perdida e estruturas ambíguas continuam sinalizadas para a curadoria.
+
+A integração das duas frentes preserva os vínculos entre cores e os relatórios de preparação ao acrescentar classificação. O índice reconstruído reúne 44.524 ocorrências e 43.439 identidades conservadoras, com duas fontes sinalizadas; dois links oficiais permanecem indisponíveis. A matriz oficial pode ser recuperada pelo manifesto e o banco local pode ser montado somente para leitura. Evidências e limites da integração estão em [banco e classificação](../banco-classificacao.md#validação-da-integração).
+
+Em 01/11/2026, o acervo processado recebido foi incorporado: a instalação local tem 98 provas e 8.730 questões. As 96 provas automáticas passaram pela conferência de fontes, gabaritos, LaTeX e figuras e pelo ensaio integral de resolução em uma cópia isolada. Permanecem 506 pendências de apresentação em 489 questões, para as etapas 3 e 8. [Registro e limites](../banco-classificacao.md#incorporação-do-acervo-processado).
+
+A [revisão de consistência](../revisoes/revisao-projeto-2026-11-01.md#fechamento-das-correções) encontrou e corrigiu cinco falhas em auditoria de preparo, identificação de clientes no Docker, deduplicação durante edição/publicação, publicação posterior do catálogo e recuperação de senha com sessão ativa. Foram aprovados 97 testes em cada banco e 28 testes de navegador, além do ensaio real de proxy e persistência. A próxima frente permanece a etapa 3; a curadoria permanece na etapa 8.
 
 ## 3. Iniciar os experimentos de Dados e IA
 
@@ -169,7 +177,8 @@ Itens fora das etapas, sem data, para retomar quando houver oportunidade.
 
 | Item | O que fazer | Por quê |
 | --- | --- | --- |
-| Checagem automática das provas geradas | Para cada prova publicada por `make acervo`, sem navegador: iniciar uma tentativa, marcar o gabarito em todas as questões, finalizar e conferir 100% de acerto (anuladas à parte). Conferir também a quantidade de questões, as figuras servidas e a ausência de texto embaralhado. Roda depois do `make acervo` e é pulada em clones sem o acervo. | Os testes de navegador cobrem só os dois lotes conferidos. Essa checagem pega erros de gabarito e numeração nas provas geradas, como o do gabarito do espanhol corrigido em 31/10/2026. |
+| Integrar a checagem das provas geradas ao fluxo | O ensaio integral foi executado em 01/11/2026 nas 96 provas, com respostas pelo gabarito e finalização idempotente, usando uma cópia isolada. Transformá-lo em comando versionado após `make acervo`, incluindo fontes, língua, figuras e texto ilegível; pular em clones sem o acervo. | A validação deste lote está registrada, mas a execução ainda precisa ser incorporada ao fluxo reutilizável. O teste verifica instalação/correção; a fidelidade visual e pedagógica continua na etapa 8. |
+| Regras de domínio sem dependência de HTTP | Trocar o `HTTPException` lançado por `services/` e `installers/` (conteúdo, identidade canônica e lotes conferidos) por exceções de domínio, como conflito e não encontrado. Um tratador em `main.py` as converte nos mesmos códigos e mensagens de hoje. Verificar com os testes de 401, 404, 409, 422 e 429 e com uma comparação das respostas de erro antes e depois. | Esses módulos também são usados pela CLI e pelos scripts, onde não há requisição HTTP. É a fase 2 da reorganização do backend, cuja fase 1 dividiu o código em `core/`, `models/`, `schemas/`, `services/` e `installers/`. |
 
 ## Referências locais
 

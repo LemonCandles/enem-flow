@@ -46,7 +46,7 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Abra **http://localhost:3000**. Migrações e importação do conjunto revisado são executadas no início, sem duplicar conteúdo. PostgreSQL e imagens têm volumes persistentes; a API fica na rede interna dos contêineres.
+Abra **http://localhost:3000**. Migrações e importação do conjunto revisado são executadas no início, sem duplicar conteúdo. PostgreSQL e imagens têm volumes persistentes; o gateway Nginx é a entrada pública, enquanto Next, API e banco ficam nas redes internas. Ele preserva a identificação de cada cliente e substitui cabeçalhos de origem falsificados. Se a rede privada padrão conflitar com outra rede local, ajuste `ENEM_PROXY_SUBNET` e `ENEM_PROXY_IP` conforme o [guia de operação](docs/operations.md).
 
 A instalação isolada foi validada com Compose sobre Podman e o CI inclui um ensaio com Docker Engine, incluindo recriação dos contêineres sem remover volumes. Consulte [procedimentos, evidências e limites](docs/primeira-entrega.md).
 
@@ -55,7 +55,7 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 - Cadastro, login, sessão por cookie HttpOnly, saída, preferências e recuperação assistida por link de uso único.
 - Catálogo com busca e filtros por ano, área, aplicação e caderno; distinção entre caderno completo, seção e coleção.
 - **135 questões conferidas:** segundo dia azul de 2024 (90) e seção de Matemática azul de 2023 (45). Fontes e gabaritos com SHA-256; anuladas 129/2024 e 164/2023.
-- **Provas do acervo de 2009 a 2025 publicadas sem curadoria**, geradas localmente com `make acervo`: 96 provas e 8.595 questões, com texto e figuras extraídos dos cadernos oficiais. Veja [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
+- **Geração e publicação local de provas de 2009 a 2025 sem curadoria**, com `make acervo`: o ensaio inicial registrou 96 provas e 8.595 questões, com texto e figuras extraídos dos cadernos oficiais. O site identifica a extração automática e as pendências conhecidas. Veja [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
 - Acervo oficial de **1998–2025**, com todas as aplicações e formatos vinculados pelo Inep, fontes organizadas e extrações consultáveis na curadoria. Veja a [cobertura real e as pendências](docs/cobertura-acervo.md).
 - Identidade canônica separada de cada ocorrência, com os 135 itens vinculados às quatro cores de sua aplicação; taxonomia versionada, 135 anotações técnicas e referência de 89 questões válidas de Matemática em oito temas.
 - Enunciados e alternativas selecionáveis a partir do JSON; tabelas HTML e fórmulas matemáticas/químicas em LaTeX com KaTeX, mhchem e MathML.
@@ -89,6 +89,8 @@ make acervo
 ```
 
 Os JSONs ficam em `data/derived/exams/` e as figuras em `data/assets/<prova>/`, ambos fora do Git. O comando é idempotente: provas já publicadas não são alteradas. Detalhes, escolhas e limites estão em [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
+
+Em 01/11/2026, o lote já processado recebido foi conferido e instalado: **98 provas e 8.730 questões no site local**, incluindo os dois lotes conferidos. As 96 provas automáticas passaram pelo ensaio de resolução em uma cópia isolada; as 506 pendências de apresentação permanecem sinalizadas. [Incorporação e verificações](docs/banco-classificacao.md#incorporação-do-acervo-processado). Os derivados e o banco de execução continuam locais; esses dados não acompanham o clone.
 
 ## Preparar novas provas
 

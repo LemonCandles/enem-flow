@@ -1,6 +1,6 @@
 import pytest
 
-from backend.app.assets import synchronize
+from backend.app.installers.assets import synchronize
 
 
 def test_volume_gets_new_bundled_files_without_losing_custom_resources(tmp_path):

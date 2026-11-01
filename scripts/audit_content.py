@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from backend.app.content import validate_assets
+from backend.app.services.content import validate_assets
 from backend.app.schemas import ExamImport
 
 
@@ -48,8 +48,9 @@ def audit(path=None):
                 assert b.asset.alt.strip()
                 with pymupdf.open(ROOT/'data'/b.asset.path.lstrip('/')) as image:
                     assert image[0].rect.width > 0
-    return {'questions':len(payload.questions),'valid_answers':sum(a is not None for a in answers.values()),
-            'annulled':[n for n,a in answers.items() if a is None], 'figures':figures,'tables':tables,'math_blocks':math,
+    selected_answers={n:answers[n] for n in numbers}
+    return {'questions':len(payload.questions),'valid_answers':sum(a is not None for a in selected_answers.values()),
+            'annulled':sorted(n for n,a in selected_answers.items() if a is None), 'figures':figures,'tables':tables,'math_blocks':math,
             'source_hashes':'verified','answer_key':'verified','assets':'verified','review':'technical_integrity_only'}
 
 

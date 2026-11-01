@@ -7,8 +7,8 @@ import hashlib
 import json
 from functools import lru_cache
 
-from .db import ROOT
-from .schemas import QuestionContent
+from ..core.config import ROOT
+from ..schemas import QuestionContent
 
 
 ASSESSMENT_FIELDS = ('number', 'area', 'correct_answer', 'annulled', 'labels', 'page')

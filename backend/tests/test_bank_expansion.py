@@ -8,12 +8,12 @@ import pytest
 from fastapi import HTTPException
 from sqlalchemy import func,select
 
-from backend.app.catalog import classified, install_catalog
-from backend.app.content import import_exam
-from backend.app.identity import signatures
+from backend.app.installers.curated import classified, install_catalog
+from backend.app.services.content import import_exam
+from backend.app.services.identity import signatures
 from backend.app.models import CanonicalQuestion,Exam,ExamRun,QuestionVersion,User
 from backend.app.schemas import ExamImport
-from backend.app.presentation import content_fingerprint
+from backend.app.services.presentation import content_fingerprint
 from scripts.archive_enem import metadata,parse_year
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -119,6 +119,7 @@ def test_reference_has_eight_themes_and_no_annulled_or_canonical_duplicate():
 
 def test_2023_curated_lot_matches_source_and_is_reproducible():
     from scripts.review_2023_math import review
+    from scripts.audit_content import audit
     from scripts.exam_pdf import lines
     import pymupdf as fitz
     before=json.loads((ROOT/'data/derived/baselines/enem-2023-matematica-auto-v1.json').read_text())
@@ -129,6 +130,8 @@ def test_2023_curated_lot_matches_source_and_is_reproducible():
     key=pdf.with_name('gabarito.pdf')
     assert hashlib.sha256(pdf.read_bytes()).hexdigest()==actual['source']['sha256']
     assert hashlib.sha256(key.read_bytes()).hexdigest()==actual['source']['answer_key_sha256']
+    section_audit=audit(ROOT/'data/catalog/enem-2023-matematica-azul.json')
+    assert section_audit['questions']==45 and section_audit['valid_answers']==44 and section_audit['annulled']==[164]
     for q,old in zip(actual['questions'],before['questions']):
         assert q['content']['correct_answer']==old['content']['correct_answer']
         assert q['content']['annulled']==old['content']['annulled']
@@ -138,7 +141,7 @@ def test_2023_curated_lot_matches_source_and_is_reproducible():
 
 
 def test_archive_requires_admin_and_returns_native_text(admin,student,monkeypatch,tmp_path):
-    from backend.app import archive
+    from backend.app.services import archive_reader as archive
     monkeypatch.setattr(archive,'ROOT',tmp_path)
     source=dict(id='abc',year=1998,application='regular',url='https://download.inep.gov.br/original.pdf',path='enem/1998/prova.pdf')
     catalog=tmp_path/'data/sources/catalogo/acervo.json';catalog.parent.mkdir(parents=True);catalog.write_text(json.dumps(dict(files=[source|dict(status='downloaded',variant='padrao',role='prova') ])))

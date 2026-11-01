@@ -8,8 +8,8 @@ import unicodedata
 from fastapi import HTTPException
 from sqlalchemy import select
 
-from .db import ROOT
-from .models import CanonicalQuestion
+from ..core.config import ROOT
+from ..models import CanonicalQuestion
 
 
 def normalized(text):
@@ -71,3 +71,22 @@ def identify(db,content,occurrence=None):
     identity=CanonicalQuestion(id='enem-'+signature[:32],signature=signature,answer_signature=answer)
     db.add(identity);db.flush()
     return identity.id
+
+
+def validate_revision_identity(db, content, canonical_id):
+    """A revision keeps its identity, but cannot take another item's signature."""
+    signature, _ = signatures(content)
+    existing = db.scalar(select(CanonicalQuestion).where(CanonicalQuestion.signature == signature))
+    if existing and existing.id != canonical_id:
+        raise HTTPException(409, 'O conteúdo pertence a outra questão canônica. Revise a duplicata antes de salvar.')
+
+
+def validate_exam_identities(items):
+    """Check both stable identities and current content, including edited versions."""
+    identities, content_signatures = set(), set()
+    for canonical_id, content in items:
+        signature, _ = signatures(content)
+        if signature in content_signatures or (canonical_id and canonical_id in identities):
+            raise HTTPException(409, 'A prova contém questões duplicadas por conteúdo ou identidade canônica.')
+        content_signatures.add(signature)
+        if canonical_id: identities.add(canonical_id)

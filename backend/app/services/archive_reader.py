@@ -5,7 +5,7 @@ import gzip
 import json
 from pathlib import Path
 
-from .db import ROOT
+from ..core.config import ROOT
 
 
 @lru_cache(maxsize=12)

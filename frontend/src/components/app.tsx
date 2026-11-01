@@ -28,11 +28,19 @@ export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [recovery, setRecovery] = useState('');
   const [mobile, setMobile] = useState(false);
   const sidebar = useRef<HTMLElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
 
   function load() {
+    const token = new URLSearchParams(window.location.search).get('recovery');
+    if (token) {
+      setRecovery(token);
+      window.history.replaceState({}, '', window.location.pathname);
+      setLoading(false);
+      return;
+    }
     setLoading(true); setError('');
     api<User>('/me').then(setUser).catch(e => {
       if (!(e instanceof ApiError && e.status === 401)) setError(e.message);
@@ -74,7 +82,7 @@ export default function App() {
   }
   if (loading) return <Loading/>;
   if (error && !user) return <main className="connection-error"><ErrorBox message={error} retry={load}/></main>;
-  if (!user) return <Auth onLogin={setUser}/>;
+  if (recovery || !user) return <Auth onLogin={setUser} recoveryToken={recovery} onRecoveryComplete={() => { setRecovery(''); setUser(null); }}/>;
   const title = links.find(l => l.href === path)?.label || (path.startsWith('/runs/') ? 'Sua prova' : path === '/settings' ? 'Configurações' : path === '/admin' ? 'Curadoria' : 'Página não encontrada');
 
   return <div className={`app-shell ${path === '/' ? 'home-shell' : ''}`}>

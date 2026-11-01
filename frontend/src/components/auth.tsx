@@ -1,26 +1,25 @@
 'use client';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { ArrowRight, BookOpen, ChartNoAxesCombined, Check, Eye, EyeOff } from 'lucide-react';
 import { send, User } from '@/lib/api';
 import { ErrorBox } from './ui';
 import { Brand, LearningPieces } from './design';
 import ThemeToggle from './theme-toggle';
 
-export default function Auth({ onLogin }: { onLogin: (user: User) => void }) {
-  const [mode, setMode] = useState<'login' | 'register' | 'reset'>('login');
-  const [recovery, setRecovery] = useState('');
+export default function Auth({ onLogin, recoveryToken = '', onRecoveryComplete }: { onLogin: (user: User) => void; recoveryToken?: string; onRecoveryComplete?: () => void }) {
+  const [mode, setMode] = useState<'login' | 'register' | 'reset'>(recoveryToken ? 'reset' : 'login');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [visible, setVisible] = useState(false);
   const [notice, setNotice] = useState('');
-  useEffect(() => { const token = new URLSearchParams(window.location.search).get('recovery'); if (token) { setRecovery(token); setMode('reset'); window.history.replaceState({}, '', '/'); } }, []);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError(''); setBusy(true);
     const fields = new FormData(event.currentTarget);
     try {
       if (mode === 'reset') {
-        await send('/auth/reset-password', { token: recovery, password: fields.get('password') });
+        await send('/auth/reset-password', { token: recoveryToken, password: fields.get('password') });
         setMode('login'); setNotice('Senha atualizada. Entre com sua nova senha.');
+        onRecoveryComplete?.();
       } else {
         const body = { email: fields.get('email'), password: fields.get('password'), ...(mode === 'register' ? { name: fields.get('name') } : {}) };
         onLogin(await send<User>(`/auth/${mode}`, body));

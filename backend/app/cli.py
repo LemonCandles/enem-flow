@@ -7,12 +7,13 @@ import time
 
 from sqlalchemy import delete, select
 
-from .content import import_exam, publish_exam
-from .db import ROOT, SessionLocal
+from .services.content import import_exam, publish_exam
+from .core.config import ROOT
+from .core.db import SessionLocal
 from .models import Exam, QuestionVersion, RecoveryToken, Review, User
 from .schemas import ExamImport, Register
-from .security import digest, hash_password
-from .bundled_content import bundled_reviewer, refresh_bundle
+from .core.security import digest, hash_password
+from .installers.bundled import bundled_reviewer, refresh_bundle
 
 
 def main():
@@ -43,7 +44,7 @@ def main():
             payload = ExamImport.model_validate(json.loads(path.read_text()))
             existing = db.get(Exam, payload.id)
             if args.publish_reviewed and (not existing or args.refresh_bundled) and (ROOT/'data/catalog/manifest.json').exists():
-                from .catalog import install_catalog
+                from .installers.curated import install_catalog
                 print(json.dumps(install_catalog(db,publish=True),ensure_ascii=False))
                 return
             if existing:
@@ -64,10 +65,10 @@ def main():
                 publish_exam(db, exam, reviewer.id, reason)
             print(f"Importadas {len(exam.items)} questões; estado: {exam.status}.")
         elif args.command == "archive":
-            from .archive_exams import publish_generated
+            from .installers.generated import publish_generated
             print(json.dumps(publish_generated(db), ensure_ascii=False))
         elif args.command == "catalog":
-            from .catalog import install_catalog
+            from .installers.curated import install_catalog
             print(json.dumps(install_catalog(db,publish=args.publish_curated),ensure_ascii=False))
         elif args.command == "recovery-link":
             user = db.scalar(select(User).where(User.email == args.email.casefold()))

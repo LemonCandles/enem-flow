@@ -63,3 +63,12 @@ O contexto Docker exclui o espelho histórico e as páginas HTML. A imagem inclu
 - `data/assets/`: somente recursos das versões servidas pelo site.
 
 As antigas transcrições `enem-2024-dia2-azul-extraction.json` e `enem-2024-dia2-azul-native-v1.json` foram movidas para `derived/baselines/`, preservando seus bytes. Os dois PDFs iniciais foram movidos para a hierarquia do acervo. Identificadores, gabaritos e snapshots dos alunos foram preservados.
+
+Para recuperar a matriz oficial usada na anotação, sem versionar seu PDF:
+
+```bash
+python scripts/archive_enem.py reference \
+  --ca-file data/sources/catalogo/certificados/rnp-icpedu-gr46-ov-tls-ca-2025.pem
+```
+
+O arquivo deve corresponder ao SHA-256 de `referencias/manifesto.json`. O banco textual pode ser montado no contêiner com `compose.archive.yaml`, conforme [operação](../../docs/operations.md#instalar-o-banco-histórico-local-na-curadoria).

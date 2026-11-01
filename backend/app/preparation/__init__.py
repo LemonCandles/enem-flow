@@ -5,7 +5,7 @@ import json
 import re
 
 from ..schemas import ExamImport, QuestionContent
-from .notation import CHEM_CONTEXT, LATEX, normalize, tex_shape_issue
+from .notation import CHEM_CONTEXT, LATEX, explicit_issues, normalize, tex_shape_issue
 
 VERSION = 'generic-v1'
 CREDIT = re.compile(r'^(?:Dispon[ií]vel em|Acesso em|Fonte\s*:|https?://|[A-ZÁÉÍÓÚÂÊÔÃÕÇ][A-ZÁÉÍÓÚÂÊÔÃÕÇ -]{2,},\s)')
@@ -32,6 +32,40 @@ def fingerprint(content):
     return hashlib.sha256(json.dumps(data, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
 
 
+def content_issues(content):
+    """Validate rendered content independently of an imported preparation report."""
+    found = []
+    def add(code, location, excerpt=''):
+        row = dict(code=code, severity='error', location=location,
+                   message=MESSAGES[code], excerpt=excerpt[:500])
+        if row not in found: found.append(row)
+    def text(value, location):
+        for code, excerpt in explicit_issues(value):
+            if code == 'invalid_latex': add(code, location, excerpt)
+    blocks = content.get('blocks', [])
+    if not blocks: text(content['statement'], 'statement')
+    for i, block in enumerate(blocks):
+        loc = f'blocks[{i}]'
+        if block['type'] == 'paragraph': text(block['text'], loc)
+        elif block['type'] == 'math':
+            if tex_shape_issue(block['tex']): add('invalid_latex', loc, block['tex'])
+        elif block['type'] == 'image':
+            text(block.get('caption') or block['asset']['alt'], loc+'.caption')
+            text(block.get('credit', ''), loc+'.credit')
+            for j, tex in enumerate(block.get('equations', [])):
+                if tex_shape_issue(tex): add('invalid_latex', loc+f'.equations[{j}]', tex)
+        elif block['type'] == 'table':
+            for value in block['headers']: text(value, loc+'.headers')
+            for row in block['rows']:
+                for value in row: text(value, loc+'.rows')
+    for i, option in enumerate(content['alternatives']): text(option['text'], f'alternatives[{i}].text')
+    if content.get('images'): add('unlocated_images', 'images')
+    if content.get('original_layout') and content.get('images'): add('original_layout', 'original_layout')
+    for row in ((content.get('layout') or {}).get('extraction') or {}).get('issues', []):
+        if row.get('severity') == 'error' and row not in found: found.append(row)
+    return found
+
+
 def split_options(statement):
     markers = list(re.finditer(r'(?m)^\s*([ABCDE])[ \t.)]*(?:\n|[ \t])', statement))
     groups = [i for i in range(len(markers)-4) if ''.join(m[1] for m in markers[i:i+5]) == 'ABCDE']
@@ -48,7 +82,11 @@ def prepare_content(source):
     c = QuestionContent.model_validate(source).model_dump()
     original = copy.deepcopy(c)
     previous = (c.get('layout') or {}).get('preparation', {})
-    if previous.get('version') == VERSION and previous.get('output_sha256') == fingerprint(c):
+    if (previous.get('version') == VERSION and previous.get('output_sha256') == fingerprint(c)
+            and isinstance(previous.get('changes'), list) and isinstance(previous.get('issues'), list)):
+        # A checksum permits presentation reuse, never skipping validation.
+        for row in content_issues(c):
+            if row not in previous['issues']: previous['issues'].append(row)
         return c
     issues, changes = [], []
     def issue(code, location, excerpt='', severity='warning'):
@@ -176,4 +214,7 @@ def prepare_exam(payload):
 
 
 def blocking_issues(content):
-    return [i for i in ((content.get('layout') or {}).get('preparation') or {}).get('issues', []) if i.get('severity') == 'error']
+    issues = [i for i in ((content.get('layout') or {}).get('preparation') or {}).get('issues', []) if i.get('severity') == 'error']
+    for row in content_issues(content):
+        if row not in issues: issues.append(row)
+    return issues

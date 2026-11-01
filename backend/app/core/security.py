@@ -1,6 +1,5 @@
 import hashlib
 import hmac
-import os
 import secrets
 import time
 
@@ -8,8 +7,9 @@ from fastapi import Depends, HTTPException, Request, Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from ..models import AuthSession, User
+from .config import cookie_secure
 from .db import get_db
-from .models import AuthSession, User
 
 COOKIE = "enem_session"
 SESSION_AGE = 60 * 60 * 24 * 30
@@ -38,7 +38,7 @@ def new_session(db: Session, user: User, response: Response):
     token = secrets.token_urlsafe(32)
     db.add(AuthSession(token_hash=digest(token), user_id=user.id, expires_at=time.time() + SESSION_AGE))
     response.set_cookie(COOKIE, token, max_age=SESSION_AGE, httponly=True,
-                        secure=os.getenv("COOKIE_SECURE", "false").lower() == "true", samesite="strict", path="/")
+                        secure=cookie_secure(), samesite="strict", path="/")
 
 
 def current_user(request: Request, db: Session = Depends(get_db, scope="function")):

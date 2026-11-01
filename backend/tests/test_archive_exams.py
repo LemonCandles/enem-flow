@@ -2,9 +2,12 @@ import copy
 import json
 
 import pytest
+from fastapi import HTTPException
 
-from backend.app.archive_exams import publish_generated
+from backend.app.installers.generated import publish_generated
 from backend.app.models import Exam, QuestionVersion
+from backend.app.installers.bundled import bundled_reviewer
+from backend.app.services.content import exam_summary, public_question, publish_exam
 from backend.app.preparation import blocking_issues, prepare_exam
 from scripts.build_archive_exams import areas, booklet_label, exam_id
 from scripts.exam_pdf import answer_key_rows
@@ -22,6 +25,7 @@ def test_answer_key_reads_the_declared_language_column():
 
 
 def test_generated_exam_metadata_follows_the_period_of_the_exam():
+    assert [a['area'] for a in areas(2009, 1)] == ['Ciências da Natureza', 'Ciências Humanas']
     assert [a['area'] for a in areas(2016, 1)] == ['Ciências Humanas', 'Ciências da Natureza']
     assert [(a['first'], a['area']) for a in areas(2016, 2)] == [(91, 'Linguagens'), (136, 'Matemática')]
     assert [a['area'] for a in areas(2017, 1)] == ['Linguagens', 'Ciências Humanas']
@@ -53,16 +57,50 @@ def test_generated_exams_are_published_without_curation_and_only_once(tmp_path, 
         q['content']['number'] = i + 1
     write(tmp_path, duplicated)
     (tmp_path / 'resumo.json').write_text('[]')
+    (tmp_path / 'arquivo-invalido.json').write_text('{')
 
     with database.begin() as db:
         result = publish_generated(db, tmp_path)
     assert result['published'] == 1 and result['existing'] == 0
-    assert [f['id'] for f in result['failed']] == ['acervo-duplicado']
+    assert [f['id'] for f in result['failed']] == ['acervo-duplicado','arquivo-invalido']
     with database() as db:
         exam = db.get(Exam, 'acervo-com-pendencia')
         assert exam.status == 'published'
         assert all(db.get(QuestionVersion, key).status == 'approved' for key in exam.items)
+        assert exam_summary(db,exam)['content_quality']==dict(origin='automatic',review_status='pending',blocking_issues=1)
+        question = db.get(QuestionVersion, exam.items[0])
+        visible = public_question(dict(id=question.id, question_id=question.question_id, version=1, content=question.content), False)
+        assert visible['preparation_errors'] == 1
+        assert 'correct_answer' not in visible
+        reviewer = bundled_reviewer(db)
+        with pytest.raises(HTTPException, match='pendências bloqueantes'):
+            publish_exam(db, exam, reviewer.id, 'Conferência manual')
         assert db.get(Exam, 'acervo-duplicado') is None
     with database.begin() as db:
         again = publish_generated(db, tmp_path)
     assert again['published'] == 0 and again['existing'] == 1
+
+
+def test_legacy_automatic_metadata_preserves_versions_and_manual_review(tmp_path, exam_payload, database):
+    write(tmp_path, exam_payload)
+    with database.begin() as db:
+        assert publish_generated(db, tmp_path)['published'] == 1
+        exam = db.get(Exam, exam_payload['id'])
+        items = list(exam.items)
+        content = [copy.deepcopy(db.get(QuestionVersion, key).content) for key in items]
+        exam.source = {k: v for k, v in exam.source.items() if k != 'automatic_archive'}
+        reviewer = bundled_reviewer(db)
+        with pytest.raises(HTTPException, match='origem e o estado de revisão'):
+            publish_exam(db, exam, reviewer.id, 'Origem não registrada', allow_pending=True)
+    with database.begin() as db:
+        assert publish_generated(db, tmp_path)['existing'] == 1
+        exam = db.get(Exam, exam_payload['id'])
+        assert exam.items == items
+        assert [db.get(QuestionVersion, key).content for key in items] == content
+        assert exam_summary(db, exam)['content_quality']['review_status'] == 'pending'
+        reviewer = bundled_reviewer(db)
+        publish_exam(db, exam, reviewer.id, 'Conferência manual concluída')
+        assert exam_summary(db, exam)['content_quality'] == dict(origin='automatic', review_status='reviewed', blocking_issues=0)
+    with database.begin() as db:
+        publish_generated(db, tmp_path)
+        assert exam_summary(db, db.get(Exam, exam_payload['id']))['content_quality']['review_status'] == 'reviewed'

@@ -6,11 +6,12 @@ are kept in each version's report instead of preventing publication.
 """
 from fastapi import HTTPException
 
-from .bundled_content import bundled_reviewer
-from .content import import_exam, publish_exam
-from .db import ROOT
-from .models import Exam, QuestionVersion, Review
-from .schemas import ExamImport
+from .bundled import bundled_reviewer
+from ..services.content import import_exam, publish_exam
+from ..core.config import ROOT
+from ..models import Exam, QuestionVersion, Review
+from ..schemas import ExamImport
+from ..preparation import blocking_issues
 
 GENERATED = ROOT / 'data/derived/exams'
 REASON = ('Publicação automática do acervo oficial: texto e figuras extraídos do PDF, sem curadoria. '
@@ -26,18 +27,26 @@ def publish_generated(db, directory=GENERATED):
     reviewer = bundled_reviewer(db)
     published, existing, failed = [], 0, []
     for path in generated_files(directory):
-        payload = ExamImport.model_validate_json(path.read_text())
-        if db.get(Exam, payload.id):
-            existing += 1
-            continue
         try:
+            payload = ExamImport.model_validate_json(path.read_text())
+            previous=db.get(Exam,payload.id)
+            if previous:
+                # Older automatic installs had no visible provenance marker.
+                # Metadata can be backfilled without replacing question versions.
+                if not previous.source.get('automatic_archive') and previous.source.get('sha256')==payload.source.sha256:
+                    pending=sum(len(blocking_issues(db.get(QuestionVersion,key).content)) for key in previous.items)
+                    previous.source={**previous.source,'automatic_archive':dict(version=1,review_status='pending',blocking_issues=pending)}
+                existing += 1
+                continue
             with db.begin_nested():
                 exam = import_exam(db, payload)
+                pending=sum(len(blocking_issues(q.content.model_dump())) for q in payload.questions)
+                exam.source={**exam.source,'automatic_archive':dict(version=1,review_status='pending',blocking_issues=pending)}
                 for key in exam.items:
                     db.get(QuestionVersion, key).status = 'approved'
                     db.add(Review(user_id=reviewer.id, target_id=key, action='approve', reason=REASON))
                 publish_exam(db, exam, reviewer.id, REASON, allow_pending=True)
             published.append(payload.id)
-        except (HTTPException, ValueError) as error:
-            failed.append(dict(id=payload.id, reason=str(getattr(error, 'detail', error))))
+        except (HTTPException, ValueError, OSError) as error:
+            failed.append(dict(id=path.stem, reason=str(getattr(error, 'detail', error))))
     return dict(published=len(published), existing=existing, failed=failed)

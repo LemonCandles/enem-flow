@@ -6,10 +6,10 @@ from collections import Counter
 from pathlib import Path
 
 import pymupdf as fitz
+from scripts.pdf_headings import HEADING, QUESTION_WORD, heading_number
 
 SUB = str.maketrans('0123456789+-−', '₀₁₂₃₄₅₆₇₈₉₊₋₋')
 SUP = str.maketrans('0123456789+-−', '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁻')
-HEADING = re.compile(r'^QUEST[ÃA]O\s+(\d+)\b', re.I)
 LANGUAGE = re.compile(r'^Quest[õo]es\s+de\s+(\d+)\s+a\s+(\d+)\s*\(\s*op[çc][ãa]o\s*:?\s*([^)]+?)\s*\)', re.I)
 # Glyphs that Portuguese, Spanish and English text practically never uses; a font
 # without a character map turns ordinary letters into them ("fÜ éîèÜèê").
@@ -74,7 +74,7 @@ def lines(page, rect):
         unique.setdefault((line['text'], *(round(v) for v in line['bbox'])), line)
     result = list(unique.values())
     # Some layouts print "Questão" and its number as separate lines on the same baseline.
-    for line in [l for l in result if re.fullmatch(r'QUEST[ÃA]O', l['text'], re.I)]:
+    for line in [l for l in result if re.fullmatch(QUESTION_WORD, l['text'], re.I)]:
         number = next((n for n in result if re.fullmatch(r'\d{1,3}', n['text']) and abs(n['bbox'][1]-line['bbox'][1]) < 3
                        and 0 <= n['bbox'][0]-line['bbox'][2] < 60), None)
         if number:
@@ -132,7 +132,7 @@ def discover_regions(doc, config, languages=None):
             events = []
             for l in all_lines:
                 if not x0 <= l['bbox'][0] < x1: continue
-                if m := HEADING.match(l['text']): events.append((l['bbox'][1], 'question', int(m[1])))
+                if m := HEADING.match(l['text']): events.append((l['bbox'][1], 'question', heading_number(m)))
                 elif m := LANGUAGE.match(l['text']): events.append((l['bbox'][1], 'language', (int(m[1]), int(m[2]), language_key(m[3]))))
             cursor = top
             for y,kind,value in sorted(events):
@@ -171,8 +171,8 @@ def margin_headings(doc, config, numbers):
         top, bottom = options.get('top', 55), options.get('bottom', page.rect.height-48)
         for line in lines(page, page.rect):
             m = HEADING.match(line['text'])
-            if m and int(m[1]) in numbers and not top <= line['bbox'][1] < bottom:
-                found.append(f'{int(m[1])} (página {pn}, y={line["bbox"][1]:.0f})')
+            if m and heading_number(m) in numbers and not top <= line['bbox'][1] < bottom:
+                found.append(f'{heading_number(m)} (página {pn}, y={line["bbox"][1]:.0f})')
     return found[:8]
 
 

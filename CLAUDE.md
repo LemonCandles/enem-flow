@@ -1,79 +1,90 @@
 # Enem Flow
 
-MVP de estudos para o ENEM: provas oficiais, correção, histórico, painel e curadoria versionada.
+Estudos para o ENEM: contas, provas oficiais, respostas persistentes, correção, histórico, painel e curadoria versionada. Interface, documentação e commits em pt-BR.
 
-- **Backend:** Python, FastAPI, SQLAlchemy e Alembic em `backend/`. Usa SQLite localmente e PostgreSQL no Docker.
-- **Frontend:** Next.js 16 e React 19 em `frontend/`. Antes de alterar o frontend, leia `frontend/AGENTS.md`: a versão do Next.js tem APIs diferentes das conhecidas.
-- **Idioma:** interface, documentação e mensagens de commit em português do Brasil.
-- **Comandos:** `make setup`, `make api`, `make web`, `make test` e `make build`. O README traz o roteiro completo, incluindo o Playwright.
-- **Roteiro:** siga as etapas de `docs/plano-implementacao/proximas-etapas.md`, na ordem e com as dependências e critérios de aceite de cada uma. Antes de implementar, confira no código o que já foi feito. Ao concluir um item, atualize esse arquivo e o `status-implementacao.md`. Não marque como concluído o que depende de pessoas (segunda revisão, leitores de tela, aparelhos reais, piloto); registre como pendência externa.
-- **Curadoria no final:** toda a curadoria fica na etapa 8 do roteiro, antes da publicação e do piloto. Isso inclui revisão humana, aprovação e importação de cadernos, segunda revisão de rótulos, aprovação de propostas automáticas e curadoria assistida. Não a antecipe: as etapas anteriores usam o conteúdo já publicado e os rótulos de curadoria técnica.
-- **Dados no Git:** só os dois lotes conferidos (2024, 2º dia azul; Matemática 2023 azul), com figuras, PDFs de prova e gabarito, bases de revisão, anotações e o dataset de referência, além de taxonomia, exemplos e catálogo de fontes. O acervo histórico, o banco textual (`data/bank/`), os caches de `data/derived/` e as provas geradas por `make acervo` (`data/derived/exams/` e suas figuras em `data/assets/<prova>/`) ficam locais. Não versione novas provas sem pedido explícito. A lista liberada fica no `.gitignore`.
+## Stack
 
-## Commits — Conventional Commits 1.0.0
+- **Backend:** Python 3.13/3.14, FastAPI, SQLAlchemy, Alembic; SQLite local, PostgreSQL no Docker.
+- **Frontend:** Next.js 16 / React 19 / TypeScript. Antes de editar, leia `frontend/AGENTS.md` e os guias pertinentes em `frontend/node_modules/next/dist/docs/`.
+- **Dependências:** preserve lockfiles.
 
-Siga https://www.conventionalcommits.org/pt-br/v1.0.0/ em todos os commits.
+## Comandos
 
-```
-<tipo>[(escopo)][!]: <descrição>
+Execute na raiz; API e frontend em terminais separados.
 
-[corpo opcional]
+| Comando | Uso |
+| --- | --- |
+| `make setup` | Instalar dependências e preparar banco |
+| `make api` / `make web` | API na porta 8000 / site na 3000 |
+| `make migrate seed` | Atualizar esquema e catálogo; faça backup antes |
+| `make test` | pytest, TypeScript e validação LaTeX |
+| `make build` | Build de produção |
+| `npm --prefix frontend run test:e2e` | Playwright, com serviços iniciados |
+| `make acervo` | Gerar/publicar provas locais sem curadoria |
 
-[rodapé(s) opcional(is)]
-```
+**Testes:** use banco isolado, inclusive ao iniciar serviços para Playwright ou ensaiar migrações. Configure `DATABASE_URL` para esses serviços e `TEST_DATABASE_URL` para pytest/PostgreSQL; este último exige `test` no nome do banco, e a suíte remove suas tabelas. Docker/recuperação: `docs/operations.md`.
 
-**Tipos**
-- `feat`: nova funcionalidade (MINOR).
-- `fix`: correção de bug (PATCH).
-- `docs`, `test`, `build`, `ci`, `chore`, `refactor`, `perf`, `style`, `revert`.
+## Mapa do código
 
-**Escopo**: um substantivo curto, em minúsculas e sem acento, entre parênteses. Reutilize os escopos já usados no histórico antes de criar outro: `api`, `web`, `auth`, `persistencia`, `conteudo`, `curadoria`, `correcao`, `questoes`, `navegacao`, `design`, `operacao`, `qualidade`, `dev`, `git`, `repo`, `mvp`, `plano`, `consolidacao`. Para `ci`, o escopo pode ser omitido.
+O backend está organizado por responsabilidade. Caminhos abaixo relativos a `backend/app/`; mantenha `main.py` como montagem da aplicação.
 
-**Descrição**
-- Verbo no presente da 3ª pessoa: "adiciona", "corrige", "documenta", "refina".
-- Inicial minúscula e sem ponto final.
-- Até cerca de 72 caracteres.
-- Exemplos do histórico:
-  - `feat(navegacao): adiciona atalhos e foco acessível na prova`
-  - `fix(operacao): preserva recursos em volumes persistentes`
-  - `docs(consolidacao): registra validações e adia aceites externos`
+| Caminho | Responsabilidade |
+| --- | --- |
+| `main.py`, `middleware.py` | Montagem, ciclo de vida, routers, arquivos estáticos e política HTTP |
+| `routers/` | Rotas por funcionalidade; `admin/` protege curadoria e acervo com a dependência de administrador no router pai |
+| `dependencies.py` | Aliases `Annotated`: `SessionDep`, `CurrentUser`, `AdminUser`; a sessão confirma ou desfaz a transação antes de enviar a resposta |
+| `core/` | `config.py`: `ROOT`, banco e ambiente; `db.py`: engine, `Base` e sessão; `security.py`: autenticação e papéis |
+| `models/`, `schemas/` | Tabelas e contratos separados por domínio; os pacotes reexportam seus tipos |
+| `services/` | Conteúdo/publicação, identidade, apresentação, correção, taxonomia e leitura do banco textual (`archive_reader.py`) |
+| `installers/` | `curated.py`: catálogo conferido; `generated.py`: acervo automático; `bundled.py`: atualização do lote incluído; `assets.py`: figuras no volume |
+| `preparation/` | Preparador compartilhado, executado na importação e edição |
+| `cli.py` | Administração local via `python -m backend.app.cli` |
 
-**Corpo**: separado da descrição por uma linha em branco. Explica o quê e o porquê, não o como.
+- **Frontend — `frontend/src/`:** `components/`, `lib/`, `app/`; cliente em `lib/api.ts`. Sessão por cookie HttpOnly.
+- **Entrada HTTP:** no acesso direto ao Next, `/api/*` usa rewrites e `API_INTERNAL_URL` é definido no build. No Compose, o gateway Nginx encaminha `/api/*` diretamente à API e as páginas ao Next. Preserve as redes internas, a substituição dos cabeçalhos de origem e a confiança apenas no IP privado do gateway.
+- **Contrato/preparação:** `backend/app/schemas/content.py`, com tipos reexportados por `backend.app.schemas`; mantenha `docs/content-schema.json` correspondente a `ExamImport.model_json_schema()`. PDF offline: `scripts/exam_pdf.py` e `scripts/prepare_exam.py`. Registre ambiguidades; evite regras por questão.
+- **Acervo:** `scripts/archive_enem.py` sincroniza originais; `scripts/build_bank.py` gera banco textual. Preserve a indicação de extração automática e suas pendências nas provas geradas.
 
-**Rodapés**: separados do corpo por uma linha em branco, no formato `Token: valor`. Use hífen no lugar de espaços no token (`Refs: #12`, `Reviewed-by: Nome`). A exceção é `BREAKING CHANGE`.
+## Conteúdo e integridade
 
-**Mudanças incompatíveis**: indique com `!` antes dos dois-pontos (`feat(api)!: ...`), com o rodapé `BREAKING CHANGE: <descrição>`, ou com os dois. Isso vale para mudanças de API, do contrato JSON (`docs/content-schema.json`) e para migrações que exigem ação manual.
+- Texto/alternativas selecionáveis do JSON, sem HTML arbitrário. Matemática/química em LaTeX, KaTeX/mhchem (`\ce{...}`); preserve fórmulas e distratores da fonte. Estruturas gráficas continuam figuras originais.
+- Figura reúne `caption`, `credit`, `equations`. Ampliação em diálogo interno, com teclado, zoom, Escape e retorno do foco.
+- Correções criam versões; preserve respostas, resultados e snapshots. Identidade canônica não altera ordem/letras/gabarito das ocorrências. Finalização transacional e idempotente; gabaritos privados até concluir.
+- Edição recusa colisões de identidade e conteúdo duplicado na prova; publicação repete a verificação, inclusive para versões antigas. Não remova esses bloqueios ao reorganizar o código.
+- Anuladas fora do denominador/cobertura; brancos no denominador. Sem TRI; cobertura de rótulos não significa domínio.
+- Importação normal cria rascunho; pendências bloqueiam aprovação/publicação. Acervo automático é exceção explícita, sem equivaler a conteúdo conferido. Habilidades candidatas ficam fora de `labels.skills` até segunda revisão.
+- Auditoria recebida no JSON não é confiável: o fingerprint permite reaproveitar apresentação, mas preparação, aprovação e publicação validam o conteúdo independentemente. Preserve os avisos e a origem das extrações automáticas.
+- Instalar/publicar o catálogo é idempotente e preserva retiradas, rejeições e edições manuais pendentes, inclusive quando a atualização cria versões.
+- Recuperação de senha abre com ou sem sessão, retira o token da URL e mantém uso único e expiração. Após redefinir, revogue as sessões e remova o cookie.
 
-**Regras do projeto**
-- Faça um commit por mudança lógica. Se ela abrange vários tipos, divida em commits.
-- Nunca use mensagens genéricas como "commit temp", "ajustes" ou "wip".
-- Não adicione `Co-Authored-By` nem menção a IA ou ao Claude.
+## Dados e fontes
 
-## Identidade visual — "Conhecimento em construção"
+- Lotes conferidos: 2024 dia 2 azul (90) e Matemática 2023 azul (45); 133 válidos, referência matemática de 89 itens. Acervo 1998–2025, todas as aplicações disponíveis: `docs/cobertura-acervo.md`.
+- Originais imutáveis: `data/sources/enem/{ano}/{aplicacao}/{modalidade}/dia-*/caderno-*/`; inventário URL/SHA-256: `data/sources/catalogo/acervo.json`. Nunca substitua gabarito por outra aplicação. Organização: `data/sources/README.md`.
+- Git: só dois lotes, recursos, baselines, anotações, taxonomia, exemplos e catálogo de fontes. Espelho histórico, `data/bank/`, caches, provas geradas e figuras ficam locais. Confira `.gitignore`; versionar novas provas exige pedido explícito.
 
-**Fonte de verdade:** `frontend/src/app/globals.css`. Os tokens de cor ficam em `:root` (tema claro) e em `:root[data-theme='dark']` (tema escuro). Use sempre as variáveis (`--bg`, `--panel`, `--sidebar`, `--ink`, `--muted`, `--line`, `--line-strong`, `--teal`, `--teal-ink`, `--mint`, `--success`, `--danger`, `--warning` e as variantes `-bg`). Não use hex soltos nos componentes.
+## Andamento e roteiro
 
-**Documentação do design:** `docs/propostas-design/`
-- `README.md`: direção visual, geometria dos encaixes, paleta e caminhos do código.
-- `paletas.svg`: paleta dos dois temas.
-- `proposta-clara.png`, `proposta-escura.png` e `proposta-mobile.png`: capturas atuais.
-- Outras capturas ficam em `docs/screenshots/`.
+- Etapas técnicas 1/2 concluídas; próxima: Dados/IA (3). Adaptação/tutor previstos. Siga `docs/plano-implementacao/proximas-etapas.md`; atualize-o e `status-implementacao.md` após entregas.
+- Toda a curadoria fica na etapa 8; publicação externa na 9, piloto na 10. Antes, use conteúdo/rótulos disponíveis. Revisão independente, leitores de tela e aparelhos reais exigem validação efetiva.
+- A fase 1 da reorganização do backend está integrada; a fase 2 (exceções de domínio sem dependência de HTTP em serviços/instaladores) continua no backlog das próximas etapas.
 
-**Código da identidade**
-- `frontend/src/lib/puzzle-geometry.ts`: geometria das peças de encaixe.
-- `frontend/src/components/design.tsx`: marca (`Brand`), peças (`LearningPieces`) e divisória dos cartões (`CardSeam`).
-- `frontend/src/components/dashboard.tsx`: página inicial.
-- `frontend/src/components/theme-toggle.tsx`: troca de tema.
-- `frontend/src/app/layout.tsx`: script do tema inicial. Lê a chave `enem-flow:theme` do `localStorage` e, se ela não existir, segue `prefers-color-scheme`.
+## Identidade visual
 
-**Resumo**
-- Fonte Manrope Variable (`@fontsource-variable/manrope`).
-- Títulos de entrada com peso 300, texto com peso regular e botões com peso 600.
-- Fundos neutros e quentes, com acento verde `#009485` (`--teal`). O texto sobre o acento é `#131313`.
-- Três peças de encaixe com contornos complementares representam leitura, raciocínio e prática.
-- Ilustrações em SVG com o mesmo traço e as mesmas cores dos componentes.
-- Ícones do `lucide-react`.
-- Barra lateral fixa no desktop e menu recolhido em telas menores.
-- Os enunciados e as alternativas são conteúdo nativo do JSON. A decoração fica fora da área de leitura das questões.
+- “Conhecimento em construção”: acolhedor, fundos neutros quentes claro/escuro preservados, verde `#009485`, Manrope, sidebar esquerda. Peças SVG integradas com contornos complementares mesmo separadas; decoração fora das questões.
+- Tokens: `frontend/src/app/globals.css` (variáveis, sem hex nos componentes); geometria: `frontend/src/lib/puzzle-geometry.ts`; arte: `frontend/src/components/design.tsx`. Mudanças visuais atualizam `docs/propostas-design/{README.md,paletas.svg}` e capturas afetadas.
 
-**Ao alterar a identidade**, atualize no mesmo commit (`feat(design)` ou `fix(design)`) o `globals.css`, o `docs/propostas-design/README.md`, o `paletas.svg` e as capturas afetadas.
+## Fluxo de trabalho
+
+- Confira implementação/diff; preserve trabalho alheio. Teste o comportamento alterado; não declare validações não executadas.
+- Um commit por decisão lógica: Conventional Commits 1.0.0, `tipo(escopo): descrição`, verbo na 3ª pessoa, minúsculas, ~72 caracteres, sem ponto. Reutilize escopos; incompatibilidades usam `!`/`BREAKING CHANGE`. Sem mensagens genéricas, `Co-Authored-By` ou menções a IA.
+
+## Referências sob demanda
+
+- `README.md`: instalação e uso.
+- `docs/architecture.md`: arquitetura e contratos.
+- `docs/preparacao-provas.md`: extração e limites.
+- `docs/banco-classificacao.md`: identidade, taxonomia e rótulos.
+- `docs/revisoes/revisao-projeto-2026-11-01.md`: correções de consistência e validação da integração com a refatoração remota.
+
+Mantenha métricas/evidências nos relatórios.

@@ -1,5 +1,5 @@
 # Disposable validation only. Always use a dedicated --project-name.
 services:
-  web:
+  gateway:
     ports: !override
       - "127.0.0.1:3300:3000"

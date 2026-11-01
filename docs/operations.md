@@ -11,11 +11,17 @@
 | `ALLOWED_ORIGINS` | Origens exatas separadas por vírgula, incluindo protocolo e porta |
 | `COOKIE_SECURE` | `true` para implantação com HTTPS; `false` permite desenvolvimento HTTP local |
 | `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` | Credenciais do Compose; o arquivo `.env` fica fora do Git |
+| `ENEM_PROXY_SUBNET`, `ENEM_PROXY_IP` | Rede privada do gateway e seu IP fixo; padrões `172.30.246.0/24` e `172.30.246.254`. Ajuste os dois se houver conflito com outra rede. |
+| `FORWARDED_ALLOW_IPS` | No contêiner da API, recebe somente `ENEM_PROXY_IP`; não deve aceitar clientes ou redes públicas. |
 | `TEST_DATABASE_URL` | Banco descartável exclusivo da suíte; o nome precisa conter `test` |
 
 O `.env` é carregado pelo Docker Compose. Para execução Python direta, exporte as variáveis no shell; o backend não lê `.env` automaticamente. Use uma senha de banco compatível com URL ou codifique os caracteres reservados na `DATABASE_URL`.
 
-O Compose disponibiliza a interface na porta 3000 e mantém API e PostgreSQL internos. Para publicar em outro domínio, configure proxy HTTPS, origem autorizada e cookie seguro. O repositório não contém credenciais ou uma implantação em conta de terceiros. Não use `docker compose down -v` para uma parada rotineira: essa opção remove volumes persistentes.
+O Compose disponibiliza o gateway Nginx na porta 3000 e mantém Next, API e PostgreSQL internos. O gateway encaminha páginas ao Next e `/api/*` diretamente à API. As redes separam banco, frontend e proxy. O IP fixo do gateway é o único proxy autorizado pelo Uvicorn; isso preserva os contadores por cliente sem confiar no endereço do contêiner Next.
+
+O gateway substitui `X-Forwarded-For` pelo endereço da conexão e `X-Forwarded-Proto` pelo protocolo recebido, conforme [`proxy_set_header`](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header). Não exponha as portas internas para contornar essa entrada. A imagem está fixada em Nginx 1.30.6, versão estável listada nas [publicações oficiais](https://nginx.org/). Atualizações de API ou Next pelo Compose também reiniciam o gateway para renovar os endereços dos serviços.
+
+Para publicar em outro domínio, configure HTTPS, origem autorizada e cookie seguro. Se houver outro proxy antes do gateway, configure explicitamente quais endereços dele são confiáveis para recuperar o IP do cliente. O repositório não contém credenciais ou uma implantação em conta de terceiros. Não use `docker compose down -v` para uma parada rotineira: essa opção remove volumes persistentes.
 
 ## Administração e recuperação de acesso
 
@@ -25,6 +31,8 @@ O Compose disponibiliza a interface na porta 3000 e mantém API e PostgreSQL int
 ```
 
 Em Docker, substitua o início do comando por `docker compose exec api python`. O operador verifica a identidade fora da aplicação e entrega o link pelo canal combinado com o usuário. O link vale por 30 minutos, é de uso único e invalida sessões anteriores ao alterar a senha. A aplicação não envia e-mails. Somente o hash do token fica no banco.
+
+O link abre o formulário de recuperação mesmo com sessão ativa. O token sai da URL ao abrir, permanece apenas no estado transitório do formulário e é validado pelo backend ao enviar a nova senha. Após a alteração, o cookie é removido e a interface solicita novo login.
 
 ## Migrações e verificação
 
@@ -107,3 +115,25 @@ Com API/interface de teste iniciadas, rode os navegadores com `E2E_BASE_URL=http
 - Dump/restauração PostgreSQL em banco separado: linhas e hashes do conteúdo completo de questões, provas, tentativas, eventos e revisões idênticos no momento da comparação.
 
 As verificações de navegador e CI estão em [primeira entrega](primeira-entrega.md). Estes são ensaios técnicos com dados descartáveis, sem evidência de aprendizagem ou de piloto educacional. Repetir os procedimentos no ambiente escolhido para hospedagem continua parte da implantação.
+
+## Atualizar os lotes e a classificação
+
+Faça backup do banco e dos recursos antes de atualizar. Na versão da etapa 2:
+
+```bash
+.venv/bin/alembic upgrade head
+.venv/bin/python -m backend.app.cli catalog --publish-curated
+```
+
+`make migrate seed` também aplica as migrações e o catálogo incluído. A migração `f831ef101a02` acrescenta a identidade canônica sem reescrever o conteúdo ou os snapshots. A instalação cria versões dos rótulos dos 90 itens de 2024 e acrescenta os 45 de Matemática de 2023. É idempotente; uma edição própria não reconhecida interrompe a transação em vez de ser sobrescrita. Novas classificações valem para novas tentativas; o histórico mantém seus rótulos originais.
+
+## Instalar o banco histórico local na curadoria
+
+O espelho de PDFs e o banco textual histórico são locais e recuperáveis; não integram a imagem por padrão. Primeiro execute a sincronização e a indexação descritas em [fontes oficiais](../data/sources/README.md). Depois, opcionalmente, monte o banco gerado como somente leitura:
+
+```bash
+# Exige data/bank/ já gerado por scripts/build_bank.py.
+docker compose -f compose.yaml -f compose.archive.yaml up --build -d
+```
+
+Essa composição mantém o volume de figuras e acrescenta `data/bank/` para consulta administrativa. Os PDFs continuam acessíveis pelas URLs oficiais registradas; o banco textual não se torna público. Sem o banco local, a aplicação mantém o catálogo conferido e o inventário de fontes, com zero ocorrências extraídas instaladas nesse ambiente. Não confundir essa ausência local com cobertura histórica vazia.

@@ -107,6 +107,32 @@ jobs:
         run: docker compose -p enem-ci -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
       - name: Create persisted attempt
         run: python scripts/verify_deployment.py create --url http://localhost:3300 --state /tmp/enem-ci-state.json
+      - name: Verify proxy isolation and forged forwarding headers
+        run: |
+          docker compose -p enem-ci -f compose.yaml -f compose.test.yaml exec -T api python - <<'PY'
+          import json, urllib.request, urllib.error
+          for i in range(31):
+              body=json.dumps(dict(email='proxy-limit@invalid.local',password='senha-invalida-proxy')).encode()
+              req=urllib.request.Request('http://gateway:3000/api/auth/login',data=body,headers={'Content-Type':'application/json','X-Forwarded-For':f'198.51.100.{i+1}'})
+              try:
+                  with urllib.request.urlopen(req) as response: status=response.status
+              except urllib.error.HTTPError as error: status=error.code
+              assert status==(401 if i<30 else 429),status
+          print('Cabeçalhos falsificados não contornam o limite do cliente.')
+          PY
+          docker compose -p enem-ci -f compose.yaml -f compose.test.yaml exec -T web node - <<'JS'
+          (async()=>{
+            const email=`proxy-${Date.now()}@invalid.local`, password='senha-independente-proxy';
+            for(const [path,body,wanted] of [
+              ['/auth/register',{name:'Cliente independente',email,password},201],
+              ['/auth/login',{email,password},200],
+            ]){
+              const response=await fetch('http://gateway:3000/api'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+              if(response.status!==wanted)throw Error(`${path}: ${response.status}`);
+            }
+            console.log('Outro cliente mantém cadastro e login após o bloqueio do primeiro.');
+          })().catch(error=>{console.error(error);process.exit(1);});
+          JS
       - name: Verify graceful API shutdown
         run: |
           docker compose -p enem-ci -f compose.yaml -f compose.test.yaml stop --timeout 10 api

@@ -12,7 +12,7 @@ from sqlalchemy import func, select
 from backend.app.main import app
 from backend.app.models import AuthSession, ExamRun, LearningEvent, RecoveryToken, User
 from backend.app.schemas import ExamImport
-from backend.app.security import digest
+from backend.app.core.security import digest
 
 
 def start(student):
@@ -187,7 +187,9 @@ def test_recovery_token_is_single_use_and_revokes_sessions(student, database):
         user = db.scalar(select(User).where(User.email == 'aluno@example.com'))
         db.add(RecoveryToken(token_hash=digest(token), user_id=user.id, expires_at=time.time() + 100))
     body = {"token": token, "password": "nova-senha-segura"}
-    assert student.post('/auth/reset-password', json=body).status_code == 200
+    response=student.post('/auth/reset-password', json=body)
+    assert response.status_code == 200
+    assert 'Max-Age=0' in response.headers['set-cookie']
     assert student.post('/auth/reset-password', json=body).status_code == 400
     assert student.get('/me').status_code == 401
     assert student.post('/auth/login', json={"email": "aluno@example.com", "password": "nova-senha-segura"}).status_code == 200
