@@ -263,7 +263,7 @@ def summary(catalog):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command',choices=['inventory','sync','audit'])
+    parser.add_argument('command',choices=['inventory','sync','audit','reference'])
     parser.add_argument('--refresh',action='store_true',help='Reconsultar páginas; nunca sobrescrever PDFs divergentes.')
     parser.add_argument('--workers',type=int,choices=range(1,9),default=4)
     parser.add_argument('--years',type=int,nargs='+')
@@ -273,7 +273,14 @@ def main():
         global TLS_CONTEXT
         TLS_CONTEXT=ssl.create_default_context();TLS_CONTEXT.load_verify_locations(cafile=str(args.ca_file))
     catalog = inventory(args.refresh) if args.command=='inventory' else json.loads(CATALOG.read_text())
-    if args.command=='sync':
+    if args.command=='reference':
+        # The official matrix is a local, recoverable original; its immutable
+        # manifest and structured definitions remain versioned.
+        source=json.loads((SOURCE_ROOT/'referencias/manifesto.json').read_text())
+        result=download(source,{})
+        print(json.dumps({key:result.get(key) for key in ('path','status','sha256','bytes','error')},ensure_ascii=False))
+        if result['status']!='downloaded':raise SystemExit(2)
+    elif args.command=='sync':
         sync(catalog,args.workers,args.years)
         if any(r['status']=='error' for r in catalog['files'] if not args.years or r['year'] in args.years):raise SystemExit(2)
     elif args.command=='audit':
