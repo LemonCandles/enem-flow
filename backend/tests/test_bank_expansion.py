@@ -119,6 +119,7 @@ def test_reference_has_eight_themes_and_no_annulled_or_canonical_duplicate():
 
 def test_2023_curated_lot_matches_source_and_is_reproducible():
     from scripts.review_2023_math import review
+    from scripts.audit_content import audit
     from scripts.exam_pdf import lines
     import pymupdf as fitz
     before=json.loads((ROOT/'data/derived/baselines/enem-2023-matematica-auto-v1.json').read_text())
@@ -129,6 +130,8 @@ def test_2023_curated_lot_matches_source_and_is_reproducible():
     key=pdf.with_name('gabarito.pdf')
     assert hashlib.sha256(pdf.read_bytes()).hexdigest()==actual['source']['sha256']
     assert hashlib.sha256(key.read_bytes()).hexdigest()==actual['source']['answer_key_sha256']
+    section_audit=audit(ROOT/'data/catalog/enem-2023-matematica-azul.json')
+    assert section_audit['questions']==45 and section_audit['valid_answers']==44 and section_audit['annulled']==[164]
     for q,old in zip(actual['questions'],before['questions']):
         assert q['content']['correct_answer']==old['content']['correct_answer']
         assert q['content']['annulled']==old['content']['annulled']
