@@ -47,6 +47,11 @@ def install_catalog(db,publish=False):
         base=ExamImport.model_validate_json(path.read_text());desired=classified(base)
         previous_profile=classified(base,refresh_preparation_audit=False)
         exam=db.get(Exam,desired.id);changed=False
+        was_withdrawn=bool(exam and exam.status=='withdrawn')
+        previous_items=[db.get(QuestionVersion,key) for key in exam.items] if exam else []
+        previous_drafts=[q.id for q in previous_items if q.status=='draft']
+        held_for_review=(any(q.status=='in_review' for q in previous_items) or bool(previous_drafts and
+                         db.scalar(select(Review.id).where(Review.target_id.in_(previous_drafts),Review.action=='edit').limit(1))))
         if not exam:
             exam=import_exam(db,desired);stats['imported_exams']+=1;changed=True
         else:
@@ -77,14 +82,22 @@ def install_catalog(db,publish=False):
             canonical_id=current.canonical_id or identify(db,q.content.model_dump(),(desired.source.sha256,q.content.number))
             for previous in db.scalars(select(QuestionVersion).where(QuestionVersion.question_id==q.question_id,QuestionVersion.canonical_id.is_(None))):
                 previous.canonical_id=canonical_id
-        if changed:
+        # Explicit publication also handles a previous install without publication.
+        # Repeated runs never override a human rejection, pending edit or withdrawal.
+        pending=[db.get(QuestionVersion,key) for key in exam.items]
+        if changed and held_for_review:
+            for question in pending:
+                if question.status=='draft':question.status='in_review'
+        can_publish=(publish and not was_withdrawn and not held_for_review and (changed or
+                     (exam.status in {'draft','in_review'} and all(q.status in {'draft','approved'} for q in pending))))
+        if changed or can_publish:
             reason=f'{manifest["version"]}: lote conferido com a fonte e taxonomia reference-v1; habilidades apenas propostas e revisão independente pendente.'
-            if publish:
+            if can_publish:
                 for key in exam.items:
                     db.get(QuestionVersion,key).status='approved'
                     db.add(Review(user_id=reviewer.id,target_id=key,action='approve',reason=reason))
                 publish_exam(db,exam,reviewer.id,reason)
-            else:exam.status='in_review'
+            else:exam.status='withdrawn' if was_withdrawn else 'in_review'
     from .models import CanonicalQuestion
     stats['canonical_questions']=db.scalar(select(func.count()).select_from(CanonicalQuestion))
     return stats
