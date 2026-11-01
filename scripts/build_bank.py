@@ -19,11 +19,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import pymupdf as fitz
 from scripts.archive_enem import CATALOG, SOURCE_ROOT, write_json, sha
+from scripts.pdf_headings import HEADING, QUESTION_WORD, heading_number
 
 OUTPUT = ROOT / 'data/derived/archive'
 BANK = ROOT / 'data/bank'
 VERSION = 'archive-text-v4'
-HEADING = re.compile(r'^\s*Q\s*U\s*E\s*S\s*T\s*[ÃA]\s*O\s*(\d(?:\s*\d){0,2})\b',re.I)
 
 
 def normalized(text):
@@ -39,7 +39,7 @@ def page_lines(page):
             out.append(dict(text=text,bbox=list(line['bbox']),font=line['spans'][0]['font'],size=line['spans'][0]['size']))
     # Older PDFs split "Questão" and its number into adjacent text lines.
     for line in out:
-        if re.fullmatch(r'QUEST[ÃA]O',line['text'],re.I):
+        if re.fullmatch(QUESTION_WORD,line['text'],re.I):
             numbers=[other for other in out if re.fullmatch(r'\d{1,3}',other['text'])
                      and 0<=other['bbox'][0]-line['bbox'][2]<45
                      and abs(other['bbox'][1]-line['bbox'][1])<10]
@@ -70,7 +70,7 @@ def boundaries(doc,year):
         page=doc[pi];found=[]
         for l in ls:
             m=HEADING.match(l['text'])
-            if m:number=int(re.sub(r'\s+','',m[1]))
+            if m:number=heading_number(m)
             elif legacy and re.fullmatch(r'\d{1,2}\.?',l['text']) and l['bbox'][1]<page.rect.height-38 and (
                 re.sub(r'[ ,_-]','',l['font']).lower().replace('mediumc','medium')==family or
                 (re.search(r'bold|heavy|demi',l['font'],re.I) and l['size']>=size*.95 and any(abs(l['bbox'][0]-x)<8 for x in edges))):
