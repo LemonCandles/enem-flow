@@ -143,6 +143,47 @@ Antes das extensões deste ensaio, os cadernos com opção de língua (2024, 1º
 
 As pendências restantes são casos que exigem revisão humana: tabelas com células mescladas, relações espaciais e alternativas com mais de uma figura. Os avisos (descrições de figuras, vínculos inferidos e notação ambígua) também exigem conferência. Nenhum desses rascunhos foi importado ou revisado. A incorporação de um novo caderno ao catálogo depende da curadoria, prevista na [etapa 8 do roteiro](plano-implementacao/proximas-etapas.md#8-curadoria-do-conteúdo-e-dos-rótulos).
 
+## Publicação automática do acervo
+
+**Decisão de 31/10/2026:** as provas do acervo vão para o site sem curadoria. O tratamento de layout fica para a etapa 3, e a curadoria para a etapa 8 do [roteiro](plano-implementacao/proximas-etapas.md).
+
+```bash
+.venv/bin/python scripts/build_archive_exams.py          # gera JSON e figuras
+.venv/bin/python -m backend.app.cli archive              # publica no banco
+make acervo                                              # os dois passos
+```
+
+**Geração** (`scripts/build_archive_exams.py`):
+
+- Uma prova por ano, aplicação, dia e língua, de 2009 em diante, no formato padrão.
+- O caderno azul é preferido. Cadernos com codificação de texto quebrada são pulados. Se o gabarito do Inep não corresponder à prova (links trocados no site oficial), o gerador tenta a cor seguinte.
+- O manifesto é montado automaticamente:
+  - áreas da época: até 2016, Humanas e Natureza no 1º dia; desde 2017, Linguagens e Humanas;
+  - duração da época;
+  - margem superior a partir dos cabeçalhos;
+  - páginas até a última questão;
+  - uma prova para cada opção de língua.
+- O gabarito é lido na coluna da língua escolhida, e respostas retificadas ("*A") são aceitas.
+- Questões já conferidas não são geradas de novo: o 2º dia de 2024 fica de fora, e do 2º dia de 2023 sai só Ciências da Natureza.
+- As saídas ficam em `data/derived/exams/<id>.json`, `<id>.report.json` e `resumo.json`, com as figuras em `data/assets/<id>/`, todas fora do Git.
+
+**Publicação** (`backend.app.cli archive`):
+
+- Importa, aprova e publica cada prova com a identidade de serviço, registrando o motivo "publicação automática sem curadoria".
+- As pendências bloqueantes ficam nos relatórios das versões, mas não impedem a publicação. Só esse comando pode publicar com pendências; a API e a curadoria continuam bloqueando.
+- Cada prova é publicada ou recusada sozinha, e provas já existentes não são tocadas.
+
+**Resultado em 31/10/2026:**
+
+- **96 provas geradas, com 8.595 questões.** Somadas aos dois lotes conferidos, o site local tem 98 provas e 8.730 questões, de 2009 a 2025.
+- **Pendências registradas:** 506, sendo 222 de layout espacial, 154 alternativas não separadas e 130 tabelas com células mescladas.
+- **Alternativas não separadas:** essas questões mostram "Alternativa não extraída; conferir original." e continuam corrigidas pela letra do gabarito.
+- **Fora do site:**
+  - 2010 regular: o Inep publica a prova "com gabarito" marcado no próprio caderno, sem gabarito em texto;
+  - 2010 e 2011 PPL: sem gabarito no acervo;
+  - 3ª aplicação de 2014, 1º dia do PPL 2014 e 2021 impresso (regular e PPL): nenhuma cor tem texto legível;
+  - 1998–2008: sem gabarito no acervo, e o formato de 63 questões não tem áreas.
+
 ## Implementação e validação
 
 - Preparador compartilhado: `backend/app/preparation/`.

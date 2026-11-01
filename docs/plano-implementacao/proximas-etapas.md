@@ -39,6 +39,7 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 - [x] **4. Definir uma taxonomia versionada** de disciplinas e temas, separada das competências e habilidades oficiais: `enem-content-v1` e matriz oficial de Matemática.
 - [x] **5. Anotar uma amostra de referência** com evidências dos vínculos com habilidades: 135 anotações técnicas e 90 habilidades candidatas. *Curadoria (etapa 8):* segunda anotação independente, discussão das divergências e adjudicação.
 - [x] **6. Publicar os rótulos** para que o painel mostre recortes com cobertura útil: disciplina e tema publicados, com a cobertura real no painel. *Curadoria (etapa 8):* revisar e publicar as habilidades.
+- [x] **Publicação automática do acervo (decisão de 31/10/2026).** As provas de 2009 a 2025 são geradas e publicadas sem curadoria com `make acervo`. São 96 provas e 8.595 questões, que ficam locais, fora do Git; os detalhes estão em [publicação automática](../preparacao-provas.md#publicação-automática-do-acervo). As 506 pendências registradas (layout espacial, alternativas não separadas e tabelas mescladas) ficam para a etapa 3. A conferência fica para a etapa 8.
 - [x] **7. Construir o conjunto inicial dos experimentos adaptativos:** `adaptive-math-reference-v1` tem 89 questões válidas de Matemática em oito temas, dentro da referência de 80–150 questões em 6–8 temas.
 
 **Critério de aceite:** o novo conteúdo tem origem e versões rastreáveis, não duplica itens canônicos e apresenta a cobertura real dos rótulos no painel. Testes verificam esses pontos, inclusive a ausência de duplicação entre cores. A revisão humana do conteúdo e das habilidades é critério da etapa 8.
@@ -64,9 +65,12 @@ A normalização usa regras e contexto, sem depender dos números das questões.
 
 ### Análise de layout
 
+O material principal são as provas publicadas automaticamente e seus relatórios de pendências. O agrupamento e a classificação dos blocos usam modelos clássicos.
+
 - Anotar blocos, páginas, posições, agrupamentos, ordem de leitura e associação das imagens e alternativas.
 - Comparar extração de coordenadas, regras de geometria, reconstrução de fontes com codificação quebrada, OCR e métodos visuais quando necessários.
 - Reservar exemplos difíceis e padrões de layout para avaliação independente.
+- Reduzir as pendências das provas publicadas: separar alternativas, estruturar tabelas mescladas e relações espaciais, reconstruir fontes com codificação quebrada e recuperar o gabarito marcado visualmente em 2010.
 - Medir localização, ordem, vínculos, integridade e tempo de correção humana.
 
 **Critério de aceite:** cada frente entrega dados no contrato acordado, comparação com uma referência, configuração versionada, métricas reproduzíveis e casos de erro. Propostas automáticas ficam como propostas até a curadoria da etapa 8.
@@ -122,7 +126,7 @@ Após estabilizar as integrações, preservar no backlog:
 **Etapa final de desenvolvimento, que reúne toda a curadoria do projeto. Dependências: parte técnica das etapas 2 a 7 e revisores independentes. Frente conjunta.**
 
 1. **Revisão pedagógica independente dos lotes publicados.** São os 90 itens de 2024 e os 45 de 2023. O revisor compara enunciados, fórmulas, tabelas, figuras, alternativas e gabaritos com a fonte, registra divergências e aprova as correções por novas versões.
-2. **Revisão e importação de novos cadernos.** Escolher entre os cadernos preparados no ensaio e resolver as pendências bloqueantes (tabelas mescladas, relações espaciais, alternativas com várias figuras) e os avisos, como as descrições de figuras. Depois, importar, aprovar e publicar. Cadernos com codificação quebrada usam outra cor legível ou o mapeamento reconstruído.
+2. **Revisão das provas publicadas automaticamente e de novos cadernos.** Escolher entre os cadernos preparados no ensaio e resolver as pendências bloqueantes (tabelas mescladas, relações espaciais, alternativas com várias figuras) e os avisos, como as descrições de figuras. Depois, importar, aprovar e publicar. Cadernos com codificação quebrada usam outra cor legível ou o mapeamento reconstruído.
 3. **Segunda anotação independente** de disciplina, tema e habilidades, sem consultar a primeira decisão. Registrar `question_id`, hash da versão, rótulos, evidência, justificativa e revisor; medir concordância; discutir e adjudicar as divergências, como as 139/2023, 163/2023 e itens interdisciplinares de Natureza.
 4. **Publicação das habilidades adjudicadas** por novas versões, atualizando a referência, a cobertura do painel e o protocolo experimental. As decisões anteriores ficam preservadas para auditoria.
 5. **Aprovação das propostas automáticas** das etapas 3 a 7: rótulos sugeridos, agrupamentos de layout, resoluções e pistas do tutor.

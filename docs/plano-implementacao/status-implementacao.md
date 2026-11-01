@@ -6,7 +6,7 @@ Atualizado em **31/10/2026**. Visão geral do andamento do [plano do projeto](en
 
 **A consolidação técnica da primeira entrega e a parte técnica da etapa 2 foram concluídas.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
 
-O catálogo disponível tem 135 questões: o segundo dia do ENEM 2024, caderno azul, com 90 questões de Natureza e Matemática, e a seção de Matemática azul de 2023, com 45. Cada item está vinculado às quatro cores da sua aplicação. Toda a curadoria, inclusive a revisão pedagógica independente, está concentrada na etapa 8, antes da publicação e do piloto. Leitores de tela e aparelhos reais continuam como pendências externas.
+O catálogo versionado tem 135 questões conferidas: o segundo dia do ENEM 2024, caderno azul, com 90 questões de Natureza e Matemática, e a seção de Matemática azul de 2023, com 45. Cada item está vinculado às quatro cores da sua aplicação. Com o acervo local, `make acervo` publica sem curadoria mais 96 provas de 2009 a 2025, com 8.595 questões. Toda a curadoria, inclusive a revisão pedagógica independente, está concentrada na etapa 8, antes da publicação e do piloto. Leitores de tela e aparelhos reais continuam como pendências externas.
 
 ## O que já está disponível
 
@@ -21,7 +21,7 @@ O catálogo disponível tem 135 questões: o segundo dia do ENEM 2024, caderno a
 
 | Frente | Estado atual | O que falta |
 | --- | --- | --- |
-| Conteúdo | Dois lotes conferidos (2024, 2º dia azul; Matemática 2023 azul) e melhorias de fidelidade na apresentação. | Na etapa 8 (curadoria): revisão pedagógica independente e importação de outros anos, aplicações e áreas. |
+| Conteúdo | Dois lotes conferidos (2024, 2º dia azul; Matemática 2023 azul) e 96 provas do acervo publicadas sem curadoria, geradas localmente. | Na etapa 8 (curadoria): revisão pedagógica independente e importação de outros anos, aplicações e áreas. |
 | Preparação de provas | Processo reutilizável, ensaiado em cadernos de layouts diferentes (1º dia com opção de língua, PPL, 2012–2024), todos lidos por completo; texto com codificação quebrada é bloqueado. | Para a etapa 3: estruturar tabelas mescladas e relações espaciais e reconstruir fontes com codificação quebrada sem cor legível. Na etapa 8 (curadoria): revisar e importar os cadernos preparados. |
 | Classificação e painel | Disciplina e tema publicados com curadoria técnica; o painel mostra a cobertura real. Habilidades estão como propostas. | Na etapa 8 (curadoria): segunda anotação independente, adjudicação e publicação das habilidades. |
 | Acessibilidade e usabilidade | Texto nativo, ampliação de figuras e navegação por teclado e em telas menores. | Conferência com leitores de tela, aparelhos reais e estudantes. |
@@ -44,7 +44,7 @@ A sequência e os critérios de aceite estão em [próximas etapas](proximas-eta
 
 ## Validação e limites
 
-A consolidação passou por 57 testes de API em SQLite e 57 em PostgreSQL; com a etapa 2, a suíte tem 74 testes, executados em SQLite. Também passou pela auditoria do caderno e validação da instalação em contêineres, persistência e recuperação. Os testes de navegador incluem o caderno inteiro, a jornada e a auditoria automática de acessibilidade. Procedimentos e execuções estão em [primeira entrega](../primeira-entrega.md). Os testes de celular realizados até aqui usam emulação de tela e não substituem o uso em aparelhos reais.
+A consolidação passou por 57 testes de API em SQLite e 57 em PostgreSQL; com a etapa 2, a suíte tem 78 testes, executados em SQLite. Também passou pela auditoria do caderno e validação da instalação em contêineres, persistência e recuperação. Os testes de navegador incluem o caderno inteiro, a jornada e a auditoria automática de acessibilidade. Procedimentos e execuções estão em [primeira entrega](../primeira-entrega.md). Os testes de celular realizados até aqui usam emulação de tela e não substituem o uso em aparelhos reais.
 
 Essas evidências demonstram o funcionamento técnico dos incrementos verificados. A revisão pedagógica independente, a validação manual de acessibilidade e o piloto continuam necessários. Ainda não há resultados de aprendizagem ou avaliação de eficácia educacional.
 
