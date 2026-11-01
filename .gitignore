@@ -10,7 +10,7 @@
 /.codex/
 
 # Python: ambientes, bytecode, caches, cobertura e empacotamento.
-/.venv/
+/.venv
 /venv/
 __pycache__/
 *.py[cod]
@@ -28,7 +28,7 @@ coverage.xml
 /htmlcov/
 
 # Node.js e Next.js: dependências, builds e arquivos gerados pelo framework.
-node_modules/
+node_modules
 .next/
 /frontend/out/
 /frontend/coverage/
