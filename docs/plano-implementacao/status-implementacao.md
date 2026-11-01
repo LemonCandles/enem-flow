@@ -8,6 +8,8 @@ Atualizado em **01/11/2026**. Visão geral do andamento do [plano do projeto](en
 
 O catálogo versionado tem 135 questões conferidas: o segundo dia do ENEM 2024, caderno azul, com 90 questões de Natureza e Matemática, e a seção de Matemática azul de 2023, com 45. Cada item está vinculado às quatro cores da sua aplicação. Com o acervo local, `make acervo` permite publicar cadernos automáticos; o ensaio inicial registrou 96 provas de 2009 a 2025, com 8.595 questões. A origem automática e as pendências conhecidas ficam visíveis no site. Os arquivos gerados não acompanham o clone. Toda a curadoria, inclusive a revisão pedagógica independente, está concentrada na etapa 8, antes da publicação e do piloto. Leitores de tela e aparelhos reais continuam como pendências externas.
 
+O lote processado recebido foi incorporado em 01/11/2026: **98 provas e 8.730 questões estão publicadas na instalação local**, incluindo os dois lotes conferidos. As 96 provas automáticas passaram pela conferência de fontes, gabaritos, LaTeX e figuras e pelo ensaio de resolução em uma cópia isolada. Há 506 pendências de apresentação em 489 questões, identificadas no site. Os detalhes estão em [incorporação do acervo](../banco-classificacao.md#incorporação-do-acervo-processado).
+
 ## O que já está disponível
 
 - **Jornada do estudante:** conta individual, preferências, catálogo, resolução de provas, respostas salvas, retomada, correção e histórico.
@@ -21,7 +23,7 @@ O catálogo versionado tem 135 questões conferidas: o segundo dia do ENEM 2024,
 
 | Frente | Estado atual | O que falta |
 | --- | --- | --- |
-| Conteúdo | Dois lotes conferidos (2024, 2º dia azul; Matemática 2023 azul), banco textual de 1998–2025 e geração/publicação local de cadernos automáticos. O ensaio inicial gerou 96 provas. | Na etapa 8 (curadoria): revisão pedagógica independente, conferência dos cadernos automáticos e importação de outros anos, aplicações e áreas. |
+| Conteúdo | Dois lotes conferidos e 96 provas automáticas instaladas; 98 provas/8.730 questões no site local. Banco textual de 1998–2025 preservado. | Nas etapas 3 e 8: resolver as 506 pendências em 489 questões, fazer a revisão pedagógica independente e conferir os cadernos automáticos; recuperar os casos ainda sem gabarito ou texto legível. |
 | Preparação de provas | Processo reutilizável, ensaiado em cadernos de layouts diferentes (1º dia com opção de língua, PPL, 2012–2024), todos lidos por completo; texto com codificação quebrada é bloqueado. | Para a etapa 3: estruturar tabelas mescladas e relações espaciais e reconstruir fontes com codificação quebrada sem cor legível. Na etapa 8 (curadoria): revisar e importar os cadernos preparados. |
 | Classificação e painel | Disciplina e tema publicados com curadoria técnica; o painel mostra a cobertura real. Habilidades estão como propostas. | Na etapa 8 (curadoria): segunda anotação independente, adjudicação e publicação das habilidades. |
 | Acessibilidade e usabilidade | Texto nativo, ampliação de figuras e navegação por teclado e em telas menores. | Conferência com leitores de tela, aparelhos reais e estudantes. |

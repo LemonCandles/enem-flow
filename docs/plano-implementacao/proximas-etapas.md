@@ -55,6 +55,8 @@ A normalização usa regras e contexto, sem depender dos números das questões.
 
 A integração das duas frentes preserva os vínculos entre cores e os relatórios de preparação ao acrescentar classificação. O índice reconstruído reúne 44.524 ocorrências e 43.439 identidades conservadoras, com duas fontes sinalizadas; dois links oficiais permanecem indisponíveis. A matriz oficial pode ser recuperada pelo manifesto e o banco local pode ser montado somente para leitura. Evidências e limites da integração estão em [banco e classificação](../banco-classificacao.md#validação-da-integração).
 
+Em 01/11/2026, o acervo processado recebido foi incorporado: a instalação local tem 98 provas e 8.730 questões. As 96 provas automáticas passaram pela conferência de fontes, gabaritos, LaTeX e figuras e pelo ensaio integral de resolução em uma cópia isolada. Permanecem 506 pendências de apresentação em 489 questões, para as etapas 3 e 8. [Registro e limites](../banco-classificacao.md#incorporação-do-acervo-processado).
+
 ## 3. Iniciar os experimentos de Dados e IA
 
 **Próxima frente de desenvolvimento. Dependências: contratos da etapa 2 e a referência técnica `adaptive-math-reference-v1`. A revisão humana das amostras fica na etapa 8. Duas frentes podem avançar em paralelo.**
@@ -173,7 +175,7 @@ Itens fora das etapas, sem data, para retomar quando houver oportunidade.
 
 | Item | O que fazer | Por quê |
 | --- | --- | --- |
-| Checagem automática das provas geradas | Para cada prova publicada por `make acervo`, sem navegador: iniciar uma tentativa, marcar o gabarito em todas as questões, finalizar e conferir 100% de acerto (anuladas à parte). Conferir também a quantidade de questões, as figuras servidas e a ausência de texto embaralhado. Roda depois do `make acervo` e é pulada em clones sem o acervo. | Os testes de navegador cobrem só os dois lotes conferidos. Essa checagem pega erros de gabarito e numeração nas provas geradas, como o do gabarito do espanhol corrigido em 31/10/2026. |
+| Integrar a checagem das provas geradas ao fluxo | O ensaio integral foi executado em 01/11/2026 nas 96 provas, com respostas pelo gabarito e finalização idempotente, usando uma cópia isolada. Transformá-lo em comando versionado após `make acervo`, incluindo fontes, língua, figuras e texto ilegível; pular em clones sem o acervo. | A validação deste lote está registrada, mas a execução ainda precisa ser incorporada ao fluxo reutilizável. O teste verifica instalação/correção; a fidelidade visual e pedagógica continua na etapa 8. |
 
 ## Referências locais
 

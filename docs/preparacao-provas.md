@@ -185,6 +185,8 @@ make acervo                                              # os dois passos
   - 3ª aplicação de 2014, 1º dia do PPL 2014 e 2021 impresso (regular e PPL): nenhuma cor tem texto legível;
   - 1998–2008: sem gabarito no acervo, e o formato de 63 questões não tem áreas.
 
+**Instalação em 01/11/2026:** os 96 cadernos processados recebidos foram conferidos e instalados no banco local, com as figuras referenciadas e a correção de áreas de 2009 já integrada. O catálogo passou a oferecer 98 provas e 8.730 questões, incluindo os lotes conferidos. As respostas foram comparadas com cada gabarito oficial e as 96 provas passaram por início, preenchimento, finalização e repetição da finalização em uma cópia isolada. O resultado foi consistente em todas, com as anuladas excluídas. As 506 pendências afetam 489 questões e continuam sinalizadas. [Registro da incorporação](banco-classificacao.md#incorporação-do-acervo-processado).
+
 ## Implementação e validação
 
 - Preparador compartilhado: `backend/app/preparation/`.

@@ -90,6 +90,8 @@ make acervo
 
 Os JSONs ficam em `data/derived/exams/` e as figuras em `data/assets/<prova>/`, ambos fora do Git. O comando é idempotente: provas já publicadas não são alteradas. Detalhes, escolhas e limites estão em [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
 
+Em 01/11/2026, o lote já processado recebido foi conferido e instalado: **98 provas e 8.730 questões no site local**, incluindo os dois lotes conferidos. As 96 provas automáticas passaram pelo ensaio de resolução em uma cópia isolada; as 506 pendências de apresentação permanecem sinalizadas. [Incorporação e verificações](docs/banco-classificacao.md#incorporação-do-acervo-processado). Os derivados e o banco de execução continuam locais; esses dados não acompanham o clone.
+
 ## Preparar novas provas
 
 Para um JSON no [contrato de importação](docs/content-schema.json):
