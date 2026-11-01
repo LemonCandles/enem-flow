@@ -47,6 +47,21 @@ O adaptador offline `scripts/exam_pdf.py` usa PyMuPDF, regiões, cabeçalhos, po
 
 A especificação OpenAPI executável está em `/openapi.json` e `/docs` na API. Erros usam `detail`; validações acrescentam `errors`, sem devolver a entrada bruta de senhas.
 
+As rotas seguem a organização de [aplicações maiores do FastAPI](https://fastapi.tiangolo.com/pt/tutorial/bigger-applications/). `backend/app/main.py` só monta a aplicação: log, política de requisições, tratamento de validação, arquivos de `/assets` e inclusão dos routers. Cada funcionalidade tem seu router em `backend/app/routers/`:
+
+| Router | Rotas |
+| --- | --- |
+| `health.py` | `/health` |
+| `auth.py` | `/auth/*` e limite de tentativas |
+| `account.py` | `/me` e `/me/preferences` |
+| `exams.py` | `/exams` e `/exams/{id}` |
+| `runs.py` | `/exam-runs/*` |
+| `progress.py` | `/me/history` e `/me/progress` |
+| `admin/content.py` | importação, edição, revisão, publicação e auditoria em `/admin` |
+| `admin/archive.py` | `/admin/archive/*` e `/admin/taxonomy` |
+
+A lógica de domínio continua nos módulos de `backend/app/`, como `content.py`, `scoring.py`, `security.py` e `preparation/`, que também servem a CLI e os scripts.
+
 | Operação | Acesso | Comportamento |
 | --- | --- | --- |
 | `POST /auth/register`, `/auth/login` | Público, limitado por tentativas | Cadastro ou sessão por cookie |
