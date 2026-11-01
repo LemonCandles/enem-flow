@@ -2,16 +2,14 @@
 import copy
 import time
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 from sqlalchemy import select, update
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
 
 from .. import models as m, schemas as s
-from ..content import public_question
-from ..db import get_db
-from ..scoring import score
-from ..security import current_user
+from ..dependencies import CurrentUser, SessionDep
+from ..services.content import public_question
+from ..services.scoring import score
 from .exams import summary, visible_exam
 
 router = APIRouter(prefix="/exam-runs", tags=["execuções"])
@@ -38,7 +36,7 @@ def run_data(run):
 
 
 @router.post("", status_code=201)
-def start_run(payload: s.StartRun, user: m.User = Depends(current_user), db: Session = Depends(get_db, scope="function")):
+def start_run(payload: s.StartRun, user: CurrentUser, db: SessionDep):
     previous = db.scalar(select(m.ExamRun).where(m.ExamRun.user_id == user.id, m.ExamRun.start_key == payload.idempotency_key))
     if previous:
         if previous.exam_id != payload.exam_id:
@@ -64,12 +62,12 @@ def start_run(payload: s.StartRun, user: m.User = Depends(current_user), db: Ses
 
 
 @router.get("/{run_id}")
-def get_run(run_id: str, user: m.User = Depends(current_user), db: Session = Depends(get_db, scope="function")):
+def get_run(run_id: str, user: CurrentUser, db: SessionDep):
     return run_data(owned_run(db, run_id, user.id))
 
 
 @router.put("/{run_id}/answers/{item_id}")
-def save_answer(run_id: str, item_id: str, payload: s.Answer, user: m.User = Depends(current_user), db: Session = Depends(get_db, scope="function")):
+def save_answer(run_id: str, item_id: str, payload: s.Answer, user: CurrentUser, db: SessionDep):
     run = owned_run(db, run_id, user.id, lock=True)
     if run.finished_at is not None:
         raise HTTPException(409, "Esta prova já foi finalizada e não aceita alterações.")
@@ -80,7 +78,7 @@ def save_answer(run_id: str, item_id: str, payload: s.Answer, user: m.User = Dep
 
 
 @router.post("/{run_id}/finish")
-def finish_run(run_id: str, user: m.User = Depends(current_user), db: Session = Depends(get_db, scope="function")):
+def finish_run(run_id: str, user: CurrentUser, db: SessionDep):
     run = owned_run(db, run_id, user.id, lock=True)
     if run.finished_at is not None:
         return run_data(run)

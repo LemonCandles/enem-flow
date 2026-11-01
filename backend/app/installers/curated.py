@@ -5,13 +5,13 @@ import json
 from fastapi import HTTPException
 from sqlalchemy import func, select
 
-from .db import ROOT
-from .content import import_exam, publish_exam, validate_assets
-from .models import Exam, QuestionVersion, Review
-from .schemas import ExamImport, QuestionContent
-from .presentation import content_fingerprint, is_previous_bundled_content
-from .identity import identify
-from .bundled_content import bundled_reviewer
+from ..core.config import ROOT
+from ..services.content import import_exam, publish_exam, validate_assets
+from ..models import Exam, QuestionVersion, Review
+from ..schemas import ExamImport, QuestionContent
+from ..services.presentation import content_fingerprint, is_previous_bundled_content
+from ..services.identity import identify
+from .bundled import bundled_reviewer
 
 
 def classified(payload):
@@ -75,6 +75,6 @@ def install_catalog(db,publish=False):
                     db.add(Review(user_id=reviewer.id,target_id=key,action='approve',reason=reason))
                 publish_exam(db,exam,reviewer.id,reason)
             else:exam.status='in_review'
-    from .models import CanonicalQuestion
+    from ..models import CanonicalQuestion
     stats['canonical_questions']=db.scalar(select(func.count()).select_from(CanonicalQuestion))
     return stats

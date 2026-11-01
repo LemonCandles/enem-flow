@@ -2,7 +2,7 @@
 from functools import lru_cache
 import json
 
-from .db import ROOT
+from ..core.config import ROOT
 
 
 @lru_cache(maxsize=1)

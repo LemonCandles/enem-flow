@@ -8,8 +8,8 @@ import unicodedata
 from fastapi import HTTPException
 from sqlalchemy import select
 
-from .db import ROOT
-from .models import CanonicalQuestion
+from ..core.config import ROOT
+from ..models import CanonicalQuestion
 
 
 def normalized(text):

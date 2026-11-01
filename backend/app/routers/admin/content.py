@@ -1,25 +1,23 @@
 """Curation of versioned content: import, preview, edit, review, publish and audit."""
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
 
 from ... import models as m, schemas as s
-from ...content import exam_summary, import_exam, publish_exam, validate_assets
-from ...db import get_db
+from ...dependencies import AdminUser, SessionDep
 from ...preparation import blocking_issues, prepare_content, prepare_exam
-from ...security import admin_user
+from ...services.content import exam_summary, import_exam, publish_exam, validate_assets
 
 router = APIRouter(tags=["curadoria"])
 
 
 @router.get("/exams")
-def admin_exams(user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
+def admin_exams(db: SessionDep):
     return [exam_summary(db, e) for e in db.scalars(select(m.Exam).order_by(m.Exam.created_at.desc()))]
 
 
 @router.post("/imports", status_code=201)
-def admin_import(payload: s.ExamImport, user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
+def admin_import(payload: s.ExamImport, user: AdminUser, db: SessionDep):
     try:
         prepared, report = prepare_exam(payload)
     except ValueError as error:
@@ -30,7 +28,7 @@ def admin_import(payload: s.ExamImport, user: m.User = Depends(admin_user), db: 
 
 
 @router.post("/imports/prepare")
-def preview_import(payload: s.ExamImport, user: m.User = Depends(admin_user)):
+def preview_import(payload: s.ExamImport):
     """Read-only preview uses the exact same preparation as the actual import."""
     try:
         prepared, report = prepare_exam(payload)
@@ -40,7 +38,7 @@ def preview_import(payload: s.ExamImport, user: m.User = Depends(admin_user)):
 
 
 @router.get("/exams/{exam_id}")
-def admin_exam(exam_id: str, user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
+def admin_exam(exam_id: str, db: SessionDep):
     exam = db.get(m.Exam, exam_id)
     if not exam:
         raise HTTPException(404, "Prova não encontrada.")
@@ -50,7 +48,7 @@ def admin_exam(exam_id: str, user: m.User = Depends(admin_user), db: Session = D
 
 
 @router.put("/questions/{version_id}")
-def edit_question(version_id: str, payload: s.EditQuestion, user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
+def edit_question(version_id: str, payload: s.EditQuestion, user: AdminUser, db: SessionDep):
     previous = db.get(m.QuestionVersion, version_id)
     if not previous:
         raise HTTPException(404, "Versão não encontrada.")
@@ -80,7 +78,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: m.User = Depen
 
 
 @router.post("/reviews/{target_id}")
-def review(target_id: str, payload: s.ReviewRequest, user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
+def review(target_id: str, payload: s.ReviewRequest, user: AdminUser, db: SessionDep):
     exam = db.get(m.Exam, target_id)
     if exam:
         if payload.action == "publish":
@@ -108,7 +106,7 @@ def review(target_id: str, payload: s.ReviewRequest, user: m.User = Depends(admi
 
 
 @router.get("/audit")
-def audit(user: m.User = Depends(admin_user), db: Session = Depends(get_db, scope="function")):
+def audit(db: SessionDep):
     return [{"id": r.id, "target_id": r.target_id, "action": r.action, "reason": r.reason,
              "reviewer_id": r.user_id, "created_at": r.created_at}
             for r in db.scalars(select(m.Review).order_by(m.Review.created_at.desc()).limit(200))]

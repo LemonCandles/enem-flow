@@ -4,8 +4,8 @@ from pathlib import Path
 
 from sqlalchemy import func, select
 
-from backend.app.catalog import classified
-from backend.app.identity import signatures
+from backend.app.installers.curated import classified
+from backend.app.services.identity import signatures
 from backend.app.models import CanonicalQuestion, QuestionVersion
 from scripts.link_booklets import MIN_CONTAINMENT, MIN_MARGIN, pair, shingles
 
@@ -70,7 +70,7 @@ def test_import_of_a_linked_color_reuses_identity_and_checks_its_answer_key(admi
         # The other PDF yields slightly different text, so the signature alone would not match.
         q['content']['statement'] += ' (caderno amarelo)'
     links = {('c' * 64, order[n]): (original[n], answer) for n, answer in ((1, 'B'), (2, 'C'), (3, None))}
-    monkeypatch.setattr('backend.app.identity.booklet_links', lambda: links)
+    monkeypatch.setattr('backend.app.services.identity.booklet_links', lambda: links)
 
     wrong = copy.deepcopy(color)
     wrong['id'] = 'gabarito-divergente'

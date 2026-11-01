@@ -8,12 +8,12 @@ import pytest
 from fastapi import HTTPException
 from sqlalchemy import func,select
 
-from backend.app.catalog import classified, install_catalog
-from backend.app.content import import_exam
-from backend.app.identity import signatures
+from backend.app.installers.curated import classified, install_catalog
+from backend.app.services.content import import_exam
+from backend.app.services.identity import signatures
 from backend.app.models import CanonicalQuestion,Exam,ExamRun,QuestionVersion,User
 from backend.app.schemas import ExamImport
-from backend.app.presentation import content_fingerprint
+from backend.app.services.presentation import content_fingerprint
 from scripts.archive_enem import metadata,parse_year
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -138,7 +138,7 @@ def test_2023_curated_lot_matches_source_and_is_reproducible():
 
 
 def test_archive_requires_admin_and_returns_native_text(admin,student,monkeypatch,tmp_path):
-    from backend.app import archive
+    from backend.app.services import archive_reader as archive
     monkeypatch.setattr(archive,'ROOT',tmp_path)
     source=dict(id='abc',year=1998,application='regular',url='https://download.inep.gov.br/original.pdf',path='enem/1998/prova.pdf')
     catalog=tmp_path/'data/sources/catalogo/acervo.json';catalog.parent.mkdir(parents=True);catalog.write_text(json.dumps(dict(files=[source|dict(status='downloaded',variant='padrao',role='prova') ])))

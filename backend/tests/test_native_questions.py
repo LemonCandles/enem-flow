@@ -7,11 +7,11 @@ import pytest
 from fastapi import HTTPException
 from sqlalchemy import select
 
-from backend.app.bundled_content import bundled_reviewer, refresh_bundle
-from backend.app.content import public_question, validate_assets
+from backend.app.installers.bundled import bundled_reviewer, refresh_bundle
+from backend.app.services.content import public_question, validate_assets
 from backend.app.models import Exam, ExamRun
-from backend.app import presentation
-from backend.app.presentation import content_fingerprint, readable_content
+from backend.app.services import presentation
+from backend.app.services.presentation import content_fingerprint, readable_content
 from backend.app.schemas import ExamImport, QuestionContent
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -139,7 +139,7 @@ def test_previous_native_snapshot_adapts_without_rewriting_or_overriding_edits()
 
 
 def test_refresh_native_v1_publishes_only_fifteen_versions(database):
-    from backend.app.content import import_exam
+    from backend.app.services.content import import_exam
     from backend.app.models import QuestionVersion, Review
     before = ExamImport.model_validate_json((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())
     after = ExamImport.model_validate_json((ROOT / 'data/enem-2024-dia2-azul.json').read_text())
@@ -158,7 +158,7 @@ def test_refresh_native_v1_publishes_only_fifteen_versions(database):
 
 @pytest.mark.parametrize('edit', ['block', 'answer'])
 def test_refresh_refuses_custom_content_even_if_statement_is_unchanged(database, edit):
-    from backend.app.content import import_exam
+    from backend.app.services.content import import_exam
     from backend.app.models import QuestionVersion
     before = ExamImport.model_validate_json((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())
     after = ExamImport.model_validate_json((ROOT / 'data/enem-2024-dia2-azul.json').read_text())

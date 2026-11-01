@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from backend.app.archive_exams import publish_generated
+from backend.app.installers.generated import publish_generated
 from backend.app.models import Exam, QuestionVersion
 from backend.app.preparation import blocking_issues, prepare_exam
 from scripts.build_archive_exams import areas, booklet_label, exam_id

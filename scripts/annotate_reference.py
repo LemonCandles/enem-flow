@@ -6,7 +6,7 @@ import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from backend.app.presentation import content_fingerprint
+from backend.app.services.presentation import content_fingerprint
 
 # Tema (0–7), habilidade candidata e evidência da operação exigida no item.
 # Habilidades ficam propostas: uma conferência técnica não é revisão independente.

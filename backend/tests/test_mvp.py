@@ -12,7 +12,7 @@ from sqlalchemy import func, select
 from backend.app.main import app
 from backend.app.models import AuthSession, ExamRun, LearningEvent, RecoveryToken, User
 from backend.app.schemas import ExamImport
-from backend.app.security import digest
+from backend.app.core.security import digest
 
 
 def start(student):

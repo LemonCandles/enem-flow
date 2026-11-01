@@ -1,25 +1,26 @@
-"""Application assembly: logging, request policy, static assets and feature routers."""
-import logging
-import os
-import secrets
-import time
+"""Application assembly: lifespan, request policy, validation errors, static assets and feature routers."""
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from .db import ROOT
+from .core.config import ROOT
+from .middleware import request_policy
 from .routers import account, admin, auth, exams, health, progress, runs
 
-logger = logging.getLogger("enem_flow")
-logger.setLevel(logging.INFO)
-if not logger.handlers:
-    handler = logging.StreamHandler()
-    handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
-    logger.addHandler(handler)
-logger.propagate = False
+# Documentation only: groups shown in /docs, in this order.
+TAGS = [
+    {"name": "saúde", "description": "Verificação de funcionamento da API e do banco."},
+    {"name": "autenticação", "description": "Cadastro, entrada, saída e redefinição de senha por link de uso único. Limitado por tentativas."},
+    {"name": "conta", "description": "Dados e preferências da conta conectada."},
+    {"name": "provas", "description": "Catálogo público de provas publicadas, sem gabarito."},
+    {"name": "execuções", "description": "Tentativas de prova: início idempotente, respostas salvas e finalização com correção."},
+    {"name": "desempenho", "description": "Histórico e agregações de desempenho da própria conta."},
+    {"name": "curadoria", "description": "Importação, edição versionada, revisão, publicação e auditoria. Exige papel de curadoria."},
+    {"name": "acervo", "description": "Consulta somente leitura às extrações do acervo oficial e à taxonomia. Exige papel de curadoria."},
+]
 
 
 @asynccontextmanager
@@ -29,29 +30,9 @@ async def lifespan(app):
     yield
 
 
-app = FastAPI(title="Enem Flow", version="0.1.0", lifespan=lifespan)
+app = FastAPI(title="Enem Flow", version="0.1.0", lifespan=lifespan, openapi_tags=TAGS)
 app.mount("/assets", StaticFiles(directory=ROOT / "data/assets"), name="assets")
-
-
-@app.middleware("http")
-async def request_policy(request: Request, call_next):
-    request_id = secrets.token_hex(8)
-    if request.method not in {"GET", "HEAD", "OPTIONS"}:
-        allowed = set(os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(","))
-        origin = request.headers.get("origin")
-        if origin and origin not in allowed:
-            return JSONResponse({"detail": "Origem da requisição não autorizada."}, status_code=403)
-        if len(await request.body()) > 4_000_000:
-            return JSONResponse({"detail": "O conteúdo excede o limite de 4 MB."}, status_code=413)
-    start = time.monotonic()
-    response = await call_next(request)
-    response.headers["X-Request-ID"] = request_id
-    response.headers["Cache-Control"] = "no-store"
-    response.headers["X-Content-Type-Options"] = "nosniff"
-    response.headers["Referrer-Policy"] = "same-origin"
-    logger.info("request=%s method=%s path=%s status=%s ms=%.1f", request_id, request.method,
-                request.url.path, response.status_code, (time.monotonic() - start) * 1000)
-    return response
+app.middleware("http")(request_policy)
 
 
 @app.exception_handler(RequestValidationError)

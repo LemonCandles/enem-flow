@@ -3,11 +3,11 @@ from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from .db import ROOT
-from .models import Exam, QuestionVersion, Review
-from .schemas import ExamImport
+from ..core.config import ROOT
+from ..models import Exam, QuestionVersion, Review
+from ..schemas import ExamImport
 from .presentation import readable_content
-from .preparation import blocking_issues
+from ..preparation import blocking_issues
 from .identity import identify
 
 

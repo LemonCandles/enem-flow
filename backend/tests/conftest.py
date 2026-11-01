@@ -6,10 +6,10 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 
-from backend.app.db import Base, get_db
+from backend.app.core.db import Base, get_db
 from backend.app.main import app
 from backend.app.models import User
-from backend.app.security import hash_password
+from backend.app.core.security import hash_password
 
 
 @pytest.fixture

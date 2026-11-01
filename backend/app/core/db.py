@@ -1,12 +1,9 @@
 """Database and request-scoped units of work."""
-import os
-from pathlib import Path
-
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-ROOT = Path(__file__).resolve().parents[2]
-DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{ROOT / 'enem-flow.db'}")
+from .config import DATABASE_URL
+
 engine = create_engine(
     DATABASE_URL,
     connect_args={"check_same_thread": False, "timeout": 30} if DATABASE_URL.startswith("sqlite") else {},

@@ -1,14 +1,13 @@
 """Account creation, sign-in, sign-out and password recovery."""
 import time
 
-from fastapi import APIRouter, Depends, HTTPException, Request, Response
+from fastapi import APIRouter, HTTPException, Request, Response
 from sqlalchemy import delete, select, update
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
 
 from .. import models as m, schemas as s
-from ..db import get_db
-from ..security import COOKIE, digest, hash_password, new_session, user_data, verify_password
+from ..core.security import COOKIE, digest, hash_password, new_session, user_data, verify_password
+from ..dependencies import SessionDep
 
 router = APIRouter(prefix="/auth", tags=["autenticação"])
 
@@ -35,7 +34,7 @@ def throttle(db, request):
 
 
 @router.post("/register", status_code=201)
-def register(payload: s.Register, response: Response, request: Request, db: Session = Depends(get_db, scope="function")):
+def register(payload: s.Register, response: Response, request: Request, db: SessionDep):
     throttle(db, request)
     user = m.User(email=payload.email, name=payload.name, password_hash=hash_password(payload.password))
     db.add(user)
@@ -49,7 +48,7 @@ def register(payload: s.Register, response: Response, request: Request, db: Sess
 
 
 @router.post("/login")
-def login(payload: s.Login, response: Response, request: Request, db: Session = Depends(get_db, scope="function")):
+def login(payload: s.Login, response: Response, request: Request, db: SessionDep):
     throttle(db, request)
     user = db.scalar(select(m.User).where(m.User.email == payload.email))
     # Run an equivalent hash even when the address is unknown.
@@ -64,7 +63,7 @@ def login(payload: s.Login, response: Response, request: Request, db: Session = 
 
 
 @router.post("/logout", status_code=204)
-def logout(request: Request, response: Response, db: Session = Depends(get_db, scope="function")):
+def logout(request: Request, response: Response, db: SessionDep):
     token = request.cookies.get(COOKIE)
     if token:
         db.execute(delete(m.AuthSession).where(m.AuthSession.token_hash == digest(token)))
@@ -72,7 +71,7 @@ def logout(request: Request, response: Response, db: Session = Depends(get_db, s
 
 
 @router.post("/reset-password")
-def reset_password(payload: s.ResetPassword, request: Request, db: Session = Depends(get_db, scope="function")):
+def reset_password(payload: s.ResetPassword, request: Request, db: SessionDep):
     throttle(db, request)
     # Consume with a conditional DELETE so concurrent replays cannot both succeed.
     token = db.execute(delete(m.RecoveryToken).where(m.RecoveryToken.token_hash == digest(payload.token),
