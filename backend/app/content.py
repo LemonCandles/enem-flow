@@ -53,17 +53,23 @@ def exam_summary(db: Session, exam: Exam):
     rows = db.execute(select(QuestionVersion.id, QuestionVersion.status, QuestionVersion.content["area"].as_string())
                       .where(QuestionVersion.id.in_(exam.items))).all() if exam.items else []
     found = {key: (status, area) for key, status, area in rows}
+    automatic=exam.source.get('automatic_archive',{})
+    quality={"origin":"automatic" if automatic else "reviewed",
+             "review_status":automatic.get('review_status','reviewed'),
+             "blocking_issues":automatic.get('blocking_issues',0)}
     return {"id": exam.id, "title": exam.title, "year": exam.year,
             "application": exam.application, "booklet": exam.booklet, "day": exam.day,
             "kind": exam.kind, "expected_items": exam.expected_items, "item_count": len(exam.items),
             "duration_minutes": exam.duration_minutes, "status": exam.status,
             "areas": sorted({found[key][1] for key in exam.items if key in found}),
             "approved_items": sum(found[key][0] == "approved" for key in exam.items if key in found),
-            "source": exam.source}
+            "source": exam.source, "content_quality":quality}
 
 
 def publish_exam(db: Session, exam: Exam, user_id: str, reason: str, allow_pending: bool = False):
     """`allow_pending` is reserved for the automatic archive publication, which has no curation step."""
+    if allow_pending and not exam.source.get('automatic_archive'):
+        raise HTTPException(409,'Publicação automática exige a origem e o estado de revisão registrados.')
     if len(exam.items) != exam.expected_items:
         raise HTTPException(409, "A prova está incompleta para o total declarado.")
     for key in exam.items:
@@ -73,6 +79,8 @@ def publish_exam(db: Session, exam: Exam, user_id: str, reason: str, allow_pendi
         if not allow_pending and blocking_issues(question.content):
             raise HTTPException(409, "Há pendências bloqueantes de preparação. Corrija e revise as versões antes de publicar.")
         validate_assets(question.content)
+    if not allow_pending and exam.source.get('automatic_archive'):
+        exam.source={**exam.source,'automatic_archive':{**exam.source['automatic_archive'],'review_status':'reviewed','blocking_issues':0}}
     exam.status = "published"
     db.add(Review(user_id=user_id, target_id=exam.id, action="publish", reason=reason))
 
@@ -82,6 +90,7 @@ def public_question(item: dict, finished: bool):
     content = readable_content(item['question_id'], item["content"])
     out = {key: content[key] for key in ("number", "area", "statement", "images", "alternatives", "labels", "page", "original_layout")}
     out['blocks'] = content.get('blocks', [])
+    out['preparation_errors'] = len(blocking_issues(content))
     out.update(id=item["id"], question_id=item["question_id"], canonical_id=item.get('canonical_id') or item['question_id'], version=item["version"])
     if finished:
         out.update(correct_answer=content["correct_answer"], annulled=content["annulled"])
