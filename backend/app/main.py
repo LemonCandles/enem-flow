@@ -18,6 +18,7 @@ from .content import exam_summary, import_exam, public_question, publish_exam, v
 from .db import ROOT, get_db
 from .scoring import aggregate, score
 from .preparation import blocking_issues, prepare_content, prepare_exam
+from .identity import identify, validate_exam_identities, validate_revision_identity
 from .security import COOKIE, admin_user, current_user, digest, hash_password, new_session, user_data, verify_password
 
 logger = logging.getLogger("enem_flow")
@@ -341,15 +342,22 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: m.User = Depen
     last = db.scalar(select(func.max(m.QuestionVersion.version)).where(m.QuestionVersion.question_id == previous.question_id))
     if last != previous.version:
         raise HTTPException(409, "Há uma versão mais recente. Atualize a tela antes de editar.")
+    canonical_id = previous.canonical_id or identify(db, previous.content)
+    validate_revision_identity(db, content, canonical_id)
+    linked_exams = [exam for exam in db.scalars(select(m.Exam)) if previous.id in exam.items]
+    for exam in linked_exams:
+        items = [(canonical_id, content) if key == previous.id else
+                 (q.canonical_id, q.content) for key in exam.items
+                 if (q := db.get(m.QuestionVersion, key))]
+        validate_exam_identities(items)
     version = last + 1
     question = m.QuestionVersion(id=f"{previous.question_id}:{version}", question_id=previous.question_id,
-                                canonical_id=previous.canonical_id, version=version, content=content)
+                                canonical_id=canonical_id, version=version, content=content)
     db.add(question)
     # Published exams are withdrawn until the new version is reviewed and published again.
-    for exam in db.scalars(select(m.Exam)):
-        if previous.id in exam.items:
-            exam.items = [question.id if key == previous.id else key for key in exam.items]
-            exam.status = "in_review"
+    for exam in linked_exams:
+        exam.items = [question.id if key == previous.id else key for key in exam.items]
+        exam.status = "in_review"
     db.add(m.Review(user_id=user.id, target_id=question.id, action="edit", reason=payload.reason))
     try:
         db.flush()

@@ -8,7 +8,7 @@ from .models import Exam, QuestionVersion, Review
 from .schemas import ExamImport
 from .presentation import readable_content
 from .preparation import blocking_issues
-from .identity import identify
+from .identity import identify, validate_exam_identities
 
 
 def validate_assets(content: dict):
@@ -72,6 +72,7 @@ def publish_exam(db: Session, exam: Exam, user_id: str, reason: str, allow_pendi
         raise HTTPException(409,'Publicação automática exige a origem e o estado de revisão registrados.')
     if len(exam.items) != exam.expected_items:
         raise HTTPException(409, "A prova está incompleta para o total declarado.")
+    identities = []
     for key in exam.items:
         question = db.get(QuestionVersion, key)
         if not question or question.status != "approved":
@@ -79,6 +80,8 @@ def publish_exam(db: Session, exam: Exam, user_id: str, reason: str, allow_pendi
         if not allow_pending and blocking_issues(question.content):
             raise HTTPException(409, "Há pendências bloqueantes de preparação. Corrija e revise as versões antes de publicar.")
         validate_assets(question.content)
+        identities.append((question.canonical_id, question.content))
+    validate_exam_identities(identities)
     if not allow_pending and exam.source.get('automatic_archive'):
         exam.source={**exam.source,'automatic_archive':{**exam.source['automatic_archive'],'review_status':'reviewed','blocking_issues':0}}
     exam.status = "published"
