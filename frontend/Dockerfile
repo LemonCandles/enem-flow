@@ -3,7 +3,7 @@ WORKDIR /app
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend/ ./
-ARG API_INTERNAL_URL=http://api:8000
+ARG API_INTERNAL_URL=http://gateway:3000/api
 ENV API_INTERNAL_URL=$API_INTERNAL_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV BUILD_STANDALONE=true
