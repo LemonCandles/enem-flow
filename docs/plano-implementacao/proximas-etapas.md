@@ -163,6 +163,14 @@ Após estabilizar as integrações, preservar no backlog:
 
 Iniciar a etapa 3 com a referência técnica de 89 questões de Matemática: uma linha de base de classificação temática e a anotação de layout dos cadernos já preparados no ensaio. Encaminhar em paralelo os testes manuais de acessibilidade descritos no final. A curadoria fica para a etapa 8; publicação e piloto, para as etapas 9 e 10.
 
+## Pendências e melhorias
+
+Itens fora das etapas, sem data, para retomar quando houver oportunidade.
+
+| Item | O que fazer | Por quê |
+| --- | --- | --- |
+| Checagem automática das provas geradas | Para cada prova publicada por `make acervo`, sem navegador: iniciar uma tentativa, marcar o gabarito em todas as questões, finalizar e conferir 100% de acerto (anuladas à parte). Conferir também a quantidade de questões, as figuras servidas e a ausência de texto embaralhado. Roda depois do `make acervo` e é pulada em clones sem o acervo. | Os testes de navegador cobrem só os dois lotes conferidos. Essa checagem pega erros de gabarito e numeração nas provas geradas, como o do gabarito do espanhol corrigido em 31/10/2026. |
+
 ## Referências locais
 
 - [Estado atual e pendências](status-implementacao.md)
