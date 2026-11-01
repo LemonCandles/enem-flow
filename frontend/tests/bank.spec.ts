@@ -8,7 +8,7 @@ test('seção de Matemática de 2023 mantém texto, tabelas, LaTeX, figuras e r�
   expect((await page.request.post('/api/auth/register', { data: { name: 'Referência Matemática', email: `math-${info.project.name}-${Date.now()}@example.com`, password: 'matematica-conteudo-nativo' } })).status()).toBe(201);
   await page.goto('/exams');
   await page.getByRole('combobox', { name: 'Todos os anos' }).selectOption('2023');
-  const card = page.locator('.exam-card').filter({ hasText: 'ENEM 2023' });
+  const card = page.locator('.exam-card').filter({ has: page.getByRole('heading', { name: 'ENEM 2023 — Matemática', exact: true }) });
   await expect(card).toContainText('Seção completa');
   await expect(card).toContainText('150 minutos');
   await card.getByRole('button', { name: 'Iniciar prova', exact: true }).click();

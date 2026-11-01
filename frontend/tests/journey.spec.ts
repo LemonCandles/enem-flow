@@ -1,4 +1,7 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+// The catalog may also hold archive exams published locally; pick the reviewed lot by its exact title.
+const examCard = (page: Page, title: string) => page.locator('.exam-card').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
 
 test('cadastro, navegação, retomada, correção e histórico individual', async ({ page }, info) => {
   // This full journey includes page loads, screenshots and recorded video.
@@ -14,7 +17,8 @@ test('cadastro, navegação, retomada, correção e histórico individual', asyn
   await expect(page.getByText('Provas concluídas', { exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-dashboard.png`, fullPage: true });
-  await page.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
+  await page.goto('/exams');
+  await examCard(page, 'ENEM 2024 · 2º dia').getByRole('button', { name: 'Iniciar prova', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
   await page.getByRole('heading', { name: 'Questão 91', exact: true }).focus();
   await page.keyboard.press('ArrowLeft');
@@ -100,7 +104,7 @@ test('tema persiste na navegação e retomada, com menu acessível no celular', 
   await page.getByRole('link', { name: 'Provas', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Banco de provas' })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
-  await page.locator('.exam-card').filter({ hasText: 'ENEM 2024' }).getByRole('button', { name: 'Iniciar prova', exact: true }).click();
+  await examCard(page, 'ENEM 2024 · 2º dia').getByRole('button', { name: 'Iniciar prova', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
   const runUrl = page.url();
   await page.getByRole('radio', { name: /^B absorve/ }).check();
