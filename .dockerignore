@@ -24,3 +24,8 @@ data/sources/enem/**/*.*
 !data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf
 data/derived/archive
 data/derived/assets
+# Provas geradas do acervo ficam locais; a imagem leva só as figuras dos lotes conferidos.
+data/derived/exams
+data/assets/*
+!data/assets/enem-2024-dia2-azul
+!data/assets/enem-2023-matematica-azul
