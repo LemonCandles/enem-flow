@@ -60,6 +60,16 @@ def tex_shape_issue(tex):
     return depth != 0
 
 
+def explicit_issues(text):
+    issues = []
+    for token in LATEX.split(text):
+        if LATEX.fullmatch(token):
+            if tex_shape_issue(token): issues.append(('invalid_latex', token))
+            if r'\ce{' in token and '(I)' in token: issues.append(('ambiguous_liquid_state', token))
+        elif re.search(r'(?<![A-Z\\])\$|\\[\[(]', token): issues.append(('invalid_latex', token))
+    return issues
+
+
 def normalize(text, chemistry=False):
     """Return selectable prose with explicit LaTeX plus unresolved issue codes."""
     issues = []
@@ -115,11 +125,7 @@ def normalize(text, chemistry=False):
         return part
 
     tokens = LATEX.split(text)
-    for token in tokens:
-        if LATEX.fullmatch(token):
-            if tex_shape_issue(token): issues.append(('invalid_latex', token))
-            if r'\ce{' in token and '(I)' in token: issues.append(('ambiguous_liquid_state', token))
-        elif re.search(r'(?<![A-Z\\])\$|\\[\[(]', token): issues.append(('invalid_latex', token))
+    issues.extend(explicit_issues(text))
     result = ''.join(part if LATEX.fullmatch(part) else plain(part) for part in tokens)
     if '\ufffd' in result: issues.append(('replacement_character', '�'))
     return result, list(dict.fromkeys(issues))

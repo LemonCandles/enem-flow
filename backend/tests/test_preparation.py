@@ -57,6 +57,36 @@ def test_broken_latex_blocks_approval_preparation(exam_payload, text):
     assert any(i['code']=='invalid_latex' and i['severity']=='error' for i in actual['layout']['preparation']['issues'])
 
 
+@pytest.mark.parametrize('location', ['statement', 'paragraph', 'math', 'alternative', 'figure'])
+def test_imported_audit_cannot_hide_invalid_latex(admin, exam_payload, database, location):
+    from backend.app.preparation import VERSION, fingerprint, blocking_issues
+    c = QuestionContent.model_validate(exam_payload['questions'][0]['content']).model_dump()
+    if location == 'statement': c['statement'] = 'Expressão $x^2 sem fechamento.'
+    elif location == 'paragraph': c['blocks'] = [dict(type='paragraph', text='Expressão $x^2 sem fechamento.')]
+    elif location == 'math': c['blocks'] = [dict(type='math', tex='x^{2')]
+    elif location == 'alternative': c['alternatives'][0]['text'] = 'Expressão $x^2 sem fechamento.'
+    else:
+        original=json.loads((ROOT/'data/enem-2024-dia2-azul.json').read_text())
+        asset=next(b['asset'] for b in original['questions'][0]['content']['blocks'] if b['type']=='image')
+        c['blocks']=[dict(type='image',asset=asset,equations=['x^{2'])]
+    c = QuestionContent.model_validate(c).model_dump()
+    c['layout'] = dict(preparation=dict(version=VERSION, changes=[], issues=[], output_sha256=fingerprint(c)))
+    # Compute after adding layout, as an external producer could do.
+    c['layout']['preparation']['output_sha256'] = fingerprint(c)
+    assert blocking_issues(c)
+    exam_payload['questions'][0]['content'] = c
+    preview=admin.post('/admin/imports/prepare',json=exam_payload)
+    assert preview.status_code == 200 and preview.json()['report']['errors'] > 0
+    assert admin.post('/admin/imports',json=exam_payload).status_code == 201
+    assert admin.post('/admin/reviews/teste-q1:1',json=dict(action='approve',reason='Auditoria externa não pode liberar conteúdo inválido')).status_code == 409
+    with database.begin() as db:
+        question=db.get(QuestionVersion,'teste-q1:1')
+        for key in db.get(Exam, 'prova-teste').items: db.get(QuestionVersion,key).status='approved'
+        # Simulate an old row whose audit was accepted before the fix.
+        old=copy.deepcopy(question.content);old['layout']['preparation']['issues']=[];question.content=old
+    assert admin.post('/admin/reviews/prova-teste',json=dict(action='publish',reason='Relatório antigo não pode contornar a validação')).status_code == 409
+
+
 def figure():
     return {'type':'image','asset':{'path':'/assets/fixture.png','alt':'Esquema científico com duas câmaras.'}}
 
