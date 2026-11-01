@@ -48,6 +48,8 @@ O validador rejeita temas fora da disciplina/área quando a importação declara
 .venv/bin/python scripts/export_reference.py
 ```
 
+Antes desses comandos, recupere a matriz local com `scripts/archive_enem.py reference` se necessário; o PDF da matriz não é versionado.
+
 O primeiro comando reproduz a conferência de apresentação de 2023 a partir da transcrição automática preservada. As decisões numéricas de anotação são explícitas em `scripts/annotate_reference.py`; não são classificações por palavras-chave. Alterar o texto de um item invalida a anotação vinculada ao hash anterior até nova conferência.
 
 ## Instalação e atualizações
@@ -72,3 +74,9 @@ Rótulos novos valem para tentativas iniciadas depois da atualização. O histó
 5. Atualizar referência, cobertura e protocolo experimental. Preservar decisões anteriores para auditoria.
 
 Os aceites ainda pendentes estão no final das [próximas etapas](plano-implementacao/proximas-etapas.md).
+
+## Evidências técnicas desta ampliação
+
+66 testes de API em SQLite e 66 em PostgreSQL, migrações e alinhamento de esquema verificados. Os 22 testes de navegador passaram em desktop e viewport móvel, incluindo as 45 questões da nova seção, ausência de erros LaTeX e consulta do acervo. As 150 expressões do caderno de 2024 e as 159 de Matemática de 2023 foram compiladas. O ensaio em contêineres verificou também a atualização do catálogo e a preservação de resposta, resultado, snapshots e recurso após recriação dos serviços.
+
+Esses ensaios são técnicos; não substituem a segunda anotação, a revisão pedagógica e os testes com tecnologias assistivas e aparelhos reais.
