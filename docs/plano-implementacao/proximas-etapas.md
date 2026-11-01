@@ -23,23 +23,24 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 
 ## 2. Ampliar o banco e a classificação revisada
 
-**Próxima frente de desenvolvimento. Dados e IA, curadoria e integração de Plataforma. As revisões externas podem avançar em paralelo.**
+**Ampliação técnica implementada em 31/10/2026.** O escopo cobre todos os anos e aplicações com arquivos vinculados pelo Inep. A publicação segue a curadoria: o acervo extraído não foi liberado automaticamente como questão revisada.
 
-1. Definir os próximos cadernos, anos e aplicações a importar, mantendo explícita a cobertura disponível.
-2. Validar e ampliar a preparação generalizada já implementada: executar a CLI e a importação com novos cadernos, conferir LaTeX, alternativas, tabelas, legendas/figuras e resolver os relatórios de ambiguidades antes de aprovar. Estender o adaptador para os layouts que os testes revelarem necessários.
-3. Identificar questões repetidas entre cores e preservar um identificador canônico com suas ocorrências.
-4. Definir uma taxonomia versionada de disciplinas e temas, separada das competências e habilidades oficiais.
-5. Anotar uma amostra de referência, discutir divergências e registrar evidências dos vínculos com habilidades.
-6. Revisar e publicar os rótulos para que o painel passe a mostrar recortes com cobertura útil.
-7. Construir o conjunto inicial dos experimentos adaptativos: a referência do plano é de 80–150 questões de Matemática em 6–8 temas, ampliando as 45 questões de Matemática atualmente disponíveis.
+- [x] Inventariar 1998–2025: 886 referências em 822 URLs, preservando aplicações, línguas e versões acessíveis. Obter 884 referências; registrar dois links oficiais que retornam 404.
+- [x] Organizar os originais por ano, aplicação, modalidade, dia, caderno e formato; separar fontes de transcrições/cache e guardar URLs, páginas oficiais e SHA-256. O acervo histórico e o banco extraído permanecem locais, conforme a política do repositório.
+- [x] Indexar 480 PDFs e 10 TXT em 44.524 ocorrências de questões, incluindo numerações repetidas de língua estrangeira. Disponibilizar a consulta na curadoria.
+- [x] Ampliar o adaptador para marcadores sobrepostos, cabeçalhos numéricos antigos e letras/números espaçados das versões acessíveis; conferir e preparar a seção de Matemática de 2023, questões 136–180, com texto nativo, LaTeX, tabelas e figuras separadas.
+- [x] Separar identidade canônica e ocorrências, mantendo números, ordem das alternativas, letras do gabarito e snapshots; recusar conflitos. Vincular os lotes conferidos ao índice do acervo. A união de duplicatas visuais ainda requer conferência.
+- [x] Definir `enem-content-v1`, com disciplinas/temas separados da matriz oficial, e registrar 135 anotações técnicas com evidência. Manter 90 propostas de habilidades fora dos rótulos publicados até segunda revisão.
+- [x] Instalar os dois lotes conferidos e seus rótulos por versões imutáveis: 135 questões, 133 válidas. Repetições da instalação não duplicam versões e edições próprias são preservadas por recusa da atualização automática.
+- [x] Formar a referência exploratória com 89 questões válidas de Matemática em oito temas e grupos canônicos para futuros splits. A questão 164/2023, anulada, permanece fora dos experimentos.
 
-**Critério de aceite:** o novo conteúdo está revisado, tem origem e versões rastreáveis, não duplica itens canônicos e apresenta a cobertura real dos rótulos no painel.
+**Aceite parcial:** origem, versões, referência temática e publicação dos dois lotes estão rastreáveis. O aceite de todo o acervo como conteúdo revisado permanece pendente: extração, curadoria e aprovação são estados distintos. As pendências estão reunidas no final deste documento.
 
-**Base disponível:** módulo `backend/app/preparation/`, CLI `scripts/prepare_exam.py`, adaptador `scripts/exam_pdf.py`, manifesto de exemplo e preparação automática na curadoria. A normalização usa regras e contexto, sem depender dos números das questões; PDF digitalizado, notação perdida e estruturas ambíguas ainda exigem tratamento e conferência. Nenhum novo caderno foi incorporado ao catálogo por essa generalização.
+Consulte [banco e classificação](../banco-classificacao.md), [cobertura por ano e aplicação](../cobertura-acervo.md) e [organização das fontes](../../data/sources/README.md).
 
 ## 3. Iniciar os experimentos de Dados e IA
 
-Avanço da preparação da etapa 2: o [fluxo geral](../preparacao-provas.md) está implementado para novas importações JSON e PDFs textuais com manifesto. Casos ambíguos são reportados, e perdas de layout conhecidas bloqueiam publicação. OCR, deduplicação e anotação/revisão dos rótulos permanecem pendentes.
+Avanço da preparação da etapa 2: o [fluxo geral](../preparacao-provas.md) está implementado para novas importações JSON e PDFs textuais com manifesto. Casos ambíguos são reportados, e perdas de layout conhecidas bloqueiam publicação. A etapa 2 acrescenta identidade canônica, indexação histórica e referência temática curada tecnicamente. OCR dos casos não legíveis, união de duplicatas visuais e segunda revisão dos rótulos ainda são necessários para ampliar a avaliação.
 
 **Dependência: contratos e amostras revisadas da etapa 2. Duas frentes podem avançar em paralelo.**
 
@@ -134,7 +135,7 @@ Após estabilizar as integrações, preservar no backlog:
 
 ## Primeiro bloco de trabalho recomendado
 
-Avançar na etapa 2: selecionar o próximo caderno, conferir uma amostra pelo fluxo generalizado e definir a taxonomia e o processo de anotação. Encaminhar em paralelo a revisão pedagógica independente e os testes manuais de acessibilidade descritos no final. Publicação e piloto continuam sujeitos a esses aceites e às dependências das etapas 8 e 9.
+Encaminhar a segunda anotação da referência e preparar o próximo lote a partir do acervo indexado, resolvendo os relatórios antes de publicar. Iniciar os protocolos exploratórios da etapa 3 com os 89 itens elegíveis, sem tratá-los como benchmark pedagógico independente. Encaminhar em paralelo a revisão pedagógica independente e os testes manuais de acessibilidade descritos no final. Publicação e piloto continuam sujeitos a esses aceites e às dependências das etapas 8 e 9.
 
 ## Referências locais
 
@@ -156,3 +157,16 @@ Estas atividades foram retiradas da etapa técnica porque exigem pessoas, tecnol
 | Aparelhos reais e zoom do navegador | Os testes de celular usam viewport emulado no Chrome; não há interação física com telefones, Safari/iOS ou recursos de ampliação do sistema. | Executar a jornada em Android e iPhone e conferir teclado/zoom do navegador no desktop; registrar aparelho, navegador, versão, tarefas e resultados. |
 
 O roteiro de execução manual e as evidências automáticas estão em [primeira entrega](../primeira-entrega.md). Nenhuma dessas pendências foi marcada como revisão concluída, piloto realizado ou evidência de aprendizagem.
+
+## Pendências da ampliação do banco e da classificação
+
+| Pendência | Estado e critério para concluir |
+| --- | --- |
+| Curadoria integral do acervo histórico | Os originais foram preservados e o texto extraído está consultável. Preparar e conferir enunciados, fórmulas científicas, figuras, tabelas, alternativas e gabarito de cada lote antes de aprovar/publicar. As cores e versões acessíveis não devem inflar a quantidade de itens canônicos. |
+| Dois links oficiais indisponíveis | Uma prova superampliada de 2024 e o gabarito braile/ledor de reaplicação de 2025 retornam 404. Retomar a coleta quando houver fonte oficial correta; nunca usar o gabarito de outra aplicação. URLs exatas estão no relatório de cobertura. |
+| Dois casos de extração ainda sinalizados | Caderno azul do segundo dia de reaplicação/PPL de 2010 apresenta um número fora da faixa; caderno branco do primeiro dia de reaplicação/PPL de 2021 tem texto com codificação corrompida. Conferir visualmente/OCR, corrigir o adaptador e reproduzir os índices. |
+| Deduplicação visual e semântica | Identidades de extrações com figuras são conservadoras. Comparar conteúdo e correspondência de alternativas antes de unir; avaliar duplicatas restantes antes de definir os splits dos experimentos. |
+| Segunda anotação e adjudicação | Um revisor independente deve comparar os 135 itens e suas classificações; registrar divergências, decisões e evidências. As 90 habilidades candidatas permanecem propostas até esse aceite. |
+| Gabaritos e áreas não explícitos em provas antigas | O acervo de 1998–2008 oferece o caderno amarelo sem gabarito separado nos links anuais. Localizar uma fonte oficial verificável e classificar itens interdisciplinares antes de preparar publicação; não preencher respostas ou áreas por suposição. |
+
+As pendências de acessibilidade e revisão independente da primeira entrega também se aplicam aos novos itens. O catálogo não representa todo o acervo como revisado nem o conjunto de referência como avaliação independente concluída.

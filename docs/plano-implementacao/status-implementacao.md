@@ -4,9 +4,9 @@ Atualizado em **31/10/2026**. Visão geral do andamento do [plano do projeto](en
 
 ## Situação atual
 
-**A consolidação técnica da primeira entrega foi concluída.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
+**A consolidação técnica da primeira entrega e a ampliação técnica do banco estão implementadas.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
 
-O catálogo disponível contém o segundo dia do ENEM 2024, caderno azul, com 90 questões de Natureza e Matemática. Revisão pedagógica independente, leitores de tela e aparelhos reais continuam como critérios externos antes da publicação e do piloto, reunidos no final das próximas etapas.
+O catálogo inclui 135 questões: segundo dia azul de 2024 (90) e Matemática azul de 2023 (45), com 133 itens válidos. O acervo de 1998–2025 foi preservado e indexado para curadoria: 44.524 ocorrências, com cobertura e limites no [relatório](../cobertura-acervo.md). Revisão pedagógica independente, leitores de tela e aparelhos reais continuam como critérios externos antes da publicação e do piloto, reunidos no final das próximas etapas.
 
 ## O que já está disponível
 
@@ -20,9 +20,9 @@ O catálogo disponível contém o segundo dia do ENEM 2024, caderno azul, com 90
 
 | Frente | Estado atual | O que falta |
 | --- | --- | --- |
-| Conteúdo | Um caderno disponível e melhorias de fidelidade na apresentação. | Revisão pedagógica independente e ampliação para outros anos, aplicações e áreas. |
-| Preparação de provas | Processo reutilizável para organizar novos conteúdos e apontar dúvidas para revisão. | Validar a qualidade em outros cadernos e tratar layouts complexos e documentos digitalizados. |
-| Classificação e painel | Estrutura pronta para acompanhar desempenho por diferentes recortes. | Ampliar e revisar os rótulos de disciplina, tema e habilidade para tornar esses recortes úteis. |
+| Conteúdo | Dois lotes conferidos, 135 itens, acervo de 28 anos organizado e indexado. | Conferir e publicar progressivamente o restante; resolver fontes indisponíveis e duas observações de extração. |
+| Preparação de provas | Regras comuns para texto, LaTeX, química e vínculos; layouts históricos e acessíveis adicionais; seção de 2023 conferida. | OCR e curadoria de casos ambíguos, incluindo o PDF de codificação corrompida. |
+| Classificação e painel | Taxonomia versionada e 135 anotações técnicas; referência de 89 questões válidas em oito temas. | Segunda anotação e adjudicação das 90 habilidades candidatas, ainda fora dos rótulos publicados. |
 | Acessibilidade e usabilidade | Texto nativo, ampliação de figuras e navegação por teclado e em telas menores. | Conferência com leitores de tela, aparelhos reais e estudantes. |
 | Operação | Instalação isolada em contêineres, regressão em SQLite/PostgreSQL, volumes persistentes e restauração conferidos; verificações da versão registradas. | Preparar a hospedagem e ensaiar a operação no ambiente escolhido. |
 
@@ -34,8 +34,8 @@ Também continuam previstos a expansão para docentes, os recursos multimodais e
 
 ## Prioridades imediatas
 
-1. Selecionar o próximo caderno e conferir sua preparação pelo fluxo geral.
-2. Ampliar a classificação revisada para sustentar o painel e os futuros recursos adaptativos.
+1. Conferir o próximo lote do acervo indexado e resolver as pendências antes de publicar.
+2. Realizar segunda anotação e adjudicação da referência temática e das habilidades candidatas.
 3. Encaminhar os aceites externos: revisão pedagógica independente, leitores de tela e aparelhos reais.
 4. Preparar a publicação e o piloto conforme as dependências do roteiro.
 
@@ -43,7 +43,7 @@ A sequência e os critérios de aceite estão em [próximas etapas](proximas-eta
 
 ## Validação e limites
 
-A versão integrada passou por 57 testes de API em SQLite e 57 em PostgreSQL, auditoria do caderno e validação da instalação em contêineres, persistência e recuperação. Os testes de navegador incluem o caderno inteiro, a jornada e a auditoria automática de acessibilidade. Procedimentos e execuções estão em [primeira entrega](../primeira-entrega.md). Os testes de celular realizados até aqui usam emulação de tela e não substituem o uso em aparelhos reais.
+A consolidação anterior passou por 57 testes de API em SQLite e 57 em PostgreSQL, auditoria do caderno e validação da instalação em contêineres, persistência e recuperação. Os testes de navegador incluem o caderno inteiro, a jornada e a auditoria automática de acessibilidade. Procedimentos e execuções estão em [primeira entrega](../primeira-entrega.md). Os testes de celular realizados até aqui usam emulação de tela e não substituem o uso em aparelhos reais.
 
 Essas evidências demonstram o funcionamento técnico dos incrementos verificados. A revisão pedagógica independente, a validação manual de acessibilidade e o piloto continuam necessários. Ainda não há resultados de aprendizagem ou avaliação de eficácia educacional.
 
@@ -55,3 +55,9 @@ Essas evidências demonstram o funcionamento técnico dos incrementos verificado
 - [Conteúdo e registro técnico da revisão](../../data/README.md)
 - [Arquitetura e contratos](../architecture.md)
 - [Operação, backup e recuperação](../operations.md)
+
+## Evidências da ampliação
+
+Os novos fluxos passaram por 66 testes de API em SQLite e 66 em PostgreSQL, migração e verificação de esquema. Os 22 testes de navegador passaram em desktop e viewport móvel, incluindo as 45 questões de 2023 e a consulta de extrações na curadoria. As 150 expressões LaTeX do caderno de 2024 e as 159 da seção de 2023 foram compiladas. Uma regressão adicional cobre os cabeçalhos espaçados das versões para ledor.
+
+A revisão técnica não equivale à revisão pedagógica independente. O [processo de classificação](../banco-classificacao.md) e as [pendências finais](proximas-etapas.md#pendências-da-ampliação-do-banco-e-da-classificação) registram o que ainda impede o aceite integral do acervo.
