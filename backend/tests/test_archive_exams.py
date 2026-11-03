@@ -24,6 +24,19 @@ def test_answer_key_reads_the_declared_language_column():
     assert answer_key_rows('INGLÊS\xa0\nESPANHOL\xa0\n91\xa0\nA\xa0\nD\xa0\n', 'espanhol') == {91: 'D'}
 
 
+def test_combined_color_keys_require_the_booklet_and_do_not_use_the_last_column():
+    from experiments.archive_audit import independent_key
+    header='Azul Gab_Azul Amarelo Gab_Amarelo Branco Gab_Branco Rosa Gab_Rosa\n'
+    table='1 C 1 A 1 D 1 B\n2 D 2 E 2 A 2 C\n'
+    vertical=header+'1\nC\n1\nA\n1\nD\n1\nB\n2\nD\n2\nE\n2\nA\n2\nC\n'
+    for color,expected in [('Azul',{1:'C',2:'D'}),('Amarelo',{1:'A',2:'E'}),('Branco',{1:'D',2:'A'}),('Rosa',{1:'B',2:'C'})]:
+        assert answer_key_rows(vertical,booklet='Caderno · '+color)==expected
+        assert independent_key(header+table,None,{1,2},color)==expected
+    with pytest.raises(ValueError,match='várias cores'):answer_key_rows(vertical)
+    with pytest.raises(ValueError,match='conflitantes'):answer_key_rows('1 A\n1 B\n')
+    assert independent_key('Inglês Espanhol\n91 E D 136 A\n','espanhol',{91,136})=={91:'D',136:'A'}
+
+
 def test_generated_exam_metadata_follows_the_period_of_the_exam():
     assert [a['area'] for a in areas(2009, 1)] == ['Ciências da Natureza', 'Ciências Humanas']
     assert [a['area'] for a in areas(2016, 1)] == ['Ciências Humanas', 'Ciências da Natureza']

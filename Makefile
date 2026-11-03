@@ -1,6 +1,8 @@
-.PHONY: setup migrate seed acervo api web test build experiments experiments-archive
+.PHONY: setup migrate seed acervo api web test build experiments experiments-archive audit-archive audit-archive-browser experiments-all
 PYTHON = .venv/bin/python
 EXPERIMENT_OUTPUT ?= tmp/experiments/latest
+AUDIT_OUTPUT ?= tmp/acervo-validacao/latest
+AUDIT_URL ?= http://127.0.0.1:3100
 
 setup:
 	python3 -m venv .venv
@@ -39,3 +41,15 @@ experiments:
 
 experiments-archive:
 	$(PYTHON) scripts/run_experiments.py --archive --ocr --output "$(EXPERIMENT_OUTPUT)"
+
+# Auditoria local; correção em banco descartável. A base de uso fica somente para leitura.
+audit-archive:
+	$(PYTHON) scripts/audit_archive.py --output "$(AUDIT_OUTPUT)" --scoring --render-sources --resume
+
+# Exige frontend construído/iniciado e o manifesto produzido pela auditoria.
+audit-archive-browser:
+	node scripts/audit_archive_browser.cjs --input "$(AUDIT_OUTPUT)" --url "$(AUDIT_URL)" --workers 1 --capture-issues
+
+# Exige os modelos/relatórios de make experiments e o acervo histórico local.
+experiments-all:
+	$(PYTHON) scripts/experiment_archive_all.py --output "$(AUDIT_OUTPUT)/etapa3" --model "$(EXPERIMENT_OUTPUT)/classification-model.json"
