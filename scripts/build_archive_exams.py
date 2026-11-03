@@ -160,7 +160,7 @@ def build_one(job):
         from scripts.exam_pdf import answer_key_rows
         with pymupdf.open(key) as document:
             covered = {n for area in manifest['areas'] for n in range(area['first'], area['last'] + 1)}
-            answers = answer_key_rows('\n'.join(page.get_text() for page in document), manifest.get('language'), covered)
+            answers = answer_key_rows('\n'.join(page.get_text() for page in document), manifest.get('language'), covered, manifest['booklet'])
         if section:
             answers = {n: a for n, a in answers.items() if section[0] <= n <= section[1]}
         manifest['expected_items'] = len(answers)

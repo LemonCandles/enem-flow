@@ -23,6 +23,8 @@ MESSAGES = {
     'unlocated_images': 'Imagens sem posição: informe blocos image na ordem de leitura para associar suas legendas.',
     'missing_description': 'Descrição genérica da figura: substitua por uma descrição de seu conteúdo.',
     'invalid_latex': 'Delimitadores ou agrupamentos LaTeX incompletos; corrija antes de aprovar.',
+    'missing_alternative': 'Alternativa não extraída: confira e recupere seu conteúdo na fonte oficial.',
+    'control_character': 'A extração contém caracteres de controle sem representação legível; confira o original.',
 }
 
 
@@ -40,6 +42,9 @@ def content_issues(content):
                    message=MESSAGES[code], excerpt=excerpt[:500])
         if row not in found: found.append(row)
     def text(value, location):
+        if any(ord(char)<32 and char not in '\n\t\r' for char in value):
+            add('control_character', location, value)
+        if '\ufffd' in value:add('replacement_character',location,value)
         for code, excerpt in explicit_issues(value):
             if code == 'invalid_latex': add(code, location, excerpt)
     blocks = content.get('blocks', [])
@@ -58,7 +63,10 @@ def content_issues(content):
             for value in block['headers']: text(value, loc+'.headers')
             for row in block['rows']:
                 for value in row: text(value, loc+'.rows')
-    for i, option in enumerate(content['alternatives']): text(option['text'], f'alternatives[{i}].text')
+    for i, option in enumerate(content['alternatives']):
+        text(option['text'], f'alternatives[{i}].text')
+        if re.search(r'Alternativa não extraída|Transcrição pendente de preparação',option['text'],re.I):
+            add('missing_alternative', f'alternatives[{i}].text', option['text'])
     if content.get('images'): add('unlocated_images', 'images')
     if content.get('original_layout') and content.get('images'): add('original_layout', 'original_layout')
     for row in ((content.get('layout') or {}).get('extraction') or {}).get('issues', []):

@@ -62,6 +62,68 @@ def test_language_option_keeps_only_the_declared_language(tmp_path):
         from_manifest(manifest([1, 2, 3], language='francês'), pdf)
 
 
+def test_option_glyph_below_its_text_does_not_shift_answers(tmp_path):
+    doc=pymupdf.open();page=doc.new_page(width=569,height=781)
+    y=question(page,60,1)
+    for i,letter in enumerate('ABCDE'):
+        page.insert_text((40,y+i*28+2),letter,fontname='cour',fontsize=10)
+        page.insert_text((65,y+i*28),f'Conteudo exclusivo {i+10}',fontsize=10)
+    pdf=save(doc,tmp_path)
+    content=extract_exam(from_manifest(manifest([1]),pdf),pdf,tmp_path/'assets')['questions'][0]['content']
+    assert [a['text'] for a in content['alternatives']]==[f'Conteudo exclusivo {i+10}' for i in range(5)]
+    assert 'Conteudo exclusivo' not in content['statement']
+
+
+def test_shared_passage_is_removed_from_previous_and_copied_to_every_target(tmp_path):
+    doc=pymupdf.open();page=doc.new_page(width=569,height=781)
+    question(page,60,1,'Enunciado anterior.')
+    page.insert_text((40,160),'Texto para as questões 2 e 3',fontsize=10)
+    page.insert_text((40,180),'Contexto indispensavel para as duas respostas.',fontsize=10)
+    question(page,240,2,'Primeira pergunta dependente do contexto.')
+    question(page,350,3,'Segunda pergunta dependente do contexto.')
+    pdf=save(doc,tmp_path)
+    result=from_manifest(manifest([1,2,3]),pdf)
+    c=[q['content'] for q in result['questions']]
+    assert 'Contexto indispensavel' not in c[0]['statement']
+    assert all('Contexto indispensavel' in q['statement'] for q in c[1:])
+    assert all(q['layout']['blocks'][0]['shared_for']==[2,3] for q in c[1:])
+
+
+def test_essay_section_is_not_appended_to_the_previous_answer(tmp_path):
+    doc=pymupdf.open();page=doc.new_page(width=569,height=781)
+    question(page,60,1,'Pergunta sobre um texto literario.')
+    page.insert_text((40,170),'PROPOSTA DE REDAÇÃO',fontsize=12)
+    page.insert_text((40,200),'Um tema que nao pertence a nenhuma alternativa.',fontsize=9)
+    question(page,400,2,'Pergunta de outra area do conhecimento.')
+    pdf=save(doc,tmp_path)
+    result=from_manifest(manifest([1,2]),pdf)
+    assert all('Um tema' not in q['content']['statement'] for q in result['questions'])
+    assert 'Pergunta de outra' in result['questions'][1]['content']['statement']
+
+
+def test_centered_single_column_with_large_left_margin_stays_whole(tmp_path):
+    doc=pymupdf.open();page=doc.new_page(width=842,height=1100)
+    page.insert_text((290,80),'QUESTAO 1',fontsize=12)
+    for i in range(4):page.insert_text((290,110+18*i),'Texto longo que cruza o centro e ocupa menos de sessenta e cinco por cento.',fontsize=10)
+    config=manifest([1]);config['layout'].update(bottom=1050)
+    pdf=save(doc,tmp_path)
+    c=from_manifest(config,pdf)['questions'][0]['content']
+    assert len(c['layout']['blocks'])==1 and c['layout']['blocks'][0]['bbox'][2]==842
+
+
+def test_empty_graph_grid_is_not_reinterpreted_as_a_data_table(tmp_path):
+    doc=pymupdf.open();page=doc.new_page(width=569,height=781)
+    y=question(page,60,1)
+    page.draw_rect(pymupdf.Rect(60,y,200,y+120))
+    page.draw_line((130,y),(130,y+120));page.draw_line((60,y+60),(200,y+60))
+    page.insert_text((135,y+58),'O',fontsize=9)
+    for i,letter in enumerate('ABCDE'):page.insert_text((40,y+160+20*i),f'{letter} Opcao {letter}',fontsize=10)
+    pdf=save(doc,tmp_path)
+    c=extract_exam(from_manifest(manifest([1]),pdf),pdf,tmp_path/'assets')['questions'][0]['content']
+    assert not any(b['type']=='table' for b in c['blocks'])
+    assert any(b['type']=='image' for b in c['blocks'])
+
+
 def test_rotated_repeated_watermark_is_dropped_but_rotated_labels_stay(tmp_path):
     doc = pymupdf.open()
     page = doc.new_page(width=569, height=781)
