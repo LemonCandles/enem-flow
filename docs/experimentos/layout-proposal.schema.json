@@ -1,0 +1,243 @@
+{
+  "$defs": {
+    "LayoutBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "alternative": {
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alternative"
+        },
+        "bbox": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bbox",
+          "type": "array"
+        },
+        "group": {
+          "default": "stem",
+          "title": "Group",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "order": {
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "text": {
+          "default": "",
+          "title": "Text",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "paragraph",
+            "credit",
+            "caption",
+            "math",
+            "image",
+            "table",
+            "alternative"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "page",
+        "bbox",
+        "id",
+        "type",
+        "order"
+      ],
+      "title": "LayoutBlock",
+      "type": "object"
+    },
+    "LayoutLink": {
+      "additionalProperties": false,
+      "properties": {
+        "relation": {
+          "enum": [
+            "caption_of",
+            "credit_of"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "relation"
+      ],
+      "title": "LayoutLink",
+      "type": "object"
+    },
+    "Region": {
+      "additionalProperties": false,
+      "properties": {
+        "bbox": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bbox",
+          "type": "array"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "page",
+        "bbox"
+      ],
+      "title": "Region",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "blocks": {
+      "items": {
+        "$ref": "#/$defs/LayoutBlock"
+      },
+      "title": "Blocks",
+      "type": "array"
+    },
+    "content_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Content Sha256",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "links": {
+      "items": {
+        "$ref": "#/$defs/LayoutLink"
+      },
+      "title": "Links",
+      "type": "array"
+    },
+    "needs_review": {
+      "const": true,
+      "title": "Needs Review",
+      "type": "boolean"
+    },
+    "origin": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Origin",
+      "type": "object"
+    },
+    "regions": {
+      "items": {
+        "$ref": "#/$defs/Region"
+      },
+      "minItems": 1,
+      "title": "Regions",
+      "type": "array"
+    },
+    "review_status": {
+      "const": "proposed",
+      "title": "Review Status",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "table_structures": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Table Structures",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "source_sha256",
+    "content_sha256",
+    "regions",
+    "blocks",
+    "links",
+    "origin",
+    "table_structures",
+    "review_status",
+    "needs_review"
+  ],
+  "title": "LayoutProposal",
+  "type": "object"
+}

@@ -1,5 +1,6 @@
-.PHONY: setup migrate seed acervo api web test build
+.PHONY: setup migrate seed acervo api web test build experiments experiments-archive
 PYTHON = .venv/bin/python
+EXPERIMENT_OUTPUT ?= tmp/experiments/latest
 
 setup:
 	python3 -m venv .venv
@@ -31,3 +32,10 @@ test:
 
 build:
 	cd frontend && npm run build
+
+# Experimentos offline; não alteram o catálogo/banco nem chamam provedores.
+experiments:
+	$(PYTHON) scripts/run_experiments.py --output "$(EXPERIMENT_OUTPUT)"
+
+experiments-archive:
+	$(PYTHON) scripts/run_experiments.py --archive --ocr --output "$(EXPERIMENT_OUTPUT)"

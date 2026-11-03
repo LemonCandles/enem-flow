@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "annotation": "Círculos verdes/cianos conferidos visualmente em 03/11/2026. Amostra técnica das páginas 2–3 (dia 1) e 3 (dia 2), sem revisão independente.",
+      "answers": {
+        "1": "A",
+        "2": "B",
+        "3": "A",
+        "4": "B",
+        "5": "D",
+        "6": "A",
+        "7": "C",
+        "8": "B"
+      },
+      "id": "visual-key-2010-day1",
+      "kind": "visual_answer_key",
+      "language": null,
+      "source_path": "data/sources/enem/2010/regular/impresso/dia-1/caderno-1-azul/gabarito.pdf",
+      "source_sha256": "6902130fa08a9947f86a510148479835bc0887b09082de9f330c24580cc3fc89"
+    },
+    {
+      "annotation": "Círculos verdes/cianos conferidos visualmente em 03/11/2026. Amostra técnica das páginas 2–3 (dia 1) e 3 (dia 2), sem revisão independente.",
+      "answers": {
+        "91": "E",
+        "92": "A",
+        "93": "D"
+      },
+      "id": "visual-key-2010-day2",
+      "kind": "visual_answer_key",
+      "language": "ingles",
+      "source_path": "data/sources/enem/2010/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf",
+      "source_sha256": "38ca873c375165f7c755c3b678180cc51f350336b8022f77a4014a555906c8d7"
+    },
+    {
+      "annotation": "Linha da canção transcrita e comparada visualmente à página 2; fonte CFF com mapa divergente em parte dos trechos. Referência técnica assistida.",
+      "bbox": [
+        48,
+        210,
+        198,
+        221
+      ],
+      "id": "font-2014-ppl-line",
+      "kind": "font_encoding",
+      "page": 2,
+      "source_path": "data/sources/enem/2014/reaplicacao-ppl/impresso/dia-1/caderno-3-branco/prova.pdf",
+      "source_sha256": "17b4878411a81d2b9a43bf6709ff4b0acd4bde679bf787ff833312e659a9ea96",
+      "text": "Respeito, afinal, é bom e eu gosto"
+    },
+    {
+      "annotation": "Caso difícil reservado: diagnóstico de glifos, sem transcrição adjudicada nem métrica de acurácia.",
+      "id": "font-2021-unresolved",
+      "kind": "font_audit",
+      "page": 2,
+      "source_path": "data/sources/enem/2021/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "887b2a10ebb163f0c40db2ab4f67a5a4b5959ceb74ce7273466a755b8e55f540"
+    }
+  ],
+  "independent_review": false,
+  "schema_version": "1.0",
+  "source_policy": "Fontes históricas locais e hashes versionados; ausência em clone é registrada, sem downloads. Nenhum gabarito proposto é publicado.",
+  "version": "recovery-reference-v1"
+}

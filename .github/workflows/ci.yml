@@ -89,6 +89,20 @@ jobs:
           path: |
             frontend/test-results/**/*.json
             frontend/test-results/**/*.png
+  experiments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r backend/requirements-dev.lock
+      - name: Reproduce bundled experiments without historical archive or external services
+        run: python scripts/run_experiments.py --output /tmp/enem-experiments
+      - uses: actions/upload-artifact@v4
+        with:
+          name: data-ai-experiments
+          path: /tmp/enem-experiments
   containers:
     runs-on: ubuntu-latest
     env:

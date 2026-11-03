@@ -1,0 +1,2566 @@
+{
+  "annotation_policy": "Amostra intencional de dois cadernos incluídos. Treino: páginas 2, 7, 16, 17 de 2024; desenvolvimento: 19 e 27 de 2024; teste: 16, 17, 24, 30 e 31 de 2023. Páginas e identidades não atravessam partições. Teste reservado por ano e com padrões difíceis. Referência assistida, sem adjudicação independente; figuras incluem seus rótulos internos, exceto legendas externas anotadas.",
+  "coordinate_system": "PDF points; top-left origin; page rotation applied",
+  "examples": [
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            115.29,
+            279.0,
+            216.6
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 2,
+          "text": "Muitas pessoas ainda se espantam com o fato de um  passageiro sair ileso de um acidente de carro enquanto  o veículo onde estava teve perda total. Essas pessoas  talvez considerem, equivocadamente, que os carros mais  seguros são os que têm as estruturas mais rígidas, ou seja,  estruturas, que durante uma colisão, apresentam menor  deformação. Na verdade, o que ocorre é o contrário. Por isso,  a partir de 1958, passaram a ser produzidos carros com partes  que se deformam facilmente.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            60.72,
+            218.83,
+            279.0,
+            230.29
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 1,
+          "page": 2,
+          "text": "DAY, C. Crumple Zones. Disponível em: https://pubs.aip.org.",
+          "type": "credit"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            154.22,
+            228.56,
+            278.28,
+            239.48
+          ],
+          "group": "stem",
+          "id": "b4",
+          "order": 2,
+          "page": 2,
+          "text": "Acesso em: 2 jul. 2024 (adaptado).",
+          "type": "credit"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            244.83,
+            279.0,
+            291.14
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 3,
+          "page": 2,
+          "text": "Assim, além dos cintos de segurança e dos airbags,  os carros modernos passaram a contar com o dispositivo  de segurança conhecido como crumple zone (região  deformável, em inglês), conforme a figura.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            34.8,
+            295.6,
+            275.5,
+            431.9
+          ],
+          "group": "stem",
+          "id": "b8",
+          "order": 4,
+          "page": 2,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            86.24,
+            434.48,
+            279.0,
+            445.93
+          ],
+          "group": "stem",
+          "id": "b7",
+          "order": 5,
+          "page": 2,
+          "text": "Momentum and Car safety. GCSE Physics Revision.",
+          "type": "caption"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            121.34,
+            444.2,
+            279.0,
+            455.12
+          ],
+          "group": "stem",
+          "id": "b5",
+          "order": 6,
+          "page": 2,
+          "text": "Disponível em: www.shalom-education.com.",
+          "type": "credit"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            154.22,
+            453.8,
+            278.28,
+            464.72
+          ],
+          "group": "stem",
+          "id": "b6",
+          "order": 7,
+          "page": 2,
+          "text": "Acesso em: 5 jul. 2024 (adaptado).",
+          "type": "credit"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            470.77,
+            279.0,
+            519.18
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 8,
+          "page": 2,
+          "text": "Considerando o carro, seus ocupantes e o muro da figura  como um sistema isolado, o crumple zone aumenta a  segurança dos passageiros porque, durante uma colisão,  a deformação da estrutura do carro",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            32.01,
+            523.24,
+            171.03,
+            536.54
+          ],
+          "group": "option-A",
+          "id": "b9",
+          "order": 9,
+          "page": 2,
+          "text": "A\taciona os airbags do veículo.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            32.01,
+            537.77,
+            211.13,
+            551.08
+          ],
+          "group": "option-B",
+          "id": "b10",
+          "order": 10,
+          "page": 2,
+          "text": "B\tabsorve a energia cinética do sistema.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            32.01,
+            552.31,
+            259.9,
+            565.62
+          ],
+          "group": "option-C",
+          "id": "b11",
+          "order": 11,
+          "page": 2,
+          "text": "C\tconsome a quantidade de movimento do sistema.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            32.01,
+            566.85,
+            268.57,
+            580.16
+          ],
+          "group": "option-D",
+          "id": "b12",
+          "order": 12,
+          "page": 2,
+          "text": "D\tcria uma barreira de proteção para seus ocupantes.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            32.01,
+            581.38,
+            273.98,
+            594.69
+          ],
+          "group": "option-E",
+          "id": "b13",
+          "order": 13,
+          "page": 2,
+          "text": "E\tdiminui a velocidade do centro de massa do sistema.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": false,
+      "id": "layout-2024-q91",
+      "independent_review": false,
+      "links": [
+        {
+          "relation": "caption_of",
+          "source": "b7",
+          "target": "b8"
+        },
+        {
+          "relation": "credit_of",
+          "source": "b5",
+          "target": "b8"
+        },
+        {
+          "relation": "credit_of",
+          "source": "b6",
+          "target": "b8"
+        }
+      ],
+      "pattern": "figure_caption_credit",
+      "regions": [
+        {
+          "bbox": [
+            31.0,
+            94.99065399169922,
+            279.0,
+            608.9906539916992
+          ],
+          "page": 2
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "train",
+      "split_group": "enem-d09be52b40e768cbdba8a2a29da4bba0"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            290.28,
+            84.63,
+            538.0,
+            207.94
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 7,
+          "text": "Um dos exemplos mais conhecidos de herança  recessiva ligada ao cromossomo X é o daltonismo.  Como em qualquer distúrbio recessivo ligado ao  cromossomo X, existem muito mais homens apresentando  o fenótipo com esse tipo de daltonismo do que mulheres.  Um casal formado por um homem não daltônico e por uma  mulher gestante também não daltônica, mas portadora  do gene recessivo para esse tipo de daltonismo, está  esperando um bebê. Em uma das consultas de pré-natal,  o casal recebeu um heredograma que contém todas as  possibilidades de genótipo para esse bebê.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            307.3,
+            208.47,
+            399.97,
+            221.78
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 1,
+          "page": 7,
+          "text": "Considere a legenda:",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            321.0,
+            224.0,
+            489.0,
+            342.0
+          ],
+          "group": "stem",
+          "id": "b5",
+          "order": 2,
+          "page": 7,
+          "text": "Mulher heterozigota portadora \ndo gene para daltonismo\nMulher não daltônica\nMulher daltônica\nHomem não daltônico\nHomem daltônico",
+          "type": "table"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            320.07,
+            348.25,
+            538.0,
+            359.7
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 3,
+          "page": 7,
+          "text": "GRIFFITHS, A. et al. Introdução à genética. Rio de Janeiro:",
+          "type": "credit"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            401.35,
+            357.97,
+            536.55,
+            368.89
+          ],
+          "group": "stem",
+          "id": "b4",
+          "order": 4,
+          "page": 7,
+          "text": "Guanabara Koogan, 2016 (adaptado).",
+          "type": "credit"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            290.29,
+            372.11,
+            476.71,
+            385.42
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 5,
+          "page": 7,
+          "text": "Qual heredograma foi recebido pelo casal?",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            311.0,
+            387.0,
+            419.0,
+            449.0
+          ],
+          "group": "option-A",
+          "id": "b6",
+          "order": 6,
+          "page": 7,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            290.29,
+            411.36,
+            305.75,
+            424.67
+          ],
+          "group": "option-A",
+          "id": "b11",
+          "order": 7,
+          "page": 7,
+          "text": "A",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            311.0,
+            459.25,
+            419.0,
+            521.25
+          ],
+          "group": "option-B",
+          "id": "b7",
+          "order": 8,
+          "page": 7,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            290.29,
+            483.63,
+            305.75,
+            496.93
+          ],
+          "group": "option-B",
+          "id": "b12",
+          "order": 9,
+          "page": 7,
+          "text": "B",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            311.0,
+            531.5,
+            419.0,
+            593.5
+          ],
+          "group": "option-C",
+          "id": "b8",
+          "order": 10,
+          "page": 7,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            290.29,
+            555.89,
+            305.75,
+            569.2
+          ],
+          "group": "option-C",
+          "id": "b13",
+          "order": 11,
+          "page": 7,
+          "text": "C",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            311.0,
+            603.75,
+            419.0,
+            665.75
+          ],
+          "group": "option-D",
+          "id": "b9",
+          "order": 12,
+          "page": 7,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            290.29,
+            628.16,
+            305.75,
+            641.47
+          ],
+          "group": "option-D",
+          "id": "b14",
+          "order": 13,
+          "page": 7,
+          "text": "D",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            311.0,
+            676.0,
+            419.0,
+            738.0
+          ],
+          "group": "option-E",
+          "id": "b10",
+          "order": 14,
+          "page": 7,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            290.29,
+            700.43,
+            305.75,
+            713.74
+          ],
+          "group": "option-E",
+          "id": "b15",
+          "order": 15,
+          "page": 7,
+          "text": "E",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2024-q112",
+      "independent_review": false,
+      "links": [],
+      "pattern": "vertical_graphical_options",
+      "regions": [
+        {
+          "bbox": [
+            289.0,
+            64.33269500732422,
+            538.0,
+            741.5326950073243
+          ],
+          "page": 7
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "train",
+      "split_group": "enem-e2a76649b5f8336abce799ffef39da3d"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            116.29,
+            279.0,
+            217.6
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 16,
+          "text": "O tamanho mínimo que a visão humana é capaz de  visualizar sem o uso de equipamento auxiliar é equivalente  a 100 micrômetros (1 micrômetro = 10-3 milímetros).  Uma estudante pretende visualizar e analisar hemácias  do sangue humano, que medem 0,007 mm de diâmetro.  Ela adquiriu um microscópio óptico que tem uma lente  ocular que amplia em 10 vezes a imagem do objeto em  observação, e um conjunto de lentes objetivas com estas  capacidades de ampliação:",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            49.01,
+            223.08,
+            136.65,
+            288.84
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 1,
+          "page": 16,
+          "text": "•\t lente I: 2 vezes; •\t lente II: 10 vezes; •\t lente III: 15 vezes; •\t lente IV: 1,1 vez; •\t lente V: 1,4 vez.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            64.1,
+            294.7,
+            246.2,
+            510.2
+          ],
+          "group": "stem",
+          "id": "b5",
+          "order": 2,
+          "page": 16,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            515.35,
+            279.0,
+            583.66
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 3,
+          "page": 16,
+          "text": "O funcionamento desse microscópio permite o uso da  lente ocular sozinha ou a combinação dela com uma  de suas lentes objetivas, proporcionando, nesse caso,  um aumento de sua capacidade de ampliação final, que é  dada pelo produto entre as capacidades de ampliação da  ocular e da objetiva.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            584.19,
+            279.0,
+            619.5
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 4,
+          "page": 16,
+          "text": "Essa estudante pretende selecionar a lente objetiva de  menor capacidade de ampliação que permita, na combinação  com a ocular, visualizar hemácias do sangue humano.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            626.39,
+            260.19,
+            639.7
+          ],
+          "group": "stem",
+          "id": "b4",
+          "order": 5,
+          "page": 16,
+          "text": "A lente objetiva a ser selecionada pela estudante é a",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            32.01,
+            642.34,
+            50.18,
+            655.65
+          ],
+          "group": "option-A",
+          "id": "b6",
+          "order": 6,
+          "page": 16,
+          "text": "A\tI.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            32.01,
+            655.46,
+            52.89,
+            668.76
+          ],
+          "group": "option-B",
+          "id": "b7",
+          "order": 7,
+          "page": 16,
+          "text": "B\tII.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            32.01,
+            668.57,
+            55.6,
+            681.88
+          ],
+          "group": "option-C",
+          "id": "b8",
+          "order": 8,
+          "page": 16,
+          "text": "C\tIII.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            32.01,
+            681.68,
+            55.79,
+            694.99
+          ],
+          "group": "option-D",
+          "id": "b9",
+          "order": 9,
+          "page": 16,
+          "text": "D\tIV.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            32.01,
+            694.8,
+            53.08,
+            708.11
+          ],
+          "group": "option-E",
+          "id": "b10",
+          "order": 10,
+          "page": 16,
+          "text": "E\tV.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": false,
+      "id": "layout-2024-q136",
+      "independent_review": false,
+      "links": [],
+      "pattern": "raster_and_text_options",
+      "regions": [
+        {
+          "bbox": [
+            31.0,
+            95.99065399169922,
+            279.0,
+            722.7906539916992
+          ],
+          "page": 16
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "train",
+      "split_group": "enem-868afd30f8f15fb963d5640320caf9b1"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            84.63,
+            279.0,
+            130.94
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 17,
+          "text": "Um artesão utiliza dois tipos de componentes, X e  Y, nos enfeites que produz. Ele sempre compra todos os  componentes em uma mesma loja. O quadro apresenta  os preços dos dois tipos de componentes nas lojas I e II.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            35.0,
+            138.0,
+            275.0,
+            201.0
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 1,
+          "page": 17,
+          "text": "Lojas\nPreços dos componentes (R$)\nX\nY\nI\n3,00\n1,00\nII\n2,00\n4,00",
+          "type": "table"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            206.27,
+            279.0,
+            252.58
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 2,
+          "page": 17,
+          "text": "Ele confeccionará enfeites formados por duas unidades  do componente X e uma unidade do componente Y e  efetuará a compra na loja que oferecer o menor valor total  para a confecção de um enfeite.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            259.47,
+            188.09,
+            272.78
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 3,
+          "page": 17,
+          "text": "O artesão efetuará a compra na loja",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            32.01,
+            275.42,
+            150.44,
+            288.73
+          ],
+          "group": "option-A",
+          "id": "b4",
+          "order": 4,
+          "page": 17,
+          "text": "A\tI, pois o valor é R$ 7,00.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            32.01,
+            288.53,
+            150.44,
+            301.84
+          ],
+          "group": "option-B",
+          "id": "b5",
+          "order": 5,
+          "page": 17,
+          "text": "B\tI, pois o valor é R$ 4,00.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            32.01,
+            301.65,
+            153.15,
+            314.96
+          ],
+          "group": "option-C",
+          "id": "b6",
+          "order": 6,
+          "page": 17,
+          "text": "C\tII, pois o valor é R$ 6,00.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            32.01,
+            314.76,
+            261.53,
+            328.07
+          ],
+          "group": "option-D",
+          "id": "b7",
+          "order": 7,
+          "page": 17,
+          "text": "D\tI, pois anuncia o componente com o menor preço.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            32.01,
+            327.89,
+            279.0,
+            352.9
+          ],
+          "group": "option-E",
+          "id": "b8",
+          "order": 8,
+          "page": 17,
+          "text": "E\tII, pois o componente X, que é o mais utilizado, tem menor preço.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2024-q139",
+      "independent_review": false,
+      "links": [],
+      "pattern": "merged_table_header",
+      "regions": [
+        {
+          "bbox": [
+            31.0,
+            64.33269500732422,
+            279.0,
+            356.3326950073242
+          ],
+          "page": 17
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "train",
+      "split_group": "enem-1761a47e26d340fa441863928f3a7c3d"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            379.3,
+            279.0,
+            425.61
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 17,
+          "text": "João e Felipe participaram, na escola, de uma maratona  de matemática na qual, durante uma semana, resolveram  200 questões cada. Nessa maratona, a porcentagem P de  acertos de cada participante é convertida em um conceito:",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            49.02,
+            431.09,
+            177.7,
+            496.85
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 1,
+          "page": 17,
+          "text": "•\t insatisfatório: se 0 ≤ P < 50; •\t regular: se 50 ≤ P < 60; •\t bom: se 60 ≤ P < 75; •\t muito bom: se 75 ≤ P < 90; •\t excelente: se 90 ≤ P ≤ 100.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            501.64,
+            279.0,
+            536.95
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 2,
+          "page": 17,
+          "text": "João acertou 75% das questões da maratona e Felipe  acertou 30% a menos que a quantidade de questões que  João acertou.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            543.84,
+            270.44,
+            557.15
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 3,
+          "page": 17,
+          "text": "Os conceitos de João e Felipe foram, respectivamente,",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            32.01,
+            559.79,
+            122.79,
+            573.1
+          ],
+          "group": "option-A",
+          "id": "b4",
+          "order": 4,
+          "page": 17,
+          "text": "A\tmuito bom e bom.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            32.01,
+            572.91,
+            133.64,
+            586.22
+          ],
+          "group": "option-B",
+          "id": "b5",
+          "order": 5,
+          "page": 17,
+          "text": "B\tmuito bom e regular.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            32.01,
+            586.02,
+            158.55,
+            599.33
+          ],
+          "group": "option-C",
+          "id": "b6",
+          "order": 6,
+          "page": 17,
+          "text": "C\tmuito bom e insatisfatório.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            32.01,
+            599.14,
+            107.09,
+            612.45
+          ],
+          "group": "option-D",
+          "id": "b7",
+          "order": 7,
+          "page": 17,
+          "text": "D\tbom e regular.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            32.01,
+            612.25,
+            132.0,
+            625.56
+          ],
+          "group": "option-E",
+          "id": "b8",
+          "order": 8,
+          "page": 17,
+          "text": "E\tbom e insatisfatório.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": false,
+      "id": "layout-2024-q140",
+      "independent_review": false,
+      "links": [],
+      "pattern": "plain_text",
+      "regions": [
+        {
+          "bbox": [
+            31.0,
+            359.0008239746094,
+            279.0,
+            640.2008239746094
+          ],
+          "page": 17
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "train",
+      "split_group": "enem-6f2fbde12ba37e0fa89915a8f0ade8b2"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            290.29,
+            85.63,
+            538.0,
+            146.94
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 19,
+          "text": "Uma caneca com água fervendo é retirada de um  forno de micro-ondas. A temperatura T, em grau Celsius,  da caneca, em função do tempo t, em minuto, pode ser  modelada pela função T(t) = a + 80 bt, representada no  gráfico a seguir.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            295.4,
+            154.2,
+            531.5,
+            345.8
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 1,
+          "page": 19,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            290.29,
+            351.8,
+            448.0,
+            365.11
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 2,
+          "page": 19,
+          "text": "Os valores das constantes a e b são",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            290.29,
+            379.91,
+            390.17,
+            394.93
+          ],
+          "group": "option-A",
+          "id": "b3",
+          "order": 3,
+          "page": 19,
+          "text": "A a = 20; b = log(0,5)",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            290.29,
+            404.01,
+            376.09,
+            419.03
+          ],
+          "group": "option-B",
+          "id": "b4",
+          "order": 4,
+          "page": 19,
+          "text": "B a = 100; b = 0,5",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            290.29,
+            424.4,
+            382.42,
+            445.92
+          ],
+          "group": "option-C",
+          "id": "b5",
+          "order": 5,
+          "page": 19,
+          "text": "C a b = = 20 0 5 1 10 ; ( , )  ",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            290.29,
+            453.4,
+            380.64,
+            488.82
+          ],
+          "group": "option-D",
+          "id": "b6",
+          "order": 6,
+          "page": 19,
+          "text": "D a b = = 20 40 80 1 10 ; ( )  ",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            290.29,
+            494.5,
+            367.96,
+            509.52
+          ],
+          "group": "option-E",
+          "id": "b7",
+          "order": 7,
+          "page": 19,
+          "text": "E a = 20; b = 40",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2024-q148",
+      "independent_review": false,
+      "links": [],
+      "pattern": "spatial_math_options",
+      "regions": [
+        {
+          "bbox": [
+            289.0,
+            64.33269500732422,
+            538.0,
+            511.93269500732424
+          ],
+          "page": 19
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "development",
+      "split_group": "enem-04414c8fc9b4af45b7fdc6672d7494d2"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            544.87,
+            538.0,
+            580.81
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 27,
+          "text": "Em uma região com grande incidência de terremotos, observou-se que dois terremotos ocorridos apresentaram  magnitudes M1 e M2, medidos segundo a escala Richter, e liberaram energias iguais a E1 e E2, respectivamente. Entre  os estudiosos do assunto, é conhecida uma expressão algébrica relacionando esses valores dada por",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            238.0,
+            587.0,
+            330.0,
+            620.0
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 1,
+          "page": 27,
+          "text": "M\nM\nE\nE\n2\n1\n2\n1\n2\n3\n3\nO\n\u001d\n\u001c\n\u001b\n\u001a\n\u0019\n\u0018\nlog",
+          "type": "math"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            625.84,
+            538.0,
+            650.47
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 2,
+          "page": 27,
+          "text": "Estudos mais abrangentes observaram que o primeiro terremoto apresentou a magnitude M1 = 6,9 e a energia  liberada foi um décimo da observada no segundo terremoto.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            32.01,
+            657.68,
+            480.99,
+            673.13
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 3,
+          "page": 27,
+          "text": "O valor aproximado da magnitude M2 do segundo terremoto, expresso com uma casa decimal, é igual a",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            32.01,
+            673.96,
+            61.03,
+            687.27
+          ],
+          "group": "option-A",
+          "id": "b4",
+          "order": 4,
+          "page": 27,
+          "text": "A\t5,4.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            32.01,
+            687.39,
+            61.03,
+            700.7
+          ],
+          "group": "option-B",
+          "id": "b5",
+          "order": 5,
+          "page": 27,
+          "text": "B\t6,2.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            32.01,
+            700.83,
+            61.03,
+            714.14
+          ],
+          "group": "option-C",
+          "id": "b6",
+          "order": 6,
+          "page": 27,
+          "text": "C\t7,6.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            32.01,
+            714.26,
+            61.03,
+            727.57
+          ],
+          "group": "option-D",
+          "id": "b7",
+          "order": 7,
+          "page": 27,
+          "text": "D\t8,2.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            32.01,
+            727.7,
+            61.03,
+            741.01
+          ],
+          "group": "option-E",
+          "id": "b8",
+          "order": 8,
+          "page": 27,
+          "text": "E\t8,4.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2024-q170",
+      "independent_review": false,
+      "links": [],
+      "pattern": "wide_spatial_formula",
+      "regions": [
+        {
+          "bbox": [
+            31.0,
+            524.2516479492188,
+            538.0,
+            743.8516479492188
+          ],
+          "page": 27
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "0993ae687a93dfbcda8e95ce8708883be9d5a55cabbe1f1a06b81a50c18c6cdc",
+      "split": "development",
+      "split_group": "enem-add0a55bef127a7c2729f294c9661869"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            31.18,
+            114.74,
+            280.51,
+            186.55
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 16,
+          "text": "Um artista plástico esculpe uma escultura a partir  de um bloco de madeira de lei, em etapas. Inicialmente,  esculpe um cone reto com 36 cm de altura e diâmetro da  base medindo 18 cm. Em seguida, remove desse cone um  cone menor, cujo diâmetro da base mede 6 cm, obtendo,  assim, um tronco de cone, conforme ilustrado na figura.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.0,
+            193.0,
+            277.0,
+            385.0
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 1,
+          "page": 16,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.18,
+            386.08,
+            280.54,
+            446.19
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 2,
+          "page": 16,
+          "text": "Em seguida, perfura esse tronco de cone, removendo  um cilindro reto, de diâmetro 6 cm, cujo eixo de simetria é o  mesmo do cone original. Dessa forma, ao final, a escultura  tem a forma de um tronco de cone com uma perfuração  cilíndrica de base a base.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.21,
+            447.42,
+            280.55,
+            484.13
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 3,
+          "page": 16,
+          "text": "O tipo de madeira utilizada para produzir essa escultura  tem massa igual a 0,6 g por centímetro cúbico de volume.  Utilize 3 como aproximação para π.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.18,
+            488.18,
+            228.68,
+            501.49
+          ],
+          "group": "stem",
+          "id": "b4",
+          "order": 4,
+          "page": 16,
+          "text": "Qual é a massa, em grama, dessa escultura?",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            31.18,
+            502.72,
+            80.73,
+            516.03
+          ],
+          "group": "option-A",
+          "id": "b5",
+          "order": 5,
+          "page": 16,
+          "text": "A\t 1 198,8",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            31.18,
+            517.25,
+            81.08,
+            530.56
+          ],
+          "group": "option-B",
+          "id": "b6",
+          "order": 6,
+          "page": 16,
+          "text": "B\t 1 296,0",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            31.18,
+            531.79,
+            81.12,
+            545.1
+          ],
+          "group": "option-C",
+          "id": "b7",
+          "order": 7,
+          "page": 16,
+          "text": "C\t 1 360,8",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            31.18,
+            546.32,
+            81.06,
+            559.63
+          ],
+          "group": "option-D",
+          "id": "b8",
+          "order": 8,
+          "page": 16,
+          "text": "D\t 4 665,6",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            31.18,
+            560.86,
+            81.04,
+            574.17
+          ],
+          "group": "option-E",
+          "id": "b9",
+          "order": 9,
+          "page": 16,
+          "text": "E\t 4 860,0",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2023-q136",
+      "independent_review": false,
+      "links": [],
+      "pattern": "vector_figure_and_duplicate_text_layer",
+      "regions": [
+        {
+          "bbox": [
+            0.0,
+            94.3853988647461,
+            283.4645080566406,
+            731.5280151367188
+          ],
+          "page": 16
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "split": "test",
+      "split_group": "enem-1430a67f5620935c69ea8b1f4dc075c1"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            31.18,
+            83.89,
+            538.46,
+            123.66
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 17,
+          "text": "O gerente de uma fábrica pretende comparar a evolução das vendas de dois produtos similares (I e II). Para isso,  passou a verificar o número de unidades vendidas de cada um desses produtos em cada mês. Os resultados dessa  verificação, para os meses de abril a junho, são apresentados na tabela.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            158.0,
+            129.0,
+            408.0,
+            215.0
+          ],
+          "group": "stem",
+          "id": "b4",
+          "order": 1,
+          "page": 17,
+          "text": "Produto\nVendas\nem abril\n(unidade)\nVendas\nem maio\n(unidade)\nVendas\nem junho\n(unidade)\nl\n80\n90\n100\nll\n190\n170\n150",
+          "type": "table"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.16,
+            217.1,
+            538.43,
+            243.64
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 2,
+          "page": 17,
+          "text": "O gerente estava decidido a cessar a produção do produto II no mês seguinte àquele em que as vendas do  produto I superassem as do produto II.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.15,
+            246.39,
+            538.43,
+            272.93
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 3,
+          "page": 17,
+          "text": "Suponha que a variação na quantidade de unidades vendidas dos produtos I e II se manteve, mês a mês, como  no período representado na tabela.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.15,
+            278.52,
+            248.87,
+            291.83
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 4,
+          "page": 17,
+          "text": "Em qual mês o produto II parou de ser produzido?",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            31.18,
+            294.58,
+            77.47,
+            307.89
+          ],
+          "group": "option-A",
+          "id": "b5",
+          "order": 5,
+          "page": 17,
+          "text": "A\t Junho.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            31.18,
+            310.64,
+            74.23,
+            323.95
+          ],
+          "group": "option-B",
+          "id": "b6",
+          "order": 6,
+          "page": 17,
+          "text": "B\t Julho.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            31.18,
+            326.7,
+            81.24,
+            340.01
+          ],
+          "group": "option-C",
+          "id": "b7",
+          "order": 7,
+          "page": 17,
+          "text": "C\t Agosto.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            31.18,
+            342.76,
+            93.18,
+            356.07
+          ],
+          "group": "option-D",
+          "id": "b8",
+          "order": 8,
+          "page": 17,
+          "text": "D\t Setembro.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            31.18,
+            358.82,
+            86.26,
+            372.13
+          ],
+          "group": "option-E",
+          "id": "b9",
+          "order": 9,
+          "page": 17,
+          "text": "E\t Outubro.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": false,
+      "id": "layout-2023-q139",
+      "independent_review": false,
+      "links": [],
+      "pattern": "wide_table",
+      "regions": [
+        {
+          "bbox": [
+            0.0,
+            64.83419036865234,
+            566.9290161132812,
+            379.3962707519531
+          ],
+          "page": 17
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "split": "test",
+      "split_group": "enem-569cb87703903c4d21f1885b9eb2beb2"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            31.17,
+            572.94,
+            280.53,
+            731.53
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 24,
+          "text": "Uma empresa de segurança domiciliar oferece o serviço  de patrulha noturna, no qual vigilantes em motocicletas  fazem o monitoramento periódico de residências.  A empresa conta com uma base, de onde acompanha  o trajeto realizado pelos vigilantes durante as patrulhas  e orienta o deslocamento de equipes de reforço quando  necessário. Numa patrulha rotineira, sem ocorrências,  um vigilante conduziu sua motocicleta a uma velocidade  constante durante todo o itinerário estabelecido, levando  30 minutos para conclusão. De acordo com os registros  do GPS alocado na motocicleta, a distância da posição  do vigilante à base, ao longo do tempo de realização do  trajeto, é descrita pelo gráfico.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            332.44,
+            64.75,
+            495.22,
+            79.07
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 1,
+          "page": 24,
+          "text": "Distância do vigilante em relação",
+          "type": "caption"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            345.91,
+            76.75,
+            478.96,
+            91.07
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 2,
+          "page": 24,
+          "text": "à base em função do tempo",
+          "type": "caption"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            290.0,
+            96.0,
+            536.0,
+            254.0
+          ],
+          "group": "stem",
+          "id": "b4",
+          "order": 3,
+          "page": 24,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            289.13,
+            257.06,
+            538.47,
+            293.77
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 4,
+          "page": 24,
+          "text": "A vista superior da trajetória realizada pelo vigilante  durante a patrulha registrada no gráfico é descrita pela  representação",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            307.0,
+            300.0,
+            413.0,
+            358.0
+          ],
+          "group": "option-A",
+          "id": "b5",
+          "order": 5,
+          "page": 24,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            289.13,
+            329.74,
+            308.85,
+            343.71
+          ],
+          "group": "option-A",
+          "id": "b10",
+          "order": 6,
+          "page": 24,
+          "text": "A A",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            307.0,
+            364.0,
+            413.0,
+            423.0
+          ],
+          "group": "option-B",
+          "id": "b6",
+          "order": 7,
+          "page": 24,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            289.13,
+            393.4,
+            308.85,
+            406.7
+          ],
+          "group": "option-B",
+          "id": "b11",
+          "order": 8,
+          "page": 24,
+          "text": "B B",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            307.0,
+            427.0,
+            413.0,
+            478.0
+          ],
+          "group": "option-C",
+          "id": "b7",
+          "order": 9,
+          "page": 24,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            289.13,
+            451.99,
+            308.85,
+            465.95
+          ],
+          "group": "option-C",
+          "id": "b12",
+          "order": 10,
+          "page": 24,
+          "text": "C C",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            307.0,
+            484.0,
+            413.0,
+            540.0
+          ],
+          "group": "option-D",
+          "id": "b8",
+          "order": 11,
+          "page": 24,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            289.13,
+            510.79,
+            308.85,
+            524.75
+          ],
+          "group": "option-D",
+          "id": "b13",
+          "order": 12,
+          "page": 24,
+          "text": "D D",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            307.0,
+            544.0,
+            413.0,
+            603.0
+          ],
+          "group": "option-E",
+          "id": "b9",
+          "order": 13,
+          "page": 24,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            289.13,
+            575.3,
+            308.85,
+            589.26
+          ],
+          "group": "option-E",
+          "id": "b14",
+          "order": 14,
+          "page": 24,
+          "text": "E E",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2023-q163",
+      "independent_review": false,
+      "links": [
+        {
+          "relation": "caption_of",
+          "source": "b2",
+          "target": "b4"
+        },
+        {
+          "relation": "caption_of",
+          "source": "b3",
+          "target": "b4"
+        }
+      ],
+      "pattern": "cross_column_graphical_options",
+      "regions": [
+        {
+          "bbox": [
+            0.0,
+            554.874755859375,
+            283.4645080566406,
+            731.5280151367188
+          ],
+          "page": 24
+        },
+        {
+          "bbox": [
+            283.4645080566406,
+            55.0,
+            566.9290161132812,
+            731.5280151367188
+          ],
+          "page": 24
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "split": "test",
+      "split_group": "enem-887d68907ac8ab7fca78b4a94d8dd531"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            31.17,
+            453.0,
+            280.5,
+            490.82
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 30,
+          "text": "A figura ilustra uma roda-gigante no exato instante em  que a cadeira onde se encontra a pessoa P está no ponto  mais alto dessa roda-gigante.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            63.0,
+            492.0,
+            244.0,
+            680.0
+          ],
+          "group": "stem",
+          "id": "b3",
+          "order": 1,
+          "page": 30,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.18,
+            683.02,
+            280.51,
+            731.53
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 2,
+          "page": 30,
+          "text": "Com o passar do tempo, à medida que a roda-gigante  gira, com velocidade angular constante e no sentido  horário, a altura da cadeira onde se encontra a pessoa P,  em relação ao solo, vai se alterando.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            289.12,
+            64.99,
+            538.47,
+            113.4
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 3,
+          "page": 30,
+          "text": "O gráfico que melhor representa a variação dessa altura,  em função do tempo, contado a partir do instante em que  a cadeira da pessoa P se encontra na posição mais alta  da roda-gigante, é",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            307.0,
+            130.0,
+            528.0,
+            210.0
+          ],
+          "group": "option-A",
+          "id": "b4",
+          "order": 4,
+          "page": 30,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            289.13,
+            160.12,
+            308.85,
+            174.08
+          ],
+          "group": "option-A",
+          "id": "b9",
+          "order": 5,
+          "page": 30,
+          "text": "A A",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            307.0,
+            223.0,
+            528.0,
+            308.0
+          ],
+          "group": "option-B",
+          "id": "b5",
+          "order": 6,
+          "page": 30,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            289.13,
+            258.44,
+            308.85,
+            271.74
+          ],
+          "group": "option-B",
+          "id": "b10",
+          "order": 7,
+          "page": 30,
+          "text": "B B",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            307.0,
+            321.0,
+            528.0,
+            400.0
+          ],
+          "group": "option-C",
+          "id": "b6",
+          "order": 8,
+          "page": 30,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            289.13,
+            353.64,
+            308.85,
+            366.95
+          ],
+          "group": "option-C",
+          "id": "b11",
+          "order": 9,
+          "page": 30,
+          "text": "C C",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            307.0,
+            418.0,
+            528.0,
+            499.0
+          ],
+          "group": "option-D",
+          "id": "b7",
+          "order": 10,
+          "page": 30,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            289.13,
+            447.36,
+            308.85,
+            460.66
+          ],
+          "group": "option-D",
+          "id": "b12",
+          "order": 11,
+          "page": 30,
+          "text": "D D",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            307.0,
+            508.0,
+            528.0,
+            586.0
+          ],
+          "group": "option-E",
+          "id": "b8",
+          "order": 12,
+          "page": 30,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            289.13,
+            540.88,
+            308.85,
+            554.19
+          ],
+          "group": "option-E",
+          "id": "b13",
+          "order": 13,
+          "page": 30,
+          "text": "E E",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2023-q177",
+      "independent_review": false,
+      "links": [],
+      "pattern": "cross_column_graphs",
+      "regions": [
+        {
+          "bbox": [
+            0.0,
+            434.91937255859375,
+            283.4645080566406,
+            731.5280151367188
+          ],
+          "page": 30
+        },
+        {
+          "bbox": [
+            283.4645080566406,
+            55.0,
+            566.9290161132812,
+            731.5280151367188
+          ],
+          "page": 30
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "split": "test",
+      "split_group": "enem-0e63e9c5eed3a385bf5baa7b7c80990d"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            31.17,
+            81.66,
+            280.53,
+            204.95
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 31,
+          "text": "Estudantes trabalhando com robótica criaram uma  “torneira inteligente” que automatiza sua abertura e seu  fechamento durante a limpeza das mãos. A tecnologia  funciona da seguinte forma: ao se colocarem as mãos  sob a torneira, ela libera água durante 3 segundos para  que a pessoa possa molhá-las. Em seguida, interrompe o  fornecimento de água por 5 segundos, enquanto a pessoa  ensaboa suas mãos, e finaliza o ciclo liberando água para  o enxágue por mais 3 segundos. Considere o tempo ( t ),  em segundo, contado a partir do instante em que se inicia  o ciclo. A vazão de água nessa torneira é constante.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            31.17,
+            208.32,
+            280.52,
+            254.62
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 1,
+          "page": 31,
+          "text": "Um esboço de gráfico que descreve o volume de água  acumulado, em litro, liberado por essa torneira durante um  ciclo de lavagem das mãos, em função do tempo ( t ), em  segundo, é",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            50.0,
+            257.0,
+            227.0,
+            349.0
+          ],
+          "group": "option-A",
+          "id": "b2",
+          "order": 2,
+          "page": 31,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            31.18,
+            298.2,
+            50.9,
+            312.16
+          ],
+          "group": "option-A",
+          "id": "b7",
+          "order": 3,
+          "page": 31,
+          "text": "A A",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            50.0,
+            352.0,
+            227.0,
+            441.0
+          ],
+          "group": "option-B",
+          "id": "b3",
+          "order": 4,
+          "page": 31,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            31.18,
+            391.88,
+            50.9,
+            405.84
+          ],
+          "group": "option-B",
+          "id": "b8",
+          "order": 5,
+          "page": 31,
+          "text": "B B",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            50.0,
+            445.0,
+            227.0,
+            535.0
+          ],
+          "group": "option-C",
+          "id": "b4",
+          "order": 6,
+          "page": 31,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            31.18,
+            485.2,
+            50.9,
+            499.16
+          ],
+          "group": "option-C",
+          "id": "b9",
+          "order": 7,
+          "page": 31,
+          "text": "C C",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            50.0,
+            539.0,
+            227.0,
+            628.0
+          ],
+          "group": "option-D",
+          "id": "b5",
+          "order": 8,
+          "page": 31,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            31.18,
+            577.43,
+            50.9,
+            591.39
+          ],
+          "group": "option-D",
+          "id": "b10",
+          "order": 9,
+          "page": 31,
+          "text": "D D",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            50.0,
+            630.0,
+            227.0,
+            724.0
+          ],
+          "group": "option-E",
+          "id": "b6",
+          "order": 10,
+          "page": 31,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            31.18,
+            670.04,
+            50.9,
+            683.35
+          ],
+          "group": "option-E",
+          "id": "b11",
+          "order": 11,
+          "page": 31,
+          "text": "E E",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2023-q178",
+      "independent_review": false,
+      "links": [],
+      "pattern": "vertical_graphs_with_rotated_labels",
+      "regions": [
+        {
+          "bbox": [
+            0.0,
+            64.83419036865234,
+            283.4645080566406,
+            731.5280151367188
+          ],
+          "page": 31
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "split": "test",
+      "split_group": "enem-610a62585b116d397ae60aca7a91fb75"
+    },
+    {
+      "annotation": "Anotação técnica assistida em 03/11/2026: coordenadas da camada PDF, agrupamentos e tipos conferidos com a página e os recortes revisados. Alternativas seguem A–E; textos gráficos pertencem à figura. Segunda revisão independente pendente.",
+      "blocks": [
+        {
+          "alternative": null,
+          "bbox": [
+            289.13,
+            82.35,
+            538.48,
+            119.06
+          ],
+          "group": "stem",
+          "id": "b0",
+          "order": 0,
+          "page": 31,
+          "text": "As características culturais variam de povo para povo.  Há notícias de um povo que possuía formas de contar  diferentes das nossas, como indicado no quadrinho a seguir.",
+          "type": "paragraph"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            299.0,
+            120.0,
+            529.0,
+            289.0
+          ],
+          "group": "stem",
+          "id": "b1",
+          "order": 1,
+          "page": 31,
+          "text": "",
+          "type": "image"
+        },
+        {
+          "alternative": null,
+          "bbox": [
+            289.12,
+            289.61,
+            538.45,
+            326.32
+          ],
+          "group": "stem",
+          "id": "b2",
+          "order": 2,
+          "page": 31,
+          "text": "Segundo o padrão de contagem indicado na figura, as representações dos numerais cinco e sete, nessa cultura, devem ser, respectivamente,",
+          "type": "paragraph"
+        },
+        {
+          "alternative": "A",
+          "bbox": [
+            289.13,
+            327.54,
+            538.41,
+            352.55
+          ],
+          "group": "option-A",
+          "id": "b3",
+          "order": 3,
+          "page": 31,
+          "text": "A\t okosa urapum urapum urapum e okosa okosa urapum urapum urapum.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "B",
+          "bbox": [
+            289.13,
+            352.36,
+            538.48,
+            365.67
+          ],
+          "group": "option-B",
+          "id": "b4",
+          "order": 4,
+          "page": 31,
+          "text": "B\t okosa okosa urapum e okosa okosa okosa okosa urapum.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "C",
+          "bbox": [
+            289.13,
+            365.48,
+            536.81,
+            378.78
+          ],
+          "group": "option-C",
+          "id": "b5",
+          "order": 5,
+          "page": 31,
+          "text": "C\t okosa okosa urapum e okosa okosa okosa urapum.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "D",
+          "bbox": [
+            289.13,
+            378.59,
+            538.41,
+            403.6
+          ],
+          "group": "option-D",
+          "id": "b6",
+          "order": 6,
+          "page": 31,
+          "text": "D\t okosa urapum urapum e okosa urapum okosa urapum urapum.",
+          "type": "alternative"
+        },
+        {
+          "alternative": "E",
+          "bbox": [
+            289.13,
+            403.41,
+            522.6,
+            416.72
+          ],
+          "group": "option-E",
+          "id": "b7",
+          "order": 7,
+          "page": 31,
+          "text": "E\t okosa okosa urapum e okosa okosa okosa okosa.",
+          "type": "alternative"
+        }
+      ],
+      "difficult": true,
+      "id": "layout-2023-q179",
+      "independent_review": false,
+      "links": [],
+      "pattern": "wrapped_options_and_comic",
+      "regions": [
+        {
+          "bbox": [
+            283.4645080566406,
+            64.83419036865234,
+            566.9290161132812,
+            421.04266357421875
+          ],
+          "page": 31
+        }
+      ],
+      "review_status": "technical_annotation",
+      "source_path": "data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf",
+      "source_sha256": "49e7ad9d0ab25710f6e5c4c3296fc40b63d86a3a87d5f25d83e8ecc81b98415b",
+      "split": "test",
+      "split_group": "enem-775b38ca813d5349d414f17678a80f06"
+    }
+  ],
+  "schema_version": "1.0",
+  "version": "layout-reference-v1"
+}
