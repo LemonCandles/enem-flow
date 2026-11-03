@@ -105,6 +105,8 @@ Cada requisição recebe `X-Request-ID`, controle de cache e registro de método
 
 ## Banco histórico e rótulos
 
+`experiments/` implementa a etapa 3 como processamento offline, executado por `scripts/run_experiments.py`. Não participa do ciclo de vida da API nem usa sessões de banco. Modelos clássicos, partições, métricas e propostas ficam em arquivos; `data/datasets/` guarda as referências técnicas compactas. Contratos de proposta são separados de `ExamImport`, exigem revisão e não promovem habilidades. A revisão visual abre os recortes das fontes locais e exporta tempos humanos apenas quando alguém os registra. O [protocolo](experimentos/README.md) detalha avaliação, OCR opcional, comparação externa de LLM e os limites dos candidatos de recuperação.
+
 O [banco e a classificação](banco-classificacao.md) separam o acervo local de 1998–2025 dos dois lotes conferidos instalados em SQLite/PostgreSQL. `installers/curated.py` valida os hashes das anotações, cria novas versões para os rótulos e mantém os snapshots anteriores. `services/archive_reader.py` lê o banco textual local, sem aprovar ou publicar extrações. A preparação comum permanece em `backend/app/preparation/`, `scripts/exam_pdf.py` e `scripts/prepare_exam.py`; é chamada automaticamente na importação e na edição da curadoria.
 
 Temas editoriais usam `enem-content-v1`. Competências e habilidades oficiais usam outro namespace, como `MT.C3` e `MT.H12`. Propostas de vínculos são metadados privados de curadoria; não são promovidas a habilidades publicadas sem segunda revisão. O conjunto exploratório de Matemática contém 89 itens válidos em oito temas.

@@ -66,11 +66,12 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 - Histórico individual, evolução e painel por área, matéria, tema e habilidade, com quantidade de tentativas e cobertura dos rótulos.
 - Preparação generalizada de novas provas: normalização conservadora de notação, associação de figuras/legendas e relatórios de transformações e ambiguidades, com CLI para JSON ou PDF textual com manifesto.
 - Curadoria: preparação automática na importação/edição, comparação com a fonte, novas versões, aprovação, publicação/retirada e consulta das decisões. Pendências bloqueantes impedem aprovação e publicação.
+- Experimentos offline de Dados e IA: cinco abordagens temáticas, três de layout, métricas reproduzíveis, propostas de recuperação do acervo e revisão visual com registro de tempo humano.
 - Migração inicial, configuração Docker, testes críticos da API e testes de navegador em desktop e viewport móvel.
 
 O lote de apresentação de **31/10/2026** alterou as questões **91, 92, 94, 97, 99, 100, 114, 116, 118, 123, 128, 132, 133, 135 e 170**, preservando gabaritos e histórico. O [registro técnico da revisão](data/README.md#revisão-de-apresentação) reúne os motivos, páginas da fonte, evidências e limites.
 
-Disciplinas e temas têm curadoria técnica assistida com evidências. Os vínculos com habilidades são propostas separadas e aguardam segunda revisão; não entram como habilidades aprovadas no painel. Veja o [banco e a classificação](docs/banco-classificacao.md). Classificadores, adaptação, tutor com LLM e layouts dinâmicos permanecem nas próximas etapas.
+Disciplinas e temas têm curadoria técnica assistida com evidências. Os vínculos com habilidades são propostas separadas e aguardam segunda revisão; não entram como habilidades aprovadas no painel. Veja o [banco e a classificação](docs/banco-classificacao.md). Classificadores locais já têm experimentos offline; sua integração ao produto, adaptação, tutor com LLM e layouts dinâmicos permanecem nas próximas etapas.
 
 ## Curadoria
 
@@ -90,7 +91,20 @@ make acervo
 
 Os JSONs ficam em `data/derived/exams/` e as figuras em `data/assets/<prova>/`, ambos fora do Git. O comando é idempotente: provas já publicadas não são alteradas. Detalhes, escolhas e limites estão em [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
 
-Em 01/11/2026, o lote já processado recebido foi conferido e instalado: **98 provas e 8.730 questões no site local**, incluindo os dois lotes conferidos. As 96 provas automáticas passaram pelo ensaio de resolução em uma cópia isolada; as 506 pendências de apresentação permanecem sinalizadas. [Incorporação e verificações](docs/banco-classificacao.md#incorporação-do-acervo-processado). Os derivados e o banco de execução continuam locais; esses dados não acompanham o clone.
+Em 01/11/2026, o lote recebido foi instalado: **98 provas e 8.730 questões no site local**, incluindo os dois lotes conferidos; o ensaio inicial registrou 506 pendências. A [auditoria de 03/11](docs/experimentos/auditoria-acervo.md) aplicou 993 correções por novas versões, conferiu os gabaritos integralmente e acrescentou validações antes ausentes. Permanecem 441 posições com diagnósticos de preparação, além da triagem e da revisão independente. [Incorporação original](docs/banco-classificacao.md#incorporação-do-acervo-processado). Os derivados e o banco de execução continuam locais; esses dados não acompanham o clone.
+
+## Experimentos de Dados e IA
+
+```bash
+make experiments
+make experiments-archive EXPERIMENT_OUTPUT=tmp/experiments/acervo-01
+```
+
+O primeiro comando compara os métodos temáticos nos 89 itens de Matemática e os métodos de layout em 13 questões/145 blocos incluídos. O segundo acrescenta a análise dos cadernos automáticos disponíveis localmente e os desafios de fontes/gabarito visual, com OCR local quando disponível. As saídas contêm partições, modelos em JSON, métricas, erros, propostas e `review.html` para conferência com o original.
+
+Os comandos não alteram o banco de uso nem publicam conteúdo. Propostas aguardam curadoria; não há chamadas a provedores. O [protocolo e os resultados da etapa 3](docs/experimentos/README.md) explicam a separação de dados, a comparação externa de LLM e os limites das amostras técnicas.
+
+A [auditoria integral do acervo](docs/experimentos/auditoria-acervo.md) acrescenta conferência independente de gabaritos, simulação de resultados, comparação de figuras com as fontes, renderização por questão e aplicação dos experimentos a todas as versões publicadas. `make audit-archive`, `make audit-archive-browser` e `make experiments-all` reproduzem essas frentes com o acervo local. Correções técnicas usam um plano versionado, ensaio em cópia e instalação explícita; preservam os históricos e a revisão independente pendente.
 
 ## Preparar novas provas
 
@@ -147,6 +161,7 @@ Use também um banco separado para os testes de navegador. As [validações e se
 - [Operação, backup e recuperação](docs/operations.md)
 - [Origem do conteúdo e conferência](data/README.md)
 - [Banco, taxonomia e referência de Matemática](docs/banco-classificacao.md)
+- [Experimentos de classificação e layout](docs/experimentos/README.md)
 - [Cobertura dos anos e aplicações](docs/cobertura-acervo.md)
 - [Organização das fontes oficiais](data/sources/README.md)
 - [Contrato JSON de importação](docs/content-schema.json)

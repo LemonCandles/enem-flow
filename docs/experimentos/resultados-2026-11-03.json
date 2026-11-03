@@ -1,0 +1,2959 @@
+{
+  "archive": {
+    "affected_questions": 489,
+    "available": true,
+    "candidate_coverage": {
+      "alternative_layout": 84,
+      "merged_table_cells": 68
+    },
+    "challenges": {
+      "cases": [
+        {
+          "accuracy": 1.0,
+          "correct": 8,
+          "id": "visual-key-2010-day1",
+          "independent_review": false,
+          "proposed_total": 86,
+          "reference_items": 8,
+          "status": "evaluated",
+          "unresolved_total": 4
+        },
+        {
+          "accuracy": 1.0,
+          "correct": 3,
+          "id": "visual-key-2010-day2",
+          "independent_review": false,
+          "proposed_total": 83,
+          "reference_items": 3,
+          "status": "evaluated",
+          "unresolved_total": 7
+        },
+        {
+          "exact_recovery": false,
+          "font_character_error_rate": 0.08823529411764706,
+          "id": "font-2014-ppl-line",
+          "independent_review": false,
+          "raw_character_error_rate": 1.0,
+          "status": "evaluated"
+        },
+        {
+          "accuracy": null,
+          "id": "font-2021-unresolved",
+          "reason": "Sem transcrição adjudicada; legibilidade não é acurácia.",
+          "spans_with_font_candidate": 6,
+          "status": "diagnostic_only",
+          "unmapped_spans": 14
+        }
+      ],
+      "ocr_available": true,
+      "ocr_requested": true,
+      "reference_sha256": "874a92154f51fa9318ceaebd03496e771493f26ebba0ce23e11a900cc5f7722c",
+      "reference_version": "recovery-reference-v1"
+    },
+    "exam_files": 96,
+    "failures": [],
+    "interpretation": "Cobertura de propostas não significa erros corrigidos. Nenhum diagnóstico ou conteúdo publicado foi alterado.",
+    "ocr": {
+      "font-2014-ppl-line": {
+        "character_error_rate": 0.029411764705882353,
+        "effective_language": "eng",
+        "engine": "pymupdf-tesseract",
+        "error": null,
+        "latency_ms": 1148.7022129999787,
+        "missing_languages": [
+          "por"
+        ],
+        "needs_review": true,
+        "requested_language": "por+eng",
+        "status": "proposed",
+        "traineddata_sha256": {
+          "eng": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+        }
+      },
+      "font-2021-unresolved": {
+        "effective_language": "eng",
+        "engine": "pymupdf-tesseract",
+        "error": null,
+        "latency_ms": 6865.692042999854,
+        "missing_languages": [
+          "por"
+        ],
+        "needs_review": true,
+        "requested_language": "por+eng",
+        "status": "proposed",
+        "traineddata_sha256": {
+          "eng": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+        }
+      }
+    },
+    "original_issues": {
+      "alternative_layout": 154,
+      "merged_table_cells": 130,
+      "spatial_layout": 222
+    },
+    "processed_exams": 96,
+    "remaining_without_candidate": {
+      "alternative_layout": 70,
+      "merged_table_cells": 62,
+      "spatial_layout": 222
+    },
+    "requested": true,
+    "resolved_or_published": 0
+  },
+  "artifacts": "tmp/experiments/2026-11-03",
+  "classification": {
+    "archive": {
+      "available": true,
+      "exam_files": 96,
+      "limit": 500,
+      "proposals": 500,
+      "requested": true
+    },
+    "class_counts": {
+      "development": {
+        "Estatística": 2,
+        "Geometria espacial": 1,
+        "Geometria plana": 2,
+        "Grandezas e medidas": 1,
+        "Gráficos e coordenadas": 2,
+        "Números e proporcionalidade": 4,
+        "Probabilidade e combinatória": 2,
+        "Álgebra e funções": 4
+      },
+      "test": {
+        "Estatística": 2,
+        "Geometria espacial": 1,
+        "Geometria plana": 2,
+        "Grandezas e medidas": 1,
+        "Gráficos e coordenadas": 2,
+        "Números e proporcionalidade": 4,
+        "Probabilidade e combinatória": 2,
+        "Álgebra e funções": 4
+      },
+      "train": {
+        "Estatística": 4,
+        "Geometria espacial": 4,
+        "Geometria plana": 8,
+        "Grandezas e medidas": 5,
+        "Gráficos e coordenadas": 4,
+        "Números e proporcionalidade": 10,
+        "Probabilidade e combinatória": 5,
+        "Álgebra e funções": 13
+      }
+    },
+    "limitations": [
+      "Referência técnica assistida; segunda anotação independente pendente.",
+      "Amostra pequena, de dois anos e uma disciplina; sem generalização presumida.",
+      "Descrições/legendas editoriais, rótulos e gabarito excluídos das features.",
+      "Margens não calibradas; nenhuma proposta é aprovação."
+    ],
+    "llm": {
+      "reason": "Sem provedor, modelo, orçamento e previsões externas declarados. Importação offline disponível; nenhuma chamada paga executada.",
+      "status": "not_run"
+    },
+    "models": {
+      "keywords": {
+        "development": {
+          "accuracy": 0.6666666666666666,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 1,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 1,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 2,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 2,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 2,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 4
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.12564500002554269,
+            "p95_ms": 0.19038799996451417,
+            "samples": 18,
+            "total_ms": 2.127797000184728
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.6492424242424243,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.7276785714285714,
+          "macro_recall": 0.71875,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.4,
+              "precision": 0.25,
+              "predicted": 4,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "predicted": 2,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.4,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 0.25,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "predicted": 2,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.7272727272727273,
+              "precision": 0.5714285714285714,
+              "predicted": 7,
+              "recall": 1.0,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "test": {
+          "accuracy": 0.5555555555555556,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 2,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria espacial": {
+              "Estatística": 1,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 2,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 1
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 2,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.1413599998159043,
+            "p95_ms": 0.24318900000253052,
+            "samples": 18,
+            "total_ms": 2.459478999981002
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.5005952380952381,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.47916666666666663,
+          "macro_recall": 0.625,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.8,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.6666666666666666,
+              "precision": 0.5,
+              "predicted": 4,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.5,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.8,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.5714285714285715,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 0.5,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "training_ms": 0.042952000057994155
+      },
+      "majority": {
+        "development": {
+          "accuracy": 0.2222222222222222,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 4
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 4
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.11013999983333633,
+            "p95_ms": 0.25960200014196744,
+            "samples": 18,
+            "total_ms": 2.050271999905817
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.04545454545454545,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.027777777777777776,
+          "macro_recall": 0.125,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.3636363636363636,
+              "precision": 0.2222222222222222,
+              "predicted": 18,
+              "recall": 1.0,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "test": {
+          "accuracy": 0.2222222222222222,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 4
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 4
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.13102299999445677,
+            "p95_ms": 0.22970999998506159,
+            "samples": 18,
+            "total_ms": 2.2463909999714815
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.04545454545454545,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.027777777777777776,
+          "macro_recall": 0.125,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.3636363636363636,
+              "precision": 0.2222222222222222,
+              "predicted": 18,
+              "recall": 1.0,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "training_ms": 0.1522549998753675
+      },
+      "multinomial_nb": {
+        "development": {
+          "accuracy": 0.3333333333333333,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 2,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 1,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 2,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 1,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 1
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.27538599988474743,
+            "p95_ms": 0.4247080000823189,
+            "samples": 18,
+            "total_ms": 4.8535819998960505
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.36904761904761907,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.3541666666666667,
+          "macro_recall": 0.40625,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.6666666666666666,
+              "precision": 0.5,
+              "predicted": 4,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 4,
+              "recall": 0.0,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.28571428571428575,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 0.25,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "test": {
+          "accuracy": 0.5,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 1,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 1,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 0
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 2,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 2
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.2989229999457166,
+            "p95_ms": 0.44796500014854246,
+            "samples": 18,
+            "total_ms": 5.075122000334886
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.48214285714285715,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.5416666666666666,
+          "macro_recall": 0.53125,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.5,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.28571428571428575,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 0.25,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.6666666666666666,
+              "precision": 0.5,
+              "predicted": 4,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.5714285714285715,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 0.5,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "training_ms": 6.476706000057675
+      },
+      "tfidf_character_centroid": {
+        "development": {
+          "accuracy": 0.3888888888888889,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 1,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 2,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 3
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 1
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 2
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 2.1961040001770016,
+            "p95_ms": 3.7968780000028346,
+            "samples": 18,
+            "total_ms": 40.35184400026992
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.3648809523809524,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.34375,
+          "macro_recall": 0.40625,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.8,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.28571428571428575,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 0.25,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.3333333333333333,
+              "precision": 0.25,
+              "predicted": 8,
+              "recall": 0.5,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "test": {
+          "accuracy": 0.3888888888888889,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 1
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 2,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 3
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 2.9137989999981073,
+            "p95_ms": 4.812585999843577,
+            "samples": 18,
+            "total_ms": 56.885066999257106
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.29583333333333334,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.234375,
+          "macro_recall": 0.40625,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.4,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.6666666666666666,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.8,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.5,
+              "precision": 0.375,
+              "predicted": 8,
+              "recall": 0.75,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "training_ms": 70.9495240000706
+      },
+      "tfidf_word_centroid": {
+        "development": {
+          "accuracy": 0.3888888888888889,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 2,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 1,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 2,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 1,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 2,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 2,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 0
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.21336600002541672,
+            "p95_ms": 0.3316090001135308,
+            "samples": 18,
+            "total_ms": 3.612356000303407
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.3875,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.35416666666666663,
+          "macro_recall": 0.4375,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.8,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.4,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.4,
+              "precision": 0.3333333333333333,
+              "predicted": 6,
+              "recall": 0.5,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "test": {
+          "accuracy": 0.5,
+          "confusion_matrix": {
+            "Estatística": {
+              "Estatística": 1,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 1
+            },
+            "Geometria espacial": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Geometria plana": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Grandezas e medidas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Gráficos e coordenadas": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 1,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 0
+            },
+            "Números e proporcionalidade": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 1,
+              "Grandezas e medidas": 1,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 1,
+              "Probabilidade e combinatória": 1,
+              "Álgebra e funções": 0
+            },
+            "Probabilidade e combinatória": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 0,
+              "Probabilidade e combinatória": 2,
+              "Álgebra e funções": 0
+            },
+            "Álgebra e funções": {
+              "Estatística": 0,
+              "Geometria espacial": 0,
+              "Geometria plana": 0,
+              "Grandezas e medidas": 0,
+              "Gráficos e coordenadas": 0,
+              "Números e proporcionalidade": 2,
+              "Probabilidade e combinatória": 0,
+              "Álgebra e funções": 2
+            }
+          },
+          "external_cost_usd": 0.0,
+          "latency": {
+            "p50_ms": 0.2666560001216567,
+            "p95_ms": 0.4124849999698199,
+            "samples": 18,
+            "total_ms": 4.705657000386054
+          },
+          "local_compute_cost_usd": null,
+          "macro_f1": 0.4654761904761905,
+          "macro_policy": "Média das classes com suporte; classes ausentes continuam na matriz.",
+          "macro_precision": 0.4895833333333333,
+          "macro_recall": 0.53125,
+          "per_class": {
+            "Estatística": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "predicted": 1,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Geometria espacial": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "Geometria plana": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Grandezas e medidas": {
+              "f1": 0.4,
+              "precision": 0.25,
+              "predicted": 4,
+              "recall": 1.0,
+              "support": 1
+            },
+            "Gráficos e coordenadas": {
+              "f1": 0.5,
+              "precision": 0.5,
+              "predicted": 2,
+              "recall": 0.5,
+              "support": 2
+            },
+            "Números e proporcionalidade": {
+              "f1": 0.28571428571428575,
+              "precision": 0.3333333333333333,
+              "predicted": 3,
+              "recall": 0.25,
+              "support": 4
+            },
+            "Probabilidade e combinatória": {
+              "f1": 0.8,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 1.0,
+              "support": 2
+            },
+            "Álgebra e funções": {
+              "f1": 0.5714285714285715,
+              "precision": 0.6666666666666666,
+              "predicted": 3,
+              "recall": 0.5,
+              "support": 4
+            }
+          },
+          "repeat_consistency": 1.0,
+          "samples": 18
+        },
+        "training_ms": 11.971924999897965
+      }
+    },
+    "proposal_count": 589,
+    "reference": {
+      "independent_review": false,
+      "reference": "data/datasets/adaptive-math-reference-v1.json",
+      "sha256": "1f589c79513534ed5666dc7e3fc5430d7a1b523dd81963ae59f669f1e606b430",
+      "technical_annotations": true
+    },
+    "selected_test_errors": [
+      {
+        "content_sha256": "36977e42751b134f443df63c44271e640da8230b533ec7fd9e1325051c85521f",
+        "error_type": "theme_confusion",
+        "expected": "Geometria espacial",
+        "predicted": "Estatística",
+        "question_id": "enem-2023-dia2-azul-q142",
+        "text_excerpt": "A água utilizada pelos 75 moradores de um vilarejo provém de um reservatório de formato cilíndrico circular reto cujo raio da base mede 5 metros, sempre abastecido no primeiro dia de cada mês por caminhões-pipa. Cada morador desse vilarejo consome, em média, 200 litros de água por dia.\nNo mês de junho de um determinado ano, o vilarejo festejou o di",
+        "visual": false
+      },
+      {
+        "content_sha256": "8159be0aa9d9a752576252027f02fd6f66e7b791f5feb49d187c302bc7ff33d5",
+        "error_type": "theme_confusion",
+        "expected": "Números e proporcionalidade",
+        "predicted": "Probabilidade e combinatória",
+        "question_id": "enem-2023-dia2-azul-q143",
+        "text_excerpt": "Em janeiro do ano passado, a direção de uma fábrica abriu uma creche para os filhos de seus funcionários, com 10 salas, cada uma com capacidade para atender 10 crianças a cada ano. As vagas são sorteadas entre os filhos dos funcionários inscritos, enquanto os não contemplados pelo sorteio formam uma lista de espera. No ano passado, a lista de esper",
+        "visual": false
+      },
+      {
+        "content_sha256": "228975952db09a3eaf1defcc11066bd5f7fe6b3b699da70c38af91b0ba0dd265",
+        "error_type": "theme_confusion_with_visual_context",
+        "expected": "Números e proporcionalidade",
+        "predicted": "Geometria plana",
+        "question_id": "enem-2023-dia2-azul-q146",
+        "text_excerpt": "O triângulo da figura é denominado triângulo mágico. Nos círculos, escrevem-se os números de 1 a 6, sem repetição, com um número em cada círculo. O objetivo é distribuir os números de forma que as somas dos números em cada lado do triângulo sejam iguais.\nConsidere que os números colocados nos vértices do triângulo estejam em progressão aritmética d",
+        "visual": true
+      },
+      {
+        "content_sha256": "c36cd635b6d2f6efe6cf5f2485bac70d100df7b90b6f90d3b0a765337eea54da",
+        "error_type": "theme_confusion",
+        "expected": "Números e proporcionalidade",
+        "predicted": "Álgebra e funções",
+        "question_id": "enem-2023-dia2-azul-q153",
+        "text_excerpt": "Um supermercado conta com cinco caixas disponíveis para pagamento. Foram instaladas telas que apresentam o tempo médio gasto por cada caixa para iniciar e finalizar o atendimento de cada cliente, e o número de pessoas presentes na fila de cada caixa em tempo real. Um cliente, na hora de passar sua compra, sabendo que cada um dos cinco caixas inicia",
+        "visual": false
+      },
+      {
+        "content_sha256": "2e956fcb747d922869ce37943ea744be745fc6030a8e87dadb6bdad5211e99b8",
+        "error_type": "theme_confusion_with_visual_context",
+        "expected": "Álgebra e funções",
+        "predicted": "Grandezas e medidas",
+        "question_id": "enem-2023-dia2-azul-q169",
+        "text_excerpt": "O esquema mostra como a intensidade luminosa decresce com o aumento da profundidade em um rio, sendo $L_0$ a intensidade na sua superfície.\nConsidere que a intensidade luminosa diminui, a cada metro acrescido na profundidade, segundo o mesmo padrão do esquema.\nA intensidade luminosa correspondente à profundidade de $6\\,\\mathrm{m}$ é igual a\n$\\frac{",
+        "visual": true
+      },
+      {
+        "content_sha256": "ae4dfcf4fe0afb0d6a15bd0084ae3b084983988b444a83c924bc9b71eae3c9bf",
+        "error_type": "theme_confusion",
+        "expected": "Números e proporcionalidade",
+        "predicted": "Grandezas e medidas",
+        "question_id": "enem-2024-regular-q160",
+        "text_excerpt": "Uma piscina tem capacidade de 2 500 000 litros.\nSeu sistema de abastecimento foi regulado para ter uma vazão constante de 6 000 litros de água por minuto.\nO mesmo sistema foi instalado em uma segunda piscina, com capacidade de 2 750 000 litros, e regulado para ter uma vazão, também constante, capaz de enchê-la em um tempo 20% maior que o gasto para",
+        "visual": false
+      },
+      {
+        "content_sha256": "30f69e49483e940d40be6a3ddb70acd5899ed50e2367cbf5802161b65adc3ca0",
+        "error_type": "theme_confusion_with_visual_context",
+        "expected": "Gráficos e coordenadas",
+        "predicted": "Geometria plana",
+        "question_id": "enem-2024-regular-q161",
+        "text_excerpt": "Um tanque, em formato de paralelepípedo reto retângulo, tem em seu interior dois anteparos verticais, fixados na sua base e em duas paredes opostas, sendo perpendiculares a elas, conforme a figura.\nEsses anteparos, de espessuras desprezíveis, estão instalados de maneira a dividir a base do tanque em três retângulos congruentes, tendo suas alturas i",
+        "visual": true
+      },
+      {
+        "content_sha256": "fe1340b2eb32cc770f57f6d2bcca240e29435c080d67a88ebd0b7ec75cabef36",
+        "error_type": "theme_confusion",
+        "expected": "Álgebra e funções",
+        "predicted": "Números e proporcionalidade",
+        "question_id": "enem-2024-regular-q162",
+        "text_excerpt": "Uma imobiliária iniciou uma campanha de divulgação para promover a venda de apartamentos que podem ser pagos em 100 parcelas mensais. O valor da primeira delas é fixado no momento da compra, com o pagamento dessa primeira parcela. A partir da segunda parcela, o valor é determinado pela aplicação de um acréscimo percentual fixo ao valor da parcela a",
+        "visual": false
+      }
+    ],
+    "selection": {
+      "criterion": "development macro_f1; ties use config order",
+      "model": "keywords",
+      "refitted_on_test": false,
+      "test_used_for_selection": false
+    },
+    "split_counts": {
+      "development": 18,
+      "test": 18,
+      "train": 53
+    },
+    "split_manifest_sha256": "d68d930837068a48b32ad1cd4680a962f6cd23bc843dda671955386d73a86d79"
+  },
+  "layout": {
+    "human_correction_time": {
+      "measured": false,
+      "median_seconds": null,
+      "records": 0,
+      "total_seconds": null
+    },
+    "independent_review": false,
+    "limitations": [
+      "Amostra técnica assistida, não benchmark independente.",
+      "Regiões de questão são entradas comuns; localização de questões inteiras não é avaliada.",
+      "Integridade exige blocos, tipos, ordem e vínculos; texto científico ainda exige conferência.",
+      "Tempo humano ausente é null; não é estimado a partir da latência automática."
+    ],
+    "models": {
+      "cart": {
+        "development": {
+          "alternatives": {
+            "correct": 10,
+            "expected": 10,
+            "precision": 0.8333333333333334,
+            "predicted": 12,
+            "recall": 1.0
+          },
+          "block_macro_f1": 0.8181818181818181,
+          "by_pattern": {
+            "spatial_math_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wide_spatial_formula": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.0,
+          "links": {
+            "correct": 0,
+            "expected": 0,
+            "precision": null,
+            "predicted": 0,
+            "recall": null
+          },
+          "localization_f1": 0.8044444444444445,
+          "mean_iou": 0.9264677711859248,
+          "reading_order_agreement": 0.90625,
+          "samples": 2
+        },
+        "external_cost_usd": 0.0,
+        "latency": {
+          "p50_ms": 417.8604749999977,
+          "p95_ms": 613.3391900000333,
+          "samples": 13,
+          "total_ms": 5630.304561999765
+        },
+        "local_compute_cost_usd": null,
+        "repeat_consistency": 1.0,
+        "test": {
+          "alternatives": {
+            "correct": 15,
+            "expected": 45,
+            "precision": 0.8823529411764706,
+            "predicted": 17,
+            "recall": 0.3333333333333333
+          },
+          "block_macro_f1": 0.6388888888888888,
+          "by_pattern": {
+            "cross_column_graphical_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "cross_column_graphs": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vector_figure_and_duplicate_text_layer": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vertical_graphs_with_rotated_labels": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wide_table": {
+              "intact": 1,
+              "samples": 1
+            },
+            "wrapped_options_and_comic": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.16666666666666666,
+          "links": {
+            "correct": 0,
+            "expected": 2,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "localization_f1": 0.5163996948893974,
+          "mean_iou": 0.7696786902384415,
+          "reading_order_agreement": 0.9821428571428571,
+          "samples": 6
+        },
+        "test_cases": [
+          {
+            "errors": {
+              "extra_blocks": 4,
+              "missed_blocks": [
+                "b3"
+              ],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 0
+            },
+            "id": "layout-2023-q136",
+            "integrity": false,
+            "localization_f1": 0.7826086956521738,
+            "pattern": "vector_figure_and_duplicate_text_layer"
+          },
+          {
+            "errors": {
+              "extra_blocks": 0,
+              "missed_blocks": [],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 0
+            },
+            "id": "layout-2023-q139",
+            "integrity": true,
+            "localization_f1": 1.0,
+            "pattern": "wide_table"
+          },
+          {
+            "errors": {
+              "extra_blocks": 2,
+              "missed_blocks": [
+                "b2",
+                "b3",
+                "b4",
+                "b1",
+                "b5",
+                "b10",
+                "b6",
+                "b11",
+                "b7",
+                "b12",
+                "b8",
+                "b13",
+                "b9",
+                "b14"
+              ],
+              "missing_links": 2,
+              "mistyped": [
+                {
+                  "block": "b0",
+                  "expected": "paragraph",
+                  "predicted": "alternative"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q163",
+            "integrity": false,
+            "localization_f1": 0.1111111111111111,
+            "pattern": "cross_column_graphical_options"
+          },
+          {
+            "errors": {
+              "extra_blocks": 2,
+              "missed_blocks": [
+                "b2",
+                "b4",
+                "b9",
+                "b5",
+                "b10",
+                "b6",
+                "b11",
+                "b7",
+                "b12",
+                "b8",
+                "b13"
+              ],
+              "missing_links": 0,
+              "mistyped": [
+                {
+                  "block": "b0",
+                  "expected": "paragraph",
+                  "predicted": "alternative"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q177",
+            "integrity": false,
+            "localization_f1": 0.3157894736842105,
+            "pattern": "cross_column_graphs"
+          },
+          {
+            "errors": {
+              "extra_blocks": 1,
+              "missed_blocks": [
+                "b0",
+                "b1",
+                "b2",
+                "b7",
+                "b3",
+                "b8",
+                "b4",
+                "b9",
+                "b5",
+                "b10",
+                "b6",
+                "b11"
+              ],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q178",
+            "integrity": false,
+            "localization_f1": 0.0,
+            "pattern": "vertical_graphs_with_rotated_labels"
+          },
+          {
+            "errors": {
+              "extra_blocks": 2,
+              "missed_blocks": [],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 0
+            },
+            "id": "layout-2023-q179",
+            "integrity": false,
+            "localization_f1": 0.888888888888889,
+            "pattern": "wrapped_options_and_comic"
+          }
+        ],
+        "train": {
+          "alternatives": {
+            "correct": 30,
+            "expected": 30,
+            "precision": 0.967741935483871,
+            "predicted": 31,
+            "recall": 1.0
+          },
+          "block_macro_f1": 0.9674843674843675,
+          "by_pattern": {
+            "figure_caption_credit": {
+              "intact": 0,
+              "samples": 1
+            },
+            "merged_table_header": {
+              "intact": 0,
+              "samples": 1
+            },
+            "plain_text": {
+              "intact": 1,
+              "samples": 1
+            },
+            "raster_and_text_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vertical_graphical_options": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.2,
+          "links": {
+            "correct": 3,
+            "expected": 3,
+            "precision": 1.0,
+            "predicted": 3,
+            "recall": 1.0
+          },
+          "localization_f1": 0.956140350877193,
+          "mean_iou": 0.9835799832430958,
+          "reading_order_agreement": 1.0,
+          "samples": 5
+        }
+      },
+      "coordinates": {
+        "development": {
+          "alternatives": {
+            "correct": 0,
+            "expected": 10,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "block_macro_f1": 0.455026455026455,
+          "by_pattern": {
+            "spatial_math_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wide_spatial_formula": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.0,
+          "links": {
+            "correct": 0,
+            "expected": 0,
+            "precision": null,
+            "predicted": 0,
+            "recall": null
+          },
+          "localization_f1": 0.6444444444444445,
+          "mean_iou": 0.8924817884895471,
+          "reading_order_agreement": 1.0,
+          "samples": 2
+        },
+        "external_cost_usd": 0.0,
+        "latency": {
+          "p50_ms": 21.980600000006234,
+          "p95_ms": 53.47909499982961,
+          "samples": 13,
+          "total_ms": 314.35065100004067
+        },
+        "local_compute_cost_usd": null,
+        "repeat_consistency": 1.0,
+        "test": {
+          "alternatives": {
+            "correct": 0,
+            "expected": 45,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "block_macro_f1": 0.42064232064232066,
+          "by_pattern": {
+            "cross_column_graphical_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "cross_column_graphs": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vector_figure_and_duplicate_text_layer": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vertical_graphs_with_rotated_labels": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wide_table": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wrapped_options_and_comic": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.0,
+          "links": {
+            "correct": 0,
+            "expected": 2,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "localization_f1": 0.5161865867107802,
+          "mean_iou": 0.9662958690784694,
+          "reading_order_agreement": 1.0,
+          "samples": 6
+        },
+        "test_cases": [
+          {
+            "errors": {
+              "extra_blocks": 5,
+              "missed_blocks": [
+                "b3",
+                "b4",
+                "b5",
+                "b6",
+                "b7",
+                "b8",
+                "b9"
+              ],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 5
+            },
+            "id": "layout-2023-q136",
+            "integrity": false,
+            "localization_f1": 0.33333333333333326,
+            "pattern": "vector_figure_and_duplicate_text_layer"
+          },
+          {
+            "errors": {
+              "extra_blocks": 6,
+              "missed_blocks": [
+                "b4"
+              ],
+              "missing_links": 0,
+              "mistyped": [
+                {
+                  "block": "b9",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b8",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b7",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b6",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b5",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                }
+              ],
+              "wrong_alternative_links": 5
+            },
+            "id": "layout-2023-q139",
+            "integrity": false,
+            "localization_f1": 0.7200000000000001,
+            "pattern": "wide_table"
+          },
+          {
+            "errors": {
+              "extra_blocks": 7,
+              "missed_blocks": [
+                "b4",
+                "b5",
+                "b6",
+                "b7",
+                "b8",
+                "b9"
+              ],
+              "missing_links": 2,
+              "mistyped": [
+                {
+                  "block": "b3",
+                  "expected": "caption",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b2",
+                  "expected": "caption",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b12",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b14",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b13",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b10",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b11",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q163",
+            "integrity": false,
+            "localization_f1": 0.5806451612903225,
+            "pattern": "cross_column_graphical_options"
+          },
+          {
+            "errors": {
+              "extra_blocks": 17,
+              "missed_blocks": [
+                "b3",
+                "b4",
+                "b5",
+                "b6",
+                "b7",
+                "b8"
+              ],
+              "missing_links": 0,
+              "mistyped": [
+                {
+                  "block": "b13",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b11",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b9",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b10",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b12",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q177",
+            "integrity": false,
+            "localization_f1": 0.41025641025641024,
+            "pattern": "cross_column_graphs"
+          },
+          {
+            "errors": {
+              "extra_blocks": 13,
+              "missed_blocks": [
+                "b2",
+                "b3",
+                "b4",
+                "b5",
+                "b6"
+              ],
+              "missing_links": 0,
+              "mistyped": [
+                {
+                  "block": "b9",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b11",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b7",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b8",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                },
+                {
+                  "block": "b10",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q178",
+            "integrity": false,
+            "localization_f1": 0.4375,
+            "pattern": "vertical_graphs_with_rotated_labels"
+          },
+          {
+            "errors": {
+              "extra_blocks": 1,
+              "missed_blocks": [
+                "b3",
+                "b4",
+                "b5",
+                "b6"
+              ],
+              "missing_links": 0,
+              "mistyped": [
+                {
+                  "block": "b7",
+                  "expected": "alternative",
+                  "predicted": "paragraph"
+                }
+              ],
+              "wrong_alternative_links": 5
+            },
+            "id": "layout-2023-q179",
+            "integrity": false,
+            "localization_f1": 0.6153846153846154,
+            "pattern": "wrapped_options_and_comic"
+          }
+        ],
+        "train": {
+          "alternatives": {
+            "correct": 0,
+            "expected": 30,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "block_macro_f1": 0.708041958041958,
+          "by_pattern": {
+            "figure_caption_credit": {
+              "intact": 0,
+              "samples": 1
+            },
+            "merged_table_header": {
+              "intact": 0,
+              "samples": 1
+            },
+            "plain_text": {
+              "intact": 0,
+              "samples": 1
+            },
+            "raster_and_text_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vertical_graphical_options": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.0,
+          "links": {
+            "correct": 0,
+            "expected": 3,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "localization_f1": 0.5933179723502303,
+          "mean_iou": 0.9996827527095956,
+          "reading_order_agreement": 1.0,
+          "samples": 5
+        }
+      },
+      "geometry": {
+        "development": {
+          "alternatives": {
+            "correct": 10,
+            "expected": 10,
+            "precision": 0.8333333333333334,
+            "predicted": 12,
+            "recall": 1.0
+          },
+          "block_macro_f1": 0.8181818181818181,
+          "by_pattern": {
+            "spatial_math_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wide_spatial_formula": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.0,
+          "links": {
+            "correct": 0,
+            "expected": 0,
+            "precision": null,
+            "predicted": 0,
+            "recall": null
+          },
+          "localization_f1": 0.8044444444444445,
+          "mean_iou": 0.9264677711859248,
+          "reading_order_agreement": 0.90625,
+          "samples": 2
+        },
+        "external_cost_usd": 0.0,
+        "latency": {
+          "p50_ms": 417.77673499996126,
+          "p95_ms": 613.2824079998045,
+          "samples": 13,
+          "total_ms": 5629.079396000407
+        },
+        "local_compute_cost_usd": null,
+        "repeat_consistency": 1.0,
+        "test": {
+          "alternatives": {
+            "correct": 15,
+            "expected": 45,
+            "precision": 0.8823529411764706,
+            "predicted": 17,
+            "recall": 0.3333333333333333
+          },
+          "block_macro_f1": 0.6388888888888888,
+          "by_pattern": {
+            "cross_column_graphical_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "cross_column_graphs": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vector_figure_and_duplicate_text_layer": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vertical_graphs_with_rotated_labels": {
+              "intact": 0,
+              "samples": 1
+            },
+            "wide_table": {
+              "intact": 1,
+              "samples": 1
+            },
+            "wrapped_options_and_comic": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.16666666666666666,
+          "links": {
+            "correct": 0,
+            "expected": 2,
+            "precision": null,
+            "predicted": 0,
+            "recall": 0.0
+          },
+          "localization_f1": 0.5163996948893974,
+          "mean_iou": 0.7696786902384415,
+          "reading_order_agreement": 0.9821428571428571,
+          "samples": 6
+        },
+        "test_cases": [
+          {
+            "errors": {
+              "extra_blocks": 4,
+              "missed_blocks": [
+                "b3"
+              ],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 0
+            },
+            "id": "layout-2023-q136",
+            "integrity": false,
+            "localization_f1": 0.7826086956521738,
+            "pattern": "vector_figure_and_duplicate_text_layer"
+          },
+          {
+            "errors": {
+              "extra_blocks": 0,
+              "missed_blocks": [],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 0
+            },
+            "id": "layout-2023-q139",
+            "integrity": true,
+            "localization_f1": 1.0,
+            "pattern": "wide_table"
+          },
+          {
+            "errors": {
+              "extra_blocks": 2,
+              "missed_blocks": [
+                "b2",
+                "b3",
+                "b4",
+                "b1",
+                "b5",
+                "b10",
+                "b6",
+                "b11",
+                "b7",
+                "b12",
+                "b8",
+                "b13",
+                "b9",
+                "b14"
+              ],
+              "missing_links": 2,
+              "mistyped": [
+                {
+                  "block": "b0",
+                  "expected": "paragraph",
+                  "predicted": "alternative"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q163",
+            "integrity": false,
+            "localization_f1": 0.1111111111111111,
+            "pattern": "cross_column_graphical_options"
+          },
+          {
+            "errors": {
+              "extra_blocks": 2,
+              "missed_blocks": [
+                "b2",
+                "b4",
+                "b9",
+                "b5",
+                "b10",
+                "b6",
+                "b11",
+                "b7",
+                "b12",
+                "b8",
+                "b13"
+              ],
+              "missing_links": 0,
+              "mistyped": [
+                {
+                  "block": "b0",
+                  "expected": "paragraph",
+                  "predicted": "alternative"
+                }
+              ],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q177",
+            "integrity": false,
+            "localization_f1": 0.3157894736842105,
+            "pattern": "cross_column_graphs"
+          },
+          {
+            "errors": {
+              "extra_blocks": 1,
+              "missed_blocks": [
+                "b0",
+                "b1",
+                "b2",
+                "b7",
+                "b3",
+                "b8",
+                "b4",
+                "b9",
+                "b5",
+                "b10",
+                "b6",
+                "b11"
+              ],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 10
+            },
+            "id": "layout-2023-q178",
+            "integrity": false,
+            "localization_f1": 0.0,
+            "pattern": "vertical_graphs_with_rotated_labels"
+          },
+          {
+            "errors": {
+              "extra_blocks": 2,
+              "missed_blocks": [],
+              "missing_links": 0,
+              "mistyped": [],
+              "wrong_alternative_links": 0
+            },
+            "id": "layout-2023-q179",
+            "integrity": false,
+            "localization_f1": 0.888888888888889,
+            "pattern": "wrapped_options_and_comic"
+          }
+        ],
+        "train": {
+          "alternatives": {
+            "correct": 30,
+            "expected": 30,
+            "precision": 0.967741935483871,
+            "predicted": 31,
+            "recall": 1.0
+          },
+          "block_macro_f1": 0.9408177008177008,
+          "by_pattern": {
+            "figure_caption_credit": {
+              "intact": 0,
+              "samples": 1
+            },
+            "merged_table_header": {
+              "intact": 0,
+              "samples": 1
+            },
+            "plain_text": {
+              "intact": 1,
+              "samples": 1
+            },
+            "raster_and_text_options": {
+              "intact": 0,
+              "samples": 1
+            },
+            "vertical_graphical_options": {
+              "intact": 0,
+              "samples": 1
+            }
+          },
+          "integrity_rate": 0.2,
+          "links": {
+            "correct": 2,
+            "expected": 3,
+            "precision": 1.0,
+            "predicted": 2,
+            "recall": 0.6666666666666666
+          },
+          "localization_f1": 0.956140350877193,
+          "mean_iou": 0.9835799832430958,
+          "reading_order_agreement": 1.0,
+          "samples": 5
+        }
+      }
+    },
+    "partition_unit": "canonical group and whole source page",
+    "reference_sha256": "edccf735fc87ef3fe180f9db26252319ba6fc85c1977c3e679fb53696a55bb45",
+    "reference_version": "layout-reference-v1",
+    "selection": {
+      "criterion": "development localization_f1 then block_macro_f1",
+      "method": "geometry",
+      "test_used_for_selection": false
+    },
+    "training_blocks": 50
+  },
+  "limitations": {
+    "external_calls_made_by_runner": 0,
+    "human_correction_time": "not_measured_without_explicit_log",
+    "independent_review": false,
+    "published_content_changed": false
+  },
+  "purpose": "Registro de resultados técnicos assistidos; não é aprovação ou benchmark independente.",
+  "run": {
+    "code_files": {
+      "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/cli.py": "d4c807bd996ae72f986bf21d9324f870e827afec0b1d4ecb1858e099371afeb9",
+      "backend/app/core/__init__.py": "ab77c2187e76b090928c5506f27a2fa182f2116c5f36b49d52a38a1de2534e1b",
+      "backend/app/core/config.py": "d24101c197bfaf71c70e2069882bedda612f52e5b4e5f6ed18dc1dad0c506988",
+      "backend/app/core/db.py": "701d3ceec1587e3bd73ec1d955b86cb8e58be708d47436b4dd44463ca3d9a3ff",
+      "backend/app/core/security.py": "65ee2309e64b55688fcc932a15c88eb887a628ec506dab82d0bf08f375a00e13",
+      "backend/app/dependencies.py": "3982cba1e77bbc24aeddc3a27478975c1b3758352852cd25cc0231375e78fe47",
+      "backend/app/installers/__init__.py": "3195a17bcb848d6b18601565826c41fe43875cc3e091dfcd3ba825a11a920e75",
+      "backend/app/installers/assets.py": "242561504e00ee04d0fa92daf8feef58351b26063fcdc83fe65a6d26e36a0492",
+      "backend/app/installers/bundled.py": "aab89fd345c04f3cc78e5297479c7cefb237232e3ce155a769258d6228a9efb5",
+      "backend/app/installers/curated.py": "c58d59a0320bb72aee6f60d26f978b2bf0060e406306afe5d87c657596438ee0",
+      "backend/app/installers/generated.py": "80d8103cf84036ee4e35985651a3b12307bfe0e6c00f0cf74a322825533992bb",
+      "backend/app/main.py": "9c9869ff8cf0efc804e3efb9b88b9c29fc0e9b42f5c1059f90e145d40494492a",
+      "backend/app/middleware.py": "2c60dfa52ac4b0220cbcd61072d753617a0a3b47deb687567eb74bdb24b5763e",
+      "backend/app/models/__init__.py": "3e220baf88bae3a4fb971d205c602022c094c37f4146f52f8578a3914001a4b9",
+      "backend/app/models/_ids.py": "49e480075bd58c753f95c81bc68184938019195a83626b22e76110827c471a67",
+      "backend/app/models/accounts.py": "c3c02dfa29b1748d70673116dc9b1c862a57ea75b30b48b06ab624f7302b3444",
+      "backend/app/models/content.py": "dce962a72fe6fdbdabb70cea3e8b8b9e9d232a7daf1a5bb1d9c9b8cbac1382f0",
+      "backend/app/models/runs.py": "fe900407fd89cd94f7f075d9b3ac5e95afd05f05445263ab9d779ba7c4403c33",
+      "backend/app/preparation/__init__.py": "028c6be055cc12f98789cfc6c0d9b241beb7ab8f24c24da91e11006a0147b680",
+      "backend/app/preparation/notation.py": "c90ce20696dc0bf718eec9abd542e69d27a56e63e979e61b1a2d94c09ef9c376",
+      "backend/app/routers/__init__.py": "748598d8973fe74c391d2d2df4f3b12b7c585897da70a1d7f9e12d0bda3e8af0",
+      "backend/app/routers/account.py": "097e4ec41a7707b92d76768803fd5ed2cf9a27a4878a50759f8b22ee61dd201f",
+      "backend/app/routers/admin/__init__.py": "004278ecfc8c2bfe670578de6c136a7f1041057c7a33195549d1816b9a6e24a5",
+      "backend/app/routers/admin/archive.py": "11325c14a849f7ba08d367faa4394d0c62b4d9db2cd6ad520d4c5dc373b34079",
+      "backend/app/routers/admin/content.py": "8330efe3a9d7ba6f83677cee6bf049594de52a6e3723d58e4fa1fd5cca48b5d9",
+      "backend/app/routers/auth.py": "3bcde754ea755e9ed051acd08a983725d5378c73b68564baf83cf0d44f346085",
+      "backend/app/routers/exams.py": "0b6c000ead4555bd3913c11b2afda8f7320b83a2e223d8a446012a8d2559b0d2",
+      "backend/app/routers/health.py": "e03a9ad3d69679474ed039803ddeecbc65d464348f713eec2b02ce445c6d80fc",
+      "backend/app/routers/progress.py": "837592a4d9a6b748fe15161335ad77d46eb26a3891a5e560cf152772a4185d95",
+      "backend/app/routers/runs.py": "1d5fd0951e7f0d2f0fcf1cfbbdcb78c7b0bcb0b01e990c5b800ff06f2439ae08",
+      "backend/app/schemas/__init__.py": "3a94c6dc8b9c9a90cc8e4f01a8280f102399173bb232ea440175d5ee6014f3b6",
+      "backend/app/schemas/account.py": "bee9cea1d65162ba0c9164b58bc610fdb98a1e1f722df37b2259471e9262e55a",
+      "backend/app/schemas/base.py": "87c0eee312f0aec653cf2818c48f21bdbf38e33b99baff03d91356ce1dfeaa83",
+      "backend/app/schemas/content.py": "8772b1ea1103f810888fceeb9529e1e67fb555d57d6dc51369d61eaa41e6290b",
+      "backend/app/schemas/curation.py": "baf0ec186f1ee4f202bdb93a40919d9a0b95e1854199b5ba00295c14c762a07c",
+      "backend/app/schemas/runs.py": "53f50a741e7202f0d455f1ec99eb0157c2cc4884114f5a790fa1fd9d23cfc0c5",
+      "backend/app/services/__init__.py": "264488795542d5bd3a70cc10dfb36e509a4c2fc699f38776069cda7561995215",
+      "backend/app/services/archive_reader.py": "cc09df181822b9a1c31cc22e62035fafdf7a22e8ca803c9cd0e538a78c64fe48",
+      "backend/app/services/content.py": "eb58a7d486ac4b9aa10cf62caf78a2baf1b6fb87163f89b05db2d969423bca7f",
+      "backend/app/services/identity.py": "ee5f1ffb12fcc5f444a1e3c10aa451ab12e1403764c1437c88ce2cbb1da1a6af",
+      "backend/app/services/presentation.py": "ae2efa5b2f61a433dcee52abf938bec959ee7211ca3ebbd98c9590e28d6a4090",
+      "backend/app/services/scoring.py": "7bd66bf9da3bb7a9ef6601e21f46afc3259629d6de38ca27377340df33cf9054",
+      "backend/app/services/taxonomy.py": "b00ceb7785e431cdacc9b9e87cf6472876a339c4dd735d60bd257570f1b72963",
+      "experiments/__init__.py": "7683afc3f29c5c276add16cb65edd56da2d330b31a1121d285f24f43bcdb9191",
+      "experiments/classification.py": "fbb6f20c39e8326f7f326565365c186707ee2037b1d8e6000dd7debf720222f4",
+      "experiments/common.py": "761cba52ec567da136c02aab22ecae1ff0c58c80806c517b147407baccf95711",
+      "experiments/contracts.py": "5524fa7fd28f7bc3c6960b7495d8c20c7eee0603fe50c40c18578c045a6ff511",
+      "experiments/layout.py": "1780652cb5fe35ab857a5c54029869b1a7b10b17ed0b339a3bcfab393ee28912",
+      "experiments/ocr_worker.py": "0cb3ae34960d71cdfd969e66115af7d623969ea696defd649df603263163dab0",
+      "experiments/recovery.py": "4f372943b85ddaf23598d03401729a19037972691cead91b103cfb7391146d82",
+      "experiments/review.py": "449bca8ebe67842d9a727d50e86577c10a0088dc93528ecc086a28b15543bb5b",
+      "scripts/exam_pdf.py": "9f38a3e2c31d1fa514e1ff3f43f0194ec556e96874690eb3aee94a1fd9ed6aed",
+      "scripts/pdf_headings.py": "2f182e94d50c3b357edddc44b5257047c6512c3cff7a6f1ec2207636f18f187c",
+      "scripts/run_experiments.py": "40af088cbf8f7fe430a65c9ab342e4722956dfee14435866c0cce56c36f1a803"
+    },
+    "code_sha256": "6a36d98325ede283373cc23fe97ea1ef73433185bd0f8bcf049acd3df6df186d",
+    "config": {
+      "classification": {
+        "alpha": 1.0,
+        "development_fraction": 0.2,
+        "keywords": {
+          "Estatística": [
+            "media",
+            "mediana",
+            "moda",
+            "desvio",
+            "amostra",
+            "frequencia"
+          ],
+          "Geometria espacial": [
+            "volume",
+            "cilindro",
+            "esfera",
+            "cone",
+            "prisma",
+            "cubo"
+          ],
+          "Geometria plana": [
+            "area",
+            "triangulo",
+            "circulo",
+            "perimetro",
+            "poligono",
+            "retangulo"
+          ],
+          "Grandezas e medidas": [
+            "unidade",
+            "escala",
+            "metro",
+            "litro",
+            "conversao",
+            "medida"
+          ],
+          "Gráficos e coordenadas": [
+            "grafico",
+            "coordenada",
+            "cartesiano",
+            "trajetoria",
+            "eixo"
+          ],
+          "Números e proporcionalidade": [
+            "porcentagem",
+            "percentual",
+            "razao",
+            "proporcao",
+            "desconto",
+            "aumento"
+          ],
+          "Probabilidade e combinatória": [
+            "probabilidade",
+            "sorteio",
+            "sorteado",
+            "combinacao",
+            "possibilidade",
+            "chance"
+          ],
+          "Álgebra e funções": [
+            "funcao",
+            "equacao",
+            "exponencial",
+            "logaritmo",
+            "sequencia",
+            "progressao"
+          ]
+        },
+        "models": [
+          "majority",
+          "keywords",
+          "multinomial_nb",
+          "tfidf_word_centroid",
+          "tfidf_character_centroid"
+        ],
+        "reference": "data/datasets/adaptive-math-reference-v1.json",
+        "test_fraction": 0.2
+      },
+      "layout": {
+        "iou_threshold": 0.5,
+        "methods": [
+          "coordinates",
+          "geometry",
+          "cart"
+        ],
+        "ocr_language": "por+eng",
+        "ocr_timeout_seconds": 45,
+        "reference": "data/datasets/layout-reference-v1.json",
+        "tree_max_depth": 5,
+        "tree_min_leaf": 2
+      },
+      "seed": "enem-flow-2026-11-03",
+      "version": "data-ai-v1"
+    },
+    "config_sha256": "d4e0d2a69b5f9953b6427ef1dc36dccdc0328c4b54f3efd5b2ab956b7ada0cc0",
+    "finished_at": "2026-11-03T16:28:49.389355+00:00",
+    "independent_review": false,
+    "inputs": {
+      "config": "1b60a35054be683dec343d62f27519129214f6a9d75d9cf45422aef40d49c730"
+    },
+    "options": {
+      "archive": true,
+      "ocr": true,
+      "only": "all",
+      "proposal_limit": 500
+    },
+    "packages": {
+      "pydantic": "2.14.2",
+      "pymupdf": "2.0"
+    },
+    "platform": "Linux-7.2.15-200.fc44.x86_64-x86_64-with-glibc2.43",
+    "python": "3.14.8",
+    "report_sha256": {
+      "archive": "2b7111e9b8c2f2109b9b5a7ab54f7fcabed7c3f0d96049ed2abf4360ee7eacdf",
+      "classification": "60e90644883ce05e1139754a1c51e4690c9157e8252a82a771038246b35f6acf",
+      "layout": "0f73d8e44c73af6b983eef8153b73d9f4462bbc4393ad3dc3d2cc0a2fb8b6d09"
+    },
+    "review_status": "proposed",
+    "started_at": "2026-11-03T16:26:52.135595+00:00",
+    "status": "complete"
+  },
+  "schema_version": "1.0",
+  "summary_generator_sha256": "8b4fa6148571138d5e4c450f22da0a5d9e915d98e06bacbff711dcd10db62458"
+}

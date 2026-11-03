@@ -65,7 +65,8 @@ O backend está organizado por responsabilidade. Caminhos abaixo relativos a `ba
 
 ## Andamento e roteiro
 
-- Etapas técnicas 1/2 concluídas; próxima: Dados/IA (3). Adaptação/tutor previstos. Siga `docs/plano-implementacao/proximas-etapas.md`; atualize-o e `status-implementacao.md` após entregas.
+- Etapas técnicas 1/2 e primeiro ciclo de Dados/IA (3) implementados; próxima: diagnóstico por tema (4). Experimentos offline em `experiments/`, comando `make experiments`, protocolo em `docs/experimentos/README.md`. Propostas não publicam conteúdo; referência assistida, LLM externo e tempos humanos têm seus limites registrados. Adaptação/tutor previstos. Siga `docs/plano-implementacao/proximas-etapas.md`; atualize-o e `status-implementacao.md` após entregas.
+- Auditoria integral: `docs/experimentos/auditoria-acervo.md`, `make audit-archive`, `make audit-archive-browser` e `make experiments-all`. Correções locais exigem plano com versões/hashes e ensaio; `scripts/apply_archive_audit.py` preserva histórico, edições posteriores e a revisão independente pendente. Divergências de identidade não podem encobrir alterações de gabarito.
 - Toda a curadoria fica na etapa 8; publicação externa na 9, piloto na 10. Antes, use conteúdo/rótulos disponíveis. Revisão independente, leitores de tela e aparelhos reais exigem validação efetiva.
 - A fase 1 da reorganização do backend está integrada; a fase 2 (exceções de domínio sem dependência de HTTP em serviços/instaladores) continua no backlog das próximas etapas.
 

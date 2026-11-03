@@ -1,6 +1,6 @@
 # Próximas etapas
 
-Atualizado em **31/10/2026**. Este roteiro parte do [status da implementação](status-implementacao.md) e organiza a continuidade do [plano do projeto](enem_adaptativo_plano_do_projeto.md).
+Atualizado em **03/11/2026**. Este roteiro parte do [status da implementação](status-implementacao.md) e organiza a continuidade do [plano do projeto](enem_adaptativo_plano_do_projeto.md).
 
 As etapas abaixo são propostas de execução, com dependências e critérios de aceite. **Toda a curadoria fica concentrada na [etapa 8](#8-curadoria-do-conteúdo-e-dos-rótulos), no final do desenvolvimento.** Isso inclui revisão humana, aprovação e importação de conteúdo, segunda revisão dos rótulos, aprovação de propostas automáticas e curadoria assistida. As etapas 2 a 7 usam o conteúdo já publicado e os rótulos de curadoria técnica, sem esperar revisões. Publicação e piloto vêm depois da curadoria, porque dependem de conteúdo revisado. O marco de 15/11/2026 permanece como referência do PDF; a definição das datas operacionais depende da capacidade disponível e das evidências de cada entrega.
 
@@ -61,25 +61,37 @@ A [revisão de consistência](../revisoes/revisao-projeto-2026-11-01.md#fechamen
 
 ## 3. Iniciar os experimentos de Dados e IA
 
-**Próxima frente de desenvolvimento. Dependências: contratos da etapa 2 e a referência técnica `adaptive-math-reference-v1`. A revisão humana das amostras fica na etapa 8. Duas frentes podem avançar em paralelo.**
+**Primeiro ciclo técnico implementado e executado em 03/11/2026.** As duas frentes têm configuração, dados, contratos, métricas e casos de erro reproduzíveis. O [guia dos experimentos](../experimentos/README.md) reúne comandos e limites; os [resultados medidos](../experimentos/resultados-2026-11-03.json) registram a execução. A revisão independente e a aprovação das propostas continuam na etapa 8.
+
+A [extensão de auditoria integral](../experimentos/auditoria-acervo.md) percorreu as 98 provas/8.730 posições publicadas, com duas leituras independentes de gabarito, comparação de recursos, ensaio de correção e validação no navegador. Passaram 294 cenários de resultado e os gabaritos coincidiram integralmente. A aplicação dos métodos produziu 99.187 blocos e 2.017 propostas temáticas de Matemática. Foram instaladas 993 novas versões, preservando as sete tabelas de dados protegidos e a revisão independente pendente. A inspeção automatizada concluiu as 17.460 apresentações em desktop/celular e nos dois temas, com 1.070 capturas e nenhuma falha detectada pelos verificadores de renderização. Permanecem 928 diagnósticos de preparação em 441 posições, além dos achados de triagem e identidade, para adjudicação na etapa 8.
+
+`make experiments` compara cinco métodos temáticos nos 89 itens de Matemática e três métodos de layout numa amostra técnica de 13 questões/145 blocos. `make experiments-archive` acrescenta as propostas de recuperação dos cadernos locais, fontes e gabarito visual; não publica conteúdo nem altera o banco de uso. As saídas incluem modelos em JSON, partições, previsões, matrizes de confusão, métricas por classe, latências, custos declarados e uma revisão visual com registro explícito de tempo humano.
+
+O ciclo local escolheu palavras-chave pelo desenvolvimento (macro-F1 0,649; teste 0,501) e geometria para layout. A varredura dos 96 cadernos produziu candidatos para 84 pendências de alternativas e 68 de tabelas mescladas; as 506 pendências originais permanecem registradas. A amostra do gabarito visual coincidiu em 11/11 respostas conferidas. OCR e hipóteses de fontes permanecem propostas, com erros residuais medidos. O comparador de LLM aceita previsões externas com proveniência; nenhuma chamada a provedor foi executada. Esses resultados não constituem benchmark independente ou liberação automática.
 
 ### Classificação temática
 
-- Estabelecer uma referência simples, como regras ou as anotações técnicas existentes.
-- Comparar classificadores supervisionados, representações de texto e LLMs conforme os dados disponíveis.
-- Separar desenvolvimento e teste depois da deduplicação; manter variantes do mesmo item no mesmo conjunto.
-- Medir precisão, revocação, F1 por classe, consistência, latência, custo e tipos de erro.
-- Definir, com base nas medições, quais propostas seguirão para a revisão da etapa 8, preservando a origem dos rótulos propostos.
+- [x] Estabelecer uma referência simples com as anotações técnicas existentes: 89 itens válidos de Matemática, em oito temas.
+- [x] Comparar cinco métodos locais: maioria, palavras-chave, Naive Bayes e centróides TF-IDF de palavras e caracteres.
+- [x] Separar treino, desenvolvimento e teste depois do agrupamento por identidade; manter variantes do mesmo item no mesmo conjunto.
+- [x] Medir precisão, revocação, F1 por classe, consistência, latência, custo externo e tipos de erro, registrando custos locais não medidos.
+- [x] Selecionar o método pelo desenvolvimento e gerar propostas rastreáveis para a revisão da etapa 8, preservando a origem dos rótulos e sem promovê-los ao conteúdo publicado.
+- [x] Disponibilizar contrato, exportação de entradas e comparador para previsões externas de LLM com proveniência.
+- [ ] Executar a comparação com LLM: depende de previsões externas ou de provedor, modelo e orçamento definidos; nenhuma chamada foi realizada.
 
 ### Análise de layout
 
 O material principal são as provas publicadas automaticamente e seus relatórios de pendências. O agrupamento e a classificação dos blocos usam modelos clássicos.
 
-- Anotar blocos, páginas, posições, agrupamentos, ordem de leitura e associação das imagens e alternativas.
-- Comparar extração de coordenadas, regras de geometria, reconstrução de fontes com codificação quebrada, OCR e métodos visuais quando necessários.
-- Reservar exemplos difíceis e padrões de layout para avaliação independente.
-- Reduzir as pendências das provas publicadas: separar alternativas, estruturar tabelas mescladas e relações espaciais, reconstruir fontes com codificação quebrada e recuperar o gabarito marcado visualmente em 2010.
-- Medir localização, ordem, vínculos, integridade e tempo de correção humana.
+- [x] Anotar uma referência técnica assistida com 13 questões e 145 blocos, incluindo páginas, posições, agrupamentos, ordem de leitura e associação das imagens e alternativas.
+- [x] Comparar extração de coordenadas, regras de geometria e CART; experimentar mapeamento de fontes, OCR local e leitura visual de gabarito, com os erros e limites registrados.
+- [x] Reservar exemplos difíceis em uma partição de teste separada, com seis questões; a referência continua assistida, sem adjudicação independente.
+- [x] Implementar propostas de recuperação de alternativas, tabelas mescladas, relações espaciais, fontes e gabaritos visuais, preservando as ambiguidades.
+- [x] Aplicar os métodos selecionados às 8.730 posições publicadas e registrar propostas por versão e fonte.
+- [x] Instalar 993 correções técnicas verificadas, incluindo 63 gabaritos, preservando versões, tentativas e resultados anteriores.
+- [x] Medir localização, ordem, vínculos, integridade e latência; disponibilizar revisão visual e contrato para registrar correção humana.
+- [ ] Medir o tempo de correção com pessoas reais; nesta execução os tempos humanos permanecem não medidos (`null`).
+- [ ] Ampliar a referência e realizar a revisão independente na etapa 8; concluir/adjudicar os 928 diagnósticos de preparação em 441 posições e os demais achados da fila.
 
 **Critério de aceite:** cada frente entrega dados no contrato acordado, comparação com uma referência, configuração versionada, métricas reproduzíveis e casos de erro. Propostas automáticas ficam como propostas até a curadoria da etapa 8.
 
@@ -169,7 +181,7 @@ Após estabilizar as integrações, preservar no backlog:
 
 ## Primeiro bloco de trabalho recomendado
 
-Iniciar a etapa 3 com a referência técnica de 89 questões de Matemática: uma linha de base de classificação temática e a anotação de layout dos cadernos já preparados no ensaio. Encaminhar em paralelo os testes manuais de acessibilidade descritos no final. A curadoria fica para a etapa 8; publicação e piloto, para as etapas 9 e 10.
+Seguir para a etapa 4 com os temas já publicados e os eventos consistentes. Usar os relatórios da etapa 3 para priorizar novos experimentos e reservar novos padrões de layout; uma comparação com LLM exige escolher provedor/modelo/orçamento ou fornecer previsões externas no contrato. Encaminhar em paralelo os testes manuais de acessibilidade descritos no final. A revisão independente, os tempos humanos e a aprovação dos candidatos ficam para a etapa 8; publicação e piloto, para as etapas 9 e 10.
 
 ## Pendências e melhorias
 
