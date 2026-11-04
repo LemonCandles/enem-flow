@@ -6,8 +6,9 @@ from backend.app.services.errors import DomainError
 
 from backend.app.installers.generated import publish_generated
 from backend.app.models import Exam, QuestionVersion
-from backend.app.installers.bundled import bundled_reviewer
-from backend.app.services.content import exam_summary, public_question, publish_exam
+from backend.app.services.service_account import service_reviewer
+from backend.app.services.content import exam_summary, public_question
+from backend.app.services.lifecycle import publish_exam
 from backend.app.preparation import blocking_issues, prepare_exam
 from scripts.build_archive_exams import areas, booklet_label, exam_id
 from scripts.exam_pdf import answer_key_rows
@@ -99,7 +100,7 @@ def test_generated_exams_are_published_without_curation_and_only_once(tmp_path, 
         )
         assert visible['preparation_errors'] == 1
         assert 'correct_answer' not in visible
-        reviewer = bundled_reviewer(db)
+        reviewer = service_reviewer(db)
         with pytest.raises(DomainError, match='pendências bloqueantes'):
             publish_exam(db, exam, reviewer.id, 'Conferência manual')
         assert db.get(Exam, 'acervo-duplicado') is None
@@ -116,7 +117,7 @@ def test_legacy_automatic_metadata_preserves_versions_and_manual_review(tmp_path
         items = list(exam.items)
         content = [copy.deepcopy(db.get(QuestionVersion, key).content) for key in items]
         exam.source = {k: v for k, v in exam.source.items() if k != 'automatic_archive'}
-        reviewer = bundled_reviewer(db)
+        reviewer = service_reviewer(db)
         with pytest.raises(DomainError, match='origem e o estado de revisão'):
             publish_exam(db, exam, reviewer.id, 'Origem não registrada', allow_pending=True)
     with database.begin() as db:
@@ -125,7 +126,7 @@ def test_legacy_automatic_metadata_preserves_versions_and_manual_review(tmp_path
         assert exam.items == items
         assert [db.get(QuestionVersion, key).content for key in items] == content
         assert exam_summary(db, exam)['content_quality']['review_status'] == 'pending'
-        reviewer = bundled_reviewer(db)
+        reviewer = service_reviewer(db)
         publish_exam(db, exam, reviewer.id, 'Conferência manual concluída')
         assert exam_summary(db, exam)['content_quality'] == dict(
             origin='automatic', review_status='reviewed', blocking_issues=0

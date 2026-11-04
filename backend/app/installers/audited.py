@@ -9,10 +9,11 @@ from sqlalchemy import select
 from ..models import CanonicalQuestion, Exam, QuestionVersion, Review
 from ..preparation import blocking_issues
 from ..schemas import QuestionContent
-from ..services.content import publish_exam, validate_assets
+from ..services.content import validate_assets
+from ..services.lifecycle import publish_exam
+from ..services.service_account import service_reviewer
 from ..services.identity import signatures, validate_revision_identity
 from ..services.versioning import latest_version, new_version
-from .bundled import bundled_reviewer
 
 
 def content_hash(content):
@@ -95,7 +96,7 @@ def apply_audited(db, plan):
     ambiguous = {key for key, values in identities.items() if len(values) > 1}
     if not checked:
         return {'changed': 0, 'exams': 0, 'versions': []}
-    reviewer = bundled_reviewer(db)
+    reviewer = service_reviewer(db)
     versions = []
     for exam, old, desired, row in checked:
         new = new_version(db, old, desired, number=old.version + 1, status='approved')

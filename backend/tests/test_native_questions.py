@@ -7,7 +7,8 @@ import pytest
 from backend.app.services.errors import Conflict, DomainError
 from sqlalchemy import select
 
-from backend.app.installers.bundled import bundled_reviewer, refresh_bundle
+from backend.app.installers.bundled import refresh_bundle
+from backend.app.services.service_account import service_reviewer
 from backend.app.services.content import public_question, validate_assets
 from backend.app.models import Exam, ExamRun
 from backend.app.services import presentation
@@ -102,13 +103,13 @@ def test_refresh_creates_versions_and_preserves_runs(admin, student, exam_payloa
         content['layout'] = {'legacy_text_sha256': hashlib.sha256(content['statement'].encode()).hexdigest()}
     with database.begin() as db:
         exam = db.get(Exam, 'prova-teste')
-        reviewer = bundled_reviewer(db)
+        reviewer = service_reviewer(db)
         assert refresh_bundle(db, exam, ExamImport.model_validate(updated), reviewer) == 3
     with database.begin() as db:
         assert db.get(ExamRun, run['id']).items[0]['version'] == 1
         exam = db.get(Exam, 'prova-teste')
         assert exam.items == ['teste-q1:2', 'teste-q2:2', 'teste-q3:2']
-        assert refresh_bundle(db, exam, ExamImport.model_validate(updated), bundled_reviewer(db)) == 0
+        assert refresh_bundle(db, exam, ExamImport.model_validate(updated), service_reviewer(db)) == 0
     student.put(f"/exam-runs/{run['id']}/answers/teste-q1:1", json={'choice': 'B'})
     assert student.post(f"/exam-runs/{run['id']}/finish").json()['result']['correct'] == 1
 
@@ -176,12 +177,12 @@ def test_refresh_native_v1_publishes_only_fifteen_versions(database):
         snapshots = {key: copy.deepcopy(db.get(QuestionVersion, key).content) for key in exam.items}
         for key in exam.items:
             db.get(QuestionVersion, key).status = 'approved'
-        assert refresh_bundle(db, exam, after, bundled_reviewer(db)) == 15
+        assert refresh_bundle(db, exam, after, service_reviewer(db)) == 15
         assert len([key for key in exam.items if key.endswith(':2')]) == 15
         assert all(db.get(QuestionVersion, key).content == content for key, content in snapshots.items())
         reviews = db.scalars(select(Review).where(Review.target_id.like('%:2'))).all()
         assert len(reviews) == 15 and all('página' in r.reason for r in reviews)
-        assert refresh_bundle(db, exam, after, bundled_reviewer(db)) == 0
+        assert refresh_bundle(db, exam, after, service_reviewer(db)) == 0
 
 
 @pytest.mark.parametrize('edit', ['block', 'answer'])
@@ -203,7 +204,7 @@ def test_refresh_refuses_custom_content_even_if_statement_is_unchanged(database,
             own['correct_answer'] = 'A'
         version.content = own
         with pytest.raises(Conflict):
-            refresh_bundle(db, exam, after, bundled_reviewer(db))
+            refresh_bundle(db, exam, after, service_reviewer(db))
 
 
 def test_figure_contract_bounds_equations_and_retains_caption_credit():

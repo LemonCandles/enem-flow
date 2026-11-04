@@ -5,11 +5,11 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..core.config import ROOT
-from ..models import Exam, QuestionVersion, Review
+from ..models import Exam, QuestionVersion
 from ..schemas import ExamImport
 from .presentation import readable_content
 from ..preparation import blocking_issues
-from .identity import identify, validate_exam_identities
+from .identity import identify
 
 
 def validate_assets(content: dict):
@@ -92,35 +92,6 @@ def exam_summary(db: Session, exam: Exam):
         "source": exam.source,
         "content_quality": quality,
     }
-
-
-def publish_exam(db: Session, exam: Exam, user_id: str, reason: str, allow_pending: bool = False):
-    """`allow_pending` is reserved for the automatic archive publication, which has no curation step."""
-    if allow_pending and not exam.source.get('automatic_archive'):
-        raise Conflict('Publicação automática exige a origem e o estado de revisão registrados.')
-    if len(exam.items) != exam.expected_items:
-        raise Conflict("A prova está incompleta para o total declarado.")
-    identities = []
-    for key in exam.items:
-        question = db.get(QuestionVersion, key)
-        if not question or question.status != "approved":
-            raise Conflict("Todas as versões precisam de aprovação antes da publicação.")
-        if not allow_pending and blocking_issues(question.content):
-            raise Conflict("Há pendências bloqueantes de preparação. Corrija e revise as versões antes de publicar.")
-        validate_assets(question.content)
-        identities.append((question.canonical_id, question.content))
-    validate_exam_identities(identities)
-    if not allow_pending and exam.source.get('automatic_archive'):
-        exam.source = {
-            **exam.source,
-            'automatic_archive': {
-                **exam.source['automatic_archive'],
-                'review_status': 'reviewed',
-                'blocking_issues': 0,
-            },
-        }
-    exam.status = "published"
-    db.add(Review(user_id=user_id, target_id=exam.id, action="publish", reason=reason))
 
 
 def public_question(item: dict, finished: bool):

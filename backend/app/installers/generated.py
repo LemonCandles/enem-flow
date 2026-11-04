@@ -5,11 +5,12 @@ This step imports and publishes them as they are; blocking preparation issues
 are kept in each version's report instead of preventing publication.
 """
 
-from .bundled import bundled_reviewer
-from ..services.content import import_exam, publish_exam
+from ..services.content import import_exam
+from ..services.lifecycle import approve_and_publish
+from ..services.service_account import service_reviewer
 from ..services.errors import DomainError
 from ..core.config import ROOT
-from ..models import Exam, QuestionVersion, Review
+from ..models import Exam, QuestionVersion
 from ..schemas import ExamImport
 from ..preparation import blocking_issues
 
@@ -28,7 +29,7 @@ def generated_files(directory=GENERATED):
 
 def publish_generated(db, directory=GENERATED):
     """Publish every generated exam not yet installed; each exam succeeds or fails alone."""
-    reviewer = bundled_reviewer(db)
+    reviewer = service_reviewer(db)
     published, existing, failed = [], 0, []
     for path in generated_files(directory):
         try:
@@ -55,10 +56,7 @@ def publish_generated(db, directory=GENERATED):
                     **exam.source,
                     'automatic_archive': dict(version=1, review_status='pending', blocking_issues=pending),
                 }
-                for key in exam.items:
-                    db.get(QuestionVersion, key).status = 'approved'
-                    db.add(Review(user_id=reviewer.id, target_id=key, action='approve', reason=REASON))
-                publish_exam(db, exam, reviewer.id, REASON, allow_pending=True)
+                approve_and_publish(db, exam, reviewer.id, REASON, allow_pending=True)
             published.append(payload.id)
         except (DomainError, ValueError, OSError) as error:
             failed.append(dict(id=path.stem, reason=str(getattr(error, 'detail', error))))

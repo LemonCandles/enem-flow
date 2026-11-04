@@ -1,30 +1,13 @@
 """Controlled updates of the bundled JSON; existing attempts remain immutable."""
 
-import secrets
-
 from ..services.errors import Conflict
-from sqlalchemy import select
 
-from ..services.content import publish_exam, validate_assets
-from ..models import QuestionVersion, Review, User
+from ..services.content import validate_assets
+from ..services.lifecycle import publish_exam
+from ..models import QuestionVersion, Review
 from ..schemas import QuestionContent
-from ..core.security import hash_password
 from ..services.presentation import ASSESSMENT_FIELDS, is_previous_bundled_content
 from ..services.versioning import new_version
-
-
-def bundled_reviewer(db):
-    reviewer = db.scalar(select(User).where(User.email == "content-bootstrap@invalid.local"))
-    if not reviewer:
-        reviewer = User(
-            name="Importação conferida",
-            email="content-bootstrap@invalid.local",
-            password_hash=hash_password(secrets.token_urlsafe(64)),
-            role="service",
-        )
-        db.add(reviewer)
-        db.flush()
-    return reviewer
 
 
 def refresh_bundle(db, exam, payload, reviewer):

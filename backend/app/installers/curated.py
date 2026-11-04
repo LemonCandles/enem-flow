@@ -7,13 +7,14 @@ from ..services.errors import Conflict
 from sqlalchemy import func, select
 
 from ..core.config import ROOT
-from ..services.content import import_exam, publish_exam, validate_assets
-from ..models import Exam, QuestionVersion, Review
+from ..services.content import import_exam, validate_assets
+from ..services.lifecycle import approve_and_publish, send_to_review
+from ..services.service_account import service_reviewer
+from ..models import CanonicalQuestion, Exam, QuestionVersion, Review
 from ..schemas import ExamImport, QuestionContent
 from ..services.presentation import content_fingerprint, is_previous_bundled_content
 from ..services.identity import identify
 from ..services.versioning import new_version
-from .bundled import bundled_reviewer
 from ..preparation import fingerprint as preparation_fingerprint
 
 
@@ -62,7 +63,7 @@ def classified(payload, *, refresh_preparation_audit=True):
 
 def install_catalog(db, publish=False):
     manifest = json.loads((ROOT / 'data/catalog/manifest.json').read_text())
-    reviewer = bundled_reviewer(db)
+    reviewer = service_reviewer(db)
     stats = dict(imported_exams=0, new_versions=0, canonical_questions=0)
     for entry in manifest['exams']:
         path = (ROOT / entry['path']).resolve()
@@ -151,13 +152,10 @@ def install_catalog(db, publish=False):
         if changed or can_publish:
             reason = f'{manifest["version"]}: lote conferido com a fonte e taxonomia reference-v1; habilidades apenas propostas e revisão independente pendente.'
             if can_publish:
-                for key in exam.items:
-                    db.get(QuestionVersion, key).status = 'approved'
-                    db.add(Review(user_id=reviewer.id, target_id=key, action='approve', reason=reason))
-                publish_exam(db, exam, reviewer.id, reason)
+                approve_and_publish(db, exam, reviewer.id, reason)
+            elif was_withdrawn:
+                exam.status = 'withdrawn'
             else:
-                exam.status = 'withdrawn' if was_withdrawn else 'in_review'
-    from ..models import CanonicalQuestion
-
+                send_to_review(exam)
     stats['canonical_questions'] = db.scalar(select(func.count()).select_from(CanonicalQuestion))
     return stats

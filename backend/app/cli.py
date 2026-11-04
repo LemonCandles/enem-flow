@@ -8,13 +8,15 @@ import time
 
 from sqlalchemy import delete, select
 
-from .services.content import import_exam, publish_exam
+from .services.content import import_exam
+from .services.lifecycle import approve_and_publish
+from .services.service_account import service_reviewer
 from .core.config import ROOT
 from .core.db import SessionLocal
-from .models import Exam, QuestionVersion, RecoveryToken, Review, User
+from .models import Exam, RecoveryToken, User
 from .schemas import ExamImport, Register
 from .core.security import digest, hash_password
-from .installers.bundled import bundled_reviewer, refresh_bundle
+from .installers.bundled import refresh_bundle
 
 
 def main():
@@ -63,7 +65,7 @@ def main():
                 return
             if existing:
                 if args.refresh_bundled and args.publish_reviewed:
-                    count = refresh_bundle(db, existing, payload, bundled_reviewer(db))
+                    count = refresh_bundle(db, existing, payload, service_reviewer(db))
                     print(f"Atualizadas {count} versões; tentativas anteriores preservadas.")
                 else:
                     print("Conjunto já importado; nenhuma alteração realizada.")
@@ -71,12 +73,9 @@ def main():
             exam = import_exam(db, payload)
             if args.publish_reviewed:
                 # An inaccessible service identity gives the bootstrap review its own provenance.
-                reviewer = bundled_reviewer(db)
+                reviewer = service_reviewer(db)
                 reason = "Conjunto incluído conferido: 90 questões do JSON com enunciados, alternativas, tabelas, fórmulas e figuras separadas. Consulte data/README.md."
-                for key in exam.items:
-                    db.get(QuestionVersion, key).status = "approved"
-                    db.add(Review(user_id=reviewer.id, target_id=key, action="approve", reason=reason))
-                publish_exam(db, exam, reviewer.id, reason)
+                approve_and_publish(db, exam, reviewer.id, reason)
             print(f"Importadas {len(exam.items)} questões; estado: {exam.status}.")
         elif args.command == "archive":
             from .installers.generated import publish_generated
