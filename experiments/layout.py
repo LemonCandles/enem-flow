@@ -4,6 +4,8 @@ A região da questão é entrada comum a todos os métodos. As anotações de
 blocos ficam só no treino/avaliador; nunca são passadas ao detector.
 """
 
+from collections.abc import Callable
+from dataclasses import dataclass
 from collections import Counter
 from contextlib import nullcontext
 import math
@@ -259,17 +261,28 @@ def extract_candidates(pdf, regions, enhanced, document=None):
     return candidates, table_proposals
 
 
+@dataclass(frozen=True)
+class LayoutMethod:
+    # None keeps the extracted type; geometry adds figure, order and caption links.
+    paragraph_type: Callable | None
+    uses_geometry: bool
+
+
+LAYOUT_METHODS = {
+    'coordinates': LayoutMethod(None, False),
+    'geometry': LayoutMethod(lambda b, tree: rule_type(b['text'], b.get('_font_size', 10)), True),
+    'cart': LayoutMethod(lambda b, tree: tree_predict(tree, block_features(b)), True),
+}
+
+
 def assemble(candidates, method, tree=None):
+    strategy = LAYOUT_METHODS[method]
     blocks = [dict(block) for block in candidates]
     for b in blocks:
-        if b['type'] == 'paragraph' and method != 'coordinates':
-            b['type'] = (
-                tree_predict(tree, block_features(b))
-                if method == 'cart'
-                else rule_type(b['text'], b.get('_font_size', 10))
-            )
+        if b['type'] == 'paragraph' and strategy.paragraph_type:
+            b['type'] = strategy.paragraph_type(b, tree)
         b['alternative'] = option_letter(b['text']) if b['type'] == 'alternative' else None
-    if method != 'coordinates':
+    if strategy.uses_geometry:
         # Só associa uma figura quando os marcadores têm geometria compatível.
         markers = [b for b in blocks if b['type'] == 'alternative' and b['alternative']]
         for image in [b for b in blocks if b['type'] == 'image']:
@@ -286,7 +299,7 @@ def assemble(candidates, method, tree=None):
                 image['alternative'] = beside[0]['alternative']
     blocks.sort(
         key=lambda b: (
-            bool(b['alternative']) if method != 'coordinates' else False,
+            bool(b['alternative']) if strategy.uses_geometry else False,
             b['alternative'] or '',
             b['_region'],
             round(b['bbox'][1], 1),
@@ -296,7 +309,7 @@ def assemble(candidates, method, tree=None):
     for order, b in enumerate(blocks):
         b.update(id=f'b{order}', order=order, group=f'option-{b["alternative"]}' if b['alternative'] else 'stem')
     links = []
-    if method != 'coordinates':
+    if strategy.uses_geometry:
         images = [b for b in blocks if b['type'] == 'image' and not b['alternative']]
         for b in blocks:
             if b['type'] not in {'caption', 'credit'}:
@@ -469,10 +482,12 @@ def run(config, output, review_log=None):
     for method in config['methods']:
         rows, latencies, consistent = [], [], []
         for example in examples:
-            candidates = cache[(example['id'], method != 'coordinates')]
+            candidates = cache[(example['id'], LAYOUT_METHODS[method].uses_geometry)]
             start = time.perf_counter()
             prediction = assemble(candidates, method, tree)
-            latency = (time.perf_counter() - start) * 1000 + extraction_times[(example['id'], method != 'coordinates')]
+            latency = (time.perf_counter() - start) * 1000 + extraction_times[
+                (example['id'], LAYOUT_METHODS[method].uses_geometry)
+            ]
             for block in prediction['blocks']:
                 LayoutBlock.model_validate(block)
             consistent.append(prediction == assemble(candidates, method, tree))

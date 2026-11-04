@@ -5,6 +5,8 @@ Rótulos, gabaritos, números, nomes de arquivo e metadados editoriais nunca
 entram nas representações. Implementações pequenas, serializáveis em JSON.
 """
 
+from collections.abc import Callable
+from dataclasses import dataclass
 from collections import Counter, defaultdict
 import math
 import re
@@ -48,14 +50,21 @@ def visible_text(content):
     return '\n'.join(pieces)
 
 
-def features(text, kind):
-    words = tokens(text)
-    if kind == 'tfidf_character_centroid':
-        padded = ' ' + ' '.join(words) + ' '
-        return Counter(padded[i : i + n] for n in (3, 4, 5) for i in range(len(padded) - n + 1))
-    if kind == 'tfidf_word_centroid':
-        return Counter(words + [' '.join(pair) for pair in zip(words, words[1:])])
+def word_counts(words):
     return Counter(words)
+
+
+def word_and_bigram_counts(words):
+    return Counter(words + [' '.join(pair) for pair in zip(words, words[1:])])
+
+
+def character_counts(words):
+    padded = ' ' + ' '.join(words) + ' '
+    return Counter(padded[i : i + n] for n in (3, 4, 5) for i in range(len(padded) - n + 1))
+
+
+def features(text, kind):
+    return CLASSIFIERS[kind].features(tokens(text))
 
 
 def load_reference(config):
@@ -157,9 +166,99 @@ def unit(vector):
     return {key: value / norm for key, value in vector.items()} if norm else {}
 
 
+def fit_majority(model, rows, config, counts):
+    return model
+
+
+def score_majority(model, vector):
+    return {label: float(label == model['majority']) for label in model['labels']}
+
+
+def fit_keywords(model, rows, config, counts):
+    if set(config['keywords']) != set(model['labels']):
+        raise ValueError('Regras precisam cobrir as classes do treino.')
+    return {**model, 'keywords': config['keywords']}
+
+
+def score_keywords(model, vector):
+    return {label: sum(vector[word] for word in model['keywords'][label]) for label in model['labels']}
+
+
+def fit_naive_bayes(model, rows, config, counts):
+    vectors = [features(row['text'], model['kind']) for row in rows]
+    by_class = {label: Counter() for label in model['labels']}
+    for row, vector in zip(rows, vectors):
+        by_class[row['theme']].update(vector)
+    return {
+        **model,
+        'vocabulary': sorted({word for vector in vectors for word in vector}),
+        'alpha': config['alpha'],
+        'counts': {label: dict(values) for label, values in by_class.items()},
+        'class_counts': dict(counts),
+        'samples': len(rows),
+    }
+
+
+def score_naive_bayes(model, vector):
+    vocabulary = set(model['vocabulary'])
+    alpha = model['alpha']
+    scores = {}
+    for label in model['labels']:
+        label_counts = model['counts'][label]
+        total = sum(label_counts.values()) + alpha * len(vocabulary)
+        scores[label] = math.log(model['class_counts'][label] / model['samples']) + sum(
+            count * math.log((label_counts.get(word, 0) + alpha) / total)
+            for word, count in vector.items()
+            if word in vocabulary
+        )
+    return scores
+
+
+def fit_centroid(model, rows, config, counts):
+    vectors = [features(row['text'], model['kind']) for row in rows]
+    vocabulary = sorted({word for vector in vectors for word in vector})
+    df = Counter(word for vector in vectors for word in vector)
+    idf = {word: math.log((1 + len(rows)) / (1 + df[word])) + 1 for word in vocabulary}
+    centroids = {label: Counter() for label in model['labels']}
+    for row, vector in zip(rows, vectors):
+        centroids[row['theme']].update(
+            unit({word: (1 + math.log(count)) * idf[word] for word, count in vector.items()})
+        )
+    return {**model, 'idf': idf, 'centroids': {label: unit(values) for label, values in centroids.items()}}
+
+
+def score_centroid(model, vector):
+    vector = unit(
+        {word: (1 + math.log(count)) * model['idf'][word] for word, count in vector.items() if word in model['idf']}
+    )
+    return {
+        label: sum(value * model['centroids'][label].get(word, 0) for word, value in vector.items())
+        for label in model['labels']
+    }
+
+
+@dataclass(frozen=True)
+class Classifier:
+    features: Callable
+    fit: Callable
+    score: Callable
+
+
+# Each method compared in the experiment; `config.models` chooses among them by name.
+CLASSIFIERS = {
+    'majority': Classifier(word_counts, fit_majority, score_majority),
+    'keywords': Classifier(word_counts, fit_keywords, score_keywords),
+    'multinomial_nb': Classifier(word_counts, fit_naive_bayes, score_naive_bayes),
+    'tfidf_word_centroid': Classifier(word_and_bigram_counts, fit_centroid, score_centroid),
+    'tfidf_character_centroid': Classifier(character_counts, fit_centroid, score_centroid),
+}
+
+
 def fit(kind, rows, config):
     if not rows:
         raise ValueError('Treino vazio.')
+    if kind not in CLASSIFIERS:
+        raise ValueError(f'Modelo desconhecido: {kind}')
     labels = sorted({row['theme'] for row in rows})
     counts = Counter(row['theme'] for row in rows)
     majority = min(labels, key=lambda label: (-counts[label], label))
@@ -171,65 +270,12 @@ def fit(kind, rows, config):
         'training_groups': sorted({r['split_group'] for r in rows}),
         'training_content': sorted(r['content_sha256'] for r in rows),
     }
-    if kind == 'majority':
-        return model
-    if kind == 'keywords':
-        if set(config['keywords']) != set(labels):
-            raise ValueError('Regras precisam cobrir as classes do treino.')
-        return {**model, 'keywords': config['keywords']}
-    vectors = [features(row['text'], kind) for row in rows]
-    vocabulary = sorted({word for vector in vectors for word in vector})
-    if kind == 'multinomial_nb':
-        by_class = {label: Counter() for label in labels}
-        for row, vector in zip(rows, vectors):
-            by_class[row['theme']].update(vector)
-        return {
-            **model,
-            'vocabulary': vocabulary,
-            'alpha': config['alpha'],
-            'counts': {label: dict(values) for label, values in by_class.items()},
-            'class_counts': dict(counts),
-            'samples': len(rows),
-        }
-    if kind not in {'tfidf_word_centroid', 'tfidf_character_centroid'}:
-        raise ValueError(f'Modelo desconhecido: {kind}')
-    df = Counter(word for vector in vectors for word in vector)
-    idf = {word: math.log((1 + len(rows)) / (1 + df[word])) + 1 for word in vocabulary}
-    centroids = {label: Counter() for label in labels}
-    for row, vector in zip(rows, vectors):
-        centroids[row['theme']].update(
-            unit({word: (1 + math.log(count)) * idf[word] for word, count in vector.items()})
-        )
-    return {**model, 'idf': idf, 'centroids': {label: unit(values) for label, values in centroids.items()}}
+    return CLASSIFIERS[kind].fit(model, rows, config, counts)
 
 
 def predict(model, text):
     kind, labels = model['kind'], model['labels']
-    vector = features(text, kind)
-    if kind == 'majority':
-        scores = {label: float(label == model['majority']) for label in labels}
-    elif kind == 'keywords':
-        scores = {label: sum(vector[word] for word in model['keywords'][label]) for label in labels}
-    elif kind == 'multinomial_nb':
-        vocabulary = set(model['vocabulary'])
-        alpha = model['alpha']
-        scores = {}
-        for label in labels:
-            counts = model['counts'][label]
-            total = sum(counts.values()) + alpha * len(vocabulary)
-            scores[label] = math.log(model['class_counts'][label] / model['samples']) + sum(
-                count * math.log((counts.get(word, 0) + alpha) / total)
-                for word, count in vector.items()
-                if word in vocabulary
-            )
-    else:
-        vector = unit(
-            {word: (1 + math.log(count)) * model['idf'][word] for word, count in vector.items() if word in model['idf']}
-        )
-        scores = {
-            label: sum(value * model['centroids'][label].get(word, 0) for word, value in vector.items())
-            for label in labels
-        }
+    scores = CLASSIFIERS[kind].score(model, features(text, kind))
     ordered = sorted(labels, key=lambda label: (-scores[label], label != model['majority'], label))
     first, second = ordered[:2] if len(ordered) > 1 else (ordered[0], ordered[0])
     return {'theme': first, 'margin': scores[first] - scores[second], 'margin_is_probability': False, 'scores': scores}
