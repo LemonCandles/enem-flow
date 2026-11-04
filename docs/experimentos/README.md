@@ -100,13 +100,13 @@ O ciclo local não escolhe provedor/modelo nem contrata serviço. Há um contrat
 
 Previsões incompletas, repetidas, com hashes/classes divergentes ou grupos de avaliação declarados como treino são recusadas. A comparação externa fica separada da seleção dos cinco modelos locais. Conhecimento prévio das provas públicas pelo provedor permanece desconhecido e é registrado como limitação. Sem arquivo, o resultado é `not_run`, com o motivo; não é apresentado como modelo avaliado.
 
-### Propostas para a etapa 8
+### Propostas para revisão
 
 O [contrato de proposta temática](classification-proposal.schema.json) preserva questão, identidade, versão pelo hash, fonte, taxonomia, modelo e hash do modelo, evidência e necessidade de revisão. `review_status` só aceita `proposed`; `needs_review` é obrigatório e as habilidades ficam vazias.
 
 `classification-proposals.json` contém as 89 previsões da referência para auditoria. Com `--archive`, acrescenta até `--proposal-limit` ocorrências válidas de Matemática dos cadernos automáticos, identificadas como `unlabeled_archive`. Esse limite é de ocorrências, não de identidades semanticamente únicas; a identidade acompanha cada proposta. Não se mede acurácia nos itens sem anotação.
 
-Política deste ciclo: encaminhar o resultado do modelo escolhido no desenvolvimento para conferência na etapa 8; itens com figuras exigem conferência visual e margem zero exige anotação manual sem tratar a previsão como evidência suficiente. Todas as propostas continuam sujeitas à comparação com a fonte. O conjunto pequeno e a ausência de adjudicação não sustentam um limiar de aprovação automática.
+Política deste ciclo: encaminhar o resultado do modelo escolhido no desenvolvimento para conferência humana; itens com figuras exigem conferência visual e margem zero exige anotação manual sem tratar a previsão como evidência suficiente. Todas as propostas continuam sujeitas à comparação com a fonte. O conjunto pequeno e a ausência de adjudicação não sustentam um limiar de aprovação automática.
 
 ## Análise de layout
 
@@ -120,7 +120,7 @@ Política deste ciclo: encaminhar o resultado do modelo escolhido no desenvolvim
 | Desenvolvimento | 2024, páginas 19 e 27: alternativas com matemática espacial e fórmula em página larga. |
 | Teste reservado | 2023, páginas 16, 17, 24, 30 e 31: figuras vetoriais, camada acessível duplicada, tabela larga, continuidade entre colunas e gráficos com rótulos girados. |
 
-Identidades e páginas inteiras não atravessam partições. O teste reserva outro ano e padrões difíceis. A anotação e a implementação são da mesma frente técnica; uma avaliação independente ainda exige novos casos e revisores na etapa 8.
+Identidades e páginas inteiras não atravessam partições. O teste reserva outro ano e padrões difíceis. A anotação e a implementação são da mesma frente técnica; uma avaliação independente ainda exige novos casos e revisores.
 
 ### Métodos e métricas
 
@@ -158,7 +158,7 @@ Com `--archive`, `archive-layout-proposals.json` preserva os diagnósticos receb
 
 `recovery-reference-v1` guarda hashes e anotações técnicas de 11 respostas visuais e de uma linha com fonte quebrada, além de um caso diagnóstico de 2021 sem transcrição adjudicada. Ausência de fontes históricas no clone fica registrada. A comparação de caracteres usa distância de edição normalizada pelo comprimento da transcrição; valores podem exceder 1 quando há muitas inserções.
 
-**Cobertura de candidatos não significa pendências resolvidas.** A etapa 8 deve adjudicar limites, transcrições, células, figuras e respostas; somente depois cabem novas versões no fluxo normal. Nenhuma saída do experimento substitui conteúdo/gabarito instalado ou remove bloqueios de preparação.
+**Cobertura de candidatos não significa pendências resolvidas.** Uma revisão humana precisa adjudicar limites, transcrições, células, figuras e respostas; somente depois cabem novas versões no fluxo normal. Nenhuma saída do experimento substitui conteúdo/gabarito instalado ou remove bloqueios de preparação.
 
 ## Organização dos arquivos
 

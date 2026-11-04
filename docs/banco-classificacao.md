@@ -24,7 +24,7 @@ O comando verifica os hashes das fontes antes de extrair. PDFs e TXT/DOSVOX perm
 
 A API informa `content_quality` com origem, estado de revisão e número de erros registrados. O catálogo identifica **Extração automática** e a resolução informa que o caderno aguarda conferência. Questões com erros conhecidos recebem aviso e vínculo à página original; o gabarito continua privado até finalizar. O conteúdo automático pode conter falhas de texto, figuras ou alternativas mesmo quando não há erro detectado.
 
-Essa publicação usa uma exceção explícita, com identidade de serviço, justificativa e origem registradas. Aprovação e publicação manuais continuam bloqueadas por pendências; a importação normal cria rascunhos. A conferência de conteúdo permanece na etapa 8. Arquivos inválidos falham individualmente sem impedir a instalação dos demais cadernos. Instalações automáticas anteriores recebem o registro de origem sem substituir versões; uma publicação manual válida marca a revisão como concluída.
+Essa publicação usa uma exceção explícita, com identidade de serviço, justificativa e origem registradas. Aprovação e publicação manuais continuam bloqueadas por pendências; a importação normal cria rascunhos. A conferência de conteúdo continua pendente. Arquivos inválidos falham individualmente sem impedir a instalação dos demais cadernos. Instalações automáticas anteriores recebem o registro de origem sem substituir versões; uma publicação manual válida marca a revisão como concluída.
 
 JSONs, relatórios e figuras gerados permanecem locais e ignorados pelo Git e pelo contexto Docker. Gerar novamente um JSON não substitui questões já instaladas: correções de conteúdo exigem versões e revisão. O [guia da preparação](preparacao-provas.md#publicação-automática-do-acervo) descreve escolhas e limites.
 
@@ -93,7 +93,7 @@ Rótulos novos valem para tentativas iniciadas depois da atualização. O histó
 
 ## Processo da segunda revisão
 
-Faz parte da curadoria, concentrada na [etapa 8 do roteiro](plano-implementacao/proximas-etapas.md#8-curadoria-do-conteúdo-e-dos-rótulos).
+Faz parte da curadoria, que não foi realizada e não tem etapa no [roteiro atual](plano-implementacao/proximas-etapas.md).
 
 1. Um segundo revisor compara a versão exata com o PDF e anota disciplina, tema e habilidades sem consultar a primeira decisão.
 2. Registrar `question_id`, hash da versão, rótulos, evidência, justificativa e identificação do revisor.
@@ -101,13 +101,13 @@ Faz parte da curadoria, concentrada na [etapa 8 do roteiro](plano-implementacao/
 4. Adjudicar com justificativa e referência à matriz. Publicar habilidades apenas após esse aceite, por novas versões.
 5. Atualizar referência, cobertura e protocolo experimental. Preservar decisões anteriores para auditoria.
 
-Os aceites ainda pendentes estão na etapa 8 e no final das [próximas etapas](plano-implementacao/proximas-etapas.md).
+Os aceites ainda pendentes não têm etapa no [roteiro atual](plano-implementacao/proximas-etapas.md).
 
 ## Integração das frentes da etapa 2
 
 A integração preserva o vínculo dos 135 itens às quatro cores (540 ocorrências), a preparação por língua estrangeira, os adaptadores de layout e a geração local das provas do acervo. Acrescenta cabeçalhos espaçados de versões acessíveis, identificação correta de cadernos com áreas combinadas, recuperação da matriz pelo manifesto, auditoria limitada aos itens de cada seção e preservação da auditoria de preparação ao acrescentar os rótulos.
 
-A curadoria permanece na etapa 8. A referência técnica mantém 89 itens válidos em oito temas; os vínculos com habilidades continuam propostas. O banco textual local pode ser montado somente para leitura com `compose.archive.yaml`.
+A curadoria continua pendente. A referência técnica mantém 89 itens válidos em oito temas; os vínculos com habilidades continuam propostas. O banco textual local pode ser montado somente para leitura com `compose.archive.yaml`.
 
 Antes de reproduzir as anotações, recupere a matriz, se necessário, com `python scripts/archive_enem.py reference` (o intermediário TLS opcional está no guia das fontes).
 
@@ -121,7 +121,7 @@ Integração concluída em **01/11/2026**, na branch `codex/consolidacao-primeir
 - **Amostra de geração e instalação:** sete cadernos completos, 630 questões e 67 pendências registradas. Abrange os dois dias de 2009, os dois dias de 2011 (espanhol no segundo), PPL 2012 e as duas línguas do primeiro dia PPL 2024. Todos foram instalados em uma cópia isolada do banco, sem falhas. Essa amostra não substitui a reprodução integral das 96 provas do ensaio inicial nem a conferência humana.
 - **Compatibilidade:** migração, atualização do catálogo e instalação do acervo na cópia preservaram a tentativa existente, seus 90 snapshots, respostas e resultado, comparados por hash. O banco de uso foi apenas lido. A configuração Compose com banco textual somente para leitura foi validada; não foi repetido o ensaio completo de persistência em contêineres da consolidação.
 
-A integração da checagem de todas as provas ao fluxo reutilizável continua nas melhorias do roteiro. Leitores de tela, aparelhos reais e segunda revisão permanecem pendentes; a curadoria continua na etapa 8.
+A checagem de todas as provas ficou reutilizável depois, com `make audit-archive`. Leitores de tela, aparelhos reais, segunda revisão e curadoria permanecem pendentes.
 
 ## Incorporação do acervo processado
 
@@ -133,6 +133,6 @@ Antes da publicação, todos os cadernos passaram por validação do contrato, n
 
 Uma cópia isolada do banco passou pelo início, preenchimento de todas as respostas com o gabarito, finalização e repetição da finalização nas **96 provas automáticas**. As 8.595 questões tiveram resultado consistente: 13 anuladas excluídas do desempenho e 100% nas demais, sem duplicar eventos ou alterar snapshots. Foram usadas diretamente as funções que atendem às rotas HTTP; não foram criadas tentativas fictícias no banco do site. O catálogo real também foi conferido em 1.440 e 390 pixels, incluindo os 96 indicadores de origem automática e filtros por ano/aplicação. Isso verifica instalação e correção, sem substituir a comparação pedagógica com cada página original.
 
-Continuam registradas **506 pendências em 489 questões**: 222 relações espaciais, 154 alternativas não separadas e 130 tabelas com células mescladas. Elas permanecem visíveis no site e serão tratadas nas etapas 3 e 8. Os casos sem gabarito ou texto legível e os anos anteriores a 2009 continuam com os limites descritos no guia de preparação; o lote recebido não resolve essas ausências.
+Continuam registradas **506 pendências em 489 questões**: 222 relações espaciais, 154 alternativas não separadas e 130 tabelas com células mescladas. Elas permanecem visíveis no site. Os casos sem gabarito ou texto legível e os anos anteriores a 2009 continuam com os limites descritos no guia de preparação; o lote recebido não resolve essas ausências.
 
 O backup anterior à instalação está em `backups/enem-flow-antes-acervo-2026-11-01.db`. A tentativa real existente, seus 90 snapshots, respostas e resultado foram preservados. A conferência de entrada, o resumo de geração e o ensaio integral estão em `data/derived/exams/importacao-processada.report.json`, `resumo.json` e `checagem-integral.report.json`.

@@ -141,11 +141,11 @@ O caderno de 2021 tem codificação quebrada e serve para mostrar o bloqueio: se
 
 Antes das extensões deste ensaio, os cadernos com opção de língua (2024, 1º dia, e 2015) e o de 2012 nem chegavam ao relatório. 2022, 2019 e 2017 tinham 15, 14 e 10 pendências bloqueantes, por causa de alternativas em grade, letras duplicadas pela camada acessível e moedas como `US$` lidas como LaTeX. As 100 alternativas gráficas segmentadas foram conferidas contra a posição dos marcadores no PDF, sem divergências.
 
-As pendências restantes são casos que exigem revisão humana: tabelas com células mescladas, relações espaciais e alternativas com mais de uma figura. Os avisos (descrições de figuras, vínculos inferidos e notação ambígua) também exigem conferência. Nenhum desses rascunhos foi importado ou revisado. A incorporação de um novo caderno ao catálogo depende da curadoria, prevista na [etapa 8 do roteiro](plano-implementacao/proximas-etapas.md#8-curadoria-do-conteúdo-e-dos-rótulos).
+As pendências restantes são casos que exigem revisão humana: tabelas com células mescladas, relações espaciais e alternativas com mais de uma figura. Os avisos (descrições de figuras, vínculos inferidos e notação ambígua) também exigem conferência. Nenhum desses rascunhos foi importado ou revisado. A incorporação de um novo caderno ao catálogo depende de curadoria, que não tem etapa no [roteiro atual](plano-implementacao/proximas-etapas.md).
 
 ## Publicação automática do acervo
 
-**Decisão de 31/10/2026:** as provas do acervo vão para o site sem curadoria. O tratamento de layout fica para a etapa 3, e a curadoria para a etapa 8 do [roteiro](plano-implementacao/proximas-etapas.md).
+**Decisão de 31/10/2026:** as provas do acervo vão para o site sem curadoria. O tratamento de layout fica para a etapa 3 do [roteiro](plano-implementacao/proximas-etapas.md); a curadoria não tem etapa nele.
 
 ```bash
 .venv/bin/python scripts/build_archive_exams.py          # gera JSON e figuras

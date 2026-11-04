@@ -126,7 +126,7 @@ Snapshots, respostas, resultados e eventos anteriores não são regravados. A le
 - Banco local atualizado após backup consistente em `backups/enem-flow-antes-native-v2-2026-10-31.db` (ignorado pelo Git). Criadas 15 versões; segunda execução criou zero. Histórico e conteúdo/status das 180 versões anteriores conferidos contra o backup e preservados; integridade SQLite `ok`.
 - [Vídeo da jornada atualizado](../docs/demo.webm) e [vídeo das figuras/LaTeX](../docs/demo-figuras.webm), sem narração e com conta descartável. Capturas e vídeos são evidências técnicas de teste, sem dados de estudantes reais.
 
-Este lote passou a integrar a [consolidação técnica da primeira entrega](../docs/primeira-entrega.md), com instalação isolada, PostgreSQL, recuperação, CI e auditoria automatizada. Revisão pedagógica independente, descrições científicas com leitores de tela e uso em aparelhos reais permanecem nas pendências externas ao final das próximas etapas.
+Este lote passou a integrar a [consolidação técnica da primeira entrega](../docs/primeira-entrega.md), com instalação isolada, PostgreSQL, recuperação, CI e auditoria automatizada. Revisão pedagógica independente, descrições científicas com leitores de tela e uso em aparelhos reais não foram realizados.
 
 ## Origem e direitos
 

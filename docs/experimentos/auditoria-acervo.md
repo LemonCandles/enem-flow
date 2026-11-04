@@ -37,7 +37,7 @@ As duas leituras oficiais coincidiram nas **8.730 posições**, com **15 anulaç
 
 Permanecem **928 diagnósticos de preparação em 441 posições**: 470 alternativas incompletas no conteúdo nativo, 216 relações espaciais, 93 tabelas com células mescladas, 85 problemas de alternativas e 64 ocorrências de caracteres de controle. São diagnósticos, não quantidades de questões distintas. A triagem adicional identifica 129 questões com alternativas de transcrição pendente, 41 com possíveis figuras omitidas (75 indicações) e quatro com trechos de redação indevidos. Os 1.064 indicadores de cobertura textual baixa precisam de adjudicação: podem incluir texto em figuras ou fórmulas, além de perdas reais. Ao reunir preparação, triagem, identidade e os casos inspecionados, a fila contém 1.464 posições com algum achado, preservado por versão.
 
-Há limites visuais que os testes de transbordamento não detectam. A inspeção assistida registrou quatro achados em três versões: rodapé anexado à alternativa E e linhas fragmentadas na questão 1 de 2009; cabeçalho repetido como figura na questão 91 do ENEM digital 2020; cartão inteiro em uma imagem na questão 176 do digital 2022. Outros gráficos continuam separados em recortes. Esses casos precisam de segmentação e conferência do conteúdo na etapa 8. A ausência de falha automatizada de navegador não elimina essas pendências.
+Há limites visuais que os testes de transbordamento não detectam. A inspeção assistida registrou quatro achados em três versões: rodapé anexado à alternativa E e linhas fragmentadas na questão 1 de 2009; cabeçalho repetido como figura na questão 91 do ENEM digital 2020; cartão inteiro em uma imagem na questão 176 do digital 2022. Outros gráficos continuam separados em recortes. Esses casos precisam de segmentação e conferência do conteúdo. A ausência de falha automatizada de navegador não elimina essas pendências.
 
 ## Aplicação da etapa 3
 
@@ -105,7 +105,7 @@ Sem `--apply`, o instalador valida e desfaz a transação. Depois de conferir o 
   --apply --sync-derived
 ```
 
-`--sync-derived` atualiza apenas caches compatíveis com a versão anterior/atual, recalcula os relatórios e guarda um mapa das identidades estáveis. Edições próprias não são sobrescritas. A revisão independente de conteúdo, descrições científicas, rótulos e vínculos continua na etapa 8.
+`--sync-derived` atualiza apenas caches compatíveis com a versão anterior/atual, recalcula os relatórios e guarda um mapa das identidades estáveis. Edições próprias não são sobrescritas. A revisão independente de conteúdo, descrições científicas, rótulos e vínculos continua pendente.
 
 ## Arquivos de saída
 

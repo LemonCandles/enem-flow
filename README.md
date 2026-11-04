@@ -152,7 +152,7 @@ npm run test:e2e
 
 Para usar o Chrome já instalado, configure `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/caminho/do/google-chrome`. Os testes de navegador criam contas descartáveis e excluem seus históricos ao concluir. Para PostgreSQL, use `TEST_DATABASE_URL` apontando para um **banco exclusivo de testes com `test` no nome**; a suíte cria e remove suas tabelas.
 
-Use também um banco separado para os testes de navegador. As [validações e seus limites](docs/plano-implementacao/status-implementacao.md#validação-e-limites) distinguem a revisão de apresentação, os ajustes de navegação e a preparação generalizada. A consolidação inclui instalação isolada, PostgreSQL, recuperação, acessibilidade automatizada e CI. Revisão pedagógica independente, leitores de tela e aparelhos reais estão no final das próximas etapas; publicação e piloto permanecem sujeitos a esses aceites.
+Use também um banco separado para os testes de navegador. As [validações e seus limites](docs/plano-implementacao/status-implementacao.md#validação-e-limites) distinguem a revisão de apresentação, os ajustes de navegação e a preparação generalizada. A consolidação inclui instalação isolada, PostgreSQL, recuperação, acessibilidade automatizada e CI. Revisão pedagógica independente, leitores de tela e aparelhos reais não foram realizados, e seus roteiros estão em [primeira entrega](docs/primeira-entrega.md#aceites-manuais-ainda-necessários). Publicação e piloto estão fora do roteiro atual.
 
 ## Documentação da entrega
 

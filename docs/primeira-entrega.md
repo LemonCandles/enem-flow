@@ -60,7 +60,7 @@ Não integram esta entrega: diagnóstico, seleção adaptativa, tutor, classific
 
 ## Aceites manuais ainda necessários
 
-As pendências externas estão no [final das próximas etapas](plano-implementacao/proximas-etapas.md#pendências-externas-da-primeira-entrega) e continuam necessárias antes da publicação/piloto:
+Estes aceites não foram realizados e não têm etapa no [roteiro atual](plano-implementacao/proximas-etapas.md). Continuam necessários antes de uma publicação ou de um piloto:
 
 1. Um revisor independente compara os 90 itens com o caderno/gabarito, incluindo símbolos, coeficientes, legendas, estruturas moleculares e diagramas das alternativas; cada correção deve ter evidência, nova versão e aprovação.
 2. Uma pessoa usuária de leitor de tela executa cadastro, navegação, marcação/alteração, retomada, leitura de tabelas e matemática/química, ampliação e resultado. Registrar leitor, sistema, navegador e como os conteúdos são anunciados.

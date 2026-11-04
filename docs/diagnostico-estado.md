@@ -1,6 +1,6 @@
 # Diagnóstico e estado por tema e habilidade
 
-Implementação técnica da etapa 4 em 04/11/2026. O diagnóstico usa os rótulos já publicados, sem promover propostas dos experimentos ou antecipar a curadoria da etapa 8. A política adaptativa permanece na etapa 5.
+Implementação técnica da etapa 4 em 04/11/2026. O diagnóstico usa os rótulos já publicados, sem promover propostas dos experimentos nem depender de curadoria. A política adaptativa permanece na etapa 5.
 
 ## Jornada e seleção
 
@@ -74,7 +74,7 @@ npm run build
 npm run test:e2e -- --workers=1
 ```
 
-A migração também é testada com banco SQLite populado na revisão anterior: preserva os eventos campo a campo, reconstrói a estimativa esperada e passa por downgrade/upgrade. A regressão cobre seleção/deduplicação, distribuição temática, concorrência, isolamento de contas, snapshots, assistência, brancos, múltiplos rótulos e taxonomias, além da jornada de navegador em desktop e viewport móvel. Leitores de tela reais e aparelhos físicos permanecem nas pendências externas do projeto.
+A migração também é testada com banco SQLite populado na revisão anterior: preserva os eventos campo a campo, reconstrói a estimativa esperada e passa por downgrade/upgrade. A regressão cobre seleção/deduplicação, distribuição temática, concorrência, isolamento de contas, snapshots, assistência, brancos, múltiplos rótulos e taxonomias, além da jornada de navegador em desktop e viewport móvel. Leitores de tela reais e aparelhos físicos não foram conferidos.
 
 A implantação requer `alembic upgrade head` antes de iniciar a nova aplicação. As validações locais usam bancos descartáveis; não migram nem alteram o banco de uso.
 
