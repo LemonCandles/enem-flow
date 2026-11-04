@@ -1,7 +1,7 @@
 """Curation of versioned content: import, preview, edit, review, publish and audit."""
 
 from fastapi import APIRouter, HTTPException
-from sqlalchemy import func, select
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 
 from ... import models as m, schemas as s
@@ -9,6 +9,7 @@ from ...dependencies import AdminUser, SessionDep
 from ...preparation import blocking_issues, prepare_content, prepare_exam
 from ...services.content import exam_summary, import_exam, publish_exam, validate_assets
 from ...services.identity import identify, validate_exam_identities, validate_revision_identity
+from ...services.versioning import latest_version, new_version
 
 router = APIRouter(tags=["curadoria"])
 
@@ -71,10 +72,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: AdminUser, db:
     except ValueError as error:
         raise HTTPException(422, str(error))
     validate_assets(content)
-    last = db.scalar(
-        select(func.max(m.QuestionVersion.version)).where(m.QuestionVersion.question_id == previous.question_id)
-    )
-    if last != previous.version:
+    if latest_version(db, previous.question_id) != previous.version:
         raise HTTPException(409, "Há uma versão mais recente. Atualize a tela antes de editar.")
     canonical_id = previous.canonical_id or identify(db, previous.content)
     validate_revision_identity(db, content, canonical_id)
@@ -86,15 +84,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: AdminUser, db:
             if (q := db.get(m.QuestionVersion, key))
         ]
         validate_exam_identities(items)
-    version = last + 1
-    question = m.QuestionVersion(
-        id=f"{previous.question_id}:{version}",
-        question_id=previous.question_id,
-        canonical_id=canonical_id,
-        version=version,
-        content=content,
-    )
-    db.add(question)
+    question = new_version(db, previous, content, canonical_id=canonical_id)
     # Published exams are withdrawn until the new version is reviewed and published again.
     for exam in linked_exams:
         exam.items = [question.id if key == previous.id else key for key in exam.items]
@@ -104,7 +94,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: AdminUser, db:
         db.flush()
     except IntegrityError:
         raise HTTPException(409, "Outro revisor criou uma versão. Atualize a tela.")
-    return {"id": question.id, "version": version, "status": "draft"}
+    return {"id": question.id, "version": question.version, "status": "draft"}
 
 
 @router.post("/reviews/{target_id}")

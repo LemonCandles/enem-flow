@@ -12,6 +12,7 @@ from ..models import Exam, QuestionVersion, Review
 from ..schemas import ExamImport, QuestionContent
 from ..services.presentation import content_fingerprint, is_previous_bundled_content
 from ..services.identity import identify
+from ..services.versioning import new_version
 from .bundled import bundled_reviewer
 from ..preparation import fingerprint as preparation_fingerprint
 
@@ -113,20 +114,8 @@ def install_catalog(db, publish=False):
                 # Source curation changes labels/presentation, never assessment.
                 if any(old.content[k] != wanted[k] for k in ('number', 'area', 'page', 'correct_answer', 'annulled')):
                     raise Conflict('Mudança de avaliação exige revisão manual.')
-                latest = db.scalar(
-                    select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id == old.question_id)
-                )
                 canonical_id = old.canonical_id or identify(db, wanted, (desired.source.sha256, target.content.number))
-                new = QuestionVersion(
-                    id=f'{old.question_id}:{latest + 1}',
-                    question_id=old.question_id,
-                    canonical_id=canonical_id,
-                    version=latest + 1,
-                    content=wanted,
-                    status='draft',
-                )
-                db.add(new)
-                new_keys.append(new.id)
+                new_keys.append(new_version(db, old, wanted, canonical_id=canonical_id).id)
                 stats['new_versions'] += 1
                 changed = True
             db.flush()

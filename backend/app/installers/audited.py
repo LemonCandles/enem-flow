@@ -4,13 +4,14 @@ from collections import defaultdict
 import hashlib
 import json
 
-from sqlalchemy import func, select
+from sqlalchemy import select
 
 from ..models import CanonicalQuestion, Exam, QuestionVersion, Review
 from ..preparation import blocking_issues
 from ..schemas import QuestionContent
 from ..services.content import publish_exam, validate_assets
 from ..services.identity import signatures, validate_revision_identity
+from ..services.versioning import latest_version, new_version
 from .bundled import bundled_reviewer
 
 
@@ -61,10 +62,7 @@ def apply_audited(db, plan):
             continue
         if current.id != row['previous_version'] or content_hash(current.content) != row['previous_sha256']:
             raise ValueError('A versão atual diverge da versão auditada.')
-        latest = db.scalar(
-            select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id == current.question_id)
-        )
-        if current.status != 'approved' or latest != current.version:
+        if current.status != 'approved' or latest_version(db, current.question_id) != current.version:
             raise ValueError('Há edição ou decisão posterior à versão publicada; revise manualmente.')
         if any(current.content[field] != desired[field] for field in ('number', 'area', 'labels', 'page')):
             raise ValueError('Correção técnica não pode alterar identidade, área, rótulos ou página.')
@@ -100,16 +98,7 @@ def apply_audited(db, plan):
     reviewer = bundled_reviewer(db)
     versions = []
     for exam, old, desired, row in checked:
-        number = old.version + 1
-        new = QuestionVersion(
-            id=f'{old.question_id}:{number}',
-            question_id=old.question_id,
-            canonical_id=old.canonical_id,
-            version=number,
-            content=desired,
-            status='approved',
-        )
-        db.add(new)
+        new = new_version(db, old, desired, number=old.version + 1, status='approved')
         reason = json.dumps(
             {
                 'reason': row['reason'],

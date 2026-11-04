@@ -3,13 +3,14 @@
 import secrets
 
 from ..services.errors import Conflict
-from sqlalchemy import func, select
+from sqlalchemy import select
 
 from ..services.content import publish_exam, validate_assets
 from ..models import QuestionVersion, Review, User
 from ..schemas import QuestionContent
 from ..core.security import hash_password
 from ..services.presentation import ASSESSMENT_FIELDS, is_previous_bundled_content
+from ..services.versioning import new_version
 
 
 def bundled_reviewer(db):
@@ -45,19 +46,7 @@ def refresh_bundle(db, exam, payload, reviewer):
             raise Conflict(f"A questão {question.question_id} possui edição própria. A atualização não foi aplicada.")
         if any(normalized_old[field] != desired[field] for field in ASSESSMENT_FIELDS):
             raise Conflict(f"A questão {question.question_id} alterou dados de avaliação. Exige revisão manual.")
-        latest = db.scalar(
-            select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id == old.question_id)
-        )
-        version = latest + 1
-        new = QuestionVersion(
-            id=f"{old.question_id}:{version}",
-            question_id=old.question_id,
-            canonical_id=old.canonical_id,
-            version=version,
-            content=desired,
-            status="approved",
-        )
-        db.add(new)
+        new = new_version(db, old, desired, status="approved")
         review = (desired.get('layout') or {}).get('presentation_review', {})
         detail = f"Questão {desired['number']}, página {desired['page']}: {review.get('reason', reason)}"
         db.add(Review(user_id=reviewer.id, target_id=new.id, action="approve", reason=detail))
