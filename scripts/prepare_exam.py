@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from backend.app.preparation import prepare_exam
+from backend.app.services.content import iter_assets
 
 
 def main():
@@ -64,12 +65,7 @@ def main():
         missing = []
         for q in prepared.questions:
             c = q.content.model_dump()
-            assets = (
-                c['images']
-                + [a['image'] for a in c['alternatives'] if a.get('image')]
-                + [b['asset'] for b in c['blocks'] if b['type'] == 'image']
-            )
-            for asset in assets:
+            for asset in iter_assets(c):
                 target = (args.assets_root / asset['path'].removeprefix('/assets/')).resolve()
                 if not target.is_relative_to(args.assets_root.resolve()) or not target.is_file():
                     missing.append({'question_id': q.question_id, 'path': asset['path']})

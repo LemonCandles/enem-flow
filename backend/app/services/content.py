@@ -12,12 +12,16 @@ from ..preparation import blocking_issues
 from .identity import identify
 
 
+def iter_assets(content: dict):
+    """Every figure a question shows: loose images, alternatives and blocks."""
+    yield from content.get("images", [])
+    yield from (a["image"] for a in content["alternatives"] if a.get("image"))
+    yield from (block["asset"] for block in content.get("blocks", []) if block["type"] == "image")
+
+
 def validate_assets(content: dict):
-    assets = list(content.get("images", []))
-    assets.extend(a["image"] for a in content["alternatives"] if a.get("image"))
-    assets.extend(block["asset"] for block in content.get("blocks", []) if block["type"] == "image")
     root = (ROOT / "data/assets").resolve()
-    for asset in assets:
+    for asset in iter_assets(content):
         path = (ROOT / "data" / asset["path"].lstrip("/")).resolve()
         if not path.is_relative_to(root) or not path.is_file():
             raise InvalidContent(f"Imagem ausente: {asset['path']}")

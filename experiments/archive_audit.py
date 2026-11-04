@@ -78,17 +78,10 @@ def installed_exams(database):
     return exams
 
 
-def assets_in(content):
-    return [
-        *content.get('images', []),
-        *[a['image'] for a in content['alternatives'] if a.get('image')],
-        *[block['asset'] for block in content.get('blocks', []) if block['type'] == 'image'],
-    ]
-
-
 def audit_exam(exam, files, output, render_sources=False):
     from backend.app.schemas import QuestionContent
     from backend.app.preparation import blocking_issues
+    from backend.app.services.content import iter_assets
     from scripts.exam_pdf import answer_key_rows, garbled
 
     questions, errors = [], []
@@ -166,7 +159,7 @@ def audit_exam(exam, files, output, render_sources=False):
             # não prova automática de perda semântica.
             if recall < 0.65:
                 findings.append({'code': 'low_text_coverage', 'ratio': recall})
-            for asset in assets_in(c):
+            for asset in iter_assets(c):
                 path = (ROOT / 'data' / asset['path'].lstrip('/')).resolve()
                 if not path.is_relative_to((ROOT / 'data/assets').resolve()) or not path.is_file():
                     findings.append({'code': 'missing_asset', 'path': asset['path']})
@@ -178,7 +171,7 @@ def audit_exam(exam, files, output, render_sources=False):
                         assets[asset['path']] = {'sha256': file_digest(path), 'size': size}
                     except Exception as error:
                         findings.append({'code': 'invalid_asset', 'path': asset['path'], 'reason': str(error)})
-            used_assets = {asset['path'] for asset in assets_in(c)}
+            used_assets = {asset['path'] for asset in iter_assets(c)}
             pixel_checked = 0
             for figure in (c.get('layout') or {}).get('extraction', {}).get('figures', []):
                 if figure['asset'] not in used_assets:
