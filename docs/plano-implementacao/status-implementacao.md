@@ -1,8 +1,10 @@
 # Status da implementação
 
-Atualizado em **03/11/2026**. Visão geral do andamento do [plano do projeto](enem_adaptativo_plano_do_projeto.md).
+Atualizado em **04/11/2026**. Visão geral do andamento do [plano do projeto](enem_adaptativo_plano_do_projeto.md).
 
 ## Situação atual
+
+A **etapa 4 está implementada tecnicamente**: diagnóstico fixo com objetivo, área e tempo disponível, retomada e finalização; estado reconstruído por tema/habilidade com Beta(1,1), primeira resposta independente por identidade, exposição, prática recente e separação da assistência. O painel, o histórico, a exportação e a exclusão incluem diagnósticos. As habilidades entram conforme sua publicação na etapa 8. [Contratos e limites](../diagnostico-estado.md).
 
 **A consolidação técnica da primeira entrega e a parte técnica da etapa 2 foram concluídas.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
 
@@ -41,13 +43,13 @@ A refatoração remota do backend foi integrada preservando essas correções, o
 
 ## O que ainda não foi iniciado
 
-Diagnóstico por habilidade, seleção adaptativa de questões, tutor com IA e classificação automática integrada ao produto permanecem nas próximas etapas. Já existem modelos clássicos treinados e avaliados offline na etapa 3; isso não representa diagnóstico educacional, classificação aprovada ou integração de tutor/LLM.
+Seleção adaptativa de questões, tutor com IA e classificação automática integrada ao produto permanecem nas próximas etapas. O suporte técnico ao estado por habilidade já existe; sua cobertura depende da publicação dos rótulos na etapa 8. Já existem modelos clássicos treinados e avaliados offline na etapa 3; isso não representa diagnóstico educacional, classificação aprovada ou integração de tutor/LLM.
 
 Também continuam previstos a expansão para docentes, os recursos multimodais e os estudos de aprendizagem. A publicação externa e o piloto com estudantes ainda não foram realizados.
 
 ## Prioridades imediatas
 
-1. Seguir para o diagnóstico por tema (etapa 4) com os rótulos já publicados e depois para a política adaptativa (etapa 5).
+1. Integrar a política adaptativa (etapa 5) ao estado reconstruível e aos temas já publicados.
 2. Usar os erros medidos na etapa 3 para novos ciclos de classificação/layout, preservando o teste e as propostas até a curadoria.
 3. Encaminhar os aceites externos: leitores de tela e aparelhos reais.
 4. Reunir toda a curadoria na etapa 8, antes da publicação e do piloto (etapas 9 e 10).
@@ -55,6 +57,8 @@ Também continuam previstos a expansão para docentes, os recursos multimodais e
 A sequência e os critérios de aceite estão em [próximas etapas](proximas-etapas.md).
 
 ## Validação e limites
+
+Em 04/11/2026, a etapa 4 passou em **160 testes em SQLite e 160 em PostgreSQL**, com migrações e alinhamento de esquema conferidos em bancos descartáveis. O teste de migração populada preserva os eventos legados e verifica a reconstrução. Passaram também os **30 testes de navegador** em desktop/celular, incluindo a jornada de diagnóstico, verificações Axe, teclado, reflow, exportação e exclusão, além da tipagem, build de produção e 150 expressões LaTeX do lote incluído. A avaliação do estimador é sintética e não demonstra validade pedagógica ou ganho de aprendizagem. O banco de uso não foi migrado por esses ensaios.
 
 Em 03/11/2026, **127 testes passaram em SQLite**, incluindo 26 cenários dos experimentos. A execução offline percorreu os 89 itens temáticos, os 13 exemplos de layout e os 96 cadernos automáticos. O CI ganhou um job reprodutível com os dados incluídos; a execução remota desse job ainda não foi verificada. PostgreSQL, Playwright e contêineres não foram repetidos nesta entrega, que não altera a API, o esquema ou a interface do produto.
 

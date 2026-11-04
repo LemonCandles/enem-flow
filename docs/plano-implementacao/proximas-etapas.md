@@ -1,6 +1,6 @@
 # Próximas etapas
 
-Atualizado em **03/11/2026**. Este roteiro parte do [status da implementação](status-implementacao.md) e organiza a continuidade do [plano do projeto](enem_adaptativo_plano_do_projeto.md).
+Atualizado em **04/11/2026**. Este roteiro parte do [status da implementação](status-implementacao.md) e organiza a continuidade do [plano do projeto](enem_adaptativo_plano_do_projeto.md).
 
 As etapas abaixo são propostas de execução, com dependências e critérios de aceite. **Toda a curadoria fica concentrada na [etapa 8](#8-curadoria-do-conteúdo-e-dos-rótulos), no final do desenvolvimento.** Isso inclui revisão humana, aprovação e importação de conteúdo, segunda revisão dos rótulos, aprovação de propostas automáticas e curadoria assistida. As etapas 2 a 7 usam o conteúdo já publicado e os rótulos de curadoria técnica, sem esperar revisões. Publicação e piloto vêm depois da curadoria, porque dependem de conteúdo revisado. O marco de 15/11/2026 permanece como referência do PDF; a definição das datas operacionais depende da capacidade disponível e das evidências de cada entrega.
 
@@ -97,13 +97,15 @@ O material principal são as provas publicadas automaticamente e seus relatório
 
 ## 4. Implementar diagnóstico e estado por habilidade
 
+**Implementação técnica concluída em 04/11/2026.** Contratos, parâmetros, avaliação sintética e verificações em [diagnóstico e estado](../diagnostico-estado.md).
+
 **Dependências: histórico consistente e os rótulos já publicados (disciplina e tema de curadoria técnica). As habilidades revisadas entram quando a etapa 8 as publicar; até lá, o estado é calculado por tema. Frente principal: Plataforma.**
 
-1. Criar sessões de diagnóstico com objetivo, área e tempo disponível.
-2. Distribuir os itens pelos temas disponíveis e registrar a quantidade de evidência por tema e, quando houver, por habilidade.
-3. Manter tentativas recentes, acertos independentes, itens vistos e última prática.
-4. Implementar e avaliar um estimador explicável. O plano sugere uma taxa suavizada ou Beta-Binomial; com prior Beta(1,1), a média seria `(1 + acertos) / (2 + tentativas)`.
-5. Mostrar quando há poucas respostas para sustentar uma interpretação e separar desempenho independente de desempenho assistido.
+- [x] **1.** Criar sessões de diagnóstico com objetivo, área e tempo disponível.
+- [x] **2.** Distribuir os itens pelos temas disponíveis e registrar a quantidade de evidência por tema e, quando houver, por habilidade.
+- [x] **3.** Manter tentativas recentes, acertos independentes, itens vistos e última prática.
+- [x] **4.** Implementar e avaliar um estimador explicável. O plano sugere uma taxa suavizada ou Beta-Binomial; com prior Beta(1,1), a média seria `(1 + acertos) / (2 + tentativas)`.
+- [x] **5.** Mostrar quando há poucas respostas para sustentar uma interpretação e separar desempenho independente de desempenho assistido.
 
 **Critério de aceite:** o estado do aluno pode ser reconstruído a partir de eventos e versões, informa a quantidade de evidência e respeita o momento de finalização das provas.
 
@@ -181,7 +183,7 @@ Após estabilizar as integrações, preservar no backlog:
 
 ## Primeiro bloco de trabalho recomendado
 
-Seguir para a etapa 4 com os temas já publicados e os eventos consistentes. Usar os relatórios da etapa 3 para priorizar novos experimentos e reservar novos padrões de layout; uma comparação com LLM exige escolher provedor/modelo/orçamento ou fornecer previsões externas no contrato. Encaminhar em paralelo os testes manuais de acessibilidade descritos no final. A revisão independente, os tempos humanos e a aprovação dos candidatos ficam para a etapa 8; publicação e piloto, para as etapas 9 e 10.
+Seguir para a etapa 5 usando o estado reconstruível da etapa 4 e os temas já publicados. Usar os relatórios da etapa 3 para priorizar novos experimentos e reservar novos padrões de layout; uma comparação com LLM exige escolher provedor/modelo/orçamento ou fornecer previsões externas no contrato. Encaminhar em paralelo os testes manuais de acessibilidade descritos no final. A revisão independente, os tempos humanos e a aprovação dos candidatos ficam para a etapa 8; publicação e piloto, para as etapas 9 e 10.
 
 ## Pendências e melhorias
 

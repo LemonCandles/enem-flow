@@ -44,6 +44,14 @@ Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da
 
 `services/scoring.py` corrige exclusivamente por gabarito: brancos contam no denominador e não como respostas; anuladas ficam fora do desempenho. O painel soma tentativas de provas concluídas, inclusive repetições; não deduplica um item que o aluno resolveu novamente. Rótulos múltiplos podem sobrepor grupos. Cobertura significa a fração de tentativas válidas com pelo menos um rótulo do tipo considerado, não domínio de conhecimento.
 
+## Diagnóstico e estado do aluno
+
+`diagnostic_sessions` preserva objetivo, área, tempo, seleção versionada, snapshots e respostas. O seletor distribui itens entre temas publicados, deduplica identidades e registra a exposição; a sessão permanece fixa até a finalização, sem prazo obrigatório. Cada item conserva a fonte original. A correção e a geração compartilhada de eventos seguem a mesma transação e proteção contra concorrência das provas.
+
+`learning_events` referencia exclusivamente uma prova ou um diagnóstico. O contexto `2.0` acrescenta área aos dados de identidade, versão, rótulos e ajuda; eventos antigos continuam legíveis com seus snapshots. `services/knowledge.py` reconstrói o estado por tema/taxonomia e habilidade oficial, usando apenas a primeira resposta marcada e sem ajuda por identidade no estimador Beta(1,1). Brancos, anuladas e repetições permanecem identificados; ajuda desconhecida não é tratada como independência. A publicação posterior de rótulos não reclassifica os eventos históricos.
+
+O painel mantém os indicadores objetivos de provas e acrescenta o estado conjunto de provas/diagnósticos, com evidência, assistência e prática recente. Contratos, critérios de seleção, migração e limitações estão em [diagnóstico e estado](diagnostico-estado.md).
+
 ## Preparação de conteúdo
 
 `backend/app/preparation/` é o preparador compartilhado de JSON, sem dependência de PDF/Node nas requisições da API e sem regras por número de questão. `POST /admin/imports` e a edição de versões o executam automaticamente; `/admin/imports/prepare` oferece prévia sem gravação. Converte notação reconhecida, associa blocos adjacentes às figuras e registra hashes, operações e pendências em `layout.preparation`. Agrupamentos/delimitadores LaTeX inválidos e perdas de layout conhecidas bloqueiam aprovação e publicação. Os avisos ficam na curadoria; o aluno recebe a lista permitida de campos de apresentação.
@@ -83,7 +91,10 @@ O backend segue a organização de [aplicações maiores do FastAPI](https://fas
 | `PUT /exam-runs/{id}/answers/{item_id}` | Dono, prova aberta | `choice` A–E ou null para limpar |
 | `POST /exam-runs/{id}/finish` | Dono | Finalização transacional, repetível |
 | `GET /me/history`, `/me/progress` | Conta | Histórico e agregações próprias |
-| `DELETE /me/history` | Conta | Remove execuções e eventos próprios |
+| `GET /diagnostic-options`, `POST /sessions` | Conta | Cobertura elegível e início idempotente de diagnóstico |
+| `GET /sessions/{id}`, `PUT /sessions/{id}/answers/{item_id}`, `POST /sessions/{id}/finish` | Dono | Retomada, salvamento e finalização transacional |
+| `GET /me/sessions`, `/me/knowledge-state` | Conta | Histórico de diagnósticos e estado reconstruído |
+| `DELETE /me/history` | Conta | Remove provas, diagnósticos e eventos próprios |
 | `POST /admin/imports` | Curadoria | Valida JSON e recursos, cria rascunho |
 | `GET /admin/exams`, `/admin/exams/{id}` | Curadoria | Inclui conteúdo e estados de revisão |
 | `PUT /admin/questions/{version_id}` | Curadoria | Nova versão, com justificativa |
