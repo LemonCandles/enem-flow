@@ -9,7 +9,7 @@ from sqlalchemy import select
 from ..models import DiagnosticSession, Exam, ExamRun, QuestionVersion
 from ..preparation import blocking_issues
 
-SELECTOR_VERSION = 'diagnostic-coverage-v1'
+DEFAULT_SELECTOR = 'diagnostic-coverage-v1'
 
 
 def identity(item):
@@ -55,7 +55,7 @@ def user_origins(db, user_id):
     ]
 
 
-def select_items(pool, seen, minutes, seed):
+def coverage_selector(pool, seen, minutes, seed):
     rng = random.Random(seed)
     remaining = sorted(pool, key=lambda i: i['id'])
     rng.shuffle(remaining)
@@ -70,7 +70,7 @@ def select_items(pool, seen, minutes, seed):
         counts.update(set(item['content']['labels']['themes']))
         remaining.remove(item)
     return selected, {
-        'version': SELECTOR_VERSION,
+        'version': DEFAULT_SELECTOR,
         'seed': seed,
         'requested_items': min(20, minutes // 3),
         'selected_items': len(selected),
@@ -78,3 +78,11 @@ def select_items(pool, seen, minutes, seed):
         'themes': dict(sorted(counts.items())),
         'repeated_items': [i['id'] for i in selected if identity(i) in seen],
     }
+
+
+# Each selection records the version that produced it, so policies can coexist.
+SELECTORS = {'diagnostic-coverage-v1': coverage_selector}
+
+
+def select_items(pool, seen, minutes, seed, selector=DEFAULT_SELECTOR):
+    return SELECTORS[selector](pool, seen, minutes, seed)
