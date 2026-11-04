@@ -1,16 +1,16 @@
 """Audit the active booklet against its declared source and official answer key."""
 
+import _bootstrap  # noqa: F401
 import hashlib
 import argparse
 import json
 import re
-import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 from backend.app.services.content import validate_assets
 from backend.app.schemas import ExamImport
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def audit(path=None):

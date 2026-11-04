@@ -47,7 +47,7 @@ O registro completo de procedimentos e limites está em [primeira entrega](../pr
 **Critério de aceite:** o novo conteúdo tem origem e versões rastreáveis, não duplica itens canônicos e apresenta a cobertura real dos rótulos no painel. Testes verificam esses pontos, inclusive a ausência de duplicação entre cores.
 
 **Base disponível:**
-- preparação: módulo `backend/app/preparation/`, CLI `scripts/prepare_exam.py`, adaptador `scripts/exam_pdf.py`, manifesto de exemplo e ensaio `scripts/trial_preparation.py`;
+- preparação: módulo `backend/app/preparation/`, CLI `scripts/prepare_exam.py`, adaptador `ingestion/exam_pdf/`, manifesto de exemplo e ensaio `scripts/trial_preparation.py`;
 - acervo e banco textual: `scripts/archive_enem.py` e `scripts/build_bank.py`;
 - vínculo entre cores: `scripts/link_booklets.py`.
 

@@ -58,7 +58,7 @@ O painel mantém os indicadores objetivos de provas e acrescenta o estado conjun
 
 O fingerprint permite reaproveitar apresentação e operações anteriores, mas não autentica a auditoria recebida. A validação independente examina os campos renderizados, imagens sem posição e diagnósticos de extração. Aprovação e publicação também a executam para impedir que relatórios alterados ou antigos suprimam bloqueios. O catálogo pode publicar uma instalação anterior sem criar novas versões; retiradas, rejeições e edições manuais pendentes permanecem preservadas.
 
-O adaptador offline `scripts/exam_pdf.py` usa PyMuPDF, regiões, cabeçalhos, posição dos caracteres e marcadores A–E para preparar PDFs textuais. `scripts/prepare_exam.py` aceita JSON ou manifesto, produz um rascunho e relatório, confere recursos e compila o LaTeX com o KaTeX/mhchem do frontend. Saída automática não equivale a aprovação. [Uso e limites](preparacao-provas.md).
+O adaptador offline `ingestion/exam_pdf/` usa PyMuPDF, regiões, cabeçalhos, posição dos caracteres e marcadores A–E para preparar PDFs textuais. `scripts/prepare_exam.py` aceita JSON ou manifesto, produz um rascunho e relatório, confere recursos e compila o LaTeX com o KaTeX/mhchem do frontend. Saída automática não equivale a aprovação. [Uso e limites](preparacao-provas.md).
 
 ## HTTP
 
@@ -79,6 +79,8 @@ O backend segue a organização de [aplicações maiores do FastAPI](https://fas
 | `installers/` | Conteúdo que entra no banco fora da API: `curated.py` (lotes conferidos), `bundled.py` (atualização do conjunto incluído), `generated.py` (publicação automática do acervo) e `assets.py` (figuras no volume do Docker). |
 | `preparation/` | Preparador de JSON compartilhado. |
 | `cli.py` | Comandos locais (`python -m backend.app.cli`). |
+
+Fora de `backend/app/`, o pacote `ingestion/` lê as fontes oficiais: espelho do acervo (`archive.py`), extração de PDF (`exam_pdf/`, dividido em texto, regiões, gabarito, figuras e montagem da prova), metadados das provas geradas (`archive_exams.py`) e banco textual (`bank.py`). Ele roda offline, nunca na API, e os arquivos de `scripts/` são seus pontos de entrada. `scripts/_bootstrap.py` permite executá-los com `python scripts/x.py`.
 
 | Operação | Acesso | Comportamento |
 | --- | --- | --- |
@@ -118,6 +120,6 @@ Cada requisição recebe `X-Request-ID`, controle de cache e registro de método
 
 `experiments/` implementa a etapa 3 como processamento offline, executado por `scripts/run_experiments.py`. Não participa do ciclo de vida da API nem usa sessões de banco. Modelos clássicos, partições, métricas e propostas ficam em arquivos; `data/datasets/` guarda as referências técnicas compactas. Contratos de proposta são separados de `ExamImport`, exigem revisão e não promovem habilidades. A revisão visual abre os recortes das fontes locais e exporta tempos humanos apenas quando alguém os registra. O [protocolo](experimentos/README.md) detalha avaliação, OCR opcional, comparação externa de LLM e os limites dos candidatos de recuperação.
 
-O [banco e a classificação](banco-classificacao.md) separam o acervo local de 1998–2025 dos dois lotes conferidos instalados em SQLite/PostgreSQL. `installers/curated.py` valida os hashes das anotações, cria novas versões para os rótulos e mantém os snapshots anteriores. `services/archive_reader.py` lê o banco textual local, sem aprovar ou publicar extrações. A preparação comum permanece em `backend/app/preparation/`, `scripts/exam_pdf.py` e `scripts/prepare_exam.py`; é chamada automaticamente na importação e na edição da curadoria.
+O [banco e a classificação](banco-classificacao.md) separam o acervo local de 1998–2025 dos dois lotes conferidos instalados em SQLite/PostgreSQL. `installers/curated.py` valida os hashes das anotações, cria novas versões para os rótulos e mantém os snapshots anteriores. `services/archive_reader.py` lê o banco textual local, sem aprovar ou publicar extrações. A preparação comum permanece em `backend/app/preparation/`, `ingestion/exam_pdf/` e `scripts/prepare_exam.py`; é chamada automaticamente na importação e na edição da curadoria.
 
 Temas editoriais usam `enem-content-v1`. Competências e habilidades oficiais usam outro namespace, como `MT.C3` e `MT.H12`. Propostas de vínculos são metadados privados de curadoria; não são promovidas a habilidades publicadas sem segunda revisão. O conjunto exploratório de Matemática contém 89 itens válidos em oito temas.

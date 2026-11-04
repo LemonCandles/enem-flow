@@ -10,8 +10,8 @@ from backend.app.services.service_account import service_reviewer
 from backend.app.services.content import exam_summary, public_question
 from backend.app.services.lifecycle import publish_exam
 from backend.app.preparation import blocking_issues, prepare_exam
-from scripts.build_archive_exams import areas, booklet_label, exam_id
-from scripts.exam_pdf import answer_key_rows
+from ingestion.archive_exams import areas, booklet_label, exam_id
+from ingestion.exam_pdf import answer_key_rows
 
 KEY = 'QUESTÃO\nGABARITO\nINGLÊS\nESPANHOL\n1\nC\nC\n2\nA\nD\n3\nAnulado\nB\n6\nE\nCIÊNCIAS HUMANAS\nE SUAS TECNOLOGIAS\n7\nB\n'
 

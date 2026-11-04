@@ -1,15 +1,15 @@
 """Exporta referência temática com grupos canônicos e hashes imutáveis."""
 
+import _bootstrap  # noqa: F401
 from collections import Counter
 import json
 from pathlib import Path
-import sys
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 from backend.app.installers.curated import classified
 from backend.app.services.identity import signatures
 from backend.app.services.presentation import content_fingerprint
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def build():

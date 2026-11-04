@@ -168,7 +168,7 @@ def table_structure(page, table):
 
 
 def extract_candidates(pdf, regions, enhanced, document=None):
-    from scripts.exam_pdf import graphics, watermark
+    from ingestion.exam_pdf import graphics, watermark
 
     candidates, table_proposals = [], []
     if document is not None and str(document.name) != str(pdf):

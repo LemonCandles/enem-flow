@@ -1,12 +1,12 @@
 """Produz correções rastreáveis a partir da auditoria das fontes, sem publicar."""
 
+import _bootstrap  # noqa: F401
 import argparse
 from pathlib import Path
-import sys
+
+from experiments.archive_repairs import run
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-from experiments.archive_repairs import run
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)

@@ -41,9 +41,11 @@ O backend está organizado por responsabilidade. Caminhos abaixo relativos a `ba
 | `preparation/` | Preparador compartilhado, executado na importação e edição |
 | `cli.py` | Administração local via `python -m backend.app.cli` |
 
+- **Fontes oficiais — `ingestion/`:** espelho do acervo, extração de PDF e banco textual, sempre offline. `scripts/` guarda os pontos de entrada; cada um importa `_bootstrap` primeiro. Scripts com regras por questão são registro histórico e ficam como estão.
+
 - **Frontend — `frontend/src/`:** `components/`, `lib/`, `app/`; cliente em `lib/api.ts`. Sessão por cookie HttpOnly.
 - **Entrada HTTP:** no acesso direto ao Next, `/api/*` usa rewrites e `API_INTERNAL_URL` é definido no build. No Compose, o gateway Nginx encaminha `/api/*` diretamente à API e as páginas ao Next. Preserve as redes internas, a substituição dos cabeçalhos de origem e a confiança apenas no IP privado do gateway.
-- **Contrato/preparação:** `backend/app/schemas/content.py`, com tipos reexportados por `backend.app.schemas`; mantenha `docs/content-schema.json` correspondente a `ExamImport.model_json_schema()`. PDF offline: `scripts/exam_pdf.py` e `scripts/prepare_exam.py`. Registre ambiguidades; evite regras por questão.
+- **Contrato/preparação:** `backend/app/schemas/content.py`, com tipos reexportados por `backend.app.schemas`; mantenha `docs/content-schema.json` correspondente a `ExamImport.model_json_schema()`. PDF offline: `ingestion/exam_pdf/` e `scripts/prepare_exam.py`. Registre ambiguidades; evite regras por questão.
 - **Acervo:** `scripts/archive_enem.py` sincroniza originais; `scripts/build_bank.py` gera banco textual. Preserve a indicação de extração automática e suas pendências nas provas geradas.
 
 ## Conteúdo e integridade

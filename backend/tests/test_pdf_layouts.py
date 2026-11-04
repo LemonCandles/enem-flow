@@ -5,7 +5,7 @@ import hashlib
 import pymupdf
 import pytest
 
-from scripts.exam_pdf import extract_exam, from_manifest, lines
+from ingestion.exam_pdf import extract_exam, from_manifest, lines
 
 TEXT = 'Considere a situação descrita e escolha a alternativa que melhor a representa.'
 

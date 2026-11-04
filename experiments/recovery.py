@@ -33,7 +33,7 @@ def grid_integrity(structure):
 
 def alternative_regions(doc, regions):
     """Agrupa todas as partes da alternativa, sem descartar a segunda figura."""
-    from scripts.exam_pdf import lines, mark_bare_options
+    from ingestion.exam_pdf import lines, mark_bare_options
 
     markers = []
     for ri, region in enumerate(regions):
@@ -256,8 +256,8 @@ def visual_answer_key(doc, language=None):
     Não infere anuladas, não usa o gabarito de outra cor e recusa grupos que
     não tenham exatamente cinco círculos de alternativa e uma marca verde.
     """
-    from scripts.exam_pdf import LANGUAGE, language_key, lines
-    from scripts.pdf_headings import HEADING, heading_number
+    from ingestion.exam_pdf import LANGUAGE, language_key, lines
+    from ingestion.pdf_headings import HEADING, heading_number
 
     groups, current, section = defaultdict(lambda: {'markers': [], 'marks': [], 'regions': []}), None, None
     for pn, page in enumerate(doc, 1):

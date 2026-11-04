@@ -101,7 +101,7 @@ def repair_text_options(content, positioned):
 def propose_exam(job):
     from backend.app.preparation import prepare_content, blocking_issues
     from backend.app.schemas import QuestionContent
-    from scripts.exam_pdf import (
+    from ingestion.exam_pdf import (
         align_option_lines,
         discover_regions,
         extract_exam,
@@ -137,7 +137,7 @@ def propose_exam(job):
         )
         discovered = None
         if shared or column_change:
-            from scripts.build_archive_exams import scan
+            from ingestion.archive_exams import scan
 
             margins = scan(pdf)
             # Automatic manifests start after the cover. A Spanish subset may

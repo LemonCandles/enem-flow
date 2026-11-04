@@ -1,16 +1,15 @@
 """Valida/aplica um plano de correções técnicas; sem --apply faz rollback integral."""
 
+import _bootstrap  # noqa: F401
 import argparse
 from pathlib import Path
-import sys
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import Session
 from backend.app.installers.audited import apply_audited
 from experiments.common import read_json, write_json
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def sync_derived(database, plan):

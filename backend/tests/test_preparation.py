@@ -239,7 +239,7 @@ def test_generic_cli_does_not_overwrite_sources_and_accepts_new_files(tmp_path, 
 
 
 def test_pdf_adapter_uses_geometry_and_preserves_source(tmp_path):
-    from scripts.exam_pdf import extract_exam
+    from ingestion.exam_pdf import extract_exam
 
     source = ROOT / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf'
     before = hashlib.sha256(source.read_bytes()).hexdigest()
@@ -260,7 +260,7 @@ def test_pdf_adapter_uses_geometry_and_preserves_source(tmp_path):
 
 
 def test_manifest_rejects_mismatched_key_and_discovers_columns():
-    from scripts.exam_pdf import from_manifest
+    from ingestion.exam_pdf import from_manifest
 
     base = json.loads((ROOT / 'data/enem-2024-dia2-azul.json').read_text())
     manifest = {k: v for k, v in base.items() if k not in ['questions', 'schema_version']}
@@ -279,9 +279,9 @@ def test_manifest_rejects_mismatched_key_and_discovers_columns():
 
 
 def test_full_question_bitmap_is_not_used_as_a_figure(tmp_path, monkeypatch):
-    from scripts.exam_pdf import extract_exam
+    from ingestion.exam_pdf import extract_exam
 
-    monkeypatch.setattr('scripts.exam_pdf.graphics', lambda page, clip: [clip])
+    monkeypatch.setattr('ingestion.exam_pdf.exam.graphics', lambda page, clip: [clip])
     data = json.loads((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-extraction.json').read_text())
     data['questions'] = data['questions'][:1]
     data['expected_items'] = 1
@@ -295,7 +295,7 @@ def test_full_question_bitmap_is_not_used_as_a_figure(tmp_path, monkeypatch):
 
 @pytest.mark.parametrize('source_number', [127, 161, 174])
 def test_graphical_options_are_assigned_by_geometry_not_question_id(tmp_path, source_number):
-    from scripts.exam_pdf import extract_exam
+    from ingestion.exam_pdf import extract_exam
 
     data = json.loads((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-extraction.json').read_text())
     data['questions'] = [q for q in data['questions'] if q['content']['number'] == source_number]

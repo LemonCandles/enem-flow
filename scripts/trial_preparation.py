@@ -7,6 +7,7 @@ relatórios e figuras ficam em `tmp/ensaio-preparacao/`. Exige os PDFs no
 espelho local (`archive_enem.py sync`).
 """
 
+import _bootstrap  # noqa: F401
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -16,13 +17,13 @@ import re
 import subprocess
 import sys
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 import pymupdf
-from scripts.archive_enem import CATALOG, SOURCE_ROOT
+from ingestion.archive import CATALOG, SOURCE_ROOT
+from ingestion.archive_exams import areas, duration
+
+ROOT = Path(__file__).resolve().parents[1]
 
 OUTPUT = ROOT / 'tmp/ensaio-preparacao'
-from scripts.build_archive_exams import areas, duration
 
 # (ano, aplicação, dia, caderno, língua estrangeira, margem superior em pontos)
 TARGETS = [

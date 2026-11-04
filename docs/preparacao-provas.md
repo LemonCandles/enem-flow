@@ -190,11 +190,11 @@ make acervo                                              # os dois passos
 ## Implementação e validação
 
 - Preparador compartilhado: `backend/app/preparation/`.
-- Adaptador e comando: `scripts/exam_pdf.py` e `scripts/prepare_exam.py`.
+- Adaptador e comando: `ingestion/exam_pdf/` e `scripts/prepare_exam.py`.
 - Validador: `node frontend/scripts/validate-latex.cjs caminho/prova.json` ou `--stdin`.
 - Testes cobrem notação, palavras comuns, idempotência, dados de avaliação, prévia/importação, bloqueios, CLI e PDF. Testes gráficos trocam a numeração para confirmar que ela não seleciona regras especiais.
 - `backend/tests/test_pdf_layouts.py` reproduz em PDFs sintéticos os layouts encontrados no ensaio: opção de língua, marca d'água girada, alternativas em grade, figuras em coluna, faixa decorativa, cabeçalhos fora das margens e codificação quebrada. Esses testes não dependem do acervo local.
-- `scripts/pdf_headings.py` compartilha o reconhecimento de cabeçalhos espaçados entre o banco textual e o adaptador nativo; `test_archive_layouts.py` verifica ambos com o mesmo PDF. Geração e ensaio compartilham áreas e duração, incluindo Natureza antes de Humanas em 2009.
+- `ingestion/pdf_headings.py` compartilha o reconhecimento de cabeçalhos espaçados entre o banco textual e o adaptador nativo; `test_archive_layouts.py` verifica ambos com o mesmo PDF. Geração e ensaio compartilham áreas e duração, incluindo Natureza antes de Humanas em 2009.
 - O ensaio completo usa os 90 itens em arquivos temporários e mantém pendências visíveis. O resultado não substitui o JSON revisado nem é publicado automaticamente.
 
 Validação local em 31/10/2026: 55 testes de API em SQLite e 14 testes Playwright aprovados no build de produção, com TypeScript aprovado. No ensaio genérico dos 90 itens, 176 expressões compilaram e o relatório apontou cinco bloqueios: células mescladas na 139 e relações espaciais nas 148, 169, 170 e 180. Também há avisos de descrições, vínculos inferidos e notação ambígua. Esses números identificam os casos encontrados no ensaio; não selecionam regras do preparador. Nenhum desses rascunhos foi importado no banco local.

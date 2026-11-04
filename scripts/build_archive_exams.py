@@ -11,6 +11,7 @@ Saídas locais, fora do Git: `data/derived/exams/<id>.json`, o relatório
 A publicação no site é feita por `python -m backend.app.cli archive`.
 """
 
+import _bootstrap  # noqa: F401
 import argparse
 from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -18,59 +19,15 @@ import json
 from pathlib import Path
 import re
 import subprocess
-import sys
+
+import pymupdf
+from ingestion.archive import CATALOG, SOURCE_ROOT
+from ingestion.archive_exams import APPLICATIONS, LANGUAGES, areas, booklet_label, duration, exam_id, scan
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-import pymupdf
-from scripts.archive_enem import CATALOG, SOURCE_ROOT
 
 OUTPUT = ROOT / 'data/derived/exams'
 ASSETS = ROOT / 'data/assets'
-APPLICATIONS = {
-    'regular': 'Regular',
-    'reaplicacao-ppl': 'Reaplicação/PPL',
-    'digital': 'Digital',
-    'reaplicacao': 'Reaplicação',
-    'segunda-aplicacao': '2ª aplicação',
-    'terceira-aplicacao': '3ª aplicação',
-    'belem-ananindeua-marituba': 'Belém, Ananindeua e Marituba',
-}
-LANGUAGES = {'ingles': 'Inglês', 'espanhol': 'Espanhol'}
-
-
-def areas(year, day):
-    """Metadados da época; em 2009, Natureza precedia Humanas no primeiro dia."""
-    names = (
-        (('Linguagens', 'Ciências Humanas'), ('Ciências da Natureza', 'Matemática'))
-        if year >= 2017
-        else (('Ciências Humanas', 'Ciências da Natureza'), ('Linguagens', 'Matemática'))
-    )
-    if year == 2009:
-        # Caderno azul de 2009, página 2: Natureza, questões 1–45.
-        names = (('Ciências da Natureza', 'Ciências Humanas'), ('Linguagens', 'Matemática'))
-    first = 1 if day == 1 else 91
-    result = [
-        dict(first=first, last=first + 44, area=names[day - 1][0]),
-        dict(first=first + 45, last=first + 89, area=names[day - 1][1]),
-    ]
-    for area in result:
-        if area['area'] == 'Matemática':
-            area['discipline'] = 'Matemática'
-    return result
-
-
-def duration(year, day):
-    if year >= 2017:
-        return 330 if day == 1 else 300
-    return 270 if day == 1 else 330
-
-
-def booklet_label(booklet):
-    match = re.match(r'caderno-(\d+)-(.+)', booklet)
-    if not match:
-        return booklet
-    return f'Caderno {match[1]} · ' + ' · '.join(LANGUAGES.get(part, part.capitalize()) for part in match[2].split('-'))
 
 
 def curated_numbers():
@@ -82,34 +39,6 @@ def curated_numbers():
         key = (exam['year'], exam['application'].strip().lower(), exam['day'])
         covered[key] |= {q['content']['number'] for q in exam['questions']}
     return covered
-
-
-def scan(pdf):
-    """Margem superior, última página com questões, línguas oferecidas e linhas ilegíveis."""
-    from scripts.exam_pdf import HEADING, LANGUAGE, garbled, language_key, lines
-
-    tops, last, offered, total, broken = [], 1, set(), 0, 0
-    with pymupdf.open(pdf) as doc:
-        height = doc[min(1, len(doc) - 1)].rect.height
-        for number, page in enumerate(doc, start=1):
-            for line in lines(page, page.rect):
-                total += 1
-                broken += garbled(line['text'])
-                if HEADING.match(line['text']):
-                    last = number
-                    if number > 1:
-                        tops.append(line['bbox'][1])
-                elif match := LANGUAGE.match(line['text']):
-                    offered.add(language_key(match[3]))
-                    if number > 1:
-                        tops.append(line['bbox'][1])
-    return dict(
-        top=max(30, min(tops) - 3) if tops else 55,
-        last=last,
-        height=height,
-        offered=sorted(offered),
-        garbled=broken / max(1, total),
-    )
 
 
 def candidates(files, only_years=None):
@@ -156,11 +85,6 @@ def candidates(files, only_years=None):
         )
 
 
-def exam_id(year, application, day, booklet, language):
-    suffix = f'-{language}' if language and not booklet.endswith(language) else ''
-    return f'enem-{year}-{application}-dia{day}-{booklet}{suffix}'
-
-
 KEY_MISMATCH = ('gabarito', 'Informe answers')
 
 
@@ -185,7 +109,7 @@ def build_one(job):
     """Prepara uma prova a partir de um caderno e seu gabarito."""
     from backend.app.preparation import prepare_exam
     from backend.app.schemas import ExamImport
-    from scripts.exam_pdf import extract_exam, from_manifest
+    from ingestion.exam_pdf import extract_exam, from_manifest
 
     record, key_record, language, section, info = job
     year, application, day = record['year'], record['application'], record['day']
@@ -217,7 +141,7 @@ def build_one(job):
         manifest['range'] = section
     try:
         pdf, key = SOURCE_ROOT / record['path'], SOURCE_ROOT / key_record['path']
-        from scripts.exam_pdf import answer_key_rows
+        from ingestion.exam_pdf import answer_key_rows
 
         with pymupdf.open(key) as document:
             covered = {n for area in manifest['areas'] for n in range(area['first'], area['last'] + 1)}

@@ -9,7 +9,7 @@ from .common import ROOT, deadline, digest, file_digest, read_json, source_path,
 
 def inventory(output):
     """The historical extraction is not a second published question catalog."""
-    from scripts.exam_pdf import garbled
+    from ingestion.exam_pdf import garbled
 
     catalog = read_json(ROOT / 'data/sources/catalogo/acervo.json')
     files = catalog['files']
@@ -221,7 +221,7 @@ def run(database, output, model_path, workers=2, retry_failed=False):
                 ROOT / 'experiments/layout.py',
                 ROOT / 'experiments/classification.py',
                 ROOT / 'experiments/common.py',
-                ROOT / 'scripts/exam_pdf.py',
+                *sorted((ROOT / 'ingestion/exam_pdf').glob('*.py')),
             ]
         }
     )

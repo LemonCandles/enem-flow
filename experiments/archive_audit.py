@@ -82,7 +82,7 @@ def audit_exam(exam, files, output, render_sources=False):
     from backend.app.schemas import QuestionContent
     from backend.app.preparation import blocking_issues
     from backend.app.services.content import iter_assets
-    from scripts.exam_pdf import answer_key_rows, garbled
+    from ingestion.exam_pdf import answer_key_rows, garbled
 
     questions, errors = [], []
     source = exam['source']

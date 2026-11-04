@@ -1,14 +1,13 @@
 """Executa a etapa 3 offline e produz métricas, propostas e revisão local."""
 
+import _bootstrap  # noqa: F401
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
-import sys
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 
 from experiments.common import digest, file_digest, provenance, read_json, write_json
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():

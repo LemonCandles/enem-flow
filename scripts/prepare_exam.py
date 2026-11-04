@@ -1,14 +1,14 @@
 """Prepare any exam JSON/PDF as native draft content plus a review report."""
 
+import _bootstrap  # noqa: F401
 import argparse
 import json
-import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 from backend.app.preparation import prepare_exam
 from backend.app.services.content import iter_assets
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
@@ -40,7 +40,7 @@ def main():
         if args.manifest:
             if not args.pdf:
                 parser.error('--manifest exige --pdf')
-            from scripts.exam_pdf import from_manifest
+            from ingestion.exam_pdf import from_manifest
 
             data = from_manifest(data, args.pdf, args.answer_key)
         # Validate identifiers/paths before producing any figure assets.
@@ -48,7 +48,7 @@ def main():
 
         data = ExamImport.model_validate(data).model_dump()
         if args.pdf:
-            from scripts.exam_pdf import extract_exam
+            from ingestion.exam_pdf import extract_exam
 
             data = extract_exam(data, args.pdf, args.assets_root)
         prepared, report = prepare_exam(data)

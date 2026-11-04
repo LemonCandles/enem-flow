@@ -1,12 +1,12 @@
 """Confere todo o catálogo instalado com PDFs, dois extratores de gabarito e correção isolada."""
 
+import _bootstrap  # noqa: F401
 import argparse
 from pathlib import Path
-import sys
+
+from experiments.archive_audit import run
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-from experiments.archive_audit import run
 
 
 def main():

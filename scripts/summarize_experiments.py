@@ -1,12 +1,12 @@
 """Gera um registro compacto de uma execução concluída, verificando os relatórios."""
 
+import _bootstrap  # noqa: F401
 import argparse
 from pathlib import Path
-import sys
+
+from experiments.common import digest, file_digest, read_json, write_json
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-from experiments.common import digest, file_digest, read_json, write_json
 
 
 def summarize(directory):

@@ -1,14 +1,14 @@
 """Vincula ocorrências do acervo às identidades do catálogo conferido."""
 
+import _bootstrap  # noqa: F401
 from collections import defaultdict
 import json
 from pathlib import Path
-import sys
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 from backend.app.installers.curated import classified
 from backend.app.services.identity import signatures
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def link(sources, occurrences, canonical):

@@ -11,20 +11,20 @@ Exige os PDFs das cores e seus gabaritos no espelho local (`archive_enem.py
 sync`). O resultado, `data/catalog/occurrences-v1.json`, é versionado.
 """
 
+import _bootstrap  # noqa: F401
 import argparse
 import json
 from pathlib import Path
 import re
-import sys
 import unicodedata
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 import pymupdf
 from backend.app.installers.curated import classified
 from backend.app.services.identity import signatures
-from scripts.archive_enem import CATALOG, SOURCE_ROOT, sha, write_json
-from scripts.build_bank import extract
+from ingestion.archive import CATALOG, SOURCE_ROOT, sha, write_json
+from ingestion.bank import extract
+
+ROOT = Path(__file__).resolve().parents[1]
 
 OUTPUT = ROOT / 'data/catalog/occurrences-v1.json'
 VERSION = 'booklet-links-v1'

@@ -12,7 +12,7 @@ from backend.app.installers.curated import classified, install_catalog
 from backend.app.services.content import import_exam
 from backend.app.models import CanonicalQuestion, Exam, ExamRun, QuestionVersion, User
 from backend.app.schemas import ExamImport
-from scripts.archive_enem import metadata, parse_year
+from ingestion.archive import metadata, parse_year
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -184,7 +184,7 @@ def test_reference_has_eight_themes_and_no_annulled_or_canonical_duplicate():
 def test_2023_curated_lot_matches_source_and_is_reproducible():
     from scripts.review_2023_math import review
     from scripts.audit_content import audit
-    from scripts.exam_pdf import lines
+    from ingestion.exam_pdf import lines
     import pymupdf as fitz
 
     before = json.loads((ROOT / 'data/derived/baselines/enem-2023-matematica-auto-v1.json').read_text())

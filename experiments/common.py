@@ -70,8 +70,7 @@ def provenance(config, inputs):
         *(ROOT / 'experiments').glob('*.py'),
         *(ROOT / 'backend/app').rglob('*.py'),
         ROOT / 'scripts/run_experiments.py',
-        ROOT / 'scripts/exam_pdf.py',
-        ROOT / 'scripts/pdf_headings.py',
+        *(ROOT / 'ingestion').rglob('*.py'),
     ]
     code = {str(p.relative_to(ROOT)): file_digest(p) for p in sorted(paths)}
     return {

@@ -1,9 +1,9 @@
-from scripts.archive_enem import parse_year
+from ingestion.archive import parse_year
 
 
 def test_archive_accepts_spaced_accessibility_headings(tmp_path):
     import pymupdf as fitz
-    from scripts.build_bank import boundaries
+    from ingestion.bank import boundaries
 
     path = tmp_path / 'ledor.pdf'
     with fitz.open() as doc:
@@ -18,7 +18,7 @@ def test_archive_accepts_spaced_accessibility_headings(tmp_path):
     combined = '<div id="parent-fieldname-text"><p class="callout">1º Dia – Caderno 1 – Azul</p><a href="https://download.inep.gov.br/2016_CH_CN.pdf">Prova</a></div>'
     assert parse_year(combined, 2016, 'https://www.gov.br/exemplo')[0]['section'] is None
 
-    from scripts.exam_pdf import from_manifest
+    from ingestion.exam_pdf import from_manifest
 
     config = dict(
         id='cabecalho-acessivel',

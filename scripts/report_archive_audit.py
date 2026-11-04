@@ -1,13 +1,13 @@
 """Reúne evidências e uma fila visual local, sem confundir triagem e aprovação."""
 
+import _bootstrap  # noqa: F401
 import argparse
 from collections import Counter
 from pathlib import Path
-import sys
+
+from experiments.common import file_digest, read_json, write_json
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-from experiments.common import file_digest, read_json, write_json
 
 
 def load_visual_review(path):
