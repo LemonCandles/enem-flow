@@ -1,4 +1,4 @@
-import type { ContentBlock, Question } from '@/lib/api';
+import type { ContentBlock, Question } from '@/lib/types';
 import { Formula, RichText } from './latex';
 import QuestionFigure from './question-figure';
 export { RichText } from './latex';

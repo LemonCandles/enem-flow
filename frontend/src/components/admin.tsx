@@ -1,7 +1,9 @@
 'use client';
 import { ChangeEvent, useState } from 'react';
 import { Check, ExternalLink, FileJson, Save, ShieldCheck, Upload, X } from 'lucide-react';
-import { api, date, Exam, send } from '@/lib/api';
+import { curation, paths } from '@/lib/endpoints';
+import { date } from '@/lib/format';
+import type { Exam } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { Empty, ErrorBox, Loading, PageTitle } from './ui';
 import Archive from './archive';
@@ -72,8 +74,8 @@ function PreparationReview({ audit }: { audit?: PreparationAudit }) {
 }
 
 export default function Admin() {
-  const exams = useData<Exam[]>('/admin/exams');
-  const audit = useData<Audit[]>('/admin/audit');
+  const exams = useData<Exam[]>(paths.adminExams);
+  const audit = useData<Audit[]>(paths.adminAudit);
   const [selected, setSelected] = useState<AdminExam>();
   const [itemIndex, setItemIndex] = useState(0);
   const [editor, setEditor] = useState('');
@@ -82,7 +84,7 @@ export default function Admin() {
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
   async function open(id: string, index = 0) {
-    const exam = await api<AdminExam>(`/admin/exams/${id}`);
+    const exam = await curation.exam<AdminExam>(id);
     setSelected(exam);
     setItemIndex(index);
     setEditor(JSON.stringify(exam.items[index].content, null, 2));
@@ -119,7 +121,7 @@ export default function Admin() {
     }
     run(async () => {
       const payload = JSON.parse(await file.text());
-      await send('/admin/imports', payload);
+      await curation.importExam(payload);
     }, 'Prova preparada e importada como rascunho. Abra a revisão para conferir as transformações e os avisos.');
     event.target.value = '';
   }
@@ -130,7 +132,7 @@ export default function Admin() {
       return;
     }
     run(async () => {
-      await send(`/admin/reviews/${examTarget ? selected.id : selected.items[itemIndex].id}`, { action, reason });
+      await curation.review(examTarget ? selected.id : selected.items[itemIndex].id, action, reason);
       await open(selected.id, itemIndex);
     }, 'Decisão registrada na trilha de revisão.');
   }
@@ -141,7 +143,7 @@ export default function Admin() {
       return;
     }
     run(async () => {
-      await send(`/admin/questions/${selected.items[itemIndex].id}`, { content: JSON.parse(editor), reason }, 'PUT');
+      await curation.editQuestion(selected.items[itemIndex].id, JSON.parse(editor), reason);
       await open(selected.id, itemIndex);
     }, 'Nova versão criada como rascunho. As tentativas anteriores foram preservadas. Revise e publique novamente.');
   }

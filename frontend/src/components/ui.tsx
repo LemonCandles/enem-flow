@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpen, Check, LoaderCircle } from 'lucide-react';
 import Link from 'next/link';
-import { Exam, kindName } from '@/lib/api';
+import { kindName } from '@/lib/format';
+import type { Exam } from '@/lib/types';
 
 export function Loading() {
   return (

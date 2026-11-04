@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { paths } from '@/lib/endpoints';
 import { useData } from '@/lib/use-data';
 import { ErrorBox, Loading } from './ui';
 
@@ -46,7 +47,7 @@ type Detail = Occurrence & {
 };
 
 function ExtractedQuestion({ id }: { id: string }) {
-  const detail = useData<Detail>(`/admin/archive/questions/${encodeURIComponent(id)}`);
+  const detail = useData<Detail>(paths.archiveQuestion(id));
   if (detail.loading) return <Loading />;
   if (detail.error) return <ErrorBox message={detail.error} retry={detail.reload} />;
   if (!detail.data) return null;
@@ -104,8 +105,9 @@ function ExtractedQuestion({ id }: { id: string }) {
 function Occurrences({ year, application, number }: { year: number; application: string; number: string }) {
   const [offset, setOffset] = useState(0);
   const [selected, setSelected] = useState('');
-  const path = `/admin/archive/questions?year=${year}&limit=25&offset=${offset}${application ? `&application=${encodeURIComponent(application)}` : ''}${number ? `&number=${number}` : ''}`;
-  const questions = useData<{ total: number; items: Occurrence[] }>(path);
+  const questions = useData<{ total: number; items: Occurrence[] }>(
+    paths.archiveQuestions(year, offset, application, number),
+  );
   if (questions.loading) return <Loading />;
   if (questions.error) return <ErrorBox message={questions.error} retry={questions.reload} />;
   const data = questions.data;
@@ -160,7 +162,7 @@ function Occurrences({ year, application, number }: { year: number; application:
 }
 
 export default function Archive() {
-  const inventory = useData<Inventory>('/admin/archive');
+  const inventory = useData<Inventory>(paths.archive);
   const [chosenYear, setYear] = useState<number>();
   const [application, setApplication] = useState('');
   const [number, setNumber] = useState('');

@@ -1,7 +1,8 @@
 'use client';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Exam, Run, send } from './api';
+import { attempts } from './endpoints';
+import type { Exam } from './types';
 
 export function useStart() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export function useStart() {
     setError('');
     keys.current[exam.id] ||= crypto.randomUUID();
     try {
-      const run = await send<Run>('/exam-runs', { exam_id: exam.id, idempotency_key: keys.current[exam.id] });
+      const run = await attempts.startExam(exam, keys.current[exam.id]);
       router.push(`/runs/${run.id}`);
     } catch (e) {
       setError((e as Error).message);

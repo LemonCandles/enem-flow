@@ -15,7 +15,9 @@ import {
   ShieldCheck,
   X,
 } from 'lucide-react';
-import { api, Diagnostic, pct, Run, send } from '@/lib/api';
+import { api, send } from '@/lib/api';
+import { pct } from '@/lib/format';
+import type { Diagnostic, Run } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { ErrorBox, Loading } from './ui';
 import { QuestionContent, RichText } from './question-content';

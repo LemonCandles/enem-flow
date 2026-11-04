@@ -2,12 +2,14 @@
 import { FormEvent, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Diagnostic, DiagnosticOptions, KnowledgeState, date, pct, send } from '@/lib/api';
+import { attempts, paths } from '@/lib/endpoints';
+import { date, pct } from '@/lib/format';
+import type { DiagnosticOptions, KnowledgeState } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { Empty, ErrorBox, Loading, PageTitle } from './ui';
 
 export default function DiagnosticPage() {
-  const { data, loading, error, reload } = useData<DiagnosticOptions>('/diagnostic-options');
+  const { data, loading, error, reload } = useData<DiagnosticOptions>(paths.diagnosticOptions);
   const [area, setArea] = useState('');
   const [minutes, setMinutes] = useState(15);
   const [busy, setBusy] = useState(false);
@@ -27,7 +29,7 @@ export default function DiagnosticPage() {
     setBusy(true);
     setFailure('');
     try {
-      const session = await send<Diagnostic>('/sessions', { ...body, idempotency_key: pending.current.key });
+      const session = await attempts.startDiagnostic(body, pending.current.key);
       router.push(`/sessions/${session.id}`);
     } catch (e) {
       setFailure((e as Error).message);
@@ -107,7 +109,7 @@ export default function DiagnosticPage() {
 }
 
 export function KnowledgePanel() {
-  const { data, loading, error, reload } = useData<KnowledgeState>('/me/knowledge-state');
+  const { data, loading, error, reload } = useData<KnowledgeState>(paths.knowledgeState);
   const [kind, setKind] = useState<'themes' | 'skills'>('themes');
   const [area, setArea] = useState('');
   if (loading) return <Loading />;

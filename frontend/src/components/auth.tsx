@@ -1,7 +1,8 @@
 'use client';
 import { FormEvent, useState } from 'react';
 import { ArrowRight, BookOpen, ChartNoAxesCombined, Check, Eye, EyeOff } from 'lucide-react';
-import { send, User } from '@/lib/api';
+import { account } from '@/lib/endpoints';
+import type { User } from '@/lib/types';
 import { ErrorBox } from './ui';
 import { Brand, LearningPieces } from './design';
 import ThemeToggle from './theme-toggle';
@@ -27,7 +28,7 @@ export default function Auth({
     const fields = new FormData(event.currentTarget);
     try {
       if (mode === 'reset') {
-        await send('/auth/reset-password', { token: recoveryToken, password: fields.get('password') });
+        await account.resetPassword(recoveryToken, fields.get('password'));
         setMode('login');
         setNotice('Senha atualizada. Entre com sua nova senha.');
         onRecoveryComplete?.();
@@ -37,7 +38,7 @@ export default function Auth({
           password: fields.get('password'),
           ...(mode === 'register' ? { name: fields.get('name') } : {}),
         };
-        onLogin(await send<User>(`/auth/${mode}`, body));
+        onLogin(await account.enter(mode, body));
       }
     } catch (e) {
       setError((e as Error).message);

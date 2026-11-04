@@ -1,14 +1,15 @@
 'use client';
 import { useState } from 'react';
 import { BookOpen, Search, SlidersHorizontal } from 'lucide-react';
-import { Exam, History } from '@/lib/api';
+import { paths } from '@/lib/endpoints';
+import type { Exam, History } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { useStart } from '@/lib/use-start';
 import { Empty, ErrorBox, ExamCard, Loading, PageTitle } from './ui';
 
 export default function Catalog() {
-  const exams = useData<Exam[]>('/exams');
-  const history = useData<History[]>('/me/history');
+  const exams = useData<Exam[]>(paths.exams);
+  const history = useData<History[]>(paths.history);
   const [filters, setFilters] = useState({ year: '', area: '', application: '', booklet: '', q: '' });
   const { start, busy, error } = useStart();
   if (exams.loading || history.loading) return <Loading />;

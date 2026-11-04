@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { Minus, Plus, RotateCcw, X, ZoomIn } from 'lucide-react';
-import type { Asset } from '@/lib/api';
+import type { Asset } from '@/lib/types';
 import { Formula, RichText } from './latex';
 import { trapDialogFocus } from '@/lib/dialog-focus';
 

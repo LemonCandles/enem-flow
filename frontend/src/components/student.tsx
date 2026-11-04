@@ -2,14 +2,16 @@
 import { FormEvent, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Check, Clock3, Download, History as HistoryIcon, Target, Trash2 } from 'lucide-react';
-import { api, date, DiagnosticSummary, History, pct, Progress, send, User } from '@/lib/api';
+import { account, paths } from '@/lib/endpoints';
+import { date, pct } from '@/lib/format';
+import type { DiagnosticSummary, History, Progress, User } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { KnowledgePanel } from './diagnostic';
 import { Empty, ErrorBox, Loading, PageTitle } from './ui';
 
 export function HistoryPage() {
-  const { data, error, loading, reload } = useData<History[]>('/me/history');
-  const diagnostics = useData<DiagnosticSummary[]>('/me/sessions');
+  const { data, error, loading, reload } = useData<History[]>(paths.history);
+  const diagnostics = useData<DiagnosticSummary[]>(paths.diagnosticHistory);
   const [filter, setFilter] = useState('all');
   if (loading || diagnostics.loading) return <Loading />;
   const rows =
@@ -141,7 +143,7 @@ function DiagnosticHistory({
 }
 
 export function ProgressPage() {
-  const { data, error, loading, reload } = useData<Progress>('/me/progress');
+  const { data, error, loading, reload } = useData<Progress>(paths.progress);
   const [kind, setKind] = useState('area');
   if (loading) return <Loading />;
   if (error || !data) return <ErrorBox message={error || 'Não foi possível carregar o painel.'} retry={reload} />;
@@ -279,15 +281,11 @@ export function SettingsPage({ user, onUpdate }: { user: User; onUpdate: (u: Use
     const form = new FormData(event.currentTarget);
     try {
       onUpdate(
-        await send<User>(
-          '/me/preferences',
-          {
-            name: form.get('name'),
-            target_course: form.get('target_course'),
-            daily_goal: Number(form.get('daily_goal')),
-          },
-          'PUT',
-        ),
+        await account.updatePreferences({
+          name: form.get('name'),
+          target_course: form.get('target_course'),
+          daily_goal: Number(form.get('daily_goal')),
+        }),
       );
       setNotice('Preferências atualizadas.');
     } catch (e) {
@@ -300,7 +298,7 @@ export function SettingsPage({ user, onUpdate }: { user: User; onUpdate: (u: Use
     setBusy(true);
     setError('');
     try {
-      await api('/me/history', { method: 'DELETE' });
+      await account.eraseHistory();
       setNotice('Seu histórico, provas e diagnósticos foram excluídos.');
       dialog.current?.close();
     } catch (e) {
@@ -311,10 +309,7 @@ export function SettingsPage({ user, onUpdate }: { user: User; onUpdate: (u: Use
   }
   async function exportHistory() {
     try {
-      const [history, diagnostics] = await Promise.all([
-        api<History[]>('/me/history'),
-        api<DiagnosticSummary[]>('/me/sessions'),
-      ]);
+      const [history, diagnostics] = await account.exportHistory();
       const blob = new Blob([JSON.stringify({ exams: history, diagnostics }, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');

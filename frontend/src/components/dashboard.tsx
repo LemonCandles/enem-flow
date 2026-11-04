@@ -2,16 +2,18 @@
 
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Check, FileText, History as HistoryIcon } from 'lucide-react';
-import { Exam, History, pct, Progress } from '@/lib/api';
+import { paths } from '@/lib/endpoints';
+import { pct } from '@/lib/format';
+import type { Exam, History, Progress } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { useStart } from '@/lib/use-start';
 import { ErrorBox, Loading } from './ui';
 import { CardSeam, LearningPieces } from './design';
 
 export default function Dashboard() {
-  const exams = useData<Exam[]>('/exams');
-  const progress = useData<Progress>('/me/progress');
-  const history = useData<History[]>('/me/history');
+  const exams = useData<Exam[]>(paths.exams);
+  const progress = useData<Progress>(paths.progress);
+  const history = useData<History[]>(paths.history);
   const { start, busy, error } = useStart();
   if (exams.loading || progress.loading || history.loading) return <Loading />;
   if (exams.error || progress.error || history.error)

@@ -17,7 +17,9 @@ import {
   UserRound,
   X,
 } from 'lucide-react';
-import { api, ApiError, User } from '@/lib/api';
+import { ApiError } from '@/lib/api';
+import { account } from '@/lib/endpoints';
+import type { User } from '@/lib/types';
 import Auth from './auth';
 import { ErrorBox, Loading } from './ui';
 import { Brand } from './design';
@@ -58,7 +60,8 @@ export default function App() {
     }
     setLoading(true);
     setError('');
-    api<User>('/me')
+    account
+      .current()
       .then(setUser)
       .catch(e => {
         if (!(e instanceof ApiError && e.status === 401)) setError(e.message);
@@ -106,7 +109,7 @@ export default function App() {
 
   async function logout() {
     try {
-      await api('/auth/logout', { method: 'POST' });
+      await account.leave();
       setUser(null);
       setMobile(false);
       router.push('/');
