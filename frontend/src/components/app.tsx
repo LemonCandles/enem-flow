@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -18,6 +18,8 @@ import {
   X,
 } from 'lucide-react';
 import { ApiError } from '@/lib/api';
+import { diagnosticAttempt, examAttempt } from '@/lib/attempt-source';
+import { useMobileMenu } from '@/lib/use-mobile-menu';
 import { account } from '@/lib/endpoints';
 import type { User } from '@/lib/types';
 import Auth from './auth';
@@ -39,6 +41,52 @@ const links = [
   { href: '/history', label: 'Histórico', icon: HistoryIcon },
 ];
 
+const attemptId = (path: string) => path.split('/')[2];
+
+// Each page of the site: how to recognize its path, its title and what to show.
+type Page = {
+  matches: (path: string) => boolean;
+  title: string;
+  render: (user: User, onUpdate: (user: User) => void, path: string) => ReactNode;
+  adminOnly?: boolean;
+};
+
+const exact = (expected: string) => (path: string) => path === expected;
+const under = (prefix: string) => (path: string) => path.startsWith(prefix);
+
+const pages: Page[] = [
+  { matches: exact('/'), title: 'Início', render: () => <Dashboard /> },
+  { matches: exact('/exams'), title: 'Provas', render: () => <Catalog /> },
+  { matches: exact('/diagnostic'), title: 'Diagnóstico', render: () => <DiagnosticPage /> },
+  { matches: exact('/progress'), title: 'Desempenho', render: () => <ProgressPage /> },
+  { matches: exact('/history'), title: 'Histórico', render: () => <HistoryPage /> },
+  {
+    matches: under('/sessions/'),
+    title: 'Seu diagnóstico',
+    render: (_, __, path) => <ExamRunner key={path} id={attemptId(path)} source={diagnosticAttempt} />,
+  },
+  {
+    matches: under('/runs/'),
+    title: 'Sua prova',
+    render: (_, __, path) => <ExamRunner key={path} id={attemptId(path)} source={examAttempt} />,
+  },
+  {
+    matches: exact('/settings'),
+    title: 'Configurações',
+    render: (user, onUpdate) => <SettingsPage user={user} onUpdate={onUpdate} />,
+  },
+  { matches: exact('/admin'), title: 'Curadoria', render: () => <Admin />, adminOnly: true },
+];
+
+function NotFound() {
+  return (
+    <div className="empty-state">
+      <h1>Página não encontrada</h1>
+      <Link href="/">Voltar ao início</Link>
+    </div>
+  );
+}
+
 export default function App() {
   const path = usePathname();
   const router = useRouter();
@@ -46,9 +94,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [recovery, setRecovery] = useState('');
-  const [mobile, setMobile] = useState(false);
-  const sidebar = useRef<HTMLElement>(null);
-  const menuButton = useRef<HTMLButtonElement>(null);
+  const { mobile, setMobile, sidebar, menuButton } = useMobileMenu(path);
 
   function load() {
     const token = new URLSearchParams(window.location.search).get('recovery');
@@ -69,43 +115,6 @@ export default function App() {
       .finally(() => setLoading(false));
   }
   useEffect(load, []);
-  useEffect(() => {
-    setMobile(false);
-  }, [path]);
-  useEffect(() => {
-    const desktop = window.matchMedia('(min-width: 761px)');
-    const closeOnDesktop = () => {
-      if (desktop.matches) setMobile(false);
-    };
-    desktop.addEventListener('change', closeOnDesktop);
-    return () => desktop.removeEventListener('change', closeOnDesktop);
-  }, []);
-  useEffect(() => {
-    if (!mobile) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    const nodes = sidebar.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
-    const first = nodes?.[0];
-    const last = nodes?.[nodes.length - 1];
-    first?.focus();
-    function keydown(event: KeyboardEvent) {
-      if (event.key === 'Escape') setMobile(false);
-      if (event.key !== 'Tab') return;
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last?.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first?.focus();
-      }
-    }
-    document.addEventListener('keydown', keydown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', keydown);
-      menuButton.current?.focus();
-    };
-  }, [mobile]);
 
   async function logout() {
     try {
@@ -135,17 +144,9 @@ export default function App() {
         }}
       />
     );
-  const title =
-    links.find(l => l.href === path)?.label ||
-    (path.startsWith('/sessions/')
-      ? 'Seu diagnóstico'
-      : path.startsWith('/runs/')
-        ? 'Sua prova'
-        : path === '/settings'
-          ? 'Configurações'
-          : path === '/admin'
-            ? 'Curadoria'
-            : 'Página não encontrada');
+  const page = pages.find(candidate => candidate.matches(path));
+  const title = page?.title ?? 'Página não encontrada';
+  const allowed = page && (!page.adminOnly || user.role === 'admin');
 
   return (
     <div className={`app-shell ${path === '/' ? 'home-shell' : ''}`}>
@@ -236,30 +237,7 @@ export default function App() {
           tabIndex={-1}
         >
           {error && <ErrorBox message={error} />}
-          {path === '/' ? (
-            <Dashboard />
-          ) : path === '/exams' ? (
-            <Catalog />
-          ) : path === '/diagnostic' ? (
-            <DiagnosticPage />
-          ) : path.startsWith('/sessions/') ? (
-            <ExamRunner key={path} id={path.split('/')[2]} diagnostic />
-          ) : path === '/history' ? (
-            <HistoryPage />
-          ) : path === '/progress' ? (
-            <ProgressPage />
-          ) : path === '/settings' ? (
-            <SettingsPage user={user} onUpdate={setUser} />
-          ) : path === '/admin' && user.role === 'admin' ? (
-            <Admin />
-          ) : path.startsWith('/runs/') ? (
-            <ExamRunner key={path} id={path.split('/')[2]} />
-          ) : (
-            <div className="empty-state">
-              <h1>Página não encontrada</h1>
-              <Link href="/">Voltar ao início</Link>
-            </div>
-          )}
+          {allowed ? page.render(user, setUser, path) : <NotFound />}
         </main>
         <footer className="main-footer">
           <span>

@@ -15,11 +15,20 @@ export function trapDialogFocus(event: KeyboardEvent<HTMLDialogElement>) {
     event.preventDefault();
     return;
   }
+  keepTabInside(event, first, last);
+}
+
+// Tab wraps from the last control to the first, and Shift+Tab the other way around.
+export function keepTabInside(
+  event: { shiftKey: boolean; preventDefault: () => void },
+  first: HTMLElement | undefined,
+  last: HTMLElement | undefined,
+) {
   if (event.shiftKey && document.activeElement === first) {
     event.preventDefault();
-    last.focus();
+    last?.focus();
   } else if (!event.shiftKey && document.activeElement === last) {
     event.preventDefault();
-    first.focus();
+    first?.focus();
   }
 }
