@@ -15,3 +15,7 @@ class Conflict(DomainError):
 
 class InvalidContent(DomainError):
     status_code = 422
+
+
+class NotFound(DomainError):
+    status_code = 404

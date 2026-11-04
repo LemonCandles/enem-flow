@@ -328,6 +328,7 @@ def score_all(exams, reports, output, database):
                 str(p.relative_to(ROOT)): file_digest(p)
                 for p in [
                     ROOT / 'backend/app/routers/runs.py',
+                    ROOT / 'backend/app/services/attempts.py',
                     ROOT / 'backend/app/services/scoring.py',
                     ROOT / 'backend/app/models/runs.py',
                 ]

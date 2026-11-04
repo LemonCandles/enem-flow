@@ -1,6 +1,6 @@
 """Content contracts, publication gates, and immutable versions."""
 
-from .errors import Conflict, InvalidContent
+from .errors import Conflict, InvalidContent, NotFound
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -92,6 +92,19 @@ def exam_summary(db: Session, exam: Exam):
         "source": exam.source,
         "content_quality": quality,
     }
+
+
+def visible_exam(db: Session, exam_id: str):
+    exam = db.get(Exam, exam_id)
+    if not exam or exam.status != "published":
+        raise NotFound("Prova não encontrada ou ainda em revisão.")
+    return exam
+
+
+def public_exam_summary(db: Session, exam: Exam):
+    data = exam_summary(db, exam)
+    data["source"] = {key: exam.source[key] for key in ("url", "sha256", "publisher", "notes")}
+    return data
 
 
 def public_question(item: dict, finished: bool):
