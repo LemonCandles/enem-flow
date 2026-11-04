@@ -2,7 +2,7 @@ export type User = { id: string; name: string; email: string; role: string; pref
 export type Exam = { content_quality?: { origin: 'automatic' | 'reviewed'; review_status: string; blocking_issues: number }; id: string; title: string; year: number; application: string; booklet: string; day: number; kind: string; expected_items: number; item_count: number; approved_items: number; duration_minutes: number; areas: string[]; status: string; source: { url: string; publisher: string; notes: string; answer_key_url?: string } };
 export type Asset = { path: string; alt: string };
 export type ContentBlock = { type: 'paragraph'; text: string; role?: 'body' | 'credit' | null } | { type: 'image'; asset: Asset; caption?: string; credit?: string; equations?: string[] } | { type: 'math'; tex: string } | { type: 'table'; headers: string[]; rows: string[][]; caption: string };
-export type Question = { preparation_errors?: number; id: string; question_id: string; version: number; number: number; area: string; statement: string; blocks?: ContentBlock[]; images: Asset[]; alternatives: { letter: string; text: string; image?: Asset | null }[]; labels: { discipline: string | null; themes: string[]; skills: string[] }; page: number; original_layout: boolean; correct_answer?: string | null; annulled?: boolean };
+export type Question = { source_url?: string; preparation_errors?: number; id: string; question_id: string; version: number; number: number; area: string; statement: string; blocks?: ContentBlock[]; images: Asset[]; alternatives: { letter: string; text: string; image?: Asset | null }[]; labels: { discipline: string | null; themes: string[]; skills: string[] }; page: number; original_layout: boolean; correct_answer?: string | null; annulled?: boolean };
 export type Score = { correct: number; total: number; answered: number; unanswered: number; incorrect: number; annulled: number; percentage: number | null };
 export type Run = { id: string; exam: Exam; items: Question[]; answers: Record<string, string | null>; started_at: number; finished_at: number | null; result: Score | null };
 export type History = { id: string; exam: Exam; started_at: number; finished_at: number | null; answered: number; result: Score | null };
@@ -33,3 +33,7 @@ export function send<T>(path: string, body?: unknown, method = 'POST') {
 export const date = (timestamp: number) => new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(timestamp * 1000);
 export const pct = (value: number | null | undefined) => value == null ? '—' : `${value.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`;
 export const kindName = (kind: string) => ({ complete: 'Caderno completo', section: 'Seção completa', collection: 'Coleção parcial' }[kind] || kind);
+
+export type Diagnostic = Omit<Run, 'exam'> & { objective: string; area: string; available_minutes: number; answered: number; selection: { version: string; requested_items: number; selected_items: number; eligible_items: number; themes: Record<string, number>; repeated_items: string[] } };
+export type DiagnosticSummary = Omit<Diagnostic, 'items'>;
+export type DiagnosticOptions = { areas: { area: string; eligible_items: number; themes: Record<string, number> }[] };

@@ -26,4 +26,5 @@ def progress(user: CurrentUser, db: SessionDep):
 @router.delete("/history", status_code=204)
 def delete_history(user: CurrentUser, db: SessionDep):
     db.execute(delete(m.LearningEvent).where(m.LearningEvent.user_id == user.id))
+    db.execute(delete(m.DiagnosticSession).where(m.DiagnosticSession.user_id == user.id))
     db.execute(delete(m.ExamRun).where(m.ExamRun.user_id == user.id))

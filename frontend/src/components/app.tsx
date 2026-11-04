@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { BookOpen, ChartNoAxesCombined, ChevronRight, History as HistoryIcon, House, LogOut, Menu, Settings, ShieldCheck, UserRound, X } from 'lucide-react';
+import { BookOpen, Target, ChartNoAxesCombined, ChevronRight, History as HistoryIcon, House, LogOut, Menu, Settings, ShieldCheck, UserRound, X } from 'lucide-react';
 import { api, ApiError, User } from '@/lib/api';
 import Auth from './auth';
 import { ErrorBox, Loading } from './ui';
@@ -14,10 +14,12 @@ import Catalog from './catalog';
 import { HistoryPage, ProgressPage, SettingsPage } from './student';
 import ExamRunner from './exam-runner';
 import Admin from './admin';
+import DiagnosticPage from './diagnostic';
 
 const links = [
   { href: '/', label: 'Início', icon: House },
   { href: '/exams', label: 'Provas', icon: BookOpen },
+  { href: '/diagnostic', label: 'Diagnóstico', icon: Target },
   { href: '/progress', label: 'Desempenho', icon: ChartNoAxesCombined },
   { href: '/history', label: 'Histórico', icon: HistoryIcon },
 ];
@@ -83,7 +85,7 @@ export default function App() {
   if (loading) return <Loading/>;
   if (error && !user) return <main className="connection-error"><ErrorBox message={error} retry={load}/></main>;
   if (recovery || !user) return <Auth onLogin={setUser} recoveryToken={recovery} onRecoveryComplete={() => { setRecovery(''); setUser(null); }}/>;
-  const title = links.find(l => l.href === path)?.label || (path.startsWith('/runs/') ? 'Sua prova' : path === '/settings' ? 'Configurações' : path === '/admin' ? 'Curadoria' : 'Página não encontrada');
+  const title = links.find(l => l.href === path)?.label || (path.startsWith('/sessions/') ? 'Seu diagnóstico' : path.startsWith('/runs/') ? 'Sua prova' : path === '/settings' ? 'Configurações' : path === '/admin' ? 'Curadoria' : 'Página não encontrada');
 
   return <div className={`app-shell ${path === '/' ? 'home-shell' : ''}`}>
     <a className="skip-link" href="#main">Pular para o conteúdo</a>
@@ -109,9 +111,9 @@ export default function App() {
         </div>
         <ThemeToggle/>
       </header>
-      <main id="main" className={`main-content ${path === '/' ? 'home-main' : ''} ${path.startsWith('/runs/') ? 'runner-main' : ''}`} tabIndex={-1}>
+      <main id="main" className={`main-content ${path === '/' ? 'home-main' : ''} ${(path.startsWith('/runs/') || path.startsWith('/sessions/')) ? 'runner-main' : ''}`} tabIndex={-1}>
         {error && <ErrorBox message={error}/>}
-        {path === '/' ? <Dashboard/> : path === '/exams' ? <Catalog/> : path === '/history' ? <HistoryPage/> : path === '/progress' ? <ProgressPage/> : path === '/settings' ? <SettingsPage user={user} onUpdate={setUser}/> : path === '/admin' && user.role === 'admin' ? <Admin/> : path.startsWith('/runs/') ? <ExamRunner id={path.split('/')[2]}/> : <div className="empty-state"><h1>Página não encontrada</h1><Link href="/">Voltar ao início</Link></div>}
+        {path === '/' ? <Dashboard/> : path === '/exams' ? <Catalog/> : path === '/diagnostic' ? <DiagnosticPage/> : path.startsWith('/sessions/') ? <ExamRunner key={path} id={path.split('/')[2]} diagnostic/> : path === '/history' ? <HistoryPage/> : path === '/progress' ? <ProgressPage/> : path === '/settings' ? <SettingsPage user={user} onUpdate={setUser}/> : path === '/admin' && user.role === 'admin' ? <Admin/> : path.startsWith('/runs/') ? <ExamRunner key={path} id={path.split('/')[2]}/> : <div className="empty-state"><h1>Página não encontrada</h1><Link href="/">Voltar ao início</Link></div>}
       </main>
       <footer className="main-footer"><span>Enem Flow <span className="dot">·</span> Um passo de cada vez.</span><span>Produto independente do Inep.</span></footer>
     </div>

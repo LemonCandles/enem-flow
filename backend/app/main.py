@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .core.config import ROOT
 from .middleware import request_policy
-from .routers import account, admin, auth, exams, health, progress, runs
+from .routers import account, admin, auth, exams, health, progress, runs, diagnostics
 
 # Documentation only: groups shown in /docs, in this order.
 TAGS = [
@@ -43,5 +43,5 @@ async def invalid_input(_, exc):
 
 
 # Same registration order as the routes had in a single module.
-for feature in (health, auth, account, exams, runs, progress, admin):
+for feature in (health, auth, account, exams, runs, progress, diagnostics, admin):
     app.include_router(feature.router)

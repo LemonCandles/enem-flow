@@ -10,6 +10,7 @@ from .. import models as m, schemas as s
 from ..dependencies import CurrentUser, SessionDep
 from ..services.content import public_question
 from ..services.scoring import score
+from ..services.learning import record_learning_events
 from .exams import summary, visible_exam
 
 router = APIRouter(prefix="/exam-runs", tags=["execuções"])
@@ -84,12 +85,6 @@ def finish_run(run_id: str, user: CurrentUser, db: SessionDep):
         return run_data(run)
     run.finished_at = time.time()
     run.result = score(run.items, run.answers)
-    for position, item in enumerate(run.items, 1):
-        content = item["content"]
-        answer = run.answers.get(item["id"])
-        db.add(m.LearningEvent(user_id=user.id, run_id=run.id, item_id=item["id"], position=position,
-              answer=answer, correct=None if content["annulled"] else answer == content["correct_answer"],
-              context={"schema_version": "1.0", "content_version": item["version"], "canonical_id": item.get('canonical_id') or item['question_id'], "mode": "exam",
-                       "help_used": False, "labels": content["labels"]}))
+    record_learning_events(db, run, 'exam')
     db.flush()
     return run_data(run)

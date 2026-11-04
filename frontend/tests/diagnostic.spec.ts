@@ -1,0 +1,57 @@
+import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
+
+// Axe opens aggregation tabs; keep screenshots and traces as evidence.
+test.use({ video: 'off' });
+
+test('diagnóstico com teclado, retomada, exportação e exclusão', async ({ page }, info) => {
+  test.setTimeout(120_000);
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Diagnóstico',
+    email: `diagnostic-${info.project.name}-${Date.now()}@example.com`, password: 'senha-diagnostico-2026' } })).status()).toBe(201);
+  await page.goto('/diagnostic');
+  await expect(page.getByRole('heading', { name: 'Iniciar diagnóstico', exact: true })).toBeVisible();
+  await page.getByLabel('Objetivo', { exact: true }).fill('Conhecer meus temas');
+  await page.getByLabel('Área', { exact: true }).selectOption('Matemática');
+  await page.getByLabel('Tempo disponível em minutos').fill('6');
+  await expect(page.getByText(/Previsão: 2 questões/)).toBeVisible();
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+  await page.getByRole('button', { name: 'Começar diagnóstico' }).click();
+  await expect(page.getByRole('heading', { name: 'Questão 01', exact: true })).toBeVisible();
+  const sessionUrl = page.url();
+  const id = sessionUrl.split('/').at(-1);
+  const data = await (await page.request.get(`/api/sessions/${id}`)).json();
+  expect(JSON.stringify(data)).not.toContain('correct_answer');
+  await page.getByRole('radio').first().focus();
+  await page.keyboard.press('Space');
+  await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
+  const selected = await page.getByRole('radio', { checked: true }).inputValue();
+  await page.getByRole('heading', { name: 'Questão 01', exact: true }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('heading', { name: 'Questão 02', exact: true })).toBeVisible();
+  await page.goto('/history');
+  await page.getByRole('link', { name: 'Continuar diagnóstico' }).click();
+  await expect(page.getByRole('heading', { name: 'Questão 02', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Anterior', exact: true }).click();
+  await expect(page.getByRole('radio', { checked: true })).toHaveValue(selected);
+  if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
+  await page.getByRole('button', { name: 'Finalizar diagnóstico', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText('1 de 2 questões');
+  await page.getByRole('button', { name: 'Confirmar finalização' }).click();
+  await expect(page.getByText('Resultado definitivo', { exact: true })).toBeVisible();
+  await page.goto('/settings');
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Exportar resultados' }).click();
+  const file = await download;
+  const exported = JSON.parse(await readFile((await file.path())!, 'utf8'));
+  expect(exported.diagnostics[0].id).toBe(id);
+  await page.getByRole('button', { name: 'Excluir meu histórico' }).click();
+  await page.getByRole('button', { name: 'Excluir definitivamente' }).click();
+  await expect(page.getByRole('status')).toContainText('provas e diagnósticos foram excluídos');
+  expect(await (await page.request.get('/api/me/sessions')).json()).toEqual([]);
+  await page.goto(sessionUrl);
+  await expect(page.getByText('Diagnóstico não encontrado.')).toBeVisible();
+  expect(errors).toEqual([]);
+});
