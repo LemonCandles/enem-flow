@@ -3,9 +3,17 @@ import { expect, test } from '@playwright/test';
 test.use({ video: 'off' });
 
 test('origem automática e pendências ficam visíveis no catálogo e na questão', async ({ page }, info) => {
-  expect((await page.request.post('/api/auth/register', { data: {
-    name: 'Teste de Acervo', email: `acervo-${info.project.name}-${Date.now()}@example.com`, password: 'senha-acervo-integracao',
-  } })).status()).toBe(201);
+  expect(
+    (
+      await page.request.post('/api/auth/register', {
+        data: {
+          name: 'Teste de Acervo',
+          email: `acervo-${info.project.name}-${Date.now()}@example.com`,
+          password: 'senha-acervo-integracao',
+        },
+      })
+    ).status(),
+  ).toBe(201);
   // Exercise the presentation contract without installing unreviewed content in the test catalog.
   const quality = { origin: 'automatic', review_status: 'pending', blocking_issues: 1 };
   await page.route('**/api/exams', async route => {
@@ -23,7 +31,9 @@ test('origem automática e pendências ficam visíveis no catálogo e na questã
     await route.fulfill({ response, json: run });
   });
   await page.goto('/exams');
-  const card = page.locator('.exam-card').filter({ has: page.getByRole('heading', { name: 'ENEM 2024 · 2º dia', exact: true }) });
+  const card = page
+    .locator('.exam-card')
+    .filter({ has: page.getByRole('heading', { name: 'ENEM 2024 · 2º dia', exact: true }) });
   await expect(card.getByText('Extração automática', { exact: true })).toBeVisible();
   await card.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
   await expect(page.getByText(/Este caderno foi extraído automaticamente e aguarda conferência/)).toBeVisible();

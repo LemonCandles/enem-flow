@@ -9,8 +9,17 @@ test('diagnóstico com teclado, retomada, evidência, exportação e exclusão',
   test.setTimeout(120_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Diagnóstico',
-    email: `diagnostic-${info.project.name}-${Date.now()}@example.com`, password: 'senha-diagnostico-2026' } })).status()).toBe(201);
+  expect(
+    (
+      await page.request.post('/api/auth/register', {
+        data: {
+          name: 'Teste de Diagnóstico',
+          email: `diagnostic-${info.project.name}-${Date.now()}@example.com`,
+          password: 'senha-diagnostico-2026',
+        },
+      })
+    ).status(),
+  ).toBe(201);
   await page.goto('/diagnostic');
   await expect(page.getByRole('heading', { name: 'Iniciar diagnóstico', exact: true })).toBeVisible();
   await page.getByLabel('Objetivo', { exact: true }).fill('Conhecer meus temas');

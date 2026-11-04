@@ -11,25 +11,259 @@ export function HistoryPage() {
   const { data, error, loading, reload } = useData<History[]>('/me/history');
   const diagnostics = useData<DiagnosticSummary[]>('/me/sessions');
   const [filter, setFilter] = useState('all');
-  if (loading || diagnostics.loading) return <Loading/>;
-  const rows = data?.filter(run => filter === 'all' || (filter === 'finished' ? run.finished_at : !run.finished_at)) || [];
-  return <><PageTitle eyebrow="SEU CAMINHO ATÉ AQUI" title="Histórico de provas" text="Relembre seus resultados ou retome provas e diagnósticos."/>{error && <ErrorBox message={error} retry={reload}/>}<DiagnosticHistory data={diagnostics.data} error={diagnostics.error} reload={diagnostics.reload} filter={filter}/><div className="segmented" aria-label="Filtrar histórico">{[['all', 'Todos os registros'], ['open', 'Em andamento'], ['finished', 'Concluídas']].map(([key, label]) => <button className={filter === key ? 'active' : ''} aria-pressed={filter === key} onClick={() => setFilter(key)} key={key}>{label}</button>)}</div>{rows.length ? <section className="panel history-panel"><div className="history-table"><div className="history-table-head"><span>PROVA</span><span>INÍCIO</span><span>STATUS</span><span>RESULTADO</span><span/></div>{rows.map(run => <div className="history-row" key={run.id}><div className="history-exam"><span className="stat-icon teal"><BookOpen size={20}/></span><div><strong>{run.exam.title}</strong><span>{run.exam.booklet}</span></div></div><span className="muted small-text">{date(run.started_at)}</span><span className={`badge ${run.finished_at ? 'green' : 'amber'}`}>{run.finished_at ? <Check size={12}/> : <Clock3 size={12}/>} {run.finished_at ? 'Concluída' : 'Em andamento'}</span><div className="history-result"><strong>{run.finished_at ? pct(run.result?.percentage) : `${run.answered}/${run.exam.item_count}`}</strong><span>{run.finished_at ? `${run.result?.correct} acertos` : 'respondidas'}</span></div><Link className="button secondary compact" href={`/runs/${run.id}`}>{run.finished_at ? 'Ver resultado' : 'Continuar'}<ArrowRight size={14}/></Link></div>)}</div></section> : <section className="panel"><Empty title="Seu caminho está só começando" text="As provas iniciadas e concluídas ficam guardadas aqui, só para você."/></section>}</>;
+  if (loading || diagnostics.loading) return <Loading />;
+  const rows =
+    data?.filter(run => filter === 'all' || (filter === 'finished' ? run.finished_at : !run.finished_at)) || [];
+  return (
+    <>
+      <PageTitle
+        eyebrow="SEU CAMINHO ATÉ AQUI"
+        title="Histórico de provas"
+        text="Relembre seus resultados ou retome provas e diagnósticos."
+      />
+      {error && <ErrorBox message={error} retry={reload} />}
+      <DiagnosticHistory
+        data={diagnostics.data}
+        error={diagnostics.error}
+        reload={diagnostics.reload}
+        filter={filter}
+      />
+      <div className="segmented" aria-label="Filtrar histórico">
+        {[
+          ['all', 'Todos os registros'],
+          ['open', 'Em andamento'],
+          ['finished', 'Concluídas'],
+        ].map(([key, label]) => (
+          <button
+            className={filter === key ? 'active' : ''}
+            aria-pressed={filter === key}
+            onClick={() => setFilter(key)}
+            key={key}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {rows.length ? (
+        <section className="panel history-panel">
+          <div className="history-table">
+            <div className="history-table-head">
+              <span>PROVA</span>
+              <span>INÍCIO</span>
+              <span>STATUS</span>
+              <span>RESULTADO</span>
+              <span />
+            </div>
+            {rows.map(run => (
+              <div className="history-row" key={run.id}>
+                <div className="history-exam">
+                  <span className="stat-icon teal">
+                    <BookOpen size={20} />
+                  </span>
+                  <div>
+                    <strong>{run.exam.title}</strong>
+                    <span>{run.exam.booklet}</span>
+                  </div>
+                </div>
+                <span className="muted small-text">{date(run.started_at)}</span>
+                <span className={`badge ${run.finished_at ? 'green' : 'amber'}`}>
+                  {run.finished_at ? <Check size={12} /> : <Clock3 size={12} />}{' '}
+                  {run.finished_at ? 'Concluída' : 'Em andamento'}
+                </span>
+                <div className="history-result">
+                  <strong>
+                    {run.finished_at ? pct(run.result?.percentage) : `${run.answered}/${run.exam.item_count}`}
+                  </strong>
+                  <span>{run.finished_at ? `${run.result?.correct} acertos` : 'respondidas'}</span>
+                </div>
+                <Link className="button secondary compact" href={`/runs/${run.id}`}>
+                  {run.finished_at ? 'Ver resultado' : 'Continuar'}
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="panel">
+          <Empty
+            title="Seu caminho está só começando"
+            text="As provas iniciadas e concluídas ficam guardadas aqui, só para você."
+          />
+        </section>
+      )}
+    </>
+  );
 }
 
-function DiagnosticHistory({ data, error, reload, filter }: { data?: DiagnosticSummary[]; error: string; reload: () => void; filter: string }) {
-  if (error) return <ErrorBox message={error} retry={reload}/>;
+function DiagnosticHistory({
+  data,
+  error,
+  reload,
+  filter,
+}: {
+  data?: DiagnosticSummary[];
+  error: string;
+  reload: () => void;
+  filter: string;
+}) {
+  if (error) return <ErrorBox message={error} retry={reload} />;
   const rows = data?.filter(s => filter === 'all' || (filter === 'finished' ? s.finished_at : !s.finished_at)) || [];
-  return <section className="panel breakdown-panel"><h2>Diagnósticos</h2>{!rows.length ? <p className="small-text muted">Nenhum diagnóstico neste filtro. <Link href="/diagnostic">Iniciar diagnóstico</Link></p> : <div className="breakdown-list">{rows.map(s => <article key={s.id}><h3>{s.area} · {s.objective}</h3><p className="small-text muted">{date(s.started_at)} · {s.finished_at ? `Concluído · ${pct(s.result?.percentage)}` : `${s.answered}/${s.selection.selected_items} respondidas`}</p><Link className="button secondary compact" href={`/sessions/${s.id}`}>{s.finished_at ? 'Ver diagnóstico' : 'Continuar diagnóstico'}</Link></article>)}</div>}</section>;
+  return (
+    <section className="panel breakdown-panel">
+      <h2>Diagnósticos</h2>
+      {!rows.length ? (
+        <p className="small-text muted">
+          Nenhum diagnóstico neste filtro. <Link href="/diagnostic">Iniciar diagnóstico</Link>
+        </p>
+      ) : (
+        <div className="breakdown-list">
+          {rows.map(s => (
+            <article key={s.id}>
+              <h3>
+                {s.area} · {s.objective}
+              </h3>
+              <p className="small-text muted">
+                {date(s.started_at)} ·{' '}
+                {s.finished_at
+                  ? `Concluído · ${pct(s.result?.percentage)}`
+                  : `${s.answered}/${s.selection.selected_items} respondidas`}
+              </p>
+              <Link className="button secondary compact" href={`/sessions/${s.id}`}>
+                {s.finished_at ? 'Ver diagnóstico' : 'Continuar diagnóstico'}
+              </Link>
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+  );
 }
 
 export function ProgressPage() {
   const { data, error, loading, reload } = useData<Progress>('/me/progress');
   const [kind, setKind] = useState('area');
-  if (loading) return <Loading/>;
-  if (error || !data) return <ErrorBox message={error || 'Não foi possível carregar o painel.'} retry={reload}/>;
+  if (loading) return <Loading />;
+  if (error || !data) return <ErrorBox message={error || 'Não foi possível carregar o painel.'} retry={reload} />;
   const labels: Record<string, string> = { area: 'Área', discipline: 'Matéria', theme: 'Tema', skill: 'Habilidade' };
   const coverage = data.coverage[kind];
-  return <><PageTitle eyebrow="CLAREZA PARA SEGUIR EM FRENTE" title="Meu desempenho" text="Acompanhe resultados de provas e evidências dos seus diagnósticos."/><KnowledgePanel/>{!data.completed_runs ? <section className="panel"><Empty title="Uma prova abre novas descobertas" text="Finalize sua primeira prova para ver acertos, evolução e desempenho por área."/></section> : <><section className="stats-grid"><article className="stat-card"><span className="stat-label">Provas concluídas</span><strong className="stat-value">{data.completed_runs}</strong><span className="stat-helper">Tentativas registradas</span></article><article className="stat-card"><span className="stat-label">Aproveitamento geral</span><strong className="stat-value">{pct(data.summary.percentage)}</strong><span className="stat-helper">{data.summary.correct} de {data.summary.total} questões válidas</span></article><article className="stat-card"><span className="stat-label">Questões respondidas</span><strong className="stat-value">{data.summary.answered}</strong><span className="stat-helper">{data.summary.unanswered} em branco</span></article><article className="stat-card"><span className="stat-label">Cobertura de habilidades</span><strong className="stat-value">{pct(data.coverage.skill.percentage)}</strong><span className="stat-helper">{data.coverage.skill.classified} de {data.coverage.skill.total} tentativas com rótulos</span></article></section><section className="panel breakdown-panel"><div className="section-heading"><div><h2>Um olhar para cada conhecimento</h2><p className="small-text muted">Taxa de acerto e quantidade de evidências disponíveis.</p></div><span className="stat-icon teal"><Target size={20}/></span></div><div className="segmented">{Object.entries(labels).map(([key, label]) => <button key={key} className={kind === key ? 'active' : ''} aria-pressed={kind === key} onClick={() => setKind(key)}>{label}</button>)}</div><div className="coverage-note"><span>Cobertura de classificação por {labels[kind].toLowerCase()}</span><strong>{coverage.classified}/{coverage.total} tentativas · {pct(coverage.percentage)}</strong></div><div className="breakdown-list">{data.breakdown[kind].map(group => <article key={group.name}><div className="row between"><div><h3>{group.name}</h3><span className="tiny muted">{group.correct} acertos · {group.attempts} tentativas {kind === 'theme' || kind === 'skill' ? '(rótulos podem se sobrepor)' : ''}</span></div><strong>{pct(group.percentage)}</strong></div><div className="progress-track"><i style={{ width: `${group.percentage}%` }}/></div></article>)}</div><p className="notice-box">Ausência de classificação não significa ausência de dificuldade. Os resultados descrevem acertos nas questões realizadas; não representam diagnóstico de aprendizagem nem nota TRI.</p></section><section className="panel evolution-panel"><h2>Evolução por prova</h2><div className="progress-history">{data.evolution.map(point => <Link key={point.id} href={`/runs/${point.id}`}><span className="stat-icon teal"><HistoryIcon size={18}/></span><div><strong>{point.title}</strong><span className="tiny muted">{date(point.date)}</span></div><strong>{pct(point.percentage)}</strong><ArrowRight size={16}/></Link>)}</div></section></>}</>;
+  return (
+    <>
+      <PageTitle
+        eyebrow="CLAREZA PARA SEGUIR EM FRENTE"
+        title="Meu desempenho"
+        text="Acompanhe resultados de provas e evidências dos seus diagnósticos."
+      />
+      <KnowledgePanel />
+      {!data.completed_runs ? (
+        <section className="panel">
+          <Empty
+            title="Uma prova abre novas descobertas"
+            text="Finalize sua primeira prova para ver acertos, evolução e desempenho por área."
+          />
+        </section>
+      ) : (
+        <>
+          <section className="stats-grid">
+            <article className="stat-card">
+              <span className="stat-label">Provas concluídas</span>
+              <strong className="stat-value">{data.completed_runs}</strong>
+              <span className="stat-helper">Tentativas registradas</span>
+            </article>
+            <article className="stat-card">
+              <span className="stat-label">Aproveitamento geral</span>
+              <strong className="stat-value">{pct(data.summary.percentage)}</strong>
+              <span className="stat-helper">
+                {data.summary.correct} de {data.summary.total} questões válidas
+              </span>
+            </article>
+            <article className="stat-card">
+              <span className="stat-label">Questões respondidas</span>
+              <strong className="stat-value">{data.summary.answered}</strong>
+              <span className="stat-helper">{data.summary.unanswered} em branco</span>
+            </article>
+            <article className="stat-card">
+              <span className="stat-label">Cobertura de habilidades</span>
+              <strong className="stat-value">{pct(data.coverage.skill.percentage)}</strong>
+              <span className="stat-helper">
+                {data.coverage.skill.classified} de {data.coverage.skill.total} tentativas com rótulos
+              </span>
+            </article>
+          </section>
+          <section className="panel breakdown-panel">
+            <div className="section-heading">
+              <div>
+                <h2>Um olhar para cada conhecimento</h2>
+                <p className="small-text muted">Taxa de acerto e quantidade de evidências disponíveis.</p>
+              </div>
+              <span className="stat-icon teal">
+                <Target size={20} />
+              </span>
+            </div>
+            <div className="segmented">
+              {Object.entries(labels).map(([key, label]) => (
+                <button
+                  key={key}
+                  className={kind === key ? 'active' : ''}
+                  aria-pressed={kind === key}
+                  onClick={() => setKind(key)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div className="coverage-note">
+              <span>Cobertura de classificação por {labels[kind].toLowerCase()}</span>
+              <strong>
+                {coverage.classified}/{coverage.total} tentativas · {pct(coverage.percentage)}
+              </strong>
+            </div>
+            <div className="breakdown-list">
+              {data.breakdown[kind].map(group => (
+                <article key={group.name}>
+                  <div className="row between">
+                    <div>
+                      <h3>{group.name}</h3>
+                      <span className="tiny muted">
+                        {group.correct} acertos · {group.attempts} tentativas{' '}
+                        {kind === 'theme' || kind === 'skill' ? '(rótulos podem se sobrepor)' : ''}
+                      </span>
+                    </div>
+                    <strong>{pct(group.percentage)}</strong>
+                  </div>
+                  <div className="progress-track">
+                    <i style={{ width: `${group.percentage}%` }} />
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p className="notice-box">
+              Ausência de classificação não significa ausência de dificuldade. Os resultados descrevem acertos nas
+              questões realizadas; não representam diagnóstico de aprendizagem nem nota TRI.
+            </p>
+          </section>
+          <section className="panel evolution-panel">
+            <h2>Evolução por prova</h2>
+            <div className="progress-history">
+              {data.evolution.map(point => (
+                <Link key={point.id} href={`/runs/${point.id}`}>
+                  <span className="stat-icon teal">
+                    <HistoryIcon size={18} />
+                  </span>
+                  <div>
+                    <strong>{point.title}</strong>
+                    <span className="tiny muted">{date(point.date)}</span>
+                  </div>
+                  <strong>{pct(point.percentage)}</strong>
+                  <ArrowRight size={16} />
+                </Link>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
+    </>
+  );
 }
 
 export function SettingsPage({ user, onUpdate }: { user: User; onUpdate: (u: User) => void }) {
@@ -38,19 +272,142 @@ export function SettingsPage({ user, onUpdate }: { user: User; onUpdate: (u: Use
   const [busy, setBusy] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   async function save(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault(); setError(''); setNotice(''); setBusy(true);
+    event.preventDefault();
+    setError('');
+    setNotice('');
+    setBusy(true);
     const form = new FormData(event.currentTarget);
-    try { onUpdate(await send<User>('/me/preferences', { name: form.get('name'), target_course: form.get('target_course'), daily_goal: Number(form.get('daily_goal')) }, 'PUT')); setNotice('Preferências atualizadas.'); }
-    catch (e) { setError((e as Error).message); } finally { setBusy(false); }
+    try {
+      onUpdate(
+        await send<User>(
+          '/me/preferences',
+          {
+            name: form.get('name'),
+            target_course: form.get('target_course'),
+            daily_goal: Number(form.get('daily_goal')),
+          },
+          'PUT',
+        ),
+      );
+      setNotice('Preferências atualizadas.');
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
   }
   async function erase() {
-    setBusy(true); setError('');
-    try { await api('/me/history', { method: 'DELETE' }); setNotice('Seu histórico, provas e diagnósticos foram excluídos.'); dialog.current?.close(); }
-    catch (e) { setError((e as Error).message); } finally { setBusy(false); }
+    setBusy(true);
+    setError('');
+    try {
+      await api('/me/history', { method: 'DELETE' });
+      setNotice('Seu histórico, provas e diagnósticos foram excluídos.');
+      dialog.current?.close();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
   }
   async function exportHistory() {
-    try { const [history, diagnostics] = await Promise.all([api<History[]>('/me/history'), api<DiagnosticSummary[]>('/me/sessions')]); const blob = new Blob([JSON.stringify({ exams: history, diagnostics }, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'meu-historico-enem-flow.json'; a.click(); URL.revokeObjectURL(url); }
-    catch (e) { setError((e as Error).message); }
+    try {
+      const [history, diagnostics] = await Promise.all([
+        api<History[]>('/me/history'),
+        api<DiagnosticSummary[]>('/me/sessions'),
+      ]);
+      const blob = new Blob([JSON.stringify({ exams: history, diagnostics }, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'meu-historico-enem-flow.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      setError((e as Error).message);
+    }
   }
-  return <><PageTitle eyebrow="DO SEU JEITO" title="Configurações" text="Personalize seu espaço e mantenha o controle do seu histórico."/>{error && <ErrorBox message={error}/ >}{notice && <p role="status" className="success-box">{notice}</p>}<section className="panel settings-panel"><h2>Seu perfil e seus objetivos</h2><p className="small-text muted">{user.email}</p><form onSubmit={save}><label>Seu nome<input name="name" defaultValue={user.name} minLength={2} maxLength={80} required/></label><label>Curso ou objetivo<input name="target_course" defaultValue={user.preferences.target_course || ''} placeholder="Ex.: Engenharia em uma universidade federal" maxLength={120}/></label><label>Objetivo pessoal de questões por dia<input type="number" name="daily_goal" defaultValue={user.preferences.daily_goal || 10} min={1} max={100} required/></label><button className="button" disabled={busy} type="submit">{busy ? 'Salvando…' : 'Salvar preferências'}<Check size={17}/></button></form></section><section className="panel settings-panel"><h2>Seu histórico, suas escolhas</h2><p className="muted small-text">Exporte seus resultados de provas e diagnósticos ou exclua as sessões e os eventos associados.</p><div className="row settings-actions"><button className="button secondary" onClick={exportHistory}><Download size={17}/>Exportar resultados</button><button className="button danger-outline" onClick={() => dialog.current?.showModal()}><Trash2 size={17}/>Excluir meu histórico</button></div></section><dialog className="confirm-dialog" ref={dialog}><span className="stat-icon orange"><Trash2 size={22}/></span><h2>Excluir todo o histórico?</h2><p>Esta ação exclui seus resultados, respostas, provas e diagnósticos em andamento. A exclusão é permanente. Sua conta e suas preferências serão mantidas.</p>{error && <ErrorBox message={error}/>}<div className="dialog-actions"><button className="button secondary" disabled={busy} onClick={() => dialog.current?.close()}>Cancelar</button><button className="button danger" disabled={busy} onClick={erase}>{busy ? 'Excluindo…' : 'Excluir definitivamente'}</button></div></dialog></>;
+  return (
+    <>
+      <PageTitle
+        eyebrow="DO SEU JEITO"
+        title="Configurações"
+        text="Personalize seu espaço e mantenha o controle do seu histórico."
+      />
+      {error && <ErrorBox message={error} />}
+      {notice && (
+        <p role="status" className="success-box">
+          {notice}
+        </p>
+      )}
+      <section className="panel settings-panel">
+        <h2>Seu perfil e seus objetivos</h2>
+        <p className="small-text muted">{user.email}</p>
+        <form onSubmit={save}>
+          <label>
+            Seu nome
+            <input name="name" defaultValue={user.name} minLength={2} maxLength={80} required />
+          </label>
+          <label>
+            Curso ou objetivo
+            <input
+              name="target_course"
+              defaultValue={user.preferences.target_course || ''}
+              placeholder="Ex.: Engenharia em uma universidade federal"
+              maxLength={120}
+            />
+          </label>
+          <label>
+            Objetivo pessoal de questões por dia
+            <input
+              type="number"
+              name="daily_goal"
+              defaultValue={user.preferences.daily_goal || 10}
+              min={1}
+              max={100}
+              required
+            />
+          </label>
+          <button className="button" disabled={busy} type="submit">
+            {busy ? 'Salvando…' : 'Salvar preferências'}
+            <Check size={17} />
+          </button>
+        </form>
+      </section>
+      <section className="panel settings-panel">
+        <h2>Seu histórico, suas escolhas</h2>
+        <p className="muted small-text">
+          Exporte seus resultados de provas e diagnósticos ou exclua as sessões e os eventos associados.
+        </p>
+        <div className="row settings-actions">
+          <button className="button secondary" onClick={exportHistory}>
+            <Download size={17} />
+            Exportar resultados
+          </button>
+          <button className="button danger-outline" onClick={() => dialog.current?.showModal()}>
+            <Trash2 size={17} />
+            Excluir meu histórico
+          </button>
+        </div>
+      </section>
+      <dialog className="confirm-dialog" ref={dialog}>
+        <span className="stat-icon orange">
+          <Trash2 size={22} />
+        </span>
+        <h2>Excluir todo o histórico?</h2>
+        <p>
+          Esta ação exclui seus resultados, respostas, provas e diagnósticos em andamento. A exclusão é permanente. Sua
+          conta e suas preferências serão mantidas.
+        </p>
+        {error && <ErrorBox message={error} />}
+        <div className="dialog-actions">
+          <button className="button secondary" disabled={busy} onClick={() => dialog.current?.close()}>
+            Cancelar
+          </button>
+          <button className="button danger" disabled={busy} onClick={erase}>
+            {busy ? 'Excluindo…' : 'Excluir definitivamente'}
+          </button>
+        </div>
+      </dialog>
+    </>
+  );
 }
