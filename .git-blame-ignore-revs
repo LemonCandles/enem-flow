@@ -1,0 +1,5 @@
+# Commits só de formatação; use com git config blame.ignoreRevsFile .git-blame-ignore-revs
+# style(qualidade): formata o python com ruff
+783f52e820dece9328ec974640d9f97de1d1f3ac
+# style(web): formata o frontend com prettier
+2ef442893288bf0660c580fad63f0e56c542bbb0
