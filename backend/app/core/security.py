@@ -4,7 +4,6 @@ import secrets
 import time
 
 from fastapi import Depends, HTTPException, Request, Response
-from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..models import AuthSession, User

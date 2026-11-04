@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pytest
 from sqlalchemy import func, select
 
-from backend.app.models import DiagnosticSession, Exam, ExamRun, LearningEvent, QuestionVersion
+from backend.app.models import Exam, ExamRun, LearningEvent, QuestionVersion
 from backend.app.services.diagnostics import identity, select_items
 from backend.app.services.knowledge import reconstruct
 

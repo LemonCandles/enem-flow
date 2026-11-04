@@ -4,7 +4,7 @@ A região da questão é entrada comum a todos os métodos. As anotações de
 blocos ficam só no treino/avaliador; nunca são passadas ao detector.
 """
 
-from collections import Counter, defaultdict
+from collections import Counter
 from contextlib import nullcontext
 import math
 import re

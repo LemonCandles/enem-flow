@@ -7,7 +7,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from experiments.common import digest, file_digest, read_json, write_json
+from experiments.common import file_digest, read_json, write_json
 
 
 def load_visual_review(path):

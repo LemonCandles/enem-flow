@@ -1,6 +1,5 @@
 """Materializa decisões editoriais explícitas; não classifica por palavras-chave."""
 
-import hashlib
 import json
 from pathlib import Path
 import re

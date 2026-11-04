@@ -10,10 +10,8 @@ from sqlalchemy import func, select
 
 from backend.app.installers.curated import classified, install_catalog
 from backend.app.services.content import import_exam
-from backend.app.services.identity import signatures
 from backend.app.models import CanonicalQuestion, Exam, ExamRun, QuestionVersion, User
 from backend.app.schemas import ExamImport
-from backend.app.services.presentation import content_fingerprint
 from scripts.archive_enem import metadata, parse_year
 
 ROOT = Path(__file__).resolve().parents[2]

@@ -5,7 +5,6 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import func, select
 

@@ -45,7 +45,6 @@ def test_catalog_can_publish_a_previous_install_and_stays_idempotent(database):
 
 
 def test_catalog_publication_respects_manual_decisions(database, admin):
-    from sqlalchemy import select
     from backend.app.models import Exam
 
     with database.begin() as db:
