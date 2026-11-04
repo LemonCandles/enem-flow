@@ -1,4 +1,5 @@
 """Diagnostic creation contract."""
+
 from typing import Literal
 from pydantic import Field
 from .base import Schema

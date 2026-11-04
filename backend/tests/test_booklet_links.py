@@ -21,7 +21,9 @@ def test_booklet_links_cover_each_curated_item_once_per_color():
         payload = classified(json.loads((ROOT / entry['path']).read_text()))
         assert exam['exam_id'] == payload.id and exam['source_sha256'] == payload.source.sha256
         booklets = {b['booklet']: b for b in exam['booklets']}
-        assert len(booklets) == 4 and all(b['linked'] == len(payload.questions) and b['pending'] == 0 for b in booklets.values())
+        assert len(booklets) == 4 and all(
+            b['linked'] == len(payload.questions) and b['pending'] == 0 for b in booklets.values()
+        )
         assert booklets[exam['booklets'][0]['booklet']]['source_sha256'] == payload.source.sha256
         numbers = {q.content.number for q in payload.questions}
         per_booklet = {name: [] for name in booklets}
@@ -36,7 +38,9 @@ def test_booklet_links_cover_each_curated_item_once_per_color():
                 assert occurrence['source_sha256'] == booklets[occurrence['booklet']]['source_sha256']
                 assert occurrence['answer'] == (None if content['annulled'] else content['correct_answer'])
                 assert occurrence['text_containment'] >= MIN_CONTAINMENT and occurrence['margin'] >= MIN_MARGIN
-                assert occurrence['figures'] in ('sem imagens raster', 'equivalentes') or occurrence['figures'].startswith('conferidas visualmente: ')
+                assert occurrence['figures'] in ('sem imagens raster', 'equivalentes') or occurrence[
+                    'figures'
+                ].startswith('conferidas visualmente: ')
                 if occurrence['source_sha256'] == payload.source.sha256:
                     assert occurrence['number'] == content['number']
         # Each color is a permutation of the same numbers: no item is linked twice.
@@ -46,12 +50,18 @@ def test_booklet_links_cover_each_curated_item_once_per_color():
 def test_pairing_requires_containment_margin_and_a_single_owner():
     text = 'Um recipiente contém água a vinte graus e recebe calor constante durante dez minutos de experimento'
     other = 'Uma pesquisa mediu o tempo de leitura de estudantes em três escolas públicas diferentes do país'
-    assert pair({91: shingles(text)}, {120: shingles('QUESTÃO 120 ' + text), 121: shingles(other)})[91][::3] == (120, None)
+    assert pair({91: shingles(text)}, {120: shingles('QUESTÃO 120 ' + text), 121: shingles(other)})[91][::3] == (
+        120,
+        None,
+    )
     weak = pair({91: shingles(text)}, {120: shingles(other)})[91]
     assert weak[3].startswith('Texto corresponde')
     ambiguous = pair({91: shingles(text)}, {120: shingles(text), 121: shingles(text)})[91]
     assert ambiguous[3].startswith('Folga')
-    contested = pair({91: shingles(text), 92: shingles(text + ' adicional')}, {120: shingles(text + ' adicional'), 121: shingles(other)})
+    contested = pair(
+        {91: shingles(text), 92: shingles(text + ' adicional')},
+        {120: shingles(text + ' adicional'), 121: shingles(other)},
+    )
     assert all(contested[n][3].startswith('Questão 120 disputada') for n in (91, 92))
 
 

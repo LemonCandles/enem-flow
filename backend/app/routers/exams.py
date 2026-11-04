@@ -1,4 +1,5 @@
 """Public catalog of published exams."""
+
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import select
 
@@ -23,8 +24,14 @@ def summary(db, exam):
 
 
 @router.get("")
-def exams(db: SessionDep, year: int | None = None, area: str | None = None, application: str | None = None,
-          booklet: str | None = None, q: str = ""):
+def exams(
+    db: SessionDep,
+    year: int | None = None,
+    area: str | None = None,
+    application: str | None = None,
+    booklet: str | None = None,
+    q: str = "",
+):
     query = select(m.Exam).where(m.Exam.status == "published").order_by(m.Exam.year.desc())
     if year:
         query = query.where(m.Exam.year == year)
@@ -33,12 +40,27 @@ def exams(db: SessionDep, year: int | None = None, area: str | None = None, appl
     if booklet:
         query = query.where(m.Exam.booklet == booklet)
     rows = [summary(db, exam) for exam in db.scalars(query)]
-    return [row for row in rows if (not area or area in row["areas"]) and (not q or q.casefold() in row["title"].casefold())]
+    return [
+        row for row in rows if (not area or area in row["areas"]) and (not q or q.casefold() in row["title"].casefold())
+    ]
 
 
 @router.get("/{exam_id}")
 def exam_detail(exam_id: str, db: SessionDep):
     exam = visible_exam(db, exam_id)
-    return {**summary(db, exam), "items": [public_question({"id": key,
-            "question_id": (question := db.get(m.QuestionVersion, key)).question_id,
-            "canonical_id": question.canonical_id, "version": question.version, "content": question.content}, False) for key in exam.items]}
+    return {
+        **summary(db, exam),
+        "items": [
+            public_question(
+                {
+                    "id": key,
+                    "question_id": (question := db.get(m.QuestionVersion, key)).question_id,
+                    "canonical_id": question.canonical_id,
+                    "version": question.version,
+                    "content": question.content,
+                },
+                False,
+            )
+            for key in exam.items
+        ],
+    }

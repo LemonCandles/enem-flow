@@ -1,4 +1,5 @@
 """Service health check."""
+
 from fastapi import APIRouter, Request
 from sqlalchemy import func, select
 

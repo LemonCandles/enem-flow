@@ -1,4 +1,5 @@
 """Account creation, sign-in, sign-out and password recovery."""
+
 import time
 
 from fastapi import APIRouter, HTTPException, Request, Response
@@ -52,7 +53,11 @@ def login(payload: s.Login, response: Response, request: Request, db: SessionDep
     throttle(db, request)
     user = db.scalar(select(m.User).where(m.User.email == payload.email))
     # Run an equivalent hash even when the address is unknown.
-    valid = verify_password(payload.password, user.password_hash) if user else bool(hash_password(payload.password)) and False
+    valid = (
+        verify_password(payload.password, user.password_hash)
+        if user
+        else bool(hash_password(payload.password)) and False
+    )
     if not valid:
         raise HTTPException(401, "E-mail ou senha incorretos.")
     old = request.cookies.get(COOKIE)
@@ -74,8 +79,11 @@ def logout(request: Request, response: Response, db: SessionDep):
 def reset_password(payload: s.ResetPassword, request: Request, response: Response, db: SessionDep):
     throttle(db, request)
     # Consume with a conditional DELETE so concurrent replays cannot both succeed.
-    token = db.execute(delete(m.RecoveryToken).where(m.RecoveryToken.token_hash == digest(payload.token),
-                       m.RecoveryToken.expires_at > time.time()).returning(m.RecoveryToken.user_id)).scalar_one_or_none()
+    token = db.execute(
+        delete(m.RecoveryToken)
+        .where(m.RecoveryToken.token_hash == digest(payload.token), m.RecoveryToken.expires_at > time.time())
+        .returning(m.RecoveryToken.user_id)
+    ).scalar_one_or_none()
     if not token:
         raise HTTPException(400, "Link de recuperação inválido ou expirado.")
     db.get(m.User, token).password_hash = hash_password(payload.password)

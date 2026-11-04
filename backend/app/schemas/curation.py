@@ -1,4 +1,5 @@
 """Curation requests: review decisions and new question versions."""
+
 from typing import Literal
 
 from pydantic import Field

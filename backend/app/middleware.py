@@ -3,6 +3,7 @@
 It stays a single middleware so the order is fixed: reject before the route
 runs, then add headers and log after it answers.
 """
+
 import logging
 import secrets
 import time
@@ -48,6 +49,12 @@ async def request_policy(request: Request, call_next):
     start = time.monotonic()
     response = await call_next(request)
     add_security_headers(response, request_id)
-    logger.info("request=%s method=%s path=%s status=%s ms=%.1f", request_id, request.method,
-                request.url.path, response.status_code, (time.monotonic() - start) * 1000)
+    logger.info(
+        "request=%s method=%s path=%s status=%s ms=%.1f",
+        request_id,
+        request.method,
+        request.url.path,
+        response.status_code,
+        (time.monotonic() - start) * 1000,
+    )
     return response

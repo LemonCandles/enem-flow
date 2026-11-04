@@ -1,4 +1,5 @@
 """Local administrative actions; no default administrator password."""
+
 import argparse
 import getpass
 import json
@@ -23,8 +24,14 @@ def main():
     admin.add_argument("email")
     admin.add_argument("--name", default="Curadoria")
     seed = subs.add_parser("seed")
-    seed.add_argument("--publish-reviewed", action="store_true", help="Publicar o conjunto incluído e conferido com os PDFs oficiais")
-    seed.add_argument("--refresh-bundled", action="store_true", help="Atualizar a apresentação incluída criando versões; preservar as tentativas")
+    seed.add_argument(
+        "--publish-reviewed", action="store_true", help="Publicar o conjunto incluído e conferido com os PDFs oficiais"
+    )
+    seed.add_argument(
+        "--refresh-bundled",
+        action="store_true",
+        help="Atualizar a apresentação incluída criando versões; preservar as tentativas",
+    )
     catalog = subs.add_parser("catalog", help="Instalar lotes e rótulos conferidos, preservando versões e tentativas")
     catalog.add_argument("--publish-curated", action="store_true")
     subs.add_parser("archive", help="Publicar as provas geradas do acervo oficial, sem curadoria")
@@ -34,7 +41,9 @@ def main():
     args = parser.parse_args()
     with SessionLocal.begin() as db:
         if args.command == "create-admin":
-            form = Register(email=args.email, name=args.name, password=getpass.getpass("Senha (mínimo 10 caracteres): "))
+            form = Register(
+                email=args.email, name=args.name, password=getpass.getpass("Senha (mínimo 10 caracteres): ")
+            )
             if db.scalar(select(User).where(User.email == form.email)):
                 raise SystemExit("Conta já existe. Altere o papel por procedimento administrativo autorizado.")
             db.add(User(name=form.name, email=form.email, password_hash=hash_password(form.password), role="admin"))
@@ -43,9 +52,14 @@ def main():
             path = ROOT / "data/enem-2024-dia2-azul.json"
             payload = ExamImport.model_validate(json.loads(path.read_text()))
             existing = db.get(Exam, payload.id)
-            if args.publish_reviewed and (not existing or args.refresh_bundled) and (ROOT/'data/catalog/manifest.json').exists():
+            if (
+                args.publish_reviewed
+                and (not existing or args.refresh_bundled)
+                and (ROOT / 'data/catalog/manifest.json').exists()
+            ):
                 from .installers.curated import install_catalog
-                print(json.dumps(install_catalog(db,publish=True),ensure_ascii=False))
+
+                print(json.dumps(install_catalog(db, publish=True), ensure_ascii=False))
                 return
             if existing:
                 if args.refresh_bundled and args.publish_reviewed:
@@ -66,10 +80,12 @@ def main():
             print(f"Importadas {len(exam.items)} questões; estado: {exam.status}.")
         elif args.command == "archive":
             from .installers.generated import publish_generated
+
             print(json.dumps(publish_generated(db), ensure_ascii=False))
         elif args.command == "catalog":
             from .installers.curated import install_catalog
-            print(json.dumps(install_catalog(db,publish=args.publish_curated),ensure_ascii=False))
+
+            print(json.dumps(install_catalog(db, publish=args.publish_curated), ensure_ascii=False))
         elif args.command == "recovery-link":
             user = db.scalar(select(User).where(User.email == args.email.casefold()))
             if not user:

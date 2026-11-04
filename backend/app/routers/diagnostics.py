@@ -1,4 +1,5 @@
 """Owned fixed diagnostic sessions; feedback is available only at finish."""
+
 import secrets
 import time
 from collections import Counter, defaultdict
@@ -21,24 +22,43 @@ router = APIRouter(tags=['diagnóstico'])
 
 def owned_session(db, session_id, user_id, lock=False):
     if lock:
-        found = db.execute(update(DiagnosticSession).where(DiagnosticSession.id == session_id,
-            DiagnosticSession.user_id == user_id).values(started_at=DiagnosticSession.started_at)).rowcount
+        found = db.execute(
+            update(DiagnosticSession)
+            .where(DiagnosticSession.id == session_id, DiagnosticSession.user_id == user_id)
+            .values(started_at=DiagnosticSession.started_at)
+        ).rowcount
         if not found:
             raise HTTPException(404, 'Diagnóstico não encontrado.')
-    session = db.scalar(select(DiagnosticSession).where(DiagnosticSession.id == session_id,
-        DiagnosticSession.user_id == user_id).execution_options(populate_existing=True))
+    session = db.scalar(
+        select(DiagnosticSession)
+        .where(DiagnosticSession.id == session_id, DiagnosticSession.user_id == user_id)
+        .execution_options(populate_existing=True)
+    )
     if session is None:
         raise HTTPException(404, 'Diagnóstico não encontrado.')
     return session
 
 
 def session_data(session, include_items=True):
-    result = {k: getattr(session, k) for k in ('id', 'objective', 'area', 'available_minutes', 'selection',
-                                             'answers', 'started_at', 'finished_at', 'result')}
+    result = {
+        k: getattr(session, k)
+        for k in (
+            'id',
+            'objective',
+            'area',
+            'available_minutes',
+            'selection',
+            'answers',
+            'started_at',
+            'finished_at',
+            'result',
+        )
+    }
     result['answered'] = sum(v is not None for v in session.answers.values())
     if include_items:
-        result['items'] = [dict(public_question(i, session.finished_at is not None),
-            source_url=i['source_url']) for i in session.items]
+        result['items'] = [
+            dict(public_question(i, session.finished_at is not None), source_url=i['source_url']) for i in session.items
+        ]
     return result
 
 
@@ -48,21 +68,35 @@ def options(user: CurrentUser, db: SessionDep):
     pool = eligible_items(db)
     for item in pool:
         areas[item['content']['area']].update(set(item['content']['labels']['themes']))
-    return {'areas': [{'area': area, 'eligible_items': sum(1 for i in pool if i['content']['area'] == area),
-                      'themes': dict(sorted(themes.items()))}
-                     for area, themes in sorted(areas.items())]}
+    return {
+        'areas': [
+            {
+                'area': area,
+                'eligible_items': sum(1 for i in pool if i['content']['area'] == area),
+                'themes': dict(sorted(themes.items())),
+            }
+            for area, themes in sorted(areas.items())
+        ]
+    }
 
 
 def check_parameters(session, payload):
-    if (session.objective, session.area, session.available_minutes) != (payload.objective, payload.area, payload.available_minutes):
+    if (session.objective, session.area, session.available_minutes) != (
+        payload.objective,
+        payload.area,
+        payload.available_minutes,
+    ):
         raise HTTPException(409, 'Esta chave já foi usada para outro diagnóstico.')
     return session_data(session)
 
 
 @router.post('/sessions', status_code=201)
 def start(payload: StartDiagnostic, user: CurrentUser, db: SessionDep):
-    previous = db.scalar(select(DiagnosticSession).where(DiagnosticSession.user_id == user.id,
-                                                        DiagnosticSession.start_key == payload.idempotency_key))
+    previous = db.scalar(
+        select(DiagnosticSession).where(
+            DiagnosticSession.user_id == user.id, DiagnosticSession.start_key == payload.idempotency_key
+        )
+    )
     if previous:
         return check_parameters(previous, payload)
     pool = [i for i in eligible_items(db) if i['content']['area'] == payload.area]
@@ -76,16 +110,26 @@ def start(payload: StartDiagnostic, user: CurrentUser, db: SessionDep):
         for key in exam.items:
             sources.setdefault(key, exam.source['url'])
     items = [dict(i, source_url=sources[i['id']]) for i in items]
-    session = DiagnosticSession(user_id=user.id, start_key=payload.idempotency_key,
-        objective=payload.objective, area=payload.area, available_minutes=payload.available_minutes,
-        selection=selection, items=items, answers={})
+    session = DiagnosticSession(
+        user_id=user.id,
+        start_key=payload.idempotency_key,
+        objective=payload.objective,
+        area=payload.area,
+        available_minutes=payload.available_minutes,
+        selection=selection,
+        items=items,
+        answers={},
+    )
     db.add(session)
     try:
         db.flush()
     except IntegrityError:
         db.rollback()
-        previous = db.scalar(select(DiagnosticSession).where(DiagnosticSession.user_id == user.id,
-                                                            DiagnosticSession.start_key == payload.idempotency_key))
+        previous = db.scalar(
+            select(DiagnosticSession).where(
+                DiagnosticSession.user_id == user.id, DiagnosticSession.start_key == payload.idempotency_key
+            )
+        )
         if previous is None:
             raise
         return check_parameters(previous, payload)
@@ -94,8 +138,14 @@ def start(payload: StartDiagnostic, user: CurrentUser, db: SessionDep):
 
 @router.get('/me/sessions')
 def history(user: CurrentUser, db: SessionDep):
-    return [session_data(s, False) for s in db.scalars(select(DiagnosticSession)
-            .where(DiagnosticSession.user_id == user.id).order_by(DiagnosticSession.started_at.desc()))]
+    return [
+        session_data(s, False)
+        for s in db.scalars(
+            select(DiagnosticSession)
+            .where(DiagnosticSession.user_id == user.id)
+            .order_by(DiagnosticSession.started_at.desc())
+        )
+    ]
 
 
 @router.get('/sessions/{session_id}')

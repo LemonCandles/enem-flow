@@ -36,11 +36,24 @@ def test_authentication_and_session_revocation(student, database):
 
 
 def test_registration_validation_csrf_and_roles(client):
-    assert client.post('/auth/register', json={"name": "Pessoa", "email": "invalido", "password": "short"}).status_code == 422
-    response = client.post('/auth/register', json={"name": "Pessoa", "email": "pessoa@example.com", "password": "senha-secreta-forte", "role": "admin"})
+    assert (
+        client.post('/auth/register', json={"name": "Pessoa", "email": "invalido", "password": "short"}).status_code
+        == 422
+    )
+    response = client.post(
+        '/auth/register',
+        json={"name": "Pessoa", "email": "pessoa@example.com", "password": "senha-secreta-forte", "role": "admin"},
+    )
     assert response.status_code == 422
     assert 'senha-secreta-forte' not in response.text
-    assert client.post('/auth/login', headers={"Origin": "https://evil.example"}, json={"email": "pessoa@example.com", "password": "senha-secreta-forte"}).status_code == 403
+    assert (
+        client.post(
+            '/auth/login',
+            headers={"Origin": "https://evil.example"},
+            json={"email": "pessoa@example.com", "password": "senha-secreta-forte"},
+        ).status_code
+        == 403
+    )
     assert client.get('/admin/exams').status_code == 401
 
 
@@ -53,8 +66,16 @@ def test_draft_visibility_and_publication_gate(admin, student, exam_payload):
     assert admin.post('/admin/imports', json=exam_payload).status_code == 201
     assert student.get('/exams').json() == []
     assert student.get('/exams/prova-teste').status_code == 404
-    assert student.post('/exam-runs', json={"exam_id": "prova-teste", "idempotency_key": "unpublished-key"}).status_code == 404
-    assert admin.post('/admin/reviews/prova-teste', json={"action": "publish", "reason": "Tentar sem aprovação de itens"}).status_code == 409
+    assert (
+        student.post('/exam-runs', json={"exam_id": "prova-teste", "idempotency_key": "unpublished-key"}).status_code
+        == 404
+    )
+    assert (
+        admin.post(
+            '/admin/reviews/prova-teste', json={"action": "publish", "reason": "Tentar sem aprovação de itens"}
+        ).status_code
+        == 409
+    )
 
 
 def test_answer_key_never_leaks_before_finish(published, student):
@@ -83,7 +104,15 @@ def test_scoring_annulment_blank_and_idempotent_finish(published, student, datab
     first = student.post(f"/exam-runs/{run['id']}/finish")
     assert first.status_code == 200
     data = first.json()
-    assert data['result'] == {"correct": 1, "total": 2, "answered": 1, "unanswered": 1, "incorrect": 0, "annulled": 1, "percentage": 50.0}
+    assert data['result'] == {
+        "correct": 1,
+        "total": 2,
+        "answered": 1,
+        "unanswered": 1,
+        "incorrect": 0,
+        "annulled": 1,
+        "percentage": 50.0,
+    }
     assert student.post(f"/exam-runs/{run['id']}/finish").json() == data
     assert student.put(f"/exam-runs/{run['id']}/answers/teste-q1:1", json={"choice": "A"}).status_code == 409
     assert len(student.get('/me/history').json()) == 1
@@ -100,7 +129,10 @@ def test_scoring_annulment_blank_and_idempotent_finish(published, student, datab
 def test_user_isolation_including_finish_and_history(published, student):
     run = start(student)
     with TestClient(app) as other:
-        other.post('/auth/register', json={"name": "Outra Pessoa", "email": "outra@example.com", "password": "outra-senha-longa"})
+        other.post(
+            '/auth/register',
+            json={"name": "Outra Pessoa", "email": "outra@example.com", "password": "outra-senha-longa"},
+        )
         assert other.get(f"/exam-runs/{run['id']}").status_code == 404
         assert other.put(f"/exam-runs/{run['id']}/answers/teste-q1:1", json={"choice": "B"}).status_code == 404
         assert other.post(f"/exam-runs/{run['id']}/finish").status_code == 404
@@ -124,7 +156,13 @@ def test_revisions_preserve_old_open_and_finished_runs(published, student, admin
     run = start(student)
     original = admin.get('/admin/exams/prova-teste').json()['items'][0]['content']
     changed = {**original, 'statement': 'Enunciado corrigido em uma nova versão.', 'correct_answer': 'D'}
-    assert admin.put('/admin/questions/teste-q1:1', json={"content": changed, "reason": "Correção de conteúdo para testar versões"}).json()['version'] == 2
+    assert (
+        admin.put(
+            '/admin/questions/teste-q1:1',
+            json={"content": changed, "reason": "Correção de conteúdo para testar versões"},
+        ).json()['version']
+        == 2
+    )
     assert student.get('/exams').json() == []
     old = student.get(f"/exam-runs/{run['id']}").json()['items'][0]
     assert old['statement'] == original['statement'] and old['version'] == 1
@@ -132,8 +170,15 @@ def test_revisions_preserve_old_open_and_finished_runs(published, student, admin
     result = student.post(f"/exam-runs/{run['id']}/finish").json()
     assert result['result']['correct'] == 1
     assert result['items'][0]['correct_answer'] == 'B'
-    admin.post('/admin/reviews/teste-q1:2', json={"action": "approve", "reason": "Revisão da segunda versão para teste"})
-    assert admin.post('/admin/reviews/prova-teste', json={"action": "publish", "reason": "Publicação com a versão corrigida"}).status_code == 200
+    admin.post(
+        '/admin/reviews/teste-q1:2', json={"action": "approve", "reason": "Revisão da segunda versão para teste"}
+    )
+    assert (
+        admin.post(
+            '/admin/reviews/prova-teste', json={"action": "publish", "reason": "Publicação com a versão corrigida"}
+        ).status_code
+        == 200
+    )
     newer = student.post('/exam-runs', json={"exam_id": "prova-teste", "idempotency_key": "new-version-key"}).json()
     assert newer['items'][0]['version'] == 2
     assert student.get(f"/exam-runs/{run['id']}").json() == result
@@ -162,8 +207,13 @@ def test_all_annulled_has_no_percentage(admin, student, exam_payload):
         question['content']['correct_answer'] = None
     admin.post('/admin/imports', json=exam_payload)
     for question in exam_payload['questions']:
-        admin.post(f"/admin/reviews/{question['question_id']}:1", json={"action": "approve", "reason": "Questões anuladas em cenário de teste"})
-    admin.post('/admin/reviews/prova-teste', json={"action": "publish", "reason": "Coleção anulada para cenário de teste"})
+        admin.post(
+            f"/admin/reviews/{question['question_id']}:1",
+            json={"action": "approve", "reason": "Questões anuladas em cenário de teste"},
+        )
+    admin.post(
+        '/admin/reviews/prova-teste', json={"action": "publish", "reason": "Coleção anulada para cenário de teste"}
+    )
     run = start(student)
     result = student.post(f"/exam-runs/{run['id']}/finish").json()['result']
     assert result['total'] == 0 and result['percentage'] is None and result['annulled'] == 3
@@ -187,22 +237,31 @@ def test_recovery_token_is_single_use_and_revokes_sessions(student, database):
         user = db.scalar(select(User).where(User.email == 'aluno@example.com'))
         db.add(RecoveryToken(token_hash=digest(token), user_id=user.id, expires_at=time.time() + 100))
     body = {"token": token, "password": "nova-senha-segura"}
-    response=student.post('/auth/reset-password', json=body)
+    response = student.post('/auth/reset-password', json=body)
     assert response.status_code == 200
     assert 'Max-Age=0' in response.headers['set-cookie']
     assert student.post('/auth/reset-password', json=body).status_code == 400
     assert student.get('/me').status_code == 401
-    assert student.post('/auth/login', json={"email": "aluno@example.com", "password": "nova-senha-segura"}).status_code == 200
+    assert (
+        student.post('/auth/login', json={"email": "aluno@example.com", "password": "nova-senha-segura"}).status_code
+        == 200
+    )
 
 
 def test_login_throttle_counts_failed_requests(client):
     for _ in range(30):
-        assert client.post('/auth/login', json={"email": "none@example.com", "password": "wrong-password"}).status_code == 401
-    assert client.post('/auth/login', json={"email": "none@example.com", "password": "wrong-password"}).status_code == 429
+        assert (
+            client.post('/auth/login', json={"email": "none@example.com", "password": "wrong-password"}).status_code
+            == 401
+        )
+    assert (
+        client.post('/auth/login', json={"email": "none@example.com", "password": "wrong-password"}).status_code == 429
+    )
 
 
 def test_bundled_official_exam_integrity():
     import hashlib
+
     root = Path(__file__).resolve().parents[2]
     data = ExamImport.model_validate_json((root / 'data/enem-2024-dia2-azul.json').read_text())
     assert data.kind == 'complete' and len(data.questions) == data.expected_items == 90
@@ -212,5 +271,15 @@ def test_bundled_official_exam_integrity():
         assert q.content.layout['blocks']
         for image in q.content.images:
             assert (root / 'data' / image.path.lstrip('/')).is_file()
-    assert hashlib.sha256((root / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf').read_bytes()).hexdigest() == data.source.sha256
-    assert hashlib.sha256((root / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf').read_bytes()).hexdigest() == data.source.answer_key_sha256
+    assert (
+        hashlib.sha256(
+            (root / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf').read_bytes()
+        ).hexdigest()
+        == data.source.sha256
+    )
+    assert (
+        hashlib.sha256(
+            (root / 'data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf').read_bytes()
+        ).hexdigest()
+        == data.source.answer_key_sha256
+    )

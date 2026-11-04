@@ -1,4 +1,5 @@
 """Deterministic student state, reconstructed from finalized events and snapshots."""
+
 from collections import defaultdict
 
 from sqlalchemy import select
@@ -6,15 +7,21 @@ from sqlalchemy import select
 from ..models import DiagnosticSession, LearningEvent
 from .diagnostics import eligible_items, identity, user_origins
 
-ESTIMATOR = {'version': 'beta-first-independent-v1', 'prior_alpha': 1, 'prior_beta': 1,
-             'minimum_evidence': 5, 'recent_limit': 20,
-             'independence': 'first_answer_without_help_per_canonical_identity'}
+ESTIMATOR = {
+    'version': 'beta-first-independent-v1',
+    'prior_alpha': 1,
+    'prior_beta': 1,
+    'minimum_evidence': 5,
+    'recent_limit': 20,
+    'independence': 'first_answer_without_help_per_canonical_identity',
+}
 
 
 def groups_for(area, labels):
     namespace = (area, labels.get('discipline'), labels.get('taxonomy_version', 'manual-v1'))
     return [('theme', *namespace, theme) for theme in sorted(set(labels.get('themes', [])))] + [
-            ('skill', area, None, 'official-enem', skill) for skill in sorted(set(labels.get('skills', [])))]
+        ('skill', area, None, 'official-enem', skill) for skill in sorted(set(labels.get('skills', [])))
+    ]
 
 
 def reconstruct(db, user_id):
@@ -25,11 +32,27 @@ def reconstruct(db, user_id):
     def group(key):
         if key not in rows:
             kind, area, discipline, taxonomy, name = key
-            rows[key] = {'kind': kind, 'area': area, 'discipline': discipline, 'taxonomy_version': taxonomy,
-                         'name': name, 'attempts': 0, 'correct': 0, 'independent_attempts': 0,
-                         'independent_correct': 0, 'assisted_attempts': 0, 'assisted_correct': 0,
-                         'unknown_help_attempts': 0, 'repeated_attempts': 0, 'unanswered': 0,
-                         'annulled': 0, 'last_practice': None, 'recent': [], '_seen': set(), '_answered': set()}
+            rows[key] = {
+                'kind': kind,
+                'area': area,
+                'discipline': discipline,
+                'taxonomy_version': taxonomy,
+                'name': name,
+                'attempts': 0,
+                'correct': 0,
+                'independent_attempts': 0,
+                'independent_correct': 0,
+                'assisted_attempts': 0,
+                'assisted_correct': 0,
+                'unknown_help_attempts': 0,
+                'repeated_attempts': 0,
+                'unanswered': 0,
+                'annulled': 0,
+                'last_practice': None,
+                'recent': [],
+                '_seen': set(),
+                '_answered': set(),
+            }
         return rows[key]
 
     # Include available dimensions with zero evidence, plus historical dimensions.
@@ -83,11 +106,20 @@ def reconstruct(db, user_id):
             elif context.get('help_used') is not False:
                 row['unknown_help_attempts'] += 1
             row['last_practice'] = finished
-            row['recent'].append({'date': finished, 'origin_id': origin_id, 'mode': mode,
-                                  'item_id': event.item_id, 'canonical_id': canonical,
-                                  'correct': event.correct, 'help_used': context.get('help_used'),
-                                  'independent': independent, 'repeated': bool(repeated)})
-            row['recent'] = row['recent'][-ESTIMATOR['recent_limit']:]
+            row['recent'].append(
+                {
+                    'date': finished,
+                    'origin_id': origin_id,
+                    'mode': mode,
+                    'item_id': event.item_id,
+                    'canonical_id': canonical,
+                    'correct': event.correct,
+                    'help_used': context.get('help_used'),
+                    'independent': independent,
+                    'repeated': bool(repeated),
+                }
+            )
+            row['recent'] = row['recent'][-ESTIMATOR['recent_limit'] :]
         if independent:
             independent_seen.add(canonical)
         if valid:
@@ -96,9 +128,13 @@ def reconstruct(db, user_id):
     for key in sorted(rows, key=lambda k: tuple(v or '' for v in k)):
         row = rows[key]
         n, correct = row['independent_attempts'], row['independent_correct']
-        row.update(alpha=1 + correct, beta=1 + n - correct,
-                   estimate=(1 + correct) / (2 + n) if n else None,
-                   evidence_status='none' if not n else 'low' if n < 5 else 'available',
-                   seen_items=len(row.pop('_seen')), distinct_answered_items=len(row.pop('_answered')))
+        row.update(
+            alpha=1 + correct,
+            beta=1 + n - correct,
+            estimate=(1 + correct) / (2 + n) if n else None,
+            evidence_status='none' if not n else 'low' if n < 5 else 'available',
+            seen_items=len(row.pop('_seen')),
+            distinct_answered_items=len(row.pop('_answered')),
+        )
         result[row.pop('kind')].append(row)
     return {'estimator': ESTIMATOR, 'themes': result['theme'], 'skills': result['skill']}

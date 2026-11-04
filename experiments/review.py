@@ -1,4 +1,5 @@
 """Relatório local com coordenadas sobre o original e cronômetro explícito."""
+
 import html
 import json
 
@@ -26,14 +27,24 @@ def render_review(config, output):
                 overlays = []
                 for kind, blocks in [('reference', example['blocks']), ('proposal', proposals[key]['blocks'])]:
                     for block in blocks:
-                        if block['page'] != region['page'] or not clip.contains(fitz.Point(block['bbox'][0] + .1, block['bbox'][1] + .1)):
+                        if block['page'] != region['page'] or not clip.contains(
+                            fitz.Point(block['bbox'][0] + 0.1, block['bbox'][1] + 0.1)
+                        ):
                             continue
                         box = fitz.Rect(block['bbox']) & clip
-                        style = f'left:{100*(box.x0-clip.x0)/clip.width:.3f}%;top:{100*(box.y0-clip.y0)/clip.height:.3f}%;width:{100*box.width/clip.width:.3f}%;height:{100*box.height/clip.height:.3f}%'
-                        label = f'{block["order"]} {block["type"]}' + (f' [{block["alternative"]}]' if block['alternative'] else '')
-                        overlays.append(f'<div class="box {kind}" style="{style}" title="{html.escape(label)}"><span>{html.escape(label)}</span></div>')
-                images.append(f'<div class="page"><img alt="Original, {html.escape(key)}, página {region["page"]}" src="review-assets/{name}">{"".join(overlays)}</div>')
-        sections.append(f'<article id="{key}"><h2>{html.escape(key)} · {html.escape(example["split"])}</h2><p>{html.escape(example["pattern"])}</p><div class="pages">{"".join(images)}</div><p class="status" aria-live="polite"></p><button class="start" data-id="{key}">Iniciar revisão</button> <select aria-label="Decisão"><option value="accept">Aceitar proposta</option><option value="correct">Exige correção</option><option value="reject">Rejeitar proposta</option></select><label>Justificativa / correções<textarea minlength="10"></textarea></label><button class="record" data-id="{key}">Registrar tempo e decisão</button></article>')
+                        style = f'left:{100 * (box.x0 - clip.x0) / clip.width:.3f}%;top:{100 * (box.y0 - clip.y0) / clip.height:.3f}%;width:{100 * box.width / clip.width:.3f}%;height:{100 * box.height / clip.height:.3f}%'
+                        label = f'{block["order"]} {block["type"]}' + (
+                            f' [{block["alternative"]}]' if block['alternative'] else ''
+                        )
+                        overlays.append(
+                            f'<div class="box {kind}" style="{style}" title="{html.escape(label)}"><span>{html.escape(label)}</span></div>'
+                        )
+                images.append(
+                    f'<div class="page"><img alt="Original, {html.escape(key)}, página {region["page"]}" src="review-assets/{name}">{"".join(overlays)}</div>'
+                )
+        sections.append(
+            f'<article id="{key}"><h2>{html.escape(key)} · {html.escape(example["split"])}</h2><p>{html.escape(example["pattern"])}</p><div class="pages">{"".join(images)}</div><p class="status" aria-live="polite"></p><button class="start" data-id="{key}">Iniciar revisão</button> <select aria-label="Decisão"><option value="accept">Aceitar proposta</option><option value="correct">Exige correção</option><option value="reject">Rejeitar proposta</option></select><label>Justificativa / correções<textarea minlength="10"></textarea></label><button class="record" data-id="{key}">Registrar tempo e decisão</button></article>'
+        )
     payload = json.dumps({'targets': targets, 'method': method}).replace('<', '\\u003c')
     document = '''<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Enem Flow · revisão dos experimentos</title>
 <style>body{font:16px system-ui;background:#f6f5f0;color:#242424;max-width:1300px;margin:auto;padding:24px}article{border-top:1px solid #888;padding:24px 0}.pages{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}.page{position:relative;width:min(100%,560px);background:white}.page img{display:block;width:100%}.box{position:absolute;box-sizing:border-box;border:2px solid #007568;pointer-events:none}.box span{font:10px system-ui;position:absolute;top:0;background:#fff;color:#242424}.proposal{border-color:#b33327}.proposal span{right:0}.hide-reference .reference,.hide-proposal .proposal{display:none}textarea{display:block;width:100%;min-height:70px}label{display:block;margin:10px 0}button,select,input{font:inherit;padding:8px}button{cursor:pointer}header{position:sticky;top:0;background:#f6f5f0;padding:12px;z-index:2;border-bottom:1px solid #888}.status{min-height:24px}</style>

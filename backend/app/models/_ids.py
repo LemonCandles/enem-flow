@@ -1,4 +1,5 @@
 """Identifiers shared by the tables."""
+
 import uuid
 
 

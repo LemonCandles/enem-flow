@@ -1,4 +1,5 @@
 """Application assembly: lifespan, request policy, validation errors, static assets and feature routers."""
+
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -13,13 +14,25 @@ from .routers import account, admin, auth, exams, health, progress, runs, diagno
 # Documentation only: groups shown in /docs, in this order.
 TAGS = [
     {"name": "saúde", "description": "Verificação de funcionamento da API e do banco."},
-    {"name": "autenticação", "description": "Cadastro, entrada, saída e redefinição de senha por link de uso único. Limitado por tentativas."},
+    {
+        "name": "autenticação",
+        "description": "Cadastro, entrada, saída e redefinição de senha por link de uso único. Limitado por tentativas.",
+    },
     {"name": "conta", "description": "Dados e preferências da conta conectada."},
     {"name": "provas", "description": "Catálogo público de provas publicadas, sem gabarito."},
-    {"name": "execuções", "description": "Tentativas de prova: início idempotente, respostas salvas e finalização com correção."},
+    {
+        "name": "execuções",
+        "description": "Tentativas de prova: início idempotente, respostas salvas e finalização com correção.",
+    },
     {"name": "desempenho", "description": "Histórico e agregações de desempenho da própria conta."},
-    {"name": "curadoria", "description": "Importação, edição versionada, revisão, publicação e auditoria. Exige papel de curadoria."},
-    {"name": "acervo", "description": "Consulta somente leitura às extrações do acervo oficial e à taxonomia. Exige papel de curadoria."},
+    {
+        "name": "curadoria",
+        "description": "Importação, edição versionada, revisão, publicação e auditoria. Exige papel de curadoria.",
+    },
+    {
+        "name": "acervo",
+        "description": "Consulta somente leitura às extrações do acervo oficial e à taxonomia. Exige papel de curadoria.",
+    },
 ]
 
 

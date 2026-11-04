@@ -1,4 +1,5 @@
 """Exam attempts: start, resume, save answers and finish with scoring."""
+
 import copy
 import time
 
@@ -19,11 +20,18 @@ router = APIRouter(prefix="/exam-runs", tags=["execuções"])
 def owned_run(db, run_id, user_id, lock=False):
     if lock:
         # A write lock works in SQLite too, where SELECT FOR UPDATE is ignored.
-        found = db.execute(update(m.ExamRun).where(m.ExamRun.id == run_id, m.ExamRun.user_id == user_id)
-                           .values(started_at=m.ExamRun.started_at)).rowcount
+        found = db.execute(
+            update(m.ExamRun)
+            .where(m.ExamRun.id == run_id, m.ExamRun.user_id == user_id)
+            .values(started_at=m.ExamRun.started_at)
+        ).rowcount
         if not found:
             raise HTTPException(404, "Execução não encontrada.")
-    run = db.scalar(select(m.ExamRun).where(m.ExamRun.id == run_id, m.ExamRun.user_id == user_id).execution_options(populate_existing=True))
+    run = db.scalar(
+        select(m.ExamRun)
+        .where(m.ExamRun.id == run_id, m.ExamRun.user_id == user_id)
+        .execution_options(populate_existing=True)
+    )
     if not run:
         raise HTTPException(404, "Execução não encontrada.")
     return run
@@ -31,14 +39,22 @@ def owned_run(db, run_id, user_id, lock=False):
 
 def run_data(run):
     finished = run.finished_at is not None
-    return {"id": run.id, "exam": run.exam_info, "started_at": run.started_at, "finished_at": run.finished_at,
-            "answers": run.answers, "result": run.result,
-            "items": [public_question(item, finished) for item in run.items]}
+    return {
+        "id": run.id,
+        "exam": run.exam_info,
+        "started_at": run.started_at,
+        "finished_at": run.finished_at,
+        "answers": run.answers,
+        "result": run.result,
+        "items": [public_question(item, finished) for item in run.items],
+    }
 
 
 @router.post("", status_code=201)
 def start_run(payload: s.StartRun, user: CurrentUser, db: SessionDep):
-    previous = db.scalar(select(m.ExamRun).where(m.ExamRun.user_id == user.id, m.ExamRun.start_key == payload.idempotency_key))
+    previous = db.scalar(
+        select(m.ExamRun).where(m.ExamRun.user_id == user.id, m.ExamRun.start_key == payload.idempotency_key)
+    )
     if previous:
         if previous.exam_id != payload.exam_id:
             raise HTTPException(409, "Esta chave já foi usada para outra prova.")
@@ -47,16 +63,31 @@ def start_run(payload: s.StartRun, user: CurrentUser, db: SessionDep):
     items = []
     for key in exam.items:
         question = db.get(m.QuestionVersion, key)
-        items.append({"id": key, "question_id": question.question_id, "version": question.version,
-                      "canonical_id": question.canonical_id, "content": copy.deepcopy(question.content)})
-    run = m.ExamRun(user_id=user.id, exam_id=exam.id, start_key=payload.idempotency_key,
-                    exam_info=summary(db, exam), items=items, answers={})
+        items.append(
+            {
+                "id": key,
+                "question_id": question.question_id,
+                "version": question.version,
+                "canonical_id": question.canonical_id,
+                "content": copy.deepcopy(question.content),
+            }
+        )
+    run = m.ExamRun(
+        user_id=user.id,
+        exam_id=exam.id,
+        start_key=payload.idempotency_key,
+        exam_info=summary(db, exam),
+        items=items,
+        answers={},
+    )
     db.add(run)
     try:
         db.flush()
     except IntegrityError:
         db.rollback()
-        run = db.scalar(select(m.ExamRun).where(m.ExamRun.user_id == user.id, m.ExamRun.start_key == payload.idempotency_key))
+        run = db.scalar(
+            select(m.ExamRun).where(m.ExamRun.user_id == user.id, m.ExamRun.start_key == payload.idempotency_key)
+        )
         if run.exam_id != payload.exam_id:
             raise HTTPException(409, "Esta chave já foi usada para outra prova.")
     return run_data(run)

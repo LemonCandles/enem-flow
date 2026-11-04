@@ -37,8 +37,9 @@ def verify_password(password: str, stored: str):
 def new_session(db: Session, user: User, response: Response):
     token = secrets.token_urlsafe(32)
     db.add(AuthSession(token_hash=digest(token), user_id=user.id, expires_at=time.time() + SESSION_AGE))
-    response.set_cookie(COOKIE, token, max_age=SESSION_AGE, httponly=True,
-                        secure=cookie_secure(), samesite="strict", path="/")
+    response.set_cookie(
+        COOKIE, token, max_age=SESSION_AGE, httponly=True, secure=cookie_secure(), samesite="strict", path="/"
+    )
 
 
 def current_user(request: Request, db: Session = Depends(get_db, scope="function")):
@@ -59,5 +60,4 @@ def admin_user(user: User = Depends(current_user)):
 
 
 def user_data(user: User):
-    return {"id": user.id, "name": user.name, "email": user.email,
-            "role": user.role, "preferences": user.preferences}
+    return {"id": user.id, "name": user.name, "email": user.email, "role": user.role, "preferences": user.preferences}

@@ -1,4 +1,5 @@
 """Contratos experimentais separados do conteúdo publicável e dos rótulos aprovados."""
+
 import math
 from typing import Literal
 
@@ -45,9 +46,18 @@ class ExternalPredictions(Contract):
 
 class ProposedLabels(Contract):
     discipline: Literal['Matemática']
-    themes: list[Literal['Estatística', 'Geometria espacial', 'Geometria plana', 'Grandezas e medidas',
-                         'Gráficos e coordenadas', 'Números e proporcionalidade',
-                         'Probabilidade e combinatória', 'Álgebra e funções']] = Field(min_length=1, max_length=1)
+    themes: list[
+        Literal[
+            'Estatística',
+            'Geometria espacial',
+            'Geometria plana',
+            'Grandezas e medidas',
+            'Gráficos e coordenadas',
+            'Números e proporcionalidade',
+            'Probabilidade e combinatória',
+            'Álgebra e funções',
+        ]
+    ] = Field(min_length=1, max_length=1)
     skills: list[str] = Field(max_length=0)
 
 
@@ -127,12 +137,22 @@ class LayoutExample(Contract):
         if len(ids) != len(self.blocks) or sorted(b.order for b in self.blocks) != list(range(len(self.blocks))):
             raise ValueError('Identificadores e ordem dos blocos precisam ser únicos.')
         for b in self.blocks:
-            if not any(r.page == b.page and r.bbox[0] <= b.bbox[0] + 2 and r.bbox[1] <= b.bbox[1] + 2
-                       and r.bbox[2] >= b.bbox[2] - 2 and r.bbox[3] >= b.bbox[3] - 2 for r in self.regions):
+            if not any(
+                r.page == b.page
+                and r.bbox[0] <= b.bbox[0] + 2
+                and r.bbox[1] <= b.bbox[1] + 2
+                and r.bbox[2] >= b.bbox[2] - 2
+                and r.bbox[3] >= b.bbox[3] - 2
+                for r in self.regions
+            ):
                 raise ValueError('Bloco fora da região anotada.')
         types = {b.id: b.type for b in self.blocks}
-        if any(link.source not in ids or types.get(link.target) != 'image'
-               or types.get(link.source) != link.relation.removesuffix('_of') for link in self.links):
+        if any(
+            link.source not in ids
+            or types.get(link.target) != 'image'
+            or types.get(link.source) != link.relation.removesuffix('_of')
+            for link in self.links
+        ):
             raise ValueError('Vínculo de figura inválido.')
         return self
 

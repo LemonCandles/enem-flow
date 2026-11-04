@@ -26,15 +26,23 @@ def test_answer_key_reads_the_declared_language_column():
 
 def test_combined_color_keys_require_the_booklet_and_do_not_use_the_last_column():
     from experiments.archive_audit import independent_key
-    header='Azul Gab_Azul Amarelo Gab_Amarelo Branco Gab_Branco Rosa Gab_Rosa\n'
-    table='1 C 1 A 1 D 1 B\n2 D 2 E 2 A 2 C\n'
-    vertical=header+'1\nC\n1\nA\n1\nD\n1\nB\n2\nD\n2\nE\n2\nA\n2\nC\n'
-    for color,expected in [('Azul',{1:'C',2:'D'}),('Amarelo',{1:'A',2:'E'}),('Branco',{1:'D',2:'A'}),('Rosa',{1:'B',2:'C'})]:
-        assert answer_key_rows(vertical,booklet='Caderno · '+color)==expected
-        assert independent_key(header+table,None,{1,2},color)==expected
-    with pytest.raises(ValueError,match='várias cores'):answer_key_rows(vertical)
-    with pytest.raises(ValueError,match='conflitantes'):answer_key_rows('1 A\n1 B\n')
-    assert independent_key('Inglês Espanhol\n91 E D 136 A\n','espanhol',{91,136})=={91:'D',136:'A'}
+
+    header = 'Azul Gab_Azul Amarelo Gab_Amarelo Branco Gab_Branco Rosa Gab_Rosa\n'
+    table = '1 C 1 A 1 D 1 B\n2 D 2 E 2 A 2 C\n'
+    vertical = header + '1\nC\n1\nA\n1\nD\n1\nB\n2\nD\n2\nE\n2\nA\n2\nC\n'
+    for color, expected in [
+        ('Azul', {1: 'C', 2: 'D'}),
+        ('Amarelo', {1: 'A', 2: 'E'}),
+        ('Branco', {1: 'D', 2: 'A'}),
+        ('Rosa', {1: 'B', 2: 'C'}),
+    ]:
+        assert answer_key_rows(vertical, booklet='Caderno · ' + color) == expected
+        assert independent_key(header + table, None, {1, 2}, color) == expected
+    with pytest.raises(ValueError, match='várias cores'):
+        answer_key_rows(vertical)
+    with pytest.raises(ValueError, match='conflitantes'):
+        answer_key_rows('1 A\n1 B\n')
+    assert independent_key('Inglês Espanhol\n91 E D 136 A\n', 'espanhol', {91, 136}) == {91: 'D', 136: 'A'}
 
 
 def test_generated_exam_metadata_follows_the_period_of_the_exam():
@@ -44,7 +52,9 @@ def test_generated_exam_metadata_follows_the_period_of_the_exam():
     assert [a['area'] for a in areas(2017, 1)] == ['Linguagens', 'Ciências Humanas']
     assert areas(2022, 2)[1] == dict(first=136, last=180, area='Matemática', discipline='Matemática')
     assert booklet_label('caderno-1-azul-ingles') == 'Caderno 1 · Azul · Inglês'
-    assert exam_id(2022, 'digital', 1, 'caderno-1-azul-ingles', 'ingles') == 'enem-2022-digital-dia1-caderno-1-azul-ingles'
+    assert (
+        exam_id(2022, 'digital', 1, 'caderno-1-azul-ingles', 'ingles') == 'enem-2022-digital-dia1-caderno-1-azul-ingles'
+    )
     assert exam_id(2022, 'regular', 1, 'caderno-1-azul', 'espanhol') == 'enem-2022-regular-dia1-caderno-1-azul-espanhol'
 
 
@@ -75,14 +85,18 @@ def test_generated_exams_are_published_without_curation_and_only_once(tmp_path, 
     with database.begin() as db:
         result = publish_generated(db, tmp_path)
     assert result['published'] == 1 and result['existing'] == 0
-    assert [f['id'] for f in result['failed']] == ['acervo-duplicado','arquivo-invalido']
+    assert [f['id'] for f in result['failed']] == ['acervo-duplicado', 'arquivo-invalido']
     with database() as db:
         exam = db.get(Exam, 'acervo-com-pendencia')
         assert exam.status == 'published'
         assert all(db.get(QuestionVersion, key).status == 'approved' for key in exam.items)
-        assert exam_summary(db,exam)['content_quality']==dict(origin='automatic',review_status='pending',blocking_issues=1)
+        assert exam_summary(db, exam)['content_quality'] == dict(
+            origin='automatic', review_status='pending', blocking_issues=1
+        )
         question = db.get(QuestionVersion, exam.items[0])
-        visible = public_question(dict(id=question.id, question_id=question.question_id, version=1, content=question.content), False)
+        visible = public_question(
+            dict(id=question.id, question_id=question.question_id, version=1, content=question.content), False
+        )
         assert visible['preparation_errors'] == 1
         assert 'correct_answer' not in visible
         reviewer = bundled_reviewer(db)
@@ -113,7 +127,9 @@ def test_legacy_automatic_metadata_preserves_versions_and_manual_review(tmp_path
         assert exam_summary(db, exam)['content_quality']['review_status'] == 'pending'
         reviewer = bundled_reviewer(db)
         publish_exam(db, exam, reviewer.id, 'Conferência manual concluída')
-        assert exam_summary(db, exam)['content_quality'] == dict(origin='automatic', review_status='reviewed', blocking_issues=0)
+        assert exam_summary(db, exam)['content_quality'] == dict(
+            origin='automatic', review_status='reviewed', blocking_issues=0
+        )
     with database.begin() as db:
         publish_generated(db, tmp_path)
         assert exam_summary(db, db.get(Exam, exam_payload['id']))['content_quality']['review_status'] == 'reviewed'
