@@ -146,7 +146,6 @@ Itens fora das etapas, sem data, para retomar quando houver oportunidade.
 
 | Item | O que fazer | Por quê |
 | --- | --- | --- |
-| Regras de domínio sem dependência de HTTP | Trocar o `HTTPException` lançado por `services/` e `installers/` (conteúdo, identidade canônica e lotes conferidos) por exceções de domínio, como conflito e não encontrado. Um tratador em `main.py` as converte nos mesmos códigos e mensagens de hoje. Verificar com os testes de 401, 404, 409, 422 e 429 e com uma comparação das respostas de erro antes e depois. | Esses módulos também são usados pela CLI e pelos scripts, onde não há requisição HTTP. É a fase 2 da reorganização do backend, cuja fase 1 dividiu o código em `core/`, `models/`, `schemas/`, `services/` e `installers/`. |
 | Rotas reais do App Router | Trocar a escolha de página em `app.tsx`, sobre a rota `[[...path]]`, por rotas próprias do Next.js. | Fica fora da refatoração porque muda a estrutura de navegação e carregamento das páginas. |
 
 ## Referências locais

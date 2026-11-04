@@ -2,7 +2,7 @@ import copy
 import json
 
 import pytest
-from fastapi import HTTPException
+from backend.app.services.errors import DomainError
 
 from backend.app.installers.generated import publish_generated
 from backend.app.models import Exam, QuestionVersion
@@ -100,7 +100,7 @@ def test_generated_exams_are_published_without_curation_and_only_once(tmp_path, 
         assert visible['preparation_errors'] == 1
         assert 'correct_answer' not in visible
         reviewer = bundled_reviewer(db)
-        with pytest.raises(HTTPException, match='pendências bloqueantes'):
+        with pytest.raises(DomainError, match='pendências bloqueantes'):
             publish_exam(db, exam, reviewer.id, 'Conferência manual')
         assert db.get(Exam, 'acervo-duplicado') is None
     with database.begin() as db:
@@ -117,7 +117,7 @@ def test_legacy_automatic_metadata_preserves_versions_and_manual_review(tmp_path
         content = [copy.deepcopy(db.get(QuestionVersion, key).content) for key in items]
         exam.source = {k: v for k, v in exam.source.items() if k != 'automatic_archive'}
         reviewer = bundled_reviewer(db)
-        with pytest.raises(HTTPException, match='origem e o estado de revisão'):
+        with pytest.raises(DomainError, match='origem e o estado de revisão'):
             publish_exam(db, exam, reviewer.id, 'Origem não registrada', allow_pending=True)
     with database.begin() as db:
         assert publish_generated(db, tmp_path)['existing'] == 1

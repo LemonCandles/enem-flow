@@ -5,10 +5,9 @@ This step imports and publishes them as they are; blocking preparation issues
 are kept in each version's report instead of preventing publication.
 """
 
-from fastapi import HTTPException
-
 from .bundled import bundled_reviewer
 from ..services.content import import_exam, publish_exam
+from ..services.errors import DomainError
 from ..core.config import ROOT
 from ..models import Exam, QuestionVersion, Review
 from ..schemas import ExamImport
@@ -61,6 +60,6 @@ def publish_generated(db, directory=GENERATED):
                     db.add(Review(user_id=reviewer.id, target_id=key, action='approve', reason=REASON))
                 publish_exam(db, exam, reviewer.id, REASON, allow_pending=True)
             published.append(payload.id)
-        except (HTTPException, ValueError, OSError) as error:
+        except (DomainError, ValueError, OSError) as error:
             failed.append(dict(id=path.stem, reason=str(getattr(error, 'detail', error))))
     return dict(published=len(published), existing=existing, failed=failed)

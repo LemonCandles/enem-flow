@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
-from fastapi import HTTPException
+from backend.app.services.errors import Conflict, DomainError
 from sqlalchemy import select
 
 from backend.app.installers.bundled import bundled_reviewer, refresh_bundle
@@ -70,7 +70,7 @@ def test_native_schema_rejects_malformed_tables_and_missing_block_assets():
     payload['blocks'] = [
         {'type': 'image', 'asset': {'path': '/assets/not-found.png', 'alt': 'Figura ausente de teste'}}
     ]
-    with pytest.raises(HTTPException):
+    with pytest.raises(DomainError):
         validate_assets(payload)
 
 
@@ -202,7 +202,7 @@ def test_refresh_refuses_custom_content_even_if_statement_is_unchanged(database,
         else:
             own['correct_answer'] = 'A'
         version.content = own
-        with pytest.raises(HTTPException, match='409'):
+        with pytest.raises(Conflict):
             refresh_bundle(db, exam, after, bundled_reviewer(db))
 
 

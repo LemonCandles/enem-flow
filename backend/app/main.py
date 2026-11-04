@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .core.config import ROOT
 from .middleware import request_policy
+from .services.errors import DomainError
 from .routers import account, admin, auth, exams, health, progress, runs, diagnostics
 
 # Documentation only: groups shown in /docs, in this order.
@@ -53,6 +54,11 @@ async def invalid_input(_, exc):
     # Do not echo submitted credentials or private fields in validation errors.
     errors = [{"field": ".".join(str(p) for p in e["loc"][1:]), "message": e["msg"]} for e in exc.errors()]
     return JSONResponse({"detail": "Confira os campos informados.", "errors": errors}, status_code=422)
+
+
+@app.exception_handler(DomainError)
+async def domain_failure(_, exc):
+    return JSONResponse({"detail": exc.detail}, status_code=exc.status_code)
 
 
 # Same registration order as the routes had in a single module.

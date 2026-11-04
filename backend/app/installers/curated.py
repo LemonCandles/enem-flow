@@ -3,7 +3,7 @@
 import copy
 import json
 
-from fastapi import HTTPException
+from ..services.errors import Conflict
 from sqlalchemy import func, select
 
 from ..core.config import ROOT
@@ -87,7 +87,7 @@ def install_catalog(db, publish=False):
             changed = True
         else:
             if len(exam.items) != len(desired.questions):
-                raise HTTPException(409, 'Lote existente foi reorganizado; exige revisão manual.')
+                raise Conflict('Lote existente foi reorganizado; exige revisão manual.')
             new_keys = []
             for key, original, target, previous_target in zip(
                 exam.items, base.questions, desired.questions, previous_profile.questions
@@ -95,7 +95,7 @@ def install_catalog(db, publish=False):
                 old = db.get(QuestionVersion, key)
                 wanted = target.content.model_dump()
                 if old.question_id != target.question_id:
-                    raise HTTPException(409, 'Ordem do lote existente foi alterada.')
+                    raise Conflict('Ordem do lote existente foi alterada.')
                 validate_assets(wanted)
                 if QuestionContent.model_validate(old.content).model_dump() == wanted:
                     if old.canonical_id is None:
@@ -109,12 +109,10 @@ def install_catalog(db, publish=False):
                 if base.id == 'enem-2024-dia2-azul':
                     trusted = trusted or is_previous_bundled_content(old.question_id, old.content)
                 if not trusted:
-                    raise HTTPException(
-                        409, f'{old.question_id} tem edição própria; nenhuma substituição automática permitida.'
-                    )
+                    raise Conflict(f'{old.question_id} tem edição própria; nenhuma substituição automática permitida.')
                 # Source curation changes labels/presentation, never assessment.
                 if any(old.content[k] != wanted[k] for k in ('number', 'area', 'page', 'correct_answer', 'annulled')):
-                    raise HTTPException(409, 'Mudança de avaliação exige revisão manual.')
+                    raise Conflict('Mudança de avaliação exige revisão manual.')
                 latest = db.scalar(
                     select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id == old.question_id)
                 )

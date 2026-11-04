@@ -6,7 +6,7 @@ import json
 import re
 import unicodedata
 
-from fastapi import HTTPException
+from .errors import Conflict
 from sqlalchemy import select
 
 from ..core.config import ROOT
@@ -83,12 +83,12 @@ def identify(db, content, occurrence=None):
     if linked:
         canonical_id, official = linked
         if official != (None if content['annulled'] else content['correct_answer']):
-            raise HTTPException(
-                409, 'O gabarito difere do registrado para esta ocorrência no vínculo entre cores. Confira a fonte.'
+            raise Conflict(
+                'O gabarito difere do registrado para esta ocorrência no vínculo entre cores. Confira a fonte.'
             )
         if same_content and same_content.id != canonical_id:
-            raise HTTPException(
-                409, 'O conteúdo já tem outra identidade canônica; revise o vínculo entre cores antes de importar.'
+            raise Conflict(
+                'O conteúdo já tem outra identidade canônica; revise o vínculo entre cores antes de importar.'
             )
         identity = db.get(CanonicalQuestion, canonical_id)
         if identity:
@@ -100,8 +100,8 @@ def identify(db, content, occurrence=None):
     identity = same_content or db.get(CanonicalQuestion, 'enem-' + signature[:32])
     if identity:
         if identity.answer_signature and answer and identity.answer_signature != answer:
-            raise HTTPException(
-                409, 'O mesmo conteúdo tem gabaritos conflitantes entre ocorrências. Confira a fonte antes de unir.'
+            raise Conflict(
+                'O mesmo conteúdo tem gabaritos conflitantes entre ocorrências. Confira a fonte antes de unir.'
             )
         if not identity.answer_signature and answer:
             identity.answer_signature = answer
@@ -117,7 +117,7 @@ def validate_revision_identity(db, content, canonical_id):
     signature, _ = signatures(content)
     existing = db.scalar(select(CanonicalQuestion).where(CanonicalQuestion.signature == signature))
     if existing and existing.id != canonical_id:
-        raise HTTPException(409, 'O conteúdo pertence a outra questão canônica. Revise a duplicata antes de salvar.')
+        raise Conflict('O conteúdo pertence a outra questão canônica. Revise a duplicata antes de salvar.')
 
 
 def validate_exam_identities(items):
@@ -126,7 +126,7 @@ def validate_exam_identities(items):
     for canonical_id, content in items:
         signature, _ = signatures(content)
         if signature in content_signatures or (canonical_id and canonical_id in identities):
-            raise HTTPException(409, 'A prova contém questões duplicadas por conteúdo ou identidade canônica.')
+            raise Conflict('A prova contém questões duplicadas por conteúdo ou identidade canônica.')
         content_signatures.add(signature)
         if canonical_id:
             identities.add(canonical_id)

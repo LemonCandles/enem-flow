@@ -2,7 +2,7 @@
 
 import secrets
 
-from fastapi import HTTPException
+from ..services.errors import Conflict
 from sqlalchemy import func, select
 
 from ..services.content import publish_exam, validate_assets
@@ -28,7 +28,7 @@ def bundled_reviewer(db):
 
 def refresh_bundle(db, exam, payload, reviewer):
     if len(exam.items) != len(payload.questions):
-        raise HTTPException(409, "A prova existente foi reorganizada. Revise a atualização manualmente.")
+        raise Conflict("A prova existente foi reorganizada. Revise a atualização manualmente.")
     keys, count = [], 0
     reason = "Revisão de apresentação conferida com o caderno fonte: LaTeX matemático/químico, legendas e equações vinculadas às figuras; gabaritos e execuções preservados."
     for key, question in zip(exam.items, payload.questions):
@@ -36,19 +36,15 @@ def refresh_bundle(db, exam, payload, reviewer):
         desired = question.content.model_dump()
         validate_assets(desired)
         if old.question_id != question.question_id:
-            raise HTTPException(409, "A ordem das questões foi alterada. Revise a atualização manualmente.")
+            raise Conflict("A ordem das questões foi alterada. Revise a atualização manualmente.")
         if QuestionContent.model_validate(old.content).model_dump() == desired:
             keys.append(old.id)
             continue
         normalized_old = QuestionContent.model_validate(old.content).model_dump()
         if not is_previous_bundled_content(old.question_id, old.content):
-            raise HTTPException(
-                409, f"A questão {question.question_id} possui edição própria. A atualização não foi aplicada."
-            )
+            raise Conflict(f"A questão {question.question_id} possui edição própria. A atualização não foi aplicada.")
         if any(normalized_old[field] != desired[field] for field in ASSESSMENT_FIELDS):
-            raise HTTPException(
-                409, f"A questão {question.question_id} alterou dados de avaliação. Exige revisão manual."
-            )
+            raise Conflict(f"A questão {question.question_id} alterou dados de avaliação. Exige revisão manual.")
         latest = db.scalar(
             select(func.max(QuestionVersion.version)).where(QuestionVersion.question_id == old.question_id)
         )

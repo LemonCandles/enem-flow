@@ -69,7 +69,7 @@ O backend está organizado por responsabilidade. Caminhos abaixo relativos a `ba
 - Etapas técnicas 1/2, primeiro ciclo de Dados/IA (3) e diagnóstico (4) implementados; próxima: política adaptativa (5). Experimentos offline em `experiments/`, comando `make experiments`, protocolo em `docs/experimentos/README.md`. Propostas não publicam conteúdo; referência assistida, LLM externo e tempos humanos têm seus limites registrados. Adaptação/tutor previstos. Siga `docs/plano-implementacao/proximas-etapas.md`; atualize-o e `status-implementacao.md` após entregas.
 - Auditoria integral: `docs/experimentos/auditoria-acervo.md`, `make audit-archive`, `make audit-archive-browser` e `make experiments-all`. Correções locais exigem plano com versões/hashes e ensaio; `scripts/apply_archive_audit.py` preserva histórico, edições posteriores e a revisão independente pendente. Divergências de identidade não podem encobrir alterações de gabarito.
 - O roteiro termina na etapa 7: curadoria, publicação externa e piloto saíram dele. Use conteúdo/rótulos disponíveis e não registre esses itens como feitos. Revisão independente, leitores de tela e aparelhos reais exigem validação efetiva.
-- A fase 1 da reorganização do backend está integrada; a fase 2 (exceções de domínio sem dependência de HTTP em serviços/instaladores) continua no backlog das próximas etapas.
+- Serviços e instaladores não dependem de HTTP: lançam as exceções de `services/errors.py`, que `main.py` converte em resposta.
 
 ## Identidade visual
 

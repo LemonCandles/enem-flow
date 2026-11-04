@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
-from fastapi import HTTPException
+from backend.app.services.errors import DomainError
 from sqlalchemy import func, select
 
 from backend.app.installers.curated import classified, install_catalog
@@ -151,7 +151,7 @@ def test_catalog_labels_create_versions_keep_snapshots_and_are_idempotent(databa
         c = copy.deepcopy(c)
         c['statement'] += ' Edição própria a preservar.'
         db.get(QuestionVersion, exam.items[0]).content = c
-    with pytest.raises(HTTPException, match='edição própria'):
+    with pytest.raises(DomainError, match='edição própria'):
         with database.begin() as db:
             install_catalog(db, publish=True)
 
