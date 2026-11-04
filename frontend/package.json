@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"tests/**/*.ts\"",
     "check:content": "node scripts/validate-latex.cjs",
     "test:e2e": "playwright test"
   },
@@ -26,6 +28,7 @@
     "@types/node": "22.19.11",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "prettier": "3.9.10",
     "typescript": "5.9.3"
   }
 }

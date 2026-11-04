@@ -18,6 +18,7 @@ Execute na raiz; API e frontend em terminais separados.
 | `make api` / `make web` | API na porta 8000 / site na 3000 |
 | `make migrate seed` | Atualizar esquema e catálogo; faça backup antes |
 | `make test` | pytest, TypeScript e validação LaTeX |
+| `make lint` / `make format` | Conferir / aplicar ruff e Prettier |
 | `make build` | Build de produção |
 | `npm --prefix frontend run test:e2e` | Playwright, com serviços iniciados |
 | `make acervo` | Gerar/publicar provas locais sem curadoria |

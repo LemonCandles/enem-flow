@@ -135,9 +135,12 @@ As regras são reutilizáveis e registram transformações e ambiguidades. Fórm
 
 ```bash
 make test
+make lint
 make build
 npm --prefix frontend run check:content
 ```
+
+`make format` aplica o ruff e o Prettier. Os scripts históricos com regras por questão e as migrações já aplicadas ficam fora da formatação.
 
 Com API e frontend iniciados:
 

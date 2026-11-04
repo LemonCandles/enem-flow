@@ -1,4 +1,4 @@
-.PHONY: setup migrate seed acervo api web test build experiments experiments-archive audit-archive audit-archive-browser experiments-all
+.PHONY: setup migrate seed acervo api web test lint format build experiments experiments-archive audit-archive audit-archive-browser experiments-all
 PYTHON = .venv/bin/python
 EXPERIMENT_OUTPUT ?= tmp/experiments/latest
 AUDIT_OUTPUT ?= tmp/acervo-validacao/latest
@@ -31,6 +31,15 @@ test:
 	.venv/bin/pytest -q
 	cd frontend && npm run typecheck
 	cd frontend && npm run check:content
+
+lint:
+	.venv/bin/ruff check .
+	.venv/bin/ruff format --check .
+	cd frontend && npm run format:check
+
+format:
+	.venv/bin/ruff format .
+	cd frontend && npm run format
 
 build:
 	cd frontend && npm run build
