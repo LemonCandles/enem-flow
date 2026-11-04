@@ -5,6 +5,7 @@ from sqlalchemy import delete, select
 from .. import models as m
 from ..dependencies import CurrentUser, SessionDep
 from ..services.scoring import aggregate
+from ..services.knowledge import reconstruct
 
 router = APIRouter(prefix="/me", tags=["desempenho"])
 
@@ -28,3 +29,8 @@ def delete_history(user: CurrentUser, db: SessionDep):
     db.execute(delete(m.LearningEvent).where(m.LearningEvent.user_id == user.id))
     db.execute(delete(m.DiagnosticSession).where(m.DiagnosticSession.user_id == user.id))
     db.execute(delete(m.ExamRun).where(m.ExamRun.user_id == user.id))
+
+
+@router.get('/knowledge-state')
+def knowledge_state(user: CurrentUser, db: SessionDep):
+    return reconstruct(db, user.id)

@@ -5,7 +5,9 @@ import subprocess
 import sys
 
 from sqlalchemy import MetaData, create_engine, select
+from sqlalchemy.orm import Session
 
+from backend.app.services.knowledge import reconstruct
 
 
 def test_populated_migration_preserves_legacy_events(tmp_path, exam_payload):
@@ -40,6 +42,12 @@ def test_populated_migration_preserves_legacy_events(tmp_path, exam_payload):
     alembic('upgrade', 'head')
     alembic('check')
     engine = create_engine(url)
+    with Session(engine) as db:
+        state = reconstruct(db, 'student')
+        group = state['themes'][0]
+        assert group['independent_attempts'] == group['independent_correct'] == 1
+        assert group['estimate'] == 2 / 3
+        assert group['last_practice'] == 2
     meta = MetaData()
     meta.reflect(engine)
     with engine.connect() as conn:

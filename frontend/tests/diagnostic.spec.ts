@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 // Axe opens aggregation tabs; keep screenshots and traces as evidence.
 test.use({ video: 'off' });
 
-test('diagnóstico com teclado, retomada, exportação e exclusão', async ({ page }, info) => {
+test('diagnóstico com teclado, retomada, evidência, exportação e exclusão', async ({ page }, info) => {
   test.setTimeout(120_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -31,6 +31,10 @@ test('diagnóstico com teclado, retomada, exportação e exclusão', async ({ pa
   await page.getByRole('heading', { name: 'Questão 01', exact: true }).focus();
   await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('heading', { name: 'Questão 02', exact: true })).toBeVisible();
+  await page.goto('/progress');
+  expect((await page.request.get('/api/me/knowledge-state')).status()).toBe(200);
+  const before = await (await page.request.get('/api/me/knowledge-state')).json();
+  expect(before.themes.every((g: { estimate: number | null }) => g.estimate === null)).toBeTruthy();
   await page.goto('/history');
   await page.getByRole('link', { name: 'Continuar diagnóstico' }).click();
   await expect(page.getByRole('heading', { name: 'Questão 02', exact: true })).toBeVisible();
@@ -41,6 +45,17 @@ test('diagnóstico com teclado, retomada, exportação e exclusão', async ({ pa
   await expect(page.getByRole('dialog')).toContainText('1 de 2 questões');
   await page.getByRole('button', { name: 'Confirmar finalização' }).click();
   await expect(page.getByText('Resultado definitivo', { exact: true })).toBeVisible();
+  const state = await (await page.request.get('/api/me/knowledge-state')).json();
+  expect(state.themes.some((g: { independent_attempts: number }) => g.independent_attempts === 1)).toBeTruthy();
+  expect(state.themes.every((g: { independent_attempts: number }) => g.independent_attempts <= 1)).toBeTruthy();
+  await page.goto('/progress');
+  await expect(page.getByRole('heading', { name: 'Estado por tema e habilidade' })).toBeVisible();
+  await expect(page.getByLabel('Filtrar estado por área', { exact: true })).toHaveValue('Matemática');
+  await expect(page.getByText(/1 itens independentes · Pouca evidência/).first()).toBeVisible();
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+  await page.setViewportSize({ width: 320, height: 800 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+  await page.screenshot({ path: info.outputPath('diagnostic-state.png'), fullPage: true });
   await page.goto('/settings');
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Exportar resultados' }).click();

@@ -1,4 +1,4 @@
-"""Fixed diagnostic sessions and their immutable learning events."""
+"""Diagnostics and deterministic, independently counted student evidence."""
 import copy
 from concurrent.futures import ThreadPoolExecutor
 
@@ -7,6 +7,7 @@ from sqlalchemy import func, select
 
 from backend.app.models import DiagnosticSession, Exam, ExamRun, LearningEvent, QuestionVersion
 from backend.app.services.diagnostics import identity, select_items
+from backend.app.services.knowledge import reconstruct
 
 
 @pytest.fixture
@@ -33,6 +34,8 @@ def start(student, key='diagnostic-key-001', **kwargs):
         'available_minutes': 15, 'idempotency_key': key, **kwargs})
 
 
+def theme(student, name):
+    return next(g for g in student.get('/me/knowledge-state').json()['themes'] if g['name'] == name)
 
 
 def test_diagnostic_lifecycle_and_exam_compatibility(thematic, student, database):
@@ -50,16 +53,32 @@ def test_diagnostic_lifecycle_and_exam_compatibility(thematic, student, database
     assert student.put(f"{endpoint}/answers/unknown", json={'choice': 'A'}).status_code == 404
     for choice in ['A', None, 'B']:
         assert student.put(f"{endpoint}/answers/{item['id']}", json={'choice': choice}).status_code == 200
+    assert theme(student, item['labels']['themes'][0])['estimate'] is None
     first = student.post(f'{endpoint}/finish').json()
     assert first['result']['correct'] == 1 and first['result']['unanswered'] == 4
     assert student.post(f'{endpoint}/finish').json() == first
     assert student.put(f"{endpoint}/answers/{item['id']}", json={'choice': 'C'}).status_code == 409
+    state = theme(student, item['labels']['themes'][0])
+    assert state['estimate'] == pytest.approx(2 / 3)
+    assert state['independent_attempts'] == 1
+    assert state['evidence_status'] == 'low'
     assert student.get('/me/progress').json()['completed_runs'] == 0
     assert len(student.get('/me/sessions').json()) == 1
     with database() as db:
         assert db.scalar(select(func.count()).select_from(LearningEvent)) == 5
+    # Rebuilding uses snapshots even after the published labels change.
+    before = student.get('/me/knowledge-state').json()
+    with database.begin() as db:
+        for q in db.scalars(select(QuestionVersion)):
+            c = copy.deepcopy(q.content)
+            c['labels']['skills'] = ['MT.H12']
+            q.content = c
+    after = student.get('/me/knowledge-state').json()
+    assert after['themes'] == before['themes']
+    assert all(g['estimate'] is None for g in after['skills'])
     assert student.delete('/me/history').status_code == 204
     assert student.get('/me/sessions').json() == []
+    assert all(g['seen_items'] == 0 and g['estimate'] is None for g in student.get('/me/knowledge-state').json()['themes'])
     with database() as db:
         assert db.scalar(select(func.count()).select_from(LearningEvent)) == 0
 
@@ -105,6 +124,38 @@ def test_concurrent_start_finish_and_owned_access(thematic, student, client, dat
     assert student.get('/me/sessions').json() == []
 
 
+def test_first_independent_response_legacy_snapshots_and_recent_window(published, student, database):
+    run = student.post('/exam-runs', json={'exam_id': 'prova-teste', 'idempotency_key': 'legacy-evidence'}).json()
+    # Blank responses do not consume the first independent answer.
+    student.post(f"/exam-runs/{run['id']}/finish")
+    assert theme(student, 'Teste')['independent_attempts'] == 0
+    with database.begin() as db:
+        original = db.get(ExamRun, run['id'])
+        user_id = original.user_id
+        snapshot = copy.deepcopy(original.items[0])
+        canonical = identity(snapshot)
+        for index in range(25):
+            origin = ExamRun(user_id=user_id, exam_id='prova-teste', start_key=f'evidence-{index}',
+                             exam_info=original.exam_info, items=[snapshot], answers={snapshot['id']: 'B'},
+                             started_at=100 + index, finished_at=200 + index, result={'percentage': 100})
+            db.add(origin)
+            db.flush()
+            context = {'schema_version': '1.0', 'content_version': 1, 'canonical_id': canonical,
+                       'mode': 'exam', 'labels': snapshot['content']['labels']}
+            if index == 0:
+                context['help_used'] = True
+            elif index != 1:
+                context['help_used'] = False
+            db.add(LearningEvent(user_id=user_id, run_id=origin.id, item_id=snapshot['id'], position=1,
+                                 answer='B', correct=True, created_at=200 + index, context=context))
+    g = theme(student, 'Teste')
+    assert g['attempts'] == 25 and g['independent_attempts'] == 1
+    assert g['assisted_attempts'] == 1 and g['unknown_help_attempts'] == 1
+    assert g['repeated_attempts'] == 24 and g['distinct_answered_items'] == 1
+    assert len(g['recent']) == 20 and g['last_practice'] == 224
+    assert g['estimate'] == pytest.approx(2 / 3)
+    with database() as db:
+        assert reconstruct(db, user_id) == reconstruct(db, user_id)
 
 
 def test_selector_dedup_unseen_and_reproducibility(thematic, student, database):
@@ -125,3 +176,40 @@ def test_selector_dedup_unseen_and_reproducibility(thematic, student, database):
     seen = {identity(i) for i in selected[:2]}
     first, _ = select_items(pool, seen, 6, 'fixed-seed')
     assert not any(identity(i) in seen for i in first)
+
+
+@pytest.mark.parametrize('correct_count,total,expected', [(0, 0, None), (0, 5, 1/7), (5, 5, 6/7), (2, 5, 3/7)])
+def test_synthetic_estimator_sequences(published, student, database, correct_count, total, expected):
+    run = student.post('/exam-runs', json={'exam_id': 'prova-teste', 'idempotency_key': 'synthetic-evaluation'}).json()
+    with database.begin() as db:
+        origin = db.get(ExamRun, run['id'])
+        origin.finished_at = 123
+        base = origin.items[0]
+        items = []
+        for index in range(total):
+            item = copy.deepcopy(base)
+            item.update(id=f'synthetic-{index}', canonical_id=f'identity-{index}')
+            item['content']['labels']['skills'] = ['MT.H12']
+            item['content']['labels']['themes'] = ['Teste', 'Outro tema', 'Teste']
+            items.append(item)
+            db.add(LearningEvent(user_id=origin.user_id, run_id=origin.id, item_id=item['id'], position=index + 1,
+                answer='B', correct=index < correct_count, context={'canonical_id': item['canonical_id'], 'help_used': False,
+                'area': 'Matemática', 'labels': item['content']['labels']}))
+        origin.items = items or [base]
+    state = student.get('/me/knowledge-state').json()
+    g = next(g for g in state['themes'] if g['name'] == 'Teste')
+    assert g['independent_attempts'] == total
+    assert g['estimate'] == expected
+    assert g['evidence_status'] == ('none' if not total else 'available')
+    if total:
+        assert state['skills'][0]['estimate'] == expected
+        assert next(g for g in state['themes'] if g['name'] == 'Outro tema')['estimate'] == expected
+
+
+def test_dimension_namespaces_do_not_merge():
+    from backend.app.services.knowledge import groups_for
+    labels = {'discipline': 'Matemática', 'taxonomy_version': 'v1', 'themes': ['Números'], 'skills': []}
+    original = groups_for('Matemática', labels)
+    assert original != groups_for('Matemática', dict(labels, taxonomy_version='v2'))
+    assert original != groups_for('Ciências da Natureza', labels)
+    assert original != groups_for('Matemática', dict(labels, discipline='Física'))
