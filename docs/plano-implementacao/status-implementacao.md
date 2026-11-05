@@ -20,6 +20,8 @@ As cinco inconsistências encontradas na revisão posterior foram corrigidas, co
 
 A refatoração remota do backend foi integrada preservando essas correções, o contrato HTTP e o banco instalado. A regressão passou a **101 testes em SQLite e 101 em PostgreSQL**; a atualização foi ensaiada em uma cópia das 98 provas, sem modificar os registros existentes. Veja a [validação da integração](../revisoes/revisao-projeto-2026-11-01.md#integração-com-a-refatoração-remota).
 
+Em 04/11/2026, o código foi reorganizado sem mudar comportamento, contrato HTTP nem esquema: regras de domínio sem dependência de HTTP, ciclo de vida do conteúdo em um só módulo, fluxo comum de prova e diagnóstico, seletor de questões por versão (ponto de partida da etapa 5), pacote `ingestion/` para a leitura das fontes e divisão do frontend. As saídas foram comparadas antes e depois.
+
 ## O que já está disponível
 
 - **Jornada do estudante:** conta individual, preferências, catálogo, resolução de provas, respostas salvas, retomada, correção e histórico.
