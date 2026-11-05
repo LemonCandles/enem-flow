@@ -38,6 +38,8 @@ A edição verifica colisões com assinaturas canônicas conhecidas e duplicidad
 
 `installers/generated.py` é a exceção explícita de publicação automática local: admite pendências de preparação, preserva os relatórios e registra origem e revisão pendente em `source.automatic_archive`. `content_quality` leva esse estado ao catálogo e ao snapshot da prova; `preparation_errors` expõe apenas a contagem de erros da questão, sem abrir layout interno ou gabarito. O site identifica esses cadernos e vincula as pendências à fonte. O fluxo manual mantém seus bloqueios. O resumo do catálogo consulta apenas identificador, estado e área das versões, sem carregar os enunciados completos.
 
+Ao marcar uma alternativa, o frontend envia o PUT com `keepalive` e guarda a resposta no `sessionStorage` até o servidor responder. Se a página recarregar antes disso, a resposta é reaplicada e reenviada, porque a leitura pode chegar antes do fim do salvamento e o pedido pode nem ter saído.
+
 `exam_runs` fixa ordem, conteúdo completo, versão e metadados da prova no início. Isso preserva também as tentativas ainda abertas quando uma questão é corrigida ou uma prova é retirada. O resultado, as escolhas definitivas e os eventos são registrados na mesma transação.
 
 Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da execução. Funciona no PostgreSQL e no SQLite, onde SELECT FOR UPDATE seria ignorado. A finalização verifica o estado após obter o bloqueio: chamadas concorrentes retornam o mesmo resultado, com uma única série de eventos. O início usa chave de idempotência única por usuário; reutilizá-la para outra prova retorna conflito.

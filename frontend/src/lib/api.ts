@@ -30,6 +30,6 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   return response.status === 204 ? (undefined as T) : response.json();
 }
 
-export function send<T>(path: string, body?: unknown, method = 'POST') {
-  return api<T>(path, { method, body: body === undefined ? undefined : JSON.stringify(body) });
+export function send<T>(path: string, body?: unknown, method = 'POST', keepalive = false) {
+  return api<T>(path, { method, keepalive, body: body === undefined ? undefined : JSON.stringify(body) });
 }
