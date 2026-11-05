@@ -89,7 +89,7 @@ Com o espelho do acervo sincronizado (`python scripts/archive_enem.py sync`), um
 make acervo
 ```
 
-Os JSONs ficam em `data/derived/exams/` e as figuras em `data/assets/<prova>/`, ambos fora do Git. O comando é idempotente: provas já publicadas não são alteradas. Detalhes, escolhas e limites estão em [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
+Os JSONs ficam em `data/derived/exams/` e as figuras em `data/assets/<prova>/`. Só as provas regulares de 2024 e 2025, caderno azul, estão no Git; as demais ficam locais. O comando é idempotente: provas já publicadas não são alteradas. Detalhes, escolhas e limites estão em [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
 
 Em 01/11/2026, o lote recebido foi instalado: **98 provas e 8.730 questões no site local**, incluindo os dois lotes conferidos; o ensaio inicial registrou 506 pendências. A [auditoria de 03/11](docs/experimentos/auditoria-acervo.md) aplicou 993 correções por novas versões, conferiu os gabaritos integralmente e acrescentou validações antes ausentes. Permanecem 441 posições com diagnósticos de preparação, além da triagem e da revisão independente. [Incorporação original](docs/banco-classificacao.md#incorporação-do-acervo-processado). Os derivados e o banco de execução continuam locais; esses dados não acompanham o clone.
 

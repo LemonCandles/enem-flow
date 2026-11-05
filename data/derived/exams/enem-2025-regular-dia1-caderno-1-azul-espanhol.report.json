@@ -1,0 +1,1298 @@
+{
+ "version": "generic-v1",
+ "exam_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol",
+ "questions": [
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q1",
+   "number": 1,
+   "version": "generic-v1",
+   "input_sha256": "9e8cde3bb0ea832a795493bb0f49cab9078bdcaa10682f25309c51332eecead6",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "6a9df66564b9847c24fecf0ad3336bac56019078f2892dd6c6247a6f126cc20b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q2",
+   "number": 2,
+   "version": "generic-v1",
+   "input_sha256": "2b2f1fc38dfb2df6d15ab8aeee446e024ba110f4e956b9cbbb04c234dffe3576",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "26a4e5e90fc32cdd16f231f29e8678ca8a661273b7dae8f3ade8f3291bc6b646"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q3",
+   "number": 3,
+   "version": "generic-v1",
+   "input_sha256": "c7a073cd002ac4e8a060dafecc66e35399053671854ed29347cb65e4dea7865c",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 3, página 4; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "c7a073cd002ac4e8a060dafecc66e35399053671854ed29347cb65e4dea7865c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q4",
+   "number": 4,
+   "version": "generic-v1",
+   "input_sha256": "2f214079eeb3882b952e3633518f97dcdefe995200a108279a9f64ccc1708af4",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 4, página 5; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "1e9d43374c5f1b531984bd96c611ae43ffbf7066909fcad22bd82986ba8ed941"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q5",
+   "number": 5,
+   "version": "generic-v1",
+   "input_sha256": "058e5f167b401c9acf8a5648ce5845d0a23fb5d297b850b24f5863185190a842",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "af1416ea412c7fea02f9d03409c185d5f644e5c16fca5105e2dc2dfb0fe16dd2"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q6",
+   "number": 6,
+   "version": "generic-v1",
+   "input_sha256": "1fabbc47cba17b77a780530feab4b6986bb3c8d018e98a1ff8f8f210a85b87ad",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "8c38eaca6d021ea46e2c2776a5f88712bd232e82148cb150d75f14df3f5c19c1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q7",
+   "number": 7,
+   "version": "generic-v1",
+   "input_sha256": "53dfb867294d2548892123787bba06e213e6ad443718067361abab248da42691",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a1373463005ab29ebd74fbc357ee2fcff2555aa09136d908a939609323141f98"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q8",
+   "number": 8,
+   "version": "generic-v1",
+   "input_sha256": "1c4a1f60f3d6900bfa05b77905b51714532ffae369f2b861fe4964be514effce",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2b0c0924b63a125717740b72b215b6e9863541165b02bc265c62084d9145e36f"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q9",
+   "number": 9,
+   "version": "generic-v1",
+   "input_sha256": "3248b8de3ffd5dbe63726ffc99be8fec2be96d1e36975ee2dd291ec9cdf25df5",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "8b9262303faf44a6b0fdc55a809654a2f8c66f7d3922d13dccd4c2f3605be641"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q10",
+   "number": 10,
+   "version": "generic-v1",
+   "input_sha256": "a8eb497ea7c6d2a2ddc2f0cfdf842f266cc004415b1d02a178d79816b4caf721",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "0d53e8cf3415e70a2af71c64176db3017de4db75a17afbb5672b95bc35ed02c1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q11",
+   "number": 11,
+   "version": "generic-v1",
+   "input_sha256": "f8d6054f054d24d1cc2a486085b5285544bbf60944abd4a0ba71d654e8dca094",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "18acb79b0ba39e7497aef2f46436c6a8f1e10cd0e9a46999893d07a7adeb8986"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q12",
+   "number": 12,
+   "version": "generic-v1",
+   "input_sha256": "245b560b22f46508c571b46c0f235830db90e16bbd174b58f328642bc4ce87de",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b14287f49d92a5cc7943e22aaef2bc7c334311588cdd7d8e79ba0a179d204ed5"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q13",
+   "number": 13,
+   "version": "generic-v1",
+   "input_sha256": "8e8b6e2f7c4184b0bfadd855f8cbaae185c058dea8115a284a4bc797c8e99bb7",
+   "changes": [],
+   "issues": [
+    {
+     "code": "complex_math",
+     "message": "Expressão espacial precisa de conferência e transcrição LaTeX; expoentes e frações não são inferidos de texto achatado.",
+     "location": "page:8",
+     "severity": "warning",
+     "excerpt": "BRASIL. Lei n. 10 639/2003. Disponível em: www.gov.br/planalto."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "251170a78e492e229881097792cf382fc9974423f743edea7ddcec4fd5059f0c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q14",
+   "number": 14,
+   "version": "generic-v1",
+   "input_sha256": "ea74f8821a425995e075a306e62eab677d9b2e8cf4b29402e3a177b7829d72a6",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 14, página 8; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "c2017b30684309170a3507a8803aaf89387a10e1781d046eb1b097cbb60edc3d"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q15",
+   "number": 15,
+   "version": "generic-v1",
+   "input_sha256": "22bf1d5be71fa381bb17fa492b8482451285c359a667512c80a3c21b4c3c7fb7",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 15, página 9; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "86de9a5e4a2f39117486ae9a94e95679f9a588c92f3af4a6c009e041b767cf42"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q16",
+   "number": 16,
+   "version": "generic-v1",
+   "input_sha256": "f80a11ae8cf45df42514a367a9e419e8b863a5836a5bec8f12c0d6963ddfd888",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a972d52813d1d59bee10045b90ad46c70358ac9e63e8b09c7eeadf5dcdcf8815"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q17",
+   "number": 17,
+   "version": "generic-v1",
+   "input_sha256": "fb38e5ec4b49d2109bea25448bf64996cd44dc5f48d8a93ac90789cd65e8518f",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9efdde7a0fe8c2602875998b4ced2f4ed1e11e51bc5dcb97d221350552a95ecf"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q18",
+   "number": 18,
+   "version": "generic-v1",
+   "input_sha256": "c4ee847eb67ee4237618b38b5123af2a6741f2da6bab7b68545166d512fb26d1",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "47d3bb16a4eb843481d2205dc7c9fab1eb66d5be6eb2e288de198673c90130a4"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q19",
+   "number": 19,
+   "version": "generic-v1",
+   "input_sha256": "62db3b9d1204fb5ff4a3dfa2018b04ee94b0f72a50e548e498a545f7654c8bdb",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e949af24160eb7b2fbf1658bd66c1f218d055ff9d12f1221c1addb428015c307"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q20",
+   "number": 20,
+   "version": "generic-v1",
+   "input_sha256": "ec8ec623ec9ab023f754b35da75d91cb585e5d50b4e355f6c213616a28fe74f5",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "1380ec7e8a8fd139cb3c6ca1335fc1ef42835d3a368307ebf24c460abc3ba2a1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q21",
+   "number": 21,
+   "version": "generic-v1",
+   "input_sha256": "501ac4ee7eb5cf6429be77cb10c4ee4d7f7a4fba6dd4ab7948cad0f1b3bf94e1",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d9a0c9379b95938cb6c64b974daa492606f81f47818ce3445aec6756a753685d"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q22",
+   "number": 22,
+   "version": "generic-v1",
+   "input_sha256": "133b867b888e342d24d3ead6f1e625337822d27b17dc3ef7827484185c26e6ac",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 22, página 11; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "133b867b888e342d24d3ead6f1e625337822d27b17dc3ef7827484185c26e6ac"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q23",
+   "number": 23,
+   "version": "generic-v1",
+   "input_sha256": "304d5e4c3ae032ae83c4be48d7e00fc3990fdc1770fcdfd0e3215a787400cd11",
+   "changes": [
+    {
+     "location": "blocks[7]",
+     "operation": "latex",
+     "before": "madeira e alumínio, 160 × 200 × 25 cm. 1999.",
+     "after": "madeira e alumínio, 160 × 200 × $25\\,\\mathrm{cm}$. 1999."
+    },
+    {
+     "location": "blocks[5]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[5].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 23, página 11; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[5]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "f915f7cbf6c98a61c97b1e5e05ff062d1f70b3806deb763297b210fc75cb27a6"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q24",
+   "number": 24,
+   "version": "generic-v1",
+   "input_sha256": "8dafcf6e86c0fccc7fd67bb528d0f30a8b63a24eac564fc613612fa470242144",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 24, página 12; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "acedb6a6f615c33d1ac1a763c2ffe624a22205d94447b2668437848cffd2a098"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q25",
+   "number": 25,
+   "version": "generic-v1",
+   "input_sha256": "5220a3f0c4057add8233f65ce08c163c05e4ef46ceb5a05e96e67b1139d9f466",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d14ec52d3d74812c247ca982908149d898ae4b1d121247e6056f9a7059a03980"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q26",
+   "number": 26,
+   "version": "generic-v1",
+   "input_sha256": "3e898936e872467ccd7f3f54b7adecace8e1ea3de5db656ebfba09a05bca0f05",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 26, página 13; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "ec3cfdbec26ecec39ad1b4c1b3c70cad8207e001fc522737f97dc073985887ea"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q27",
+   "number": 27,
+   "version": "generic-v1",
+   "input_sha256": "24db5469cdf03bd1a58b70d28c63627f101f3f78149627d30b5a162e4c414199",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "0f9c2a1cbebc11d63e7229bd68bf90129fc5a1923c990ad2c06e78d5268d8634"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q28",
+   "number": 28,
+   "version": "generic-v1",
+   "input_sha256": "2542d494667fb6783393d72729cf3c7ca2089ea45d19ff2d54596b00d89a3027",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d6b9757c9b54f9f183a9d9b6eb1a7889e183a4cbdc1817a599a62ef074f7909c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q29",
+   "number": 29,
+   "version": "generic-v1",
+   "input_sha256": "206c6edf3c6b6161d6a5c20a06a4db515229e6f5bb540529e47272aa20ed11a8",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "48f2ed4ee10735d95d833298dafea41ca8291d468163c4998416ad20e32e0356"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q30",
+   "number": 30,
+   "version": "generic-v1",
+   "input_sha256": "bf5f4fabe0830a73ed4c9d82a339d143b75050ebdd5233a3fd7f17c5dda9eef9",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "bcee480298f7af93c1d20dec77844923c5e747bce73c045c71bc826f1b7ade30"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q31",
+   "number": 31,
+   "version": "generic-v1",
+   "input_sha256": "1b327804e6e078161afdab8e4ad46ce5e8198a8b3602c0b9105e986225b7ade1",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1,
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 31, página 14; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "2295c54f65772ed458b8ef194ad3e13ab7bc4912d5943916e243eeddb88557ad"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q32",
+   "number": 32,
+   "version": "generic-v1",
+   "input_sha256": "668c68404c14871b509f4ad18663d842e1975d5d4c314f142c8e1eba4ec5f8de",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b5aab0d3784d31421ed2392d8a1aadfec29c4826981d5650d7e629db116a905c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q33",
+   "number": 33,
+   "version": "generic-v1",
+   "input_sha256": "7de112cd72344bae41ac15614ff4d2effe4667bb2ec00b107afa60fa374d62cd",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 33, página 14; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "bbe3e560031dc02408e228e686ea0931019d734ff9ac62373217f2d020e6510e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q34",
+   "number": 34,
+   "version": "generic-v1",
+   "input_sha256": "99191c1307288b320bb468348f222fbfca5ef369ce550c5a4479eaed99eaa82e",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 34, página 15; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "99191c1307288b320bb468348f222fbfca5ef369ce550c5a4479eaed99eaa82e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q35",
+   "number": 35,
+   "version": "generic-v1",
+   "input_sha256": "8d5db172f9547bf0727d18cfa173c8ca0b5975def28b5424910e931dab8fbbac",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "ee9822aa7561bd931752bc439ad2388323d4a1dd4cd3b211f60cac2f4bd9c041"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q36",
+   "number": 36,
+   "version": "generic-v1",
+   "input_sha256": "8a2062284f0275fe41eab2e3749765519c10d4446363b9cb7a70c0cc9abd0128",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4ab0571645557e2a2459f5015890bcf62dbfab08ff875eb94963e39b9dc94a03"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q37",
+   "number": 37,
+   "version": "generic-v1",
+   "input_sha256": "872912100b528708db9038ddd09b91cecdde73011ba22400cef41a2148ccb89b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4ced2a85359c8b3c3dc6d62c8f49bf95ffb0c9f76633f3f01a584b4080237e17"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q38",
+   "number": 38,
+   "version": "generic-v1",
+   "input_sha256": "07664fa22f585ab9b010b1809b4bbb607f3dba7cf03ebf840a520bba47d872c6",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "746c67e0e7eaaa2834485b2b8b626f35da136155282c94b0518080276d98f023"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q39",
+   "number": 39,
+   "version": "generic-v1",
+   "input_sha256": "2be04232d73dbef29cfe7634d5cb4bdb06af697928798dfbb0dc6307e15ab2d0",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9cc351beadb88f6327948b41c0622cf67552d2cbbda6c58694657bc8cb629805"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q40",
+   "number": 40,
+   "version": "generic-v1",
+   "input_sha256": "272fa80647c764cf03e1fd01bb28aa5a4eadbe881248a76ae66368810a524510",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "37705ec9c01fb3bf02e015328fe593b4525f9e415cc8cde178293718fefbc6ab"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q41",
+   "number": 41,
+   "version": "generic-v1",
+   "input_sha256": "3c0673c19b5aa966dfe0169dfd73ece5956612cca673febe1264a47db379c500",
+   "changes": [
+    {
+     "location": "blocks[5]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      6,
+      7
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[5].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 41, página 18; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[5]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "ee17c6c9afacd95adeb1c32f6a6daeb45d5ea71a00cf6eda3fc6e2fa78edb14f"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q42",
+   "number": 42,
+   "version": "generic-v1",
+   "input_sha256": "e136305e030f4bb0214e61ae8d8e6b872339d8fced1788837911fffea67378df",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 42, página 18; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "cc394e719b99bed2a6808fafbe28e6c42cb0a3beaebfc6420842f62d1abc3320"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q43",
+   "number": 43,
+   "version": "generic-v1",
+   "input_sha256": "ff044202561ea897f53b261d16b0a9fa51b22e96042fe934393b9c70f62fbc1b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d39822b34d72b6ac48d40d8f899623b1d5c86f31ce6838eff9219a49fdc9ea0b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q44",
+   "number": 44,
+   "version": "generic-v1",
+   "input_sha256": "9dbee4575f5112dcfa9d87f790eaad0478ab02f63a0714ab83e41ac1f1d690f5",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "fed72565f4f786caf8cf50d466efe8df7ddd7e4bab77792d27d952df53cbc5aa"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q45",
+   "number": 45,
+   "version": "generic-v1",
+   "input_sha256": "b46603c9b7d0f38f8439cd7df2f16f5f3dc382f115510da4ed7c9663b67398c3",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "apontar para a dificuldade de compreensão do termo. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025 PROPOSTA DE REDAÇÃO A partir da leitura dos textos motivadores e com base nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo em modalidade escrita formal da língua portuguesa sobre o tema “Perspectivas acerca do envelhecimento na sociedade brasileira”, apresentando proposta de intervenção que respeite os direitos humanos. Selecione, organize e relacione, de forma coerente e coesa, argumentos e fatos para a defesa de seu ponto de vista. TEXTO I TEXTO IV Em 2022, o total de pessoas com 65 anos de idade ou Um novo estereótipo: o “velho ativo”, saudável e com mais no país chegou a 10,9% da população, com alta de 57,4% recursos pressiona o “velho inativo”, doente e pobre. Nem todos frente a 2010, quando esse contingente era 7,4% da população. os idosos têm recursos à disposição para a",
+     "after": "apontar para a dificuldade de compreensão do termo. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025 PROPOSTA DE REDAÇÃO A partir da leitura dos textos motivadores e com base nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo em modalidade escrita formal da língua portuguesa sobre o tema “Perspectivas acerca do envelhecimento na sociedade brasileira”, apresentando proposta de intervenção que respeite os direitos humanos. Selecione, organize e relacione, de forma coerente e coesa, argumentos e fatos para a defesa de seu ponto de vista. TEXTO I TEXTO IV Em 2022, o total de pessoas com 65 anos de idade ou Um novo estereótipo: o “velho ativo”, saudável e com mais no país chegou a $10{,}9\\%$ da população, com alta de $57{,}4\\%$ recursos pressiona o “velho inativo”, doente e pobre. Nem todos frente a 2010, quando esse contingente era $7{,}4\\%$ da população. os idosos têm recursos à di"
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 45, página 19; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    },
+    {
+     "code": "alternative_layout",
+     "message": "Múltiplas figuras em uma alternativa: agrupe e confira manualmente.",
+     "location": "alternative:E",
+     "severity": "error",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "cf2fac1cf2ae476ab84c934cba366a15ff4001f08a8b2b19c956bd7bd9f82671"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q46",
+   "number": 46,
+   "version": "generic-v1",
+   "input_sha256": "08e521475fd95d9f8c666cca4e177bfaa9a8b1d990f241156f660b39241ac2f2",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "cbeff5d9a2af99310cdee3da83995c331d6c7c721255ee81344dae8215a5db85"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q47",
+   "number": 47,
+   "version": "generic-v1",
+   "input_sha256": "0c6007534ed44296fc43bb189dd7f582df8709965a6713faef2baafe069ab36e",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Concentração de CO₂ por queimadas entre África e Brasil em 30 de agosto de 2019",
+     "after": "Concentração de $\\ce{CO2}$ por queimadas entre África e Brasil em 30 de agosto de 2019"
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 47, página 22; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "564f271506b9a15ca853b947ad4dfb13e82fc8a9bf63445b3bdd1ccca8d1ffa4"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q48",
+   "number": 48,
+   "version": "generic-v1",
+   "input_sha256": "beb337abbc4a5167d53ae47a3d15db04961e1968ac223c1aaa47a5f6690fa8fa",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "7033073806498f37887cb8e880597476dc147571a9ddb46a6bce51e2b7577956"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q49",
+   "number": 49,
+   "version": "generic-v1",
+   "input_sha256": "2bab521d94b144a07338222c0c2aa58d4369108126872d75344e0b0e1e8104d3",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 49, página 23; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "eb6f1518d7aee3af50a3425b217347e0be98829ce0e2a22225f0e9941723b390"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q50",
+   "number": 50,
+   "version": "generic-v1",
+   "input_sha256": "064a28c236eb934deb7704aeb1126aed962f862dbf91c8eb27068b78b5787aec",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "11360b385ec8ce8490189f4d0c7a00d7dbb99f975c48c74b4a6c066c6d32c01c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q51",
+   "number": 51,
+   "version": "generic-v1",
+   "input_sha256": "96b0c306a70d5c4523e0ba61782f49e16bb13dbf330922dd5fba20adcf660a19",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "34db58abbf4eb9324028787bef8ad19f69797b64519e23718341e8dbd93ab758"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q52",
+   "number": 52,
+   "version": "generic-v1",
+   "input_sha256": "ba18b2a5294b219180ecedf40116b1db2f25080c2848393d505a9da209820f0e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "cac2cff854407ed4a823ab1367a5d7d7f7f50b54f0ff41de6e4d5f6ccafa216a"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q53",
+   "number": 53,
+   "version": "generic-v1",
+   "input_sha256": "f4547d0a9f95666eafe745b85f4520262540f51c788d837d89199ed402a0bf23",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "845334769c8b69401d40de48fdfa7f00f9fb4f18eee8bd0f10e759ab76a1a0d4"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q54",
+   "number": 54,
+   "version": "generic-v1",
+   "input_sha256": "05d00185d8cb662dca9b1cb53abea26a651e593c7b0535cc7ca99d82bb4afb89",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "0a09d14bfc47b8e3a31e447412e437c7b4de6e4b43450df7b68cc833f91aa312"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q55",
+   "number": 55,
+   "version": "generic-v1",
+   "input_sha256": "d365b38ad7e4313a08891d0aebfb0cbd0e0fbf0b74455e722dcea246cd1a22b6",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "363a99fced13080ddc765f6af2260956ca5ff7cdc3af50101a1a560fcb1cb0bc"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q56",
+   "number": 56,
+   "version": "generic-v1",
+   "input_sha256": "bfe8dd2c3697ad630374abb773105353c876b920fc3dfa7e903fb1966ef673bc",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2cfb1b919da85d19866b16b2181416b383044b158d4616d9cb51c410de064bb6"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q57",
+   "number": 57,
+   "version": "generic-v1",
+   "input_sha256": "e1a42873c43140f1d6b08d0ce7fca38bd4024439c2eb9549b805cc76364d2c13",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e77540343395694fda5e611a78928903df1ecbd3bcf2f69d472537bff729f19f"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q58",
+   "number": 58,
+   "version": "generic-v1",
+   "input_sha256": "57ca58db9446913e2dda926b51e967edd56321e667e59d6c9ecea6aaa5f216d6",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Em 1872, havia mais de 1 milhão de votantes, correspondentes a 13% da população livre. Em 1886, votaram nas eleições parlamentares pouco mais de 100 mil eleitores, ou 0,8% da população total. Houve um corte de quase 90% do eleitorado. O dado é chocante, sobretudo se lembrarmos que a tendência de todos os países europeus da época era na direção de ampliar os direitos políticos. O mais grave é que esse retrocesso foi duradouro. A Proclamação da República não alterou o quadro.",
+     "after": "Em 1872, havia mais de 1 milhão de votantes, correspondentes a $13\\%$ da população livre. Em 1886, votaram nas eleições parlamentares pouco mais de 100 mil eleitores, ou $0{,}8\\%$ da população total. Houve um corte de quase $90\\%$ do eleitorado. O dado é chocante, sobretudo se lembrarmos que a tendência de todos os países europeus da época era na direção de ampliar os direitos políticos. O mais grave é que esse retrocesso foi duradouro. A Proclamação da República não alterou o quadro."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c06c2bdf1a56c420ab7fbc491eb0b05af0f73bd6539310321afe10d302c3df5d"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q59",
+   "number": 59,
+   "version": "generic-v1",
+   "input_sha256": "8a119f34898a25b4232c12d912c4061f87f7c012e08b510b183285b21f7e3e83",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Pela falta de chuvas, a geração de energia eólica, solar e térmica atingiu níveis recordes em agosto de 2021, quando as hidrelétricas ficaram com cerca de 50% do total. Para um professor da Universidade Federal da Bahia, essa queda não é uma surpresa. “Não aconteceu de uma hora para outra. Se olharmos o mapa do Brasil, um dos grandes provedores de água é a Floresta Amazônica. Se você diminui a floresta, diminui a quantidade de água que vai para a atmosfera”, explica.",
+     "after": "Pela falta de chuvas, a geração de energia eólica, solar e térmica atingiu níveis recordes em agosto de 2021, quando as hidrelétricas ficaram com cerca de $50\\%$ do total. Para um professor da Universidade Federal da Bahia, essa queda não é uma surpresa. “Não aconteceu de uma hora para outra. Se olharmos o mapa do Brasil, um dos grandes provedores de água é a Floresta Amazônica. Se você diminui a floresta, diminui a quantidade de água que vai para a atmosfera”, explica."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2ae514ea2f0e1ab9275ac2ab50a411077a79ceeac0f0f540ffb4925e35b303d9"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q60",
+   "number": 60,
+   "version": "generic-v1",
+   "input_sha256": "0bb382292ed1aa1f6d629f0da47fe50bc341d47cd115b706242b2aad33002c24",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "ea8f49ec224819c46a8357895f4dfd059e5405d1e0c941fb0b9e65f7f59e68a0"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q61",
+   "number": 61,
+   "version": "generic-v1",
+   "input_sha256": "4e95faa237e23cf1fdbf77fe25c7268733082b6476893a3ccdd7866897016ab1",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "df3cfd894635f739fa6132afd1300d63419956c3c6ac694348374013e41fb34d"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q62",
+   "number": 62,
+   "version": "generic-v1",
+   "input_sha256": "1e73cb02dab1deff1882730e38d511197e882431a42510a910858f1d9505514c",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "070c98cb8efae5b2fadd4ab5db76a9c1e4cc1af14ce7baf28adc288169e7d56a"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q63",
+   "number": 63,
+   "version": "generic-v1",
+   "input_sha256": "cbe1d824a9e48059ea5f3d71ebb9c5797c8401a52a5bfe6912ec30d289b48e93",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2,
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 63, página 26; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "b440313bb093958a6f15321142d61a3814f9211cb411c3b49a84897df795fc5c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q64",
+   "number": 64,
+   "version": "generic-v1",
+   "input_sha256": "ad8a798326f7b1a6f3e3fc45d4a4aaf2c44390cdfb599e5b45e506b35a3ddaee",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "97e27634fd7b4692a56fcf57055c35849135a1c8639bebe2a4f5e2f86b7712a4"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q65",
+   "number": 65,
+   "version": "generic-v1",
+   "input_sha256": "9ee65c3f3ab2aba721ce2883e69fe7d33b936089b006efc649b7de54b5f7f3ec",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "714ea4e62675d7d1d7aad20333cb3cf2bb2729420ee1297fc80defbe1549fd96"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q66",
+   "number": 66,
+   "version": "generic-v1",
+   "input_sha256": "e604e3883e75992edcd1000236531e178edf06e6589ed7ca30a51d0e808d5437",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "25fcb63bbd8a6420a84eff5cad9b3ddb83523e8293c97edcfbe6e387534ae85c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q67",
+   "number": 67,
+   "version": "generic-v1",
+   "input_sha256": "33b007e261810d0959220467c7bd0b1868e4eff9443ea8637ff844f0c3879521",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "890f4a7fcae677bb4e44265dbc4848e27d1b30cb0d28b900436cf1681f4b57d3"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q68",
+   "number": 68,
+   "version": "generic-v1",
+   "input_sha256": "2eea6c6392ec6c062cc3fc2b164eda8999af799b842dd07bf1d4d0ec9e76cb38",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1,
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 68, página 27; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "1fa2242ebcbfeba17820db341a62d2eaae0dfbcf27a0624c10016b25b35c5278"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q69",
+   "number": 69,
+   "version": "generic-v1",
+   "input_sha256": "ed6f202214dd0a843ba606147f94d9fd575568d3d4a9a584a36442a9f37f6d30",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e91a90b7de934cecc8177a8e0194840e69a280d8f90105c2251e3b32f2bbadd4"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q70",
+   "number": 70,
+   "version": "generic-v1",
+   "input_sha256": "daa1018a9c1a8f009dea2de929797c59fa76ec5833e2c9947529dc01c68748b7",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "cd70ed9fa88fc7c02eaf787ea43fac6f997ad11375cddb652921775b3f3240a3"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q71",
+   "number": 71,
+   "version": "generic-v1",
+   "input_sha256": "6139b8ab055281f77f5694663dfbd693af44e44bad4a09e32184a9d6bab39133",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "500854071c83766b641c3af66d9966b0fc67c118fdc20d709b122e36d9337891"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q72",
+   "number": 72,
+   "version": "generic-v1",
+   "input_sha256": "ab1916d7a20c201ecf0150c6ac61a6992432219f743d8fcc47287ea6bcc09e7c",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "079571107a975af3d88aebaf5cdeef66a1495a8542dafc5a5032c30c75e13b4b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q73",
+   "number": 73,
+   "version": "generic-v1",
+   "input_sha256": "65fae292a344080e985eb124bda6d177e3b9db7acfc276c8d8c26fd517e5ac12",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d5cbde4834949bfc119901ba2412414d55b5b255e09a5a521ec42ffe628a74a6"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q74",
+   "number": 74,
+   "version": "generic-v1",
+   "input_sha256": "05796584ae92b31613d91f95dcf47c8762c39a86f37adec56f2bc51e94f8fe95",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a0941f87ed76a8e3e7f4b7dd045c60d8e2a87b8ae52d50dbae2406b904f2aef1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q75",
+   "number": 75,
+   "version": "generic-v1",
+   "input_sha256": "73a68c665cf986a81b7d9050ba88ca7c0aff5ce88101610795872331a0991da6",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4394d90541ac06112cb23a867a74bdda256305de9988d21989ef9ed886487461"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q76",
+   "number": 76,
+   "version": "generic-v1",
+   "input_sha256": "071fceb65322bb53606583f9f1484ad720b54b8696f2a478ab226fb84215ab91",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "059c23797a585bca9fa27b9a7bd3842c79f750ab9d121bde56be236a477dca8e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q77",
+   "number": 77,
+   "version": "generic-v1",
+   "input_sha256": "66ab3f31268bd44a6b19b8b2a031944f40d99fe141ea4c98ac62b098b775ada8",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 77, página 29; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "a1d1080f99edc98303bb00da5e8aed38b11646d98758f6d9135f194b868ec853"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q78",
+   "number": 78,
+   "version": "generic-v1",
+   "input_sha256": "46589152027036cc3170db502712ef2d3e22493bf9a0056609427340afd3fb12",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "52adeae3bb96d3dadaefbdf68ebb108b82a256473dd2a15bd5f9e92f78e84376"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q79",
+   "number": 79,
+   "version": "generic-v1",
+   "input_sha256": "74f9b4861e0eb848f56352c38f178c92cda35a25fb6827ad8f329a118b2daab7",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "f43c82e06dd09f1cf11b0d026b041aad7073d484209e9cd0486b6166e1764baf"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q80",
+   "number": 80,
+   "version": "generic-v1",
+   "input_sha256": "c3fac631786e7f6a01ec719b219d7a043a9717b9a2400367328ddb6a85a52b6d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "29a0677072b4cdad31b47207b99febe9ed474893f34e999093875caa4ebc717a"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q81",
+   "number": 81,
+   "version": "generic-v1",
+   "input_sha256": "82c7d9f30443ae5c5500ec421d4c6bfd85fe432ed7484fbe5e510f45c9a1502e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "0455f3375f9da98ff2676bc2a97f41583c957413804a0038a7ba048ab7a3bf1d"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q82",
+   "number": 82,
+   "version": "generic-v1",
+   "input_sha256": "56227339f7b1ee4fa6dcb0930ed008e143fc7cd0c2114a8e90d65438786eaeca",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "f05a177bb2562a6cda950b7dd7cd6d6e52f6c4e01f30942a09c960d844b91a2e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q83",
+   "number": 83,
+   "version": "generic-v1",
+   "input_sha256": "28e955c4587c1a878b4963f444afe459b660d4536875c57c2717f337673aa932",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "675ae5f6a992ab177e01f6c1be07f660bbca89838c02a311e2ad6070827469b6"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q84",
+   "number": 84,
+   "version": "generic-v1",
+   "input_sha256": "6009312462f7880a9e6e1d70dc855347eaaa51cb932647409ea9ab213a1537fe",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "78b83978680e559bcf76980d1922ae570e551ea0e9dbd0c4b2fbbc5adc2cc1cd"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q85",
+   "number": 85,
+   "version": "generic-v1",
+   "input_sha256": "90a5ac00086fa5ad5e66f77c7023b1bb2d9b697c2c710a6c4fba79463bdd969b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "dee39bbe3679183fda3267141d31608c657e1d920e738c0363f2cbf1f6824b78"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q86",
+   "number": 86,
+   "version": "generic-v1",
+   "input_sha256": "8fe3b65dea7764ee5783918a9aaf2e04a369dc8becc8e271fede6558b464a31d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "fda7d061942990ba80828f996018c741ca182026a637b0f88774d755b98f5e05"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q87",
+   "number": 87,
+   "version": "generic-v1",
+   "input_sha256": "7d284eaec98faa0e93034b5a2fa96cc56823a54e06ccdf696791605d449e9509",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e970bd3091aaca76e3a0364269f6992e850421d278f549e352a2b5a887ce9fe8"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q88",
+   "number": 88,
+   "version": "generic-v1",
+   "input_sha256": "ad097bfe51e26a5aff79d7e3f5a4ef4bba4ec6218249ea00fde088730ec5f903",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e4f8ac840f436e169501326d8550cf20898a949ce5ff3b256c7d68dd94f6fbda"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q89",
+   "number": 89,
+   "version": "generic-v1",
+   "input_sha256": "9195434e6294d3c2ee72ffa6002c23005cdb11e45b479b681fd2115dc2129ef6",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "f9a91b34fe31d4347cca6be55f54313b1297e5b5ea1642a7a9a84337a2ca6e2e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q90",
+   "number": 90,
+   "version": "generic-v1",
+   "input_sha256": "8757d0b65b13a252aee1ef38ca0ac13d8810d14afc544a0db12f31600282d26e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "df2e93e43e97152a9c35d9bca00b0566bd862ad5a9accaff81ef4e3bf9e6777c"
+  }
+ ],
+ "changes": 17,
+ "warnings": 32,
+ "errors": 1
+}

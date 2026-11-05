@@ -165,7 +165,7 @@ make acervo                                              # os dois passos
   - uma prova para cada opção de língua.
 - O gabarito é lido na coluna da língua escolhida, e respostas retificadas ("*A") são aceitas.
 - Questões já conferidas não são geradas de novo: o 2º dia de 2024 fica de fora, e do 2º dia de 2023 sai só Ciências da Natureza.
-- As saídas ficam em `data/derived/exams/<id>.json`, `<id>.report.json` e `resumo.json`, com as figuras em `data/assets/<id>/`, todas fora do Git.
+- As saídas ficam em `data/derived/exams/<id>.json`, `<id>.report.json` e `resumo.json`, com as figuras em `data/assets/<id>/`. Só as provas regulares de 2024 e 2025, caderno azul, são versionadas, com JSON, relatório, figuras e PDFs; as demais ficam fora do Git.
 
 **Publicação** (`backend.app.cli archive`):
 

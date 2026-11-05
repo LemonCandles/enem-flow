@@ -64,7 +64,7 @@ O backend está organizado por responsabilidade. Caminhos abaixo relativos a `ba
 
 - Lotes conferidos: 2024 dia 2 azul (90) e Matemática 2023 azul (45); 133 válidos, referência matemática de 89 itens. Acervo 1998–2025, todas as aplicações disponíveis: `docs/cobertura-acervo.md`.
 - Originais imutáveis: `data/sources/enem/{ano}/{aplicacao}/{modalidade}/dia-*/caderno-*/`; inventário URL/SHA-256: `data/sources/catalogo/acervo.json`. Nunca substitua gabarito por outra aplicação. Organização: `data/sources/README.md`.
-- Git: só dois lotes, recursos, baselines, anotações, taxonomia, exemplos e catálogo de fontes. Espelho histórico, `data/bank/`, caches, provas geradas e figuras ficam locais. Confira `.gitignore`; versionar novas provas exige pedido explícito.
+- Git: dois lotes conferidos e, como extração automática sem conferência, as provas geradas da aplicação regular de 2024 (1º dia) e 2025 (1º e 2º dias), caderno azul, com JSON, relatório, figuras e PDFs; além de recursos, baselines, anotações, taxonomia, exemplos e catálogo de fontes. Espelho histórico, `data/bank/`, caches e as demais provas geradas ficam locais; o `.dockerignore` mantém essas provas fora da imagem. Confira `.gitignore`; versionar novas provas exige pedido explícito.
 
 ## Andamento e roteiro
 

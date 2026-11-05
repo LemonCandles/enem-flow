@@ -1,0 +1,1184 @@
+{
+ "version": "generic-v1",
+ "exam_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol",
+ "questions": [
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q1",
+   "number": 1,
+   "version": "generic-v1",
+   "input_sha256": "6cb990de4d06555f51402c734f91d88d8fa9f3600222e4583454e59aa11476e8",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "be76e22f9ad563e5cfcef3ebed8f4ed4bc66675e7dd170a39f85374e85f89e16"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q2",
+   "number": 2,
+   "version": "generic-v1",
+   "input_sha256": "89b601c7157668d389b61df1756e3d7a395bd7d1a096c16c26d3d0b36ee85f96",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "8ad9c30878ba29655e5b9e2ef77082e060f729936623052b2019072e7a6428d3"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q3",
+   "number": 3,
+   "version": "generic-v1",
+   "input_sha256": "e3e09e420b585cc491cb35cfffd3500f0ec3b7e1dce93eb87795d6c7919a1137",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a6596033f4ba96a381229d3882784c98d6bbdf30237039733f9861611d2e53ec"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q4",
+   "number": 4,
+   "version": "generic-v1",
+   "input_sha256": "5dd8ea4f63d928792e4bb418d5afb1a43e7cf1240e31bcab2ce7196744696f6d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "ac90a97ad0ed08eeeafa4da284c69f48dc370a89beabc59a1b7247e37ef540b6"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q5",
+   "number": 5,
+   "version": "generic-v1",
+   "input_sha256": "0db59684195af90cab7616a007fb25f9d0461ad849db3021b93057d2d4209fed",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "bb69a0727d6b22a9a4ef157477ab76109fa294be42d099e5b5a5723eb06144e3"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q6",
+   "number": 6,
+   "version": "generic-v1",
+   "input_sha256": "5613178445d48318bf2b040ea0656c832dd9e87bfd9cd5a9e9881f37c7e09c7b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "cebe50af3f6d1769dae88dcb3f3b7b0689fd3af84a222b94fd86dc915a9ede85"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q7",
+   "number": 7,
+   "version": "generic-v1",
+   "input_sha256": "4e84ef3d791f178edb7a0f9fcfe9896c9d15363b899f64cb0a5920f25f3cfeb8",
+   "changes": [
+    {
+     "location": "blocks[4]",
+     "operation": "latex",
+     "before": "Silvana Fernandes: a paraibana de 21 anos é natural de São Bento e nasceu com malformação no braço direito. Aos 15 anos, começou a praticar atletismo no lançamento de dardo. Em 2018, enquanto competia na regional Norte-Nordeste, foi convidada para conhecer o paratae kwon do. No ano seguinte, migrou para a modalidade e já faturou o ouro na categoria até 58 kg nos Jogos Parapan-Americanos de Lima 2019.",
+     "after": "Silvana Fernandes: a paraibana de 21 anos é natural de São Bento e nasceu com malformação no braço direito. Aos 15 anos, começou a praticar atletismo no lançamento de dardo. Em 2018, enquanto competia na regional Norte-Nordeste, foi convidada para conhecer o paratae kwon do. No ano seguinte, migrou para a modalidade e já faturou o ouro na categoria até $58\\,\\mathrm{kg}$ nos Jogos Parapan-Americanos de Lima 2019."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d0091530858e8021d1bffdf97fcadb35f2acc1c55a57ba3ef2e500c1fa01c48c"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q8",
+   "number": 8,
+   "version": "generic-v1",
+   "input_sha256": "5fc6fc3b6fa0badb6b476714eeb7546fd2e6529f48240ee74f5d5130260760ac",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4ad378a156d4bfcec580b90e60be21382733f5a09b064f554456bd66be4660f6"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q9",
+   "number": 9,
+   "version": "generic-v1",
+   "input_sha256": "fdcc800b31806818e8a3b836e56aab3756f0ffc45dac81e15db65471d97e0a7e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "36cdc27ed33a2194b0b5dff570fa5a2c433d29e6832c5d4f5f2e8fad4a421977"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q10",
+   "number": 10,
+   "version": "generic-v1",
+   "input_sha256": "3a22ff9a3a579ec9b2809db8780d2bc2f3392e0372690f3a850fa5aaa41b0b30",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d46dc763bffa68425dee26228b7ede1f7cd08009948e0c9267c21b989e4c8b40"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q11",
+   "number": 11,
+   "version": "generic-v1",
+   "input_sha256": "69e475305c89cd93ebcf5cf0c53c59f4a3e904a7ab303ae36696b22e5c89465b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "27ccfd10dc94ef6e862ab86d9a7cc929cbf59105d65710cbc516f05d36b34389"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q12",
+   "number": 12,
+   "version": "generic-v1",
+   "input_sha256": "445fec76db0094de40c6a0baf3fb26fd8b2e4a07571ea11edd4cc861cdf0d2f9",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "48fcc9ec5cdd429f272a8b8c85146e8ab4942975b7ce4d8a659a1b0306bb50ba"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q13",
+   "number": 13,
+   "version": "generic-v1",
+   "input_sha256": "456dc08fba3e95c41d859e5db12fc7644de4e1752e6500982a091723e2ea4b92",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "A falta do absorvente afeta diretamente o desempenho escolar dessas estudantes e, como consequência, restringe o desenvolvimento de seu potencial na vida adulta. Dados da Pesquisa Nacional de Saúde (PNS), do IBGE, revelaram que, das meninas entre 10 e 19 anos que deixaram de fazer alguma atividade (estudar, realizar afazeres domésticos, trabalhar ou, até mesmo, brincar) por problemas de saúde nos 14 dias anteriores à data da pesquisa, 2,88% deixaram de fazê-la por problemas menstruais. Para efeitos de comparação, o índice de meninas que relataram não ter conseguido realizar alguma de suas atividades por gravidez e parto foi menor: 2,55%.",
+     "after": "A falta do absorvente afeta diretamente o desempenho escolar dessas estudantes e, como consequência, restringe o desenvolvimento de seu potencial na vida adulta. Dados da Pesquisa Nacional de Saúde (PNS), do IBGE, revelaram que, das meninas entre 10 e 19 anos que deixaram de fazer alguma atividade (estudar, realizar afazeres domésticos, trabalhar ou, até mesmo, brincar) por problemas de saúde nos 14 dias anteriores à data da pesquisa, $2{,}88\\%$ deixaram de fazê-la por problemas menstruais. Para efeitos de comparação, o índice de meninas que relataram não ter conseguido realizar alguma de suas atividades por gravidez e parto foi menor: $2{,}55\\%$."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c730f0b6d3082832c7fcd186c867b2b0c662f77cc45e7f9a6505d3360db14da4"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q14",
+   "number": 14,
+   "version": "generic-v1",
+   "input_sha256": "ed610e2261faa821532672eda841cfdd86d23d1be409376caf6f5f963299f027",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "abd4877aa51718c390fa587c09e7c86455f52a4a178aad28a6313dfffc13f982"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q15",
+   "number": 15,
+   "version": "generic-v1",
+   "input_sha256": "85b71706055855bf2d22637c024ef653f803a4306217a2fb0645ebfdffd39d29",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "252428b60410a54f8c898fb8e40ae0074690b4f4a2e533c816e5b4dab85008b2"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q16",
+   "number": 16,
+   "version": "generic-v1",
+   "input_sha256": "19b106a378a7abc705f06d459ed0e79b8e05df7ad345e33063742cc093a377f3",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b72a177c440038616230d6a7c7e8fd2eb0e5bff3d49826923e8b08fae197f57b"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q17",
+   "number": 17,
+   "version": "generic-v1",
+   "input_sha256": "7f78b0133a46999dd5370526843d42daacaf431026c7b553a6cd7cb9421ee1d6",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Influenciadores negros têm recorrentemente chamado a atenção para o fato de terem muito menos repercussão em suas postagens e nas entregas do seu conteúdo quando comparados com os influenciadores brancos, mesmo se fotos, contextos e anúncios forem extremamente semelhantes. Segundo o site Negrê, a digital influencer e youtuber criadora do projeto digital Preta Pariu iniciou um experimento em uma plataforma. Após perceber a crescente queda nos índices de alcance digital, a paulista publicou fotografias de modelos brancas em seu perfil e analisou as métricas de engajamento. Surpreendentemente, a ferramenta de estatísticas aferiu um aumento de 6 000% em seu alcance.",
+     "after": "Influenciadores negros têm recorrentemente chamado a atenção para o fato de terem muito menos repercussão em suas postagens e nas entregas do seu conteúdo quando comparados com os influenciadores brancos, mesmo se fotos, contextos e anúncios forem extremamente semelhantes. Segundo o site Negrê, a digital influencer e youtuber criadora do projeto digital Preta Pariu iniciou um experimento em uma plataforma. Após perceber a crescente queda nos índices de alcance digital, a paulista publicou fotografias de modelos brancas em seu perfil e analisou as métricas de engajamento. Surpreendentemente, a ferramenta de estatísticas aferiu um aumento de 6 $000\\%$ em seu alcance."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "3dabb7489d642ca37e161681509bc13df7df54e6bcdaeea9aa4c033917a4ee96"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q18",
+   "number": 18,
+   "version": "generic-v1",
+   "input_sha256": "24b48bd764d3cf361ed27090e38a956dcf2ea9c100ad3cd6ec7b64c61e344081",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "fe8bbb59fe92352bdfef236feb1c2c08b93e635613396371f520d79e0e8ba6d4"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q19",
+   "number": 19,
+   "version": "generic-v1",
+   "input_sha256": "614a2254a5f4b2392e738a73bb056da945a58cd6ee3498971cbf18e9f412453d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "29ef4eca7b596e49d45618fdf24e63bb07e63999ed7361b536385a0eef4afe48"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q20",
+   "number": 20,
+   "version": "generic-v1",
+   "input_sha256": "eb95eff44b6679b9dcf6b8bcd776e27eef0df6967de611dbfd5a21652112b402",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "628192e791c45b5695b422f39dfe9367258835d2942f3fc44334aca90d7ebe91"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q21",
+   "number": 21,
+   "version": "generic-v1",
+   "input_sha256": "fa02696142ee2a7c6f5740e325601a861c62a3108a6ce39c841246298d4e35dd",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[5].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 21, página 10; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "f56146a6222715f1902614cfe5e2e6a2c75734f32bee9bcef3d05d64a4d05e32"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q22",
+   "number": 22,
+   "version": "generic-v1",
+   "input_sha256": "9ac7b35889c133bbdc2829be6d3bc963184e45132efdca2054a203b49bc0169f",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "6dfb097dd42b6afe0c083561b476a686901e6b3440d355b60ab2eacd249e5443"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q23",
+   "number": 23,
+   "version": "generic-v1",
+   "input_sha256": "5710f7c08c0ef64fc237b01d247414fe2fb182cefb93850ce6291bd1c0704c6d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "dc442e633ca97c0aea3b83da7c228c01f280c3bf872f8f785e4a390eb8d816df"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q24",
+   "number": 24,
+   "version": "generic-v1",
+   "input_sha256": "e3ca29b6a9edebdfdb6eb8fcd841fbc81f3c0002f3e1ae84f78c01e6cc6b7393",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d7fb4cab30fcecd3a58989e8cecb425dd373c3910e407c5cfdf3d3f13dc437a6"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q25",
+   "number": 25,
+   "version": "generic-v1",
+   "input_sha256": "0d8a1fb05199647da8789b32bd80f4b1211af6478ce8228e03270247dd29a338",
+   "changes": [
+    {
+     "location": "blocks[2]",
+     "operation": "latex",
+     "before": "81 × 65 cm. Museu Nacional de Belas Artes, Rio de Janeiro, 1935.",
+     "after": "81 × $65\\,\\mathrm{cm}$. Museu Nacional de Belas Artes, Rio de Janeiro, 1935."
+    },
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1,
+      2,
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 25, página 11; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "9d7bd198b49d81a5faf8ff78c63292c977206f618c98ba7ce9d783bac7758927"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q26",
+   "number": 26,
+   "version": "generic-v1",
+   "input_sha256": "ad0f8322a7d32e638b890d37b41e89f4862d7238e0bffbaf3615ab16b0a52b5f",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "46609259bbcf2cd96eef146ab6f21d2ca053b91d16c676dac988e34402efccd6"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q27",
+   "number": 27,
+   "version": "generic-v1",
+   "input_sha256": "b266383516bf25aa16d6d928b4f384f1c61b8c7cb98fc02d6edc1021a16eda60",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b0291a21c4590117bd4a176782d0906af96f2b6ba01fe93cc1ee0122191ebbbb"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q28",
+   "number": 28,
+   "version": "generic-v1",
+   "input_sha256": "aa86d773e6e4c5fd0f6c421584afe69d806ba7f237f6ea23b3e47111fb502787",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4f2976354ffc43efa2e6dfa046136b47c3a58716bf989011b9b998ef6ce83f9e"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q29",
+   "number": 29,
+   "version": "generic-v1",
+   "input_sha256": "80855163d46e4d93ddb598ff10e614e2c0b7dffa42c889da91fdbdb6ca9962b2",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a66dce5fb2dd78d039e29c67153cf52d06211b38ff82abb9ba320346f9239223"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q30",
+   "number": 30,
+   "version": "generic-v1",
+   "input_sha256": "d7ffca70922f75a845c17564fd50267b629a5413800ec069ba6c1e180eb021ea",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "959d5e7d75e1d75df81e573bdcdcff264d18bb3f7b1d55db27869e429a5fc9fd"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q31",
+   "number": 31,
+   "version": "generic-v1",
+   "input_sha256": "928642b5e854dcefaf1e0ce0f0dd6738ead133913b3652ac3432d7dac6c7275a",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "865df5549a21e7fd1b6babb026bec36f6f569bf9b964e894d829c0def25bc6d1"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q32",
+   "number": 32,
+   "version": "generic-v1",
+   "input_sha256": "c9009cc3e14fb31bf7aae698ed80401b3d88a7f9162847540570a3014131399e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a2bc9f985e4697cb2c3b0c5b3629614226158211b04744a4ed521b3083adf5d7"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q33",
+   "number": 33,
+   "version": "generic-v1",
+   "input_sha256": "20ee82eb4ea9118cbbc2619382335c69858f731e9448d850085aef61043c3726",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1,
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 33, página 14; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "f974e814bc2e4b25bb6ccfe6eabbdb4f28dc7ec13c45090f6b1e6ee7c1a9621e"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q34",
+   "number": 34,
+   "version": "generic-v1",
+   "input_sha256": "f0ec2502745ad40159144fb612c19839133e86b8c879069f48af4b2298bc2f69",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2323f5a8cfb8e25902d858709da770a4d3bea7efb9a168be90631033b3437d34"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q35",
+   "number": 35,
+   "version": "generic-v1",
+   "input_sha256": "cf45f556eb2b03eac08aca95eb6469ea85daa2b5d8e8269c1ae9691948261c44",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "364234617b505635539c945db3d62db4caa15bbf31080f580adf83a699f2075d"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q36",
+   "number": 36,
+   "version": "generic-v1",
+   "input_sha256": "99045f4515d9454d3bf682cf39bc9926511e35b562d99d1faf5b82a3aeeb3d73",
+   "changes": [
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "Circa 2700-2500 a.C. Escultura em mármore, 8 × 3,2 cm.",
+     "after": "Circa 2700-2500 a.C. Escultura em mármore, 8 × $3{,}2\\,\\mathrm{cm}$."
+    },
+    {
+     "location": "blocks[4]",
+     "operation": "latex",
+     "before": "Escultura em calcário, 68,3 × 15,9 × 24,1 cm.",
+     "after": "Escultura em calcário, 68,3 × 15,9 × $24{,}1\\,\\mathrm{cm}$."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 36, página 15; descrição detalhada pendente."
+    },
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 36, página 15; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "10aeb49794dd742487099d79fae1964af1334ada4591943fa4db9149a7fc49ad"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q37",
+   "number": 37,
+   "version": "generic-v1",
+   "input_sha256": "2a50ddaa297182666824f819054a7e6e171e5feb3547038f081a2ce1a113f8c9",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "1bfacfe53de58bfe8f74200cd7fb6a7c7ca8d00bec029bf78d5ffafb9c8f5134"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q38",
+   "number": 38,
+   "version": "generic-v1",
+   "input_sha256": "172f5ed12dbf5db45b282675c571265459d473268491f0723505df193c338541",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "fcddd31e4e8247d1150cb273670dbd65bc879d19b0f8eadec4d70b8411dc04fb"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q39",
+   "number": 39,
+   "version": "generic-v1",
+   "input_sha256": "f0da78e8c963b10701f834e39e74c19a2f49939c9352d5b65566b59d562f5158",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2f5b37c50f9d4bb0fedddf92aeea063b862c4cc366e645636a3b5a4092d3eff9"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q40",
+   "number": 40,
+   "version": "generic-v1",
+   "input_sha256": "eb483c39496b74cf213ab2796b9d24695733e6e35bce3fd89ba8e8ea42f5d94d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c90c2a9d03477be340e0fb5c8206fe2f069268bc51302c20a5a875e58a8c2d66"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q41",
+   "number": 41,
+   "version": "generic-v1",
+   "input_sha256": "06c64016df73e5191f9f03f1fbd1820d4916529637dce5be7da4632a5dd23dfa",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "O Brasil somou cerca de 60 mil novos casos de câncer de mama até o final de 2019, número que corresponde a 25% de todos os diagnósticos da condição registrados no país, segundo dados do Instituto Nacional do Câncer (Inca). Apesar de o Outubro Rosa ser o mês de conscientização sobre a questão voltada para as mulheres, é muito importante lembrar que um dos grandes mitos da medicina é o de que o câncer de mama não afeta o sexo masculino. Fatores importantes para detectar o câncer de mama masculino:",
+     "after": "O Brasil somou cerca de 60 mil novos casos de câncer de mama até o final de 2019, número que corresponde a $25\\%$ de todos os diagnósticos da condição registrados no país, segundo dados do Instituto Nacional do Câncer (Inca). Apesar de o Outubro Rosa ser o mês de conscientização sobre a questão voltada para as mulheres, é muito importante lembrar que um dos grandes mitos da medicina é o de que o câncer de mama não afeta o sexo masculino. Fatores importantes para detectar o câncer de mama masculino:"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "d45cbe605fc18f39c7b19626471078221198697211095a4505cdb08a41b10292"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q42",
+   "number": 42,
+   "version": "generic-v1",
+   "input_sha256": "9c46b49841fc29b4f6fa48b960e36235ffe0d19429fc56932fb29ce01d2b7586",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "21553afdd107f8a08cf0ce340397671b7478d2d4fb1cc9de7aa70ba39d0c8eab"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q43",
+   "number": 43,
+   "version": "generic-v1",
+   "input_sha256": "2869e0417f758d53ab4be8b4d07b2a0369754d21351ead7c023276d075b8e020",
+   "changes": [
+    {
+     "location": "blocks[5]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      6,
+      7
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[5].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 43, página 18; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[5]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "754d52d7339be6677eeac2110c8e5722bbd76f92e0d3aa7fd73a1b9404c57dd9"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q44",
+   "number": 44,
+   "version": "generic-v1",
+   "input_sha256": "8d531f354c2aebb859002527644a98015da5fb380cc7f7f3cfa36d5e45c7d21b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "7aab61566d6f3a9b11115e07e8eb0cad6f8aa5c771843ef90c3ea0c96d377081"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q45",
+   "number": 45,
+   "version": "generic-v1",
+   "input_sha256": "86c2129be4d67a65f9e789cf370fbea80ee52543163ecb8fc4d847549025179f",
+   "changes": [],
+   "issues": [
+    {
+     "code": "alternative_layout",
+     "message": "Múltiplas figuras em uma alternativa: agrupe e confira manualmente.",
+     "location": "alternative:E",
+     "severity": "error",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "6e48cc371bdf6c5e35e6dd12c6be8054775255829a30823cd691bad18f199b90"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q46",
+   "number": 46,
+   "version": "generic-v1",
+   "input_sha256": "89e8a976aeea776f27291c36e4d8ccad01290f4096d5c1ab0b17186846f68aea",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "11b642814c201b324b06bb0fa00b973da9cbd034f828b584e7bb68b11eec4f29"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q47",
+   "number": 47,
+   "version": "generic-v1",
+   "input_sha256": "16ef2df59455da026f93dba6b248631aa377dfe126c631e2d0770bf1acb2b397",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "af687e16c0bd595ff9de604af18c6dcbbfc57470ea08e648626f04a71f9a7ab3"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q48",
+   "number": 48,
+   "version": "generic-v1",
+   "input_sha256": "8cc7ac257489f3b017f525b7da647a37b44ef56fef85eaf39a4ff566dae8af74",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "68ad69787a19a61dfb3e4d2c619fe941f1e89a4951bf895bfc0921d51460668c"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q49",
+   "number": 49,
+   "version": "generic-v1",
+   "input_sha256": "68a904170e0928fcb52b9e5eb5e9aab1c2c2ad79e43151fc516bfe23e92f5785",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "12df9f071874a9534a958fc0ba1d58ea46ec84b14465fc8c09538e28378637d9"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q50",
+   "number": 50,
+   "version": "generic-v1",
+   "input_sha256": "bb06bbe66049e6568cec123b6998e597ed468474ec233c3be79192206510467d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c8d2aa5db4c352882d578a5143cf7646863296e01fdd12bd034160861caa4766"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q51",
+   "number": 51,
+   "version": "generic-v1",
+   "input_sha256": "96336c1aaef9bf05776fd9ba7f26746a8163a588493bb9a4c7bd72cdd01eb0f3",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "21326a8abeebc5a681fe063b72834f3255a0653d18610694fd9217b5f6144e3f"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q52",
+   "number": 52,
+   "version": "generic-v1",
+   "input_sha256": "d356ad0220add2e08f8509c57e16011cc887e7a54e987a0ebde8bbf7715d8eb5",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "3c4a8b3dcb34ad5149ac381da846ce70cd059034cdf5bc07115dc583d885d013"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q53",
+   "number": 53,
+   "version": "generic-v1",
+   "input_sha256": "fd1001b830f4225dd24bbd21ca6c8349b89d6fa92d67e1f4b2d6bec3dc81ec82",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 53, página 21; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "81cb0b977dfb29afc727e3296db6aa25a4e152b75dc02d816a70b27b534c3f09"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q54",
+   "number": 54,
+   "version": "generic-v1",
+   "input_sha256": "8b2c693d9f392aa6228a588fc984d0e4116355b1c3bdeade3ba9fe0f502505f7",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "36a2bafe6f6fe5135dc60694ec0cff07e3c674a92c869e07f55755469ae8096d"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q55",
+   "number": 55,
+   "version": "generic-v1",
+   "input_sha256": "7b80b9f4a7e56750945a408b279188ba55cf219b801993b23dd8822f5d49e8e6",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "98f403e998dd48c365f9fa0b0287206d7ecb4a629fa83d5ff2e0c8cb7a764c8d"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q56",
+   "number": 56,
+   "version": "generic-v1",
+   "input_sha256": "0f1a013f7632a16df1db54af5ed59d081ebb9a4e0f0713e6a936304dc97691db",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "21c89473b0f1768462dacf643cd2bea4e4fbf45ccdeb039b9a74c2480546ff2c"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q57",
+   "number": 57,
+   "version": "generic-v1",
+   "input_sha256": "0baf2bae1cb5877f0ffee0d62720c254a66edfa6794356d3efa1221184972f10",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4b9eeb096ac5bb2823be6847be873d0c8030184511941bcec8237beb7500c0cf"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q58",
+   "number": 58,
+   "version": "generic-v1",
+   "input_sha256": "daa9cdb1069c699c62271efa5859ce7b9bf8356424264db74be0ff7eeb8bbae5",
+   "changes": [
+    {
+     "location": "blocks[4]",
+     "operation": "latex",
+     "before": "TEXTO II",
+     "after": "TEXTO $\\ce{II}$"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "eadce4ef7e39ceac875982fbdd0ab241a0863aef483f88bc72af5344aadea3c1"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q59",
+   "number": 59,
+   "version": "generic-v1",
+   "input_sha256": "df2d6f23a0e9a318539fb6fc2840921a671fa0cbf435edcde47da320ad693caa",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "f73c2b1ab0065228c52aca274fd1cd46206fd1d926d48b69326e263a64930c61"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q60",
+   "number": 60,
+   "version": "generic-v1",
+   "input_sha256": "142c5e3bde341e2e51e78485a044efa52f7b57ce841d4c4587774886b835b32e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "eade0ba148b5662a3082af3ff5b96377eab4c84b491dcaccde21db106176c4d8"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q61",
+   "number": 61,
+   "version": "generic-v1",
+   "input_sha256": "3f0af078ef6a928288b583ff4cb673da294667012ad0da1ac0722f4cce08103c",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c38f740b137d95e75289bddc2ebc3552580c478143987067075df786e56a0f8a"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q62",
+   "number": 62,
+   "version": "generic-v1",
+   "input_sha256": "2c6c86001274284e0c89641c7992fd93cf6808919ca0cb860768d849ed83f5e2",
+   "changes": [
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "Ensaios. São Paulo: Abril Cultural, 1975. TEXTO II",
+     "after": "Ensaios. São Paulo: Abril Cultural, 1975. TEXTO $\\ce{II}$"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4daf9f1c5df640da48fd5084f9794fd83e8c27d7b1237fc45b7ef1988476f51d"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q63",
+   "number": 63,
+   "version": "generic-v1",
+   "input_sha256": "c8a174f2491f5754346fb03674c9600342f6190b8ed99c96c47116332d6c22ed",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9372ba9929e026dd50d2496385c21d73262bb037e566251ec25d27766b7b323c"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q64",
+   "number": 64,
+   "version": "generic-v1",
+   "input_sha256": "a69dd3b25b0a0d8dd5e6e7e11a78f7714af1b92509113c1e924da10bc916d04b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "aa659f7f28b93df6630fcf608180e150d78b0d913976ace64b804b5de0566875"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q65",
+   "number": 65,
+   "version": "generic-v1",
+   "input_sha256": "2b5a8ff29f022e7a0719e08729491fbaea50ee007c798031c3fe49a788b905cd",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c7a240763841f0750826a26a67fb9b7096d3c9d483aef75e7b58e4ec34bc9e47"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q66",
+   "number": 66,
+   "version": "generic-v1",
+   "input_sha256": "31018a1d1c2c8f3b38831b2cb2bea5def1e3dc3878c0e34c89e800eb9a37745a",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "8f4a05acbed343bc4c53dcec22840c401827781b06d147d5b541631c1697b3ee"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q67",
+   "number": 67,
+   "version": "generic-v1",
+   "input_sha256": "808304a8379a47fb4f6b046503f3a188d980eaf52e52008d8f3423f592a7001a",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "697acd46dab60f659acd617ace629598a4ad925924bba34e35d833b5dcad5a92"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q68",
+   "number": 68,
+   "version": "generic-v1",
+   "input_sha256": "10a7c51ee050c39981fc8914325e77df310b478fced5b0b4d24f0ac280ce5dfa",
+   "changes": [
+    {
+     "location": "blocks[5]",
+     "operation": "latex",
+     "before": "TEXTO II",
+     "after": "TEXTO $\\ce{II}$"
+    },
+    {
+     "location": "blocks[6]",
+     "operation": "latex",
+     "before": "A Amazônia perdeu diariamente uma área de floresta maior do que 4 mil campos de futebol apenas em setembro de 2021. Em todo o mês, foram devastados 1 224 km², o que corresponde ao tamanho da cidade do Rio de Janeiro e é a pior marca para setembro em 10 anos. Os dados são do Sistema de Alerta de Desmatamento (SAD) do Instituto do Homem e Meio Ambiente da Amazônia (Imazon), que monitora a floresta por meio de imagens de satélites.",
+     "after": "A Amazônia perdeu diariamente uma área de floresta maior do que 4 mil campos de futebol apenas em setembro de 2021. Em todo o mês, foram devastados 1 $224\\,\\mathrm{km^{2}}$, o que corresponde ao tamanho da cidade do Rio de Janeiro e é a pior marca para setembro em 10 anos. Os dados são do Sistema de Alerta de Desmatamento (SAD) do Instituto do Homem e Meio Ambiente da Amazônia (Imazon), que monitora a floresta por meio de imagens de satélites."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2eb4a75deb39e6f4e14765e5517638cf100a14c3922d5d87334b69a85f5f9264"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q69",
+   "number": 69,
+   "version": "generic-v1",
+   "input_sha256": "81815873a698faf22976289fa7416fec90f2144e5df83bbb5f89081fed53d82a",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "6caf5bec73e9423b51111f26b87efb764f1a9f407273b8fe7f185c6daed0ae3b"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q70",
+   "number": 70,
+   "version": "generic-v1",
+   "input_sha256": "640b05d4b0379880013d67d478c863dbd1952db23584ddf8c7e7db4ab88e87b5",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "dbee843150c9fab6f240a9519afe5ff7f0e2e02a812fd811fcc76bcb9e67ee24"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q71",
+   "number": 71,
+   "version": "generic-v1",
+   "input_sha256": "376237a6eeb583d29509ba6b14bdba4d0c343fef51dd4a28203f8e019139d8c7",
+   "changes": [
+    {
+     "location": "blocks[2]",
+     "operation": "latex",
+     "before": "O Brasil deixa a conferência com o compromisso de fazer valer sua meta e reduzir 50% dos gases de efeito estufa até 2030 em relação aos níveis de 2005 — anteriormente, a meta de redução era de 43%.",
+     "after": "O Brasil deixa a conferência com o compromisso de fazer valer sua meta e reduzir $50\\%$ dos gases de efeito estufa até 2030 em relação aos níveis de 2005 — anteriormente, a meta de redução era de $43\\%$."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "ccce11146252ee5e946ea612d788329e30ec13d374887dcd808e1b4662cd8875"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q72",
+   "number": 72,
+   "version": "generic-v1",
+   "input_sha256": "e514b553dece4e1e6ee556135e2a14cbfff3c73c58bf121d65f2a7e2f082fd3b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "068c88be58f8546c7e02587b498a995b1ce62960359533e56383927f3fdbe00a"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q73",
+   "number": 73,
+   "version": "generic-v1",
+   "input_sha256": "5fb717a0933feb00bbd45512ba6735f7504c2cf5536746cc98bd0079b1763eda",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "fa92ff1bfd42e68d7e4128019d2dce2bf2af1599083a04bc479e5b1186e3eb33"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q74",
+   "number": 74,
+   "version": "generic-v1",
+   "input_sha256": "0e829989b7f712486cb66fe27340d4f10d0a1550fb93183e05dcd7319f3e1194",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "6c0716add4cbd1c7320d420e3e2f4057c6c60079bd565dcaff7ed6047210dde0"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q75",
+   "number": 75,
+   "version": "generic-v1",
+   "input_sha256": "4bbc92ac00e81d8e9733c6b42088fbe9cd233eb6a2a5210224b0bf1db17cf51c",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "3a5dcdcc0f760d49ac02252be5121deb349fe158ce6e1a7e7c04a2caef7db44e"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q76",
+   "number": 76,
+   "version": "generic-v1",
+   "input_sha256": "997728a2144add762295a335fd421295869c8059c48ab74a87336756bf23dcbf",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2bca7e3d1e99d8f5f9f8a4230ba12a79e141ac8e9cac42e6b42565f2d8a54b2d"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q77",
+   "number": 77,
+   "version": "generic-v1",
+   "input_sha256": "836d4aeba4d170d38dd9653742080de3da72017400a29cba4e8edc7941b3350d",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 77, página 28; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "5201a48fbaf3f00daf4028104858c50dd2ffc465e55149d5cb43b436efae9817"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q78",
+   "number": 78,
+   "version": "generic-v1",
+   "input_sha256": "45d1cd0df7590591c2f8304cbe6003bc051c34c2cd764ef9d32dde4a457ea0c8",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "0b56efb206bea98f6306a5d28df914d00b84dfb07c1bb7ee0b72a92bdfc3814e"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q79",
+   "number": 79,
+   "version": "generic-v1",
+   "input_sha256": "d8f87f00831a1a596b511d94c309e4038348ec383dd282647fea6316d6711e85",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "50c17836503a63b3fdf06f755a449704336edfcc7836b44c2e09464d1485b320"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q80",
+   "number": 80,
+   "version": "generic-v1",
+   "input_sha256": "8c495a43397d9ba998cd83efd3e98957038ad73e97111d7601f7d8b62550b24e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "be867d61a7ab19a7b1fb0a317bb0b848ca7d91bf93ef7db169cb70b92e8d0f55"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q81",
+   "number": 81,
+   "version": "generic-v1",
+   "input_sha256": "663e11294fddd0ec7ae45db99436c8e26dc6ae1ee7c72aa16b63046fce20a740",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "7c78a710fb0f8c22a833d104b95374a35720a53f196aa0ad3a001df9ffcdaed1"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q82",
+   "number": 82,
+   "version": "generic-v1",
+   "input_sha256": "bb64525748674993b3e5f3d9ae3d3cb4c4e728cc0f8ae1e33476d10b6bfff2d2",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "56a725de157db300b203a02a14b68e91d35497bc4bdd5159fc58b6f01fcfa337"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q83",
+   "number": 83,
+   "version": "generic-v1",
+   "input_sha256": "f9a9af513393458ccecf1e97f33e308e052bd4dd3345c9392ef24f49960db915",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4b7564f9bad49bb7a1fd2964370bb592fc821c0d171fb9a239f3567ae093aa82"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q84",
+   "number": 84,
+   "version": "generic-v1",
+   "input_sha256": "14d9acced00e998db4876abe2838242a066eaa6e748d9227bdc39f7b8bc08037",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "1501851587fb5fcddcddcfcbf70f4b40fd451d2c160dfc311846708c7a01922e"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q85",
+   "number": 85,
+   "version": "generic-v1",
+   "input_sha256": "3315ca3bbb9f3dccfc031047704cc0ccd5d36e959733ceb349f22b6c3fc207ad",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "74c80c0f004d6089b9c7786b7d27091877319bd8ed3ca33f328c0ad10cf3d987"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q86",
+   "number": 86,
+   "version": "generic-v1",
+   "input_sha256": "944ed4b59b56c49284fad59f0414fd0818e93df2574177bcbb208880774ea7f8",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      1
+     ]
+    },
+    {
+     "location": "blocks[2]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 86, página 30; descrição detalhada pendente."
+    },
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 86, página 30; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[0]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[2]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "dc7868d40a68fdbd61b295c62de92cea5aaf4648d51919bbe08637687169cfb2"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q87",
+   "number": 87,
+   "version": "generic-v1",
+   "input_sha256": "c0d1d8961bbe848e2284b374b931398c5cc90d0c1b93e1464f4ae5219794fe89",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "bb168a35a7fe59a50bd164124d30e049808403a0c8035d0ac19303d538552473"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q88",
+   "number": 88,
+   "version": "generic-v1",
+   "input_sha256": "73059d28f9478dec61c049da5f745f19b1ece38dc959649c923bc0d2a1132e3b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "cd24c62bb36e914d29833b56c1bef09002dc6cea2e560670e6e5b696bc22893b"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q89",
+   "number": 89,
+   "version": "generic-v1",
+   "input_sha256": "49105e265b8a0894ba22299f2aafb696d7cb64740b3b0ff2d3cd205b0b6a942c",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9fb1373b4a0c0da9a8017eaea5282de5092af27552e17dd2745386954944632d"
+  },
+  {
+   "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q90",
+   "number": 90,
+   "version": "generic-v1",
+   "input_sha256": "758c644698a0f932827dd28fac96a964f4d3adaaef92caca2c4340f080931824",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "71f51fadf8450d121f24ef300868b333e2c453bf3f25538fadd79ee8d16678f0"
+  }
+ ],
+ "changes": 19,
+ "warnings": 17,
+ "errors": 1
+}
