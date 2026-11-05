@@ -440,3 +440,28 @@ def test_encoding_offset_hypotheses_remain_proposals_with_no_source_specific_rul
     result = embedded_font_candidates([Page()], 1)[0]
     assert text in result['candidates'] and result['needs_review']
     assert any(row['offset'] == 29 for row in result['shift_hypotheses'])
+
+
+def test_adaptive_comparison_is_reproducible_and_reports_its_limits(tmp_path):
+    from experiments.adaptive import run
+
+    config = read_json(ROOT / 'experiments/config.json')
+    short = {**config['adaptive'], 'repetitions': 3}
+    report = run(short, config['seed'], tmp_path)
+    assert run(short, config['seed'], tmp_path) == report
+    assert report['pool_items'] == 89 and 'aprendizagem' in report['limits']
+    long_practice = report['scenarios']['pratica-longa']['policies']
+    assert long_practice['adaptive-v1']['repeated_share']['mean'] < long_practice['random-v1']['repeated_share']['mean']
+    assert long_practice['adaptive-v1']['without_reason']['mean'] == 0
+    weak = report['scenarios']['tema-fraco']['policies']
+    shares = {name: weak[name]['weak_share_after_evidence']['mean'] for name in weak}
+    assert shares['random-v1'] < shares['adaptive-v1'] < shares['reinforcement-simple-v1']
+    assert weak['adaptive-v1']['theme_coverage']['mean'] > weak['reinforcement-simple-v1']['theme_coverage']['mean']
+    assert report['scenarios']['acervo-pequeno']['policies']['adaptive-v1']['short_sessions']['mean'] > 0
+
+
+def test_adaptive_policies_are_validated():
+    config = read_json(ROOT / 'experiments/config.json')
+    config['adaptive']['policies'] = ['adaptive-v1']
+    with pytest.raises(ValueError, match='política adaptativa'):
+        validate_config(config)

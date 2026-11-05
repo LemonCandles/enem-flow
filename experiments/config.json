@@ -6,16 +6,77 @@
     "test_fraction": 0.2,
     "development_fraction": 0.2,
     "alpha": 1.0,
-    "models": ["majority", "keywords", "multinomial_nb", "tfidf_word_centroid", "tfidf_character_centroid"],
+    "models": [
+      "majority",
+      "keywords",
+      "multinomial_nb",
+      "tfidf_word_centroid",
+      "tfidf_character_centroid"
+    ],
     "keywords": {
-      "Estatística": ["media", "mediana", "moda", "desvio", "amostra", "frequencia"],
-      "Geometria espacial": ["volume", "cilindro", "esfera", "cone", "prisma", "cubo"],
-      "Geometria plana": ["area", "triangulo", "circulo", "perimetro", "poligono", "retangulo"],
-      "Grandezas e medidas": ["unidade", "escala", "metro", "litro", "conversao", "medida"],
-      "Gráficos e coordenadas": ["grafico", "coordenada", "cartesiano", "trajetoria", "eixo"],
-      "Números e proporcionalidade": ["porcentagem", "percentual", "razao", "proporcao", "desconto", "aumento"],
-      "Probabilidade e combinatória": ["probabilidade", "sorteio", "sorteado", "combinacao", "possibilidade", "chance"],
-      "Álgebra e funções": ["funcao", "equacao", "exponencial", "logaritmo", "sequencia", "progressao"]
+      "Estatística": [
+        "media",
+        "mediana",
+        "moda",
+        "desvio",
+        "amostra",
+        "frequencia"
+      ],
+      "Geometria espacial": [
+        "volume",
+        "cilindro",
+        "esfera",
+        "cone",
+        "prisma",
+        "cubo"
+      ],
+      "Geometria plana": [
+        "area",
+        "triangulo",
+        "circulo",
+        "perimetro",
+        "poligono",
+        "retangulo"
+      ],
+      "Grandezas e medidas": [
+        "unidade",
+        "escala",
+        "metro",
+        "litro",
+        "conversao",
+        "medida"
+      ],
+      "Gráficos e coordenadas": [
+        "grafico",
+        "coordenada",
+        "cartesiano",
+        "trajetoria",
+        "eixo"
+      ],
+      "Números e proporcionalidade": [
+        "porcentagem",
+        "percentual",
+        "razao",
+        "proporcao",
+        "desconto",
+        "aumento"
+      ],
+      "Probabilidade e combinatória": [
+        "probabilidade",
+        "sorteio",
+        "sorteado",
+        "combinacao",
+        "possibilidade",
+        "chance"
+      ],
+      "Álgebra e funções": [
+        "funcao",
+        "equacao",
+        "exponencial",
+        "logaritmo",
+        "sequencia",
+        "progressao"
+      ]
     }
   },
   "layout": {
@@ -23,8 +84,137 @@
     "iou_threshold": 0.5,
     "tree_max_depth": 5,
     "tree_min_leaf": 2,
-    "methods": ["coordinates", "geometry", "cart"],
+    "methods": [
+      "coordinates",
+      "geometry",
+      "cart"
+    ],
     "ocr_language": "por+eng",
     "ocr_timeout_seconds": 45
+  },
+  "adaptive": {
+    "reference": "data/datasets/adaptive-math-reference-v1.json",
+    "policies": [
+      "adaptive-v1",
+      "random-v1",
+      "reinforcement-simple-v1"
+    ],
+    "repetitions": 30,
+    "scenarios": {
+      "aluno-novo": {
+        "description": "Sem histórico e com acerto uniforme.",
+        "sessions": 4,
+        "minutes": 30,
+        "days_between": 3,
+        "default_success": 0.6,
+        "success": {}
+      },
+      "tema-fraco": {
+        "description": "Um tema com acerto baixo; os demais altos.",
+        "sessions": 6,
+        "minutes": 30,
+        "days_between": 3,
+        "default_success": 0.85,
+        "success": {
+          "Geometria plana": 0.2
+        },
+        "weak_themes": [
+          "Geometria plana"
+        ]
+      },
+      "dois-temas-fracos": {
+        "description": "Dois temas com acerto baixo; os demais altos.",
+        "sessions": 6,
+        "minutes": 30,
+        "days_between": 3,
+        "default_success": 0.85,
+        "success": {
+          "Geometria plana": 0.2,
+          "Estatística": 0.25
+        },
+        "weak_themes": [
+          "Geometria plana",
+          "Estatística"
+        ]
+      },
+      "revisao-antiga": {
+        "description": "Bom histórico em todos os temas, praticado há 30 dias.",
+        "sessions": 2,
+        "minutes": 30,
+        "days_between": 3,
+        "default_success": 0.85,
+        "success": {},
+        "history": {
+          "Estatística": [
+            10,
+            9,
+            30
+          ],
+          "Geometria espacial": [
+            10,
+            9,
+            30
+          ],
+          "Geometria plana": [
+            10,
+            9,
+            30
+          ],
+          "Grandezas e medidas": [
+            10,
+            9,
+            30
+          ],
+          "Gráficos e coordenadas": [
+            10,
+            9,
+            30
+          ],
+          "Números e proporcionalidade": [
+            10,
+            9,
+            30
+          ],
+          "Probabilidade e combinatória": [
+            10,
+            9,
+            30
+          ],
+          "Álgebra e funções": [
+            10,
+            9,
+            30
+          ]
+        }
+      },
+      "pratica-longa": {
+        "description": "Muitas sessões seguidas, para observar a exposição.",
+        "sessions": 12,
+        "minutes": 30,
+        "days_between": 2,
+        "default_success": 0.6,
+        "success": {}
+      },
+      "acervo-pequeno": {
+        "description": "Poucos itens disponíveis em relação às sessões.",
+        "sessions": 4,
+        "minutes": 30,
+        "days_between": 3,
+        "default_success": 0.6,
+        "success": {},
+        "pool_limit": 12
+      },
+      "tema-unico": {
+        "description": "Todos os itens em um só tema.",
+        "sessions": 2,
+        "minutes": 30,
+        "days_between": 3,
+        "default_success": 0.6,
+        "success": {},
+        "themes": [
+          "Geometria espacial"
+        ]
+      }
+    }
   }
 }

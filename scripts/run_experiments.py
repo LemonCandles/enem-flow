@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, default=ROOT / 'experiments/config.json')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--only', choices=['classification', 'layout', 'all'], default='all')
+    parser.add_argument('--only', choices=['classification', 'layout', 'adaptive', 'all'], default='all')
     parser.add_argument(
         '--archive', action='store_true', help='Examina o acervo local e seus desafios; não baixa nem publica dados.'
     )
@@ -38,9 +38,9 @@ def main():
         parser.error('--proposal-limit deve ser positivo.')
     if args.ocr and not args.archive:
         parser.error('--ocr exige --archive.')
-    if args.only == 'classification' and (args.review_log or args.ocr):
+    if args.only in {'classification', 'adaptive'} and (args.review_log or args.ocr):
         parser.error('--review-log e --ocr exigem a frente de layout.')
-    if args.only == 'layout' and args.external_predictions:
+    if args.only in {'layout', 'adaptive'} and args.external_predictions:
         parser.error('--external-predictions exige a frente temática.')
     output = args.output.resolve()
     # Uma saída não pode coincidir com código, fontes, dataset ou banco instalado.
@@ -91,6 +91,11 @@ def main():
                 from experiments.recovery import run_archive
 
                 reports['archive'] = run_archive(config['layout'], output, args.ocr)
+        if args.only in {'adaptive', 'all'}:
+            from experiments.adaptive import run
+
+            print('Política adaptativa: comparando com as referências em alunos simulados.', flush=True)
+            reports['adaptive'] = run(config['adaptive'], config['seed'], output)
         metadata.update(
             status='complete',
             finished_at=datetime.now(timezone.utc).isoformat(),
@@ -129,7 +134,14 @@ def validate_config(config):
         or set(layout['methods']) != {'coordinates', 'geometry', 'cart'}
     ):
         raise ValueError('Configuração de layout inválida.')
-    for path in [classification['reference'], layout['reference']]:
+    adaptive = config['adaptive']
+    if (
+        adaptive['repetitions'] < 1
+        or not adaptive['scenarios']
+        or set(adaptive['policies']) != {'adaptive-v1', 'random-v1', 'reinforcement-simple-v1'}
+    ):
+        raise ValueError('Configuração da política adaptativa inválida.')
+    for path in [classification['reference'], layout['reference'], adaptive['reference']]:
         if not (ROOT / path).resolve().is_relative_to(ROOT):
             raise ValueError('Referência fora do projeto.')
 
