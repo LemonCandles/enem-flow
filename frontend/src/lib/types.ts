@@ -29,8 +29,10 @@ export type ContentBlock =
   | { type: 'image'; asset: Asset; caption?: string; credit?: string; equations?: string[] }
   | { type: 'math'; tex: string }
   | { type: 'table'; headers: string[]; rows: string[][]; caption: string };
+export type Recommendation = { function: string; reason: string; policy_version: string };
 export type Question = {
   source_url?: string;
+  recommendation?: Recommendation;
   preparation_errors?: number;
   id: string;
   question_id: string;
@@ -81,6 +83,7 @@ export type Progress = {
   evolution: { id: string; date: number; percentage: number | null; title: string }[];
 };
 export type Diagnostic = Omit<Run, 'exam'> & {
+  kind: 'diagnostic' | 'practice';
   objective: string;
   area: string;
   available_minutes: number;
@@ -121,4 +124,13 @@ export type KnowledgeState = {
   estimator: { version: string; minimum_evidence: number };
   themes: KnowledgeGroup[];
   skills: KnowledgeGroup[];
+};
+export type RecommendationEvent = {
+  session_id: string;
+  position: number;
+  item_id: string;
+  policy_version: string;
+  function: string;
+  reason: string;
+  created_at: number;
 };

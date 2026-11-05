@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   BookOpen,
+  Dumbbell,
   Target,
   ChartNoAxesCombined,
   ChevronRight,
@@ -18,7 +19,7 @@ import {
   X,
 } from 'lucide-react';
 import { ApiError } from '@/lib/api';
-import { diagnosticAttempt, examAttempt } from '@/lib/attempt-source';
+import { diagnosticAttempt, examAttempt, practiceAttempt } from '@/lib/attempt-source';
 import { useMobileMenu } from '@/lib/use-mobile-menu';
 import { account } from '@/lib/endpoints';
 import type { User } from '@/lib/types';
@@ -34,11 +35,13 @@ import { SettingsPage } from './settings-page';
 import ExamRunner from './exam-runner';
 import Admin from './admin';
 import DiagnosticPage from './diagnostic';
+import PracticePage from './practice';
 
 const links = [
   { href: '/', label: 'Início', icon: House },
   { href: '/exams', label: 'Provas', icon: BookOpen },
   { href: '/diagnostic', label: 'Diagnóstico', icon: Target },
+  { href: '/practice', label: 'Prática', icon: Dumbbell },
   { href: '/progress', label: 'Desempenho', icon: ChartNoAxesCombined },
   { href: '/history', label: 'Histórico', icon: HistoryIcon },
 ];
@@ -60,12 +63,18 @@ const pages: Page[] = [
   { matches: exact('/'), title: 'Início', render: () => <Dashboard /> },
   { matches: exact('/exams'), title: 'Provas', render: () => <Catalog /> },
   { matches: exact('/diagnostic'), title: 'Diagnóstico', render: () => <DiagnosticPage /> },
+  { matches: exact('/practice'), title: 'Prática', render: () => <PracticePage /> },
   { matches: exact('/progress'), title: 'Desempenho', render: () => <ProgressPage /> },
   { matches: exact('/history'), title: 'Histórico', render: () => <HistoryPage /> },
   {
     matches: under('/sessions/'),
     title: 'Seu diagnóstico',
     render: (_, __, path) => <ExamRunner key={path} id={attemptId(path)} source={diagnosticAttempt} />,
+  },
+  {
+    matches: under('/practice/'),
+    title: 'Sua prática',
+    render: (_, __, path) => <ExamRunner key={path} id={attemptId(path)} source={practiceAttempt} />,
   },
   {
     matches: under('/runs/'),
@@ -235,7 +244,7 @@ export default function App() {
         </header>
         <main
           id="main"
-          className={`main-content ${path === '/' ? 'home-main' : ''} ${path.startsWith('/runs/') || path.startsWith('/sessions/') ? 'runner-main' : ''}`}
+          className={`main-content ${path === '/' ? 'home-main' : ''} ${path.startsWith('/runs/') || path.startsWith('/sessions/') || path.startsWith('/practice/') ? 'runner-main' : ''}`}
           tabIndex={-1}
         >
           {error && <ErrorBox message={error} />}

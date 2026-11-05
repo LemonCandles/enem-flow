@@ -1,5 +1,5 @@
 import { api, send } from './api';
-import type { Diagnostic, Exam, History, DiagnosticSummary, Run, User } from './types';
+import type { Diagnostic, Exam, History, DiagnosticSummary, RecommendationEvent, Run, User } from './types';
 
 // Paths read through useData, and the calls that change something, by feature.
 export const paths = {
@@ -9,6 +9,7 @@ export const paths = {
   progress: '/me/progress',
   diagnosticHistory: '/me/sessions',
   knowledgeState: '/me/knowledge-state',
+  recommendations: '/me/recommendations',
   diagnosticOptions: '/diagnostic-options',
   adminExams: '/admin/exams',
   adminAudit: '/admin/audit',
@@ -26,12 +27,19 @@ export const account = {
     send('/auth/reset-password', { token, password }),
   updatePreferences: (body: unknown) => send<User>('/me/preferences', body, 'PUT'),
   eraseHistory: () => api(paths.history, { method: 'DELETE' }),
-  exportHistory: () => Promise.all([api<History[]>(paths.history), api<DiagnosticSummary[]>(paths.diagnosticHistory)]),
+  exportHistory: () =>
+    Promise.all([
+      api<History[]>(paths.history),
+      api<DiagnosticSummary[]>(paths.diagnosticHistory),
+      api<RecommendationEvent[]>(paths.recommendations),
+    ]),
 };
 
 export const attempts = {
   startExam: (exam: Exam, key: string) => send<Run>('/exam-runs', { exam_id: exam.id, idempotency_key: key }),
   startDiagnostic: (body: object, key: string) => send<Diagnostic>('/sessions', { ...body, idempotency_key: key }),
+  startPractice: (body: object, key: string) =>
+    send<Diagnostic>('/practice-sessions', { ...body, idempotency_key: key }),
 };
 
 export const curation = {

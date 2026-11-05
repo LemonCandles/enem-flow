@@ -46,8 +46,10 @@ export function SettingsPage({ user, onUpdate }: { user: User; onUpdate: (u: Use
   }
   async function exportHistory() {
     try {
-      const [history, diagnostics] = await account.exportHistory();
-      const blob = new Blob([JSON.stringify({ exams: history, diagnostics }, null, 2)], { type: 'application/json' });
+      const [history, diagnostics, recommendations] = await account.exportHistory();
+      const blob = new Blob([JSON.stringify({ exams: history, diagnostics, recommendations }, null, 2)], {
+        type: 'application/json',
+      });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

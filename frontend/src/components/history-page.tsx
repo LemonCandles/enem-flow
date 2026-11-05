@@ -112,17 +112,18 @@ function DiagnosticHistory({
   const rows = data?.filter(s => filter === 'all' || (filter === 'finished' ? s.finished_at : !s.finished_at)) || [];
   return (
     <section className="panel breakdown-panel">
-      <h2>Diagnósticos</h2>
+      <h2>Diagnósticos e práticas</h2>
       {!rows.length ? (
         <p className="small-text muted">
-          Nenhum diagnóstico neste filtro. <Link href="/diagnostic">Iniciar diagnóstico</Link>
+          Nenhuma sessão neste filtro. <Link href="/diagnostic">Iniciar diagnóstico</Link> ou{' '}
+          <Link href="/practice">iniciar prática</Link>
         </p>
       ) : (
         <div className="breakdown-list">
           {rows.map(s => (
             <article key={s.id}>
               <h3>
-                {s.area} · {s.objective}
+                {s.kind === 'practice' ? 'Prática' : 'Diagnóstico'} · {s.area} · {s.objective}
               </h3>
               <p className="small-text muted">
                 {date(s.started_at)} ·{' '}
@@ -130,8 +131,11 @@ function DiagnosticHistory({
                   ? `Concluído · ${pct(s.result?.percentage)}`
                   : `${s.answered}/${s.selection.selected_items} respondidas`}
               </p>
-              <Link className="button secondary compact" href={`/sessions/${s.id}`}>
-                {s.finished_at ? 'Ver diagnóstico' : 'Continuar diagnóstico'}
+              <Link
+                className="button secondary compact"
+                href={s.kind === 'practice' ? `/practice/${s.id}` : `/sessions/${s.id}`}
+              >
+                {`${s.finished_at ? 'Ver' : 'Continuar'} ${s.kind === 'practice' ? 'prática' : 'diagnóstico'}`}
               </Link>
             </article>
           ))}

@@ -49,6 +49,11 @@ export function QuestionPanel({
           {index + 1} / {total}
         </span>
       </header>
+      {current.recommendation && (
+        <p className="notice-box">
+          <strong>Por que esta questão?</strong> {current.recommendation.reason}
+        </p>
+      )}
       {!!current.preparation_errors && (
         <p className="notice-box">
           Esta questão tem pendências de apresentação registradas. Confira a página {current.page} do{' '}

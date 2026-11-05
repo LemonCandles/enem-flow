@@ -24,13 +24,13 @@ export const examAttempt: AttemptSource = {
   showsOrigin: false,
 };
 
-function diagnosticAsRun(raw: Diagnostic): Run {
+function sessionAsRun(raw: Diagnostic, label: string): Run {
   return {
     ...raw,
     exam: {
       id: raw.id,
-      title: `Diagnóstico · ${raw.area}`,
-      booklet: 'Diagnóstico',
+      title: `${label} · ${raw.area}`,
+      booklet: label,
       application: raw.objective,
       year: 0,
       day: 0,
@@ -48,11 +48,22 @@ function diagnosticAsRun(raw: Diagnostic): Run {
 
 export const diagnosticAttempt: AttemptSource = {
   endpoint: id => `/sessions/${id}`,
-  toRun: raw => diagnosticAsRun(raw as Diagnostic),
+  toRun: raw => sessionAsRun(raw as Diagnostic, 'Diagnóstico'),
   session: raw => raw as Diagnostic,
   leaveHref: '/diagnostic',
   concludedLabel: 'DIAGNÓSTICO CONCLUÍDO',
   finishLabel: 'Finalizar diagnóstico',
+  questionNumber: (_, position) => position + 1,
+  showsOrigin: true,
+};
+
+export const practiceAttempt: AttemptSource = {
+  endpoint: id => `/practice-sessions/${id}`,
+  toRun: raw => sessionAsRun(raw as Diagnostic, 'Prática'),
+  session: raw => raw as Diagnostic,
+  leaveHref: '/practice',
+  concludedLabel: 'PRÁTICA CONCLUÍDA',
+  finishLabel: 'Finalizar prática',
   questionNumber: (_, position) => position + 1,
   showsOrigin: true,
 };
