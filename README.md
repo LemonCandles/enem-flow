@@ -64,6 +64,7 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 - Alteração e limpeza de alternativas, salvamento no servidor e retomada após fechar ou recarregar.
 - Confirmação de conclusão, correção objetiva, revisão por questão e finalização transacional e idempotente.
 - Histórico individual, evolução e painel por área, matéria, tema e habilidade, com quantidade de tentativas e cobertura dos rótulos.
+- **Prática adaptativa:** questões escolhidas por reforço, revisão e exploração, com o motivo de cada uma e registro auditável. Veja a [política, a comparação e os limites](docs/politica-adaptativa.md).
 - Preparação generalizada de novas provas: normalização conservadora de notação, associação de figuras/legendas e relatórios de transformações e ambiguidades, com CLI para JSON ou PDF textual com manifesto.
 - Curadoria: preparação automática na importação/edição, comparação com a fonte, novas versões, aprovação, publicação/retirada e consulta das decisões. Pendências bloqueantes impedem aprovação e publicação.
 - Experimentos offline de Dados e IA: cinco abordagens temáticas, três de layout, métricas reproduzíveis, propostas de recuperação do acervo e revisão visual com registro de tempo humano.
@@ -71,7 +72,7 @@ A instalação isolada foi validada com Compose sobre Podman e o CI inclui um en
 
 O lote de apresentação de **31/10/2026** alterou as questões **91, 92, 94, 97, 99, 100, 114, 116, 118, 123, 128, 132, 133, 135 e 170**, preservando gabaritos e histórico. O [registro técnico da revisão](data/README.md#revisão-de-apresentação) reúne os motivos, páginas da fonte, evidências e limites.
 
-Disciplinas e temas têm curadoria técnica assistida com evidências. Os vínculos com habilidades são propostas separadas e aguardam segunda revisão; não entram como habilidades aprovadas no painel. Veja o [banco e a classificação](docs/banco-classificacao.md). Classificadores locais já têm experimentos offline; sua integração ao produto, adaptação, tutor com LLM e layouts dinâmicos permanecem nas próximas etapas.
+Disciplinas e temas têm curadoria técnica assistida com evidências. Os vínculos com habilidades são propostas separadas e aguardam segunda revisão; não entram como habilidades aprovadas no painel. Veja o [banco e a classificação](docs/banco-classificacao.md). Classificadores locais já têm experimentos offline; sua integração ao produto, tutor com LLM e layouts dinâmicos permanecem nas próximas etapas.
 
 ## Curadoria
 

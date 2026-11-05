@@ -1,6 +1,6 @@
 # Diagnóstico e estado por tema e habilidade
 
-Implementação técnica da etapa 4 em 04/11/2026. O diagnóstico usa os rótulos já publicados, sem promover propostas dos experimentos nem depender de curadoria. A política adaptativa permanece na etapa 5.
+Implementação técnica da etapa 4 em 04/11/2026. O diagnóstico usa os rótulos já publicados, sem promover propostas dos experimentos nem depender de curadoria. A [política adaptativa](politica-adaptativa.md) usa este estado.
 
 ## Jornada e seleção
 

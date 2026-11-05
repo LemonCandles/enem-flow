@@ -175,3 +175,7 @@ Com `--archive`, `archive-layout-proposals.json` preserva os diagnósticos receb
 ## Referências de método
 
 As implementações seguem a formulação de [Naive Bayes multinomial](https://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html), [classificação vetorial](https://nlp.stanford.edu/IR-book/html/htmledition/vector-space-classification-1.html) e [avaliação de classificação](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-text-classification-1.html) de Manning, Raghavan e Schütze. A extração usa as APIs documentadas de [texto e geometria](https://pymupdf.readthedocs.io/en/latest/recipes-text.html), [tabelas](https://pymupdf.readthedocs.io/en/latest/page.html) e [OCR](https://pymupdf.readthedocs.io/en/latest/pixmap.html) do PyMuPDF. Os critérios de liberação continuam no [roteiro](../plano-implementacao/proximas-etapas.md).
+
+## Política adaptativa
+
+`make experiments` também compara `adaptive-v1` com seleção aleatória e reforço simples, em alunos simulados, e grava `adaptive-report.json`; `--only adaptive` roda só essa frente. O [resultado de 04/11/2026](politica-adaptativa-2026-11-04.json) está explicado em [política adaptativa](../politica-adaptativa.md). Os alunos são sintéticos: o relatório descreve o comportamento da seleção, sem medir aprendizagem.

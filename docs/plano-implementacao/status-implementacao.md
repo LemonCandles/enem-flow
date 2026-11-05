@@ -4,7 +4,9 @@ Atualizado em **04/11/2026**. Visão geral do andamento do [plano do projeto](en
 
 ## Situação atual
 
-A **etapa 4 está implementada tecnicamente**: diagnóstico fixo com objetivo, área e tempo disponível, retomada e finalização; estado reconstruído por tema/habilidade com Beta(1,1), primeira resposta independente por identidade, exposição, prática recente e separação da assistência. O painel, o histórico, a exportação e a exclusão incluem diagnósticos. As habilidades entram conforme sua publicação, que depende de segunda revisão. [Contratos e limites](../diagnostico-estado.md).
+A **etapa 5 está implementada tecnicamente**: a entrada Prática escolhe questões por reforço, revisão e exploração, com parâmetros explícitos, controle de exposição e concentração, motivo em cada questão e registro auditável. A comparação com seleção aleatória e reforço simples usa alunos simulados e descreve o comportamento da seleção, sem demonstrar ganho de aprendizagem. [Regras, resultados e limites](../politica-adaptativa.md).
+
+A **etapa 4 também está implementada tecnicamente**: diagnóstico fixo com objetivo, área e tempo disponível, retomada e finalização; estado reconstruído por tema/habilidade com Beta(1,1), primeira resposta independente por identidade, exposição, prática recente e separação da assistência. O painel, o histórico, a exportação e a exclusão incluem diagnósticos. As habilidades entram conforme sua publicação, que depende de segunda revisão. [Contratos e limites](../diagnostico-estado.md).
 
 **A consolidação técnica da primeira entrega e a parte técnica da etapa 2 foram concluídas.** Já é possível entrar em uma conta, realizar uma prova, retomar respostas, finalizar e consultar o histórico e o desempenho.
 
@@ -45,18 +47,20 @@ Em 04/11/2026, o código foi reorganizado sem mudar comportamento, contrato HTTP
 
 ## O que ainda não foi iniciado
 
-Seleção adaptativa de questões, tutor com IA e classificação automática integrada ao produto permanecem nas próximas etapas. O suporte técnico ao estado por habilidade já existe; sua cobertura depende da publicação dos rótulos, que exige segunda revisão. Já existem modelos clássicos treinados e avaliados offline na etapa 3; isso não representa diagnóstico educacional, classificação aprovada ou integração de tutor/LLM.
+Tutor com IA, layouts dinâmicos e classificação automática integrada ao produto permanecem nas próximas etapas. O suporte técnico ao estado por habilidade já existe; sua cobertura depende da publicação dos rótulos, que exige segunda revisão. Já existem modelos clássicos treinados e avaliados offline na etapa 3; isso não representa diagnóstico educacional, classificação aprovada ou integração de tutor/LLM.
 
 Também continuam previstos a expansão para docentes, os recursos multimodais e os estudos de aprendizagem. A publicação externa e o piloto com estudantes ainda não foram realizados.
 
 ## Prioridades imediatas
 
-1. Integrar a política adaptativa (etapa 5) ao estado reconstruível e aos temas já publicados.
+1. Integrar tutor e layouts dinâmicos (etapa 6), de forma independente, conforme as evidências de qualidade.
 2. Usar os erros medidos na etapa 3 para novos ciclos de classificação/layout, preservando o teste e sem publicar as propostas.
 
 A sequência e os critérios de aceite estão em [próximas etapas](proximas-etapas.md).
 
 ## Validação e limites
+
+Em 04/11/2026, a etapa 5 passou em **185 testes em SQLite e 185 em PostgreSQL**, com migração, `alembic check`, downgrade e nova atualização conferidos nos dois bancos, e em **36 testes de navegador**, em três rodadas seguidas, com Axe nas telas novas. A comparação da política usa alunos simulados. O banco de uso não foi migrado por esses ensaios.
 
 Em 04/11/2026, a etapa 4 passou em **160 testes em SQLite e 160 em PostgreSQL**, com migrações e alinhamento de esquema conferidos em bancos descartáveis. O teste de migração populada preserva os eventos legados e verifica a reconstrução. Passaram também os **30 testes de navegador** em desktop/celular, incluindo a jornada de diagnóstico, verificações Axe, teclado, reflow, exportação e exclusão, além da tipagem, build de produção e 150 expressões LaTeX do lote incluído. A avaliação do estimador é sintética e não demonstra validade pedagógica ou ganho de aprendizagem. O banco de uso não foi migrado por esses ensaios.
 

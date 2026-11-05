@@ -77,7 +77,7 @@ O backend segue a organização de [aplicações maiores do FastAPI](https://fas
 | `models/` | Tabelas por domínio: `accounts.py`, `content.py` e `runs.py`. O pacote registra todas no `Base.metadata`. |
 | `schemas/` | Esquemas de requisição por funcionalidade: `account.py`, `content.py` (contrato JSON), `runs.py` e `curation.py`. O pacote reexporta todos, e os scripts continuam importando de `backend.app.schemas`. |
 | `routers/` | Uma funcionalidade por arquivo: `health.py`, `auth.py`, `account.py`, `exams.py`, `runs.py` e `progress.py`. Em `admin/`, ficam `content.py` (importação, edição, revisão, publicação e auditoria) e `archive.py` (acervo e taxonomia). O papel de curadoria é exigido uma vez no router `/admin`. |
-| `services/` | Regras de domínio usadas pela API, pela CLI e pelos scripts, sem dependência de HTTP (`errors.py` define as falhas, e `main.py` as converte em resposta): `content.py`, `lifecycle.py` (mudanças de estado e publicação), `versioning.py` (novas versões), `attempts.py` (ciclo comum de prova e diagnóstico), `diagnostics.py` (seletores por versão), `knowledge.py`, `learning.py`, `identity.py`, `presentation.py`, `scoring.py`, `taxonomy.py`, `service_account.py` e `archive_reader.py`. |
+| `services/` | Regras de domínio usadas pela API, pela CLI e pelos scripts, sem dependência de HTTP (`errors.py` define as falhas, e `main.py` as converte em resposta): `content.py`, `lifecycle.py` (mudanças de estado e publicação), `versioning.py` (novas versões), `attempts.py` (ciclo comum de prova e diagnóstico), `diagnostics.py` (seletores por versão), `adaptive.py` (política da prática, função pura e versionada), `knowledge.py`, `learning.py`, `identity.py`, `presentation.py`, `scoring.py`, `taxonomy.py`, `service_account.py` e `archive_reader.py`. |
 | `installers/` | Conteúdo que entra no banco fora da API: `curated.py` (lotes conferidos), `bundled.py` (atualização do conjunto incluído), `generated.py` (publicação automática do acervo) e `assets.py` (figuras no volume do Docker). |
 | `preparation/` | Preparador de JSON compartilhado: `steps.py` aplica as etapas em ordem sobre um contexto com mudanças e pendências. |
 | `cli.py` | Comandos locais (`python -m backend.app.cli`). |
@@ -99,6 +99,8 @@ Fora de `backend/app/`, o pacote `ingestion/` lê as fontes oficiais: espelho do
 | `GET /sessions/{id}`, `PUT /sessions/{id}/answers/{item_id}`, `POST /sessions/{id}/finish` | Dono | Retomada, salvamento e finalização transacional |
 | `GET /me/sessions`, `/me/knowledge-state` | Conta | Histórico de diagnósticos e estado reconstruído |
 | `DELETE /me/history` | Conta | Remove provas, diagnósticos e eventos próprios |
+| `POST /practice-sessions`, `GET`/`PUT`/`POST` em `/practice-sessions/{id}` | Dona da sessão | Prática adaptativa; ver [política adaptativa](politica-adaptativa.md) |
+| `GET /practice-sessions/{id}/recommendations`, `/me/recommendations` | Conta | Motivos e auditoria das escolhas |
 | `POST /admin/imports` | Curadoria | Valida JSON e recursos, cria rascunho |
 | `GET /admin/exams`, `/admin/exams/{id}` | Curadoria | Inclui conteúdo e estados de revisão |
 | `PUT /admin/questions/{version_id}` | Curadoria | Nova versão, com justificativa |

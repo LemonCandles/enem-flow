@@ -108,13 +108,15 @@ O material principal são as provas publicadas automaticamente e seus relatório
 
 ## 5. Integrar uma política adaptativa inicial
 
+**Implementação técnica concluída em 04/11/2026.** Regras, contratos, comparação e limites em [política adaptativa](../politica-adaptativa.md).
+
 **Dependência: etapa 4 e itens elegíveis com os rótulos disponíveis. A política funciona por tema e incorpora habilidades quando forem publicadas. Frente conjunta.**
 
-1. Definir os filtros de área, integridade, tema/habilidade, exposição e dificuldade provisória.
-2. Combinar reforço, revisão e exploração com parâmetros explícitos.
-3. Registrar candidatos, componentes da prioridade, escolha, justificativa e versão da política.
-4. Controlar repetição e concentração da prática em poucos itens.
-5. Comparar o comportamento com seleção aleatória e uma referência simples de reforço.
+- [x] **1.** Definir os filtros de área, integridade, tema/habilidade, exposição e dificuldade provisória.
+- [x] **2.** Combinar reforço, revisão e exploração com parâmetros explícitos.
+- [x] **3.** Registrar candidatos, componentes da prioridade, escolha, justificativa e versão da política.
+- [x] **4.** Controlar repetição e concentração da prática em poucos itens.
+- [x] **5.** Comparar o comportamento com seleção aleatória e uma referência simples de reforço, em alunos simulados.
 
 **Critério de aceite:** cada recomendação tem um motivo compreensível e um registro que permite auditar a seleção; cobertura e exposição foram avaliadas nos cenários definidos.
 
