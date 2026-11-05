@@ -1,4 +1,5 @@
 """Exam JSON contract: source, blocks, alternatives, labels and question content."""
+
 from typing import Annotated, Literal
 
 from pydantic import Field, field_validator, model_validator
@@ -111,6 +112,7 @@ class QuestionContent(Schema):
         if any(len(v) > 150 for v in self.labels.themes + self.labels.skills):
             raise ValueError("Rótulo longo demais.")
         from ..services.taxonomy import validate_labels
+
         validate_labels(self.labels.model_dump(), self.area)
         return self
 

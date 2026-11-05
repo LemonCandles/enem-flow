@@ -4,9 +4,31 @@ import type { KeyboardEvent } from 'react';
 // temporarily move focus. Escape and modality remain native <dialog> behavior.
 export function trapDialogFocus(event: KeyboardEvent<HTMLDialogElement>) {
   if (event.key !== 'Tab') return;
-  const controls = [...event.currentTarget.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(el => el.getClientRects().length > 0);
-  const first = controls[0], last = controls[controls.length-1];
-  if (!first) { event.preventDefault(); return; }
-  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  const controls = [
+    ...event.currentTarget.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    ),
+  ].filter(el => el.getClientRects().length > 0);
+  const first = controls[0],
+    last = controls[controls.length - 1];
+  if (!first) {
+    event.preventDefault();
+    return;
+  }
+  keepTabInside(event, first, last);
+}
+
+// Tab wraps from the last control to the first, and Shift+Tab the other way around.
+export function keepTabInside(
+  event: { shiftKey: boolean; preventDefault: () => void },
+  first: HTMLElement | undefined,
+  last: HTMLElement | undefined,
+) {
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first?.focus();
+  }
 }

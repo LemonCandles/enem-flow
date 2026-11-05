@@ -1,4 +1,5 @@
 """Cabeçalhos compartilhados pela indexação e pela preparação nativa de PDFs."""
+
 import re
 
 QUESTION_WORD = r'Q\s*U\s*E\s*S\s*T\s*[ÃA]\s*O'

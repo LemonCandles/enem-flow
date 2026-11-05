@@ -1,4 +1,5 @@
 """Accounts, sessions, sign-in attempts and recovery tokens."""
+
 import time
 
 from sqlalchemy import JSON, Float, ForeignKey, Integer, String

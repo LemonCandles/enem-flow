@@ -71,35 +71,59 @@ Desktop.ini
 # Dados: entram os dois lotes conferidos (ENEM 2024, 2º dia azul, e
 # Matemática 2023 azul), com figuras, PDFs de prova e gabarito, bases de
 # revisão, anotações e o dataset de referência, além de documentação, exemplo
-# de manifesto, taxonomia e catálogo de fontes. O restante do acervo, o banco
-# textual e os caches são recuperados pelo catálogo com SHA-256 ou regenerados
-# pelos scripts. Novos arquivos e pastas em data/ ficam locais até serem
-# liberados explicitamente aqui.
+# de manifesto, taxonomia e catálogo de fontes. Também entram as provas geradas
+# da aplicação regular de 2024 (1º dia) e 2025 (1º e 2º dias), caderno azul, com
+# JSON, relatório, figuras e PDFs; seguem sendo extração automática, sem
+# equivaler a conteúdo conferido. O restante do acervo, o banco textual e os
+# caches são recuperados pelo catálogo com SHA-256 ou regenerados pelos scripts.
+# Novos arquivos e pastas em data/ ficam locais até serem liberados
+# explicitamente aqui.
 /data/*
 !/data/README.md
 !/data/enem-2024-dia2-azul.json
 !/data/assets/
-# Figuras: só as dos lotes conferidos; as das provas geradas do acervo ficam locais.
+# Figuras: as dos lotes conferidos e as das provas regulares de 2024 e 2025; as
+# demais provas geradas do acervo ficam locais.
 /data/assets/*
 !/data/assets/enem-2024-dia2-azul/
 !/data/assets/enem-2023-matematica-azul/
+!/data/assets/enem-2024-regular-dia1-caderno-1-azul-ingles/
+!/data/assets/enem-2024-regular-dia1-caderno-1-azul-espanhol/
+!/data/assets/enem-2025-regular-dia1-caderno-1-azul-ingles/
+!/data/assets/enem-2025-regular-dia1-caderno-1-azul-espanhol/
+!/data/assets/enem-2025-regular-dia2-caderno-7-azul/
 !/data/catalog/
 !/data/classification/
 !/data/datasets/
 !/data/examples/
 !/data/taxonomy/
 
-# Derivados: só as bases imutáveis de revisão; archive/ e assets/ são caches.
+# Derivados: as bases imutáveis de revisão e, em exams/, JSON e relatório das
+# provas regulares de 2024 e 2025; archive/ e assets/ são caches.
 !/data/derived/
 /data/derived/*
 !/data/derived/baselines/
+!/data/derived/exams/
+/data/derived/exams/*
+!/data/derived/exams/enem-2024-regular-dia1-caderno-1-azul-ingles.json
+!/data/derived/exams/enem-2024-regular-dia1-caderno-1-azul-ingles.report.json
+!/data/derived/exams/enem-2024-regular-dia1-caderno-1-azul-espanhol.json
+!/data/derived/exams/enem-2024-regular-dia1-caderno-1-azul-espanhol.report.json
+!/data/derived/exams/enem-2025-regular-dia1-caderno-1-azul-ingles.json
+!/data/derived/exams/enem-2025-regular-dia1-caderno-1-azul-ingles.report.json
+!/data/derived/exams/enem-2025-regular-dia1-caderno-1-azul-espanhol.json
+!/data/derived/exams/enem-2025-regular-dia1-caderno-1-azul-espanhol.report.json
+!/data/derived/exams/enem-2025-regular-dia2-caderno-7-azul.json
+!/data/derived/exams/enem-2025-regular-dia2-caderno-7-azul.report.json
 
-# Nenhum PDF de data/ entra, exceto as fontes dos lotes conferidos abaixo.
+# Nenhum PDF de data/ entra, exceto as fontes dos lotes conferidos e das provas
+# regulares de 2024 e 2025 abaixo.
 /data/**/*.pdf
 
 # Fontes oficiais: guia, inventário do acervo (URLs, SHA-256, páginas oficiais
 # preservadas e intermediário TLS), manifesto da matriz de referência e PDFs
-# dos lotes conferidos. Os demais originais são recuperados pelo catálogo.
+# dos lotes conferidos e do caderno azul das provas regulares de 2024 e 2025.
+# Os demais originais são recuperados pelo catálogo.
 !/data/sources/
 /data/sources/*
 !/data/sources/README.md
@@ -114,3 +138,9 @@ Desktop.ini
 !/data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf
 !/data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/prova.pdf
 !/data/sources/enem/2024/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf
+!/data/sources/enem/2024/regular/impresso/dia-1/caderno-1-azul/prova.pdf
+!/data/sources/enem/2024/regular/impresso/dia-1/caderno-1-azul/gabarito.pdf
+!/data/sources/enem/2025/regular/impresso/dia-1/caderno-1-azul/prova.pdf
+!/data/sources/enem/2025/regular/impresso/dia-1/caderno-1-azul/gabarito.pdf
+!/data/sources/enem/2025/regular/impresso/dia-2/caderno-7-azul/prova.pdf
+!/data/sources/enem/2025/regular/impresso/dia-2/caderno-7-azul/gabarito.pdf

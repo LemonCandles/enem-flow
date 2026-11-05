@@ -78,6 +78,8 @@ pytest==9.2.0
     # via -r backend/requirements-dev.txt
 pyyaml==6.0.3
     # via pymupdf
+ruff==0.17.3
+    # via -r backend/requirements-dev.txt
 sqlalchemy==2.1.6
     # via
     #   -r backend/requirements.txt

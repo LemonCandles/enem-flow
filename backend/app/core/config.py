@@ -4,6 +4,7 @@ DATABASE_URL is read once, when the engine is created. Cookie security and
 allowed origins are read on each use, as before, so a changed environment
 takes effect without reloading the module.
 """
+
 import os
 from pathlib import Path
 

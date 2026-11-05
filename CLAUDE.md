@@ -18,6 +18,7 @@ Execute na raiz; API e frontend em terminais separados.
 | `make api` / `make web` | API na porta 8000 / site na 3000 |
 | `make migrate seed` | Atualizar esquema e catálogo; faça backup antes |
 | `make test` | pytest, TypeScript e validação LaTeX |
+| `make lint` / `make format` | Conferir / aplicar ruff e Prettier |
 | `make build` | Build de produção |
 | `npm --prefix frontend run test:e2e` | Playwright, com serviços iniciados |
 | `make acervo` | Gerar/publicar provas locais sem curadoria |
@@ -40,9 +41,11 @@ O backend está organizado por responsabilidade. Caminhos abaixo relativos a `ba
 | `preparation/` | Preparador compartilhado, executado na importação e edição |
 | `cli.py` | Administração local via `python -m backend.app.cli` |
 
-- **Frontend — `frontend/src/`:** `components/`, `lib/`, `app/`; cliente em `lib/api.ts`. Sessão por cookie HttpOnly.
+- **Fontes oficiais — `ingestion/`:** espelho do acervo, extração de PDF e banco textual, sempre offline. `scripts/` guarda os pontos de entrada; cada um importa `_bootstrap` primeiro. Scripts com regras por questão são registro histórico e ficam como estão.
+
+- **Frontend — `frontend/src/`:** `components/`, `lib/`, `app/`. As chamadas da API ficam em `lib/endpoints.ts`, os tipos em `lib/types.ts`; prova e diagnóstico diferem só em `lib/attempt-source.ts`, e as páginas são escolhidas pela tabela de `components/app.tsx`. Sessão por cookie HttpOnly.
 - **Entrada HTTP:** no acesso direto ao Next, `/api/*` usa rewrites e `API_INTERNAL_URL` é definido no build. No Compose, o gateway Nginx encaminha `/api/*` diretamente à API e as páginas ao Next. Preserve as redes internas, a substituição dos cabeçalhos de origem e a confiança apenas no IP privado do gateway.
-- **Contrato/preparação:** `backend/app/schemas/content.py`, com tipos reexportados por `backend.app.schemas`; mantenha `docs/content-schema.json` correspondente a `ExamImport.model_json_schema()`. PDF offline: `scripts/exam_pdf.py` e `scripts/prepare_exam.py`. Registre ambiguidades; evite regras por questão.
+- **Contrato/preparação:** `backend/app/schemas/content.py`, com tipos reexportados por `backend.app.schemas`; mantenha `docs/content-schema.json` correspondente a `ExamImport.model_json_schema()`. PDF offline: `ingestion/exam_pdf/` e `scripts/prepare_exam.py`. Registre ambiguidades; evite regras por questão.
 - **Acervo:** `scripts/archive_enem.py` sincroniza originais; `scripts/build_bank.py` gera banco textual. Preserve a indicação de extração automática e suas pendências nas provas geradas.
 
 ## Conteúdo e integridade
@@ -61,13 +64,14 @@ O backend está organizado por responsabilidade. Caminhos abaixo relativos a `ba
 
 - Lotes conferidos: 2024 dia 2 azul (90) e Matemática 2023 azul (45); 133 válidos, referência matemática de 89 itens. Acervo 1998–2025, todas as aplicações disponíveis: `docs/cobertura-acervo.md`.
 - Originais imutáveis: `data/sources/enem/{ano}/{aplicacao}/{modalidade}/dia-*/caderno-*/`; inventário URL/SHA-256: `data/sources/catalogo/acervo.json`. Nunca substitua gabarito por outra aplicação. Organização: `data/sources/README.md`.
-- Git: só dois lotes, recursos, baselines, anotações, taxonomia, exemplos e catálogo de fontes. Espelho histórico, `data/bank/`, caches, provas geradas e figuras ficam locais. Confira `.gitignore`; versionar novas provas exige pedido explícito.
+- Git: dois lotes conferidos e, como extração automática sem conferência, as provas geradas da aplicação regular de 2024 (1º dia) e 2025 (1º e 2º dias), caderno azul, com JSON, relatório, figuras e PDFs; além de recursos, baselines, anotações, taxonomia, exemplos e catálogo de fontes. Espelho histórico, `data/bank/`, caches e as demais provas geradas ficam locais; o `.dockerignore` mantém essas provas fora da imagem. Confira `.gitignore`; versionar novas provas exige pedido explícito.
 
 ## Andamento e roteiro
 
-- Etapas técnicas 1/2 concluídas; próxima: Dados/IA (3). Adaptação/tutor previstos. Siga `docs/plano-implementacao/proximas-etapas.md`; atualize-o e `status-implementacao.md` após entregas.
-- Toda a curadoria fica na etapa 8; publicação externa na 9, piloto na 10. Antes, use conteúdo/rótulos disponíveis. Revisão independente, leitores de tela e aparelhos reais exigem validação efetiva.
-- A fase 1 da reorganização do backend está integrada; a fase 2 (exceções de domínio sem dependência de HTTP em serviços/instaladores) continua no backlog das próximas etapas.
+- Etapas técnicas 1/2, primeiro ciclo de Dados/IA (3), diagnóstico (4) e política adaptativa (5) implementados; próxima: tutor e layouts dinâmicos (6). Experimentos offline em `experiments/`, comando `make experiments`, protocolo em `docs/experimentos/README.md`. Propostas não publicam conteúdo; referência assistida, LLM externo e tempos humanos têm seus limites registrados. Tutor previsto. Política adaptativa: `services/adaptive.py`, função pura e versionada; `docs/politica-adaptativa.md`. Siga `docs/plano-implementacao/proximas-etapas.md`; atualize-o e `status-implementacao.md` após entregas.
+- Auditoria integral: `docs/experimentos/auditoria-acervo.md`, `make audit-archive`, `make audit-archive-browser` e `make experiments-all`. Correções locais exigem plano com versões/hashes e ensaio; `scripts/apply_archive_audit.py` preserva histórico, edições posteriores e a revisão independente pendente. Divergências de identidade não podem encobrir alterações de gabarito.
+- O roteiro termina na etapa 7: curadoria, publicação externa e piloto saíram dele. Use conteúdo/rótulos disponíveis e não registre esses itens como feitos. Revisão independente, leitores de tela e aparelhos reais exigem validação efetiva.
+- Serviços e instaladores não dependem de HTTP: lançam as exceções de `services/errors.py`, que `main.py` converte em resposta.
 
 ## Identidade visual
 

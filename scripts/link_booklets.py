@@ -10,20 +10,21 @@ não cumpre esses critérios fica pendente, com o motivo.
 Exige os PDFs das cores e seus gabaritos no espelho local (`archive_enem.py
 sync`). O resultado, `data/catalog/occurrences-v1.json`, é versionado.
 """
+
+import _bootstrap  # noqa: F401
 import argparse
 import json
 from pathlib import Path
 import re
-import sys
 import unicodedata
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 import pymupdf
 from backend.app.installers.curated import classified
 from backend.app.services.identity import signatures
-from scripts.archive_enem import CATALOG, SOURCE_ROOT, sha, write_json
-from scripts.build_bank import extract
+from ingestion.archive import CATALOG, SOURCE_ROOT, sha, write_json
+from ingestion.bank import extract
+
+ROOT = Path(__file__).resolve().parents[1]
 
 OUTPUT = ROOT / 'data/catalog/occurrences-v1.json'
 VERSION = 'booklet-links-v1'
@@ -35,9 +36,18 @@ SAME_EXAM = ('year', 'application', 'modality', 'day', 'variant', 'role', 'langu
 # Conferências visuais explícitas para figuras reprocessadas pelo Inep em outra
 # resolução, em que a comparação automática fica acima do limite.
 VISUAL_CONFIRMED = {
-    ('enem-2024-regular-q121', 'caderno-5-amarelo'): 'Mesma tirinha em quatro quadros; a imagem embutida no caderno amarelo tem outra resolução.',
-    ('enem-2024-regular-q152', 'caderno-5-amarelo'): 'Mesmo gráfico de importações e exportações (jun. 2009 a jun. 2010); muda só a resolução.',
-    ('enem-2024-regular-q167', 'caderno-5-amarelo'): 'Mesma ilustração dos celulares de 3 1/2 e 4 5/6 polegadas; muda só a resolução.',
+    (
+        'enem-2024-regular-q121',
+        'caderno-5-amarelo',
+    ): 'Mesma tirinha em quatro quadros; a imagem embutida no caderno amarelo tem outra resolução.',
+    (
+        'enem-2024-regular-q152',
+        'caderno-5-amarelo',
+    ): 'Mesmo gráfico de importações e exportações (jun. 2009 a jun. 2010); muda só a resolução.',
+    (
+        'enem-2024-regular-q167',
+        'caderno-5-amarelo',
+    ): 'Mesma ilustração dos celulares de 3 1/2 e 4 5/6 polegadas; muda só a resolução.',
 }
 
 
@@ -49,7 +59,7 @@ def words(text):
 
 def shingles(text, size=3):
     tokens = words(text)
-    return {tuple(tokens[i:i + size]) for i in range(len(tokens) - size + 1)}
+    return {tuple(tokens[i : i + size]) for i in range(len(tokens) - size + 1)}
 
 
 def curated_text(content):
@@ -73,7 +83,9 @@ def pair(curated, candidates):
     """
     result = {}
     for number, mine in curated.items():
-        scores = sorted(((len(mine & theirs) / max(1, len(mine)), other) for other, theirs in candidates.items()), reverse=True)
+        scores = sorted(
+            ((len(mine & theirs) / max(1, len(mine)), other) for other, theirs in candidates.items()), reverse=True
+        )
         best, other = scores[0] if scores else (0.0, None)
         margin = best - (scores[1][0] if len(scores) > 1 else 0.0)
         reason = None
@@ -90,15 +102,22 @@ def pair(curated, candidates):
         if len(numbers) > 1:
             for number in numbers:
                 found, best, margin, _ = result[number]
-                result[number] = (found, best, margin, f'Questão {other} disputada por {len(numbers)} itens conferidos.')
+                result[number] = (
+                    found,
+                    best,
+                    margin,
+                    f'Questão {other} disputada por {len(numbers)} itens conferidos.',
+                )
     return result
 
 
 def official_answers(path):
     with pymupdf.open(path) as document:
         text = '\n'.join(page.get_text() for page in document)
-    return {int(number): None if answer.upper().startswith('ANULAD') else answer.upper()
-            for number, answer in re.findall(r'\b(\d{1,3})\s+(ANULAD[AO]|[ABCDE])\b', text, re.I)}
+    return {
+        int(number): None if answer.upper().startswith('ANULAD') else answer.upper()
+        for number, answer in re.findall(r'\b(\d{1,3})\s+(ANULAD[AO]|[ABCDE])\b', text, re.I)
+    }
 
 
 def thumbnail(page, box, grid=16):
@@ -141,8 +160,11 @@ def figure_distance(mine, theirs):
         return float('inf')
     worst = 0.0
     for ratio, cells in mine:
-        options = [sum(abs(a - b) for a, b in zip(cells, other)) / len(cells)
-                   for other_ratio, other in theirs if abs(ratio - other_ratio) <= 0.05 * ratio]
+        options = [
+            sum(abs(a - b) for a, b in zip(cells, other)) / len(cells)
+            for other_ratio, other in theirs
+            if abs(ratio - other_ratio) <= 0.05 * ratio
+        ]
         worst = max(worst, min(options, default=float('inf')))
     return worst
 
@@ -160,8 +182,13 @@ def local(record):
 
 
 def answer_key(files, record):
-    keys = [r for r in files if r['role'] == 'gabarito' and r['booklet'] == record['booklet']
-            and all(r.get(k) == record.get(k) for k in ('year', 'application', 'modality', 'day', 'variant'))]
+    keys = [
+        r
+        for r in files
+        if r['role'] == 'gabarito'
+        and r['booklet'] == record['booklet']
+        and all(r.get(k) == record.get(k) for k in ('year', 'application', 'modality', 'day', 'variant'))
+    ]
     if len(keys) != 1:
         raise SystemExit(f'Gabarito do {record["booklet"]} não identificado no catálogo.')
     return keys[0]
@@ -172,8 +199,10 @@ def link_exam(files, payload):
     if len(own) != 1:
         raise SystemExit(f'Fonte de {payload.id} não identificada no catálogo.')
     own = own[0]
-    booklets = [own] + sorted((r for r in files if r['booklet'] != own['booklet'] and all(r.get(k) == own.get(k) for k in SAME_EXAM)),
-                              key=lambda r: r['booklet'])
+    booklets = [own] + sorted(
+        (r for r in files if r['booklet'] != own['booklet'] and all(r.get(k) == own.get(k) for k in SAME_EXAM)),
+        key=lambda r: r['booklet'],
+    )
     numbers = [q.content.number for q in payload.questions]
     curated = {q.content.number: shingles(curated_text(q.content.model_dump())) for q in payload.questions}
     own_occurrences = extract(own)['questions']
@@ -183,7 +212,11 @@ def link_exam(files, payload):
     for booklet in booklets:
         key_record = answer_key(files, booklet)
         answers = official_answers(local(key_record))
-        occurrences = [o for o in extract(booklet)['questions'] if min(numbers) <= o['number'] <= max(numbers) and not o.get('language')]
+        occurrences = [
+            o
+            for o in extract(booklet)['questions']
+            if min(numbers) <= o['number'] <= max(numbers) and not o.get('language')
+        ]
         candidates = {o['number']: shingles(o['text']) for o in occurrences}
         theirs = figures(local(booklet), occurrences)
         paired = pair(curated, candidates)
@@ -206,17 +239,42 @@ def link_exam(files, payload):
                 else:
                     reason = 'Figuras raster diferem além do limite; confira visualmente antes de vincular.'
             if reason:
-                pending.append(dict(question_id=question.question_id, booklet=booklet['booklet'], candidate=other, reason=reason))
+                pending.append(
+                    dict(question_id=question.question_id, booklet=booklet['booklet'], candidate=other, reason=reason)
+                )
                 continue
             linked += 1
-            links[question.question_id].append(dict(booklet=booklet['booklet'], source_sha256=booklet['sha256'], number=other,
-                                                    answer=official, text_containment=best, margin=margin, figures=figure_note))
-        summary.append(dict(booklet=booklet['booklet'], source_path=booklet['path'], source_sha256=booklet['sha256'],
-                            answer_key_sha256=key_record['sha256'], linked=linked, pending=len(payload.questions) - linked))
+            links[question.question_id].append(
+                dict(
+                    booklet=booklet['booklet'],
+                    source_sha256=booklet['sha256'],
+                    number=other,
+                    answer=official,
+                    text_containment=best,
+                    margin=margin,
+                    figures=figure_note,
+                )
+            )
+        summary.append(
+            dict(
+                booklet=booklet['booklet'],
+                source_path=booklet['path'],
+                source_sha256=booklet['sha256'],
+                answer_key_sha256=key_record['sha256'],
+                linked=linked,
+                pending=len(payload.questions) - linked,
+            )
+        )
     questions = []
     for question in payload.questions:
         digest, _ = signatures(question.content.model_dump())
-        questions.append(dict(question_id=question.question_id, canonical_id='enem-' + digest[:32], occurrences=links[question.question_id]))
+        questions.append(
+            dict(
+                question_id=question.question_id,
+                canonical_id='enem-' + digest[:32],
+                occurrences=links[question.question_id],
+            )
+        )
     return dict(exam_id=payload.id, source_sha256=own['sha256'], booklets=summary), questions, pending
 
 
@@ -230,16 +288,25 @@ def build():
         exams.append(exam)
         questions += rows
         pending += missing
-    return dict(version=VERSION, catalog=manifest['version'],
-                method='Cores da mesma aplicação e dia: contenção de trigramas do texto nativo, pareamento único, gabarito oficial de cada cor e figuras raster equivalentes.',
-                criteria=dict(min_text_containment=MIN_CONTAINMENT, min_margin=MIN_MARGIN, max_figure_distance=MAX_FIGURE_DISTANCE),
-                limits='Desenhos vetoriais não são comparados; a equivalência deles decorre do texto, do pareamento e do gabarito.',
-                exams=exams, questions=questions, pending=pending)
+    return dict(
+        version=VERSION,
+        catalog=manifest['version'],
+        method='Cores da mesma aplicação e dia: contenção de trigramas do texto nativo, pareamento único, gabarito oficial de cada cor e figuras raster equivalentes.',
+        criteria=dict(
+            min_text_containment=MIN_CONTAINMENT, min_margin=MIN_MARGIN, max_figure_distance=MAX_FIGURE_DISTANCE
+        ),
+        limits='Desenhos vetoriais não são comparados; a equivalência deles decorre do texto, do pareamento e do gabarito.',
+        exams=exams,
+        questions=questions,
+        pending=pending,
+    )
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--check', action='store_true', help='Falha se o arquivo versionado diferir do resultado atual.')
+    parser.add_argument(
+        '--check', action='store_true', help='Falha se o arquivo versionado diferir do resultado atual.'
+    )
     result = build()
     if parser.parse_args().check:
         current = json.loads(OUTPUT.read_text()) if OUTPUT.is_file() else None

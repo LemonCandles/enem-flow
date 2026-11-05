@@ -1,0 +1,104 @@
+{
+  "$defs": {
+    "ExternalPrediction": {
+      "additionalProperties": false,
+      "properties": {
+        "content_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Content Sha256",
+          "type": "string"
+        },
+        "cost_usd": {
+          "minimum": 0,
+          "title": "Cost Usd",
+          "type": "number"
+        },
+        "evidence": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "latency_ms": {
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "repeat_themes": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "title": "Repeat Themes",
+          "type": "array"
+        },
+        "theme": {
+          "title": "Theme",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "content_sha256",
+        "theme",
+        "evidence",
+        "latency_ms",
+        "cost_usd",
+        "repeat_themes"
+      ],
+      "title": "ExternalPrediction",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data_policy": {
+      "minLength": 10,
+      "title": "Data Policy",
+      "type": "string"
+    },
+    "model": {
+      "minLength": 1,
+      "title": "Model",
+      "type": "string"
+    },
+    "prompt_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Prompt Sha256",
+      "type": "string"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/ExternalPrediction"
+      },
+      "title": "Records",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "training_groups": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Training Groups",
+      "type": "array"
+    }
+  },
+  "required": [
+    "model",
+    "prompt_sha256",
+    "training_groups",
+    "data_policy",
+    "records"
+  ],
+  "title": "ExternalPredictions",
+  "type": "object"
+}

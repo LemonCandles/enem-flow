@@ -9,9 +9,19 @@ for (const activeSession of [false, true]) {
     let profileCalls = 0;
     await page.route('**/api/me', route => {
       profileCalls++;
-      return route.fulfill(activeSession && !completed ? { json: {
-        id: 'recovery-user', name: 'Teste', email: 'recovery@example.com', role: 'student', preferences: {},
-      } } : { status: 401, json: { detail: 'Entre na sua conta.' } });
+      return route.fulfill(
+        activeSession && !completed
+          ? {
+              json: {
+                id: 'recovery-user',
+                name: 'Teste',
+                email: 'recovery@example.com',
+                role: 'student',
+                preferences: {},
+              },
+            }
+          : { status: 401, json: { detail: 'Entre na sua conta.' } },
+      );
     });
     await page.route('**/api/auth/reset-password', async route => {
       expect(route.request().postDataJSON()).toEqual({ token, password: 'nova-senha-de-recuperacao' });

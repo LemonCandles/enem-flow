@@ -1,4 +1,5 @@
 """Sign-in, registration, preferences and password recovery."""
+
 import re
 
 from pydantic import Field, field_validator

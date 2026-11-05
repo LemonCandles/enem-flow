@@ -1,0 +1,19 @@
+# Formatação e lint do Python. Os scripts históricos com regras por questão e as
+# migrações já aplicadas ficam de fora: são registro do que foi feito.
+target-version = "py313"
+line-length = 120
+extend-exclude = [
+  "backend/migrations/versions",
+  "scripts/import_official.py",
+  "scripts/review_2023_math.py",
+  "scripts/review_presentation.py",
+  "scripts/structure_questions.py",
+]
+
+[format]
+quote-style = "preserve"
+
+[lint]
+# Só erros reais: importações e nomes não usados, e sintaxe suspeita.
+select = ["E4", "E7", "E9", "F"]
+ignore = ["E731", "E741"]

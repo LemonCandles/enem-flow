@@ -1,4 +1,5 @@
 """Take a consistent SQLite snapshot without stopping the local API."""
+
 import argparse
 import sqlite3
 from pathlib import Path

@@ -1,0 +1,2069 @@
+{
+ "version": "generic-v1",
+ "exam_id": "enem-2025-regular-dia2-caderno-7-azul",
+ "questions": [
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q91",
+   "number": 91,
+   "version": "generic-v1",
+   "input_sha256": "7f9a5a825e4a371c2423becfe2f0a33d17c70e6b915fe6f2e908feac51bff7a0",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 91, página 2; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "08ebae6af6ab4863a845a1b147576c7354d2d100563a30edcbbaf53d29985e0b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q92",
+   "number": 92,
+   "version": "generic-v1",
+   "input_sha256": "5c34a812c1267a520d03766c500ed0e2659c08e6992ece72af6594bc83c7564b",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e151b050b1e254a5ee117df1ac2344786d7a7a13b654d89d544961662144769a"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q93",
+   "number": 93,
+   "version": "generic-v1",
+   "input_sha256": "0473c672bf59ad09374b28283f4e386e18faad6982fab39cbadc4e43fb453f65",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "766e486ebed08b3a828daa967e739866c7ae36eca6bcda5b16af8f4ce59de104"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q94",
+   "number": 94,
+   "version": "generic-v1",
+   "input_sha256": "8db16b6c51e7f15b54a05a2f8a31d1e3c18b4a966c8971a1560ff0f0e6954012",
+   "changes": [
+    {
+     "location": "blocks[4]",
+     "operation": "latex",
+     "before": "1º – imprimir um trabalho escolar; 2º – fazer um café com a cafeteira; 3º – ligar a luminária; 4º – secar os cabelos. Sabe-se que a régua foi ligada à tensão elétrica de 110 V, adequada para o funcionamento desses aparelhos.",
+     "after": "1º – imprimir um trabalho escolar; 2º – fazer um café com a cafeteira; 3º – ligar a luminária; 4º – secar os cabelos. Sabe-se que a régua foi ligada à tensão elétrica de $110\\,\\mathrm{V}$, adequada para o funcionamento desses aparelhos."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 94, página 2; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "2636971b9ae60cb5f98651cb4aa13cc3aafdc2f0352d8c511cb974a60166d13b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q95",
+   "number": 95,
+   "version": "generic-v1",
+   "input_sha256": "36fe0d90bb2d09af9e3aba35ecd530c3645518a2c4c3839f3c2686d00012b708",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "02b3427d8d17341ae26bc4efea641671b7c01c1e61860b756a09dd2b44a69777"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q96",
+   "number": 96,
+   "version": "generic-v1",
+   "input_sha256": "29b795275c240b8f836bac7bed67cae6014078bb7d9b142e7df0fb9d3f586777",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "56e861d531c9b591d9eff0670d40f3394ffc21746f25cea2160083cda9ae5627"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q97",
+   "number": 97,
+   "version": "generic-v1",
+   "input_sha256": "c77951b832562e1ee7ee32fc7715d892426d6d5b527a174b2fb80762a04ac420",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 97, página 3; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "d82efcc8a75389052008a5ffd7c84c02e2d0a9c8eb1d5cfc754f2fcfcfd13d94"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q98",
+   "number": 98,
+   "version": "generic-v1",
+   "input_sha256": "d9a207f91afa7fdf77bf50a31a9e4e78cbcc9103ff98e133679b148a3940d02d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "863e8987c749b7ccbd11e47d7ea9b41d7df0609d5c381692ee91c3dfc86503bd"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q99",
+   "number": 99,
+   "version": "generic-v1",
+   "input_sha256": "c1b36322fc28778b375e8f80e4244dae9a7f91161dfa49aedbea393c2e054686",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "843621b90121b8bc1ea7d4faa913cc9d0887c0c794e22e6794ad713889350fa3"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q100",
+   "number": 100,
+   "version": "generic-v1",
+   "input_sha256": "db6a13392b244dea97ebf15247b2789e083eadf9ea28ad5819613463fec5a6cf",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "3b3bee8e7ec3d735507865572138e17116751d7842b7bbefa5cecc59b097e857"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q101",
+   "number": 101,
+   "version": "generic-v1",
+   "input_sha256": "557981a80088841fb7ad32c7fc47660592175eed00dac3fa2f9507a9824e4118",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "7d5a72a1718d730f573315be4bf1af8e8409d679cb555c3f3011f00b919e67d8"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q102",
+   "number": 102,
+   "version": "generic-v1",
+   "input_sha256": "5b1aaf05700b8f13d89786283a6b9af0563bf3d408980bb936f48b5aba458bcb",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "8e04c22369a06ffa9cd258b0ade94b6afc1bfa9ee9a4e08226f5bd616d34c317"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q103",
+   "number": 103,
+   "version": "generic-v1",
+   "input_sha256": "b13b0ed0e042e89221a90fce5cd858003fd0fb6dbe4175ca689058ff77aa0ffb",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9434b58e055cb921dc9bc9a81b25383db6357c5165d1c6908d013f09623ac066"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q104",
+   "number": 104,
+   "version": "generic-v1",
+   "input_sha256": "c62107dcbd7038f0c445e46cc9111cf3e189c439c68d5bf361ae115bc4580db0",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "A quantidade de CO₂ na atmosfera da Terra aumentou em 50%, e a temperatura está agora cerca de 1,2 °C mais quente em comparação ao século XIX. O ritmo de aumento da temperatura precisa diminuir se quisermos evitar as piores consequências das mudanças climáticas. Cientistas afirmam que o aquecimento global precisa ser mantido em 1,5 °C até o ano 2100. No entanto, a menos que outras ações sejam tomadas, o planeta ainda pode aquecer mais de 2 °C até o final deste século. Na prática, os países precisam enfrentar as mudanças climáticas com ações mitigadoras, que reduzam tanto as emissões quanto os níveis de CO₂ na atmosfera.",
+     "after": "A quantidade de $\\ce{CO2}$ na atmosfera da Terra aumentou em $50\\%$, e a temperatura está agora cerca de 1,2 °C mais quente em comparação ao século XIX. O ritmo de aumento da temperatura precisa diminuir se quisermos evitar as piores consequências das mudanças climáticas. Cientistas afirmam que o aquecimento global precisa ser mantido em 1,5 °C até o ano 2100. No entanto, a menos que outras ações sejam tomadas, o planeta ainda pode aquecer mais de 2 °C até o final deste século. Na prática, os países precisam enfrentar as mudanças climáticas com ações mitigadoras, que reduzam tanto as emissões quanto os níveis de $\\ce{CO2}$ na atmosfera."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a4c374a51d1e87ff876fa7ed489381b9d01afd3fc9c03cbdf21a63e0045dba67"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q105",
+   "number": 105,
+   "version": "generic-v1",
+   "input_sha256": "a7a149e4276e4d9d389f16cb6c6e3f69c858e0184ec7a5c04c1f97a840abc1da",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 105, página 5; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "f599879cda86bdae9c5191454169d2f127082a1b01b972e40b46c2a1d66057b3"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q106",
+   "number": 106,
+   "version": "generic-v1",
+   "input_sha256": "e7a0733e16a7bd64b18e38e6baa173635c375fdee29c62345f5dc1562300a08c",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "No início do século XX, as fórmulas das substâncias eram representadas de modo diferente do atual. A figura apresenta uma fotografia bem antiga (1909) que registra uma aula de química ministrada em um colégio em Santos (SP). Um olhar mais atento permite identificar como os compostos químicos eram representados.",
+     "after": "No início do século XX, as fórmulas das substâncias eram representadas de modo diferente do atual. A figura apresenta uma fotografia bem antiga (1909) que registra uma aula de química ministrada em um colégio em Santos $\\ce{(SP)}$. Um olhar mais atento permite identificar como os compostos químicos eram representados."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "H³AzO⁴ e CaCl",
+     "after": "$H^{3}$AzO⁴ e $\\ce{CaCl}$"
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "HAzO² e KCl ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+     "after": "HAzO² e $\\ce{KCl}$ ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025"
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 106, página 5; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "26d2ff087badbee6d074b5802a8c3d504167512d27398c0d18f240ba6f50e1f0"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q107",
+   "number": 107,
+   "version": "generic-v1",
+   "input_sha256": "b7ca9893f5ac6b4f4724095ca0c51d2d581c55d32cfc4b41c9756a76ea2fdc85",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 107, página 6; descrição detalhada pendente."
+    },
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "9afdcebaeaec644200ac26909cb0c1ee53461750581f018ac8587140a2bc69fa"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q108",
+   "number": 108,
+   "version": "generic-v1",
+   "input_sha256": "a95bf51678f6e7f18d27697629426ce9a87cc345694955efacbbc76ba31a3b56",
+   "changes": [],
+   "issues": [
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "2e1f8312d17644083cfba0aaa41544fef37f33a80d849d53e17c5eb5ad327e33"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q109",
+   "number": 109,
+   "version": "generic-v1",
+   "input_sha256": "7433a79b202be06d624565cbbff9615e8d036d43ae26149f84a41f56a23d0934",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "O fruto do cajueiro é um aquênio repleto de um líquido escuro, quase preto, cáustico e inflamável. Esse líquido da casca da castanha do caju (LCC) representa aproximadamente 25% da massa da castanha e é um subproduto de agronegócio do caju. Quando submetido a altas temperaturas, o ácido anacárdico presente no LCC é convertido a cardanol, que recebe a denominação de LCC técnico, conforme o esquema:",
+     "after": "O fruto do cajueiro é um aquênio repleto de um líquido escuro, quase preto, cáustico e inflamável. Esse líquido da casca da castanha do caju (LCC) representa aproximadamente $25\\%$ da massa da castanha e é um subproduto de agronegócio do caju. Quando submetido a altas temperaturas, o ácido anacárdico presente no LCC é convertido a cardanol, que recebe a denominação de LCC técnico, conforme o esquema:"
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 109, página 7; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "b722964d6aeb4715e74672e18a71ec72310d2bd1e37690e299cf0dacb029fdcc"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q110",
+   "number": 110,
+   "version": "generic-v1",
+   "input_sha256": "eff67ead2829a35950a1c8af55445f6cf2254f54d433d29e519cb63dc11dc448",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "A química nuclear é uma importante ferramenta na produção de substâncias utilizadas na área da saúde humana. A radiação emitida pelo cobalto-60 é utilizada na medicina como ferramenta de diagnóstico e no tratamento do câncer. No entanto, esse radioisótopo tem um tempo de armazenamento limitado, pois seu tempo de meia-vida é de 5,3 anos. Considere um frasco com uma amostra contendo 2,00 mg de cobalto-60, armazenado durante um período de 26,5 anos.",
+     "after": "A química nuclear é uma importante ferramenta na produção de substâncias utilizadas na área da saúde humana. A radiação emitida pelo cobalto-60 é utilizada na medicina como ferramenta de diagnóstico e no tratamento do câncer. No entanto, esse radioisótopo tem um tempo de armazenamento limitado, pois seu tempo de meia-vida é de 5,3 anos. Considere um frasco com uma amostra contendo $2{,}00\\,\\mathrm{mg}$ de cobalto-60, armazenado durante um período de 26,5 anos."
+    },
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "2,00 mg.",
+     "after": "$2{,}00\\,\\mathrm{mg}$."
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "1,00 mg.",
+     "after": "$1{,}00\\,\\mathrm{mg}$."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "0,40 mg.",
+     "after": "$0{,}40\\,\\mathrm{mg}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "0,13 mg.",
+     "after": "$0{,}13\\,\\mathrm{mg}$."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "0,06 mg. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+     "after": "$0{,}06\\,\\mathrm{mg}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b443debffddcc3bc8e0cae76db9722b7a3545920ea2f9fa78d4d0c0c65be7577"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q111",
+   "number": 111,
+   "version": "generic-v1",
+   "input_sha256": "738233196a5def13a73d7f22c3c4f7f6af720098e37538a6530cdf91bb360c5b",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2,
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 111, página 7; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "0cc9508dc0607b491f52e539ebe7c855e64721ec0f8d1472261cb49a4d532d88"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q112",
+   "number": 112,
+   "version": "generic-v1",
+   "input_sha256": "a9da6aeba3197ff28227ddbad4c9609db3409f56c94ad66d7547d56251034c9f",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "24e95aae92028420f9c7978a99aaefb69e504988e101a9eeb31b531e53ee1635"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q113",
+   "number": 113,
+   "version": "generic-v1",
+   "input_sha256": "e82d89a3f549b402c36f4beae5ab6aa46530b7921b7029a35a1b76d425647575",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 113, página 8; descrição detalhada pendente."
+    },
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[3].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 113, página 8; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "48bd75d4181dd112733db71b56336573d1652e08eab906a0ddd48af9f4dddc3b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q114",
+   "number": 114,
+   "version": "generic-v1",
+   "input_sha256": "6c09c36d6855456423d78e1e24bfecbadaaadd29d43485b7a4cc20af2b690a44",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2,
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 114, página 8; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "c1bb6f8497f91b1bbf64852addadd1a536301139f1b6526b7fd9df2dcc6d59fe"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q115",
+   "number": 115,
+   "version": "generic-v1",
+   "input_sha256": "bdb3b018001ef5708c9b42bfad7c18b0640b7e8ccb6950b24abbb49d91e0c0b7",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2
+     ]
+    },
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "C₉H₁₆O",
+     "after": "$\\ce{C9H16O}$"
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "C₉H₁₇O",
+     "after": "$\\ce{C9H17O}$"
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "C₁₀H₁₆O",
+     "after": "$\\ce{C10H16O}$"
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "C10H16O2",
+     "after": "$\\ce{C10H16O2}$"
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "C10H18O2",
+     "after": "$\\ce{C10H18O2}$"
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 115, página 8; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "a3c84939c5fad7c7c78fb7dafcb3a014ad221e4b539c250d7ffd80486356e268"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q116",
+   "number": 116,
+   "version": "generic-v1",
+   "input_sha256": "8347d0fb66ba9413914106a1205d39e677e261c7309638c1734f39807110b953",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "As cangas são ambientes resultantes da atuação, ao longo de milhões de anos, de chuvas, enxurradas, calor e ventos em rochas ricas em ferro. São compostas por até 90% de óxidos de ferro e contêm solos muito ácidos, rasos, com reduzidos índices de fertilidade e temperaturas que atingem quase 70 °C na superfície. Ao contrário do que se imagina, esse tipo de ambiente abriga comunidades de plantas e animais com elevado número de espécies e distribuição restrita.",
+     "after": "As cangas são ambientes resultantes da atuação, ao longo de milhões de anos, de chuvas, enxurradas, calor e ventos em rochas ricas em ferro. São compostas por até $90\\%$ de óxidos de ferro e contêm solos muito ácidos, rasos, com reduzidos índices de fertilidade e temperaturas que atingem quase 70 °C na superfície. Ao contrário do que se imagina, esse tipo de ambiente abriga comunidades de plantas e animais com elevado número de espécies e distribuição restrita."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "52b990f2122e83d1a4e5aea4d3be126c183e2912b8ff08dc4ff28406f4d5fbdd"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q117",
+   "number": 117,
+   "version": "generic-v1",
+   "input_sha256": "6341e3db0c01b652825a2fc4f699dc91c044f42a09f3ae2a70c20463b38bc71a",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "TiO₂ (s) + 2 Cl₂ (g) TiCl₄ (g) + O₂ (g)    ΔH = +175 kJ/mol",
+     "after": "$\\ce{TiO2}$ (s) + 2 $\\ce{Cl2}$ (g) $\\ce{TiCl4}$ (g) + $\\ce{O2}$ (g)    ΔH = +175 kJ/mol"
+    },
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "Após o sistema atingir o equilíbrio químico, como a formação do TiCl₄ pode ser favorecida?",
+     "after": "Após o sistema atingir o equilíbrio químico, como a formação do $\\ce{TiCl4}$ pode ser favorecida?"
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "Aumentando a pressão parcial de O₂.",
+     "after": "Aumentando a pressão parcial de $\\ce{O2}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "Aumentando a pressão parcial de Cl₂.",
+     "after": "Aumentando a pressão parcial de $\\ce{Cl2}$."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "Variando a quantidade de TiO₂.",
+     "after": "Variando a quantidade de $\\ce{TiO2}$."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4f7c76f24069a1698293bda54d8f05681e2ed1117c564aadaa42d4300f532e12"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q118",
+   "number": 118,
+   "version": "generic-v1",
+   "input_sha256": "a411c88ba4843874db3ae795631b6909895af4ca91594e55555b051325c98b87",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "A laje de um depósito de bebidas tem 50 m² de área útil de armazenamento e foi projetada para suportar pressões de até 10⁴ Pa. O gerente do estabelecimento pretende armazenar um produto cuja densidade é 1 250 kg/m³. Considere a aceleração da gravidade igual a 10 m/s².",
+     "after": "A laje de um depósito de bebidas tem $50\\,\\mathrm{m^{2}}$ de área útil de armazenamento e foi projetada para suportar pressões de até $10^{4}$ Pa. O gerente do estabelecimento pretende armazenar um produto cuja densidade é 1 $250\\,\\mathrm{kg/m^{3}}$. Considere a aceleração da gravidade igual a $10\\,\\mathrm{m/s^{2}}$."
+    },
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "0,16 m.",
+     "after": "$0{,}16\\,\\mathrm{m}$."
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "0,50 m.",
+     "after": "$0{,}50\\,\\mathrm{m}$."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "0,80 m.",
+     "after": "$0{,}80\\,\\mathrm{m}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "1,60 m.",
+     "after": "$1{,}60\\,\\mathrm{m}$."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "8,00 m. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+     "after": "$8{,}00\\,\\mathrm{m}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "af509b16a095be093b4c8e663beb27feb34c176d1a5093c16a2e45ff3730b16a"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q119",
+   "number": 119,
+   "version": "generic-v1",
+   "input_sha256": "2050351a4a7548bb0e8bcf82b83fce2d917d64d90d92cd69388e45a75a9eedad",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Em uma comunidade rural, os moradores utilizam uma bomba-d’água alimentada por 100 V de tensão contínua, podendo variar em até 5 V. Um eletrotécnico pretende instalar placas fotovoltaicas para alimentar essa bomba. As placas são idênticas e cada uma apresenta tensão de operação igual a 34 V com corrente de 7,5 A. Além disso, cada placa apresenta 40 V de tensão elétrica, quando em circuito aberto. Assim, considerando que a placa descrita é um gerador não ideal, em circuito aberto ela pode ser representada conforme a figura:",
+     "after": "Em uma comunidade rural, os moradores utilizam uma bomba-d’água alimentada por $100\\,\\mathrm{V}$ de tensão contínua, podendo variar em até $5\\,\\mathrm{V}$. Um eletrotécnico pretende instalar placas fotovoltaicas para alimentar essa bomba. As placas são idênticas e cada uma apresenta tensão de operação igual a $34\\,\\mathrm{V}$ com corrente de 7,5 A. Além disso, cada placa apresenta $40\\,\\mathrm{V}$ de tensão elétrica, quando em circuito aberto. Assim, considerando que a placa descrita é um gerador não ideal, em circuito aberto ela pode ser representada conforme a figura:"
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 119, página 9; descrição detalhada pendente."
+    },
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "82f5763cf64166e77d48ac079e0b5de58a780c0bae3e4380e10badf26ac911f5"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q120",
+   "number": 120,
+   "version": "generic-v1",
+   "input_sha256": "3ec79303c9bddcedb26c3d663e4b334f0682e8aa07a4d6618247a27fe9ec019b",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "A figura ilustra as informações contidas no manual de um sistema de alarme que utiliza transmissores e receptores de radiação eletromagnética para a detecção de movimento. O receptor é regulado pelo tempo de resposta, que corresponde ao intervalo de tempo necessário para o corpo do invasor atravessar completamente o feixe, de diâmetro d = 15 cm. Considere que a menor porção do corpo de um invasor é a sua posição de perfil, cuja espessura típica é 20 cm. São indicados cinco possíveis movimentos de um invasor e suas velocidades típicas, que devem ser observadas para a escolha do tempo de resposta.",
+     "after": "A figura ilustra as informações contidas no manual de um sistema de alarme que utiliza transmissores e receptores de radiação eletromagnética para a detecção de movimento. O receptor é regulado pelo tempo de resposta, que corresponde ao intervalo de tempo necessário para o corpo do invasor atravessar completamente o feixe, de diâmetro d = $15\\,\\mathrm{cm}$. Considere que a menor porção do corpo de um invasor é a sua posição de perfil, cuja espessura típica é $20\\,\\mathrm{cm}$. São indicados cinco possíveis movimentos de um invasor e suas velocidades típicas, que devem ser observadas para a escolha do tempo de resposta."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 120, página 10; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "e30f8f6f81d2355c453fcfd6e651e4219a495095ec1294d112f7d984254a0db8"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q121",
+   "number": 121,
+   "version": "generic-v1",
+   "input_sha256": "33bee71000de2b9ed5ac6ef3c2e2d6f74db897f5be1c82b83403d293cc7a6abf",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "e3aee64a48feb79b3f65b03e2d376988e81fd0a3836e7ae134791074917b7d19"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q122",
+   "number": 122,
+   "version": "generic-v1",
+   "input_sha256": "698b512975da6308e4900d0efcd7e26933b291a9b685dafdae2ac65fb59e8272",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 122, página 10; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "d70b28e5d860904fd0d773b74a1aca2564856b34308528dbe734e481194e7731"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q123",
+   "number": 123,
+   "version": "generic-v1",
+   "input_sha256": "8c61fed95fb0cf3e87b41e5986c3dac0f348740de016782bc846de0a0c77a9c4",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Plantas e algas realizam fotossíntese oxigênica para síntese de matéria orgânica e, para isso, utilizam trifosfato de adenosina (ATP) e nicotinamida adenina dinucleotídeo fosfato reduzido (NADPH). Já algumas bactérias fotossintetizantes não apresentam cloroplasto e clorofila, mas um pigmento denominado bacterioclorofila. Esses procariotos realizam a fotossíntese anoxigênica, um processo de síntese de matéria orgânica utilizando o gás carbônico (CO₂) e o gás sulfídrico (H₂S).",
+     "after": "Plantas e algas realizam fotossíntese oxigênica para síntese de matéria orgânica e, para isso, utilizam trifosfato de adenosina (ATP) e nicotinamida adenina dinucleotídeo fosfato reduzido (NADPH). Já algumas bactérias fotossintetizantes não apresentam cloroplasto e clorofila, mas um pigmento denominado bacterioclorofila. Esses procariotos realizam a fotossíntese anoxigênica, um processo de síntese de matéria orgânica utilizando o gás carbônico $\\ce{(CO2)}$ e o gás sulfídrico $\\ce{(H2S)}$."
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "Na fotossíntese oxigênica, qual composto desempenha função análoga à do H₂S?",
+     "after": "Na fotossíntese oxigênica, qual composto desempenha função análoga à do $\\ce{H2S}$?"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "bed2662b9e8d344959ee02c622a9280f8e716cf7f5ab66d44a54e3152fbe7be0"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q124",
+   "number": 124,
+   "version": "generic-v1",
+   "input_sha256": "a3b84e2d50d8484e6b77bd052292fb1b451d1d9ea9e9b95bc12afdd10cae0f2f",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "Ag₂S (s) + 2 e⁻ → 2 Ag (s) + S²⁻ (aq)",
+     "after": "$\\ce{Ag2S (s)} + \\ce{2 e-} \\longrightarrow \\ce{2 Ag (s)} + \\ce{S^2- (aq)}$"
+    },
+    {
+     "location": "blocks[2]",
+     "operation": "latex",
+     "before": "−0,69 V",
+     "after": "−$0{,}69\\,\\mathrm{V}$"
+    },
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "O₂ (g) + 4 H⁺ (aq) + 4 e⁻ → 2 H₂O (l)",
+     "after": "$\\ce{O2 (g)} + \\ce{4 H^+ (aq)} + \\ce{4 e-} \\longrightarrow \\ce{2 H2O (l)}$"
+    },
+    {
+     "location": "blocks[4]",
+     "operation": "latex",
+     "before": "+1,23 V",
+     "after": "+$1{,}23\\,\\mathrm{V}$"
+    },
+    {
+     "location": "blocks[5]",
+     "operation": "latex",
+     "before": "Al³⁺ (aq) + 3 e⁻ → Al (s)",
+     "after": "$\\ce{Al^3+ (aq)} + \\ce{3 e-} \\longrightarrow \\ce{Al (s)}$"
+    },
+    {
+     "location": "blocks[6]",
+     "operation": "latex",
+     "before": "−1,68 V",
+     "after": "−$1{,}68\\,\\mathrm{V}$"
+    },
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "+0,54 V e +2,37 V.",
+     "after": "+$0{,}54\\,\\mathrm{V}$ e +$2{,}37\\,\\mathrm{V}$."
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "+1,92 V e +0,99 V.",
+     "after": "+$1{,}92\\,\\mathrm{V}$ e +$0{,}99\\,\\mathrm{V}$."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "−0,15 V e +5,43 V.",
+     "after": "−$0{,}15\\,\\mathrm{V}$ e +$5{,}43\\,\\mathrm{V}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "+2,61 V e +1,29 V.",
+     "after": "+$2{,}61\\,\\mathrm{V}$ e +$1{,}29\\,\\mathrm{V}$."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "+0,15 V e −1,29 V.",
+     "after": "+$0{,}15\\,\\mathrm{V}$ e −$1{,}29\\,\\mathrm{V}$."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2175c2c5bd0afd63ac8686f06ebcaf8177d24f4855270765dca9850315548c87"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q125",
+   "number": 125,
+   "version": "generic-v1",
+   "input_sha256": "1dd77a4888ab016ae3af4fcd826d738d95cb3247b3130aa11b9121a64979a5d2",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Apaixonada por culinária e química, uma chefe de cozinha calculou que, para promover o crescimento adequado da massa durante o cozimento de um bolo a 180 °C (453 K) e 1,00 atm, ela precisaria utilizar uma quantidade de fermento químico suficiente para produzir um volume de gás igual a 4,00 L. Com esse objetivo, ela escolheu utilizar o bicarbonato de amônio, um composto que, sob aquecimento, degrada-se em três gases distintos, que são os responsáveis pelo crescimento da massa. A decomposição do bicarbonato de amônio ocorre conforme a equação química apresentada e, nas condições do cozimento, seu rendimento é de 80%.",
+     "after": "Apaixonada por culinária e química, uma chefe de cozinha calculou que, para promover o crescimento adequado da massa durante o cozimento de um bolo a 180 °C ($453\\,\\mathrm{K}$) e 1,00 atm, ela precisaria utilizar uma quantidade de fermento químico suficiente para produzir um volume de gás igual a $4{,}00\\,\\mathrm{L}$. Com esse objetivo, ela escolheu utilizar o bicarbonato de amônio, um composto que, sob aquecimento, degrada-se em três gases distintos, que são os responsáveis pelo crescimento da massa. A decomposição do bicarbonato de amônio ocorre conforme a equação química apresentada e, nas condições do cozimento, seu rendimento é de $80\\%$."
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "NH₄HCO₃ (s) → NH₃ (g) + CO₂ (g) + H₂O (g)",
+     "after": "$\\ce{NH4HCO3 (s)} \\longrightarrow \\ce{NH3 (g)} + \\ce{CO2 (g)} + \\ce{H2O (g)}$"
+    },
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "Dados: Massa molar do NH₄HCO₃ = 79 g ⋅ mol⁻¹ e R = 0,082 atm ⋅ L ⋅ mol⁻¹ ⋅ K⁻¹.",
+     "after": "Dados: Massa molar do $\\ce{NH4HCO3}$ = $79\\,\\mathrm{g}$ ⋅ mol⁻¹ e R = 0,082 atm ⋅ L ⋅ mol⁻¹ ⋅ $K^{-1}$."
+    },
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "2,3 g.",
+     "after": "$2{,}3\\,\\mathrm{g}$."
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "3,5 g.",
+     "after": "$3{,}5\\,\\mathrm{g}$."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "5,9 g.",
+     "after": "$5{,}9\\,\\mathrm{g}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "6,8 g.",
+     "after": "$6{,}8\\,\\mathrm{g}$."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "8,9 g. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+     "after": "$8{,}9\\,\\mathrm{g}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "c86da945109585eb050e629fcbb258ee6775b4e18a587dd1d7d7967f16aa9f3c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q126",
+   "number": 126,
+   "version": "generic-v1",
+   "input_sha256": "d0efbc4723349c7580e6b16359a91dd9357d7d1c4049bd6b39de86851fa77abe",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "Considere um avião que, ao decolar, é instruído pela torre a atingir, em 6 minutos, uma posição de 20 km a Leste, 20 km a Norte e 1 km de altitude em relação ao ponto de decolagem, conforme a figura (fora de escala). No entanto, no instante da decolagem, começa a soprar um vento cujo vetor velocidade tem componentes 30 km/h para Leste, 20 km/h para Sul e 1 km/h de cima para baixo.",
+     "after": "Considere um avião que, ao decolar, é instruído pela torre a atingir, em 6 minutos, uma posição de $20\\,\\mathrm{km}$ a Leste, $20\\,\\mathrm{km}$ a Norte e $1\\,\\mathrm{km}$ de altitude em relação ao ponto de decolagem, conforme a figura (fora de escala). No entanto, no instante da decolagem, começa a soprar um vento cujo vetor velocidade tem componentes 30 km/h para Leste, 20 km/h para Sul e 1 km/h de cima para baixo."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 126, página 11; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "7f9e9984c749646042b2ff28b3bce6720a55d9949dd79de0be997abbbc1e24e1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q127",
+   "number": 127,
+   "version": "generic-v1",
+   "input_sha256": "8d212f2d742a4409fc7e0c9ddfef74b20c8a3f5bca1bc07717baefe39f79b6ee",
+   "changes": [],
+   "issues": [
+    {
+     "code": "unreadable_reaction",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Reação não interpretada com segurança; preserve o original e transcreva em LaTeX.",
+     "excerpt": " Uma reação A → B é realizada na presença"
+    },
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "7116ca721bcde494d24ccd80979ef3ecc2909c134f89541dee2845cfa0ef8196"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q128",
+   "number": 128,
+   "version": "generic-v1",
+   "input_sha256": "6e824dd55e1804127109a05639431e1bb8fe1d7f5cd9815dc0b5a111a32d3b2c",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 128, página 12; descrição detalhada pendente."
+    },
+    {
+     "code": "spatial_math",
+     "message": "Índice/expoente não numérico precisa de transcrição LaTeX.",
+     "location": "page:12",
+     "severity": "warning",
+     "excerpt": "medir temperaturas entre 0 °C e 100 °C e já foi utilizada como"
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "72a5eaa6bc0e90d36383f2fa433d00e0d193f478ba6f31fdfe7b9a0f3079364f"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q129",
+   "number": 129,
+   "version": "generic-v1",
+   "input_sha256": "28562579aba14d3c0f9022d8f64d626b8752e0b7212c9acd07d5c0a7f2a7d0f7",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "0138ae72b3202b56665f716b8cd4223ce812fe191d61e1e8b5123061f4647092"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q130",
+   "number": 130,
+   "version": "generic-v1",
+   "input_sha256": "3cea8ea1a2f1477c3a12fd8cf6efc45e6943c201a4259ddfe45d94054406312a",
+   "changes": [
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "Considere um equipamento de resistência elétrica RC que funciona corretamente apenas em um dado valor de tensão. Porém, a única fonte de alimentação disponível fornece uma tensão 20% superior à tensão recomendada. Para adaptar essa fonte ao aparelho, a associação de um resistor de proteção RP",
+     "after": "Considere um equipamento de resistência elétrica RC que funciona corretamente apenas em um dado valor de tensão. Porém, a única fonte de alimentação disponível fornece uma tensão $20\\%$ superior à tensão recomendada. Para adaptar essa fonte ao aparelho, a associação de um resistor de proteção RP"
+    }
+   ],
+   "issues": [
+    {
+     "code": "spatial_math",
+     "message": "Índice/expoente não numérico precisa de transcrição LaTeX.",
+     "location": "page:13",
+     "severity": "warning",
+     "excerpt": "Considere um equipamento de resistência elétrica RC que"
+    },
+    {
+     "code": "spatial_math",
+     "message": "Índice/expoente não numérico precisa de transcrição LaTeX.",
+     "location": "page:13",
+     "severity": "warning",
+     "excerpt": "fonte ao aparelho, a associação de um resistor de proteção RP"
+    },
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "4fbbc8c0bacf3b0f104e53df1cf98deef1746b6ad0779b2bd2752ec13eca8b91"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q131",
+   "number": 131,
+   "version": "generic-v1",
+   "input_sha256": "d6f9f4bdb525736f2c37bd93a5ee821e493b80320fa30e8283051743ce274399",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "O Brasil é o maior produtor mundial de nióbio (massa molar = 93 g mol⁻¹), metal utilizado na fabricação de vários tipos de aço: automotivos, estruturais e inoxidáveis. O processo utilizado na produção do nióbio é a redução aluminotérmica de Nb₂O₅ com excesso de 10% de Al (massa molar = 27 g mol⁻¹), em relação à quantidade estequiométrica da reação, representada pela equação química:",
+     "after": "O Brasil é o maior produtor mundial de nióbio (massa molar = $93\\,\\mathrm{g}$ mol⁻¹), metal utilizado na fabricação de vários tipos de aço: automotivos, estruturais e inoxidáveis. O processo utilizado na produção do nióbio é a redução aluminotérmica de $\\ce{Nb2O5}$ com excesso de $10\\%$ de Al (massa molar = $27\\,\\mathrm{g}$ mol⁻¹), em relação à quantidade estequiométrica da reação, representada pela equação química:"
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "3 Nb₂O₅ (s) + 10 Al (s) → 6 Nb (s) + 5 Al₂O₃ (s)",
+     "after": "$\\ce{3 Nb2O5 (s)} + \\ce{10 Al (s)} \\longrightarrow \\ce{6 Nb (s)} + \\ce{5 Al2O3 (s)}$"
+    },
+    {
+     "location": "blocks[2]",
+     "operation": "latex",
+     "before": "Uma engenheira metalúrgica estimou a massa de alumínio necessária para produzir 9,3 kg de nióbio, nas condições descritas, para a produção de um lote de peças de aço encomendado por uma indústria, considerando um rendimento de 100%.",
+     "after": "Uma engenheira metalúrgica estimou a massa de alumínio necessária para produzir $9{,}3\\,\\mathrm{kg}$ de nióbio, nas condições descritas, para a produção de um lote de peças de aço encomendado por uma indústria, considerando um rendimento de $100\\%$."
+    },
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "2,7 kg.",
+     "after": "$2{,}7\\,\\mathrm{kg}$."
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "3,0 kg.",
+     "after": "$3{,}0\\,\\mathrm{kg}$."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "4,1 kg.",
+     "after": "$4{,}1\\,\\mathrm{kg}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "4,5 kg.",
+     "after": "$4{,}5\\,\\mathrm{kg}$."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "5,0 kg.",
+     "after": "$5{,}0\\,\\mathrm{kg}$."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "3d1b340678429defd1a6095679663e1719f22d60e3256115f912e0b5d60f49b1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q132",
+   "number": 132,
+   "version": "generic-v1",
+   "input_sha256": "261be79fb68330f8429c23efc611fef55ccdea0ca2d17e652b2b0d2c91b35b78",
+   "changes": [],
+   "issues": [
+    {
+     "code": "spatial_layout",
+     "message": "Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.",
+     "location": "page:13",
+     "severity": "error",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "bd5f79d496356147cf09957179b22b8da7d53a0b8e0ece3e6bcb463e606e38ba"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q133",
+   "number": 133,
+   "version": "generic-v1",
+   "input_sha256": "d2c7726e9c657e86fbaff5c6d7cd4245bb7237f085df434246c932e35a77362b",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "O despejo acidental de óleo nos oceanos tem ocasionado incontáveis prejuízos à vida marinha e à economia de regiões costeiras. Métodos tradicionais de tratamento do despejo geram resíduos de difícil descarte e nem sempre são eficazes. Por isso, pesquisadores desenvolveram um filtro capaz de separar óleo e água. O dispositivo é montado sobre uma malha de aço com uma sequência de camadas. A primeira camada é formada por um polímero de carga positiva, a segunda é composta por nanopartículas de sílica (SiO₂), a terceira é formada pelo mesmo polímero e a última é um surfactante, conforme apresentado na figura.",
+     "after": "O despejo acidental de óleo nos oceanos tem ocasionado incontáveis prejuízos à vida marinha e à economia de regiões costeiras. Métodos tradicionais de tratamento do despejo geram resíduos de difícil descarte e nem sempre são eficazes. Por isso, pesquisadores desenvolveram um filtro capaz de separar óleo e água. O dispositivo é montado sobre uma malha de aço com uma sequência de camadas. A primeira camada é formada por um polímero de carga positiva, a segunda é composta por nanopartículas de sílica $\\ce{(SiO2)}$, a terceira é formada pelo mesmo polímero e a última é um surfactante, conforme apresentado na figura."
+    },
+    {
+     "location": "blocks[2]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 133, página 14; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[2]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "272496980533bcfda82b23f440925d34a120f24149d4444063a7387638bbba9e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q134",
+   "number": 134,
+   "version": "generic-v1",
+   "input_sha256": "19e7a8ece69309aa477c0e79b8b3a0ad278516fbe4cb2a84f44967458bd33c2b",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 134, página 14; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "19e7a8ece69309aa477c0e79b8b3a0ad278516fbe4cb2a84f44967458bd33c2b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q135",
+   "number": 135,
+   "version": "generic-v1",
+   "input_sha256": "acb1d0a8bd4dba5d29c5ebc23b22933b5cb82e6e84ac0aaa13852e8f772fd911",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 135, página 15; descrição detalhada pendente."
+    },
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "2105c0229994c8e8303b70d25cca188a7d545f3ac73a9b62d9f2a1003a937c46"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q136",
+   "number": 136,
+   "version": "generic-v1",
+   "input_sha256": "6aa770ce78a9d060fd024ad21c9b1df2317a0f334a89efffe8ab813f38cd5e84",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Uma pessoa pretende instalar um kit de gás natural veicular (GNV) em seu carro. Na loja que escolheu para realizar a compra e instalação desse kit, havia cinco modelos de cilindro para armazenamento do gás, cujas capacidades, em metro cúbico, eram, respectivamente: 10, 14, 17, 21 e 25. O preço do cilindro é proporcional à sua capacidade. Esse carro rodará 30 km diariamente, 7 dias por semana, e o consumo do GNV é de 1 m³ a cada 13 km rodados. A pessoa escolherá o modelo de cilindro de menor preço e que garanta apenas um abastecimento semanal.",
+     "after": "Uma pessoa pretende instalar um kit de gás natural veicular (GNV) em seu carro. Na loja que escolheu para realizar a compra e instalação desse kit, havia cinco modelos de cilindro para armazenamento do gás, cujas capacidades, em metro cúbico, eram, respectivamente: 10, 14, 17, 21 e 25. O preço do cilindro é proporcional à sua capacidade. Esse carro rodará $30\\,\\mathrm{km}$ diariamente, 7 dias por semana, e o consumo do GNV é de $1\\,\\mathrm{m^{3}}$ a cada $13\\,\\mathrm{km}$ rodados. A pessoa escolherá o modelo de cilindro de menor preço e que garanta apenas um abastecimento semanal."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9cfdf5cb2efbe5790e2553102cbd6aca91420561b876295bbc81f35c34ee0450"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q137",
+   "number": 137,
+   "version": "generic-v1",
+   "input_sha256": "e650e1b0cca410e005e56a808cb44bc4214274294df7207f3337fd357b4330a5",
+   "changes": [
+    {
+     "location": "blocks[2]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      3
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 137, página 16; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[2]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "a44fc04eb59d9edabe919b6608394c94090fe1fcfd91e0a6e843804e21e2da54"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q138",
+   "number": 138,
+   "version": "generic-v1",
+   "input_sha256": "16e0ee511d4597fc5145ff8ae09c70466a025ea0d8f428f7071fab2fccf17c59",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 138, página 17; descrição detalhada pendente."
+    },
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "7d2889e478b69c9cceda1eedc310d78bcf3ff3dfee92981662f3c3e3122d41bd"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q139",
+   "number": 139,
+   "version": "generic-v1",
+   "input_sha256": "5e74b74290595e8496871cffe1acf8972a36faeba00d4323d155f3886cb9143c",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "No entorno de uma lagoa circular, cujo raio mede 1 km, há um uma ciclovia. Devido aos frequentes roubos de bicicleta, a prefeitura planeja alocar policiais em posições estratégicas para patrulhar essa ciclovia, de forma a torná-la totalmente protegida. Um ponto da ciclovia é considerado protegido se houver pelo menos um policial a, no máximo, 200 m de distância daquele ponto, posicionado sobre a ciclovia. A figura ilustra um ponto P sobre a ciclovia, que estará protegido se houver pelo menos um policial posicionado sobre a região de cor cinza escuro.",
+     "after": "No entorno de uma lagoa circular, cujo raio mede $1\\,\\mathrm{km}$, há um uma ciclovia. Devido aos frequentes roubos de bicicleta, a prefeitura planeja alocar policiais em posições estratégicas para patrulhar essa ciclovia, de forma a torná-la totalmente protegida. Um ponto da ciclovia é considerado protegido se houver pelo menos um policial a, no máximo, $200\\,\\mathrm{m}$ de distância daquele ponto, posicionado sobre a ciclovia. A figura ilustra um ponto P sobre a ciclovia, que estará protegido se houver pelo menos um policial posicionado sobre a região de cor cinza escuro."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 139, página 18; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "8e309ccc4b243db86edf8eee7c1d6fb86c255e33325b84620271b3f7f7a68d92"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q140",
+   "number": 140,
+   "version": "generic-v1",
+   "input_sha256": "7aba6fcf73c55eb1ff378cd34bf3d9eaf1973115df8d59766e1a47e74f85878c",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Em um laboratório, um recipiente contém 10 litros de uma solução composta apenas pelas substâncias S₁ e S₂. Dessa solução, 99,95% é de S₁. Uma quantidade de S₁ será retirada dessa solução, mantendo a quantidade inicial de S₂, de modo que 99,90% da nova solução seja de S₁.",
+     "after": "Em um laboratório, um recipiente contém 10 litros de uma solução composta apenas pelas substâncias $\\ce{S1}$ e $\\ce{S2}$. Dessa solução, $99{,}95\\%$ é de $\\ce{S1}$. Uma quantidade de $\\ce{S1}$ será retirada dessa solução, mantendo a quantidade inicial de $\\ce{S2}$, de modo que $99{,}90\\%$ da nova solução seja de $\\ce{S1}$."
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "Qual é a quantidade de S₁, em litro, que será retirada?",
+     "after": "Qual é a quantidade de $\\ce{S1}$, em litro, que será retirada?"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "146036bfc1082e4ec3017e725021f25326d48a5d3317a560ecc941f88ffa1510"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q141",
+   "number": 141,
+   "version": "generic-v1",
+   "input_sha256": "6aa00f96d2ab9d1ef78d90f0d7a69677a6f2d8af528a4a01cf0953cb49dfa69c",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "f636b323c8bcaef59fff243c3e59c13233170bfb021b6ffbab2aa06a82b127c4"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q142",
+   "number": 142,
+   "version": "generic-v1",
+   "input_sha256": "d5822c68a7380bcaace2a5e904094ed7b1ece112cd602be54f02f12ec482514f",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "1646e476a500d7a308d4287dc3d546828b5769b1c641bbf6c668b4e49f287d5c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q143",
+   "number": 143,
+   "version": "generic-v1",
+   "input_sha256": "152c2cb8dff4938257c0d8d7496a96c167b5541464a422a9fb0c2597b4604ef6",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 143, página 19; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "e9902ed50a3df5d200f9e929ceb77102d3d40dd426f9eb74a60dcd5765d0a281"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q144",
+   "number": 144,
+   "version": "generic-v1",
+   "input_sha256": "ecc68642715da096ff0bdaae11828bbcaa2a0874350c94ecd095ae2126a67e85",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "5843c9872b2e17f6e90007b23b684c28247bdaf6bdca6cfbfe4ea725b976cf1c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q145",
+   "number": 145,
+   "version": "generic-v1",
+   "input_sha256": "6fb2bcb1dfbbae92b0a656323de50f6f8022f8ad251f6570c2dcbf7225727be7",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Pesquisas na área de neurobiologia confirmam que a prática meditativa é responsável por diminuir consideravelmente a frequência respiratória para praticantes avançados, que, após iniciarem a meditação, têm suas frequências respiratórias reduzidas até se estabilizarem em um nível mais baixo. O gráfico apresenta a relação da frequência respiratória, em incursões de respirações por minuto (rpm), em relação ao tempo, em minuto, de um praticante avançado, em que (f₁) representa a frequência no instante t₁, no qual se inicia a prática meditativa; e (f₂), a frequência no instante t₂, a partir do qual esta se estabiliza durante a meditação.",
+     "after": "Pesquisas na área de neurobiologia confirmam que a prática meditativa é responsável por diminuir consideravelmente a frequência respiratória para praticantes avançados, que, após iniciarem a meditação, têm suas frequências respiratórias reduzidas até se estabilizarem em um nível mais baixo. O gráfico apresenta a relação da frequência respiratória, em incursões de respirações por minuto (rpm), em relação ao tempo, em minuto, de um praticante avançado, em que ($f_{1}$) representa a frequência no instante $t_{1}$, no qual se inicia a prática meditativa; e ($f_{2}$), a frequência no instante $t_{2}$, a partir do qual esta se estabiliza durante a meditação."
+    },
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "A partir do instante t₁, em que se inicia a prática meditativa, o comportamento da frequência respiratória, em relação ao tempo,",
+     "after": "A partir do instante $t_{1}$, em que se inicia a prática meditativa, o comportamento da frequência respiratória, em relação ao tempo,"
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "associate_figure",
+     "source_blocks": [
+      2
+     ]
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "diminui até o instante t₂, a partir do qual se torna constante.",
+     "after": "diminui até o instante $t_{2}$, a partir do qual se torna constante."
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "diminui de forma proporcional ao tempo, tanto entre t₁ e t₂ quanto após t₂.",
+     "after": "diminui de forma proporcional ao tempo, tanto entre $t_{1}$ e $t_{2}$ quanto após $t_{2}$."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 145, página 19; descrição detalhada pendente."
+    },
+    {
+     "code": "figure_association_inferred",
+     "severity": "warning",
+     "location": "blocks[1]",
+     "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
+     "excerpt": ""
+    },
+    {
+     "code": "spatial_math",
+     "message": "Índice/expoente não numérico precisa de transcrição LaTeX.",
+     "location": "page:19",
+     "severity": "warning",
+     "excerpt": "D\tdiminui até o instante t₂, a partir do qual se torna constante."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "9739aa9daec9f5d99213e819b503347fb9ff8e2e8982b5aa32db78c1f815baa1"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q146",
+   "number": 146,
+   "version": "generic-v1",
+   "input_sha256": "9981e89c7c49aa984d0c7eeda13a9771b8775868608c50d4eb8bcfc45606ba62",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "25df248b24cf9075be73293e7860ebcce95dac53d5a37599a44fd079958845eb"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q147",
+   "number": 147,
+   "version": "generic-v1",
+   "input_sha256": "a4b93eebb582003e0eb29d75bfc9b971cc4e556e9e96ff7b33b385d0367cce56",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 147, página 20; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "3f05a782bf054df1e7ac8685814085922033efc1e0a609560f6fae5237245222"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q148",
+   "number": 148,
+   "version": "generic-v1",
+   "input_sha256": "3a9627b3bf40f34b30d05d74bfd7067d8b0f2b0e89204668552211cbf7f8562a",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 148, página 20; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "b0f046c1d864f259146b32beb047ebe8457cb151cfd429f75d6cb9caece44847"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q149",
+   "number": 149,
+   "version": "generic-v1",
+   "input_sha256": "e36373c2544ac0f9131b8ee176fd5f0c78ecee3aea78a8f7daee247baaba9418",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 149, página 21; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "9c622d9ec5e30d5f9709db0077f6024297dfd2bf0463f4f133dda05f99a1fd59"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q150",
+   "number": 150,
+   "version": "generic-v1",
+   "input_sha256": "9783b8178b7891b236dc05dd08b20229176827aa1aecc2f67c66effcd0177717",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "8415695928b9ed364bbe83fb2dd92f6c982e72888e71e8666566baa621ac370e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q151",
+   "number": 151,
+   "version": "generic-v1",
+   "input_sha256": "94770f9e902dc865819a4d8759881011ce4383a5b95de8cd759e19281962b5f8",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2889811cb190a73bae612d10f3e3b42cda2fcddf67da8d0660523dd3d6dee665"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q152",
+   "number": 152,
+   "version": "generic-v1",
+   "input_sha256": "59b7db7ada167f30ee3c296e4677e627ecd177306fc314bce8955677faaa1283",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "05cd34f85226a10075ee6c3b791bb16da2f671c5cf4d8dcacab393612ab2e38c"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q153",
+   "number": 153,
+   "version": "generic-v1",
+   "input_sha256": "f02f873728eaa302575517f117d024a270c5d7aeaa22ed3f85cf91255ab3aa6b",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 153, página 22; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "4f28c2916f5f696dabf3ce838a055f0247fb4bd5eab90cfd1ca0cbb9676dd442"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q154",
+   "number": 154,
+   "version": "generic-v1",
+   "input_sha256": "39bd797776991d71ee4b23057731a705d97e89dd276678c23d53aae77ba0fcbf",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 154, página 22; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "39bd797776991d71ee4b23057731a705d97e89dd276678c23d53aae77ba0fcbf"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q155",
+   "number": 155,
+   "version": "generic-v1",
+   "input_sha256": "e660049315891d9e3a7d5d3e22e6e6a3c116198fdee5d8091a2a8d6ac1b6cce3",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "a16a3fd9b440e8c2af306d6e08aa7af8c3a01583f19a9c110e595910f91ad274"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q156",
+   "number": 156,
+   "version": "generic-v1",
+   "input_sha256": "80bff59617315f6ef29b473601ad28d2cde4299a8cf0661743a119454003ae91",
+   "changes": [
+    {
+     "location": "blocks[2]",
+     "operation": "latex",
+     "before": "Após a conclusão, a obra de arte obtida manteve as mesmas proporções do desenho feito pelo banhista, sendo que as medidas indicadas na figura foram ampliadas para 30 m.",
+     "after": "Após a conclusão, a obra de arte obtida manteve as mesmas proporções do desenho feito pelo banhista, sendo que as medidas indicadas na figura foram ampliadas para $30\\,\\mathrm{m}$."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 156, página 23; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "174c5a728538ed40737336481665e63adadd193d535386150a43bdbb336d5cd6"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q157",
+   "number": 157,
+   "version": "generic-v1",
+   "input_sha256": "1f1a5de4b61af60fb55e2734cd9a667520f1716e41fca61818f43d82db870804",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "9e6e7770c262a4b437897c78eb224cf831a9c3608999c23e5c7a8812277d8dc3"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q158",
+   "number": 158,
+   "version": "generic-v1",
+   "input_sha256": "6a6ac8bbbc8c2c8c1083c4454763f945d4a69249063d7d9d40144abace40856d",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Um estacionamento possui 120 vagas para veículos, e todas essas vagas estão ocupadas. Cada cliente paga uma mensalidade para utilizar uma vaga, que é calculada com base nas despesas mensais do estacionamento e no lucro pretendido. As despesas mensais do estacionamento são: R$ 14 240,00 com manutenção mais R$ 36,00 de seguro por veículo. O lucro do estacionamento é determinado pela diferença do valor arrecadado com as mensalidades pelas despesas efetuadas. A partir do mês seguinte, o valor do seguro por veículo aumentará em 20%, e as despesas com manutenção permanecerão sem alterações. Com isso, o dono do estacionamento reajustará as mensalidades para obter um lucro mensal de R$ 10 000,00. Apesar desse reajuste, todas as vagas continuarão ocupadas.",
+     "after": "Um estacionamento possui 120 vagas para veículos, e todas essas vagas estão ocupadas. Cada cliente paga uma mensalidade para utilizar uma vaga, que é calculada com base nas despesas mensais do estacionamento e no lucro pretendido. As despesas mensais do estacionamento são: R$ 14 240,00 com manutenção mais R$ 36,00 de seguro por veículo. O lucro do estacionamento é determinado pela diferença do valor arrecadado com as mensalidades pelas despesas efetuadas. A partir do mês seguinte, o valor do seguro por veículo aumentará em $20\\%$, e as despesas com manutenção permanecerão sem alterações. Com isso, o dono do estacionamento reajustará as mensalidades para obter um lucro mensal de R$ 10 000,00. Apesar desse reajuste, todas as vagas continuarão ocupadas."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "74b8105d411f2c5a9f6fd40a9896da2b278c968c76077690f7eb621fe46d5e7e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q159",
+   "number": 159,
+   "version": "generic-v1",
+   "input_sha256": "7324415138d8d2a9e07374b8ee31c7dabb1a4f5a860a850d4ba7c036adf0a3b3",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "O dono de uma sorveteria armazena sorvete em potes de 20 000 cm³. Ele serve o sorvete em taças, em porções de 250 mL.",
+     "after": "O dono de uma sorveteria armazena sorvete em potes de 20 $000\\,\\mathrm{cm^{3}}$. Ele serve o sorvete em taças, em porções de $250\\,\\mathrm{mL}$."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "acb988ab6d582d14fa72124c93d3f520346ca5d8e84983c08da16b92218f5046"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q160",
+   "number": 160,
+   "version": "generic-v1",
+   "input_sha256": "058a76cad62456748d1d00647d60743fffb0e82b6031b6666233b3bffab386ef",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[3].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 160, página 24; descrição detalhada pendente."
+    },
+    {
+     "code": "spatial_layout",
+     "message": "Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.",
+     "location": "page:24",
+     "severity": "error",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "25257f6250971282b2d078e15f717493dc912c26fc8de41a34bae9ac5cc619fb"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q161",
+   "number": 161,
+   "version": "generic-v1",
+   "input_sha256": "46122e03fa656402103f7cb9933776b35d3925626cb61938df81635dfd7d655a",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 161, página 24; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "b6198e8e7bfc60fddeb5bfcdb5461f8dcd45d203ebd154bb0b889f6b47978f54"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q162",
+   "number": 162,
+   "version": "generic-v1",
+   "input_sha256": "6583f3383b5aa2094e3b30fe27f078abb0463557715cce586410a4d43ee0e99c",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Uma empresa produziu, em um determinado mês, 110 toneladas de plástico a partir de derivados de petróleo e 80 toneladas a partir de plásticos reciclados. O custo para reciclar uma tonelada de plástico é de R$ 500,00, que equivale a 5% do custo para produzir a mesma quantidade de plástico a partir de derivados de petróleo. Para o mês seguinte, a meta dessa empresa é produzir a mesma quantidade de plástico que foi produzida nesse mês, mas com redução de, pelo menos, 50% no custo de produção.",
+     "after": "Uma empresa produziu, em um determinado mês, 110 toneladas de plástico a partir de derivados de petróleo e 80 toneladas a partir de plásticos reciclados. O custo para reciclar uma tonelada de plástico é de R$ 500,00, que equivale a $5\\%$ do custo para produzir a mesma quantidade de plástico a partir de derivados de petróleo. Para o mês seguinte, a meta dessa empresa é produzir a mesma quantidade de plástico que foi produzida nesse mês, mas com redução de, pelo menos, $50\\%$ no custo de produção."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "7770e76e470a28aa652e5bb1916847372d0a7508ab97533a04e4395b18a6b63b"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q163",
+   "number": 163,
+   "version": "generic-v1",
+   "input_sha256": "4d5a0eacb622808fae37f60822328f540578d07a6fb334ce389d6f750565e015",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 163, página 25; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "4d5a0eacb622808fae37f60822328f540578d07a6fb334ce389d6f750565e015"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q164",
+   "number": 164,
+   "version": "generic-v1",
+   "input_sha256": "b939f1c6daee396224fe9a5433b5e01943258063490499e630e94a6727602d78",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[7].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 164, página 25; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "7c5a34e978a5ad1fbce3fe780f32c8a9ecb4b71e07edc1169ba2a1c097285fdc"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q165",
+   "number": 165,
+   "version": "generic-v1",
+   "input_sha256": "a6961883eaefaa4a28ec2ff61ae27f18dd3bbfbc2dbcaf0669f18cdf1fee604e",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2565a6c12f5652d742256c3c542c59c5d083be273194836b4a91886f72336697"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q166",
+   "number": 166,
+   "version": "generic-v1",
+   "input_sha256": "2dbe7a0b008abf330994eef79f2a2ece31acc7e6102b2db2ee3f4da6038df066",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Pace é um termo usado por um corredor para denominar o seu ritmo médio em uma corrida. Representa o tempo médio, em segundo, que esse corredor leva para percorrer 1 km.",
+     "after": "Pace é um termo usado por um corredor para denominar o seu ritmo médio em uma corrida. Representa o tempo médio, em segundo, que esse corredor leva para percorrer $1\\,\\mathrm{km}$."
+    },
+    {
+     "location": "blocks[1]",
+     "operation": "latex",
+     "before": "O esquema apresenta o tempo, em segundo, que um corredor levou para cruzar as marcas que definem os quatro primeiros trechos de 1 km, em uma corrida de 5 km, e o tempo gasto para percorrer cada trecho de 1 km.",
+     "after": "O esquema apresenta o tempo, em segundo, que um corredor levou para cruzar as marcas que definem os quatro primeiros trechos de $1\\,\\mathrm{km}$, em uma corrida de $5\\,\\mathrm{km}$, e o tempo gasto para percorrer cada trecho de $1\\,\\mathrm{km}$."
+    },
+    {
+     "location": "blocks[3]",
+     "operation": "latex",
+     "before": "O melhor pace que esse corredor alcançou em corridas de 5 km foi 281 s/km.",
+     "after": "O melhor pace que esse corredor alcançou em corridas de $5\\,\\mathrm{km}$ foi 281 s/km."
+    },
+    {
+     "location": "blocks[4]",
+     "operation": "latex",
+     "before": "Para que consiga repetir nessa corrida seu melhor pace em corridas de 5 km, seu tempo, no 5º trecho, deve ser quantos segundos menor do que o que ele gastou para percorrer o 4º trecho?",
+     "after": "Para que consiga repetir nessa corrida seu melhor pace em corridas de $5\\,\\mathrm{km}$, seu tempo, no 5º trecho, deve ser quantos segundos menor do que o que ele gastou para percorrer o 4º trecho?"
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[2].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 166, página 26; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "971cc32c0c1c221faf9c9c94b0160235a38c4a5ab1dd123d4494b1a0f901e694"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q167",
+   "number": 167,
+   "version": "generic-v1",
+   "input_sha256": "fc83a4a29801db4d192b963805891208ac3d8ac22c7fc8f27f81b0521acb80a1",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Uma pessoa tem um carro bicombustível, que funciona a gás natural veicular (GNV) e a gasolina. O rendimento do carro, medido em km/m³, no caso do gás, ou medido em km/L, no caso da gasolina, depende, entre outros fatores, da velocidade, em km/h, em que o carro trafega. Essa relação está em conformidade com estes gráficos.",
+     "after": "Uma pessoa tem um carro bicombustível, que funciona a gás natural veicular (GNV) e a gasolina. O rendimento do carro, medido em km/$m^{3}$, no caso do gás, ou medido em km/L, no caso da gasolina, depende, entre outros fatores, da velocidade, em km/h, em que o carro trafega. Essa relação está em conformidade com estes gráficos."
+    },
+    {
+     "location": "blocks[2]",
+     "operation": "latex",
+     "before": "Durante um feriado, essa pessoa realizou uma viagem de 240 km. Para obter uma estimativa de gasto de combustível, assuma que em todo o trajeto se manteve uma velocidade constante de 60 km/h. Considere que, durante metade do caminho, foi utilizado apenas GNV e, na outra metade, apenas gasolina. O que foi pago pelo metro cúbico de GNV e pelo litro de gasolina correspondeu, respectivamente, a R$ 2,00 e a R$ 3,00.",
+     "after": "Durante um feriado, essa pessoa realizou uma viagem de $240\\,\\mathrm{km}$. Para obter uma estimativa de gasto de combustível, assuma que em todo o trajeto se manteve uma velocidade constante de 60 km/h. Considere que, durante metade do caminho, foi utilizado apenas GNV e, na outra metade, apenas gasolina. O que foi pago pelo metro cúbico de GNV e pelo litro de gasolina correspondeu, respectivamente, a R$ 2,00 e a R$ 3,00."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 167, página 27; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "4338ffcdf71eef07d9b740ecc9d2a2e5ced7eabe57ecee0f11698b9254938dc6"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q168",
+   "number": 168,
+   "version": "generic-v1",
+   "input_sha256": "e8048129363c146dc696495c075f550b8cd1042837399bcb79e09d8afb7d316a",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b6103e42ddba6edb38a7f7664892f1dc052003abe75adcfbeb8090a4d962dd91"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q169",
+   "number": 169,
+   "version": "generic-v1",
+   "input_sha256": "abb38d0efe1ce52b97d3dd30f16e530291ea696411e287cd7f3bf0d11c9efd16",
+   "changes": [],
+   "issues": [
+    {
+     "code": "graphical_options",
+     "message": "Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.",
+     "location": "alternatives",
+     "severity": "warning",
+     "excerpt": ""
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "ec81a6cadae749388b61bbdb13484c3a6d556c3efb93b2f4e4a42646bbd394dc"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q170",
+   "number": 170,
+   "version": "generic-v1",
+   "input_sha256": "87638855d2fd42d270425cdebe196c93645b3095dc70cb82ec1efaafee31e87f",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 170, página 29; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "87638855d2fd42d270425cdebe196c93645b3095dc70cb82ec1efaafee31e87f"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q171",
+   "number": 171,
+   "version": "generic-v1",
+   "input_sha256": "9a1bf1c5f7ca2c78f6164c150e2da623b8b1e5c963b6f94344edc0a363879e85",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "Um confeiteiro passou a produzir tortas em formato de cilindro circular reto, com raio da base variando entre 12 cm e 16 cm e altura de 6 cm. Essas tortas deverão ser embaladas em caixas com formato de prisma reto de base quadrada, de modo que seja possível acomodar a torta em seu interior e ainda restar pelo menos 1 cm de distância entre a torta e as superfícies internas da caixa, lateral e superior. Ele dispõe, originalmente, de caixas no formato pretendido, cujas dimensões internas são 14 cm de comprimento do lado da base e 7 cm de altura, que não atendem às suas necessidades. Portanto, ele comprará novas caixas, com o mesmo formato das caixas originais, mas com comprimento do lado da base maior, que sejam adequadas para embalar todos os tipos de torta que produz.",
+     "after": "Um confeiteiro passou a produzir tortas em formato de cilindro circular reto, com raio da base variando entre $12\\,\\mathrm{cm}$ e $16\\,\\mathrm{cm}$ e altura de $6\\,\\mathrm{cm}$. Essas tortas deverão ser embaladas em caixas com formato de prisma reto de base quadrada, de modo que seja possível acomodar a torta em seu interior e ainda restar pelo menos $1\\,\\mathrm{cm}$ de distância entre a torta e as superfícies internas da caixa, lateral e superior. Ele dispõe, originalmente, de caixas no formato pretendido, cujas dimensões internas são $14\\,\\mathrm{cm}$ de comprimento do lado da base e $7\\,\\mathrm{cm}$ de altura, que não atendem às suas necessidades. Portanto, ele comprará novas caixas, com o mesmo formato das caixas originais, mas com comprimento do lado da base maior, que sejam adequadas para embalar todos os tipos de torta que produz."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "fdd744ae754043b8cba4efb886a96b8867b5c32c5190a5d6e0ce0e9a55a4013e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q172",
+   "number": 172,
+   "version": "generic-v1",
+   "input_sha256": "52a86aaec82eac4b83eda6dd2643133c3c02f3b54e671ea51a6b54716b19d890",
+   "changes": [
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "10⁸ 2 5,",
+     "after": "$10^{8}$ 2 5,"
+    },
+    {
+     "location": "alternatives[4].text",
+     "operation": "latex",
+     "before": "25 × 10⁻² M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+     "after": "$25\\times10^{-2}$ M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025"
+    }
+   ],
+   "issues": [
+    {
+     "code": "spatial_math",
+     "message": "Índice/expoente não numérico precisa de transcrição LaTeX.",
+     "location": "page:29",
+     "severity": "warning",
+     "excerpt": "A\t100,5"
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "7674b9d30d5be42d53215a694dc670e585d39a5781d30d00b3c17393caa8598e"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q173",
+   "number": 173,
+   "version": "generic-v1",
+   "input_sha256": "a6c1a00ccee684e256440380ef4b48b6ffd96facba202f9cb95f72792eb78744",
+   "changes": [
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "o 1, pois apresenta área de seção transversal medindo 67,5 m².",
+     "after": "o 1, pois apresenta área de seção transversal medindo $67{,}5\\,\\mathrm{m^{2}}$."
+    },
+    {
+     "location": "alternatives[1].text",
+     "operation": "latex",
+     "before": "o 2, pois apresenta área de seção transversal medindo 121,5 m².",
+     "after": "o 2, pois apresenta área de seção transversal medindo $121{,}5\\,\\mathrm{m^{2}}$."
+    },
+    {
+     "location": "alternatives[2].text",
+     "operation": "latex",
+     "before": "o 1, pois apresenta área de seção transversal medindo 135 m².",
+     "after": "o 1, pois apresenta área de seção transversal medindo $135\\,\\mathrm{m^{2}}$."
+    },
+    {
+     "location": "alternatives[3].text",
+     "operation": "latex",
+     "before": "o 2, pois apresenta área de seção transversal medindo 243 m².",
+     "after": "o 2, pois apresenta área de seção transversal medindo $243\\,\\mathrm{m^{2}}$."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 173, página 30; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "dee735871d03eceaec3cb25a150b8520b77a4d17f080981f0f24970ec947b78d"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q174",
+   "number": 174,
+   "version": "generic-v1",
+   "input_sha256": "d22f1c8c868e87f3701342b16254fa8ce272c48111652625ec3112234a1bcc60",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "3dae50b482912cda8edf4e6d12c69cec9cfb2e991f3b4fbc920bbf7755b57430"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q175",
+   "number": 175,
+   "version": "generic-v1",
+   "input_sha256": "aa36aa3a508fdc0fe6aaa06b7ab68df4bd199338ffa746071820fc3313961b3d",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "2cdcdd568990378782dd02071d19f5db90f76d67b7855cabd441c11ff321d603"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q176",
+   "number": 176,
+   "version": "generic-v1",
+   "input_sha256": "75efd8ac4f9ecacd7a294abe0c86787992def17c668f83a89f7b9aa36a038f7f",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "A final de um campeonato de futebol foi disputada em 2 tempos regulamentares, de 45 minutos cada, sem acréscimos, com uma prorrogação de 30 minutos, também sem acréscimos. Um jogador entrou no início do segundo tempo, com um equipamento para medir a distância percorrida durante sua participação no jogo. Ao final do segundo tempo regulamentar, esse jogador havia percorrido 4,5 km. Ele manteve na prorrogação a mesma velocidade média que havia mantido no segundo tempo regulamentar.",
+     "after": "A final de um campeonato de futebol foi disputada em 2 tempos regulamentares, de 45 minutos cada, sem acréscimos, com uma prorrogação de 30 minutos, também sem acréscimos. Um jogador entrou no início do segundo tempo, com um equipamento para medir a distância percorrida durante sua participação no jogo. Ao final do segundo tempo regulamentar, esse jogador havia percorrido $4{,}5\\,\\mathrm{km}$. Ele manteve na prorrogação a mesma velocidade média que havia mantido no segundo tempo regulamentar."
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "b30d43b53bd2a96a7de6db9ac957c7646b88b15bd625fa17ae5bf2f7d99e4078"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q177",
+   "number": 177,
+   "version": "generic-v1",
+   "input_sha256": "eaff0b6561c61e18e847da4fa03621c5d9687b9f8e11a020b61c2fd258cdc76a",
+   "changes": [
+    {
+     "location": "blocks[0]",
+     "operation": "latex",
+     "before": "A figura ilustra o projeto visual para confecção de uma medalha comemorativa, com a forma de um cilindro circular reto, de diâmetro 6 cm e espessura 3 mm.",
+     "after": "A figura ilustra o projeto visual para confecção de uma medalha comemorativa, com a forma de um cilindro circular reto, de diâmetro $6\\,\\mathrm{cm}$ e espessura $3\\,\\mathrm{mm}$."
+    }
+   ],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 177, página 31; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "bb613cce14be1414bd5189749d33cc3f8cbc04b6a965d489bfd8b6afaad5a295"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q178",
+   "number": 178,
+   "version": "generic-v1",
+   "input_sha256": "4e03f374f5dad7aa27ac73a19ece29c94d49435772a34fa22c3cf413ead529b9",
+   "changes": [],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "4dbcaf9d7f2a41776d10cbf6cd44860dcc88930f3fab2f9d82d31d975f681338"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q179",
+   "number": 179,
+   "version": "generic-v1",
+   "input_sha256": "570661788a6ce1fa1fa25d83f45c1845c66544ef4f7021e33a751b3a7c647864",
+   "changes": [
+    {
+     "location": "alternatives[0].text",
+     "operation": "latex",
+     "before": "cd m² 2",
+     "after": "cd $m^{2}$ 2"
+    }
+   ],
+   "issues": [],
+   "review_required": true,
+   "output_sha256": "5cb7bbe85f0185565574692fab197059659332f5475b8a74365d2cc27fb3befd"
+  },
+  {
+   "question_id": "enem-2025-regular-dia2-caderno-7-azul-q180",
+   "number": 180,
+   "version": "generic-v1",
+   "input_sha256": "dbea99352f9c075ac3eb461d4c6553228fdc354703342e16890506350417090e",
+   "changes": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[1].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 180, página 31; descrição detalhada pendente."
+    }
+   ],
+   "review_required": true,
+   "output_sha256": "949e276b20d7ad4dc62b8e160ad1d156cd31104398cb196d92aaf6fe96f4d81b"
+  }
+ ],
+ "changes": 100,
+ "warnings": 64,
+ "errors": 2
+}

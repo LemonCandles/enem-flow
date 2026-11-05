@@ -1,0 +1,180 @@
+{
+  "$defs": {
+    "ProposedLabels": {
+      "additionalProperties": false,
+      "properties": {
+        "discipline": {
+          "const": "Matemática",
+          "title": "Discipline",
+          "type": "string"
+        },
+        "skills": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Skills",
+          "type": "array"
+        },
+        "themes": {
+          "items": {
+            "enum": [
+              "Estatística",
+              "Geometria espacial",
+              "Geometria plana",
+              "Grandezas e medidas",
+              "Gráficos e coordenadas",
+              "Números e proporcionalidade",
+              "Probabilidade e combinatória",
+              "Álgebra e funções"
+            ],
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "title": "Themes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "discipline",
+        "themes",
+        "skills"
+      ],
+      "title": "ProposedLabels",
+      "type": "object"
+    },
+    "ThemeOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "experiment": {
+          "const": "data-ai-v1",
+          "title": "Experiment",
+          "type": "string"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Model Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "experiment",
+        "model",
+        "model_sha256"
+      ],
+      "title": "ThemeOrigin",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "canonical_id": {
+      "title": "Canonical Id",
+      "type": "string"
+    },
+    "content_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Content Sha256",
+      "type": "string"
+    },
+    "evaluation_split": {
+      "enum": [
+        "train",
+        "development",
+        "test",
+        "unlabeled_archive"
+      ],
+      "title": "Evaluation Split",
+      "type": "string"
+    },
+    "evidence": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Evidence",
+      "type": "string"
+    },
+    "independent_review": {
+      "const": false,
+      "title": "Independent Review",
+      "type": "boolean"
+    },
+    "labels": {
+      "$ref": "#/$defs/ProposedLabels"
+    },
+    "margin": {
+      "minimum": 0,
+      "title": "Margin",
+      "type": "number"
+    },
+    "margin_is_probability": {
+      "const": false,
+      "title": "Margin Is Probability",
+      "type": "boolean"
+    },
+    "needs_review": {
+      "const": true,
+      "title": "Needs Review",
+      "type": "boolean"
+    },
+    "origin": {
+      "$ref": "#/$defs/ThemeOrigin"
+    },
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "review_reasons": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Review Reasons",
+      "type": "array"
+    },
+    "review_status": {
+      "const": "proposed",
+      "title": "Review Status",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "taxonomy_version": {
+      "const": "enem-content-v1",
+      "title": "Taxonomy Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "question_id",
+    "canonical_id",
+    "source_sha256",
+    "content_sha256",
+    "taxonomy_version",
+    "labels",
+    "origin",
+    "evidence",
+    "margin",
+    "margin_is_probability",
+    "review_status",
+    "needs_review",
+    "independent_review",
+    "evaluation_split",
+    "review_reasons"
+  ],
+  "title": "ThemeProposal",
+  "type": "object"
+}

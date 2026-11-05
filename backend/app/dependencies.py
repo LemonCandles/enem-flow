@@ -3,6 +3,7 @@
 SessionDep commits the unit of work before the response is sent (function scope).
 CurrentUser requires a valid session; AdminUser also requires the curation role.
 """
+
 from typing import Annotated
 
 from fastapi import Depends

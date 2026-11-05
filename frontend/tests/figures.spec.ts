@@ -1,11 +1,26 @@
 import { expect, test } from '@playwright/test';
 
-test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam no site', async ({ page, context }, info) => {
+test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam no site', async ({
+  page,
+  context,
+}, info) => {
   test.setTimeout(120_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Figuras', email: `e2e-figures-${info.project.name}-${Date.now()}@example.com`, password: 'senha-figuras-latex-2026' } })).status()).toBe(201);
-  const created = await page.request.post('/api/exam-runs', { data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `figures-${Date.now()}` } });
+  expect(
+    (
+      await page.request.post('/api/auth/register', {
+        data: {
+          name: 'Teste de Figuras',
+          email: `e2e-figures-${info.project.name}-${Date.now()}@example.com`,
+          password: 'senha-figuras-latex-2026',
+        },
+      })
+    ).status(),
+  ).toBe(201);
+  const created = await page.request.post('/api/exam-runs', {
+    data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `figures-${Date.now()}` },
+  });
   const run = await created.json();
   await page.goto(`/runs/${run.id}`);
   await expect(page.getByRole('heading', { name: 'Questão 91', exact: true })).toBeVisible();
@@ -14,7 +29,8 @@ test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam
   await expect(page.locator('.native-paragraph').filter({ hasText: 'Momentum and Car safety' })).toHaveCount(0);
   const descriptionId = await figure.locator('img').getAttribute('aria-describedby');
   expect(descriptionId).toBe(await figure.locator('figcaption').getAttribute('id'));
-  const url = page.url(), tabs = context.pages().length;
+  const url = page.url(),
+    tabs = context.pages().length;
   const enlarge = figure.getByRole('button', { name: 'Ampliar figura', exact: true });
   await enlarge.click();
   const dialog = page.getByRole('dialog', { name: 'Figura da questão 91', exact: true });
@@ -40,10 +56,13 @@ test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam
   await expect(page.locator('.katex-error')).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
   // The left edge of a long equation must remain reachable on narrow screens.
-  const bounds = await figure.locator('.figure-equation').first().evaluate(el => {
-    const math = el.querySelector('.katex-html')!;
-    return { left: el.getBoundingClientRect().left, mathLeft: math.getBoundingClientRect().left };
-  });
+  const bounds = await figure
+    .locator('.figure-equation')
+    .first()
+    .evaluate(el => {
+      const math = el.querySelector('.katex-html')!;
+      return { left: el.getBoundingClientRect().left, mathLeft: math.getBoundingClientRect().left };
+    });
   expect(bounds.mathLeft).toBeGreaterThanOrEqual(bounds.left - 1);
   await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-chemistry.png`, fullPage: true });
   await figure.getByRole('button', { name: 'Ampliar figura', exact: true }).click();
@@ -64,7 +83,12 @@ test('legendas e química acompanham a figura; ampliação, zoom e teclado ficam
     await expect(page.getByRole('heading', { name: `Questão ${number}`, exact: true })).toBeVisible();
     await expect(page.locator('.katex-error')).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
-    if ([94, 118, 135].includes(number)) await page.screenshot({ scale: 'css', path: `test-results/${info.project.name}-q${number}-review.png`, fullPage: true });
+    if ([94, 118, 135].includes(number))
+      await page.screenshot({
+        scale: 'css',
+        path: `test-results/${info.project.name}-q${number}-review.png`,
+        fullPage: true,
+      });
   }
   expect(errors).toEqual([]);
   expect((await page.request.delete('/api/me/history')).status()).toBe(204);

@@ -1,4 +1,5 @@
 """The signed-in student's profile and preferences."""
+
 from fastapi import APIRouter
 
 from .. import schemas as s

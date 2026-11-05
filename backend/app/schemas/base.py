@@ -1,4 +1,5 @@
 """Common configuration of every request schema."""
+
 from pydantic import BaseModel, ConfigDict
 
 

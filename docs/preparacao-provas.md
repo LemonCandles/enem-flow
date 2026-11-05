@@ -141,11 +141,11 @@ O caderno de 2021 tem codificação quebrada e serve para mostrar o bloqueio: se
 
 Antes das extensões deste ensaio, os cadernos com opção de língua (2024, 1º dia, e 2015) e o de 2012 nem chegavam ao relatório. 2022, 2019 e 2017 tinham 15, 14 e 10 pendências bloqueantes, por causa de alternativas em grade, letras duplicadas pela camada acessível e moedas como `US$` lidas como LaTeX. As 100 alternativas gráficas segmentadas foram conferidas contra a posição dos marcadores no PDF, sem divergências.
 
-As pendências restantes são casos que exigem revisão humana: tabelas com células mescladas, relações espaciais e alternativas com mais de uma figura. Os avisos (descrições de figuras, vínculos inferidos e notação ambígua) também exigem conferência. Nenhum desses rascunhos foi importado ou revisado. A incorporação de um novo caderno ao catálogo depende da curadoria, prevista na [etapa 8 do roteiro](plano-implementacao/proximas-etapas.md#8-curadoria-do-conteúdo-e-dos-rótulos).
+As pendências restantes são casos que exigem revisão humana: tabelas com células mescladas, relações espaciais e alternativas com mais de uma figura. Os avisos (descrições de figuras, vínculos inferidos e notação ambígua) também exigem conferência. Nenhum desses rascunhos foi importado ou revisado. A incorporação de um novo caderno ao catálogo depende de curadoria, que não tem etapa no [roteiro atual](plano-implementacao/proximas-etapas.md).
 
 ## Publicação automática do acervo
 
-**Decisão de 31/10/2026:** as provas do acervo vão para o site sem curadoria. O tratamento de layout fica para a etapa 3, e a curadoria para a etapa 8 do [roteiro](plano-implementacao/proximas-etapas.md).
+**Decisão de 31/10/2026:** as provas do acervo vão para o site sem curadoria. O tratamento de layout fica para a etapa 3 do [roteiro](plano-implementacao/proximas-etapas.md); a curadoria não tem etapa nele.
 
 ```bash
 .venv/bin/python scripts/build_archive_exams.py          # gera JSON e figuras
@@ -165,7 +165,7 @@ make acervo                                              # os dois passos
   - uma prova para cada opção de língua.
 - O gabarito é lido na coluna da língua escolhida, e respostas retificadas ("*A") são aceitas.
 - Questões já conferidas não são geradas de novo: o 2º dia de 2024 fica de fora, e do 2º dia de 2023 sai só Ciências da Natureza.
-- As saídas ficam em `data/derived/exams/<id>.json`, `<id>.report.json` e `resumo.json`, com as figuras em `data/assets/<id>/`, todas fora do Git.
+- As saídas ficam em `data/derived/exams/<id>.json`, `<id>.report.json` e `resumo.json`, com as figuras em `data/assets/<id>/`. Só as provas regulares de 2024 e 2025, caderno azul, são versionadas, com JSON, relatório, figuras e PDFs; as demais ficam fora do Git.
 
 **Publicação** (`backend.app.cli archive`):
 
@@ -190,11 +190,11 @@ make acervo                                              # os dois passos
 ## Implementação e validação
 
 - Preparador compartilhado: `backend/app/preparation/`.
-- Adaptador e comando: `scripts/exam_pdf.py` e `scripts/prepare_exam.py`.
+- Adaptador e comando: `ingestion/exam_pdf/` e `scripts/prepare_exam.py`.
 - Validador: `node frontend/scripts/validate-latex.cjs caminho/prova.json` ou `--stdin`.
 - Testes cobrem notação, palavras comuns, idempotência, dados de avaliação, prévia/importação, bloqueios, CLI e PDF. Testes gráficos trocam a numeração para confirmar que ela não seleciona regras especiais.
 - `backend/tests/test_pdf_layouts.py` reproduz em PDFs sintéticos os layouts encontrados no ensaio: opção de língua, marca d'água girada, alternativas em grade, figuras em coluna, faixa decorativa, cabeçalhos fora das margens e codificação quebrada. Esses testes não dependem do acervo local.
-- `scripts/pdf_headings.py` compartilha o reconhecimento de cabeçalhos espaçados entre o banco textual e o adaptador nativo; `test_archive_layouts.py` verifica ambos com o mesmo PDF. Geração e ensaio compartilham áreas e duração, incluindo Natureza antes de Humanas em 2009.
+- `ingestion/pdf_headings.py` compartilha o reconhecimento de cabeçalhos espaçados entre o banco textual e o adaptador nativo; `test_archive_layouts.py` verifica ambos com o mesmo PDF. Geração e ensaio compartilham áreas e duração, incluindo Natureza antes de Humanas em 2009.
 - O ensaio completo usa os 90 itens em arquivos temporários e mantém pendências visíveis. O resultado não substitui o JSON revisado nem é publicado automaticamente.
 
 Validação local em 31/10/2026: 55 testes de API em SQLite e 14 testes Playwright aprovados no build de produção, com TypeScript aprovado. No ensaio genérico dos 90 itens, 176 expressões compilaram e o relatório apontou cinco bloqueios: células mescladas na 139 e relações espaciais nas 148, 169, 170 e 180. Também há avisos de descrições, vínculos inferidos e notação ambígua. Esses números identificam os casos encontrados no ensaio; não selecionam regras do preparador. Nenhum desses rascunhos foi importado no banco local.

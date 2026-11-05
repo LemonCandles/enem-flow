@@ -1,7 +1,8 @@
 """Exam attempts and the learning events recorded when they finish."""
+
 import time
 
-from sqlalchemy import JSON, Boolean, Float, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy import JSON, Boolean, CheckConstraint, Float, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from ..core.db import Base
@@ -25,10 +26,22 @@ class ExamRun(Base):
 
 class LearningEvent(Base):
     __tablename__ = "learning_events"
-    __table_args__ = (UniqueConstraint("run_id", "item_id"),)
+    __table_args__ = (
+        UniqueConstraint("run_id", "item_id"),
+        UniqueConstraint("session_id", "item_id"),
+        CheckConstraint(
+            "(run_id IS NOT NULL AND session_id IS NULL) OR (run_id IS NULL AND session_id IS NOT NULL)",
+            name="learning_event_origin",
+        ),
+    )
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    run_id: Mapped[str] = mapped_column(ForeignKey("exam_runs.id", ondelete="CASCADE"), index=True)
+    run_id: Mapped[str | None] = mapped_column(
+        ForeignKey("exam_runs.id", ondelete="CASCADE"), nullable=True, index=True
+    )
+    session_id: Mapped[str | None] = mapped_column(
+        ForeignKey("diagnostic_sessions.id", ondelete="CASCADE"), nullable=True, index=True
+    )
     item_id: Mapped[str] = mapped_column(String(100))
     position: Mapped[int] = mapped_column(Integer)
     answer: Mapped[str | None] = mapped_column(String(1), nullable=True)

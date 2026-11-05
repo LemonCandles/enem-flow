@@ -693,3 +693,9 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; font
 .archive-sources { max-height: 350px; overflow: auto; }
 .archive-sources p { display: grid; gap: 4px; margin: 12px 0; }
 @media (max-width: 640px) { .archive-filters { grid-template-columns: 1fr; } .archive-transcript { padding: 12px; } }
+
+.knowledge-panel > p, .knowledge-panel > label { margin-top: 16px; }
+.knowledge-panel .segmented { margin-top: 20px; }
+.knowledge-panel .row > div { min-width: 0; }
+.knowledge-panel h3 { overflow-wrap: anywhere; }
+.knowledge-panel .row > strong { flex-shrink: 0; }

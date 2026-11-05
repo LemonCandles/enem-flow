@@ -1,7 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 
 // The catalog may also hold archive exams published locally; pick the reviewed lot by its exact title.
-const examCard = (page: Page, title: string) => page.locator('.exam-card').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
+const examCard = (page: Page, title: string) =>
+  page.locator('.exam-card').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
 
 test('cadastro, navegação, retomada, correção e histórico individual', async ({ page }, info) => {
   // This full journey includes page loads, screenshots and recorded video.
@@ -77,12 +78,25 @@ test('tema persiste na navegação e retomada, com menu acessível no celular', 
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.emulateMedia({ colorScheme: 'dark' });
-  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Design', email: `e2e-design-${info.project.name}-${Date.now()}@example.com`, password: 'senha-design-persistente' } })).status()).toBe(201);
+  expect(
+    (
+      await page.request.post('/api/auth/register', {
+        data: {
+          name: 'Teste de Design',
+          email: `e2e-design-${info.project.name}-${Date.now()}@example.com`,
+          password: 'senha-design-persistente',
+        },
+      })
+    ).status(),
+  ).toBe(201);
   await page.goto('/');
   await expect(page.getByRole('heading', { name: /Aprender, no seu tempo\./ })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(19, 19, 19)');
-  await expect(page.getByRole('button', { name: 'Iniciar prova', exact: true })).toHaveCSS('background-color', 'rgb(0, 148, 133)');
+  await expect(page.getByRole('button', { name: 'Iniciar prova', exact: true })).toHaveCSS(
+    'background-color',
+    'rgb(0, 148, 133)',
+  );
   await page.getByRole('button', { name: 'Alternar tema' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(246, 245, 240)');
@@ -121,16 +135,32 @@ test('tema persiste na navegação e retomada, com menu acessível no celular', 
 });
 
 test('falha ao salvar preserva a última escolha confirmada', async ({ page }, info) => {
-  const registered = await page.request.post('/api/auth/register', { data: { name: 'Teste de Conexão', email: `e2e-failure-${info.project.name}-${Date.now()}@example.com`, password: 'senha-falha-de-conexao' } });
+  const registered = await page.request.post('/api/auth/register', {
+    data: {
+      name: 'Teste de Conexão',
+      email: `e2e-failure-${info.project.name}-${Date.now()}@example.com`,
+      password: 'senha-falha-de-conexao',
+    },
+  });
   expect(registered.status()).toBe(201);
-  const created = await page.request.post('/api/exam-runs', { data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `failure-${Date.now()}` } });
+  const created = await page.request.post('/api/exam-runs', {
+    data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `failure-${Date.now()}` },
+  });
   const run = await created.json();
   await page.goto(`/runs/${run.id}`);
   await page.getByRole('radio', { name: /^B absorve/ }).check();
   await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
-  await page.route('**/api/exam-runs/*/answers/*', route => route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ detail: 'Falha temporária de conexão.' }) }));
+  await page.route('**/api/exam-runs/*/answers/*', route =>
+    route.fulfill({
+      status: 503,
+      contentType: 'application/json',
+      body: JSON.stringify({ detail: 'Falha temporária de conexão.' }),
+    }),
+  );
   await page.getByRole('radio', { name: /^C consome/ }).click();
-  await expect(page.getByRole('alert').filter({ hasText: 'Falha temporária de conexão.' })).toContainText('A alteração não foi salva');
+  await expect(page.getByRole('alert').filter({ hasText: 'Falha temporária de conexão.' })).toContainText(
+    'A alteração não foi salva',
+  );
   await expect(page.getByRole('radio', { name: /^B absorve/ })).toBeChecked();
   const persisted = await page.request.get(`/api/exam-runs/${run.id}`);
   expect((await persisted.json()).answers[run.items[0].id]).toBe('B');
@@ -138,10 +168,24 @@ test('falha ao salvar preserva a última escolha confirmada', async ({ page }, i
 });
 
 test('JSON renderiza texto, tabelas, fórmulas e figuras separadas', async ({ page }, info) => {
-  expect((await page.request.post('/api/auth/register', { data: { name: 'Teste de Conteúdo', email: `e2e-native-${info.project.name}-${Date.now()}@example.com`, password: 'senha-conteudo-nativo' } })).status()).toBe(201);
-  const response = await page.request.post('/api/exam-runs', { data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `native-${Date.now()}` } });
+  expect(
+    (
+      await page.request.post('/api/auth/register', {
+        data: {
+          name: 'Teste de Conteúdo',
+          email: `e2e-native-${info.project.name}-${Date.now()}@example.com`,
+          password: 'senha-conteudo-nativo',
+        },
+      })
+    ).status(),
+  ).toBe(201);
+  const response = await page.request.post('/api/exam-runs', {
+    data: { exam_id: 'enem-2024-dia2-azul', idempotency_key: `native-${Date.now()}` },
+  });
   const run = await response.json();
-  expect(run.items.every((q: { original_layout: boolean; blocks: unknown[] }) => !q.original_layout && q.blocks.length)).toBeTruthy();
+  expect(
+    run.items.every((q: { original_layout: boolean; blocks: unknown[] }) => !q.original_layout && q.blocks.length),
+  ).toBeTruthy();
   await page.goto(`/runs/${run.id}`);
   async function open(number: number) {
     if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();

@@ -38,11 +38,21 @@ A edição verifica colisões com assinaturas canônicas conhecidas e duplicidad
 
 `installers/generated.py` é a exceção explícita de publicação automática local: admite pendências de preparação, preserva os relatórios e registra origem e revisão pendente em `source.automatic_archive`. `content_quality` leva esse estado ao catálogo e ao snapshot da prova; `preparation_errors` expõe apenas a contagem de erros da questão, sem abrir layout interno ou gabarito. O site identifica esses cadernos e vincula as pendências à fonte. O fluxo manual mantém seus bloqueios. O resumo do catálogo consulta apenas identificador, estado e área das versões, sem carregar os enunciados completos.
 
+Ao marcar uma alternativa, o frontend envia o PUT com `keepalive` e guarda a resposta no `sessionStorage` até o servidor responder. Se a página recarregar antes disso, a resposta é reaplicada e reenviada, porque a leitura pode chegar antes do fim do salvamento e o pedido pode nem ter saído.
+
 `exam_runs` fixa ordem, conteúdo completo, versão e metadados da prova no início. Isso preserva também as tentativas ainda abertas quando uma questão é corrigida ou uma prova é retirada. O resultado, as escolhas definitivas e os eventos são registrados na mesma transação.
 
 Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da execução. Funciona no PostgreSQL e no SQLite, onde SELECT FOR UPDATE seria ignorado. A finalização verifica o estado após obter o bloqueio: chamadas concorrentes retornam o mesmo resultado, com uma única série de eventos. O início usa chave de idempotência única por usuário; reutilizá-la para outra prova retorna conflito.
 
 `services/scoring.py` corrige exclusivamente por gabarito: brancos contam no denominador e não como respostas; anuladas ficam fora do desempenho. O painel soma tentativas de provas concluídas, inclusive repetições; não deduplica um item que o aluno resolveu novamente. Rótulos múltiplos podem sobrepor grupos. Cobertura significa a fração de tentativas válidas com pelo menos um rótulo do tipo considerado, não domínio de conhecimento.
+
+## Diagnóstico e estado do aluno
+
+`diagnostic_sessions` preserva objetivo, área, tempo, seleção versionada, snapshots e respostas. O seletor distribui itens entre temas publicados, deduplica identidades e registra a exposição; a sessão permanece fixa até a finalização, sem prazo obrigatório. Cada item conserva a fonte original. A correção e a geração compartilhada de eventos seguem a mesma transação e proteção contra concorrência das provas.
+
+`learning_events` referencia exclusivamente uma prova ou um diagnóstico. O contexto `2.0` acrescenta área aos dados de identidade, versão, rótulos e ajuda; eventos antigos continuam legíveis com seus snapshots. `services/knowledge.py` reconstrói o estado por tema/taxonomia e habilidade oficial, usando apenas a primeira resposta marcada e sem ajuda por identidade no estimador Beta(1,1). Brancos, anuladas e repetições permanecem identificados; ajuda desconhecida não é tratada como independência. A publicação posterior de rótulos não reclassifica os eventos históricos.
+
+O painel mantém os indicadores objetivos de provas e acrescenta o estado conjunto de provas/diagnósticos, com evidência, assistência e prática recente. Contratos, critérios de seleção, migração e limitações estão em [diagnóstico e estado](diagnostico-estado.md).
 
 ## Preparação de conteúdo
 
@@ -50,7 +60,7 @@ Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da
 
 O fingerprint permite reaproveitar apresentação e operações anteriores, mas não autentica a auditoria recebida. A validação independente examina os campos renderizados, imagens sem posição e diagnósticos de extração. Aprovação e publicação também a executam para impedir que relatórios alterados ou antigos suprimam bloqueios. O catálogo pode publicar uma instalação anterior sem criar novas versões; retiradas, rejeições e edições manuais pendentes permanecem preservadas.
 
-O adaptador offline `scripts/exam_pdf.py` usa PyMuPDF, regiões, cabeçalhos, posição dos caracteres e marcadores A–E para preparar PDFs textuais. `scripts/prepare_exam.py` aceita JSON ou manifesto, produz um rascunho e relatório, confere recursos e compila o LaTeX com o KaTeX/mhchem do frontend. Saída automática não equivale a aprovação. [Uso e limites](preparacao-provas.md).
+O adaptador offline `ingestion/exam_pdf/` usa PyMuPDF, regiões, cabeçalhos, posição dos caracteres e marcadores A–E para preparar PDFs textuais. `scripts/prepare_exam.py` aceita JSON ou manifesto, produz um rascunho e relatório, confere recursos e compila o LaTeX com o KaTeX/mhchem do frontend. Saída automática não equivale a aprovação. [Uso e limites](preparacao-provas.md).
 
 ## HTTP
 
@@ -67,10 +77,12 @@ O backend segue a organização de [aplicações maiores do FastAPI](https://fas
 | `models/` | Tabelas por domínio: `accounts.py`, `content.py` e `runs.py`. O pacote registra todas no `Base.metadata`. |
 | `schemas/` | Esquemas de requisição por funcionalidade: `account.py`, `content.py` (contrato JSON), `runs.py` e `curation.py`. O pacote reexporta todos, e os scripts continuam importando de `backend.app.schemas`. |
 | `routers/` | Uma funcionalidade por arquivo: `health.py`, `auth.py`, `account.py`, `exams.py`, `runs.py` e `progress.py`. Em `admin/`, ficam `content.py` (importação, edição, revisão, publicação e auditoria) e `archive.py` (acervo e taxonomia). O papel de curadoria é exigido uma vez no router `/admin`. |
-| `services/` | Regras de domínio usadas pela API, pela CLI e pelos scripts: `content.py`, `identity.py`, `presentation.py`, `scoring.py`, `taxonomy.py` e `archive_reader.py`. |
+| `services/` | Regras de domínio usadas pela API, pela CLI e pelos scripts, sem dependência de HTTP (`errors.py` define as falhas, e `main.py` as converte em resposta): `content.py`, `lifecycle.py` (mudanças de estado e publicação), `versioning.py` (novas versões), `attempts.py` (ciclo comum de prova e diagnóstico), `diagnostics.py` (seletores por versão), `adaptive.py` (política da prática, função pura e versionada), `knowledge.py`, `learning.py`, `identity.py`, `presentation.py`, `scoring.py`, `taxonomy.py`, `service_account.py` e `archive_reader.py`. |
 | `installers/` | Conteúdo que entra no banco fora da API: `curated.py` (lotes conferidos), `bundled.py` (atualização do conjunto incluído), `generated.py` (publicação automática do acervo) e `assets.py` (figuras no volume do Docker). |
-| `preparation/` | Preparador de JSON compartilhado. |
+| `preparation/` | Preparador de JSON compartilhado: `steps.py` aplica as etapas em ordem sobre um contexto com mudanças e pendências. |
 | `cli.py` | Comandos locais (`python -m backend.app.cli`). |
+
+Fora de `backend/app/`, o pacote `ingestion/` lê as fontes oficiais: espelho do acervo (`archive.py`), extração de PDF (`exam_pdf/`, dividido em texto, regiões, gabarito, figuras e montagem da prova), metadados das provas geradas (`archive_exams.py`) e banco textual (`bank.py`). Ele roda offline, nunca na API, e os arquivos de `scripts/` são seus pontos de entrada. `scripts/_bootstrap.py` permite executá-los com `python scripts/x.py`.
 
 | Operação | Acesso | Comportamento |
 | --- | --- | --- |
@@ -83,7 +95,12 @@ O backend segue a organização de [aplicações maiores do FastAPI](https://fas
 | `PUT /exam-runs/{id}/answers/{item_id}` | Dono, prova aberta | `choice` A–E ou null para limpar |
 | `POST /exam-runs/{id}/finish` | Dono | Finalização transacional, repetível |
 | `GET /me/history`, `/me/progress` | Conta | Histórico e agregações próprias |
-| `DELETE /me/history` | Conta | Remove execuções e eventos próprios |
+| `GET /diagnostic-options`, `POST /sessions` | Conta | Cobertura elegível e início idempotente de diagnóstico |
+| `GET /sessions/{id}`, `PUT /sessions/{id}/answers/{item_id}`, `POST /sessions/{id}/finish` | Dono | Retomada, salvamento e finalização transacional |
+| `GET /me/sessions`, `/me/knowledge-state` | Conta | Histórico de diagnósticos e estado reconstruído |
+| `DELETE /me/history` | Conta | Remove provas, diagnósticos e eventos próprios |
+| `POST /practice-sessions`, `GET`/`PUT`/`POST` em `/practice-sessions/{id}` | Dona da sessão | Prática adaptativa; ver [política adaptativa](politica-adaptativa.md) |
+| `GET /practice-sessions/{id}/recommendations`, `/me/recommendations` | Conta | Motivos e auditoria das escolhas |
 | `POST /admin/imports` | Curadoria | Valida JSON e recursos, cria rascunho |
 | `GET /admin/exams`, `/admin/exams/{id}` | Curadoria | Inclui conteúdo e estados de revisão |
 | `PUT /admin/questions/{version_id}` | Curadoria | Nova versão, com justificativa |
@@ -105,6 +122,8 @@ Cada requisição recebe `X-Request-ID`, controle de cache e registro de método
 
 ## Banco histórico e rótulos
 
-O [banco e a classificação](banco-classificacao.md) separam o acervo local de 1998–2025 dos dois lotes conferidos instalados em SQLite/PostgreSQL. `installers/curated.py` valida os hashes das anotações, cria novas versões para os rótulos e mantém os snapshots anteriores. `services/archive_reader.py` lê o banco textual local, sem aprovar ou publicar extrações. A preparação comum permanece em `backend/app/preparation/`, `scripts/exam_pdf.py` e `scripts/prepare_exam.py`; é chamada automaticamente na importação e na edição da curadoria.
+`experiments/` implementa a etapa 3 como processamento offline, executado por `scripts/run_experiments.py`. Não participa do ciclo de vida da API nem usa sessões de banco. Modelos clássicos, partições, métricas e propostas ficam em arquivos; `data/datasets/` guarda as referências técnicas compactas. Contratos de proposta são separados de `ExamImport`, exigem revisão e não promovem habilidades. A revisão visual abre os recortes das fontes locais e exporta tempos humanos apenas quando alguém os registra. O [protocolo](experimentos/README.md) detalha avaliação, OCR opcional, comparação externa de LLM e os limites dos candidatos de recuperação.
+
+O [banco e a classificação](banco-classificacao.md) separam o acervo local de 1998–2025 dos dois lotes conferidos instalados em SQLite/PostgreSQL. `installers/curated.py` valida os hashes das anotações, cria novas versões para os rótulos e mantém os snapshots anteriores. `services/archive_reader.py` lê o banco textual local, sem aprovar ou publicar extrações. A preparação comum permanece em `backend/app/preparation/`, `ingestion/exam_pdf/` e `scripts/prepare_exam.py`; é chamada automaticamente na importação e na edição da curadoria.
 
 Temas editoriais usam `enem-content-v1`. Competências e habilidades oficiais usam outro namespace, como `MT.C3` e `MT.H12`. Propostas de vínculos são metadados privados de curadoria; não são promovidas a habilidades publicadas sem segunda revisão. O conjunto exploratório de Matemática contém 89 itens válidos em oito temas.

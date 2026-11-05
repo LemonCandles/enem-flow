@@ -1,4 +1,5 @@
 """Application assembly: lifespan, request policy, validation errors, static assets and feature routers."""
+
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -8,18 +9,35 @@ from fastapi.staticfiles import StaticFiles
 
 from .core.config import ROOT
 from .middleware import request_policy
-from .routers import account, admin, auth, exams, health, progress, runs
+from .services.errors import DomainError
+from .routers import account, admin, auth, exams, health, practice, progress, runs, diagnostics
 
 # Documentation only: groups shown in /docs, in this order.
 TAGS = [
     {"name": "saúde", "description": "Verificação de funcionamento da API e do banco."},
-    {"name": "autenticação", "description": "Cadastro, entrada, saída e redefinição de senha por link de uso único. Limitado por tentativas."},
+    {
+        "name": "autenticação",
+        "description": "Cadastro, entrada, saída e redefinição de senha por link de uso único. Limitado por tentativas.",
+    },
     {"name": "conta", "description": "Dados e preferências da conta conectada."},
     {"name": "provas", "description": "Catálogo público de provas publicadas, sem gabarito."},
-    {"name": "execuções", "description": "Tentativas de prova: início idempotente, respostas salvas e finalização com correção."},
+    {
+        "name": "execuções",
+        "description": "Tentativas de prova: início idempotente, respostas salvas e finalização com correção.",
+    },
+    {
+        "name": "prática adaptativa",
+        "description": "Sessões escolhidas a partir das evidências do aluno, com o motivo e o registro de cada escolha.",
+    },
     {"name": "desempenho", "description": "Histórico e agregações de desempenho da própria conta."},
-    {"name": "curadoria", "description": "Importação, edição versionada, revisão, publicação e auditoria. Exige papel de curadoria."},
-    {"name": "acervo", "description": "Consulta somente leitura às extrações do acervo oficial e à taxonomia. Exige papel de curadoria."},
+    {
+        "name": "curadoria",
+        "description": "Importação, edição versionada, revisão, publicação e auditoria. Exige papel de curadoria.",
+    },
+    {
+        "name": "acervo",
+        "description": "Consulta somente leitura às extrações do acervo oficial e à taxonomia. Exige papel de curadoria.",
+    },
 ]
 
 
@@ -42,6 +60,11 @@ async def invalid_input(_, exc):
     return JSONResponse({"detail": "Confira os campos informados.", "errors": errors}, status_code=422)
 
 
+@app.exception_handler(DomainError)
+async def domain_failure(_, exc):
+    return JSONResponse({"detail": exc.detail}, status_code=exc.status_code)
+
+
 # Same registration order as the routes had in a single module.
-for feature in (health, auth, account, exams, runs, progress, admin):
+for feature in (health, auth, account, exams, runs, progress, diagnostics, practice, admin):
     app.include_router(feature.router)

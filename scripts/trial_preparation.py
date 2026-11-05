@@ -6,6 +6,8 @@ resume as pendências de cada caderno. Nada é importado ou publicado: rascunhos
 relatórios e figuras ficam em `tmp/ensaio-preparacao/`. Exige os PDFs no
 espelho local (`archive_enem.py sync`).
 """
+
+import _bootstrap  # noqa: F401
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -15,13 +17,13 @@ import re
 import subprocess
 import sys
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 import pymupdf
-from scripts.archive_enem import CATALOG, SOURCE_ROOT
+from ingestion.archive import CATALOG, SOURCE_ROOT
+from ingestion.archive_exams import areas, duration
+
+ROOT = Path(__file__).resolve().parents[1]
 
 OUTPUT = ROOT / 'tmp/ensaio-preparacao'
-from scripts.build_archive_exams import areas, duration
 
 # (ano, aplicação, dia, caderno, língua estrangeira, margem superior em pontos)
 TARGETS = [
@@ -38,8 +40,18 @@ TARGETS = [
 
 
 def source(files, year, application, day, booklet, role):
-    rows = [r for r in files if r['year'] == year and r['application'] == application and r.get('day') == day and r['booklet'] == booklet
-            and r['role'] == role and r['variant'] == 'padrao' and r.get('modality') == 'impresso' and r['status'] == 'downloaded']
+    rows = [
+        r
+        for r in files
+        if r['year'] == year
+        and r['application'] == application
+        and r.get('day') == day
+        and r['booklet'] == booklet
+        and r['role'] == role
+        and r['variant'] == 'padrao'
+        and r.get('modality') == 'impresso'
+        and r['status'] == 'downloaded'
+    ]
     if len(rows) != 1:
         raise SystemExit(f'{year} {application} dia {day} {booklet}: {len(rows)} arquivos de {role} no catálogo.')
     path = SOURCE_ROOT / rows[0]['path']
@@ -57,24 +69,57 @@ def run(files, target):
         height = doc[1].rect.height
         # Last page with a question heading; later pages hold the essay sheet or blanks.
         last = max(n + 1 for n, page in enumerate(doc) if re.search(r'QUEST[ÃA]O\s+\d+', page.get_text(), re.I))
-    manifest = dict(id=f'ensaio-{name}', title=f'Ensaio {name}', year=year, application=application, booklet=booklet, day=day,
-                    kind='complete', expected_items=90, duration_minutes=duration(year, day),
-                    source=dict(url=prova['url'], answer_key_url=gabarito['url'], publisher='Inep'),
-                    layout=dict(pages=[2, last], top=top, bottom=round(height) - 35, columns='auto'),
-                    areas=areas(year, day), **({'language': language} if language else {}))
+    manifest = dict(
+        id=f'ensaio-{name}',
+        title=f'Ensaio {name}',
+        year=year,
+        application=application,
+        booklet=booklet,
+        day=day,
+        kind='complete',
+        expected_items=90,
+        duration_minutes=duration(year, day),
+        source=dict(url=prova['url'], answer_key_url=gabarito['url'], publisher='Inep'),
+        layout=dict(pages=[2, last], top=top, bottom=round(height) - 35, columns='auto'),
+        areas=areas(year, day),
+        **({'language': language} if language else {}),
+    )
     OUTPUT.mkdir(parents=True, exist_ok=True)
     path, output, report = OUTPUT / f'{name}.manifest.json', OUTPUT / f'{name}.json', OUTPUT / f'{name}.report.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     report.unlink(missing_ok=True)
-    result = subprocess.run([sys.executable, str(ROOT / 'scripts/prepare_exam.py'), '--manifest', str(path), '--pdf', str(pdf),
-                             '--answer-key', str(key), '--output', str(output), '--assets-root', str(OUTPUT / 'assets' / name), '--force'],
-                            cwd=ROOT, capture_output=True, text=True)
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / 'scripts/prepare_exam.py'),
+            '--manifest',
+            str(path),
+            '--pdf',
+            str(pdf),
+            '--answer-key',
+            str(key),
+            '--output',
+            str(output),
+            '--assets-root',
+            str(OUTPUT / 'assets' / name),
+            '--force',
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
     if not report.exists():
         return dict(caderno=name, falha=(result.stderr or result.stdout).strip()[-300:])
     data = json.loads(report.read_text())
     errors = Counter(i['code'] for q in data['questions'] for i in q['issues'] if i['severity'] == 'error')
-    return dict(caderno=name, questoes=len(data['questions']), bloqueantes=data['errors'], avisos=data['warnings'],
-                graficas=sum(i['code'] == 'graphical_options' for q in data['questions'] for i in q['issues']), por_codigo=dict(errors.most_common()))
+    return dict(
+        caderno=name,
+        questoes=len(data['questions']),
+        bloqueantes=data['errors'],
+        avisos=data['warnings'],
+        graficas=sum(i['code'] == 'graphical_options' for q in data['questions'] for i in q['issues']),
+        por_codigo=dict(errors.most_common()),
+    )
 
 
 def main():
@@ -93,7 +138,9 @@ def main():
             print(f'| {row["caderno"]} | — | — | — | — | falha: {row["falha"]} |')
         else:
             kinds = ', '.join(f'{code} {count}' for code, count in row['por_codigo'].items()) or '—'
-            print(f'| {row["caderno"]} | {row["questoes"]} | {row["bloqueantes"]} | {row["avisos"]} | {row["graficas"]} | {kinds} |')
+            print(
+                f'| {row["caderno"]} | {row["questoes"]} | {row["bloqueantes"]} | {row["avisos"]} | {row["graficas"]} | {kinds} |'
+            )
 
 
 if __name__ == '__main__':

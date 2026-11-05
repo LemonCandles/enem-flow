@@ -3,6 +3,7 @@
 This never changes assessment data, version identifiers, choices or results. A
 snapshot can use the reviewed view only when its complete content hash matches.
 """
+
 import hashlib
 import json
 from functools import lru_cache
@@ -16,16 +17,21 @@ ASSESSMENT_FIELDS = ('number', 'area', 'correct_answer', 'annulled', 'labels', '
 
 def content_fingerprint(content):
     normalized = QuestionContent.model_validate(content).model_dump()
-    return hashlib.sha256(json.dumps(normalized, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+    return hashlib.sha256(
+        json.dumps(normalized, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()
+    ).hexdigest()
 
 
 @lru_cache(maxsize=1)
 def previous_fingerprints():
     versions = {}
-    sources = [ROOT / 'data/derived/baselines/enem-2024-dia2-azul-extraction.json',
-               ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json']
+    sources = [
+        ROOT / 'data/derived/baselines/enem-2024-dia2-azul-extraction.json',
+        ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json',
+    ]
     for path in sources:
-        if not path.is_file(): continue
+        if not path.is_file():
+            continue
         for question in json.loads(path.read_text())['questions']:
             versions.setdefault(question['question_id'], set()).add(content_fingerprint(question['content']))
     return versions
@@ -54,4 +60,7 @@ def readable_content(question_id, content):
         return content
     if not is_previous_bundled_content(question_id, content):
         return content
-    return {**content, **{field: native[field] for field in ('statement', 'blocks', 'images', 'alternatives', 'original_layout')}}
+    return {
+        **content,
+        **{field: native[field] for field in ('statement', 'blocks', 'images', 'alternatives', 'original_layout')},
+    }

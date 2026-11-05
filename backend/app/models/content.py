@@ -1,4 +1,5 @@
 """Versioned content: canonical identities, question versions, exams and review decisions."""
+
 import time
 
 from sqlalchemy import JSON, Float, ForeignKey, Integer, String, UniqueConstraint
