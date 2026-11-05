@@ -7,38 +7,14 @@ from fastapi import APIRouter, HTTPException
 from sqlalchemy import select
 
 from ..dependencies import CurrentUser, SessionDep
-from ..models import DiagnosticSession, Exam
+from ..models import DiagnosticSession
 from ..schemas import Answer
 from ..schemas.diagnostics import StartDiagnostic
 from ..services import attempts
 from ..services.attempts import DIAGNOSTIC
-from ..services.content import public_question
-from ..services.diagnostics import eligible_items, identity, select_items, user_origins
+from ..services.diagnostics import eligible_items, identity, select_items, session_data, source_urls, user_origins
 
 router = APIRouter(tags=['diagnóstico'])
-
-
-def session_data(session, include_items=True):
-    result = {
-        k: getattr(session, k)
-        for k in (
-            'id',
-            'objective',
-            'area',
-            'available_minutes',
-            'selection',
-            'answers',
-            'started_at',
-            'finished_at',
-            'result',
-        )
-    }
-    result['answered'] = sum(v is not None for v in session.answers.values())
-    if include_items:
-        result['items'] = [
-            dict(public_question(i, session.finished_at is not None), source_url=i['source_url']) for i in session.items
-        ]
-    return result
 
 
 @router.get('/diagnostic-options')
@@ -67,11 +43,7 @@ def start(payload: StartDiagnostic, user: CurrentUser, db: SessionDep):
             raise HTTPException(422, 'Não há questões elegíveis com temas publicados nesta área.')
         seen = {identity(i) for origin in user_origins(db, user.id) for i in origin.items}
         items, selection = select_items(pool, seen, payload.available_minutes, secrets.token_hex(16))
-        # Each snapshot retains its original source, since a session can mix exams.
-        sources = {}
-        for exam in db.scalars(select(Exam).where(Exam.status == 'published').order_by(Exam.id)):
-            for key in exam.items:
-                sources.setdefault(key, exam.source['url'])
+        sources = source_urls(db)
         return DiagnosticSession(
             user_id=user.id,
             start_key=payload.idempotency_key,
@@ -85,7 +57,9 @@ def start(payload: StartDiagnostic, user: CurrentUser, db: SessionDep):
 
     def same_request(session):
         requested = (payload.objective, payload.area, payload.available_minutes)
-        return (session.objective, session.area, session.available_minutes) == requested
+        return (
+            session.kind == 'diagnostic' and (session.objective, session.area, session.available_minutes) == requested
+        )
 
     return session_data(attempts.start(db, DIAGNOSTIC, user.id, payload.idempotency_key, same_request, build))
 

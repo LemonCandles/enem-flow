@@ -25,6 +25,7 @@ class AttemptKind:
     key_reused: str
     closed: str
     foreign_item: str
+    session_kind: str | None = None
 
 
 EXAM_RUN = AttemptKind(
@@ -42,6 +43,16 @@ DIAGNOSTIC = AttemptKind(
     key_reused='Esta chave já foi usada para outro diagnóstico.',
     closed='Este diagnóstico já foi finalizado e não aceita alterações.',
     foreign_item='Questão não pertence a este diagnóstico.',
+    session_kind='diagnostic',
+)
+PRACTICE = AttemptKind(
+    DiagnosticSession,
+    'practice',
+    not_found='Prática não encontrada.',
+    key_reused='Esta chave já foi usada para outra prática.',
+    closed='Esta prática já foi finalizada e não aceita alterações.',
+    foreign_item='Questão não pertence a esta prática.',
+    session_kind='practice',
 )
 
 
@@ -49,6 +60,8 @@ def owned(db, kind, attempt_id, user_id, lock=False):
     """The attempt of this student, or 404 even when it belongs to someone else."""
     model = kind.model
     mine = (model.id == attempt_id, model.user_id == user_id)
+    if kind.session_kind:
+        mine = (*mine, model.kind == kind.session_kind)
     if lock:
         # A write lock works in SQLite too, where SELECT FOR UPDATE is ignored.
         found = db.execute(update(model).where(*mine).values(started_at=model.started_at)).rowcount

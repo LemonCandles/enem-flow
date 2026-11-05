@@ -8,6 +8,7 @@ from sqlalchemy import select
 
 from ..models import DiagnosticSession, Exam, ExamRun, QuestionVersion
 from ..preparation import blocking_issues
+from .content import public_question
 
 DEFAULT_SELECTOR = 'diagnostic-coverage-v1'
 
@@ -46,6 +47,44 @@ def eligible_items(db):
         }
         for q in sorted(latest.values(), key=lambda q: q.id)
     ]
+
+
+def source_urls(db):
+    """Each snapshot retains its original source, since a session can mix exams."""
+    sources = {}
+    for exam in db.scalars(select(Exam).where(Exam.status == 'published').order_by(Exam.id)):
+        for key in exam.items:
+            sources.setdefault(key, exam.source['url'])
+    return sources
+
+
+def public_item(item, finished):
+    data = dict(public_question(item, finished), source_url=item['source_url'])
+    if item.get('recommendation'):
+        data['recommendation'] = item['recommendation']
+    return data
+
+
+def session_data(session, include_items=True):
+    result = {
+        k: getattr(session, k)
+        for k in (
+            'id',
+            'kind',
+            'objective',
+            'area',
+            'available_minutes',
+            'selection',
+            'answers',
+            'started_at',
+            'finished_at',
+            'result',
+        )
+    }
+    result['answered'] = sum(v is not None for v in session.answers.values())
+    if include_items:
+        result['items'] = [public_item(i, session.finished_at is not None) for i in session.items]
+    return result
 
 
 def user_origins(db, user_id):

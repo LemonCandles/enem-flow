@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from .core.config import ROOT
 from .middleware import request_policy
 from .services.errors import DomainError
-from .routers import account, admin, auth, exams, health, progress, runs, diagnostics
+from .routers import account, admin, auth, exams, health, practice, progress, runs, diagnostics
 
 # Documentation only: groups shown in /docs, in this order.
 TAGS = [
@@ -24,6 +24,10 @@ TAGS = [
     {
         "name": "execuções",
         "description": "Tentativas de prova: início idempotente, respostas salvas e finalização com correção.",
+    },
+    {
+        "name": "prática adaptativa",
+        "description": "Sessões escolhidas a partir das evidências do aluno, com o motivo e o registro de cada escolha.",
     },
     {"name": "desempenho", "description": "Histórico e agregações de desempenho da própria conta."},
     {
@@ -62,5 +66,5 @@ async def domain_failure(_, exc):
 
 
 # Same registration order as the routes had in a single module.
-for feature in (health, auth, account, exams, runs, progress, diagnostics, admin):
+for feature in (health, auth, account, exams, runs, progress, diagnostics, practice, admin):
     app.include_router(feature.router)

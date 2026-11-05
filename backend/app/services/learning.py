@@ -5,6 +5,13 @@ import copy
 from ..models import LearningEvent
 
 
+def recommendation_context(item):
+    recommendation = item.get('recommendation')
+    if not recommendation:
+        return {}
+    return {'policy_version': recommendation['policy_version'], 'recommendation': recommendation['function']}
+
+
 def record_learning_events(db, origin, mode):
     for position, item in enumerate(origin.items, 1):
         content = item['content']
@@ -13,7 +20,7 @@ def record_learning_events(db, origin, mode):
             LearningEvent(
                 user_id=origin.user_id,
                 run_id=origin.id if mode == 'exam' else None,
-                session_id=origin.id if mode == 'diagnostic' else None,
+                session_id=origin.id if mode != 'exam' else None,
                 item_id=item['id'],
                 position=position,
                 answer=answer,
@@ -27,6 +34,7 @@ def record_learning_events(db, origin, mode):
                     'mode': mode,
                     'help_used': False,
                     'labels': copy.deepcopy(content['labels']),
+                    **recommendation_context(item),
                 },
             )
         )

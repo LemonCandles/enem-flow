@@ -3,7 +3,7 @@
 from ._ids import uid
 from .accounts import AuthAttempt, AuthSession, RecoveryToken, User
 from .content import CanonicalQuestion, Exam, QuestionVersion, Review
-from .diagnostics import DiagnosticSession
+from .diagnostics import DiagnosticSession, RecommendationEvent
 from .runs import ExamRun, LearningEvent
 
 __all__ = [
@@ -15,6 +15,7 @@ __all__ = [
     "ExamRun",
     "LearningEvent",
     "QuestionVersion",
+    "RecommendationEvent",
     "RecoveryToken",
     "Review",
     "User",

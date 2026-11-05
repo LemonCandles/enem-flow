@@ -110,7 +110,7 @@ def count_answer(row, event, facts, finished, mode, origin_id, *, repeated, inde
         {
             'date': finished,
             'origin_id': origin_id,
-            'mode': mode,
+            'mode': event.context.get('mode', mode),
             'item_id': event.item_id,
             'canonical_id': facts.canonical,
             'correct': event.correct,
