@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:17.7-alpine
+    image: docker.io/library/postgres:17.11-alpine
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-enem_flow}
       POSTGRES_USER: ${POSTGRES_USER:-enem_flow}
@@ -46,7 +46,7 @@ services:
     restart: unless-stopped
 
   gateway:
-    image: nginx:1.30.6-alpine
+    image: docker.io/library/nginx:1.30.6-alpine
     ports:
       - "3000:3000"
     volumes:
