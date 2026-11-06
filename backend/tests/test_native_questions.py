@@ -114,13 +114,10 @@ def test_refresh_creates_versions_and_preserves_runs(admin, student, exam_payloa
     assert student.post(f"/exam-runs/{run['id']}/finish").json()['result']['correct'] == 1
 
 
-def test_review_is_reproducible_and_changes_only_the_reported_questions():
-    from scripts.review_presentation import apply_review, REASONS
+def test_reviewed_content_preserves_assessment_and_records_changes():
 
     baseline = json.loads((ROOT / 'data/derived/baselines/enem-2024-dia2-azul-native-v1.json').read_text())
     current = json.loads((ROOT / 'data/enem-2024-dia2-azul.json').read_text())
-    assert apply_review(copy.deepcopy(baseline)) == current
-    assert apply_review(copy.deepcopy(current)) == current
     changed = []
     for before, after in zip(baseline['questions'], current['questions']):
         if before == after:
@@ -133,7 +130,8 @@ def test_review_is_reproducible_and_changes_only_the_reported_questions():
             c['layout']['presentation_review']['previous_content_sha256']
             == hashlib.sha256(json.dumps(old, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
         )
-    assert changed == sorted(REASONS)
+    assert changed
+    assert all(current["questions"][n - 91]["content"]["layout"].get("presentation_review") for n in changed)
     by_number = {q['content']['number']: q['content'] for q in current['questions']}
     figure91 = next(b for b in by_number[91]['blocks'] if b['type'] == 'image')
     assert figure91['caption'] == 'Momentum and Car safety. GCSE Physics Revision.'

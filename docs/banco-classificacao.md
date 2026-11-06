@@ -22,11 +22,11 @@ O comando verifica os hashes das fontes antes de extrair. PDFs e TXT/DOSVOX perm
 
 `make acervo` preserva a geração e a publicação local implementadas na outra frente: escolhe uma cor legível por ano, aplicação, dia e língua a partir de 2009, prepara texto e figuras e registra os relatórios. O ensaio inicial dessa frente registrou 96 provas, 8.595 questões e 506 pendências. Essas quantidades descrevem aquela execução; não são uma garantia de instalação em qualquer banco ou clone. Os anos anteriores continuam disponíveis no banco textual, aguardando adaptação de layout.
 
-A API informa `content_quality` com origem, estado de revisão e número de erros registrados. O catálogo identifica **Extração automática** e a resolução informa que o caderno aguarda conferência. Questões com erros conhecidos recebem aviso e vínculo à página original; o gabarito continua privado até finalizar. O conteúdo automático pode conter falhas de texto, figuras ou alternativas mesmo quando não há erro detectado.
+A API informa `content_quality` com origem, estado de revisão e número de erros registrados. Desde 05/11/2026, o catálogo apresenta todas as provas publicadas como **Disponível**, sem aviso geral de extração automática na resolução. Questões com erros conhecidos recebem aviso e vínculo à página original; o gabarito continua privado até finalizar. O conteúdo automático pode conter falhas de texto, figuras ou alternativas mesmo quando não há erro detectado.
 
 Essa publicação usa uma exceção explícita, com identidade de serviço, justificativa e origem registradas. Aprovação e publicação manuais continuam bloqueadas por pendências; a importação normal cria rascunhos. A conferência de conteúdo continua pendente. Arquivos inválidos falham individualmente sem impedir a instalação dos demais cadernos. Instalações automáticas anteriores recebem o registro de origem sem substituir versões; uma publicação manual válida marca a revisão como concluída.
 
-JSONs, relatórios e figuras gerados permanecem locais e ignorados pelo Git e pelo contexto Docker. Gerar novamente um JSON não substitui questões já instaladas: correções de conteúdo exigem versões e revisão. O [guia da preparação](preparacao-provas.md#publicação-automática-do-acervo) descreve escolhas e limites.
+Os cinco cadernos regulares de 2024/2025 incluídos no Git são instalados por `make seed`; os demais JSONs, relatórios e figuras gerados permanecem locais. Os cadernos automáticos ficam fora do contexto Docker. Gerar novamente um JSON não substitui questões já instaladas: correções de conteúdo exigem versões e revisão. O [guia da preparação](preparacao-provas.md#publicação-automática-do-acervo) descreve escolhas e limites.
 
 ## Identidade e preservação das ocorrências
 
@@ -70,13 +70,7 @@ O validador rejeita temas fora da disciplina/área quando a importação declara
 
 É uma referência exploratória de curadoria técnica assistida. Não é um benchmark pedagógico independente, conjunto calibrado por TRI ou evidência de eficácia educacional. Os splits de avaliação e as habilidades definitivas ficam para depois da segunda anotação; variantes de um item devem permanecer no mesmo grupo.
 
-```bash
-.venv/bin/python scripts/review_2023_math.py
-.venv/bin/python scripts/annotate_reference.py
-.venv/bin/python scripts/export_reference.py
-```
-
-O primeiro comando reproduz a conferência de apresentação de 2023 a partir da transcrição automática preservada. As decisões numéricas de anotação são explícitas em `scripts/annotate_reference.py`; não são classificações por palavras-chave. Alterar o texto de um item invalida a anotação vinculada ao hash anterior até nova conferência.
+As anotações versionadas são a entrada das avaliações. A edição de texto invalida seu vínculo por hash e exige conferência. Para exportar o dataset com o contrato atual, use `scripts/export_reference.py`; geradores pontuais de decisões editoriais não fazem parte da manutenção.
 
 ## Instalação e atualizações
 
@@ -87,7 +81,9 @@ Faça backup antes de atualizar uma instalação existente:
 .venv/bin/python -m backend.app.cli catalog --publish-curated
 ```
 
-`make seed` e o início do contêiner também instalam o catálogo incluído. A atualização cria versões para os rótulos novos, preserva os conteúdos anteriores, respostas, resultados e snapshots. Uma segunda execução não cria duplicatas. Edições próprias fora das versões de origem conhecidas interrompem a transação e exigem revisão manual.
+O início do contêiner também instala esses dois lotes conferidos. `make seed` prepara o catálogo local de seis provas regulares de 2024/2025 por `local-catalog`; a seção de 2023 fica fora desse catálogo padrão, com seus arquivos de referência preservados. A atualização de um bootstrap antigo retira a seção publicada pela identidade de serviço sem apagar seu conteúdo ou histórico; uma publicação manual é preservada. Veja [instalação local e atualização](operations.md#atualizar-os-lotes-e-a-classificação).
+
+A atualização cria versões para os rótulos novos, preserva os conteúdos anteriores, respostas, resultados e snapshots. Uma segunda execução não cria duplicatas. Edições próprias fora das versões de origem conhecidas interrompem a transação e exigem revisão manual.
 
 Rótulos novos valem para tentativas iniciadas depois da atualização. O histórico mantém a classificação que foi fotografada ao iniciar cada tentativa; ele não é reescrito retroativamente.
 
@@ -102,37 +98,3 @@ Faz parte da curadoria, que não foi realizada e não tem etapa no [roteiro atua
 5. Atualizar referência, cobertura e protocolo experimental. Preservar decisões anteriores para auditoria.
 
 Os aceites ainda pendentes não têm etapa no [roteiro atual](plano-implementacao/proximas-etapas.md).
-
-## Integração das frentes da etapa 2
-
-A integração preserva o vínculo dos 135 itens às quatro cores (540 ocorrências), a preparação por língua estrangeira, os adaptadores de layout e a geração local das provas do acervo. Acrescenta cabeçalhos espaçados de versões acessíveis, identificação correta de cadernos com áreas combinadas, recuperação da matriz pelo manifesto, auditoria limitada aos itens de cada seção e preservação da auditoria de preparação ao acrescentar os rótulos.
-
-A curadoria continua pendente. A referência técnica mantém 89 itens válidos em oito temas; os vínculos com habilidades continuam propostas. O banco textual local pode ser montado somente para leitura com `compose.archive.yaml`.
-
-Antes de reproduzir as anotações, recupere a matriz, se necessário, com `python scripts/archive_enem.py reference` (o intermediário TLS opcional está no guia das fontes).
-
-## Validação da integração
-
-Integração concluída em **01/11/2026**, na branch `codex/consolidacao-primeira-entrega`, preservando os históricos das duas frentes.
-
-- **81 testes do backend em SQLite e 81 em PostgreSQL**, incluindo identidade entre cores, classificação, auditoria, cabeçalhos acessíveis, origem automática, falhas isoladas e publicação manual com bloqueios. Migrações e `alembic check` aprovados no PostgreSQL, com instalação dos dois lotes.
-- **24 testes Playwright**, 12 em desktop e 12 em celular emulado, aprovados no build de produção. Incluem os 90 itens de 2024, a seção de 2023, acessibilidade automatizada, figuras, teclado, retomada e indicação de conteúdo automático. TypeScript aprovado; 150 expressões LaTeX de 2024 e 159 de 2023 compiladas.
-- **Índice reconstruído:** 480 PDFs, 10 TXT, 44.524 ocorrências, 43.439 identidades conservadoras e 1.085 ocorrências agrupadas. O vínculo de 540 ocorrências conferidas foi preservado. A auditoria confirmou os hashes disponíveis e manteve as duas URLs oficiais indisponíveis já registradas na cobertura. Os caminhos antigos duplicados das fontes com áreas combinadas foram preservados em `tmp/integracao-fontes-caminhos-antigos/`, fora do espelho organizado.
-- **Amostra de geração e instalação:** sete cadernos completos, 630 questões e 67 pendências registradas. Abrange os dois dias de 2009, os dois dias de 2011 (espanhol no segundo), PPL 2012 e as duas línguas do primeiro dia PPL 2024. Todos foram instalados em uma cópia isolada do banco, sem falhas. Essa amostra não substitui a reprodução integral das 96 provas do ensaio inicial nem a conferência humana.
-- **Compatibilidade:** migração, atualização do catálogo e instalação do acervo na cópia preservaram a tentativa existente, seus 90 snapshots, respostas e resultado, comparados por hash. O banco de uso foi apenas lido. A configuração Compose com banco textual somente para leitura foi validada; não foi repetido o ensaio completo de persistência em contêineres da consolidação.
-
-A checagem de todas as provas ficou reutilizável depois, com `make audit-archive`. Leitores de tela, aparelhos reais, segunda revisão e curadoria permanecem pendentes.
-
-## Incorporação do acervo processado
-
-Em **01/11/2026**, os dados recebidos em `/home/cassio/Downloads/data` foram incorporados à instalação local. Foram reaproveitados os **96 cadernos e 8.595 questões**, com **5.066 figuras referenciadas**, evitando repetir a extração dos PDFs. Os originais recebidos foram preservados. O índice `archive-text-v4`, a organização corrigida das fontes, os dois lotes conferidos e as anotações do projeto foram mantidos; o banco recebido usava `archive-text-v3`.
-
-JSONs e relatórios estão em `data/derived/exams/`; somente as figuras referenciadas foram acrescentadas a `data/assets/<prova>/prepared/`. Os derivados permanecem fora do Git. A versão local corrigida de 2009, primeiro dia azul, foi preservada: Natureza nas questões 1–45 e Humanas nas 46–90. Não foram substituídas versões ou figuras já instaladas por arquivos divergentes.
-
-Antes da publicação, todos os cadernos passaram por validação do contrato, numeração, áreas, hashes dos PDFs e gabaritos, comparação de cada resposta com o gabarito oficial da língua escolhida, compilação LaTeX e decodificação das figuras. Nenhuma fonte, resposta ou figura ausente/divergente foi encontrada. A publicação acrescentou 89 cadernos aos sete automáticos já instalados, sem falhas: o catálogo local oferece **98 provas e 8.730 posições de questão**. Opções de língua podem compartilhar itens; esse total não representa questões semanticamente únicas.
-
-Uma cópia isolada do banco passou pelo início, preenchimento de todas as respostas com o gabarito, finalização e repetição da finalização nas **96 provas automáticas**. As 8.595 questões tiveram resultado consistente: 13 anuladas excluídas do desempenho e 100% nas demais, sem duplicar eventos ou alterar snapshots. Foram usadas diretamente as funções que atendem às rotas HTTP; não foram criadas tentativas fictícias no banco do site. O catálogo real também foi conferido em 1.440 e 390 pixels, incluindo os 96 indicadores de origem automática e filtros por ano/aplicação. Isso verifica instalação e correção, sem substituir a comparação pedagógica com cada página original.
-
-Continuam registradas **506 pendências em 489 questões**: 222 relações espaciais, 154 alternativas não separadas e 130 tabelas com células mescladas. Elas permanecem visíveis no site. Os casos sem gabarito ou texto legível e os anos anteriores a 2009 continuam com os limites descritos no guia de preparação; o lote recebido não resolve essas ausências.
-
-O backup anterior à instalação está em `backups/enem-flow-antes-acervo-2026-11-01.db`. A tentativa real existente, seus 90 snapshots, respostas e resultado foram preservados. A conferência de entrada, o resumo de geração e o ensaio integral estão em `data/derived/exams/importacao-processada.report.json`, `resumo.json` e `checagem-integral.report.json`.

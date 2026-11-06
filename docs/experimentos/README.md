@@ -1,8 +1,8 @@
 # Experimentos de Dados e IA — etapa 3
 
-Primeiro ciclo implementado em **03/11/2026**. Os experimentos são offline, usam CPU e as dependências já fixadas em `backend/requirements-dev.lock`. Não acessam o banco de execução, não publicam conteúdo e não fazem chamadas a provedores. O relatório da execução local está em [resultados](resultados-2026-11-03.json).
+Primeiro ciclo implementado em **03/11/2026**. Os experimentos são offline, usam CPU e as dependências já fixadas em `backend/requirements-dev.lock`. Não acessam o banco de execução, não publicam conteúdo e não fazem chamadas a provedores. Os relatórios ficam na pasta de saída de cada execução.
 
-A extensão de [auditoria integral](auditoria-acervo.md) lê uma cópia do catálogo instalado, verifica fontes, gabaritos, figuras, resultados e aparência e aplica os métodos selecionados às 8.730 posições publicadas. Seu instalador de correções técnicas é uma operação explícita, separada dos experimentos; propostas temáticas e de layout continuam sem publicação automática.
+A extensão de [auditoria integral](auditoria-acervo.md) lê uma cópia do catálogo instalado, verifica fontes, gabaritos, figuras, resultados e aparência e aplica os métodos selecionados às posições publicadas no banco escolhido. Seu instalador de correções técnicas é uma operação explícita, separada dos experimentos; propostas temáticas e de layout continuam sem publicação automática.
 
 ## Executar e reproduzir
 
@@ -37,24 +37,6 @@ Para gerar novamente o registro compacto de uma execução concluída, verifican
 .venv/bin/python scripts/summarize_experiments.py tmp/experiments/meu-ensaio \
   --output tmp/experiments/meu-ensaio/resumo.json
 ```
-
-## Resultados do primeiro ciclo
-
-Os números desta seção registram a primeira execução de 03/11/2026, antes da extensão ao catálogo inteiro. A [auditoria integral](auditoria-acervo.md) registra a rodada posterior, incluindo o backend geométrico explícito e as correções instaladas.
-
-| Método temático | Acurácia no teste (18 itens) | Macro-F1 no teste |
-| --- | ---: | ---: |
-| Maioria | 22,2% | 0,045 |
-| Palavras-chave, selecionado no desenvolvimento | 55,6% | 0,501 |
-| Naive Bayes multinomial | 50,0% | 0,482 |
-| Centróides TF-IDF de palavras | 50,0% | 0,465 |
-| Centróides TF-IDF de caracteres | 38,9% | 0,296 |
-
-No layout reservado, a localização teve F1 de 0,516 nos três métodos, após arredondamento. Geometria e CART tiveram macro-F1 médio de tipos de 0,639, contra 0,421 da referência de coordenadas; apenas uma das seis questões satisfez todos os critérios de integridade. A ordem dos blocos pareados teve concordância de 98,2%, mas a recuperação de vínculos e figuras continua insuficiente. Os valores não demonstram fidelidade integral do layout.
-
-A análise das 506 pendências dos 96 cadernos encontrou candidatos para 84 diagnósticos de alternativas e 68 de tabelas mescladas. Foram exportadas 500 propostas temáticas do acervo, além das 89 da referência. O gabarito visual coincidiu nos 11 exemplos conferidos; os 169 candidatos extraídos dos dois cadernos ainda exigem conferência completa. No trecho de fonte de 2014, a taxa de erro de caracteres caiu de 1,000 na extração para 0,088 na hipótese de mapa e 0,029 no OCR, sem recuperação exata. O OCR usou `eng`; `por` não estava instalado. A página de 2021 também recebeu proposta de OCR, com acurácia não medida por falta de transcrição adjudicada.
-
-Validação da entrega: 127 testes em SQLite, incluindo 26 dos experimentos; reprodução do resumo e dos hashes; relatório local conferido em Chrome, com 13 questões, imagens, controles de sobreposição, validação do registro e reflow em 390 pixels. Nenhum registro sintético entrou como tempo humano. PostgreSQL, suíte de navegador da aplicação e contêineres não foram repetidos; o job remoto de CI ainda não foi observado.
 
 ## Classificação temática
 
@@ -178,4 +160,4 @@ As implementações seguem a formulação de [Naive Bayes multinomial](https://n
 
 ## Política adaptativa
 
-`make experiments` também compara `adaptive-v1` com seleção aleatória e reforço simples, em alunos simulados, e grava `adaptive-report.json`; `--only adaptive` roda só essa frente. O [resultado de 04/11/2026](politica-adaptativa-2026-11-04.json) está explicado em [política adaptativa](../politica-adaptativa.md). Os alunos são sintéticos: o relatório descreve o comportamento da seleção, sem medir aprendizagem.
+`make experiments` também compara `adaptive-v1` com seleção aleatória e reforço simples, em alunos simulados, e grava `adaptive-report.json`; `--only adaptive` roda só essa frente. O protocolo está em [política adaptativa](../politica-adaptativa.md). Os alunos são sintéticos: o relatório descreve o comportamento da seleção, sem medir aprendizagem.

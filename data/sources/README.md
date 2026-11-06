@@ -54,6 +54,8 @@ O banco textual comprimido em `data/bank/raw/{ano}.json.gz` é reconstruído com
 
 O contexto Docker exclui o espelho histórico e as páginas HTML. A imagem inclui o inventário do acervo, a taxonomia, o catálogo conferido, as anotações e as figuras; não inclui o banco textual, então o acervo da curadoria lista as fontes sem as extrações. Uma instalação por clone não tem os PDFs históricos nem o banco até executar `sync` e `build_bank.py`; os links oficiais continuam registrados na curadoria.
 
+No clone, `make setup` e `make migrate seed` instalam as seis provas regulares de 2024/2025 disponíveis no Git: duas opções de língua do primeiro dia e uma prova do segundo dia de cada ano. Os cinco cadernos automáticos mantêm origem e revisão pendente; o segundo dia de 2024 usa o lote conferido. A seção de Matemática de 2023 permanece como referência versionada, fora do catálogo local padrão. A imagem Docker continua instalando os dois lotes conferidos.
+
 ## Separação dos derivados
 
 - `data/derived/baselines/`: transcrições históricas imutáveis usadas para reproduzir as revisões.

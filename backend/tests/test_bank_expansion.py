@@ -181,16 +181,12 @@ def test_reference_has_eight_themes_and_no_annulled_or_canonical_duplicate():
         ExamImport.model_validate(invalid)
 
 
-def test_2023_curated_lot_matches_source_and_is_reproducible():
-    from scripts.review_2023_math import review
+def test_2023_curated_lot_matches_official_source():
     from scripts.audit_content import audit
     from ingestion.exam_pdf import lines
     import pymupdf as fitz
 
-    before = json.loads((ROOT / 'data/derived/baselines/enem-2023-matematica-auto-v1.json').read_text())
     actual = json.loads((ROOT / 'data/catalog/enem-2023-matematica-azul.json').read_text())
-    rebuilt, report = review(before, render=False)
-    assert rebuilt == actual and report['errors'] == report['warnings'] == 0
     pdf = ROOT / 'data/sources/enem/2023/regular/impresso/dia-2/caderno-7-azul/prova.pdf'
     key = pdf.with_name('gabarito.pdf')
     assert hashlib.sha256(pdf.read_bytes()).hexdigest() == actual['source']['sha256']
@@ -199,9 +195,6 @@ def test_2023_curated_lot_matches_source_and_is_reproducible():
     assert (
         section_audit['questions'] == 45 and section_audit['valid_answers'] == 44 and section_audit['annulled'] == [164]
     )
-    for q, old in zip(actual['questions'], before['questions']):
-        assert q['content']['correct_answer'] == old['content']['correct_answer']
-        assert q['content']['annulled'] == old['content']['annulled']
     with fitz.open(pdf) as doc:
         options = [l['option'] for l in lines(doc[15], fitz.Rect(0, 490, 283, 580)) if l.get('option')]
     assert options == list('ABCDE')

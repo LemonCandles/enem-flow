@@ -1,16 +1,16 @@
 # Design atual — Conhecimento em construção
 
-Atualizado em **31/10/2026**. Esta pasta reúne o design aplicado ao site, com prévias obtidas da implementação atual.
+Atualizado em **05/11/2026**. Esta pasta reúne o design aplicado ao site. As prévias da página inicial ficam em `docs/screenshots/`, sem cópias duplicadas.
 
 ## Prévias
 
 | Tema escuro | Tema claro |
 | --- | --- |
-| ![Página inicial no tema escuro](proposta-escura.png) | ![Página inicial no tema claro](proposta-clara.png) |
+| ![Página inicial no tema escuro](../screenshots/desktop-escuro.png) | ![Página inicial no tema claro](../screenshots/desktop.png) |
 
-[Ver a versão para celular](proposta-mobile.png).
+[Ver a versão para celular](../screenshots/mobile.png).
 
-As capturas desktop têm 1536 × 1366; a captura móvel tem 390 × 1481. Os nomes e indicadores exibidos são dados de demonstração.
+As capturas desktop têm 1536 × 1366; a captura móvel tem 390 × 1481. Os nomes e indicadores exibidos são dados de demonstração. Estas imagens são referências anteriores à consolidação de reprodução de 05/11; as evidências atuais são geradas pelo Playwright em `frontend/test-results/`.
 
 ## Identidade visual
 
@@ -18,6 +18,7 @@ As capturas desktop têm 1536 × 1366; a captura móvel tem 390 × 1481. Os nome
 - Título de entrada grande e leve, com peso 300; textos em peso regular e botões em peso 600.
 - Barra lateral fixa no desktop e menu recolhido em telas menores.
 - Cartões de ações lado a lado no desktop e em coluna no celular.
+- Provas publicadas recebem o selo verde **Disponível**; a resolução mostra apenas avisos específicos de cada questão.
 - Ilustrações em SVG, com o mesmo traço e as mesmas cores dos componentes.
 
 ## Geometria dos encaixes
@@ -56,9 +57,6 @@ Os textos e controles da interface são elementos HTML. Os enunciados e as alter
 
 ## Conteúdo desta pasta
 
-- `proposta-escura.png`: captura atual do desktop no tema escuro.
-- `proposta-clara.png`: captura atual do desktop no tema claro.
-- `proposta-mobile.png`: captura atual do celular.
 - `paletas.svg`: cores da implementação.
 - `README.md`: direção visual e caminhos do código.
 

@@ -1,6 +1,6 @@
 # Arquitetura da primeira entrega
 
-Monólito modular em dois processos: Next.js 16 / React 19 / TypeScript para a experiência e FastAPI / SQLAlchemy para domínio, autorização e persistência. Os manifests têm versões diretas fixadas e os lockfiles do npm e Python fixam também as transitivas. PostgreSQL é a referência de implantação. SQLite, com WAL e chaves estrangeiras, permite desenvolvimento local sem serviços extras.
+Monólito modular em dois processos: Next.js 16 / React 19 / TypeScript 7 para a experiência e FastAPI / SQLAlchemy para domínio, autorização e persistência. Os manifests têm versões diretas fixadas e os lockfiles do npm e Python fixam também as transitivas. PostgreSQL é a referência de implantação. SQLite, com WAL e chaves estrangeiras, permite desenvolvimento local sem serviços extras.
 
 No modo local, o frontend encaminha `/api/*` para a API configurada por `API_INTERNAL_URL`. Esse destino é definido no build de produção; ao mudá-lo, gere um novo build. No Compose, o gateway Nginx encaminha páginas ao Next e `/api/*` à API, substituindo cabeçalhos de origem recebidos do cliente. Somente o gateway é um proxy confiável da API. O navegador usa uma única origem, sem tokens em localStorage ou exposição de credenciais de banco. As fontes são servidas pelo próprio frontend.
 
@@ -36,7 +36,7 @@ Fórmulas explícitas usam `$...$`, `$$...$$`, `\(...\)` ou `\[...\]`; química 
 
 A edição verifica colisões com assinaturas canônicas conhecidas e duplicidade entre os conteúdos atuais da prova. A publicação repete a verificação de identidades e conteúdo, incluindo versões antigas. Uma correção legítima preserva a identidade estável e os snapshots; copiar outra questão exige resolver a colisão antes de salvar ou publicar.
 
-`installers/generated.py` é a exceção explícita de publicação automática local: admite pendências de preparação, preserva os relatórios e registra origem e revisão pendente em `source.automatic_archive`. `content_quality` leva esse estado ao catálogo e ao snapshot da prova; `preparation_errors` expõe apenas a contagem de erros da questão, sem abrir layout interno ou gabarito. O site identifica esses cadernos e vincula as pendências à fonte. O fluxo manual mantém seus bloqueios. O resumo do catálogo consulta apenas identificador, estado e área das versões, sem carregar os enunciados completos.
+`installers/generated.py` é a exceção explícita de publicação automática local: admite pendências de preparação, preserva os relatórios e registra origem e revisão pendente em `source.automatic_archive`. `content_quality` leva esse estado ao catálogo e ao snapshot da prova; `preparation_errors` expõe apenas a contagem de erros da questão, sem abrir layout interno ou gabarito. As provas publicadas aparecem como **Disponível** no site. A proveniência permanece na API; avisos específicos de apresentação vinculam a questão à fonte. O fluxo manual mantém seus bloqueios. O resumo do catálogo consulta apenas identificador, estado e área das versões, sem carregar os enunciados completos.
 
 Ao marcar uma alternativa, o frontend envia o PUT com `keepalive` e guarda a resposta no `sessionStorage` até o servidor responder. Se a página recarregar antes disso, a resposta é reaplicada e reenviada, porque a leitura pode chegar antes do fim do salvamento e o pedido pode nem ter saído.
 
@@ -74,11 +74,11 @@ O backend segue a organização de [aplicações maiores do FastAPI](https://fas
 | `middleware.py` | Política de requisições: origem e tamanho, cabeçalhos de segurança e log de acesso, num só middleware para manter a ordem. |
 | `dependencies.py` | `SessionDep`, `CurrentUser` e `AdminUser`. |
 | `core/` | `config.py` (caminhos e variáveis de ambiente), `db.py` (engine, `Base`, unidade de trabalho) e `security.py` (senhas, sessão por cookie, usuário atual e papel de curadoria). |
-| `models/` | Tabelas por domínio: `accounts.py`, `content.py` e `runs.py`. O pacote registra todas no `Base.metadata`. |
-| `schemas/` | Esquemas de requisição por funcionalidade: `account.py`, `content.py` (contrato JSON), `runs.py` e `curation.py`. O pacote reexporta todos, e os scripts continuam importando de `backend.app.schemas`. |
-| `routers/` | Uma funcionalidade por arquivo: `health.py`, `auth.py`, `account.py`, `exams.py`, `runs.py` e `progress.py`. Em `admin/`, ficam `content.py` (importação, edição, revisão, publicação e auditoria) e `archive.py` (acervo e taxonomia). O papel de curadoria é exigido uma vez no router `/admin`. |
+| `models/` | Tabelas por domínio: `accounts.py`, `content.py`, `runs.py` e `diagnostics.py`. O pacote registra todas no `Base.metadata`. |
+| `schemas/` | Esquemas de requisição por funcionalidade: `account.py`, `content.py` (contrato JSON), `runs.py`, `diagnostics.py`, `practice.py` e `curation.py`. O pacote reexporta todos, e os scripts continuam importando de `backend.app.schemas`. |
+| `routers/` | Uma funcionalidade por arquivo: `health.py`, `auth.py`, `account.py`, `exams.py`, `runs.py`, `diagnostics.py`, `practice.py` e `progress.py`. Em `admin/`, ficam `content.py` (importação, edição, revisão, publicação e auditoria) e `archive.py` (acervo e taxonomia). O papel de curadoria é exigido uma vez no router `/admin`. |
 | `services/` | Regras de domínio usadas pela API, pela CLI e pelos scripts, sem dependência de HTTP (`errors.py` define as falhas, e `main.py` as converte em resposta): `content.py`, `lifecycle.py` (mudanças de estado e publicação), `versioning.py` (novas versões), `attempts.py` (ciclo comum de prova e diagnóstico), `diagnostics.py` (seletores por versão), `adaptive.py` (política da prática, função pura e versionada), `knowledge.py`, `learning.py`, `identity.py`, `presentation.py`, `scoring.py`, `taxonomy.py`, `service_account.py` e `archive_reader.py`. |
-| `installers/` | Conteúdo que entra no banco fora da API: `curated.py` (lotes conferidos), `bundled.py` (atualização do conjunto incluído), `generated.py` (publicação automática do acervo) e `assets.py` (figuras no volume do Docker). |
+| `installers/` | Conteúdo que entra no banco fora da API: `local.py` (seis provas locais de 2024/2025), `curated.py` (lotes conferidos), `bundled.py` (atualização do conjunto incluído), `generated.py` (publicação automática do acervo), `audited.py` (correções com plano e hashes) e `assets.py` (figuras no volume do Docker). |
 | `preparation/` | Preparador de JSON compartilhado: `steps.py` aplica as etapas em ordem sobre um contexto com mudanças e pendências. |
 | `cli.py` | Comandos locais (`python -m backend.app.cli`). |
 
