@@ -62,6 +62,12 @@ A ajuda existe apenas em prática aberta (`POST /practice-sessions/{id}/items/{i
 
 Na finalização, `help_used` e os níveis entregues entram no `LearningEvent`; itens assistidos ficam fora da evidência independente e da dificuldade provisória. `/me/help-events` integra a exportação, e a exclusão do histórico remove os eventos de ajuda.
 
+## Layout dinâmico
+
+`services/layout_adapter.py` (`layout-adapter-v1`) converte uma proposta no [contrato experimental](experimentos/layout-proposal.schema.json), acrescida da versão da questão, em blocos de conteúdo existentes: parágrafos, créditos, fórmulas, figuras com legenda e crédito vinculados, tabelas sem mesclagem e alternativas A–E. É uma função pura. Ela recusa fonte ou conteúdo diferentes daqueles para os quais a proposta foi feita, recurso ausente, vínculo inválido, ordem incompleta ou repetida, LaTeX incompleto, alternativas faltantes ou repetidas, células mescladas e perda da figura de uma alternativa. O resultado ainda passa pela validação do contrato e pelas pendências bloqueantes.
+
+`layout_proposals` guarda toda proposta recebida: `invalid` com os motivos, ou `proposal` com o conteúdo convertido e a comparação de palavras, blocos e figuras com a versão publicada. Nada publicado muda nessa etapa; a apresentação continua com os blocos atuais. A aprovação exige a confirmação de que a proposta foi comparada com o caderno original e uma justificativa. Ela converte de novo contra a versão atual e cria um rascunho por `services/revisions.py`, o mesmo caminho da edição manual, com as verificações de identidade e duplicidade. A prova volta para revisão até nova publicação, e as tentativas mantêm seus snapshots. `scripts/propose_layout.py` gera propostas offline com a localização geométrica dos experimentos e recorta as figuras em `data/assets/<prova>/layout/`.
+
 ## Preparação de conteúdo
 
 `backend/app/preparation/` é o preparador compartilhado de JSON, sem dependência de PDF/Node nas requisições da API e sem regras por número de questão. `POST /admin/imports` e a edição de versões o executam automaticamente; `/admin/imports/prepare` oferece prévia sem gravação. Converte notação reconhecida, associa blocos adjacentes às figuras e registra hashes, operações e pendências em `layout.preparation`. Agrupamentos/delimitadores LaTeX inválidos e perdas de layout conhecidas bloqueiam aprovação e publicação. Os avisos ficam na curadoria; o aluno recebe a lista permitida de campos de apresentação.

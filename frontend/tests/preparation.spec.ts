@@ -48,6 +48,9 @@ test('curadoria exibe transformações e bloqueia aprovação de conteúdo pende
   await page.route('**/api/admin/audit', route => route.fulfill(json([])));
   await page.route('**/api/admin/exams/generic-fixture', route => route.fulfill(json({ ...exam, items: [item] })));
   await page.route('**/api/admin/archive', route => route.fulfill(json({ years: [], files: [], coverage: {} })));
+  await page.route('**/api/admin/layout/questions/*', route =>
+    route.fulfill(json({ published: item.content, source_url: null, page: 2, proposals: [] })),
+  );
   await page.goto('/admin');
   await page.getByRole('button', { name: 'Revisar', exact: true }).click();
   const notice = page.getByRole('complementary', { name: 'Preparação automática' });

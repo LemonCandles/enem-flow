@@ -92,6 +92,8 @@ Desktop.ini
 !/data/assets/enem-2025-regular-dia1-caderno-1-azul-ingles/
 !/data/assets/enem-2025-regular-dia1-caderno-1-azul-espanhol/
 !/data/assets/enem-2025-regular-dia2-caderno-7-azul/
+# Recortes de propostas de layout (scripts/propose_layout.py) ficam locais.
+/data/assets/*/layout/
 !/data/catalog/
 !/data/classification/
 !/data/datasets/

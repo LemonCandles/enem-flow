@@ -56,6 +56,25 @@ export type TutorMaterial = {
   review_reason: string | null;
   current: boolean;
 };
+export type LayoutProposal = {
+  id: string;
+  question_version_id: string;
+  adapter_version: string;
+  status: 'proposal' | 'invalid' | 'approved' | 'rejected';
+  errors: string[];
+  comparison: {
+    preserved_ratio: number;
+    missing_words: number;
+    extra_words: number;
+    missing_sample: string[];
+    blocks_before: number;
+    blocks_after: number;
+    figures_before: number;
+    figures_after: number;
+  };
+  converted: Question | null;
+  result_version_id: string | null;
+};
 export type TutorStatus = { enabled: boolean; missing: string[]; model: string | null; daily_limit: number };
 export type Question = {
   source_url?: string;

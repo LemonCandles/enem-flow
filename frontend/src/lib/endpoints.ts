@@ -6,6 +6,7 @@ import type {
   HelpEvent,
   HelpLevel,
   History,
+  LayoutProposal,
   RecommendationEvent,
   Run,
   TutorMaterial,
@@ -26,6 +27,7 @@ export const paths = {
   practiceOptions: '/practice-options',
   adminExams: '/admin/exams',
   adminAudit: '/admin/audit',
+  layoutQuestion: (id: string) => `/admin/layout/questions/${encodeURIComponent(id)}`,
   tutorStatus: '/admin/tutor/status',
   tutorExam: (id: string) => `/admin/tutor/exams/${encodeURIComponent(id)}`,
   tutorQuestion: (id: string) => `/admin/tutor/questions/${encodeURIComponent(id)}`,
@@ -78,4 +80,10 @@ export const tutor = {
   draft: (versionId: string) => send<TutorMaterial>(`${paths.tutorQuestion(versionId)}/draft`),
   review: (materialId: string, action: 'approve' | 'reject', reason: string) =>
     send<TutorMaterial>(`/admin/tutor/materials/${materialId}/review`, { action, reason }),
+};
+
+export const layout = {
+  submit: (proposal: unknown) => send<LayoutProposal>('/admin/layout/proposals', proposal),
+  review: (id: string, action: 'approve' | 'reject', reason: string, compared: boolean) =>
+    send<LayoutProposal>(`/admin/layout/proposals/${id}/review`, { action, reason, compared_with_source: compared }),
 };

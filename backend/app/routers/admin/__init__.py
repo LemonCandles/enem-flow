@@ -7,9 +7,10 @@ receive the user through AdminUser; FastAPI resolves it once per request.
 from fastapi import APIRouter, Depends
 
 from ...core.security import admin_user
-from . import archive, content, tutor
+from . import archive, content, layout, tutor
 
 router = APIRouter(prefix="/admin", dependencies=[Depends(admin_user)])
 router.include_router(content.router)
 router.include_router(archive.router)
 router.include_router(tutor.router)
+router.include_router(layout.router)

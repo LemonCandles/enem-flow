@@ -1,6 +1,6 @@
 # Contratos preparatórios da etapa 6
 
-Status: o tutor em prática está integrado conforme a seção abaixo ([arquitetura](architecture.md#tutor)); o layout dinâmico continua especificado para entrega posterior. Tutor e layout podem ser liberados independentemente. O tutor funciona sem provedor contratado, apenas com material aprovado.
+Status: tutor em prática e adaptador de layout integrados conforme as seções abaixo ([tutor](architecture.md#tutor), [layout](architecture.md#layout-dinâmico)). Tutor e layout podem ser liberados independentemente. O tutor funciona sem provedor contratado, apenas com material aprovado.
 
 ## Tutor
 
@@ -18,4 +18,4 @@ Aceites, cobertos por `backend/tests/test_tutor.py`: acesso de outro aluno negad
 
 Um adaptador versionado converte propostas experimentais em blocos de conteúdo existentes. Entrada inclui questão/versão, fingerprint da fonte, blocos, ordem e vínculos. Recusar fonte divergente, recurso ausente, vínculo inválido ou ordem incompleta. Propostas não alteram snapshots nem conteúdo publicado.
 
-A liberação exige aprovação e comparação com o original nos casos de avaliação. Preservar texto nativo, ordem de leitura, relações de tabela/legenda/alternativas, reflow e teclado. Falha usa os blocos publicados existentes. Testes de layout não reajustam o conjunto reservado; mudanças de contrato/modelo preservam proveniência.
+A liberação exige aprovação e comparação com o original nos casos de avaliação. Preservar texto nativo, ordem de leitura, relações de tabela/legenda/alternativas, reflow e teclado. Falha usa os blocos publicados existentes. Testes de layout não reajustam o conjunto reservado; mudanças de contrato/modelo preservam proveniência. Os aceites estão em `backend/tests/test_layout.py`.

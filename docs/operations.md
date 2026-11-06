@@ -130,6 +130,18 @@ make migrate seed
 
 O instalador usa os cinco JSONs automáticos incluídos e o 2º dia conferido de 2024, totalizando 540 posições; as opções de língua compartilham questões. Ele não gera nem publica outros arquivos do acervo local. Arquivo ausente ou prova inválida interrompe a instalação sem deixar um catálogo parcial. Repetir o comando preserva versões existentes, retiradas e rejeições manuais. A seção de Matemática de 2023 que veio do bootstrap anterior é retirada apenas se sua última publicação tiver origem na identidade de serviço, com decisão registrada e sem apagar versões, respostas ou snapshots. Uma publicação manual dessa seção é preservada. Os comandos de catálogo conferido permanecem disponíveis para instalar os dois lotes de referência explicitamente.
 
+## Material do tutor e propostas de layout
+
+Na curadoria, **Material do tutor** lista as questões das provas publicadas. Escreva os três níveis ou use **Gerar proposta com IA**, que exige `GROQ_API_KEY` e os limites no `.env`. Revise e aprove com justificativa; só então a ajuda aparece na prática. Corrigir a questão invalida o material daquela versão.
+
+Para propor um novo layout de uma questão instalada, use o banco da instalação e o PDF original do acervo:
+
+```bash
+.venv/bin/python scripts/propose_layout.py enem-2025-regular-dia2-caderno-7-azul-q94:2 --output tmp/layout/q94.json
+```
+
+O script grava as figuras recortadas em `data/assets/<prova>/layout/`, pasta ignorada pelo Git: versioná-las exige decisão explícita. Envie o JSON em **Layout proposto**, na revisão da questão. Propostas recusadas mostram os motivos. Compare as aceitas com a página do caderno antes de aprovar; a aprovação cria um rascunho, que segue a revisão e a publicação normais.
+
 ## Instalar o banco histórico local na curadoria
 
 O espelho de PDFs e o banco textual histórico são locais e recuperáveis; não integram a imagem por padrão. Primeiro execute a sincronização e a indexação descritas em [fontes oficiais](../data/sources/README.md). Depois, opcionalmente, monte o banco gerado como somente leitura:

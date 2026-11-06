@@ -2,13 +2,13 @@
 
 O [estado atual](status-implementacao.md) descreve o produto implementado. Este documento guarda apenas trabalho futuro; o histórico de mudanças pertence ao Git.
 
-## Próxima entrega: tutor e layouts dinâmicos
+## Continuidade da etapa 6
 
-As integrações são independentes e seguem os [contratos](../contratos-etapa6.md).
+Tutor e layout dinâmico estão integrados (ver [estado](status-implementacao.md) e [contratos](../contratos-etapa6.md)). Falta conteúdo, não código:
 
-- Tutor: integrado à prática (ver [estado](status-implementacao.md)). Falta produzir e aprovar material para as questões publicadas.
-- Layout: converter propostas experimentais por adaptador versionado, validar ordem e vínculos e preservar fallback da apresentação publicada. Exigir comparação com as fontes antes de liberar novos blocos.
-- Propostas continuam fora do produto até aprovação humana. A preparação dos contratos não equivale a tutor implementado.
+- Tutor: produzir e aprovar material para as questões publicadas; a IA gera propostas, e a liberação continua humana.
+- Layout: gerar propostas para as questões com apresentação simplificada, comparar com o original e aprovar caso a caso. Fórmulas detectadas pela geometria chegam como texto e precisam de transcrição.
+- Propostas continuam fora do produto até aprovação humana.
 
 ## Evolução posterior
 

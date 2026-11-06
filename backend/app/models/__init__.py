@@ -4,6 +4,7 @@ from ._ids import uid
 from .accounts import AuthAttempt, AuthSession, RecoveryToken, User
 from .content import CanonicalQuestion, Exam, QuestionVersion, Review
 from .diagnostics import DiagnosticSession, RecommendationEvent
+from .layout import LayoutProposal
 from .runs import ExamRun, LearningEvent
 from .tutor import HelpEvent, TutorMaterial
 
@@ -15,6 +16,7 @@ __all__ = [
     "Exam",
     "ExamRun",
     "HelpEvent",
+    "LayoutProposal",
     "LearningEvent",
     "QuestionVersion",
     "RecommendationEvent",

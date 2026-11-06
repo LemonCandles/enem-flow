@@ -273,6 +273,15 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; font
 .question-header h2:focus { outline: none; }
 .question-content { font-size: 16px; line-height: 1.9; }
 .semantic-statement { white-space: pre-wrap; line-height: 1.9; }
+.layout-review { display: grid; gap: 12px; margin: 24px 0; padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; }
+.layout-review h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.layout-review ul { margin: 6px 0 0; padding-left: 18px; }
+.layout-compare { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.layout-compare > div { min-width: 0; padding: 14px; border: 1px solid var(--line); border-radius: 10px; }
+.layout-alternatives { margin: 12px 0 0; padding-left: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; }
+.layout-alternatives img { display: block; max-width: 100%; margin-top: 6px; }
+.checkbox-line { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+@media (max-width: 900px) { .layout-compare { grid-template-columns: 1fr; } }
 .tutor-curation { margin-top: 24px; }
 .tutor-curation h2 { display: flex; align-items: center; gap: 8px; }
 .tutor-curation-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin-top: 20px; }

@@ -63,6 +63,7 @@ A imagem Docker inclui **os dois lotes conferidos**: 2024 dia 2 e Matemática 20
 - Painel por área e tema, diagnóstico e prática adaptativa com o motivo de cada questão.
 - Tutor na prática: orientação, pista e resolução a partir de material aprovado pela curadoria, com IA opcional (Groq ou outra API compatível com a OpenAI).
 - Curadoria com importação, edição versionada e trilha de decisões; preparação offline de JSON e PDF.
+- Layout dinâmico: propostas geradas por `scripts/propose_layout.py`, convertidas por adaptador versionado e aprovadas após comparação com o caderno original.
 - Experimentos de classificação e layout, sem chamadas a provedores externos.
 
 Os selos **Disponível** indicam que a prova pode ser iniciada. A proveniência das extrações e os relatórios permanecem nos dados; avisos específicos de apresentação continuam vinculados à página original. O gabarito só aparece após finalizar. Não há cálculo TRI.
