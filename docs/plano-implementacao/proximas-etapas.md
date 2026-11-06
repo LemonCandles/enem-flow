@@ -6,9 +6,9 @@ O [estado atual](status-implementacao.md) descreve o produto implementado. Este 
 
 Tutor e layout dinâmico estão integrados (ver [estado](status-implementacao.md) e [contratos](../contratos-etapa6.md)). Falta conteúdo, não código:
 
-- Tutor: produzir e aprovar material para as questões publicadas; a IA gera propostas, e a liberação continua humana.
+- Tutor: o material das questões publicadas é gerado e aprovado automaticamente pela IA (`tutor-material`); questões anuladas e as que o provedor não resolver dentro das regras ficam sem ajuda até nova execução ou material escrito pela equipe.
 - Layout: gerar propostas para as questões com apresentação simplificada, comparar com o original e aprovar caso a caso. Fórmulas detectadas pela geometria chegam como texto e precisam de transcrição.
-- Propostas continuam fora do produto até aprovação humana.
+- Propostas de layout continuam fora do produto até aprovação humana.
 
 ## Evolução posterior
 

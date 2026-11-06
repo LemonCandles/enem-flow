@@ -32,6 +32,7 @@ services:
       TUTOR_PRICE_INPUT_PER_MTOK: ${TUTOR_PRICE_INPUT_PER_MTOK:-}
       TUTOR_PRICE_OUTPUT_PER_MTOK: ${TUTOR_PRICE_OUTPUT_PER_MTOK:-}
       TUTOR_MAX_COST_USD: ${TUTOR_MAX_COST_USD:-}
+      TUTOR_REASONING_EFFORT: ${TUTOR_REASONING_EFFORT:-}
     networks: [database, proxy]
     volumes:
       - content_assets:/app/data/assets

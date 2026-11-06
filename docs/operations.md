@@ -17,6 +17,7 @@
 | `GROQ_API_KEY` | Chave do provedor do tutor; vazia, a prática mostra apenas o material aprovado |
 | `TUTOR_BASE_URL`, `TUTOR_MODEL` | API compatível com a OpenAI (padrão: Groq) e modelo usado pelo tutor |
 | `TUTOR_TIMEOUT_SECONDS`, `TUTOR_MAX_OUTPUT_TOKENS`, `TUTOR_DAILY_LIMIT` | Tempo limite por chamada, tamanho da resposta e chamadas diárias por aluno |
+| `TUTOR_REASONING_EFFORT` | Esforço de raciocínio (`low`, `medium`, `high`) para modelos como `openai/gpt-oss-*`; vazio nos demais |
 | `TUTOR_PRICE_INPUT_PER_MTOK`, `TUTOR_PRICE_OUTPUT_PER_MTOK`, `TUTOR_MAX_COST_USD` | Preços por milhão de tokens e custo máximo estimado por chamada, em US$; sem eles o provedor não é chamado |
 
 O `.env` da raiz é carregado pelo Docker Compose e pelo backend em execução direta (`python-dotenv`), sem substituir variáveis já exportadas no shell. Copie `.env.example` para `.env` e preencha `GROQ_API_KEY` para ativar o tutor; reinicie a API depois de alterar o arquivo. O frontend não lê esse arquivo e nunca recebe a chave. Use uma senha de banco compatível com URL ou codifique os caracteres reservados na `DATABASE_URL`.
@@ -132,7 +133,14 @@ O instalador usa os cinco JSONs automáticos incluídos e o 2º dia conferido de
 
 ## Material do tutor e propostas de layout
 
-Na curadoria, **Material do tutor** lista as questões das provas publicadas. Escreva os três níveis ou use **Gerar proposta com IA**, que exige `GROQ_API_KEY` e os limites no `.env`. Revise e aprove com justificativa; só então a ajuda aparece na prática. Corrigir a questão invalida o material daquela versão.
+Com `GROQ_API_KEY` e os limites no `.env`, gere o material de todas as questões publicadas, aprovado automaticamente:
+
+```bash
+.venv/bin/python -m backend.app.cli tutor-material            # todas
+.venv/bin/python -m backend.app.cli tutor-material --limit 20 # um lote
+```
+
+O comando grava questão por questão, espera quando o provedor limita as chamadas e para após cinco falhas seguidas. Rodar de novo continua de onde parou. Na curadoria, **Material do tutor** mostra o material de cada questão, gera para uma questão com **Gerar e aprovar com IA** e aceita material escrito pela equipe, que passa por aprovação. Corrigir a questão invalida o material daquela versão; rode o comando de novo para cobri-la. Modelos de raciocínio, como `openai/gpt-oss-120b`, usam `TUTOR_REASONING_EFFORT=low` para responder dentro de `TUTOR_MAX_OUTPUT_TOKENS`.
 
 Para propor um novo layout de uma questão instalada, use o banco da instalação e o PDF original do acervo:
 

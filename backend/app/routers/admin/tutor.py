@@ -1,4 +1,4 @@
-"""Curation of tutor material: proposals written by curators or drafted by the provider, then reviewed."""
+"""Tutor material: generated and approved automatically by the provider, or written and reviewed by curators."""
 
 from fastapi import APIRouter
 from sqlalchemy import select
@@ -69,10 +69,11 @@ def write_material(version_id: str, payload: MaterialLevels, user: AdminUser, db
     return tutor.material_data(material, material.content_sha256)
 
 
-@router.post('/questions/{version_id}/draft', status_code=201)
-def draft(version_id: str, user: AdminUser, db: SessionDep):
+@router.post('/questions/{version_id}/generate', status_code=201)
+def generate(version_id: str, db: SessionDep):
+    """Provider material, approved automatically when it passes the rules."""
     question = tutor.question_or_404(db, version_id)
-    material = tutor.draft_material(db, question, user.id)
+    material = tutor.generate_material(db, question)
     return tutor.material_data(material, material.content_sha256)
 
 

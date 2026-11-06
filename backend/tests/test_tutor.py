@@ -224,25 +224,68 @@ def test_material_rules_and_outdated_content(student, admin, thematic, database)
     assert review.status_code == 409
 
 
-def test_provider_drafts_stay_proposals(student, admin, thematic, provider):
+GOOD = {
+    'orientacao': 'Pense na proporção entre as grandezas.',
+    'pista': 'Monte a regra de três com os valores do enunciado.',
+    'resolucao': 'Resolvendo a proporção, chega-se ao valor pedido. Alternativa B.',
+}
+
+
+def test_generated_material_is_approved_automatically(student, admin, thematic, provider, database):
     _, answers = provider
     session = begin(student)
     item = session['items'][0]
-    answers.append(
-        ProviderResult(
-            'ok', {'orientacao': 'Pense na proporção.', 'pista': 'Monte a regra de três.', 'resolucao': 'B.'}
-        )
-    )
-    draft = admin.post(f"/admin/tutor/questions/{item['id']}/draft")
-    assert draft.status_code == 201
-    assert draft.json()['status'] == 'proposal' and draft.json()['origin'] == 'llm'
-    assert draft.json()['provenance']['model'] == 'modelo-teste'
-    assert not student.get(f"/practice-sessions/{session['id']}").json()['items'][0]['help']['available']
+    answers.append(ProviderResult('ok', GOOD, 300, 200, 50))
+    created = admin.post(f"/admin/tutor/questions/{item['id']}/generate")
+    assert created.status_code == 201, created.text
+    data = created.json()
+    assert data['status'] == 'approved' and data['origin'] == 'llm'
+    assert data['provenance']['approval'] == 'automatic' and data['provenance']['model'] == 'modelo-teste'
+    assert 'sem revisão humana' in data['review_reason']
+    assert student.get(f"/practice-sessions/{session['id']}").json()['items'][0]['help']['available']
     status = admin.get('/admin/tutor/status').json()
     assert status['enabled'] and 'chave' not in str(status)
 
 
-def test_draft_without_provider_explains_the_configuration(admin, thematic):
+@pytest.mark.parametrize(
+    'levels, reason',
+    [
+        (dict(GOOD, pista='A alternativa B é a correta.'), 'revela o gabarito'),
+        (dict(GOOD, resolucao='Resolvendo a proporção. Alternativa C.'), 'não chega ao gabarito'),
+        ({'orientacao': 'Só orientação.'}, 'fora do formato'),
+    ],
+)
+def test_generated_material_outside_the_rules_is_not_approved(admin, thematic, provider, database, levels, reason):
+    _, answers = provider
+    answers.append(ProviderResult('ok', levels))
     version = admin.get('/admin/exams/prova-teste').json()['items'][0]['id']
-    response = admin.post(f'/admin/tutor/questions/{version}/draft')
+    response = admin.post(f'/admin/tutor/questions/{version}/generate')
+    assert response.status_code == 503 and reason in response.json()['detail']
+    with database() as db:
+        assert db.scalar(select(func.count()).select_from(TutorMaterial)) == 0
+
+
+def test_generation_without_provider_explains_the_configuration(admin, thematic):
+    version = admin.get('/admin/exams/prova-teste').json()['items'][0]['id']
+    response = admin.post(f'/admin/tutor/questions/{version}/generate')
     assert response.status_code == 503 and 'GROQ_API_KEY' in response.json()['detail']
+
+
+def test_batch_covers_every_published_question_once_and_resumes(admin, thematic, provider, database):
+    from backend.app.services.tutor import generate_all
+
+    calls, answers = provider
+    answers.extend([ProviderResult('error', error='RateLimitError'), *[ProviderResult('ok', GOOD)] * 3])
+    waits = []
+    with database() as db:
+        first = generate_all(db, limit=2, pause=0, log=lambda _: None, sleep=waits.append)
+    assert first['approved'] == 2 and first['remaining'] == 10 and len(waits) >= 1
+    answers.extend([ProviderResult('ok', GOOD)] * 40)
+    with database() as db:
+        second = generate_all(db, pause=0, log=lambda _: None, sleep=lambda _: None)
+    assert second['remaining'] == 0 and second['approved'] == 10 and not second['failed']
+    with database() as db:
+        third = generate_all(db, pause=0, log=lambda _: None, sleep=lambda _: None)
+    assert third == {'approved': 0, 'failed': [], 'remaining': 0}
+    with database() as db:
+        assert db.scalar(select(func.count()).select_from(TutorMaterial)) == 12

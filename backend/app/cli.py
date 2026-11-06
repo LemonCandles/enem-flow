@@ -20,6 +20,7 @@ from .installers.bundled import refresh_bundle
 from .installers.curated import install_catalog
 from .installers.generated import publish_generated
 from .installers.local import install_local_catalog
+from .services.tutor import generate_all
 
 
 def create_admin(db, args):
@@ -78,6 +79,11 @@ def recovery_link(db, args):
     print(f"Link de uso único, válido por 30 minutos: {args.base_url}/?recovery={token}")
 
 
+def tutor_material(db, args):
+    result = generate_all(db, exam_id=args.exam, limit=args.limit, pause=args.pause)
+    print(json.dumps(result, ensure_ascii=False))
+
+
 COMMANDS = {
     "create-admin": create_admin,
     "seed": seed,
@@ -85,6 +91,7 @@ COMMANDS = {
     "catalog": catalog,
     "local-catalog": local_catalog,
     "recovery-link": recovery_link,
+    "tutor-material": tutor_material,
 }
 
 
@@ -121,10 +128,23 @@ def main():
     )
     subs.add_parser("local-catalog", help="Instalar as seis provas regulares de 2024 e 2025 incluídas no Git")
     subs.add_parser("archive", help="Publicar as provas geradas do acervo oficial, sem curadoria")
+    material = subs.add_parser(
+        "tutor-material",
+        help="Gerar e aprovar automaticamente o material do tutor das questões publicadas",
+        description="Usa o provedor do .env; questões que já têm material aprovado para o conteúdo atual são puladas. Interrompido, pode ser executado de novo.",
+    )
+    material.add_argument("--exam", help="Limitar a uma prova publicada")
+    material.add_argument("--limit", type=int, help="Quantidade máxima de questões nesta execução")
+    material.add_argument("--pause", type=float, default=2.0, help="Segundos entre chamadas ao provedor")
     reset = subs.add_parser("recovery-link")
     reset.add_argument("email")
     reset.add_argument("--base-url", default="http://localhost:3000")
     args = parser.parse_args()
+    if args.command == "tutor-material":
+        # Long run against the provider: each question commits on its own.
+        with SessionLocal() as db:
+            COMMANDS[args.command](db, args)
+        return
     with SessionLocal.begin() as db:
         COMMANDS[args.command](db, args)
 

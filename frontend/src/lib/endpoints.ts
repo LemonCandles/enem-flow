@@ -77,7 +77,7 @@ export const curation = {
 export const tutor = {
   writeMaterial: (versionId: string, levels: Record<HelpLevel, string>) =>
     send<TutorMaterial>(`${paths.tutorQuestion(versionId)}/materials`, levels),
-  draft: (versionId: string) => send<TutorMaterial>(`${paths.tutorQuestion(versionId)}/draft`),
+  generate: (versionId: string) => send<TutorMaterial>(`${paths.tutorQuestion(versionId)}/generate`),
   review: (materialId: string, action: 'approve' | 'reject', reason: string) =>
     send<TutorMaterial>(`/admin/tutor/materials/${materialId}/review`, { action, reason }),
 };

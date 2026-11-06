@@ -51,12 +51,14 @@ def complete_json(settings, messages):
         client = OpenAI(
             base_url=settings.base_url, api_key=settings.api_key, timeout=settings.timeout_seconds, max_retries=0
         )
+        extra = {'reasoning_effort': settings.reasoning_effort} if settings.reasoning_effort else {}
         response = client.chat.completions.create(
             model=settings.model,
             messages=messages,
             max_tokens=settings.max_output_tokens,
             temperature=0.2,
             response_format={'type': 'json_object'},
+            **extra,
         )
     except APITimeoutError:
         return ProviderResult('timeout', latency_ms=elapsed(started), error='Tempo limite do provedor excedido.')

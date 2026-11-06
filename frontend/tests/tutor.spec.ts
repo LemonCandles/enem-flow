@@ -170,7 +170,7 @@ test('curadoria aprova material do tutor com justificativa', async ({ page }) =>
   await page.goto('/admin');
   const section = page.getByRole('region', { name: 'Material do tutor' });
   await expect(section).toContainText('Provedor desligado · falta GROQ_API_KEY');
-  await expect(section.getByRole('button', { name: 'Gerar proposta com IA' })).toBeDisabled();
+  await expect(section.getByRole('button', { name: 'Gerar e aprovar com IA' })).toBeDisabled();
   await section.getByRole('button', { name: 'Aprovar', exact: true }).click();
   await expect(section).toContainText('Registre o que foi conferido');
   await section.getByLabel('Justificativa da decisão').fill('Conferido com o gabarito e sem resposta antecipada.');

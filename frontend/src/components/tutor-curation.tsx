@@ -81,7 +81,8 @@ export function TutorCuration({ exams }: { exams: Exam[] }) {
             <Lightbulb size={18} aria-hidden="true" /> Material do tutor
           </h2>
           <p className="tiny muted">
-            Três níveis de ajuda por questão. Propostas da IA ou da equipe só chegam à prática depois de aprovadas.
+            Três níveis de ajuda por questão. O material da IA é aprovado automaticamente pelas regras; o escrito pela
+            equipe passa por aprovação.
           </p>
         </div>
         {status.data && (
@@ -215,11 +216,14 @@ export function TutorCuration({ exams }: { exams: Exam[] }) {
                   disabled={busy || !status.data?.enabled}
                   title={status.data?.enabled ? undefined : 'Configure GROQ_API_KEY e os limites no .env'}
                   onClick={() =>
-                    act(() => tutor.draft(chosenVersion), 'Proposta gerada pela IA. Revise antes de aprovar.')
+                    act(
+                      () => tutor.generate(chosenVersion),
+                      'Material gerado e aprovado automaticamente; a ajuda já aparece na prática.',
+                    )
                   }
                 >
                   <Sparkles size={16} />
-                  Gerar proposta com IA
+                  Gerar e aprovar com IA
                 </button>
                 <button
                   className="button"

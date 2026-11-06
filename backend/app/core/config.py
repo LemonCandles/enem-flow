@@ -39,6 +39,8 @@ class TutorSettings:
     price_input_per_mtok: float | None
     price_output_per_mtok: float | None
     max_cost_usd: float | None
+    # Only for reasoning models (such as openai/gpt-oss-*): low, medium or high.
+    reasoning_effort: str | None = None
 
     @property
     def missing(self):
@@ -78,4 +80,5 @@ def tutor_settings():
         price_input_per_mtok=_number('TUTOR_PRICE_INPUT_PER_MTOK'),
         price_output_per_mtok=_number('TUTOR_PRICE_OUTPUT_PER_MTOK'),
         max_cost_usd=_number('TUTOR_MAX_COST_USD'),
+        reasoning_effort=os.getenv('TUTOR_REASONING_EFFORT', '').strip().lower() or None,
     )

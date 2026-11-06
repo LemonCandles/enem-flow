@@ -1,12 +1,14 @@
-"""Tutor in practice: approved material, help requests and drafts for curation.
+"""Tutor in practice: approved material, help requests and material generation.
 
-Help exists only in practice sessions and only from material a curator approved for the
-exact content of the item. The provider may rephrase that material for the student; when
+Help exists only in practice sessions and only from approved material for the exact content
+of the item. Material comes from a curator or from the provider; provider material is approved
+automatically when it passes the rules in `generate_material`, without human review. The provider may rephrase that material for the student; when
 it is not configured, fails, exceeds a limit or answers outside the rules, the approved
 text itself is delivered. Without approved material there is no help and the practice
 keeps its current presentation. Every request is recorded; only delivered help counts.
 """
 
+from dataclasses import replace
 import hashlib
 import json
 import re
@@ -16,12 +18,13 @@ import unicodedata
 from sqlalchemy import func, or_, select
 
 from ..core.config import tutor_settings
-from ..models import HelpEvent, QuestionVersion, Review, TutorMaterial
+from ..models import Exam, HelpEvent, QuestionVersion, Review, TutorMaterial
 from ..schemas import QuestionContent
 from . import attempts, tutor_provider
 from .attempts import PRACTICE
 from .errors import Conflict, InvalidContent, NotFound, Unavailable
 from .presentation import readable_content
+from .service_account import service_reviewer
 
 LEVELS = ('orientation', 'hint', 'solution')
 LEVEL_NAMES = {'orientation': 'Orientação', 'hint': 'Pista', 'solution': 'Resolução'}
@@ -359,41 +362,67 @@ def add_material(db, question, levels, user_id, origin='human', provenance=None)
     return material
 
 
-def draft_material(db, question, user_id, settings=None, complete=None):
-    """A provider proposal for curation; it never reaches students before human approval."""
+# Three levels of about 150 words each do not fit the limit of a single help message.
+DRAFT_OUTPUT_TOKENS = 1500
+AUTO_APPROVAL = (
+    'Aprovação automática por decisão da equipe (sem revisão humana): níveis completos, orientação e pista '
+    'sem o gabarito, resolução coerente com o gabarito oficial.'
+)
+
+
+def generate_material(db, question, settings=None, complete=None):
+    """Material written by the provider and approved by the automatic rules, without human review.
+
+    The rules: all levels present, orientation and hint without the answer, and the solution
+    pointing to the official answer. Anything else raises Unavailable and leaves no material.
+    """
     settings = settings or tutor_settings()
     complete = complete or tutor_provider.complete_json
     if not settings.enabled:
-        raise Unavailable('Configure o provedor no .env antes de gerar propostas: ' + ', '.join(settings.missing) + '.')
+        raise Unavailable('Configure o provedor no .env antes de gerar material: ' + ', '.join(settings.missing) + '.')
     content = readable_content(question.question_id, question.content)
-    answer = 'anulada' if content['annulled'] else content['correct_answer']
+    if content['annulled']:
+        raise InvalidContent('Questão anulada: não há gabarito para a resolução.')
+    settings = replace(settings, max_output_tokens=max(settings.max_output_tokens, DRAFT_OUTPUT_TOKENS))
     messages = [
         {
             'role': 'system',
             'content': (
-                'Você prepara material de tutoria para questões do ENEM, revisado depois por um professor. '
-                'Escreva em português do Brasil, com fórmulas em LaTeX entre $...$. Produza três níveis: '
+                'Você prepara material de tutoria para questões do ENEM. Escreva em português do Brasil, '
+                'com fórmulas em LaTeX entre $...$. Produza três níveis: '
                 '"orientacao" (o que a questão pede e qual conceito usar, sem indicar alternativa), '
-                '"pista" (o próximo passo do raciocínio, sem indicar nem eliminar por completo a alternativa correta) '
-                'e "resolucao" (passo a passo, terminando com a alternativa correta). Até 150 palavras por nível. '
+                '"pista" (o próximo passo do raciocínio, sem citar letra de alternativa nem o texto da correta) '
+                'e "resolucao" (passo a passo, terminando com a frase "Alternativa X." com a letra do gabarito). '
+                'Até 150 palavras por nível. Se a questão depender de uma figura sem descrição, oriente a leitura '
+                'da figura sem inventar valores que não estejam no texto. '
                 'Responda apenas com JSON: {"orientacao": "...", "pista": "...", "resolucao": "..."}.'
             ),
         },
-        {'role': 'user', 'content': f'Questão:\n{question_text(content)}\n\nGabarito oficial: {answer}.'},
+        {
+            'role': 'user',
+            'content': f'Questão:\n{question_text(content)}\n\nGabarito oficial: {content["correct_answer"]}.',
+        },
     ]
     estimate = tutor_provider.maximum_cost(settings, messages)
     if estimate > settings.max_cost_usd:
-        raise Unavailable('O custo estimado da proposta excede TUTOR_MAX_COST_USD.')
+        raise Unavailable('O custo estimado do material excede TUTOR_MAX_COST_USD.')
     result = complete(settings, messages)
     if result.status != 'ok':
-        raise Unavailable(f'O provedor não gerou a proposta ({result.status}). Tente novamente ou escreva o material.')
+        raise Unavailable(f'O provedor não gerou o material ({result.error or result.status}).')
     levels = {
         'orientation': result.data.get('orientacao'),
         'hint': result.data.get('pista'),
         'solution': result.data.get('resolucao'),
     }
     if not all(isinstance(v, str) and v.strip() for v in levels.values()):
-        raise Unavailable('O provedor respondeu fora do formato; tente novamente ou escreva o material.')
+        raise Unavailable('O provedor respondeu fora do formato combinado.')
+    levels = {k: v.strip() for k, v in levels.items()}
+    try:
+        validate_levels(levels, content)
+    except InvalidContent as error:
+        raise Unavailable(f'Material recusado pelas regras automáticas: {error.detail}')
+    if not reveals_answer(levels['solution'], content):
+        raise Unavailable('Material recusado pelas regras automáticas: a resolução não chega ao gabarito oficial.')
     provenance = {
         'prompt_version': tutor_provider.DRAFT_PROMPT_VERSION,
         'model': settings.model,
@@ -403,8 +432,93 @@ def draft_material(db, question, user_id, settings=None, complete=None):
         'output_tokens': result.output_tokens,
         'cost_usd': tutor_provider.cost_usd(settings, result.input_tokens, result.output_tokens),
         'source_version': question.id,
+        'approval': 'automatic',
     }
-    return add_material(db, question, levels, user_id, origin='llm', provenance=provenance)
+    reviewer = service_reviewer(db)
+    material = add_material(db, question, levels, reviewer.id, origin='llm', provenance=provenance)
+    supersede(db, material)
+    material.status = 'approved'
+    material.reviewed_by, material.reviewed_at, material.review_reason = reviewer.id, time.time(), AUTO_APPROVAL
+    db.add(Review(user_id=reviewer.id, target_id=material.id, action='tutor_approve', reason=AUTO_APPROVAL))
+    db.flush()
+    return material
+
+
+def supersede(db, material):
+    for previous in db.scalars(
+        select(TutorMaterial).where(
+            TutorMaterial.question_id == material.question_id,
+            TutorMaterial.content_sha256 == material.content_sha256,
+            TutorMaterial.status == 'approved',
+            TutorMaterial.id != material.id,
+        )
+    ):
+        previous.status = 'superseded'
+
+
+def pending_items(db, exam_id=None):
+    """Published questions without approved material for their current content, one per identity."""
+    seen, pending = set(), []
+    query = select(Exam).where(Exam.status == 'published').order_by(Exam.id)
+    if exam_id:
+        query = query.where(Exam.id == exam_id)
+    for exam in db.scalars(query):
+        for key in exam.items:
+            question = db.get(QuestionVersion, key)
+            item = {
+                'id': question.id,
+                'question_id': question.question_id,
+                'canonical_id': question.canonical_id,
+                'content': question.content,
+            }
+            identity = (question.canonical_id or question.question_id, material_fingerprint(question.content))
+            if identity in seen or question.content['annulled']:
+                continue
+            seen.add(identity)
+            if approved_material(db, item) is None:
+                pending.append(question)
+    return pending
+
+
+def generate_all(db, exam_id=None, limit=None, pause=2.0, settings=None, complete=None, log=print, sleep=time.sleep):
+    """Material for every published question, committed one by one so an interruption keeps the progress.
+
+    Rate limits wait and retry; repeated failures stop the run, which can be resumed later.
+    """
+    pending = pending_items(db, exam_id)
+    if limit is not None:
+        pending = pending[:limit]
+    log(f'{len(pending)} questões sem material aprovado.')
+    done, failed, consecutive = 0, [], 0
+    for position, question in enumerate(pending, 1):
+        for attempt in range(4):
+            try:
+                generate_material(db, question, settings, complete)
+                db.commit()
+                done, consecutive = done + 1, 0
+                log(f'[{position}/{len(pending)}] {question.id}: aprovado')
+                break
+            except Unavailable as error:
+                db.rollback()
+                limited = any(word in error.detail for word in ('RateLimit', 'Timeout', 'Tempo limite', 'Connection'))
+                if limited and attempt < 3:
+                    wait = pause * 10 * (attempt + 1)
+                    log(
+                        f'[{position}/{len(pending)}] {question.id}: limite do provedor, nova tentativa em {wait:.0f} s'
+                    )
+                    sleep(wait)
+                    continue
+                if 'regras automáticas' in error.detail and attempt < 1:
+                    continue  # A second answer of the provider may follow the rules.
+                failed.append({'id': question.id, 'reason': error.detail})
+                consecutive += 1
+                log(f'[{position}/{len(pending)}] {question.id}: sem material ({error.detail})')
+                break
+        if consecutive >= 5:
+            log('Cinco falhas seguidas: execução interrompida. Rode o comando de novo para continuar.')
+            break
+        sleep(pause)
+    return {'approved': done, 'failed': failed, 'remaining': len(pending_items(db, exam_id))}
 
 
 def review_material(db, material_id, action, reason, user_id):
@@ -424,14 +538,7 @@ def review_material(db, material_id, action, reason, user_id):
         if current is None:
             raise Conflict('O conteúdo da questão mudou desde a proposta; gere ou escreva um novo material.')
         validate_levels(material.levels, readable_content(current.question_id, current.content))
-        for previous in db.scalars(
-            select(TutorMaterial).where(
-                TutorMaterial.question_id == material.question_id,
-                TutorMaterial.content_sha256 == material.content_sha256,
-                TutorMaterial.status == 'approved',
-            )
-        ):
-            previous.status = 'superseded'
+        supersede(db, material)
         material.status = 'approved'
     elif action == 'reject':
         material.status = 'rejected'
