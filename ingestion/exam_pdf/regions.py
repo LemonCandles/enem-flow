@@ -30,8 +30,17 @@ def shared_numbers(text):
     return [first, last] if match[2] == 'e' else list(range(first, last + 1))
 
 
+# Headings that open an area of the booklet ("LINGUAGENS, CÓDIGOS E SUAS TECNOLOGIAS",
+# then "Questões de 06 a 45") end the previous question, like the essay pages.
+AREA_HEADING = re.compile(
+    r'^(?:(?:linguagens, codigos|ciencias humanas|ciencias da natureza|matematica) e suas tecnologias'
+    r'|questoes de \d{1,3} a \d{1,3})$'
+)
+
+
 def section_break(text):
-    return language_key(text).strip() in {'proposta de redacao', 'instrucoes para a redacao'}
+    key = language_key(text).strip()
+    return key in {'proposta de redacao', 'instrucoes para a redacao'} or bool(AREA_HEADING.match(key))
 
 
 def auto_columns(source_lines, width):

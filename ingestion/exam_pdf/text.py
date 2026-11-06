@@ -31,16 +31,35 @@ def literal(text):
     return re.sub(r'(?<![A-Z\\])\$', r'\\$', text)
 
 
+# Below this size a line cannot be read on paper: booklets print security microtext
+# ("ENEM2025ENEM2025…") as the rules under the header and above the footer.
+MICROTEXT = 3
+
+
 def watermark(line):
-    """Rotated text repeating a short unit, such as a vertical exam name between columns."""
-    if abs(line['dir'][0]) > 0.99:
+    """Text repeating a short unit: a vertical exam name between columns or a microtext rule.
+
+    The microtext of a booklet may misspell one repetition ("ENEN2025"), so a few
+    differing characters are tolerated. A question region may clip only part of
+    the vertical line, so two repetitions are enough ("2024ENEM2024ENEM2024").
+    """
+    if abs(line['dir'][0]) > 0.99 and max((s['size'] for s in line['spans']), default=MICROTEXT) >= MICROTEXT:
         return False
     compact = re.sub(r'\s+', '', ''.join(s['text'] for s in line['spans']))
     if len(compact) < 12 or not re.search(r'[A-Za-z]', compact):
         return False
     return any(
-        all(compact[i] == compact[i % size] for i in range(len(compact))) for size in range(3, len(compact) // 3 + 1)
+        sum(compact[i] != compact[i % size] for i in range(len(compact))) <= len(compact) // 40
+        for size in range(3, len(compact) // 2 + 1)
     )
+
+
+# A list number followed by an unmapped bullet glyph: "1.\t\x07\u202f\u202f\x07Genética".
+LIST_BULLET = re.compile(r'^(\d{1,2}[.)])[\s\u202f\u2003]*(?:[\x00-\x08\x0b\x0c\x0e-\x1f][\s\u202f\u2003]*)+')
+
+
+def list_marker(text):
+    return LIST_BULLET.sub(r'\1 ', text)
 
 
 def lines(page, rect):
@@ -73,7 +92,7 @@ def lines(page, rect):
             marker = re.match(r'^([ABCDE])(?:\t|[.)]\s)', spans[0]['text']) if spans else None
             result.append(
                 dict(
-                    text=''.join(parts).strip(),
+                    text=list_marker(''.join(parts).strip()),
                     bbox=list(line['bbox']),
                     group=bi,
                     size=size,
