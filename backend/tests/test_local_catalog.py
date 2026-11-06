@@ -43,7 +43,7 @@ def test_local_cli_installs_six_bundled_exams_and_stays_idempotent(
     automatic = [exam for exam in catalog if exam['id'] != 'enem-2024-dia2-azul']
     assert all(exam['content_quality']['origin'] == 'automatic' for exam in automatic)
     assert all(exam['content_quality']['review_status'] == 'pending' for exam in automatic)
-    assert any(exam['content_quality']['blocking_issues'] > 0 for exam in automatic)
+    assert all(exam['content_quality']['blocking_issues'] == 0 for exam in automatic)
     assert 'correct_answer' not in json.dumps(client.get('/exams/' + automatic[0]['id']).json())
     with database() as db:
         versions = {exam.id: list(exam.items) for exam in db.scalars(select(Exam))}

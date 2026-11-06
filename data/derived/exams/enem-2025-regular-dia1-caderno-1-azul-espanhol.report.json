@@ -16,11 +16,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q2",
    "number": 2,
    "version": "generic-v1",
-   "input_sha256": "2b2f1fc38dfb2df6d15ab8aeee446e024ba110f4e956b9cbbb04c234dffe3576",
+   "input_sha256": "84944ee7abf28bcc56ae5c6f3b25b81fd4e15ec1ccf13c0efd3de81007a823f3",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "26a4e5e90fc32cdd16f231f29e8678ca8a661273b7dae8f3ade8f3291bc6b646"
+   "output_sha256": "12f73287acd30c2dd9aabec116ebbeda57dc12befb6bba217a783f63f2214633"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q3",
@@ -77,61 +77,101 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q5",
    "number": 5,
    "version": "generic-v1",
-   "input_sha256": "058e5f167b401c9acf8a5648ce5845d0a23fb5d297b850b24f5863185190a842",
+   "input_sha256": "0ee465c8d78ae34e249ced04a24c065a3cb6c854c46d3f7db5345963647b4485",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "af1416ea412c7fea02f9d03409c185d5f644e5c16fca5105e2dc2dfb0fe16dd2"
+   "output_sha256": "d10d3e62952f3988db098bb2cb02b270073a38eb4061bee8d918b5dd62dbf044"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q6",
    "number": 6,
    "version": "generic-v1",
-   "input_sha256": "1fabbc47cba17b77a780530feab4b6986bb3c8d018e98a1ff8f8f210a85b87ad",
+   "input_sha256": "6755906faea04c7ed4309b61e62869771602211d59f73125144830a77e0de4c3",
    "changes": [],
-   "issues": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 6, página 6; descrição detalhada pendente."
+    }
+   ],
    "review_required": true,
-   "output_sha256": "8c38eaca6d021ea46e2c2776a5f88712bd232e82148cb150d75f14df3f5c19c1"
+   "output_sha256": "8ff7cef1507eb0c196de166ace6d66ca4be60157c8b88908d07f9a9960264a1e"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q7",
    "number": 7,
    "version": "generic-v1",
-   "input_sha256": "53dfb867294d2548892123787bba06e213e6ad443718067361abab248da42691",
+   "input_sha256": "87e9612bbc3ac02a997bbfa86d4474e1a2f43933876c7f792f1a1c02429906aa",
    "changes": [],
-   "issues": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 7, página 6; descrição detalhada pendente."
+    }
+   ],
    "review_required": true,
-   "output_sha256": "a1373463005ab29ebd74fbc357ee2fcff2555aa09136d908a939609323141f98"
+   "output_sha256": "29497bfd48bf2671f70ae74672a40e953232216406a900d8ab2c90b892d73e10"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q8",
    "number": 8,
    "version": "generic-v1",
-   "input_sha256": "1c4a1f60f3d6900bfa05b77905b51714532ffae369f2b861fe4964be514effce",
+   "input_sha256": "e0379605e422fc148b28f9fe765dccfef52e0371e309258916ce9f6117c0878c",
    "changes": [],
-   "issues": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 8, página 6; descrição detalhada pendente."
+    }
+   ],
    "review_required": true,
-   "output_sha256": "2b0c0924b63a125717740b72b215b6e9863541165b02bc265c62084d9145e36f"
+   "output_sha256": "5e0e291552870bad0bc0d1d476def6424209c53ab8a0b7c678bcfd35efd23fa7"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q9",
    "number": 9,
    "version": "generic-v1",
-   "input_sha256": "3248b8de3ffd5dbe63726ffc99be8fec2be96d1e36975ee2dd291ec9cdf25df5",
+   "input_sha256": "1396536cbf821f1e254e04f362b01cc31c47d096e8a38e71a44533445c497c39",
    "changes": [],
-   "issues": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 9, página 6; descrição detalhada pendente."
+    }
+   ],
    "review_required": true,
-   "output_sha256": "8b9262303faf44a6b0fdc55a809654a2f8c66f7d3922d13dccd4c2f3605be641"
+   "output_sha256": "b739e6e018bf1e55c91021bdccc3ce729da5e075d5b17f5f581f3c65a0f78a32"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q10",
    "number": 10,
    "version": "generic-v1",
-   "input_sha256": "a8eb497ea7c6d2a2ddc2f0cfdf842f266cc004415b1d02a178d79816b4caf721",
+   "input_sha256": "109c54f5c520fe3d311d38f53e1720ec7fdfab1266f4386b4cb7263e1b375aca",
    "changes": [],
-   "issues": [],
+   "issues": [
+    {
+     "code": "missing_description",
+     "severity": "warning",
+     "location": "blocks[0].asset.alt",
+     "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
+     "excerpt": "Figura extraída da questão 10, página 6; descrição detalhada pendente."
+    }
+   ],
    "review_required": true,
-   "output_sha256": "0d53e8cf3415e70a2af71c64176db3017de4db75a17afbb5672b95bc35ed02c1"
+   "output_sha256": "bf985cae71a6001d3ab5e531bf056bfdee83f53b6f2cb978e42f03d6034bccb9"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q11",
@@ -147,11 +187,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q12",
    "number": 12,
    "version": "generic-v1",
-   "input_sha256": "245b560b22f46508c571b46c0f235830db90e16bbd174b58f328642bc4ce87de",
+   "input_sha256": "154626b927eeebebce5984bb0dcb243e9c2de59b9b45a5db54456cbc4a2bbe05",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "b14287f49d92a5cc7943e22aaef2bc7c334311588cdd7d8e79ba0a179d204ed5"
+   "output_sha256": "dba063a9a48150807cd7dea2052332a80818691f167bfd7f5d675e997d859b41"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q13",
@@ -241,21 +281,21 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q16",
    "number": 16,
    "version": "generic-v1",
-   "input_sha256": "f80a11ae8cf45df42514a367a9e419e8b863a5836a5bec8f12c0d6963ddfd888",
+   "input_sha256": "60d5f9dffc42ecbde7a2ffd9d12775ad21e0e9dd7821cbf82a5147f02fb4d294",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "a972d52813d1d59bee10045b90ad46c70358ac9e63e8b09c7eeadf5dcdcf8815"
+   "output_sha256": "e4d60b72c57a4d6dbc9db4347247e62275697c8ffd3207ebc4651741bc2bb8b4"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q17",
    "number": 17,
    "version": "generic-v1",
-   "input_sha256": "fb38e5ec4b49d2109bea25448bf64996cd44dc5f48d8a93ac90789cd65e8518f",
+   "input_sha256": "389edfc18410f7dd2f5d7e0411f43a82fad7a8d1aa9abe52e592c5b62e57f7c6",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "9efdde7a0fe8c2602875998b4ced2f4ed1e11e51bc5dcb97d221350552a95ecf"
+   "output_sha256": "60db2fc6c1c0143bc1dc9c9ec2a2ec539f04e408e080a8adc76fba02370f8dd2"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q18",
@@ -271,11 +311,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q19",
    "number": 19,
    "version": "generic-v1",
-   "input_sha256": "62db3b9d1204fb5ff4a3dfa2018b04ee94b0f72a50e548e498a545f7654c8bdb",
+   "input_sha256": "c1c5f19ce8f60110b577b1a774b341676a1ccfc659ad09c56cf06bcfaa614fe4",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "e949af24160eb7b2fbf1658bd66c1f218d055ff9d12f1221c1addb428015c307"
+   "output_sha256": "6fc96b4c6e300b3fdebc9dd50e19fc6797a4096c9ea8999a20954e972faf0857"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q20",
@@ -301,7 +341,7 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q22",
    "number": 22,
    "version": "generic-v1",
-   "input_sha256": "133b867b888e342d24d3ead6f1e625337822d27b17dc3ef7827484185c26e6ac",
+   "input_sha256": "2f929d42a3677362fadff5cdaea29739bcb714c6da2ac0bfbfe4426176cb6f2f",
    "changes": [],
    "issues": [
     {
@@ -313,13 +353,13 @@
     }
    ],
    "review_required": true,
-   "output_sha256": "133b867b888e342d24d3ead6f1e625337822d27b17dc3ef7827484185c26e6ac"
+   "output_sha256": "2f929d42a3677362fadff5cdaea29739bcb714c6da2ac0bfbfe4426176cb6f2f"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q23",
    "number": 23,
    "version": "generic-v1",
-   "input_sha256": "304d5e4c3ae032ae83c4be48d7e00fc3990fdc1770fcdfd0e3215a787400cd11",
+   "input_sha256": "0c94600cc0f387cf11d8d3012aa7c97c99fe3d474850ccc0a79b3091d442f86b",
    "changes": [
     {
      "location": "blocks[7]",
@@ -354,7 +394,7 @@
     }
    ],
    "review_required": true,
-   "output_sha256": "f915f7cbf6c98a61c97b1e5e05ff062d1f70b3806deb763297b210fc75cb27a6"
+   "output_sha256": "b8cb3daaebf4f25c5222b8851dfdc094b841fd52be81e4ffe6c943ff226d5b9c"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q24",
@@ -378,11 +418,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q25",
    "number": 25,
    "version": "generic-v1",
-   "input_sha256": "5220a3f0c4057add8233f65ce08c163c05e4ef46ceb5a05e96e67b1139d9f466",
+   "input_sha256": "3f760b38a6d3915f267dbe34564ae5a5bd3ac252e5068aa5b9a94e20998b075f",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "d14ec52d3d74812c247ca982908149d898ae4b1d121247e6056f9a7059a03980"
+   "output_sha256": "090c0337acedf4b62fbf5c71c5ddb41832d194cf2db5f4dcae42be7f4baa374c"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q26",
@@ -406,11 +446,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q27",
    "number": 27,
    "version": "generic-v1",
-   "input_sha256": "24db5469cdf03bd1a58b70d28c63627f101f3f78149627d30b5a162e4c414199",
+   "input_sha256": "8bdf0e021afdad7d9bda4fc13490f7d15dee17b4ff87034ac01bd476096e9b72",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "0f9c2a1cbebc11d63e7229bd68bf90129fc5a1923c990ad2c06e78d5268d8634"
+   "output_sha256": "9ef83034d8185efba022a00cc49306cd7e155a187d8a85deeaad62b47624578d"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q28",
@@ -426,11 +466,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q29",
    "number": 29,
    "version": "generic-v1",
-   "input_sha256": "206c6edf3c6b6161d6a5c20a06a4db515229e6f5bb540529e47272aa20ed11a8",
+   "input_sha256": "2402766dc1be4d58e783ba5e3c739cb52aeaf80be835046d5e8ddbd14d679e0d",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "48f2ed4ee10735d95d833298dafea41ca8291d468163c4998416ad20e32e0356"
+   "output_sha256": "02aa7d0641ad0bd1fa435d2dcda691bbdc7a15b1413fd34e7564425e8f3db935"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q30",
@@ -446,7 +486,7 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q31",
    "number": 31,
    "version": "generic-v1",
-   "input_sha256": "1b327804e6e078161afdab8e4ad46ce5e8198a8b3602c0b9105e986225b7ade1",
+   "input_sha256": "96790c3feaa1ef6286ac669d82c895b54469ca25b1869a6b4c16d472a22aae3b",
    "changes": [
     {
      "location": "blocks[0]",
@@ -474,7 +514,7 @@
     }
    ],
    "review_required": true,
-   "output_sha256": "2295c54f65772ed458b8ef194ad3e13ab7bc4912d5943916e243eeddb88557ad"
+   "output_sha256": "dbc8436ae26b79fe4b21a3d899cbbb149beadb97dfe13c8767a2b8e85165f688"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q32",
@@ -523,7 +563,7 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q34",
    "number": 34,
    "version": "generic-v1",
-   "input_sha256": "99191c1307288b320bb468348f222fbfca5ef369ce550c5a4479eaed99eaa82e",
+   "input_sha256": "67ee97619b51fe8a05300b8b6b866f72bc07f21a6e3ab8d91be8965ad91489ee",
    "changes": [],
    "issues": [
     {
@@ -535,7 +575,7 @@
     }
    ],
    "review_required": true,
-   "output_sha256": "99191c1307288b320bb468348f222fbfca5ef369ce550c5a4479eaed99eaa82e"
+   "output_sha256": "67ee97619b51fe8a05300b8b6b866f72bc07f21a6e3ab8d91be8965ad91489ee"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q35",
@@ -551,11 +591,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q36",
    "number": 36,
    "version": "generic-v1",
-   "input_sha256": "8a2062284f0275fe41eab2e3749765519c10d4446363b9cb7a70c0cc9abd0128",
+   "input_sha256": "bc2a7258b8337fd1d1ffb2e4eabf869b10f7a125cffbdd37b3e3e0b60653334d",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "4ab0571645557e2a2459f5015890bcf62dbfab08ff875eb94963e39b9dc94a03"
+   "output_sha256": "4986a8b9b4af315c7321a710e7345d3ea8cde9954d7acc591f1b02893d49bcae"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q37",
@@ -571,11 +611,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q38",
    "number": 38,
    "version": "generic-v1",
-   "input_sha256": "07664fa22f585ab9b010b1809b4bbb607f3dba7cf03ebf840a520bba47d872c6",
+   "input_sha256": "24d97755dee7958ebcc003b2cf3944984b9ebcd44fa29554881d61c3984fb529",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "746c67e0e7eaaa2834485b2b8b626f35da136155282c94b0518080276d98f023"
+   "output_sha256": "51a075bcabf323b82223d0b9d7950c4e741c94ae09db9d878fa28e7a7d35b7a8"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q39",
@@ -591,11 +631,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q40",
    "number": 40,
    "version": "generic-v1",
-   "input_sha256": "272fa80647c764cf03e1fd01bb28aa5a4eadbe881248a76ae66368810a524510",
+   "input_sha256": "fc99729a50abfb210100444a6fab496207522ff99d82ebcb737b6d45b3b0c98d",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "37705ec9c01fb3bf02e015328fe593b4525f9e415cc8cde178293718fefbc6ab"
+   "output_sha256": "83bb448c9ba835a07ecc81d31ef3a1c1bc5447cbe5c334e45c916552a0183d10"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q41",
@@ -635,7 +675,7 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q42",
    "number": 42,
    "version": "generic-v1",
-   "input_sha256": "e136305e030f4bb0214e61ae8d8e6b872339d8fced1788837911fffea67378df",
+   "input_sha256": "e86326c2cd1cf94775fb0b6f2234a27527bff6aadeffef64ffc4ff91407ca06d",
    "changes": [],
    "issues": [
     {
@@ -647,7 +687,7 @@
     }
    ],
    "review_required": true,
-   "output_sha256": "cc394e719b99bed2a6808fafbe28e6c42cb0a3beaebfc6420842f62d1abc3320"
+   "output_sha256": "29c9f5b63b6332f979413da44a329c6858568cd477f19a781f1c16e7acf21434"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q43",
@@ -663,17 +703,17 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q44",
    "number": 44,
    "version": "generic-v1",
-   "input_sha256": "9dbee4575f5112dcfa9d87f790eaad0478ab02f63a0714ab83e41ac1f1d690f5",
+   "input_sha256": "de2b564d85a92019cc508b9ea23fe4bbcefa8bb8dd9f0a295ea26ce1191c1b84",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "fed72565f4f786caf8cf50d466efe8df7ddd7e4bab77792d27d952df53cbc5aa"
+   "output_sha256": "d925c72e5159de0fb2a9ba5437365b4b546d80430d9026872a1332b95c81f368"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q45",
    "number": 45,
    "version": "generic-v1",
-   "input_sha256": "b46603c9b7d0f38f8439cd7df2f16f5f3dc382f115510da4ed7c9663b67398c3",
+   "input_sha256": "3c50e99fb948ae57044e7cf3f0d0baeee9216d85a49759edc9a446f9206922b5",
    "changes": [
     {
      "location": "blocks[1]",
@@ -683,12 +723,6 @@
       3,
       4
      ]
-    },
-    {
-     "location": "alternatives[4].text",
-     "operation": "latex",
-     "before": "apontar para a dificuldade de compreensão do termo. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025 PROPOSTA DE REDAÇÃO A partir da leitura dos textos motivadores e com base nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo em modalidade escrita formal da língua portuguesa sobre o tema “Perspectivas acerca do envelhecimento na sociedade brasileira”, apresentando proposta de intervenção que respeite os direitos humanos. Selecione, organize e relacione, de forma coerente e coesa, argumentos e fatos para a defesa de seu ponto de vista. TEXTO I TEXTO IV Em 2022, o total de pessoas com 65 anos de idade ou Um novo estereótipo: o “velho ativo”, saudável e com mais no país chegou a 10,9% da população, com alta de 57,4% recursos pressiona o “velho inativo”, doente e pobre. Nem todos frente a 2010, quando esse contingente era 7,4% da população. os idosos têm recursos à disposição para a",
-     "after": "apontar para a dificuldade de compreensão do termo. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025 PROPOSTA DE REDAÇÃO A partir da leitura dos textos motivadores e com base nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo em modalidade escrita formal da língua portuguesa sobre o tema “Perspectivas acerca do envelhecimento na sociedade brasileira”, apresentando proposta de intervenção que respeite os direitos humanos. Selecione, organize e relacione, de forma coerente e coesa, argumentos e fatos para a defesa de seu ponto de vista. TEXTO I TEXTO IV Em 2022, o total de pessoas com 65 anos de idade ou Um novo estereótipo: o “velho ativo”, saudável e com mais no país chegou a $10{,}9\\%$ da população, com alta de $57{,}4\\%$ recursos pressiona o “velho inativo”, doente e pobre. Nem todos frente a 2010, quando esse contingente era $7{,}4\\%$ da população. os idosos têm recursos à di"
     }
    ],
    "issues": [
@@ -705,17 +739,10 @@
      "location": "blocks[1]",
      "message": "Legenda/referência associada por proximidade; confira o vínculo com a figura.",
      "excerpt": ""
-    },
-    {
-     "code": "alternative_layout",
-     "message": "Múltiplas figuras em uma alternativa: agrupe e confira manualmente.",
-     "location": "alternative:E",
-     "severity": "error",
-     "excerpt": ""
     }
    ],
    "review_required": true,
-   "output_sha256": "cf2fac1cf2ae476ab84c934cba366a15ff4001f08a8b2b19c956bd7bd9f82671"
+   "output_sha256": "ce6abd19bf8cfaa3fc7feb5a7bf45e2f8d317cb652a211c709bd7ec65097a875"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q46",
@@ -770,11 +797,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q48",
    "number": 48,
    "version": "generic-v1",
-   "input_sha256": "beb337abbc4a5167d53ae47a3d15db04961e1968ac223c1aaa47a5f6690fa8fa",
+   "input_sha256": "f5d1649908a0b844951c4bc418ee5ae48d669a24419d68a9523fe73894f49a27",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "7033073806498f37887cb8e880597476dc147571a9ddb46a6bce51e2b7577956"
+   "output_sha256": "d6b50a01d7bfcb91fa80dc0330684317826ab5100cec0a2213daee2bb69cdfe5"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q49",
@@ -815,21 +842,21 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q50",
    "number": 50,
    "version": "generic-v1",
-   "input_sha256": "064a28c236eb934deb7704aeb1126aed962f862dbf91c8eb27068b78b5787aec",
+   "input_sha256": "f7f67d1782883e806d706c05538075281a992e1dd5f66f14e81cc48ee513888e",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "11360b385ec8ce8490189f4d0c7a00d7dbb99f975c48c74b4a6c066c6d32c01c"
+   "output_sha256": "11b39350d3b9607035b36b8bd6c3432d34f3b09a4625b1ababe920ba488f502a"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q51",
    "number": 51,
    "version": "generic-v1",
-   "input_sha256": "96b0c306a70d5c4523e0ba61782f49e16bb13dbf330922dd5fba20adcf660a19",
+   "input_sha256": "cc429d5e724c56fb280b8d53d526a415cacac1fb71ec56167bd9a9adff336f1e",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "34db58abbf4eb9324028787bef8ad19f69797b64519e23718341e8dbd93ab758"
+   "output_sha256": "c80d09815049a55bfd4778325d215282a1178ecd7e27ca652dfd3206de4c44b4"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q52",
@@ -845,11 +872,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q53",
    "number": 53,
    "version": "generic-v1",
-   "input_sha256": "f4547d0a9f95666eafe745b85f4520262540f51c788d837d89199ed402a0bf23",
+   "input_sha256": "45551a58b87d684cade002a97352a1dfbcc82035da0e014c153cd786b82c0502",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "845334769c8b69401d40de48fdfa7f00f9fb4f18eee8bd0f10e759ab76a1a0d4"
+   "output_sha256": "87b2c8a0be69a123fa48366934b3936bb7989199c68d190f17cc48397ffc79cf"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q54",
@@ -895,7 +922,7 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q58",
    "number": 58,
    "version": "generic-v1",
-   "input_sha256": "57ca58db9446913e2dda926b51e967edd56321e667e59d6c9ecea6aaa5f216d6",
+   "input_sha256": "bc7f8de07aa4580b5b1c0331ba0266cfb58a38d388ba7d811a1d2603633ca443",
    "changes": [
     {
      "location": "blocks[0]",
@@ -906,7 +933,7 @@
    ],
    "issues": [],
    "review_required": true,
-   "output_sha256": "c06c2bdf1a56c420ab7fbc491eb0b05af0f73bd6539310321afe10d302c3df5d"
+   "output_sha256": "53f9794940a89b6bb94011229bc7f34d1425c6803f34b12e45653022bb0363f3"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q59",
@@ -939,11 +966,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q61",
    "number": 61,
    "version": "generic-v1",
-   "input_sha256": "4e95faa237e23cf1fdbf77fe25c7268733082b6476893a3ccdd7866897016ab1",
+   "input_sha256": "04f989a4ee3a5874a391a94913f82a63099afda4f010d48eb78f3152cfffa040",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "df3cfd894635f739fa6132afd1300d63419956c3c6ac694348374013e41fb34d"
+   "output_sha256": "81d794f3e32e63d46cbc628ecad74af3ebae46c8801a9ef8212c03322656c55a"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q62",
@@ -993,11 +1020,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q64",
    "number": 64,
    "version": "generic-v1",
-   "input_sha256": "ad8a798326f7b1a6f3e3fc45d4a4aaf2c44390cdfb599e5b45e506b35a3ddaee",
+   "input_sha256": "04d9951de7d97738303035b3d71558ec95f44744412225c363c5a6984124b45c",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "97e27634fd7b4692a56fcf57055c35849135a1c8639bebe2a4f5e2f86b7712a4"
+   "output_sha256": "7dca2fae5169e94adbaaa049c8cd016a6c0dd2e2fecc1df6a9a62d2e78e3f6d8"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q65",
@@ -1023,11 +1050,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q67",
    "number": 67,
    "version": "generic-v1",
-   "input_sha256": "33b007e261810d0959220467c7bd0b1868e4eff9443ea8637ff844f0c3879521",
+   "input_sha256": "7378cd3043b0cd5c87487498a147c0678a4938bca10d5a8b12df3d49d5b219e7",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "890f4a7fcae677bb4e44265dbc4848e27d1b30cb0d28b900436cf1681f4b57d3"
+   "output_sha256": "1dc91c8f5468cea130499cb92ad19b6ce74275676055d519a56a428871c478d7"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q68",
@@ -1067,11 +1094,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q69",
    "number": 69,
    "version": "generic-v1",
-   "input_sha256": "ed6f202214dd0a843ba606147f94d9fd575568d3d4a9a584a36442a9f37f6d30",
+   "input_sha256": "bb07f6e654d751c64423687a0fc95d964300c4bed349aed7ddf9a58af5937747",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "e91a90b7de934cecc8177a8e0194840e69a280d8f90105c2251e3b32f2bbadd4"
+   "output_sha256": "0ca1d02dbdd377547169611fd33b266a2f261c8ba47c66028b9c320117c7c8b2"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q70",
@@ -1097,11 +1124,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q72",
    "number": 72,
    "version": "generic-v1",
-   "input_sha256": "ab1916d7a20c201ecf0150c6ac61a6992432219f743d8fcc47287ea6bcc09e7c",
+   "input_sha256": "c8630fef98abd7511b22f7dc9f60f62bf305181dbdac571f01878dec1704ef3a",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "079571107a975af3d88aebaf5cdeef66a1495a8542dafc5a5032c30c75e13b4b"
+   "output_sha256": "7721fe08659104c0ea62cda4060a548b4bcc57c1adaaf681aef50434b6b624de"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q73",
@@ -1147,7 +1174,7 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q77",
    "number": 77,
    "version": "generic-v1",
-   "input_sha256": "66ab3f31268bd44a6b19b8b2a031944f40d99fe141ea4c98ac62b098b775ada8",
+   "input_sha256": "e6070c18cc1abc49a6cab3945d2a3e742cc254a2d378bf8db12400e3215e48ed",
    "changes": [],
    "issues": [
     {
@@ -1159,7 +1186,7 @@
     }
    ],
    "review_required": true,
-   "output_sha256": "a1d1080f99edc98303bb00da5e8aed38b11646d98758f6d9135f194b868ec853"
+   "output_sha256": "52a86974bab60febb21e5d4f74502e66527f33c6cd069d4e28b947519dd9e221"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q78",
@@ -1185,11 +1212,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q80",
    "number": 80,
    "version": "generic-v1",
-   "input_sha256": "c3fac631786e7f6a01ec719b219d7a043a9717b9a2400367328ddb6a85a52b6d",
+   "input_sha256": "6ee22013804a71f5d66132b29fdecc82a420898ca530ac5eb2fe27f685b68b2c",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "29a0677072b4cdad31b47207b99febe9ed474893f34e999093875caa4ebc717a"
+   "output_sha256": "b198de55774b54a81223200afb7d6966360a141acc3c80102da24ea68fd39724"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q81",
@@ -1215,11 +1242,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q83",
    "number": 83,
    "version": "generic-v1",
-   "input_sha256": "28e955c4587c1a878b4963f444afe459b660d4536875c57c2717f337673aa932",
+   "input_sha256": "d56a5bd20d70ecdf9b7742d9bcc3c1f2c463b29c11379298498edae64c4add42",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "675ae5f6a992ab177e01f6c1be07f660bbca89838c02a311e2ad6070827469b6"
+   "output_sha256": "55962767aed085fdeaf60c18d7aa734b4b8c8e9cd9e800c6483cd4b060a6f748"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q84",
@@ -1265,11 +1292,11 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q88",
    "number": 88,
    "version": "generic-v1",
-   "input_sha256": "ad097bfe51e26a5aff79d7e3f5a4ef4bba4ec6218249ea00fde088730ec5f903",
+   "input_sha256": "c03643e2c6c4a53399bcc57d987f3ead3b273c083ad2eac06bf8f7ba8f19231d",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "e4f8ac840f436e169501326d8550cf20898a949ce5ff3b256c7d68dd94f6fbda"
+   "output_sha256": "678ebb14da894a660dadfd466b81480f202a4610601bcc0e5cc9b85bb39be2cf"
   },
   {
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q89",
@@ -1285,14 +1312,14 @@
    "question_id": "enem-2025-regular-dia1-caderno-1-azul-espanhol-q90",
    "number": 90,
    "version": "generic-v1",
-   "input_sha256": "8757d0b65b13a252aee1ef38ca0ac13d8810d14afc544a0db12f31600282d26e",
+   "input_sha256": "2ff6fd3626c85992b3b6e5876d2e830ae6d5d77daf81f50e3179c26f73092ef0",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "df2e93e43e97152a9c35d9bca00b0566bd862ad5a9accaff81ef4e3bf9e6777c"
+   "output_sha256": "16664fcb4a2ec7293637a3d68b1943a4dbf027993a5e30f165fe89b1fe6f813b"
   }
  ],
- "changes": 17,
- "warnings": 32,
- "errors": 1
+ "changes": 16,
+ "warnings": 37,
+ "errors": 0
 }
