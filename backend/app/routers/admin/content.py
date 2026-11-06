@@ -2,15 +2,13 @@
 
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import select
-from sqlalchemy.exc import IntegrityError
 
 from ... import models as m, schemas as s
 from ...dependencies import AdminUser, SessionDep
-from ...preparation import prepare_content, prepare_exam
-from ...services.content import exam_summary, import_exam, validate_assets
-from ...services.lifecycle import EXAM_ACTIONS, QUESTION_ACTIONS, send_to_review
-from ...services.identity import identify, validate_exam_identities, validate_revision_identity
-from ...services.versioning import latest_version, new_version
+from ...preparation import prepare_exam
+from ...services.content import exam_summary, import_exam
+from ...services.lifecycle import EXAM_ACTIONS, QUESTION_ACTIONS
+from ...services.revisions import revise_question
 
 router = APIRouter(tags=["curadoria"])
 
@@ -68,33 +66,7 @@ def edit_question(version_id: str, payload: s.EditQuestion, user: AdminUser, db:
     previous = db.get(m.QuestionVersion, version_id)
     if not previous:
         raise HTTPException(404, "Versão não encontrada.")
-    try:
-        content = prepare_content(payload.content.model_dump())
-    except ValueError as error:
-        raise HTTPException(422, str(error))
-    validate_assets(content)
-    if latest_version(db, previous.question_id) != previous.version:
-        raise HTTPException(409, "Há uma versão mais recente. Atualize a tela antes de editar.")
-    canonical_id = previous.canonical_id or identify(db, previous.content)
-    validate_revision_identity(db, content, canonical_id)
-    linked_exams = [exam for exam in db.scalars(select(m.Exam)) if previous.id in exam.items]
-    for exam in linked_exams:
-        items = [
-            (canonical_id, content) if key == previous.id else (q.canonical_id, q.content)
-            for key in exam.items
-            if (q := db.get(m.QuestionVersion, key))
-        ]
-        validate_exam_identities(items)
-    question = new_version(db, previous, content, canonical_id=canonical_id)
-    # Published exams are withdrawn until the new version is reviewed and published again.
-    for exam in linked_exams:
-        exam.items = [question.id if key == previous.id else key for key in exam.items]
-        send_to_review(exam)
-    db.add(m.Review(user_id=user.id, target_id=question.id, action="edit", reason=payload.reason))
-    try:
-        db.flush()
-    except IntegrityError:
-        raise HTTPException(409, "Outro revisor criou uma versão. Atualize a tela.")
+    question = revise_question(db, previous, payload.content.model_dump(), user.id, payload.reason)
     return {"id": question.id, "version": question.version, "status": "draft"}
 
 
