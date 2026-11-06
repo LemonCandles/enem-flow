@@ -8,7 +8,9 @@ from sqlalchemy import func, select
 from backend.app import cli
 from backend.app.installers import local
 from backend.app.installers.curated import install_catalog
-from backend.app.models import Exam, ExamRun, QuestionVersion, Review
+from backend.app.installers.generated import GENERATED
+from backend.app.models import CanonicalQuestion, Exam, ExamRun, QuestionVersion, Review
+from backend.app.services.identity import signatures
 from backend.app.services.errors import InvalidContent
 
 EXPECTED = {
@@ -42,7 +44,8 @@ def test_local_cli_installs_six_bundled_exams_and_stays_idempotent(
     assert all(exam['kind'] == 'complete' and exam['approved_items'] == 90 for exam in catalog)
     automatic = [exam for exam in catalog if exam['id'] != 'enem-2024-dia2-azul']
     assert all(exam['content_quality']['origin'] == 'automatic' for exam in automatic)
-    assert all(exam['content_quality']['review_status'] == 'pending' for exam in automatic)
+    # The team verified the bundled automatic exams; the origin stays visible.
+    assert all(exam['content_quality']['review_status'] == 'reviewed' for exam in automatic)
     assert all(exam['content_quality']['blocking_issues'] == 0 for exam in automatic)
     assert 'correct_answer' not in json.dumps(client.get('/exams/' + automatic[0]['id']).json())
     with database() as db:
@@ -110,6 +113,76 @@ def test_local_upgrade_respects_manual_publication_withdrawal_and_rejection(data
         assert db.get(Exam, local.REVIEWED).status == 'withdrawn'
         assert db.get(Exam, local.AUTOMATIC[0]).status == 'in_review'
         assert db.get(QuestionVersion, key).status == 'in_review'
+
+
+def copy_generated(directory, change=None):
+    directory.mkdir()
+    for exam_id in local.AUTOMATIC:
+        payload = json.loads((GENERATED / f'{exam_id}.json').read_text())
+        if change:
+            change(payload)
+        (directory / f'{exam_id}.json').write_text(json.dumps(payload, ensure_ascii=False))
+    return directory
+
+
+def test_verification_updates_an_older_install_with_new_versions(database, student, monkeypatch, tmp_path):
+    shared, first, last = local.AUTOMATIC[2], local.AUTOMATIC[0], local.AUTOMATIC[-1]
+
+    def older(payload):
+        # Older files leaked the booklet microtext into the text of the questions.
+        for question in payload['questions']:
+            if payload['id'] in (shared, local.AUTOMATIC[3], last) and question['content']['number'] in (20, 91):
+                question['content']['alternatives'][4]['text'] += ' ENEM2025ENEM2025ENEM2025'
+        if payload['id'] == first:
+            content = payload['questions'][0]['content']
+            content['correct_answer'] = 'A' if content['correct_answer'] != 'A' else 'B'
+
+    monkeypatch.setattr(local, 'GENERATED', copy_generated(tmp_path / 'older', older))
+    monkeypatch.setattr(local, 'VERIFIED', ())
+    with database.begin() as db:
+        install_catalog(db, publish=True)
+        local.install_local_catalog(db)
+        old_key = next(key for key in db.get(Exam, last).items if key.endswith('-q91:1'))
+    started = student.post('/exam-runs', json=dict(exam_id=last, idempotency_key='verificacao-teste'))
+    run = started.json()
+    item = next(i for i in run['items'] if i['id'] == old_key)
+    assert student.put(f'/exam-runs/{run["id"]}/answers/{item["id"]}', json=dict(choice='C')).status_code == 200
+    with database() as db:
+        before = {
+            column.name: copy.deepcopy(getattr(db.get(ExamRun, run['id']), column.name))
+            for column in ExamRun.__table__.columns
+        }
+
+    monkeypatch.setattr(local, 'GENERATED', copy_generated(tmp_path / 'verified'))
+    monkeypatch.setattr(local, 'VERIFIED', local.AUTOMATIC)
+    with database.begin() as db:
+        result = local.install_local_catalog(db)['verified']
+    assert result['new_versions'] == 3
+    assert set(result['confirmed']) == set(local.AUTOMATIC) - {first}
+    assert [entry['id'] for entry in result['skipped']] == [first]
+    with database() as db:
+        exam = db.get(Exam, last)
+        assert exam.source['automatic_archive']['review_status'] == 'reviewed'
+        assert old_key not in exam.items and db.get(QuestionVersion, old_key).status == 'approved'
+        new = next(db.get(QuestionVersion, key) for key in exam.items if key.endswith('-q91:2'))
+        assert 'ENEM2025' not in new.content['alternatives'][4]['text']
+        # Both booklets carry the same corrected item, so its identity follows the correction.
+        both = [
+            next(db.get(QuestionVersion, key) for key in db.get(Exam, exam_id).items if key.endswith('-q20:2'))
+            for exam_id in (shared, local.AUTOMATIC[3])
+        ]
+        assert both[0].canonical_id == both[1].canonical_id
+        assert db.get(CanonicalQuestion, both[0].canonical_id).signature == signatures(both[0].content)[0]
+        assert db.get(Exam, first).source['automatic_archive']['review_status'] == 'pending'
+        attempt = db.get(ExamRun, run['id'])
+        assert {column.name: getattr(attempt, column.name) for column in ExamRun.__table__.columns} == before
+        reviews = db.scalar(select(func.count()).select_from(Review))
+    with database.begin() as db:
+        assert local.install_local_catalog(db)['verified'] == dict(
+            confirmed=[], new_versions=0, skipped=[dict(id=first, reason=result['skipped'][0]['reason'])]
+        )
+    with database() as db:
+        assert db.scalar(select(func.count()).select_from(Review)) == reviews
 
 
 @pytest.mark.parametrize('failure', ['missing_file', 'missing_asset'])

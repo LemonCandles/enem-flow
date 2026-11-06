@@ -10,7 +10,15 @@
       "enem-2025-regular-dia1-caderno-1-azul-ingles",
       "enem-2025-regular-dia1-caderno-1-azul-espanhol",
       "enem-2025-regular-dia2-caderno-7-azul"
-    ]
+    ],
+    "verified": [
+      "enem-2024-regular-dia1-caderno-1-azul-ingles",
+      "enem-2024-regular-dia1-caderno-1-azul-espanhol",
+      "enem-2025-regular-dia1-caderno-1-azul-ingles",
+      "enem-2025-regular-dia1-caderno-1-azul-espanhol",
+      "enem-2025-regular-dia2-caderno-7-azul"
+    ],
+    "verification": "Conteúdo conferido pela equipe com o caderno e o gabarito originais em 2026-11-06."
   },
   "docker": {
     "reviewed": [

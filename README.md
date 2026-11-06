@@ -12,7 +12,7 @@ Requisitos: **Python 3.13 ou 3.14**, **Node.js 22** e npm. A instalação local 
 make setup
 ```
 
-O comando instala as dependências, aplica as migrações e prepara **seis provas regulares de 2024/2025**, caderno azul: Inglês e Espanhol no 1º dia e uma prova do 2º dia de cada ano. São **540 posições de questões**, com itens comuns às duas opções de língua. Todas aparecem como **Disponível**.
+O comando instala as dependências, aplica as migrações e prepara **seis provas regulares de 2024/2025**, caderno azul: Inglês e Espanhol no 1º dia e uma prova do 2º dia de cada ano. São **540 posições de questões**, com itens comuns às duas opções de língua. As cinco provas extraídas automaticamente foram conferidas pela equipe com o caderno e o gabarito originais. Todas aparecem como **Disponível**.
 
 Inicie os dois serviços juntos:
 

@@ -12,11 +12,14 @@ from ..services.errors import InvalidContent
 from ..services.lifecycle import withdraw_exam
 from ..services.service_account import service_reviewer
 from .curated import install_catalog
-from .generated import GENERATED, publish_generated
+from .generated import GENERATED, confirm_generated, publish_generated
 
 PROFILE = json.loads((ROOT / 'data/catalog/profiles.json').read_text())['local']
 REVIEWED = PROFILE['reviewed'][0]
 AUTOMATIC = tuple(PROFILE['automatic'])
+# Automatic exams the team verified against the original booklet and answer key.
+VERIFIED = tuple(PROFILE.get('verified', ()))
+VERIFICATION = PROFILE.get('verification', '')
 LEGACY_SECTION = 'enem-2023-matematica-azul'
 
 
@@ -34,6 +37,11 @@ def install_local_catalog(db):
         if automatic['failed']:
             reasons = '; '.join(f'{entry["id"]}: {entry["reason"]}' for entry in automatic['failed'])
             raise InvalidContent(f'Catálogo local não instalado: {reasons}')
+        verified = confirm_generated(
+            db,
+            [path for path in paths if path.stem in VERIFIED],
+            f'{VERIFICATION} Registro em data/catalog/profiles.json; habilidades seguem fora dos rótulos publicados.',
+        )
 
         withdrawn = []
         section = db.get(Exam, LEGACY_SECTION)
@@ -54,4 +62,4 @@ def install_local_catalog(db):
                 )
                 withdrawn.append(section.id)
 
-    return dict(reviewed=reviewed, automatic=automatic, withdrawn=withdrawn)
+    return dict(reviewed=reviewed, automatic=automatic, verified=verified, withdrawn=withdrawn)

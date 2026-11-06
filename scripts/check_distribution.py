@@ -19,6 +19,9 @@ def check():
     reviewed_ids = {json.loads((ROOT / entry['path']).read_text())['id'] for entry in curated['exams']}
     if set(profiles['docker']['reviewed']) != reviewed_ids or not set(profiles['local']['reviewed']) <= reviewed_ids:
         raise ValueError('Perfis local/Docker divergem do catálogo conferido.')
+    verified = {f'data/derived/exams/{key}.json' for key in profiles['local'].get('verified', [])}
+    if not set(profiles['local'].get('verified', [])) <= set(profiles['local']['automatic']):
+        raise ValueError('Provas conferidas precisam fazer parte do catálogo automático local.')
     expected_paths = {entry['path'] for entry in curated['exams']}
     expected_paths.update(f'data/derived/exams/{key}.json' for key in profiles['local']['automatic'])
     actual_paths = {name for name in hashes if name.endswith('.json')}
@@ -39,6 +42,8 @@ def check():
             validate_assets(content)
             if blocking_issues(content):
                 pending.append(question.question_id)
+        if pending and name in verified:
+            raise ValueError(f'{exam.id} está registrada como conferida, mas tem pendências: {pending}')
         subprocess.run(['node', 'frontend/scripts/validate-latex.cjs', str(path)], cwd=ROOT, check=True)
         print(f'{exam.id}: {len(exam.questions)} posições; pendências preservadas: {pending}')
     if json.loads((ROOT / 'docs/content-schema.json').read_text()) != ExamImport.model_json_schema():

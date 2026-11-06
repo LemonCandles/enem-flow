@@ -155,6 +155,7 @@ make acervo                                              # os dois passos
 - As pendências bloqueantes ficam nos relatórios das versões, mas não impedem a publicação. Só esse comando pode publicar com pendências; a API e a curadoria continuam bloqueando.
 - Cada prova é publicada ou recusada sozinha, inclusive quando um JSON é inválido. Conteúdo e versões já existentes não são substituídos. Instalações automáticas antigas recebem apenas o registro de origem e revisão pendente quando ausente.
 - O catálogo informa **Disponível** para todas as provas publicadas, sem aviso geral de extração automática na resolução. Questões com problemas conhecidos mantêm aviso específico e vínculo à página original. A API expõe `content_quality` na prova e `preparation_errors` na questão; os gabaritos continuam privados até finalizar. A publicação manual válida encerra o estado pendente.
+- No catálogo local, as provas listadas em `verified` de `data/catalog/profiles.json` passaram por conferência humana. `local-catalog` cria versões aprovadas com o conteúdo conferido quando a instalação anterior difere, preserva as tentativas e publica sem a exceção de pendências, o que marca a revisão como concluída. Prova retirada, em revisão, editada depois da instalação ou com gabarito divergente continua pendente.
 
 ## Implementação e validação
 

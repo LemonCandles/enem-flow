@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('conteúdo automático real mantém aviso e salva sem armazenamento do navegador', async ({ page }, info) => {
+test('conteúdo automático conferido não exibe aviso e salva sem armazenamento do navegador', async ({ page }, info) => {
   await page.request.post('/api/auth/register', {
     data: {
       name: 'Teste',
@@ -38,11 +38,11 @@ test('conteúdo automático real mantém aviso e salva sem armazenamento do nave
   await expect(page.getByText('Resposta salva', { exact: true })).toBeVisible();
   await page.reload();
   await expect(page.getByRole('radio', { checked: true })).toHaveCount(1);
-  const pending = run.items.find((item: { preparation_errors: number }) => item.preparation_errors > 0);
-  expect(pending).toBeTruthy();
-  if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
-  await page.getByRole('button', { name: `Questão ${pending.number}`, exact: true }).click();
-  await expect(page.getByText(/Esta questão tem pendências de apresentação registradas/)).toBeVisible();
+  // The bundled automatic exams were verified: no question carries a presentation warning.
+  // The warning itself is covered with simulated data in archive-quality.spec.ts.
+  expect(exam.content_quality.review_status).toBe('reviewed');
+  expect(run.items.every((item: { preparation_errors: number }) => item.preparation_errors === 0)).toBe(true);
+  await expect(page.getByText(/Esta questão tem pendências de apresentação registradas/)).toHaveCount(0);
   await page.goto(`/runs/${run.id}/extra`);
   await expect(page.getByRole('heading', { name: 'Página não encontrada' })).toBeVisible();
   await page.request.delete('/api/me/history');

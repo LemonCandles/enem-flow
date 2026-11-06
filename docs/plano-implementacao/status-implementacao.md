@@ -5,7 +5,7 @@ O Enem Flow oferece contas, provas oficiais, respostas persistentes, retomada, c
 ## Conteúdo e ambientes
 
 - Instalação local nova: seis provas regulares de 2024/2025, caderno azul, 540 posições. Primeiro dia em Inglês/Espanhol compartilha itens; posições não são identidades distintas.
-- O segundo dia de 2024 é conferido; as outras cinco provas são extrações automáticas, com origem e diagnósticos preservados. O selo “Disponível” informa possibilidade de iniciar, não aprovação pedagógica.
+- O segundo dia de 2024 é um lote conferido. As outras cinco provas são extrações automáticas que a equipe conferiu com o caderno e o gabarito originais em 06/11/2026 (`verified` em `data/catalog/profiles.json`); a origem automática e os diagnósticos resolvidos continuam registrados. O selo “Disponível” informa possibilidade de iniciar, não aprovação pedagógica nem segunda revisão independente.
 - Docker: dois lotes conferidos, segundo dia de 2024 e Matemática 2023. O acervo histórico é opcional e reconstruído por ferramentas offline.
 - Os cinco JSONs automáticos não têm temas publicados; não ampliam o conjunto elegível para diagnóstico/prática. Habilidades candidatas não estão publicadas.
 
