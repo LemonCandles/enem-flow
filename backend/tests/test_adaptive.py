@@ -315,3 +315,20 @@ def test_deleting_history_removes_recommendations(student, thematic, database):
     assert student.get('/me/recommendations').json() == [] and student.get('/me/sessions').json() == []
     with database() as db:
         assert db.scalar(select(func.count()).select_from(RecommendationEvent)) == 0
+
+
+def test_practice_options_reflect_exhaustion(student, thematic):
+    before = student.get('/practice-options?available_minutes=60')
+    assert before.status_code == 200
+    assert before.json()['areas'][0]['eligible_items'] == 12
+    for key in ('options-exposure-1', 'options-exposure-2'):
+        assert begin(student, key, available_minutes=60).status_code == 201
+    row = student.get('/practice-options?available_minutes=60').json()['areas'][0]
+    assert row['eligible_items'] == 0
+    assert row['exhausted'] is True
+    assert student.get('/diagnostic-options').json()['areas'][0]['eligible_items'] == 12
+    assert student.get('/practice-options?available_minutes=0').status_code == 422
+
+
+def test_practice_options_require_login(client):
+    assert client.get('/practice-options').status_code == 401

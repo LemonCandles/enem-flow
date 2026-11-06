@@ -72,12 +72,6 @@ export default function ExamRunner({ id, source }: { id: string; source: Attempt
           <small>tempo decorrido</small>
         </div>
       </div>
-      {run.exam.content_quality?.review_status === 'pending' && (
-        <p className="notice-box">
-          Este caderno foi extraído automaticamente e aguarda conferência. Consulte o original ao encontrar dúvidas no
-          texto, nas fórmulas ou nas figuras.
-        </p>
-      )}
       {finished && run.result && <ResultSummary result={run.result} />}
       {diagnosticSession && (
         <p className="notice-box">

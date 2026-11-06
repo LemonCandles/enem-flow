@@ -5,7 +5,7 @@ import secrets
 import time
 from collections import Counter
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy import select
 
 from ..dependencies import CurrentUser, SessionDep
@@ -13,7 +13,7 @@ from ..models import DiagnosticSession, LearningEvent, RecommendationEvent
 from ..schemas import Answer
 from ..schemas.practice import StartPractice
 from ..services import attempts
-from ..services.adaptive import ADAPTIVE_V1, DEFAULT_POLICY, PolicyInput, recommend
+from ..services.adaptive import ADAPTIVE_V1, DEFAULT_POLICY, PolicyInput, filter_pool, recommend
 from ..services.attempts import PRACTICE
 from ..services.diagnostics import eligible_items, identity, session_data, source_urls, user_origins
 from ..services.knowledge import reconstruct
@@ -44,6 +44,28 @@ def provisional_difficulty(db):
 def exposure_of(db, user_id):
     """How many attempts of this student showed each item, finished or not."""
     return Counter(identity(item) for origin in user_origins(db, user_id) for item in origin.items)
+
+
+@router.get('/practice-options')
+def options(user: CurrentUser, db: SessionDep, available_minutes: int = Query(15, ge=3, le=180)):
+    pool = eligible_items(db)
+    exposures = exposure_of(db, user.id)
+    difficulty = provisional_difficulty(db)
+    areas = []
+    for area in sorted({i['content']['area'] for i in pool}):
+        candidates = [i for i in pool if i['content']['area'] == area]
+        allowed, _ = filter_pool(
+            PolicyInput(candidates, {}, exposures, available_minutes, '', 0, difficulty), ADAPTIVE_V1
+        )
+        areas.append(
+            dict(
+                area=area,
+                eligible_items=len(allowed),
+                exhausted=not allowed,
+                themes=dict(Counter(t for i in allowed for t in set(i['content']['labels']['themes']))),
+            )
+        )
+    return {'areas': areas}
 
 
 @router.post('/practice-sessions', status_code=201)

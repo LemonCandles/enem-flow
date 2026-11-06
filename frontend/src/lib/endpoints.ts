@@ -11,6 +11,7 @@ export const paths = {
   knowledgeState: '/me/knowledge-state',
   recommendations: '/me/recommendations',
   diagnosticOptions: '/diagnostic-options',
+  practiceOptions: '/practice-options',
   adminExams: '/admin/exams',
   adminAudit: '/admin/audit',
   archive: '/admin/archive',

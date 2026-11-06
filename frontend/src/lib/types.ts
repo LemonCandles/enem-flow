@@ -98,7 +98,9 @@ export type Diagnostic = Omit<Run, 'exam'> & {
   };
 };
 export type DiagnosticSummary = Omit<Diagnostic, 'items'>;
-export type DiagnosticOptions = { areas: { area: string; eligible_items: number; themes: Record<string, number> }[] };
+export type DiagnosticOptions = {
+  areas: { area: string; eligible_items: number; exhausted?: boolean; themes: Record<string, number> }[];
+};
 export type KnowledgeGroup = {
   name: string;
   area: string;

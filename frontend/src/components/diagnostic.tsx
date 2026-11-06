@@ -38,8 +38,8 @@ export function KnowledgePanel() {
     <section className="panel breakdown-panel knowledge-panel" aria-labelledby="knowledge-heading">
       <h2 id="knowledge-heading">Estado por tema e habilidade</h2>
       <p className="small-text muted">
-        Provas e diagnósticos finalizados contribuem para este painel. A estimativa usa a primeira resposta marcada sem
-        ajuda de cada item, mesmo quando ele aparece em outra cor.
+        Provas, diagnósticos e práticas finalizados contribuem para este painel. A estimativa usa a primeira resposta
+        marcada sem ajuda de cada item, mesmo quando ele aparece em outra cor.
       </p>
       <div className="segmented">
         <button

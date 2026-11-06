@@ -47,8 +47,7 @@ export default function Catalog() {
         <div>
           <strong>Conteúdo oficial, um novo jeito de praticar.</strong>
           <p className="small-text muted">
-            Provas oficiais do Inep com texto e figuras extraídos do caderno original. Dois cadernos já passaram por
-            conferência de conteúdo e gabarito.
+            Provas oficiais do Inep com texto e figuras do caderno original, prontas para você praticar.
           </p>
         </div>
         <span className="badge green">
@@ -131,7 +130,7 @@ export default function Catalog() {
       )}
       <p className="catalog-footnote">
         Caderno completo: todas as questões de um dia de aplicação. Seções e coleções parciais são identificadas
-        separadamente. O catálogo inclui o segundo dia de 2024 e a seção de Matemática de 2023.
+        separadamente.
       </p>
     </>
   );

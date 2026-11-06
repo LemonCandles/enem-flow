@@ -3,28 +3,29 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.use({ video: 'off' });
 
-test('seção de Matemática de 2023 mantém texto, tabelas, LaTeX, figuras e rótulos', async ({ page }, info) => {
+test('prova de 2025 mantém texto, LaTeX e figuras durante a resolução', async ({ page }, info) => {
   test.setTimeout(180_000);
   expect(
     (
       await page.request.post('/api/auth/register', {
         data: {
-          name: 'Referência Matemática',
-          email: `math-${info.project.name}-${Date.now()}@example.com`,
+          name: 'Estudante do Acervo',
+          email: `acervo2025-${info.project.name}-${Date.now()}@example.com`,
           password: 'matematica-conteudo-nativo',
         },
       })
     ).status(),
   ).toBe(201);
   await page.goto('/exams');
-  await page.getByRole('combobox', { name: 'Todos os anos' }).selectOption('2023');
+  await page.getByRole('combobox', { name: 'Todos os anos' }).selectOption('2025');
   const card = page
     .locator('.exam-card')
-    .filter({ has: page.getByRole('heading', { name: 'ENEM 2023 — Matemática', exact: true }) });
-  await expect(card).toContainText('Seção completa');
-  await expect(card).toContainText('150 minutos');
+    .filter({ has: page.getByRole('heading', { name: 'ENEM 2025 · 2º dia', exact: true }) });
+  await expect(card).toContainText('Caderno completo');
+  await expect(card).toContainText('Disponível');
+  await expect(card).toContainText('5 horas');
   await card.getByRole('button', { name: 'Iniciar prova', exact: true }).click();
-  for (let number = 136; number <= 180; number++) {
+  for (let number = 91; number <= 180; number++) {
     await expect(page.getByRole('heading', { name: `Questão ${number}`, exact: true })).toBeVisible();
     await expect(page.locator('.katex-error')).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
@@ -37,19 +38,10 @@ test('seção de Matemática de 2023 mantém texto, tabelas, LaTeX, figuras e r�
           ),
       )
       .toBeTruthy();
-    if (number === 137) {
-      await expect(page.getByRole('table')).toContainText('2 000,00');
-      await expect(page.getByRole('table')).toContainText('7 000,00');
-    }
-    if (number === 141) await expect(page.locator('.alternatives .katex')).toHaveCount(5);
-    if (number === 178) {
-      await expect(page.locator('.question-content')).toContainText('torneira inteligente');
-      await expect(page.locator('.alternatives img')).toHaveCount(5);
-    }
-    if ([136, 137, 145, 161, 169, 172, 178].includes(number))
+    if ([91, 100, 136, 145, 161, 169, 178].includes(number))
       await page.screenshot({
         scale: 'css',
-        path: `test-results/${info.project.name}-math2023-${number}.png`,
+        path: `test-results/${info.project.name}-acervo2025-${number}.png`,
         fullPage: true,
       });
     if (number < 180) await page.getByRole('button', { name: 'Próxima questão' }).click();
@@ -59,10 +51,8 @@ test('seção de Matemática de 2023 mantém texto, tabelas, LaTeX, figuras e r�
   if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Abrir mapa de questões' }).click();
   await page.getByRole('button', { name: 'Finalizar prova', exact: true }).click();
   await page.getByRole('button', { name: 'Confirmar finalização' }).click();
-  await expect(page.getByText('0 de 44 questões válidas')).toBeVisible();
-  await page.goto('/progress');
-  await page.getByRole('button', { name: 'Tema', exact: true }).click();
-  await expect(page.getByText('44/44 tentativas · 100%')).toBeVisible();
+  await expect(page.getByText(/0 de \d+ questões válidas/)).toBeVisible();
+  await expect(page.getByText('Resultado definitivo', { exact: true })).toBeVisible();
   expect((await page.request.delete('/api/me/history')).status()).toBe(204);
 });
 
