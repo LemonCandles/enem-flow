@@ -9,6 +9,7 @@ import { FinishDialog } from './runner/finish-dialog';
 import { QuestionAside } from './runner/question-aside';
 import { QuestionPanel } from './runner/question-panel';
 import { ResultSummary } from './runner/result-summary';
+import { TutorHelp } from './runner/tutor-help';
 import { ErrorBox, Loading } from './ui';
 
 export default function ExamRunner({ id, source }: { id: string; source: AttemptSource }) {
@@ -107,6 +108,10 @@ export default function ExamRunner({ id, source }: { id: string; source: Attempt
           session={diagnosticSession}
           sourceUrl={run.exam.source.url}
           heading={heading}
+          help={
+            source.offersHelp &&
+            current.help && <TutorHelp sessionId={id} itemId={current.id} state={current.help} finished={finished} />
+          }
           onChoose={choice => attempt.choose(run, current.id, choice)}
           onNavigate={navigate}
           onReview={review}

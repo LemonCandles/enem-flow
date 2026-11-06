@@ -12,7 +12,8 @@ from ..dependencies import CurrentUser, SessionDep
 from ..models import DiagnosticSession, LearningEvent, RecommendationEvent
 from ..schemas import Answer
 from ..schemas.practice import StartPractice
-from ..services import attempts
+from ..schemas.tutor import HelpRequest
+from ..services import attempts, tutor
 from ..services.adaptive import ADAPTIVE_V1, DEFAULT_POLICY, PolicyInput, filter_pool, recommend
 from ..services.attempts import PRACTICE
 from ..services.diagnostics import eligible_items, identity, session_data, source_urls, user_origins
@@ -133,12 +134,21 @@ def start(payload: StartPractice, user: CurrentUser, db: SessionDep):
                 candidates=entry['candidates'],
             )
         )
-    return session_data(session)
+    return practice_data(db, session)
+
+
+def practice_data(db, session):
+    """The session as diagnostics show it, plus the help state of each item."""
+    data = session_data(session)
+    state = tutor.help_state(db, session)
+    for item in data['items']:
+        item['help'] = state[item['id']]
+    return data
 
 
 @router.get('/practice-sessions/{session_id}')
 def get_session(session_id: str, user: CurrentUser, db: SessionDep):
-    return session_data(attempts.owned(db, PRACTICE, session_id, user.id))
+    return practice_data(db, attempts.owned(db, PRACTICE, session_id, user.id))
 
 
 @router.put('/practice-sessions/{session_id}/answers/{item_id}')
@@ -148,7 +158,19 @@ def answer(session_id: str, item_id: str, payload: Answer, user: CurrentUser, db
 
 @router.post('/practice-sessions/{session_id}/finish')
 def finish(session_id: str, user: CurrentUser, db: SessionDep):
-    return session_data(attempts.finish(db, PRACTICE, session_id, user.id))
+    return practice_data(db, attempts.finish(db, PRACTICE, session_id, user.id))
+
+
+@router.post('/practice-sessions/{session_id}/items/{item_id}/help')
+def request_help(session_id: str, item_id: str, payload: HelpRequest, user: CurrentUser, db: SessionDep):
+    """Help from approved material; repeated keys and levels return what was already delivered."""
+    event = tutor.request_help(db, user.id, session_id, item_id, payload.level, payload.idempotency_key)
+    return tutor.event_data(event)
+
+
+@router.get('/me/help-events')
+def my_help(user: CurrentUser, db: SessionDep):
+    return tutor.my_help_events(db, user.id)
 
 
 def event_data(event, include_candidates=False):

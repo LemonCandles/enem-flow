@@ -30,9 +30,37 @@ export type ContentBlock =
   | { type: 'math'; tex: string }
   | { type: 'table'; headers: string[]; rows: string[][]; caption: string };
 export type Recommendation = { function: string; reason: string; policy_version: string };
+export type HelpLevel = 'orientation' | 'hint' | 'solution';
+export type DeliveredHelp = { level: HelpLevel; message: string; mode: 'tutor' | 'material'; delivered_at: number };
+// Practice only: whether approved help exists for the item and what was already received.
+export type HelpState = { available: boolean; next_level: HelpLevel | null; delivered: DeliveredHelp[] };
+export type HelpEvent = DeliveredHelp & {
+  id: string;
+  session_id: string;
+  item_id: string;
+  content_version: number;
+  outcome: 'requested' | 'delivered';
+  requested_at: number;
+  provider: Record<string, unknown>;
+};
+export type TutorMaterial = {
+  id: string;
+  question_id: string;
+  version: number;
+  status: 'proposal' | 'approved' | 'rejected' | 'superseded';
+  origin: 'human' | 'llm';
+  levels: Record<HelpLevel, string>;
+  provenance: Record<string, unknown>;
+  created_at: number;
+  reviewed_at: number | null;
+  review_reason: string | null;
+  current: boolean;
+};
+export type TutorStatus = { enabled: boolean; missing: string[]; model: string | null; daily_limit: number };
 export type Question = {
   source_url?: string;
   recommendation?: Recommendation;
+  help?: HelpState;
   preparation_errors?: number;
   id: string;
   question_id: string;

@@ -1,6 +1,6 @@
 # Contratos preparatórios da etapa 6
 
-Status: especificação para entrega posterior; não há tutor ou layout dinâmico integrado. Tutor e layout podem ser liberados independentemente. A consolidação não exige contratar provedor nem produzir conteúdo aprovado.
+Status: o tutor em prática está integrado conforme a seção abaixo ([arquitetura](architecture.md#tutor)); o layout dinâmico continua especificado para entrega posterior. Tutor e layout podem ser liberados independentemente. O tutor funciona sem provedor contratado, apenas com material aprovado.
 
 ## Tutor
 
@@ -12,7 +12,7 @@ O servidor deriva `help_used` dos eventos efetivamente entregues, nunca de um bo
 
 O adaptador de provedor recebe somente o contexto necessário e retorna proposta estruturada. Ferramentas permitidas ficam em lista explícita, inicialmente apenas consulta a material aprovado e cálculo determinístico. Não há execução de código arbitrário. Limites de tempo/custo são configuração obrigatória na futura integração, com cancelamento e fallback. Conteúdo gerado continua proposta até aprovação humana; não há aprovação automática por resposta bem formada.
 
-Aceites futuros: acesso de outro aluno negado, repetição idempotente, timeout, resposta inválida, ausência de referência, bloqueio de gabarito, distinção entre ajuda solicitada/entregue, exportação/exclusão e reconstrução da evidência assistida.
+Aceites, cobertos por `backend/tests/test_tutor.py`: acesso de outro aluno negado, repetição idempotente, timeout, resposta inválida, ausência de referência, bloqueio de gabarito, distinção entre ajuda solicitada/entregue, exportação/exclusão e reconstrução da evidência assistida.
 
 ## Layout
 

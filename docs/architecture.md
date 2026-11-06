@@ -54,6 +54,14 @@ Antes de alterar respostas ou finalizar, um UPDATE inócuo adquire o bloqueio da
 
 O painel mantém os indicadores objetivos de provas e acrescenta o estado conjunto de provas/diagnósticos, com evidência, assistência e prática recente. Contratos, critérios de seleção, migração e limitações estão em [diagnóstico e estado](diagnostico-estado.md).
 
+## Tutor
+
+`tutor_materials` guarda três níveis por questão (orientação, pista, resolução), vinculados ao hash do conteúdo para o qual foram escritos: texto, figuras, alternativas e gabarito. A curadoria escreve uma proposta ou pede um rascunho ao provedor; só a aprovação humana libera o material, e aprovar repete as regras (níveis completos, orientação e pista sem gabarito) e confere que a versão publicada ainda tem o mesmo conteúdo. Material de outra versão não é usado.
+
+A ajuda existe apenas em prática aberta (`POST /practice-sessions/{id}/items/{item}/help`). Provas e diagnósticos não a oferecem. Os níveis seguem a ordem e cada pedido tem chave idempotente: repetir a chave ou o nível devolve a mesma ajuda, sem nova chamada nem custo. `help_events` registra o pedido antes da chamada e libera o bloqueio da tentativa; só `delivered` conta como ajuda. `services/tutor_provider.py` é o único ponto que chama o provedor, por API compatível com a OpenAI, com tempo limite, sem novas tentativas e em modo JSON. Ele recebe apenas a questão em texto e o material permitido para o nível; a resolução não é enviada nos níveis anteriores. Configuração ausente, limite diário, custo estimado acima do máximo, falha, tempo esgotado ou resposta que revele o gabarito antes da resolução entregam o texto aprovado. Modelo, versão do prompt, tokens, custo e latência ficam no evento.
+
+Na finalização, `help_used` e os níveis entregues entram no `LearningEvent`; itens assistidos ficam fora da evidência independente e da dificuldade provisória. `/me/help-events` integra a exportação, e a exclusão do histórico remove os eventos de ajuda.
+
 ## Preparação de conteúdo
 
 `backend/app/preparation/` é o preparador compartilhado de JSON, sem dependência de PDF/Node nas requisições da API e sem regras por número de questão. `POST /admin/imports` e a edição de versões o executam automaticamente; `/admin/imports/prepare` oferece prévia sem gravação. Converte notação reconhecida, associa blocos adjacentes às figuras e registra hashes, operações e pendências em `layout.preparation`. Agrupamentos/delimitadores LaTeX inválidos e perdas de layout conhecidas bloqueiam aprovação e publicação. Os avisos ficam na curadoria; o aluno recebe a lista permitida de campos de apresentação.

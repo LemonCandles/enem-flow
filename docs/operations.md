@@ -14,8 +14,12 @@
 | `ENEM_PROXY_SUBNET`, `ENEM_PROXY_IP` | Rede privada do gateway e seu IP fixo; padrões `172.30.246.0/24` e `172.30.246.254`. Ajuste os dois se houver conflito com outra rede. |
 | `FORWARDED_ALLOW_IPS` | No contêiner da API, recebe somente `ENEM_PROXY_IP`; não deve aceitar clientes ou redes públicas. |
 | `TEST_DATABASE_URL` | Banco descartável exclusivo da suíte; o nome precisa conter `test` |
+| `GROQ_API_KEY` | Chave do provedor do tutor; vazia, a prática mostra apenas o material aprovado |
+| `TUTOR_BASE_URL`, `TUTOR_MODEL` | API compatível com a OpenAI (padrão: Groq) e modelo usado pelo tutor |
+| `TUTOR_TIMEOUT_SECONDS`, `TUTOR_MAX_OUTPUT_TOKENS`, `TUTOR_DAILY_LIMIT` | Tempo limite por chamada, tamanho da resposta e chamadas diárias por aluno |
+| `TUTOR_PRICE_INPUT_PER_MTOK`, `TUTOR_PRICE_OUTPUT_PER_MTOK`, `TUTOR_MAX_COST_USD` | Preços por milhão de tokens e custo máximo estimado por chamada, em US$; sem eles o provedor não é chamado |
 
-O `.env` é carregado pelo Docker Compose. Para execução Python direta, exporte as variáveis no shell; o backend não lê `.env` automaticamente. Use uma senha de banco compatível com URL ou codifique os caracteres reservados na `DATABASE_URL`.
+O `.env` da raiz é carregado pelo Docker Compose e pelo backend em execução direta (`python-dotenv`), sem substituir variáveis já exportadas no shell. Copie `.env.example` para `.env` e preencha `GROQ_API_KEY` para ativar o tutor; reinicie a API depois de alterar o arquivo. O frontend não lê esse arquivo e nunca recebe a chave. Use uma senha de banco compatível com URL ou codifique os caracteres reservados na `DATABASE_URL`.
 
 O Compose disponibiliza o gateway Nginx na porta 3000 e mantém Next, API e PostgreSQL internos. O gateway encaminha páginas ao Next e `/api/*` diretamente à API. As redes separam banco, frontend e proxy. O IP fixo do gateway é o único proxy autorizado pelo Uvicorn; isso preserva os contadores por cliente sem confiar no endereço do contêiner Next.
 

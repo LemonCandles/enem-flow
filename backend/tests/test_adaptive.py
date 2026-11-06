@@ -1,6 +1,5 @@
 """Adaptive practice: pure policy decisions, then the API contract and its audit trail."""
 
-import copy
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import json
@@ -179,27 +178,6 @@ def test_every_choice_logs_function_reason_priority_and_candidates():
         assert 0 < len(entry['candidates']) <= ADAPTIVE_V1['logged_candidates'] <= entry['candidates_total'] + 25
         assert entry['candidates'][0]['item_id'] == entry['item']['id']
     assert entries[0]['candidates_total'] == 30 and entries[-1]['candidates_total'] == 21
-
-
-@pytest.fixture
-def thematic(admin, exam_payload):
-    payload = copy.deepcopy(exam_payload)
-    payload['expected_items'] = 12
-    template = payload['questions'][0]
-    payload['questions'] = []
-    for n in range(1, 13):
-        q = copy.deepcopy(template)
-        q['question_id'] = f'adaptive-q{n}'
-        q['content'].update(number=n, statement=f'Questão sintética adaptativa {n}: calcule o resultado solicitado.')
-        q['content']['labels']['themes'] = ['Álgebra' if n % 2 else 'Geometria']
-        payload['questions'].append(q)
-    assert admin.post('/admin/imports', json=payload).status_code == 201
-    reason = {'action': 'approve', 'reason': 'Referência sintética para a prática'}
-    for q in payload['questions']:
-        assert admin.post(f"/admin/reviews/{q['question_id']}:1", json=reason).status_code == 200
-    published = {'action': 'publish', 'reason': 'Referência temática para a prática'}
-    assert admin.post('/admin/reviews/prova-teste', json=published).status_code == 200
-    return payload
 
 
 def begin(client, key='practice-key-001', **kwargs):

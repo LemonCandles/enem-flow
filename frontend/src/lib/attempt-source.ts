@@ -11,6 +11,8 @@ export type AttemptSource = {
   finishLabel: string;
   questionNumber: (question: Question, position: number) => number;
   showsOrigin: boolean;
+  // Help from the tutor exists only in practice; exams and diagnostics measure without it.
+  offersHelp: boolean;
 };
 
 export const examAttempt: AttemptSource = {
@@ -22,6 +24,7 @@ export const examAttempt: AttemptSource = {
   finishLabel: 'Finalizar prova',
   questionNumber: question => question.number,
   showsOrigin: false,
+  offersHelp: false,
 };
 
 function sessionAsRun(raw: Diagnostic, label: string): Run {
@@ -55,6 +58,7 @@ export const diagnosticAttempt: AttemptSource = {
   finishLabel: 'Finalizar diagnóstico',
   questionNumber: (_, position) => position + 1,
   showsOrigin: true,
+  offersHelp: false,
 };
 
 export const practiceAttempt: AttemptSource = {
@@ -66,4 +70,5 @@ export const practiceAttempt: AttemptSource = {
   finishLabel: 'Finalizar prática',
   questionNumber: (_, position) => position + 1,
   showsOrigin: true,
+  offersHelp: true,
 };

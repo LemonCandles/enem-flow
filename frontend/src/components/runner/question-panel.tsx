@@ -1,4 +1,4 @@
-import type { Ref } from 'react';
+import type { ReactNode, Ref } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Check, ChevronLeft, ChevronRight, Flag, Save, ShieldCheck, X } from 'lucide-react';
 import type { AttemptSource } from '@/lib/attempt-source';
@@ -17,6 +17,7 @@ export function QuestionPanel({
   session,
   sourceUrl,
   heading,
+  help,
   onChoose,
   onNavigate,
   onReview,
@@ -32,6 +33,7 @@ export function QuestionPanel({
   session: Diagnostic | undefined;
   sourceUrl: string;
   heading: Ref<HTMLHeadingElement>;
+  help?: ReactNode;
   onChoose: (choice: string | null) => void;
   onNavigate: (next: number) => void;
   onReview: () => void;
@@ -80,6 +82,7 @@ export function QuestionPanel({
       <div className="question-content">
         <QuestionContent question={current} />
       </div>
+      {help}
       <fieldset className="alternatives" disabled={busy || finished}>
         <legend>{finished ? 'Sua resposta e gabarito' : 'Marque sua resposta'}</legend>
         {current.alternatives.map(option => {

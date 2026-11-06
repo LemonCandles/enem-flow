@@ -6,7 +6,7 @@ O [estado atual](status-implementacao.md) descreve o produto implementado. Este 
 
 As integrações são independentes e seguem os [contratos](../contratos-etapa6.md).
 
-- Tutor: integrar ajuda em prática a partir de material aprovado; registrar ajuda entregue, versão, custo e latência; manter a prática disponível quando o provedor falhar; preservar a evidência independente e o gabarito de provas abertas.
+- Tutor: integrado à prática (ver [estado](status-implementacao.md)). Falta produzir e aprovar material para as questões publicadas.
 - Layout: converter propostas experimentais por adaptador versionado, validar ordem e vínculos e preservar fallback da apresentação publicada. Exigir comparação com as fontes antes de liberar novos blocos.
 - Propostas continuam fora do produto até aprovação humana. A preparação dos contratos não equivale a tutor implementado.
 
