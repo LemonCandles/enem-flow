@@ -17,7 +17,7 @@ from ..preparation import blocking_issues
 GENERATED = ROOT / 'data/derived/exams'
 REASON = (
     'Publicação automática do acervo oficial: texto e figuras extraídos do PDF, sem curadoria. '
-    'Layout e conferência ficam para as etapas 3 e 8 do roteiro.'
+    'Conferência humana pendente; diagnósticos de preparação preservados.'
 )
 
 
@@ -27,11 +27,12 @@ def generated_files(directory=GENERATED):
     )
 
 
-def publish_generated(db, directory=GENERATED):
-    """Publish every generated exam not yet installed; each exam succeeds or fails alone."""
+def publish_generated(db, directory=GENERATED, *, paths=None):
+    """Publish generated exams not yet installed; an explicit file list limits local setup."""
     reviewer = service_reviewer(db)
     published, existing, failed = [], 0, []
-    for path in generated_files(directory):
+    files = generated_files(directory) if paths is None else paths
+    for path in files:
         try:
             payload = ExamImport.model_validate_json(path.read_text())
             previous = db.get(Exam, payload.id)

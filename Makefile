@@ -1,20 +1,26 @@
-.PHONY: setup migrate seed acervo api web test lint format build experiments experiments-archive audit-archive audit-archive-browser experiments-all
+.PHONY: dev doctor check-distribution setup migrate seed acervo api web test lint format clean build experiments experiments-archive audit-archive audit-archive-browser experiments-all
 PYTHON = .venv/bin/python
 EXPERIMENT_OUTPUT ?= tmp/experiments/latest
 AUDIT_OUTPUT ?= tmp/acervo-validacao/latest
 AUDIT_URL ?= http://127.0.0.1:3100
 
 setup:
-	python3 -m venv .venv
-	.venv/bin/pip install -r backend/requirements-dev.lock
-	cd frontend && npm ci
-	$(MAKE) migrate seed
+	python3 scripts/local.py setup
+
+dev:
+	python3 scripts/local.py dev
+
+doctor:
+	python3 scripts/local.py doctor
+
+check-distribution:
+	$(PYTHON) scripts/check_distribution.py
 
 migrate:
 	.venv/bin/alembic upgrade head
 
 seed:
-	$(PYTHON) -m backend.app.cli seed --publish-reviewed --refresh-bundled
+	$(PYTHON) -m backend.app.cli local-catalog
 
 # Provas do acervo extraídas sem curadoria; exige o espelho local (archive_enem.py sync).
 acervo:
@@ -30,7 +36,7 @@ web:
 test:
 	.venv/bin/pytest -q
 	cd frontend && npm run typecheck
-	cd frontend && npm run check:content
+	$(PYTHON) scripts/check_distribution.py
 
 lint:
 	.venv/bin/ruff check .
@@ -40,6 +46,11 @@ lint:
 format:
 	.venv/bin/ruff format .
 	cd frontend && npm run format
+
+clean:
+	find backend experiments ingestion scripts -type d -name __pycache__ -prune -exec rm -rf -- {} +
+	rm -rf -- .pytest_cache .ruff_cache frontend/test-results frontend/playwright-report frontend/blob-report
+	rm -f -- frontend/tsconfig.tsbuildinfo
 
 build:
 	cd frontend && npm run build

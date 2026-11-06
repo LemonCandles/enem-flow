@@ -19,17 +19,16 @@ function text(value, number) {
     compile(token.slice(long ? 2 : 1, long ? -2 : -1), number);
   }
 }
-for (const { content: c } of data.questions) {
-  for (const b of c.blocks || []) {
-    if (b.type === 'math') compile(b.tex, c.number);
-    if (b.type === 'paragraph') text(b.text, c.number);
-    if (b.type === 'image') {
-      (b.equations || []).forEach(tex => compile(tex, c.number));
-      text(b.caption || '', c.number); text(b.credit || '', c.number);
-    }
-    if (b.type === 'table') [b.caption, ...b.headers, ...b.rows.flat()].forEach(value => text(value, c.number));
+function visit(value, number, key = '') {
+  if (typeof value === 'string') {
+    if (key === 'tex' || key === 'equation') compile(value, number);
+    else if (['text', 'statement', 'caption', 'credit', 'alt', 'cell'].includes(key)) text(value, number);
+  } else if (Array.isArray(value)) {
+    value.forEach(v => visit(v, number, key === 'equations' ? 'equation' : ['rows', 'headers', 'cell'].includes(key) ? 'cell' : key));
+  } else if (value && typeof value === 'object') {
+    Object.entries(value).forEach(([k,v]) => { if (k !== 'layout') visit(v, number, k); });
   }
-  c.alternatives.forEach(a => text(a.text, c.number));
 }
+for (const { content: c } of data.questions) visit(c, c.number);
 if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
 else console.log(`${count} expressões LaTeX matemáticas/químicas válidas em ${data.questions.length} questões.`);

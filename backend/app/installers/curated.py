@@ -158,7 +158,7 @@ def settle_status(db, exam, reviewer, reason, *, changed, publish, was_withdrawn
         send_to_review(exam)
 
 
-def install_catalog(db, publish=False):
+def install_catalog(db, publish=False, *, exam_ids=None):
     manifest = json.loads((ROOT / 'data/catalog/manifest.json').read_text())
     reviewer = service_reviewer(db)
     stats = dict(imported_exams=0, new_versions=0, canonical_questions=0)
@@ -171,6 +171,8 @@ def install_catalog(db, publish=False):
         if not path.is_relative_to(ROOT.resolve()):
             raise ValueError('Caminho do catálogo fora do projeto.')
         base = ExamImport.model_validate_json(path.read_text())
+        if exam_ids is not None and base.id not in exam_ids:
+            continue
         desired = classified(base)
         previous_profile = classified(base, refresh_preparation_audit=False)
         exam = db.get(Exam, desired.id)

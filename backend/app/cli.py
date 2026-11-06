@@ -19,6 +19,7 @@ from .core.security import digest, hash_password
 from .installers.bundled import refresh_bundle
 from .installers.curated import install_catalog
 from .installers.generated import publish_generated
+from .installers.local import install_local_catalog
 
 
 def create_admin(db, args):
@@ -63,6 +64,10 @@ def catalog(db, args):
     print(json.dumps(install_catalog(db, publish=args.publish_curated), ensure_ascii=False))
 
 
+def local_catalog(db, args):
+    print(json.dumps(install_local_catalog(db), ensure_ascii=False))
+
+
 def recovery_link(db, args):
     user = db.scalar(select(User).where(User.email == args.email.casefold()))
     if not user:
@@ -78,6 +83,7 @@ COMMANDS = {
     "seed": seed,
     "archive": archive,
     "catalog": catalog,
+    "local-catalog": local_catalog,
     "recovery-link": recovery_link,
 }
 
@@ -88,9 +94,15 @@ def main():
     admin = subs.add_parser("create-admin")
     admin.add_argument("email")
     admin.add_argument("--name", default="Curadoria")
-    seed_parser = subs.add_parser("seed")
+    seed_parser = subs.add_parser(
+        "seed",
+        help="Bootstrap legado; para as seis provas locais, use local-catalog",
+        description="Sem opções, importa o segundo dia de 2024 como rascunho. Com --publish-reviewed, instala os dois lotes conferidos quando ainda não instalados. Para atualizar um lote existente, combine --refresh-bundled. Não instala o perfil local de seis provas.",
+    )
     seed_parser.add_argument(
-        "--publish-reviewed", action="store_true", help="Publicar o conjunto incluído e conferido com os PDFs oficiais"
+        "--publish-reviewed",
+        action="store_true",
+        help="Publicar os lotes conferidos: segundo dia de 2024 e Matemática 2023",
     )
     seed_parser.add_argument(
         "--refresh-bundled",
@@ -98,9 +110,16 @@ def main():
         help="Atualizar a apresentação incluída criando versões; preservar as tentativas",
     )
     catalog_parser = subs.add_parser(
-        "catalog", help="Instalar lotes e rótulos conferidos, preservando versões e tentativas"
+        "catalog",
+        help="Instalar os dois lotes conferidos; preserva versões, tentativas e decisões manuais",
+        description="Instala segundo dia de 2024 e Matemática 2023. Sem --publish-curated mantém o fluxo de revisão; não equivale ao catálogo local de seis provas.",
     )
-    catalog_parser.add_argument("--publish-curated", action="store_true")
+    catalog_parser.add_argument(
+        "--publish-curated",
+        action="store_true",
+        help="Publicar os lotes conferidos sem reverter retiradas ou revisões manuais",
+    )
+    subs.add_parser("local-catalog", help="Instalar as seis provas regulares de 2024 e 2025 incluídas no Git")
     subs.add_parser("archive", help="Publicar as provas geradas do acervo oficial, sem curadoria")
     reset = subs.add_parser("recovery-link")
     reset.add_argument("email")
