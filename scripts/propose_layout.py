@@ -25,7 +25,7 @@ from backend.app.models import QuestionVersion
 from backend.app.services.layout import source_of
 from backend.app.services.layout_adapter import version_fingerprint
 from experiments.layout import assemble, extract_candidates
-from ingestion.archive import CATALOG, SOURCE_ROOT
+from ingestion.archive import local_source
 from ingestion.exam_pdf.text import LIST_BULLET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,12 +33,10 @@ BULLET = re.compile(LIST_BULLET.pattern.removeprefix('^'))
 
 
 def source_pdf(url, sha256):
-    for record in json.loads(CATALOG.read_text())['files']:
-        if record.get('url') == url and record.get('path'):
-            path = SOURCE_ROOT / record['path']
-            if path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == sha256:
-                return path
-    raise SystemExit('PDF original ausente ou com hash diferente; sincronize o acervo antes de propor.')
+    path = local_source(url, sha256)
+    if path is None:
+        raise SystemExit('PDF original ausente ou com hash diferente; sincronize o acervo antes de propor.')
+    return path
 
 
 def propose(version_id):

@@ -34,6 +34,16 @@ def sha(path):
     return h.hexdigest()
 
 
+def local_source(url, sha256, catalog=CATALOG):
+    """The mirrored file of an official URL, only when its content still has the declared SHA-256."""
+    for record in json.loads(Path(catalog).read_text())['files']:
+        if record.get('url') == url and record.get('path'):
+            path = SOURCE_ROOT / record['path']
+            if path.is_file() and sha(path) == sha256:
+                return path
+    return None
+
+
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
