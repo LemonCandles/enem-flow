@@ -19,6 +19,8 @@ from .core.security import digest, hash_password
 from .installers.bundled import refresh_bundle
 from .installers.curated import install_catalog
 from .installers.generated import publish_generated
+from .installers.local import install_local_catalog
+from .services.tutor import generate_all
 
 
 def create_admin(db, args):
@@ -63,6 +65,10 @@ def catalog(db, args):
     print(json.dumps(install_catalog(db, publish=args.publish_curated), ensure_ascii=False))
 
 
+def local_catalog(db, args):
+    print(json.dumps(install_local_catalog(db), ensure_ascii=False))
+
+
 def recovery_link(db, args):
     user = db.scalar(select(User).where(User.email == args.email.casefold()))
     if not user:
@@ -73,12 +79,19 @@ def recovery_link(db, args):
     print(f"Link de uso único, válido por 30 minutos: {args.base_url}/?recovery={token}")
 
 
+def tutor_material(db, args):
+    result = generate_all(db, exam_id=args.exam, limit=args.limit, pause=args.pause)
+    print(json.dumps(result, ensure_ascii=False))
+
+
 COMMANDS = {
     "create-admin": create_admin,
     "seed": seed,
     "archive": archive,
     "catalog": catalog,
+    "local-catalog": local_catalog,
     "recovery-link": recovery_link,
+    "tutor-material": tutor_material,
 }
 
 
@@ -88,9 +101,15 @@ def main():
     admin = subs.add_parser("create-admin")
     admin.add_argument("email")
     admin.add_argument("--name", default="Curadoria")
-    seed_parser = subs.add_parser("seed")
+    seed_parser = subs.add_parser(
+        "seed",
+        help="Bootstrap legado; para as seis provas locais, use local-catalog",
+        description="Sem opções, importa o segundo dia de 2024 como rascunho. Com --publish-reviewed, instala os dois lotes conferidos quando ainda não instalados. Para atualizar um lote existente, combine --refresh-bundled. Não instala o perfil local de seis provas.",
+    )
     seed_parser.add_argument(
-        "--publish-reviewed", action="store_true", help="Publicar o conjunto incluído e conferido com os PDFs oficiais"
+        "--publish-reviewed",
+        action="store_true",
+        help="Publicar os lotes conferidos: segundo dia de 2024 e Matemática 2023",
     )
     seed_parser.add_argument(
         "--refresh-bundled",
@@ -98,14 +117,34 @@ def main():
         help="Atualizar a apresentação incluída criando versões; preservar as tentativas",
     )
     catalog_parser = subs.add_parser(
-        "catalog", help="Instalar lotes e rótulos conferidos, preservando versões e tentativas"
+        "catalog",
+        help="Instalar os dois lotes conferidos; preserva versões, tentativas e decisões manuais",
+        description="Instala segundo dia de 2024 e Matemática 2023. Sem --publish-curated mantém o fluxo de revisão; não equivale ao catálogo local de seis provas.",
     )
-    catalog_parser.add_argument("--publish-curated", action="store_true")
+    catalog_parser.add_argument(
+        "--publish-curated",
+        action="store_true",
+        help="Publicar os lotes conferidos sem reverter retiradas ou revisões manuais",
+    )
+    subs.add_parser("local-catalog", help="Instalar as seis provas regulares de 2024 e 2025 incluídas no Git")
     subs.add_parser("archive", help="Publicar as provas geradas do acervo oficial, sem curadoria")
+    material = subs.add_parser(
+        "tutor-material",
+        help="Gerar e aprovar automaticamente o material do tutor das questões publicadas",
+        description="Usa o provedor do .env; questões que já têm material aprovado para o conteúdo atual são puladas. Interrompido, pode ser executado de novo.",
+    )
+    material.add_argument("--exam", help="Limitar a uma prova publicada")
+    material.add_argument("--limit", type=int, help="Quantidade máxima de questões nesta execução")
+    material.add_argument("--pause", type=float, default=2.0, help="Segundos entre chamadas ao provedor")
     reset = subs.add_parser("recovery-link")
     reset.add_argument("email")
     reset.add_argument("--base-url", default="http://localhost:3000")
     args = parser.parse_args()
+    if args.command == "tutor-material":
+        # Long run against the provider: each question commits on its own.
+        with SessionLocal() as db:
+            COMMANDS[args.command](db, args)
+        return
     with SessionLocal.begin() as db:
         COMMANDS[args.command](db, args)
 

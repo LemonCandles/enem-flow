@@ -6,6 +6,8 @@ import pymupdf
 import pytest
 
 from ingestion.exam_pdf import extract_exam, from_manifest, lines
+from ingestion.exam_pdf.regions import section_break
+from ingestion.exam_pdf.text import list_marker
 
 TEXT = 'Considere a situação descrita e escolha a alternativa que melhor a representa.'
 
@@ -162,6 +164,40 @@ def test_rotated_repeated_watermark_is_dropped_but_rotated_labels_stay(tmp_path)
     page.insert_text((100, 400), 'Tempo de reação (s)', fontsize=8, rotate=90)
     found = [line['text'] for line in lines(page, page.rect)]
     assert 'Tempo de reação (s)' in found and not any('ENEM2024' in text for text in found)
+
+
+def test_microtext_rules_are_dropped_even_with_a_misspelled_repetition(tmp_path):
+    doc = pymupdf.open()
+    page = doc.new_page(width=569, height=781)
+    rule = 'ENEM2025' * 20 + 'ENEN2025' + 'ENEM2025' * 20
+    page.insert_text((30, 70), rule, fontsize=1.5)
+    page.insert_text((30, 200), 'ENEM2025ENEM2025ENEM2025', fontsize=10)
+    page.insert_text((30, 230), 'hahahahahahahahahahahaha', fontsize=10)
+    found = [line['text'] for line in lines(page, page.rect)]
+    # Readable repeated text is content; only the unreadable microtext is a rule.
+    assert found == ['ENEM2025ENEM2025ENEM2025', 'hahahahahahahahahahahaha']
+
+
+def test_clipped_vertical_watermark_with_two_repetitions_is_dropped(tmp_path):
+    doc = pymupdf.open()
+    page = doc.new_page(width=569, height=781)
+    page.insert_text((284, 300), '2024ENEM2024ENEM2024', fontsize=2, rotate=90)
+    assert [line['text'] for line in lines(page, page.rect)] == []
+
+
+def test_area_headings_end_the_previous_question():
+    assert section_break('LINGUAGENS, CÓDIGOS E SUAS TECNOLOGIAS')
+    assert section_break('Questões de 06 a 45')
+    assert not section_break('Questões de 01 a 05 (opção espanhol)')
+    assert not section_break('As linguagens, códigos e suas tecnologias no cotidiano')
+
+
+def test_list_numbers_drop_unmapped_bullet_glyphs():
+    # Span text of a numbered list whose bullet font has no character map (ENEM 2024).
+    assert list_marker('1.\t\x07\u202f\u202f\x07Genética: casos na família.') == '1. Genética: casos na família.'
+    assert list_marker('3.\u2003 \x07A redação que apresentar cópia') == '3. A redação que apresentar cópia'
+    assert list_marker('2. Hormônios: sem marcador.') == '2. Hormônios: sem marcador.'
+    assert list_marker('Texto \x07 no meio') == 'Texto \x07 no meio'
 
 
 def test_bare_letters_in_a_grid_split_figures_by_marker_font(tmp_path):

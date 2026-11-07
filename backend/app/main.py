@@ -27,7 +27,8 @@ TAGS = [
     },
     {
         "name": "prática adaptativa",
-        "description": "Sessões escolhidas a partir das evidências do aluno, com o motivo e o registro de cada escolha.",
+        "description": "Sessões escolhidas a partir das evidências do aluno, com o motivo e o registro de cada escolha. "
+        "Ajuda do tutor por níveis, a partir de material aprovado.",
     },
     {"name": "desempenho", "description": "Histórico e agregações de desempenho da própria conta."},
     {

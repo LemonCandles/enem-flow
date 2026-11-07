@@ -2,7 +2,7 @@
 
 ## Configuração
 
-`make setup` cria o ambiente, instala dependências, aplica a migração e importa o conjunto incluído. `make api` e `make web` iniciam os processos locais. O frontend só precisa alcançar o backend; ele não acessa o banco diretamente. Em produção, o Compose usa PostgreSQL com volumes persistentes e migrações no início.
+`make setup` cria o ambiente, instala dependências, aplica as migrações e prepara as seis provas locais de 2024/2025. `make api` e `make web` iniciam os processos locais. O frontend só precisa alcançar o backend; ele não acessa o banco diretamente. Em produção, o Compose usa PostgreSQL com volumes persistentes e migrações no início.
 
 | Variável | Uso |
 | --- | --- |
@@ -14,8 +14,13 @@
 | `ENEM_PROXY_SUBNET`, `ENEM_PROXY_IP` | Rede privada do gateway e seu IP fixo; padrões `172.30.246.0/24` e `172.30.246.254`. Ajuste os dois se houver conflito com outra rede. |
 | `FORWARDED_ALLOW_IPS` | No contêiner da API, recebe somente `ENEM_PROXY_IP`; não deve aceitar clientes ou redes públicas. |
 | `TEST_DATABASE_URL` | Banco descartável exclusivo da suíte; o nome precisa conter `test` |
+| `GROQ_API_KEY` | Chave do provedor do tutor; vazia, a prática mostra apenas o material aprovado |
+| `TUTOR_BASE_URL`, `TUTOR_MODEL` | API compatível com a OpenAI (padrão: Groq) e modelo usado pelo tutor |
+| `TUTOR_TIMEOUT_SECONDS`, `TUTOR_MAX_OUTPUT_TOKENS`, `TUTOR_DAILY_LIMIT` | Tempo limite por chamada, tamanho da resposta e chamadas diárias por aluno |
+| `TUTOR_REASONING_EFFORT` | Esforço de raciocínio (`low`, `medium`, `high`) para modelos como `openai/gpt-oss-*`; vazio nos demais |
+| `TUTOR_PRICE_INPUT_PER_MTOK`, `TUTOR_PRICE_OUTPUT_PER_MTOK`, `TUTOR_MAX_COST_USD` | Preços por milhão de tokens e custo máximo estimado por chamada, em US$; sem eles o provedor não é chamado |
 
-O `.env` é carregado pelo Docker Compose. Para execução Python direta, exporte as variáveis no shell; o backend não lê `.env` automaticamente. Use uma senha de banco compatível com URL ou codifique os caracteres reservados na `DATABASE_URL`.
+O `.env` da raiz é carregado pelo Docker Compose e pelo backend em execução direta (`python-dotenv`), sem substituir variáveis já exportadas no shell. Copie `.env.example` para `.env` e preencha `GROQ_API_KEY` para ativar o tutor; reinicie a API depois de alterar o arquivo. O frontend não lê esse arquivo e nunca recebe a chave. Use uma senha de banco compatível com URL ou codifique os caracteres reservados na `DATABASE_URL`.
 
 O Compose disponibiliza o gateway Nginx na porta 3000 e mantém Next, API e PostgreSQL internos. O gateway encaminha páginas ao Next e `/api/*` diretamente à API. As redes separam banco, frontend e proxy. O IP fixo do gateway é o único proxy autorizado pelo Uvicorn; isso preserva os contadores por cliente sem confiar no endereço do contêiner Next.
 
@@ -103,18 +108,7 @@ docker compose -p enem-validacao -f compose.yaml -f compose.test.yaml up -d --wa
 
 O arquivo de estado contém credenciais descartáveis e é criado com permissão 0600; mantenha-o em `tmp/` ou outro diretório privado fora do Git. Use uma nova saída para cada ensaio. A remoção de volumes só deve ocorrer na limpeza desse projeto descartável, após conferir seu nome; nunca na parada rotineira da aplicação.
 
-Com API/interface de teste iniciadas, rode os navegadores com `E2E_BASE_URL=http://localhost:3300`. O relatório de acessibilidade e as capturas ficam em `frontend/test-results/`. A validação no CI usa Docker Engine. Localmente foi usado o Compose oficial 5.6.1 conectado à API temporária de Podman 5.8.9 rootless, sem alterar os serviços locais da aplicação.
-
-## Evidências da consolidação de 31/10/2026
-
-- 57 testes de API em SQLite e 57 em PostgreSQL 17.7; migrações e `alembic check` aprovados.
-- Build em Python 3.13/Node 22 com instalação de dependências em ambiente isolado, sem copiar `.venv`, `node_modules`, `.env` ou o banco de execução.
-- Compose com três serviços saudáveis. Banco e recursos sobreviveram à substituição dos contêineres; recurso próprio permaneceu no volume após atualização.
-- `verify_deployment.py` confirmou resposta B, resultado 1/89, histórico, figura, 90 snapshots e finalização idempotente antes/depois da substituição.
-- Backup SQLite restaurado em caminho separado: integridade `ok`, 195 versões de questões, uma prova e uma tentativa preservadas. A origem não foi modificada.
-- Dump/restauração PostgreSQL em banco separado: linhas e hashes do conteúdo completo de questões, provas, tentativas, eventos e revisões idênticos no momento da comparação.
-
-As verificações de navegador e CI estão em [primeira entrega](primeira-entrega.md). Estes são ensaios técnicos com dados descartáveis, sem evidência de aprendizagem ou de piloto educacional. Repetir os procedimentos no ambiente escolhido para hospedagem continua parte da implantação.
+Com API/interface de teste iniciadas, rode os navegadores com `E2E_BASE_URL=http://localhost:3300`. O relatório de acessibilidade e as capturas ficam em `frontend/test-results/`. A validação no CI usa Docker Engine. No Podman, use um provedor Compose compatível.
 
 ## Atualizar os lotes e a classificação
 
@@ -125,7 +119,36 @@ Faça backup do banco e dos recursos antes de atualizar. Na versão da etapa 2:
 .venv/bin/python -m backend.app.cli catalog --publish-curated
 ```
 
-`make migrate seed` também aplica as migrações e o catálogo incluído. A migração `f831ef101a02` acrescenta a identidade canônica sem reescrever o conteúdo ou os snapshots. A instalação cria versões dos rótulos dos 90 itens de 2024 e acrescenta os 45 de Matemática de 2023. É idempotente; uma edição própria não reconhecida interrompe a transação em vez de ser sobrescrita. Novas classificações valem para novas tentativas; o histórico mantém seus rótulos originais.
+A migração `f831ef101a02` acrescenta a identidade canônica sem reescrever o conteúdo ou os snapshots. O comando `catalog --publish-curated` instala os rótulos dos 90 itens de 2024 e os 45 de Matemática de 2023; esse também é o conteúdo incluído na imagem Docker. É idempotente; uma edição própria não reconhecida interrompe a transação em vez de ser sobrescrita. Novas classificações valem para novas tentativas; o histórico mantém seus rótulos originais.
+
+Para atualizar o **catálogo local de seis provas regulares de 2024/2025**, após o backup:
+
+```bash
+make migrate seed
+# Equivalente ao seed local:
+.venv/bin/python -m backend.app.cli local-catalog
+```
+
+O instalador usa os cinco JSONs automáticos incluídos e o 2º dia conferido de 2024, totalizando 540 posições; as opções de língua compartilham questões. Ele não gera nem publica outros arquivos do acervo local. Arquivo ausente ou prova inválida interrompe a instalação sem deixar um catálogo parcial. Repetir o comando preserva versões existentes, retiradas e rejeições manuais. A seção de Matemática de 2023 que veio do bootstrap anterior é retirada apenas se sua última publicação tiver origem na identidade de serviço, com decisão registrada e sem apagar versões, respostas ou snapshots. Uma publicação manual dessa seção é preservada. Os comandos de catálogo conferido permanecem disponíveis para instalar os dois lotes de referência explicitamente.
+
+## Material do tutor e propostas de layout
+
+Com `GROQ_API_KEY` e os limites no `.env`, gere o material de todas as questões publicadas, aprovado automaticamente:
+
+```bash
+.venv/bin/python -m backend.app.cli tutor-material            # todas
+.venv/bin/python -m backend.app.cli tutor-material --limit 20 # um lote
+```
+
+O comando grava questão por questão, espera quando o provedor limita as chamadas e para após cinco falhas seguidas. Rodar de novo continua de onde parou. Na curadoria, **Material do tutor** mostra o material de cada questão, gera para uma questão com **Gerar e aprovar com IA** e aceita material escrito pela equipe, que passa por aprovação. Corrigir a questão invalida o material daquela versão; rode o comando de novo para cobri-la. Modelos de raciocínio, como `openai/gpt-oss-120b`, usam `TUTOR_REASONING_EFFORT=low` para responder dentro de `TUTOR_MAX_OUTPUT_TOKENS`.
+
+Para propor um novo layout de uma questão instalada, use o banco da instalação e o PDF original do acervo:
+
+```bash
+.venv/bin/python scripts/propose_layout.py enem-2025-regular-dia2-caderno-7-azul-q94:2 --output tmp/layout/q94.json
+```
+
+O script grava as figuras recortadas em `data/assets/<prova>/layout/`, pasta ignorada pelo Git: versioná-las exige decisão explícita. Envie o JSON em **Layout proposto**, na revisão da questão. Propostas recusadas mostram os motivos. Compare as aceitas com a página do caderno antes de aprovar; a aprovação cria um rascunho, que segue a revisão e a publicação normais.
 
 ## Instalar o banco histórico local na curadoria
 
@@ -137,3 +160,23 @@ docker compose -f compose.yaml -f compose.archive.yaml up --build -d
 ```
 
 Essa composição mantém o volume de figuras e acrescenta `data/bank/` para consulta administrativa. Os PDFs continuam acessíveis pelas URLs oficiais registradas; o banco textual não se torna público. Sem o banco local, a aplicação mantém o catálogo conferido e o inventário de fontes, com zero ocorrências extraídas instaladas nesse ambiente. Não confundir essa ausência local com cobertura histórica vazia.
+
+## Manutenção e limpeza
+
+`make clean` remove somente caches de Python/Ruff/pytest, saídas do Playwright e o cache incremental do TypeScript. O comando não apaga o banco de uso, backups, provas, recursos, `.venv`, `node_modules` nem o build em execução. Bancos e relatórios guardados em `tmp/` continuam locais e devem ser removidos somente quando a rodada correspondente tiver terminado.
+
+As dependências diretas são fixadas nos manifests; os lockfiles incluem as transitivas. Para atualizar, consulte as versões estáveis e suas notas, regenere os locks e execute `make test`, `make lint`, `make build` e os testes de navegador em banco separado. A checagem TypeScript recusa nomes e parâmetros sem uso. TypeScript 7 usa o compilador CLI suportado pelo Next.js; os tipos de Node permanecem na linha 22, correspondente ao runtime do projeto.
+
+Na revisão de 05/11/2026, foram atualizados Next.js, TypeScript, Lucide, os tipos React/Node, SQLAlchemy, psycopg, PyMuPDF e as dependências transitivas. O cliente de testes passou de HTTPX para HTTPX2, retirando o aviso de depreciação do Starlette. As ações do CI foram atualizadas e a imagem PostgreSQL passou à revisão 17.11, preservando a versão principal 17 e o volume existente. O Nginx 1.30.6 já era a revisão estável atual.
+
+Fontes das atualizações: [TypeScript no Next.js](https://nextjs.org/docs/app/api-reference/config/typescript), [HTTPX2 no Starlette](https://www.starlette.io/testclient/), [notas do PyMuPDF](https://pymupdf.readthedocs.io/en/latest/changes.html), [versões suportadas do PostgreSQL](https://www.postgresql.org/support/versioning/) e [notas do Nginx 1.30](https://nginx.org/en/CHANGES-1.30).
+
+## Reprodução após clone
+
+Em Linux/WSL com Git, Make, Python 3.13/3.14 e Node 22, execute `make setup`, depois `make dev`. Downloads de dependências exigem internet. O catálogo local não exige download de fontes históricas. `make doctor` verifica a instalação; divergências por retirada/publicação manual são informadas, não revertidas.
+
+O setup local aceita SQLite em arquivo (`DATABASE_URL` opcional); PostgreSQL segue o procedimento Docker. Antes de migrações em um banco SQLite existente, o setup cria snapshot em `backups/before-setup-*.db` e verifica integridade. Falha de backup impede a atualização. `make migrate` continua sendo comando administrativo de baixo nível e exige backup prévio.
+
+`make check-distribution` verifica schema, hashes e recursos dos sete JSONs distribuídos e compila seus campos LaTeX. O manifesto de hashes congela o conteúdo conhecido, incluindo pendências. Uma alteração intencional exige revisão do conteúdo e atualização explícita dos hashes; nunca regenerar hashes para esconder falha de validação. O seed não substitui JSONs automáticos já instalados. A exceção são as provas conferidas do perfil local: `local-catalog` cria novas versões aprovadas quando o conteúdo conferido difere e não há decisão manual posterior.
+
+O CI `clean-install` instala e repete o setup em checkout novo. A verificação estrita de seis provas vale para essa instalação nova; uma instalação com decisões próprias pode divergir. Não reutilizar o banco de uso em testes de navegador.

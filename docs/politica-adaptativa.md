@@ -56,40 +56,9 @@ O limite de 25 candidatos evita registros grandes quando o catálogo crescer; o 
 
 ## Comparação com as referências
 
-`make experiments` compara `adaptive-v1` com `random-v1` (qualquer item, sem usar evidência) e `reinforcement-simple-v1` (menor estimativa primeiro, sem outro controle), usando os 89 itens de `adaptive-math-reference-v1`. Cada cenário tem 30 alunos simulados, com probabilidade de acerto fixa por tema. [Resultado completo](experimentos/politica-adaptativa-2026-11-04.json).
+`make experiments` compara `adaptive-v1` com `random-v1` (qualquer item, sem usar evidência) e `reinforcement-simple-v1` (menor estimativa primeiro, sem outro controle), usando os 89 itens de `adaptive-math-reference-v1`. Cada cenário tem 30 alunos simulados, com probabilidade de acerto fixa por tema. O relatório fica em `adaptive-report.json` na pasta de saída.
 
-Valores médios. **Cobertura:** temas praticados entre os disponíveis. **Tema máximo:** maior fatia de um tema por sessão. **Repetição:** escolhas de item já apresentado. **Gini:** desigualdade de uso dos itens. **Tema fraco:** fatia dos temas fracos depois de haver evidência neles.
-
-| Cenário | Política | Cobertura | Tema máximo | Repetição | Itens distintos | Gini | Tema fraco | Questões |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| aluno-novo | Adaptativa | 100% | 20% | 0% | 40.0 | 0.55 | — | 40 |
-| aluno-novo | Aleatória | 99% | 32% | 16% | 33.6 | 0.67 | — | 40 |
-| aluno-novo | Reforço simples | 68% | 69% | 31% | 27.5 | 0.75 | — | 40 |
-| tema-fraco | Adaptativa | 100% | 26% | 2% | 58.9 | 0.35 | 36% | 60 |
-| tema-fraco | Aleatória | 100% | 33% | 25% | 45.0 | 0.59 | 11% | 60 |
-| tema-fraco | Reforço simples | 71% | 84% | 61% | 23.6 | 0.82 | 100% | 60 |
-| dois-temas-fracos | Adaptativa | 100% | 26% | 4% | 57.7 | 0.38 | 60% | 60 |
-| dois-temas-fracos | Aleatória | 100% | 33% | 24% | 45.8 | 0.58 | 19% | 60 |
-| dois-temas-fracos | Reforço simples | 70% | 82% | 60% | 23.9 | 0.82 | 100% | 60 |
-| revisao-antiga | Adaptativa | 100% | 20% | 0% | 20.0 | 0.78 | — | 20 |
-| revisao-antiga | Aleatória | 91% | 32% | 6% | 18.8 | 0.80 | — | 20 |
-| revisao-antiga | Reforço simples | 82% | 56% | 5% | 18.9 | 0.80 | — | 20 |
-| pratica-longa | Adaptativa | 100% | 26% | 26% | 88.8 | 0.17 | — | 120 |
-| pratica-longa | Aleatória | 100% | 32% | 44% | 67.6 | 0.44 | — | 120 |
-| pratica-longa | Reforço simples | 69% | 81% | 72% | 33.1 | 0.78 | — | 120 |
-| acervo-pequeno | Adaptativa | 100% | 47% | 50% | 12.0 | 0.00 | — | 24 |
-| acervo-pequeno | Aleatória | 100% | 33% | 70% | 12.0 | 0.11 | — | 40 |
-| acervo-pequeno | Reforço simples | 87% | 36% | 73% | 10.9 | 0.15 | — | 40 |
-| tema-unico | Adaptativa | 100% | 100% | 50% | 6.0 | 0.00 | — | 12 |
-| tema-unico | Aleatória | 100% | 100% | 50% | 6.0 | 0.00 | — | 12 |
-| tema-unico | Reforço simples | 100% | 100% | 50% | 6.0 | 0.00 | — | 12 |
-
-**O que os números mostram**
-
-- A adaptativa cobre todos os temas e repete menos itens que as duas referências nos cenários com acervo suficiente.
-- O reforço simples concentra mais nos temas fracos, com perda de cobertura e muita repetição. A adaptativa fica no meio, de propósito: dedica menos questões ao tema fraco e continua explorando e revisando o restante.
-- Em `revisao-antiga`, todas as escolhas da adaptativa são revisão, como esperado para esse cenário.
-- **Custo do controle de exposição:** em `acervo-pequeno`, a adaptativa entrega 24 questões em vez de 40, porque nenhum item passa de 2 exposições. Em `tema-unico`, as três políticas empatam, por falta de alternativa.
+As métricas geradas incluem cobertura de temas, maior concentração por sessão, repetição, identidades distintas, desigualdade de exposição e escolhas de temas fracos. Compare as políticas na mesma execução e preserve sua configuração e proveniência na saída.
 
 ## Limites
 
@@ -105,6 +74,5 @@ make experiments
 npm --prefix frontend run test:e2e -- --workers=1 tests/practice.spec.ts
 ```
 
-Em 04/11/2026, passaram 185 testes em SQLite, 185 em PostgreSQL e 36 de navegador, em três rodadas seguidas, em desktop e celular. A migração foi conferida nos dois bancos, incluindo o downgrade.
 
 A implantação requer `alembic upgrade head` antes de iniciar a aplicação.

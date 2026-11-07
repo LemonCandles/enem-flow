@@ -98,6 +98,285 @@ def from_manifest(manifest, pdf, answer_key=None):
     return result
 
 
+def extract_question(doc, c, source_hash, exam_id, assets_root):
+    """Native blocks of one question from its positioned regions, with the entries they came from.
+
+    `parts` pairs each body block with the positioned entries (lines, figures, tables) that formed
+    it, and `options` maps each letter A–E to the entries of its alternative, so a layout adapter
+    can reuse the extraction without repeating its decisions.
+    """
+    regions = (c.get('layout') or {}).get('blocks', [])
+    if not regions:
+        raise ValueError(f"Questão {c['number']}: faltam regiões page/bbox. Use --manifest para descobri-las.")
+    entries, issues, positions = [], [], []
+    for region in regions:
+        pn = region['page']
+        if not 1 <= pn <= len(doc):
+            raise ValueError('Página fora do PDF.')
+        page, clip = doc[pn - 1], fitz.Rect(region['bbox'])
+        if clip.is_empty or not page.rect.contains(clip):
+            raise ValueError('Região fora da página.')
+        source_lines = lines(page, clip)
+        mark_bare_options(source_lines)
+        source_lines = align_option_lines(source_lines)
+        figs = []
+        for candidate in graphics(page, clip):
+            if candidate.get_area() >= clip.get_area() * 0.9:
+                issues.append(
+                    diagnostic(
+                        'whole_region_image',
+                        'Imagem ocupa o recorte integral: separe os diagramas ou faça OCR e confira o texto antes de aprovar.',
+                        f'page:{pn}',
+                        'error',
+                    )
+                )
+            else:
+                figs.append(candidate)
+        tables = []
+        # Tables with a rectangular cell grid become HTML data. Never
+        # infer missing cells from prose or replace a table with OCR guesses.
+        for table in page.find_tables(clip=clip, use_layout=False).tables:
+            if any(l.get('option') and fitz.Rect(table.bbox).contains(fitz.Point(l['bbox'][:2])) for l in source_lines):
+                continue
+            rows = table.extract()
+            if (
+                len(rows) > 1
+                and 1 < len(rows[0]) <= 12
+                and all(len(r) == len(rows[0]) for r in rows)
+                and textual_table(rows)
+            ):
+                if any(cell is None for row in rows for cell in row):
+                    issues.append(
+                        diagnostic(
+                            'merged_table_cells',
+                            'Tabela com células mescladas ou ausentes: confira a estrutura antes de aprovar.',
+                            f'page:{pn}',
+                            'error',
+                        )
+                    )
+                tables.append(
+                    (
+                        fitz.Rect(table.bbox),
+                        {
+                            'type': 'table',
+                            'caption': 'Tabela extraída da prova; conferir cabeçalhos.',
+                            'headers': [literal(str(v or '')) for v in rows[0]],
+                            'rows': [[literal(str(v or '')) for v in row] for row in rows[1:]],
+                        },
+                    )
+                )
+        figs = [
+            r
+            for r in figs
+            if not any(t[0].intersects(r) and (t[0] & r).get_area() > r.get_area() * 0.8 for t in tables)
+        ]
+        for r, block in tables:
+            entries.append(dict(type='block', block=block, page=pn, bbox=list(r), text=''))
+        labelled_figs = alternative_graphics(figs, source_lines, clip)
+        expanded = []
+        for r, alternative in labelled_figs:
+            # Include labels touching the drawing, without absorbing nearby prose.
+            anchor = fitz.Rect(r)
+            for line in source_lines:
+                if line.get('option'):
+                    continue
+                lr = fitz.Rect(line['bbox'])
+                if line['size'] <= 8.5 and lr.y0 >= anchor.y1:
+                    continue
+                if not anchor.intersects(lr) and len(line['text']) > 50:
+                    continue
+                if (anchor + (-3, -3, 3, 3)).intersects(lr) and len(line['text']) < 100:
+                    r |= lr
+            r = (r + (-2, -2, 2, 2)) & clip
+            expanded.append(r)
+            digest = hashlib.sha256(f'{source_hash}:{pn}:{list(r)}'.encode()).hexdigest()[:16]
+            relative = Path(exam_id) / 'prepared' / f'{digest}.png'
+            target = Path(assets_root) / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if not target.exists():
+                page.get_pixmap(matrix=fitz.Matrix(2.5, 2.5), clip=r).save(target)
+            block = {
+                'type': 'image',
+                'asset': {
+                    'path': '/assets/' + relative.as_posix(),
+                    'alt': f"Figura extraída da questão {c['number']}, página {pn}; descrição detalhada pendente.",
+                },
+            }
+            entries.append(dict(type='block', block=block, page=pn, bbox=list(r), text='', alternative=alternative))
+            positions.append({'asset': block['asset']['path'], 'page': pn, 'bbox': list(r)})
+        excluded = expanded + [r for r, _ in tables]
+        uncontained = [l for l in source_lines if not any(r.contains(fitz.Rect(l['bbox']).tl) for r in excluded)]
+        aligned = Counter(round(l['bbox'][1] / 3) for l in uncontained)
+        if sum(count >= 3 for count in aligned.values()) >= 2:
+            issues.append(
+                diagnostic(
+                    'spatial_layout',
+                    'Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.',
+                    f'page:{pn}',
+                    'error',
+                )
+            )
+        broken = [l['text'] for l in source_lines if garbled(l['text'])]
+        if broken:
+            issues.append(
+                diagnostic(
+                    'garbled_text',
+                    f'{len(broken)} linha(s) com codificação de texto quebrada: a fonte do PDF não informa as letras. Prepare por outra cor legível da mesma aplicação ou corrija a codificação; não aprove.',
+                    f'page:{pn}',
+                    'error',
+                    broken[0],
+                )
+            )
+        for line in source_lines:
+            center = fitz.Rect(line['bbox']).tl + (fitz.Rect(line['bbox']).br - fitz.Rect(line['bbox']).tl) * 0.5
+            if not line.get('option') and any(r.contains(center) for r in excluded):
+                continue
+            if HEADING.match(line['text']):
+                continue
+            if not line['text']:
+                continue
+            if line['uncertain']:
+                issues.append(
+                    diagnostic(
+                        'spatial_math',
+                        'Índice/expoente não numérico precisa de transcrição LaTeX.',
+                        f'page:{pn}',
+                        excerpt=line['text'],
+                    )
+                )
+            if re.search(r'[√∫∑]|\b\d+\s+\d+\s*/', line['text']):
+                issues.append(
+                    diagnostic(
+                        'complex_math',
+                        'Expressão espacial precisa de conferência e transcrição LaTeX; expoentes e frações não são inferidos de texto achatado.',
+                        f'page:{pn}',
+                        excerpt=line['text'],
+                    )
+                )
+            entries.append({**line, 'text': literal(line['text']), 'type': 'text', 'page': pn})
+    # Regions already encode column/page reading order. Do not globally
+    # sort columns by y, which would interleave independent questions.
+    ordered = []
+    for region in regions:
+        r = fitz.Rect(region['bbox'])
+        pn = region['page']
+        group = [
+            e
+            for e in entries
+            if e['page'] == pn and r.contains(fitz.Point(e['bbox'][0] + 0.1, e['bbox'][1] + 0.1)) and e not in ordered
+        ]
+        ordered.extend(sorted(group, key=lambda e: (round(e['bbox'][1], 1), e['bbox'][0])))
+    explicit = [(i, e['option']) for i, e in enumerate(ordered) if e.get('option')]
+    markers = (
+        explicit
+        if sorted(letter for _, letter in explicit) == list('ABCDE')
+        else [
+            (i, m[1])
+            for i, e in enumerate(ordered)
+            if e['type'] == 'text' and (m := re.match(r'^([ABCDE])(?:\s|$)', e['text']))
+        ]
+    )
+    sequences = [k for k in range(len(markers) - 4) if ''.join(x[1] for x in markers[k : k + 5]) == 'ABCDE']
+    choices, body, options = [], ordered, {}
+    graphical = {letter: [e for e in ordered if e.get('alternative') == letter] for letter in 'ABCDE'}
+    if sorted(letter for _, letter in explicit) == list('ABCDE') and all(
+        len(items) == 1 for items in graphical.values()
+    ):
+        cutoff = min(i for i, e in enumerate(ordered) if e.get('alternative') or e.get('option'))
+        body = ordered[:cutoff]
+        options = {
+            letter: [ordered[next(i for i, a in explicit if a == letter)], graphical[letter][0]] for letter in 'ABCDE'
+        }
+        choices = [
+            {
+                'letter': letter,
+                'text': re.sub(
+                    r'^[ABCDE]\s*', '', ordered[next(i for i, a in explicit if a == letter)]['text']
+                ).strip(),
+                'image': graphical[letter][0]['block']['asset'],
+            }
+            for letter in 'ABCDE'
+        ]
+        issues.append(
+            diagnostic(
+                'graphical_options',
+                'Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.',
+                'alternatives',
+            )
+        )
+    elif len(sequences) == 1:
+        found = markers[sequences[0] : sequences[0] + 5]
+        body = ordered[: found[0][0]]
+        for j, (start, letter) in enumerate(found):
+            chunk = ordered[start : found[j + 1][0] if j < 4 else len(ordered)]
+            options[letter] = chunk
+            text = ' '.join(e['text'] for e in chunk if e['type'] == 'text')
+            text = re.sub(r'^[ABCDE]\s*', '', text).strip()
+            images = [e['block']['asset'] for e in chunk if e['type'] == 'block' and e['block']['type'] == 'image']
+            if len(images) > 1:
+                issues.append(
+                    diagnostic(
+                        'alternative_layout',
+                        'Múltiplas figuras em uma alternativa: agrupe e confira manualmente.',
+                        f'alternative:{letter}',
+                        'error',
+                    )
+                )
+            choices.append(
+                {
+                    'letter': letter,
+                    'text': text or ('' if images else 'Alternativa não extraída; conferir original.'),
+                    'image': images[0] if images else None,
+                }
+            )
+    else:
+        issues.append(
+            diagnostic(
+                'alternative_layout',
+                'Não foi encontrada uma sequência inequívoca A–E. Transcreva as alternativas e remova os fragmentos do enunciado.',
+                'alternatives',
+                'error',
+            )
+        )
+        choices = [{'letter': a, 'text': 'Alternativa não extraída; conferir original.'} for a in 'ABCDE']
+    blocks, sources = [], []
+    for e in body:
+        if e['type'] == 'block':
+            blocks.append(e['block'])
+            sources.append([e])
+            continue
+        text = e['text']
+        # Same PDF block, ordinary body text: join physical lines. Equations
+        # and small bibliography remain separate to preserve their roles.
+        previous = blocks[-1] if blocks else None
+        is_reaction = bool(re.search(r'→|⇌|->', text))
+        if (
+            previous
+            and previous.get('_group') == (e['page'], e['group'])
+            and not is_reaction
+            and not previous.get('_reaction')
+        ):
+            previous['text'] += ' ' + text
+            sources[-1].append(e)
+        else:
+            blocks.append(
+                {'type': 'paragraph', 'text': text, '_group': (e['page'], e['group']), '_reaction': is_reaction}
+            )
+            sources.append([e])
+    for b in blocks:
+        b.pop('_group', None)
+        b.pop('_reaction', None)
+    return dict(
+        blocks=blocks,
+        choices=choices,
+        issues=issues,
+        positions=positions,
+        ordered=ordered,
+        parts=list(zip(blocks, sources)),
+        options=options,
+    )
+
+
 def extract_exam(data, pdf, assets_root, document=None):
     """Rebuild native blocks from positioned regions in an arbitrary exam JSON."""
     if document is not None and Path(document.name).resolve() != Path(pdf).resolve():
@@ -108,274 +387,9 @@ def extract_exam(data, pdf, assets_root, document=None):
             raise ValueError('Hash do PDF diferente da origem declarada no JSON.')
         for question in data['questions']:
             c = question['content']
-            regions = (c.get('layout') or {}).get('blocks', [])
-            if not regions:
-                raise ValueError(f"Questão {c['number']}: faltam regiões page/bbox. Use --manifest para descobri-las.")
-            entries, issues, positions = [], [], []
-            for region in regions:
-                pn = region['page']
-                if not 1 <= pn <= len(doc):
-                    raise ValueError('Página fora do PDF.')
-                page, clip = doc[pn - 1], fitz.Rect(region['bbox'])
-                if clip.is_empty or not page.rect.contains(clip):
-                    raise ValueError('Região fora da página.')
-                source_lines = lines(page, clip)
-                mark_bare_options(source_lines)
-                source_lines = align_option_lines(source_lines)
-                figs = []
-                for candidate in graphics(page, clip):
-                    if candidate.get_area() >= clip.get_area() * 0.9:
-                        issues.append(
-                            diagnostic(
-                                'whole_region_image',
-                                'Imagem ocupa o recorte integral: separe os diagramas ou faça OCR e confira o texto antes de aprovar.',
-                                f'page:{pn}',
-                                'error',
-                            )
-                        )
-                    else:
-                        figs.append(candidate)
-                tables = []
-                # Tables with a rectangular cell grid become HTML data. Never
-                # infer missing cells from prose or replace a table with OCR guesses.
-                for table in page.find_tables(clip=clip, use_layout=False).tables:
-                    if any(
-                        l.get('option') and fitz.Rect(table.bbox).contains(fitz.Point(l['bbox'][:2]))
-                        for l in source_lines
-                    ):
-                        continue
-                    rows = table.extract()
-                    if (
-                        len(rows) > 1
-                        and 1 < len(rows[0]) <= 12
-                        and all(len(r) == len(rows[0]) for r in rows)
-                        and textual_table(rows)
-                    ):
-                        if any(cell is None for row in rows for cell in row):
-                            issues.append(
-                                diagnostic(
-                                    'merged_table_cells',
-                                    'Tabela com células mescladas ou ausentes: confira a estrutura antes de aprovar.',
-                                    f'page:{pn}',
-                                    'error',
-                                )
-                            )
-                        tables.append(
-                            (
-                                fitz.Rect(table.bbox),
-                                {
-                                    'type': 'table',
-                                    'caption': 'Tabela extraída da prova; conferir cabeçalhos.',
-                                    'headers': [literal(str(v or '')) for v in rows[0]],
-                                    'rows': [[literal(str(v or '')) for v in row] for row in rows[1:]],
-                                },
-                            )
-                        )
-                figs = [
-                    r
-                    for r in figs
-                    if not any(t[0].intersects(r) and (t[0] & r).get_area() > r.get_area() * 0.8 for t in tables)
-                ]
-                for r, block in tables:
-                    entries.append(dict(type='block', block=block, page=pn, bbox=list(r), text=''))
-                labelled_figs = alternative_graphics(figs, source_lines, clip)
-                expanded = []
-                for r, alternative in labelled_figs:
-                    # Include labels touching the drawing, without absorbing nearby prose.
-                    anchor = fitz.Rect(r)
-                    for line in source_lines:
-                        if line.get('option'):
-                            continue
-                        lr = fitz.Rect(line['bbox'])
-                        if line['size'] <= 8.5 and lr.y0 >= anchor.y1:
-                            continue
-                        if not anchor.intersects(lr) and len(line['text']) > 50:
-                            continue
-                        if (anchor + (-3, -3, 3, 3)).intersects(lr) and len(line['text']) < 100:
-                            r |= lr
-                    r = (r + (-2, -2, 2, 2)) & clip
-                    expanded.append(r)
-                    digest = hashlib.sha256(f'{source_hash}:{pn}:{list(r)}'.encode()).hexdigest()[:16]
-                    relative = Path(data['id']) / 'prepared' / f'{digest}.png'
-                    target = Path(assets_root) / relative
-                    target.parent.mkdir(parents=True, exist_ok=True)
-                    if not target.exists():
-                        page.get_pixmap(matrix=fitz.Matrix(2.5, 2.5), clip=r).save(target)
-                    block = {
-                        'type': 'image',
-                        'asset': {
-                            'path': '/assets/' + relative.as_posix(),
-                            'alt': f"Figura extraída da questão {c['number']}, página {pn}; descrição detalhada pendente.",
-                        },
-                    }
-                    entries.append(
-                        dict(type='block', block=block, page=pn, bbox=list(r), text='', alternative=alternative)
-                    )
-                    positions.append({'asset': block['asset']['path'], 'page': pn, 'bbox': list(r)})
-                excluded = expanded + [r for r, _ in tables]
-                uncontained = [
-                    l for l in source_lines if not any(r.contains(fitz.Rect(l['bbox']).tl) for r in excluded)
-                ]
-                aligned = Counter(round(l['bbox'][1] / 3) for l in uncontained)
-                if sum(count >= 3 for count in aligned.values()) >= 2:
-                    issues.append(
-                        diagnostic(
-                            'spatial_layout',
-                            'Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.',
-                            f'page:{pn}',
-                            'error',
-                        )
-                    )
-                broken = [l['text'] for l in source_lines if garbled(l['text'])]
-                if broken:
-                    issues.append(
-                        diagnostic(
-                            'garbled_text',
-                            f'{len(broken)} linha(s) com codificação de texto quebrada: a fonte do PDF não informa as letras. Prepare por outra cor legível da mesma aplicação ou corrija a codificação; não aprove.',
-                            f'page:{pn}',
-                            'error',
-                            broken[0],
-                        )
-                    )
-                for line in source_lines:
-                    center = (
-                        fitz.Rect(line['bbox']).tl + (fitz.Rect(line['bbox']).br - fitz.Rect(line['bbox']).tl) * 0.5
-                    )
-                    if not line.get('option') and any(r.contains(center) for r in excluded):
-                        continue
-                    if HEADING.match(line['text']):
-                        continue
-                    if not line['text']:
-                        continue
-                    if line['uncertain']:
-                        issues.append(
-                            diagnostic(
-                                'spatial_math',
-                                'Índice/expoente não numérico precisa de transcrição LaTeX.',
-                                f'page:{pn}',
-                                excerpt=line['text'],
-                            )
-                        )
-                    if re.search(r'[√∫∑]|\b\d+\s+\d+\s*/', line['text']):
-                        issues.append(
-                            diagnostic(
-                                'complex_math',
-                                'Expressão espacial precisa de conferência e transcrição LaTeX; expoentes e frações não são inferidos de texto achatado.',
-                                f'page:{pn}',
-                                excerpt=line['text'],
-                            )
-                        )
-                    entries.append({**line, 'text': literal(line['text']), 'type': 'text', 'page': pn})
-            # Regions already encode column/page reading order. Do not globally
-            # sort columns by y, which would interleave independent questions.
-            ordered = []
-            for region in regions:
-                r = fitz.Rect(region['bbox'])
-                pn = region['page']
-                group = [
-                    e
-                    for e in entries
-                    if e['page'] == pn
-                    and r.contains(fitz.Point(e['bbox'][0] + 0.1, e['bbox'][1] + 0.1))
-                    and e not in ordered
-                ]
-                ordered.extend(sorted(group, key=lambda e: (round(e['bbox'][1], 1), e['bbox'][0])))
-            explicit = [(i, e['option']) for i, e in enumerate(ordered) if e.get('option')]
-            markers = (
-                explicit
-                if sorted(letter for _, letter in explicit) == list('ABCDE')
-                else [
-                    (i, m[1])
-                    for i, e in enumerate(ordered)
-                    if e['type'] == 'text' and (m := re.match(r'^([ABCDE])(?:\s|$)', e['text']))
-                ]
-            )
-            sequences = [k for k in range(len(markers) - 4) if ''.join(x[1] for x in markers[k : k + 5]) == 'ABCDE']
-            choices, body = [], ordered
-            graphical = {letter: [e for e in ordered if e.get('alternative') == letter] for letter in 'ABCDE'}
-            if sorted(letter for _, letter in explicit) == list('ABCDE') and all(
-                len(items) == 1 for items in graphical.values()
-            ):
-                cutoff = min(i for i, e in enumerate(ordered) if e.get('alternative') or e.get('option'))
-                body = ordered[:cutoff]
-                choices = [
-                    {
-                        'letter': letter,
-                        'text': re.sub(
-                            r'^[ABCDE]\s*', '', ordered[next(i for i, a in explicit if a == letter)]['text']
-                        ).strip(),
-                        'image': graphical[letter][0]['block']['asset'],
-                    }
-                    for letter in 'ABCDE'
-                ]
-                issues.append(
-                    diagnostic(
-                        'graphical_options',
-                        'Alternativas gráficas segmentadas pela posição das letras A–E; confira contornos, rótulos e correspondência.',
-                        'alternatives',
-                    )
-                )
-            elif len(sequences) == 1:
-                found = markers[sequences[0] : sequences[0] + 5]
-                body = ordered[: found[0][0]]
-                for j, (start, letter) in enumerate(found):
-                    chunk = ordered[start : found[j + 1][0] if j < 4 else len(ordered)]
-                    text = ' '.join(e['text'] for e in chunk if e['type'] == 'text')
-                    text = re.sub(r'^[ABCDE]\s*', '', text).strip()
-                    images = [
-                        e['block']['asset'] for e in chunk if e['type'] == 'block' and e['block']['type'] == 'image'
-                    ]
-                    if len(images) > 1:
-                        issues.append(
-                            diagnostic(
-                                'alternative_layout',
-                                'Múltiplas figuras em uma alternativa: agrupe e confira manualmente.',
-                                f'alternative:{letter}',
-                                'error',
-                            )
-                        )
-                    choices.append(
-                        {
-                            'letter': letter,
-                            'text': text or ('' if images else 'Alternativa não extraída; conferir original.'),
-                            'image': images[0] if images else None,
-                        }
-                    )
-            else:
-                issues.append(
-                    diagnostic(
-                        'alternative_layout',
-                        'Não foi encontrada uma sequência inequívoca A–E. Transcreva as alternativas e remova os fragmentos do enunciado.',
-                        'alternatives',
-                        'error',
-                    )
-                )
-                choices = [{'letter': a, 'text': 'Alternativa não extraída; conferir original.'} for a in 'ABCDE']
-            blocks = []
-            for e in body:
-                if e['type'] == 'block':
-                    blocks.append(e['block'])
-                    continue
-                text = e['text']
-                # Same PDF block, ordinary body text: join physical lines. Equations
-                # and small bibliography remain separate to preserve their roles.
-                previous = blocks[-1] if blocks else None
-                is_reaction = bool(re.search(r'→|⇌|->', text))
-                if (
-                    previous
-                    and previous.get('_group') == (e['page'], e['group'])
-                    and not is_reaction
-                    and not previous.get('_reaction')
-                ):
-                    previous['text'] += ' ' + text
-                else:
-                    blocks.append(
-                        {'type': 'paragraph', 'text': text, '_group': (e['page'], e['group']), '_reaction': is_reaction}
-                    )
-            for b in blocks:
-                b.pop('_group', None)
-                b.pop('_reaction', None)
-            c.update(blocks=blocks, images=[], alternatives=choices, original_layout=False)
+            result = extract_question(doc, c, source_hash, data['id'], assets_root)
+            blocks = result['blocks']
+            c.update(blocks=blocks, images=[], alternatives=result['choices'], original_layout=False)
             c['statement'] = (
                 '\n\n'.join(b['text'] for b in blocks if b['type'] == 'paragraph')
                 or 'Conteúdo visual; conferir a figura e o original.'
@@ -385,8 +399,8 @@ def extract_exam(data, pdf, assets_root, document=None):
                 'extraction': {
                     'adapter': 'pdf-geometry-v1',
                     'source_sha256': source_hash,
-                    'figures': positions,
-                    'issues': issues,
+                    'figures': result['positions'],
+                    'issues': result['issues'],
                 },
             }
     return data

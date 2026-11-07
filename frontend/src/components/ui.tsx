@@ -100,21 +100,14 @@ export function ExamCard({
   busy?: boolean;
   resume?: string;
 }) {
-  const pending = exam.content_quality?.review_status === 'pending';
   return (
     <article className="exam-card">
       <ExamCover year={exam.year} day={exam.day} />
       <div className="exam-card-body">
         <div className="row between">
-          <span className={`badge ${pending ? 'amber' : 'green'}`}>
-            {pending ? (
-              'Extração automática'
-            ) : (
-              <>
-                <Check size={12} />
-                Disponível
-              </>
-            )}
+          <span className="badge green">
+            <Check size={12} />
+            Disponível
           </span>
           <span className="tiny muted">{kindName(exam.kind)}</span>
         </div>

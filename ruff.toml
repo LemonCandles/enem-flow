@@ -1,14 +1,7 @@
-# Formatação e lint do Python. Os scripts históricos com regras por questão e as
-# migrações já aplicadas ficam de fora: são registro do que foi feito.
+# Formatação e lint do Python; migrações aplicadas preservam sua forma original.
 target-version = "py313"
 line-length = 120
-extend-exclude = [
-  "backend/migrations/versions",
-  "scripts/import_official.py",
-  "scripts/review_2023_math.py",
-  "scripts/review_presentation.py",
-  "scripts/structure_questions.py",
-]
+extend-exclude = ["backend/migrations/versions"]
 
 [format]
 quote-style = "preserve"

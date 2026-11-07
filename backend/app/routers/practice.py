@@ -5,15 +5,16 @@ import secrets
 import time
 from collections import Counter
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy import select
 
 from ..dependencies import CurrentUser, SessionDep
 from ..models import DiagnosticSession, LearningEvent, RecommendationEvent
 from ..schemas import Answer
 from ..schemas.practice import StartPractice
-from ..services import attempts
-from ..services.adaptive import ADAPTIVE_V1, DEFAULT_POLICY, PolicyInput, recommend
+from ..schemas.tutor import HelpRequest
+from ..services import attempts, tutor
+from ..services.adaptive import ADAPTIVE_V1, DEFAULT_POLICY, PolicyInput, filter_pool, recommend
 from ..services.attempts import PRACTICE
 from ..services.diagnostics import eligible_items, identity, session_data, source_urls, user_origins
 from ..services.knowledge import reconstruct
@@ -44,6 +45,28 @@ def provisional_difficulty(db):
 def exposure_of(db, user_id):
     """How many attempts of this student showed each item, finished or not."""
     return Counter(identity(item) for origin in user_origins(db, user_id) for item in origin.items)
+
+
+@router.get('/practice-options')
+def options(user: CurrentUser, db: SessionDep, available_minutes: int = Query(15, ge=3, le=180)):
+    pool = eligible_items(db)
+    exposures = exposure_of(db, user.id)
+    difficulty = provisional_difficulty(db)
+    areas = []
+    for area in sorted({i['content']['area'] for i in pool}):
+        candidates = [i for i in pool if i['content']['area'] == area]
+        allowed, _ = filter_pool(
+            PolicyInput(candidates, {}, exposures, available_minutes, '', 0, difficulty), ADAPTIVE_V1
+        )
+        areas.append(
+            dict(
+                area=area,
+                eligible_items=len(allowed),
+                exhausted=not allowed,
+                themes=dict(Counter(t for i in allowed for t in set(i['content']['labels']['themes']))),
+            )
+        )
+    return {'areas': areas}
 
 
 @router.post('/practice-sessions', status_code=201)
@@ -111,12 +134,21 @@ def start(payload: StartPractice, user: CurrentUser, db: SessionDep):
                 candidates=entry['candidates'],
             )
         )
-    return session_data(session)
+    return practice_data(db, session)
+
+
+def practice_data(db, session):
+    """The session as diagnostics show it, plus the help state of each item."""
+    data = session_data(session)
+    state = tutor.help_state(db, session)
+    for item in data['items']:
+        item['help'] = state[item['id']]
+    return data
 
 
 @router.get('/practice-sessions/{session_id}')
 def get_session(session_id: str, user: CurrentUser, db: SessionDep):
-    return session_data(attempts.owned(db, PRACTICE, session_id, user.id))
+    return practice_data(db, attempts.owned(db, PRACTICE, session_id, user.id))
 
 
 @router.put('/practice-sessions/{session_id}/answers/{item_id}')
@@ -126,7 +158,19 @@ def answer(session_id: str, item_id: str, payload: Answer, user: CurrentUser, db
 
 @router.post('/practice-sessions/{session_id}/finish')
 def finish(session_id: str, user: CurrentUser, db: SessionDep):
-    return session_data(attempts.finish(db, PRACTICE, session_id, user.id))
+    return practice_data(db, attempts.finish(db, PRACTICE, session_id, user.id))
+
+
+@router.post('/practice-sessions/{session_id}/items/{item_id}/help')
+def request_help(session_id: str, item_id: str, payload: HelpRequest, user: CurrentUser, db: SessionDep):
+    """Help from approved material; repeated keys and levels return what was already delivered."""
+    event = tutor.request_help(db, user.id, session_id, item_id, payload.level, payload.idempotency_key)
+    return tutor.event_data(event)
+
+
+@router.get('/me/help-events')
+def my_help(user: CurrentUser, db: SessionDep):
+    return tutor.my_help_events(db, user.id)
 
 
 def event_data(event, include_candidates=False):

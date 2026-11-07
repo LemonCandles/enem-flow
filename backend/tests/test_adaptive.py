@@ -1,6 +1,5 @@
 """Adaptive practice: pure policy decisions, then the API contract and its audit trail."""
 
-import copy
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import json
@@ -181,27 +180,6 @@ def test_every_choice_logs_function_reason_priority_and_candidates():
     assert entries[0]['candidates_total'] == 30 and entries[-1]['candidates_total'] == 21
 
 
-@pytest.fixture
-def thematic(admin, exam_payload):
-    payload = copy.deepcopy(exam_payload)
-    payload['expected_items'] = 12
-    template = payload['questions'][0]
-    payload['questions'] = []
-    for n in range(1, 13):
-        q = copy.deepcopy(template)
-        q['question_id'] = f'adaptive-q{n}'
-        q['content'].update(number=n, statement=f'Questão sintética adaptativa {n}: calcule o resultado solicitado.')
-        q['content']['labels']['themes'] = ['Álgebra' if n % 2 else 'Geometria']
-        payload['questions'].append(q)
-    assert admin.post('/admin/imports', json=payload).status_code == 201
-    reason = {'action': 'approve', 'reason': 'Referência sintética para a prática'}
-    for q in payload['questions']:
-        assert admin.post(f"/admin/reviews/{q['question_id']}:1", json=reason).status_code == 200
-    published = {'action': 'publish', 'reason': 'Referência temática para a prática'}
-    assert admin.post('/admin/reviews/prova-teste', json=published).status_code == 200
-    return payload
-
-
 def begin(client, key='practice-key-001', **kwargs):
     body = {'objective': 'Praticar', 'area': 'Matemática', 'available_minutes': 15, 'idempotency_key': key, **kwargs}
     return client.post('/practice-sessions', json=body)
@@ -315,3 +293,20 @@ def test_deleting_history_removes_recommendations(student, thematic, database):
     assert student.get('/me/recommendations').json() == [] and student.get('/me/sessions').json() == []
     with database() as db:
         assert db.scalar(select(func.count()).select_from(RecommendationEvent)) == 0
+
+
+def test_practice_options_reflect_exhaustion(student, thematic):
+    before = student.get('/practice-options?available_minutes=60')
+    assert before.status_code == 200
+    assert before.json()['areas'][0]['eligible_items'] == 12
+    for key in ('options-exposure-1', 'options-exposure-2'):
+        assert begin(student, key, available_minutes=60).status_code == 201
+    row = student.get('/practice-options?available_minutes=60').json()['areas'][0]
+    assert row['eligible_items'] == 0
+    assert row['exhausted'] is True
+    assert student.get('/diagnostic-options').json()['areas'][0]['eligible_items'] == 12
+    assert student.get('/practice-options?available_minutes=0').status_code == 422
+
+
+def test_practice_options_require_login(client):
+    assert client.get('/practice-options').status_code == 401

@@ -30,9 +30,56 @@ export type ContentBlock =
   | { type: 'math'; tex: string }
   | { type: 'table'; headers: string[]; rows: string[][]; caption: string };
 export type Recommendation = { function: string; reason: string; policy_version: string };
+export type HelpLevel = 'orientation' | 'hint' | 'solution';
+export type DeliveredHelp = { level: HelpLevel; message: string; mode: 'tutor' | 'material'; delivered_at: number };
+// Practice only: whether approved help exists for the item and what was already received.
+export type HelpState = { available: boolean; next_level: HelpLevel | null; delivered: DeliveredHelp[] };
+export type HelpEvent = DeliveredHelp & {
+  id: string;
+  session_id: string;
+  item_id: string;
+  content_version: number;
+  outcome: 'requested' | 'delivered';
+  requested_at: number;
+  provider: Record<string, unknown>;
+};
+export type TutorMaterial = {
+  id: string;
+  question_id: string;
+  version: number;
+  status: 'proposal' | 'approved' | 'rejected' | 'superseded';
+  origin: 'human' | 'llm';
+  levels: Record<HelpLevel, string>;
+  provenance: Record<string, unknown>;
+  created_at: number;
+  reviewed_at: number | null;
+  review_reason: string | null;
+  current: boolean;
+};
+export type LayoutProposal = {
+  id: string;
+  question_version_id: string;
+  adapter_version: string;
+  status: 'proposal' | 'invalid' | 'approved' | 'rejected';
+  errors: string[];
+  comparison: {
+    preserved_ratio: number;
+    missing_words: number;
+    extra_words: number;
+    missing_sample: string[];
+    blocks_before: number;
+    blocks_after: number;
+    figures_before: number;
+    figures_after: number;
+  };
+  converted: Question | null;
+  result_version_id: string | null;
+};
+export type TutorStatus = { enabled: boolean; missing: string[]; model: string | null; daily_limit: number };
 export type Question = {
   source_url?: string;
   recommendation?: Recommendation;
+  help?: HelpState;
   preparation_errors?: number;
   id: string;
   question_id: string;
@@ -98,7 +145,9 @@ export type Diagnostic = Omit<Run, 'exam'> & {
   };
 };
 export type DiagnosticSummary = Omit<Diagnostic, 'items'>;
-export type DiagnosticOptions = { areas: { area: string; eligible_items: number; themes: Record<string, number> }[] };
+export type DiagnosticOptions = {
+  areas: { area: string; eligible_items: number; exhausted?: boolean; themes: Record<string, number> }[];
+};
 export type KnowledgeGroup = {
   name: string;
   area: string;

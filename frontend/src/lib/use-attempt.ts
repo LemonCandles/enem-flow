@@ -11,10 +11,26 @@ type PendingAnswer = { itemId: string; choice: string | null };
 // can read the attempt before that save ends, or the request may never have left.
 function pendingAnswers(id: string) {
   const key = `exam-answer-pending:${id}`;
+  function access(action: () => void) {
+    try {
+      action();
+    } catch {
+      /* Saving to the API must work without browser storage. */
+    }
+  }
   return {
-    read: () => JSON.parse(sessionStorage.getItem(key) || 'null') as PendingAnswer | null,
-    write: (pending: PendingAnswer) => sessionStorage.setItem(key, JSON.stringify(pending)),
-    clear: () => sessionStorage.removeItem(key),
+    read: (): PendingAnswer | null => {
+      try {
+        const value = JSON.parse(sessionStorage.getItem(key) || 'null');
+        return value && typeof value.itemId === 'string' && (value.choice === null || /^[ABCDE]$/.test(value.choice))
+          ? value
+          : null;
+      } catch {
+        return null;
+      }
+    },
+    write: (pending: PendingAnswer) => access(() => sessionStorage.setItem(key, JSON.stringify(pending))),
+    clear: () => access(() => sessionStorage.removeItem(key)),
   };
 }
 

@@ -7,6 +7,8 @@ import type { Exam } from '@/lib/types';
 import { useData } from '@/lib/use-data';
 import { Empty, ErrorBox, Loading, PageTitle } from './ui';
 import Archive from './archive';
+import { TutorCuration } from './tutor-curation';
+import { LayoutReview } from './layout-review';
 import { PreparationReview, type PreparationAudit } from './preparation-review';
 
 type AdminQuestion = {
@@ -243,6 +245,11 @@ export default function Admin() {
               </button>
             </div>
           </div>
+          <LayoutReview
+            key={current.id}
+            versionId={current.id}
+            onChanged={() => run(() => open(selected.id, itemIndex), 'Rascunho com o novo layout carregado.')}
+          />
           <label className="review-reason">
             Justificativa da revisão ou alteração
             <textarea
@@ -279,6 +286,7 @@ export default function Admin() {
           </details>
         </section>
       )}
+      <TutorCuration exams={exams.data || []} />
       <Archive />
       <section className="panel audit-panel">
         <h2>Últimas decisões</h2>

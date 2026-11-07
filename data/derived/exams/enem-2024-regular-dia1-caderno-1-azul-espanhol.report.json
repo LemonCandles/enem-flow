@@ -46,11 +46,11 @@
    "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q5",
    "number": 5,
    "version": "generic-v1",
-   "input_sha256": "0db59684195af90cab7616a007fb25f9d0461ad849db3021b93057d2d4209fed",
+   "input_sha256": "d2ee35aa89f6d52571e96f84ce4b8c361fa903a926d95343559120f3098c7585",
    "changes": [],
    "issues": [],
    "review_required": true,
-   "output_sha256": "bb69a0727d6b22a9a4ef157477ab76109fa294be42d099e5b5a5723eb06144e3"
+   "output_sha256": "34b5911db6e5889528184f2cc7eff32a45177a7024acaf628ccd94c88abd55e7"
   },
   {
    "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q6",
@@ -518,7 +518,7 @@
    "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q41",
    "number": 41,
    "version": "generic-v1",
-   "input_sha256": "06c64016df73e5191f9f03f1fbd1820d4916529637dce5be7da4632a5dd23dfa",
+   "input_sha256": "13e22dbc62bfa42d58d8e7442b21666e78a01f5ac2a9fc15b5079fa4a42e88ca",
    "changes": [
     {
      "location": "blocks[0]",
@@ -529,7 +529,7 @@
    ],
    "issues": [],
    "review_required": true,
-   "output_sha256": "d45cbe605fc18f39c7b19626471078221198697211095a4505cdb08a41b10292"
+   "output_sha256": "2a9495e1f887a8d27f86483d2847e395dd034b07638aafd72eee655931942637"
   },
   {
    "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q42",
@@ -589,19 +589,11 @@
    "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q45",
    "number": 45,
    "version": "generic-v1",
-   "input_sha256": "86c2129be4d67a65f9e789cf370fbea80ee52543163ecb8fc4d847549025179f",
+   "input_sha256": "e1408892009dd40b3bdad5b088f2dcb1ce1cad48d57c291370501e977a97258b",
    "changes": [],
-   "issues": [
-    {
-     "code": "alternative_layout",
-     "message": "Múltiplas figuras em uma alternativa: agrupe e confira manualmente.",
-     "location": "alternative:E",
-     "severity": "error",
-     "excerpt": ""
-    }
-   ],
+   "issues": [],
    "review_required": true,
-   "output_sha256": "6e48cc371bdf6c5e35e6dd12c6be8054775255829a30823cd691bad18f199b90"
+   "output_sha256": "850842a85af666cd609fa50bbc6e6d0c8bcf04e45fb4bb99fe1778a994ca762a"
   },
   {
    "question_id": "enem-2024-regular-dia1-caderno-1-azul-espanhol-q46",
@@ -1180,5 +1172,5 @@
  ],
  "changes": 19,
  "warnings": 17,
- "errors": 1
+ "errors": 0
 }

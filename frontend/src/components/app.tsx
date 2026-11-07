@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -57,7 +57,8 @@ type Page = {
 };
 
 const exact = (expected: string) => (path: string) => path === expected;
-const under = (prefix: string) => (path: string) => path.startsWith(prefix);
+const under = (prefix: string) => (path: string) =>
+  path.startsWith(prefix) && /^[^/]+$/.test(path.slice(prefix.length));
 
 const pages: Page[] = [
   { matches: exact('/'), title: 'Início', render: () => <Dashboard /> },
@@ -105,11 +106,13 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [recovery, setRecovery] = useState('');
+  const recoveryToken = useRef('');
   const { mobile, setMobile, sidebar, menuButton } = useMobileMenu(path);
 
   function load() {
-    const token = new URLSearchParams(window.location.search).get('recovery');
+    const token = new URLSearchParams(window.location.search).get('recovery') || recoveryToken.current;
     if (token) {
+      recoveryToken.current = token;
       setRecovery(token);
       window.history.replaceState({}, '', window.location.pathname);
       setLoading(false);
@@ -150,6 +153,7 @@ export default function App() {
         onLogin={setUser}
         recoveryToken={recovery}
         onRecoveryComplete={() => {
+          recoveryToken.current = '';
           setRecovery('');
           setUser(null);
         }}

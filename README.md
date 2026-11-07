@@ -1,181 +1,118 @@
 # Enem Flow
 
-MVP local da plataforma descrita no [plano do projeto](docs/plano-implementacao/enem_adaptativo_plano_do_projeto.md): conta individual, provas oficiais, respostas editáveis, correção, histórico, painel e curadoria versionada. A consolidação técnica da primeira entrega e a ampliação técnica do banco estão implementadas; o [status atual](docs/plano-implementacao/status-implementacao.md) reúne as funcionalidades, validações e pendências.
+Plataforma local de estudos para o ENEM: provas oficiais, respostas salvas, correção, histórico, diagnóstico e prática adaptativa.
 
 ![Visão geral da plataforma](docs/screenshots/desktop.png)
 
-Novas provas têm um [fluxo geral de preparação](docs/preparacao-provas.md): a curadoria prepara JSON automaticamente e o comando offline aceita PDFs com manifesto, gerando texto nativo, fórmulas, figuras vinculadas e relatório de revisão.
-
 ## Executar localmente
 
-Requisitos: Python 3.13 ou 3.14, Node.js 22 e npm. A execução local usa SQLite e não exige contas externas. Os dois lotes conferidos estão incluídos. O banco textual do acervo e o espelho histórico de PDFs não são versionados: são reconstruídos localmente a partir do manifesto, como descrito nas [fontes oficiais](data/sources/README.md#o-que-fica-no-git-e-na-imagem-da-aplicação).
+Requisitos: **Python 3.13 ou 3.14**, **Node.js 22** e npm. A instalação local usa SQLite e dispensa Docker e contas externas.
 
 ```bash
 make setup
 ```
 
-Em dois terminais, na raiz:
+O comando instala as dependências, aplica as migrações e prepara **seis provas regulares de 2024/2025**, caderno azul: Inglês e Espanhol no 1º dia e uma prova do 2º dia de cada ano. São **540 posições de questões**, com itens comuns às duas opções de língua. As cinco provas extraídas automaticamente foram conferidas pela equipe com o caderno e o gabarito originais. Todas aparecem como **Disponível**.
+
+Inicie os dois serviços juntos:
 
 ```bash
-make api
+make dev
 ```
+
+`Ctrl+C` encerra os dois processos. Para iniciá-los separadamente, use `make api` e `make web` em terminais distintos. `make doctor` confere a instalação sem modificar o banco.
+
+O fluxo é suportado em Linux/WSL, com Git, Make e as versões de Python/Node acima instaladas. O setup usa os lockfiles, verifica os arquivos distribuídos e cria backup antes de atualizar um banco SQLite existente. Falhas interrompem a etapa e permitem repetir o comando. A instalação nova não copia contas nem respostas do desenvolvedor e não baixa o acervo histórico.
+
+Abra **http://localhost:3000** e crie sua conta. A documentação da API fica em **http://localhost:8000/docs**. Use `Ctrl+C` nos terminais para encerrar.
+
+Alternativa com `uv`:
 
 ```bash
-make web
+uv venv .venv
+make setup
 ```
 
-Acesse **http://localhost:3000** e crie sua conta. A documentação interativa da API fica em **http://localhost:8000/docs**. Não existe senha administrativa padrão.
+Para atualizar uma instalação existente, faça [backup](docs/operations.md#backup-local-com-sqlite) e execute `make migrate seed`. O catálogo preserva versões, respostas, resultados e decisões manuais. A seção de Matemática de 2023 do bootstrap anterior fica fora do catálogo público; seus dados e arquivos de referência são mantidos. Uma publicação manual dessa seção é preservada.
 
-Se preferir `uv`, crie o ambiente com `uv venv .venv` e instale com `uv pip install --python .venv/bin/python -r backend/requirements-dev.lock`; depois execute `make migrate seed` e `npm ci` em `frontend/`.
-
-Para usar um build de produção local, mantenha a API iniciada e execute em outro terminal:
+Para servir um build de produção local, mantenha a API iniciada:
 
 ```bash
-cd frontend
-npm run build
-npm run start
+npm --prefix frontend run build
+npm --prefix frontend run start
 ```
 
-Ao alterar o frontend nessa modalidade, gere um novo build e reinicie esse processo. Uma instalação existente recebe as versões revisadas e os rótulos com `make migrate seed`; faça [backup](docs/operations.md) antes de atualizar seu banco.
+Mudanças posteriores exigem novo build e reinício do frontend.
 
-## Executar com PostgreSQL e Docker
+## Docker e PostgreSQL
 
 ```bash
 cp .env.example .env
-# Defina POSTGRES_PASSWORD em .env antes de iniciar.
+# Defina POSTGRES_PASSWORD em .env.
 docker compose up --build
 ```
 
-Abra **http://localhost:3000**. Migrações e importação do conjunto revisado são executadas no início, sem duplicar conteúdo. PostgreSQL e imagens têm volumes persistentes; o gateway Nginx é a entrada pública, enquanto Next, API e banco ficam nas redes internas. Ele preserva a identificação de cada cliente e substitui cabeçalhos de origem falsificados. Se a rede privada padrão conflitar com outra rede local, ajuste `ENEM_PROXY_SUBNET` e `ENEM_PROXY_IP` conforme o [guia de operação](docs/operations.md).
+O site usa a porta **3000**, com Nginx como entrada e API, Next.js e PostgreSQL nas redes internas. Banco e figuras ficam em volumes persistentes.
 
-A instalação isolada foi validada com Compose sobre Podman e o CI inclui um ensaio com Docker Engine, incluindo recriação dos contêineres sem remover volumes. Consulte [procedimentos, evidências e limites](docs/primeira-entrega.md).
+A imagem Docker inclui **os dois lotes conferidos**: 2024 dia 2 e Matemática 2023. Os cinco cadernos extraídos de 2024/2025 incluídos no Git pertencem ao fluxo local e continuam fora da imagem, conforme a decisão de `7b84843`. Consulte [operação](docs/operations.md) para redes, volumes, backup e recuperação.
 
-## O que está implementado
+## Conteúdo e funcionalidades
 
-- Cadastro, login, sessão por cookie HttpOnly, saída, preferências e recuperação assistida por link de uso único.
-- Catálogo com busca e filtros por ano, área, aplicação e caderno; distinção entre caderno completo, seção e coleção.
-- **135 questões conferidas:** segundo dia azul de 2024 (90) e seção de Matemática azul de 2023 (45). Fontes e gabaritos com SHA-256; anuladas 129/2024 e 164/2023.
-- **Geração e publicação local de provas de 2009 a 2025 sem curadoria**, com `make acervo`: o ensaio inicial registrou 96 provas e 8.595 questões, com texto e figuras extraídos dos cadernos oficiais. O site identifica a extração automática e as pendências conhecidas. Veja [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
-- Acervo oficial de **1998–2025**, com todas as aplicações e formatos vinculados pelo Inep, fontes organizadas e extrações consultáveis na curadoria. Veja a [cobertura real e as pendências](docs/cobertura-acervo.md).
-- Identidade canônica separada de cada ocorrência, com os 135 itens vinculados às quatro cores de sua aplicação; taxonomia versionada, 135 anotações técnicas e referência de 89 questões válidas de Matemática em oito temas.
-- Enunciados e alternativas selecionáveis a partir do JSON; tabelas HTML e fórmulas matemáticas/químicas em LaTeX com KaTeX, mhchem e MathML.
-- Figuras com legendas, fontes e rodapé de equações associados; ampliação dentro da página, com zoom, Escape e retorno do foco.
-- Navegação por botões, mapa e setas **← / →**, respeitando primeira e última questão e voltando ao topo a cada troca. Quando o foco está nas alternativas, as setas preservam sua seleção nativa.
-- Alteração e limpeza de alternativas, salvamento no servidor e retomada após fechar ou recarregar.
-- Confirmação de conclusão, correção objetiva, revisão por questão e finalização transacional e idempotente.
-- Histórico individual, evolução e painel por área, matéria, tema e habilidade, com quantidade de tentativas e cobertura dos rótulos.
-- **Prática adaptativa:** questões escolhidas por reforço, revisão e exploração, com o motivo de cada uma e registro auditável. Veja a [política, a comparação e os limites](docs/politica-adaptativa.md).
-- Preparação generalizada de novas provas: normalização conservadora de notação, associação de figuras/legendas e relatórios de transformações e ambiguidades, com CLI para JSON ou PDF textual com manifesto.
-- Curadoria: preparação automática na importação/edição, comparação com a fonte, novas versões, aprovação, publicação/retirada e consulta das decisões. Pendências bloqueantes impedem aprovação e publicação.
-- Experimentos offline de Dados e IA: cinco abordagens temáticas, três de layout, métricas reproduzíveis, propostas de recuperação do acervo e revisão visual com registro de tempo humano.
-- Migração inicial, configuração Docker, testes críticos da API e testes de navegador em desktop e viewport móvel.
+- Catálogo com filtros; enunciados selecionáveis, tabelas, figuras e fórmulas matemáticas e químicas em LaTeX.
+- Respostas editáveis e persistentes, retomada, finalização idempotente, correção e histórico individual.
+- Painel por área e tema, diagnóstico e prática adaptativa com o motivo de cada questão.
+- Tutor na prática: orientação, pista e resolução geradas pela IA (Groq ou outra API compatível com a OpenAI) e aprovadas automaticamente por regras, sem revisão humana.
+- Curadoria com importação, edição versionada e trilha de decisões; preparação offline de JSON e PDF.
+- Layout dinâmico: propostas geradas por `scripts/propose_layout.py`, convertidas por adaptador versionado e aprovadas após comparação com o caderno original.
+- Experimentos de classificação e layout, sem chamadas a provedores externos.
 
-O lote de apresentação de **31/10/2026** alterou as questões **91, 92, 94, 97, 99, 100, 114, 116, 118, 123, 128, 132, 133, 135 e 170**, preservando gabaritos e histórico. O [registro técnico da revisão](data/README.md#revisão-de-apresentação) reúne os motivos, páginas da fonte, evidências e limites.
+Os selos **Disponível** indicam que a prova pode ser iniciada. A proveniência das extrações e os relatórios permanecem nos dados; avisos específicos de apresentação continuam vinculados à página original. O gabarito só aparece após finalizar. Não há cálculo TRI.
 
-Disciplinas e temas têm curadoria técnica assistida com evidências. Os vínculos com habilidades são propostas separadas e aguardam segunda revisão; não entram como habilidades aprovadas no painel. Veja o [banco e a classificação](docs/banco-classificacao.md). Classificadores locais já têm experimentos offline; sua integração ao produto, tutor com LLM e layouts dinâmicos permanecem nas próximas etapas.
+Para ativar o tutor, copie `.env.example` para `.env`, preencha `GROQ_API_KEY` e gere o material das questões publicadas:
 
-## Curadoria
+```bash
+.venv/bin/python -m backend.app.cli tutor-material
+```
+
+O comando pode ser interrompido e executado de novo; as questões já atendidas são puladas.
+
+Os lotes de referência somam 135 questões conferidas: 90 do 2º dia de 2024 e 45 de Matemática de 2023. A taxonomia, as anotações e os experimentos continuam disponíveis mesmo quando um lote não está no catálogo público. Consulte [dados e fontes](data/README.md).
+
+Para criar uma conta de curadoria, sem senha administrativa padrão:
 
 ```bash
 .venv/bin/python -m backend.app.cli create-admin seu-email@exemplo.com
 ```
 
-A senha é solicitada no terminal. Em Docker: `docker compose exec api python -m backend.app.cli create-admin seu-email@exemplo.com`. Entre com essa conta para acessar **Curadoria**. Novas importações sempre entram como rascunho; todas as versões precisam de aprovação antes de publicar.
+A senha é solicitada no terminal. Em Docker, use `docker compose exec api python -m backend.app.cli create-admin seu-email@exemplo.com`.
 
-## Provas do acervo
-
-Com o espelho do acervo sincronizado (`python scripts/archive_enem.py sync`), um comando gera e publica no banco local as provas de 2009 a 2025, sem curadoria:
-
-```bash
-make acervo
-```
-
-Os JSONs ficam em `data/derived/exams/` e as figuras em `data/assets/<prova>/`. Só as provas regulares de 2024 e 2025, caderno azul, estão no Git; as demais ficam locais. O comando é idempotente: provas já publicadas não são alteradas. Detalhes, escolhas e limites estão em [publicação automática](docs/preparacao-provas.md#publicação-automática-do-acervo).
-
-Em 01/11/2026, o lote recebido foi instalado: **98 provas e 8.730 questões no site local**, incluindo os dois lotes conferidos; o ensaio inicial registrou 506 pendências. A [auditoria de 03/11](docs/experimentos/auditoria-acervo.md) aplicou 993 correções por novas versões, conferiu os gabaritos integralmente e acrescentou validações antes ausentes. Permanecem 441 posições com diagnósticos de preparação, além da triagem e da revisão independente. [Incorporação original](docs/banco-classificacao.md#incorporação-do-acervo-processado). Os derivados e o banco de execução continuam locais; esses dados não acompanham o clone.
-
-## Experimentos de Dados e IA
-
-```bash
-make experiments
-make experiments-archive EXPERIMENT_OUTPUT=tmp/experiments/acervo-01
-```
-
-O primeiro comando compara os métodos temáticos nos 89 itens de Matemática e os métodos de layout em 13 questões/145 blocos incluídos. O segundo acrescenta a análise dos cadernos automáticos disponíveis localmente e os desafios de fontes/gabarito visual, com OCR local quando disponível. As saídas contêm partições, modelos em JSON, métricas, erros, propostas e `review.html` para conferência com o original.
-
-Os comandos não alteram o banco de uso nem publicam conteúdo. Propostas aguardam curadoria; não há chamadas a provedores. O [protocolo e os resultados da etapa 3](docs/experimentos/README.md) explicam a separação de dados, a comparação externa de LLM e os limites das amostras técnicas.
-
-A [auditoria integral do acervo](docs/experimentos/auditoria-acervo.md) acrescenta conferência independente de gabaritos, simulação de resultados, comparação de figuras com as fontes, renderização por questão e aplicação dos experimentos a todas as versões publicadas. `make audit-archive`, `make audit-archive-browser` e `make experiments-all` reproduzem essas frentes com o acervo local. Correções técnicas usam um plano versionado, ensaio em cópia e instalação explícita; preservam os históricos e a revisão independente pendente.
-
-## Preparar novas provas
-
-Para um JSON no [contrato de importação](docs/content-schema.json):
-
-```bash
-.venv/bin/python scripts/prepare_exam.py \
-  --input caminho/prova.json \
-  --output tmp/prova-preparada.json \
-  --report tmp/prova-preparada.report.json
-```
-
-Para um PDF textual, adapte o [manifesto de exemplo](data/examples/manifesto-prova.json) com identificador, metadados, áreas e configuração de layout:
-
-```bash
-.venv/bin/python scripts/prepare_exam.py \
-  --manifest caminho/manifesto.json \
-  --pdf caminho/prova.pdf \
-  --answer-key caminho/gabarito.pdf \
-  --output tmp/prova-preparada.json
-```
-
-Confira o relatório, os recursos em `data/assets/` e as questões contra a fonte antes de importar o JSON preparado pela Curadoria. A importação pela interface também aplica a preparação; `POST /admin/imports/prepare` permite obter uma prévia sem gravar no banco. A CLI não publica provas nem substitui entradas; saídas existentes exigem `--force`.
-
-As regras são reutilizáveis e registram transformações e ambiguidades. Fórmulas espaciais incompletas e relações de figuras inferidas ainda exigem revisão. PDFs com codificação de texto quebrada são bloqueados e devem ser preparados por outra cor legível; o fluxo não usa OCR. A indexação do acervo não publica extrações automaticamente: os dois lotes conferidos são instalados separadamente.
-
-## Verificar
+## Verificar e manter
 
 ```bash
 make test
 make lint
 make build
-npm --prefix frontend run check:content
 ```
 
-`make format` aplica o ruff e o Prettier. Os scripts históricos com regras por questão e as migrações já aplicadas ficam fora da formatação.
+`make test` executa pytest, TypeScript e `make check-distribution`: contratos, hashes, recursos e LaTeX de todas as provas distribuídas, incluindo a referência de 2023. `make format` aplica Ruff e Prettier. `make clean` remove caches Python, relatórios de navegador e o cache incremental do TypeScript; mantém banco, backups, provas, dependências e o servidor em execução.
 
-Com API e frontend iniciados:
+Com serviços iniciados **em um banco isolado de testes**:
 
 ```bash
-cd frontend
-npx playwright install chromium
-npm run test:e2e
+npm --prefix frontend exec -- playwright install chromium
+npm --prefix frontend run test:e2e
 ```
 
-Para usar o Chrome já instalado, configure `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/caminho/do/google-chrome`. Os testes de navegador criam contas descartáveis e excluem seus históricos ao concluir. Para PostgreSQL, use `TEST_DATABASE_URL` apontando para um **banco exclusivo de testes com `test` no nome**; a suíte cria e remove suas tabelas.
+Para usar o Chrome instalado, defina `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/caminho/do/google-chrome` e instale o gravador com `npm --prefix frontend exec -- playwright install ffmpeg`. Para PostgreSQL, `TEST_DATABASE_URL` deve apontar para um banco exclusivo com `test` no nome; a suíte cria e remove suas tabelas. Veja [os procedimentos e limites das validações](docs/validation.md).
 
-Use também um banco separado para os testes de navegador. As [validações e seus limites](docs/plano-implementacao/status-implementacao.md#validação-e-limites) distinguem a revisão de apresentação, os ajustes de navegação e a preparação generalizada. A consolidação inclui instalação isolada, PostgreSQL, recuperação, acessibilidade automatizada e CI. Revisão pedagógica independente, leitores de tela e aparelhos reais não foram realizados, e seus roteiros estão em [primeira entrega](docs/primeira-entrega.md#aceites-manuais-ainda-necessários). Publicação e piloto estão fora do roteiro atual.
+O acervo histórico é opcional e precisa ser reconstruído pelos manifestos. `make acervo` gera e instala as provas históricas disponíveis; `make experiments` reproduz os experimentos incluídos. Esses fluxos e seus pré-requisitos estão em [preparação de provas](docs/preparacao-provas.md), [fontes oficiais](data/sources/README.md) e [experimentos](docs/experimentos/README.md).
 
-## Documentação da entrega
+## Documentação
 
-- [Plano do projeto em Markdown](docs/plano-implementacao/enem_adaptativo_plano_do_projeto.md)
-- [O que foi feito e o que falta](docs/plano-implementacao/status-implementacao.md)
-- [Próximas etapas](docs/plano-implementacao/proximas-etapas.md)
-- [Escopo, critérios de aceite e validação](docs/primeira-entrega.md)
-- [Arquitetura, contratos e decisões](docs/architecture.md)
-- [Operação, backup e recuperação](docs/operations.md)
-- [Origem do conteúdo e conferência](data/README.md)
-- [Banco, taxonomia e referência de Matemática](docs/banco-classificacao.md)
-- [Experimentos de classificação e layout](docs/experimentos/README.md)
-- [Cobertura dos anos e aplicações](docs/cobertura-acervo.md)
-- [Organização das fontes oficiais](data/sources/README.md)
-- [Contrato JSON de importação](docs/content-schema.json)
-- [Design implementado — Conhecimento em construção](docs/propostas-design/README.md)
-- [Interface em tema escuro](docs/screenshots/desktop-escuro.png)
-- [Visualização em celular](docs/screenshots/mobile.png)
-- [Questão com texto nativo no celular](docs/screenshots/questao-mobile.png)
-- [Vídeo da jornada completa](docs/demo.webm)
-- [Vídeo das figuras e fórmulas em LaTeX](docs/demo-figuras.webm)
-- [Questão 92 com química em LaTeX no celular](docs/screenshots/questao-92-latex-mobile.png)
-- [Ampliação de figura dentro do site](docs/screenshots/ampliacao-figura.png)
+- [Estado atual e validações](docs/plano-implementacao/status-implementacao.md) e [próximas etapas](docs/plano-implementacao/proximas-etapas.md).
+- [Validação e testes](docs/validation.md).
+- [Arquitetura e contratos](docs/architecture.md), [operação](docs/operations.md) e [contrato de importação](docs/content-schema.json).
+- [Banco e classificação](docs/banco-classificacao.md), [cobertura do acervo](docs/cobertura-acervo.md) e [auditoria histórica](docs/experimentos/auditoria-acervo.md).
+- [Diagnóstico e estado do aluno](docs/diagnostico-estado.md), [política adaptativa](docs/politica-adaptativa.md) e [design](docs/propostas-design/README.md).
 
-Código sob a licença MIT. Textos, figuras e provas de terceiros conservam a origem e os direitos de seus respectivos titulares; consulte a documentação do conjunto. Produto independente, sem vínculo ou endosso do Inep.
+Código sob licença MIT. Provas e figuras de terceiros conservam sua origem e seus direitos. Produto independente, sem vínculo ou endosso do Inep.

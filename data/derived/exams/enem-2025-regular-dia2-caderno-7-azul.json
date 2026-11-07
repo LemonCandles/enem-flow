@@ -210,7 +210,7 @@
      },
      {
       "letter": "E",
-      "text": "ciclo circadiano de S. elongatus e do ciclo circadiano de E. coli. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "ciclo circadiano de S. elongatus e do ciclo circadiano de E. coli.",
       "image": null
      }
     ],
@@ -245,11 +245,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "5c34a812c1267a520d03766c500ed0e2659c08e6992ece72af6594bc83c7564b",
+      "input_sha256": "05950c0cb3a97e30f2050ccd0bed2b7e0e6556e6b678ba976b379459c0d531ff",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "e151b050b1e254a5ee117df1ac2344786d7a7a13b654d89d544961662144769a"
+      "output_sha256": "7f264278afd910353f7ef6201dc28064efa8984bfb3471114a5c9de79c42599e"
      }
     }
    }
@@ -366,11 +366,11 @@
       "type": "table",
       "headers": [
        "Aparelho",
-       "Potência(watt)"
+       "Potência (watt)"
       ],
       "rows": [
        [
-        "LumináriadeLED",
+        "Luminária de LED",
         "5"
        ],
        [
@@ -378,11 +378,11 @@
         "250"
        ],
        [
-        "Impressoraalaser",
+        "Impressora a laser",
         "660"
        ],
        [
-        "Secadordecabelos",
+        "Secador de cabelos",
         "750"
        ],
        [
@@ -390,8 +390,8 @@
         "900"
        ],
        [
-        "Condicionador\ndearportátil",
-        "1100"
+        "Condicionador\nde ar portátil",
+        "1 100"
        ]
       ],
       "caption": "Tabela extraída da prova; conferir cabeçalhos."
@@ -482,7 +482,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "8db16b6c51e7f15b54a05a2f8a31d1e3c18b4a966c8971a1560ff0f0e6954012",
+      "input_sha256": "c7c721f2bf0965ad056c70ce435512e99d9ff54775aa4ca692887ea8b73981fc",
       "changes": [
        {
         "location": "blocks[4]",
@@ -501,7 +501,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "2636971b9ae60cb5f98651cb4aa13cc3aafdc2f0352d8c511cb974a60166d13b"
+      "output_sha256": "8e04088bdecf93d77595d4c6e222164d9f9958de55c23555d0a95021bed0010b"
      }
     }
    }
@@ -689,7 +689,7 @@
      },
      {
       "letter": "E",
-      "text": "variabilidade genética. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "variabilidade genética.",
       "image": null
      }
     ],
@@ -724,11 +724,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "29b795275c240b8f836bac7bed67cae6014078bb7d9b142e7df0fb9d3f586777",
+      "input_sha256": "bcddcbdc2668c7b19c63a3fadfd1f8405dbf04cec6ea8283ba0959475f79d0d7",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "56e861d531c9b591d9eff0670d40f3394ffc21746f25cea2160083cda9ae5627"
+      "output_sha256": "299dee176a07aaa4146bc32888c1962a1c914d9dd078d58049afe80a652d0991"
      }
     }
    }
@@ -905,7 +905,7 @@
      },
      {
       "letter": "E",
-      "text": "Contribuir com a redução das queimadas. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "Contribuir com a redução das queimadas.",
       "image": null
      }
     ],
@@ -940,11 +940,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "d9a207f91afa7fdf77bf50a31a9e4e78cbcc9103ff98e133679b148a3940d02d",
+      "input_sha256": "70688f40a6c820f8628d8ead08d428c5b774fe72297f771f1ecd63b3c908ee2f",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "863e8987c749b7ccbd11e47d7ea9b41d7df0609d5c381692ee91c3dfc86503bd"
+      "output_sha256": "acc50480d818491cd16928b450d984b100c8021474d716952a255c64c4be7a0c"
      }
     }
    }
@@ -1188,7 +1188,7 @@
      },
      {
       "letter": "E",
-      "text": "dilatada, chegam menos luzes azul e verde aos bastonetes. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "dilatada, chegam menos luzes azul e verde aos bastonetes.",
       "image": null
      }
     ],
@@ -1223,11 +1223,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "557981a80088841fb7ad32c7fc47660592175eed00dac3fa2f9507a9824e4118",
+      "input_sha256": "268f79bfd2d2d7a2a576bdb3059714ffb6b94c58527202e2c7d23275ac5a001a",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "7d5a72a1718d730f573315be4bf1af8e8409d679cb555c3f3011f00b919e67d8"
+      "output_sha256": "66995d2bc5b320bfe73f6eac782177516b825a17da3195d8966023a3d4b56abf"
      }
     }
    }
@@ -1704,7 +1704,7 @@
      },
      {
       "letter": "E",
-      "text": "HAzO² e $\\ce{KCl}$ ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "HAzO² e $\\ce{KCl}$",
       "image": null
      }
     ],
@@ -1750,7 +1750,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "e7a0733e16a7bd64b18e38e6baa173635c375fdee29c62345f5dc1562300a08c",
+      "input_sha256": "48bada813c62a05035ae8b67dc578a993ace4ab7fbdc749bfc0b12bb5f000c88",
       "changes": [
        {
         "location": "blocks[0]",
@@ -1767,8 +1767,8 @@
        {
         "location": "alternatives[4].text",
         "operation": "latex",
-        "before": "HAzO² e KCl ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
-        "after": "HAzO² e $\\ce{KCl}$ ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025"
+        "before": "HAzO² e KCl",
+        "after": "HAzO² e $\\ce{KCl}$"
        }
       ],
       "issues": [
@@ -1781,7 +1781,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "26d2ff087badbee6d074b5802a8c3d504167512d27398c0d18f240ba6f50e1f0"
+      "output_sha256": "c3d448164b470e8830ee794c2d1c142162458342f3dc85c2c4625a3af30faf71"
      }
     }
    }
@@ -1995,7 +1995,7 @@
       "letter": "A",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b6de2fd352f902c9.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/ffcddda406ec0ac5.png",
        "alt": "Figura extraída da questão 108, página 6; descrição detalhada pendente."
       }
      },
@@ -2003,7 +2003,7 @@
       "letter": "B",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/6cb3f94904c20c5b.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/6f61b973183ebf58.png",
        "alt": "Figura extraída da questão 108, página 6; descrição detalhada pendente."
       }
      },
@@ -2011,7 +2011,7 @@
       "letter": "C",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b5779f2465028f89.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f2f4652c4e27b7c5.png",
        "alt": "Figura extraída da questão 108, página 6; descrição detalhada pendente."
       }
      },
@@ -2019,7 +2019,7 @@
       "letter": "D",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/857eb8300547fe45.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/7deadf78663c6f9c.png",
        "alt": "Figura extraída da questão 108, página 6; descrição detalhada pendente."
       }
      },
@@ -2027,7 +2027,7 @@
       "letter": "E",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/3738d1b783ba57d0.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/c94fa714b22860dc.png",
        "alt": "Figura extraída da questão 108, página 6; descrição detalhada pendente."
       }
      }
@@ -2060,51 +2060,51 @@
       "source_sha256": "39af0f0eaf3e30a3cd211bc19db9029204703965a2c76ff232fb3109181fa7c8",
       "figures": [
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b6de2fd352f902c9.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/ffcddda406ec0ac5.png",
         "page": 6,
         "bbox": [
          303.7628173828125,
          232.59320068359375,
          546.3228149414062,
-         337.03472900390625
+         336.944091796875
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/6cb3f94904c20c5b.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/6f61b973183ebf58.png",
         "page": 6,
         "bbox": [
          303.7628173828125,
-         333.03472900390625,
+         332.944091796875,
          546.3228149414062,
-         437.669677734375
+         437.57904052734375
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b5779f2465028f89.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f2f4652c4e27b7c5.png",
         "page": 6,
         "bbox": [
          303.7628173828125,
-         433.669677734375,
+         433.57904052734375,
          546.3228149414062,
-         538.3040161132812
+         538.21337890625
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/857eb8300547fe45.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/7deadf78663c6f9c.png",
         "page": 6,
         "bbox": [
          303.7628173828125,
-         534.3040161132812,
+         534.21337890625,
          546.3228149414062,
-         638.9383544921875
+         638.84765625
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/3738d1b783ba57d0.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/c94fa714b22860dc.png",
         "page": 6,
         "bbox": [
          303.7628173828125,
-         634.9383544921875,
+         634.84765625,
          546.3228149414062,
          740.29052734375
         ]
@@ -2122,7 +2122,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "a95bf51678f6e7f18d27697629426ce9a87cc345694955efacbbc76ba31a3b56",
+      "input_sha256": "14cd91fb6f83ffaebc8bb002f97e0d5a86cf98ec39dea573d995a909ca05209c",
       "changes": [],
       "issues": [
        {
@@ -2134,7 +2134,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "2e1f8312d17644083cfba0aaa41544fef37f33a80d849d53e17c5eb5ad327e33"
+      "output_sha256": "a6eee522b4278481cc5494ed10792bd4065ff821ddfa1cb417836ed04f2bec42"
      }
     }
    }
@@ -2327,7 +2327,7 @@
      },
      {
       "letter": "E",
-      "text": "$0{,}06\\,\\mathrm{mg}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "$0{,}06\\,\\mathrm{mg}$.",
       "image": null
      }
     ],
@@ -2362,7 +2362,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "eff67ead2829a35950a1c8af55445f6cf2254f54d433d29e519cb63dc11dc448",
+      "input_sha256": "78665dd272cbd08a0ebe9a0c9c4ea21ca1192f90b49d4fe831e8bc964c5a91b9",
       "changes": [
        {
         "location": "blocks[0]",
@@ -2397,13 +2397,13 @@
        {
         "location": "alternatives[4].text",
         "operation": "latex",
-        "before": "0,06 mg. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
-        "after": "$0{,}06\\,\\mathrm{mg}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE"
+        "before": "0,06 mg.",
+        "after": "$0{,}06\\,\\mathrm{mg}$."
        }
       ],
       "issues": [],
       "review_required": true,
-      "output_sha256": "b443debffddcc3bc8e0cae76db9722b7a3545920ea2f9fa78d4d0c0c65be7577"
+      "output_sha256": "9c9bc41aec59526850b1c376608d4696ca0343336715bd3cdbe967f0a78e888c"
      }
     }
    }
@@ -2591,7 +2591,7 @@
      },
      {
       "letter": "E",
-      "text": "Anemia perniciosa. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "Anemia perniciosa.",
       "image": null
      }
     ],
@@ -2626,11 +2626,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "a9da6aeba3197ff28227ddbad4c9609db3409f56c94ad66d7547d56251034c9f",
+      "input_sha256": "07a167b43195d72d9dca4e88b09395dae04adc06e5c90ed50a1aa5e680fe16b8",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "24e95aae92028420f9c7978a99aaefb69e504988e101a9eeb31b531e53ee1635"
+      "output_sha256": "47a5261a116554112e006753f4739fbc28c5f0f1247d833b4f899cb726b9da07"
      }
     }
    }
@@ -2712,7 +2712,7 @@
      },
      {
       "letter": "E",
-      "text": "5 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "5",
       "image": null
      }
     ],
@@ -2768,7 +2768,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "e82d89a3f549b402c36f4beae5ab6aa46530b7921b7029a35a1b76d425647575",
+      "input_sha256": "1cec33fc0aa2f696768abea613a5d3ebf392c78f77c03119c3834ce0749207ca",
       "changes": [],
       "issues": [
        {
@@ -2787,7 +2787,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "48bd75d4181dd112733db71b56336573d1652e08eab906a0ddd48af9f4dddc3b"
+      "output_sha256": "4801c234562903e133622941f514027f856572f37f006b31debb2c53ea029dae"
      }
     }
    }
@@ -3370,7 +3370,7 @@
      },
      {
       "letter": "E",
-      "text": "$8{,}00\\,\\mathrm{m}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "$8{,}00\\,\\mathrm{m}$.",
       "image": null
      }
     ],
@@ -3405,7 +3405,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "a411c88ba4843874db3ae795631b6909895af4ca91594e55555b051325c98b87",
+      "input_sha256": "4e4a37c3b3b80d8410bfa7b8d4f6324c0b817c1bc96a6bc4661d2360ae343002",
       "changes": [
        {
         "location": "blocks[0]",
@@ -3440,13 +3440,13 @@
        {
         "location": "alternatives[4].text",
         "operation": "latex",
-        "before": "8,00 m. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
-        "after": "$8{,}00\\,\\mathrm{m}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE"
+        "before": "8,00 m.",
+        "after": "$8{,}00\\,\\mathrm{m}$."
        }
       ],
       "issues": [],
       "review_required": true,
-      "output_sha256": "af509b16a095be093b4c8e663beb27feb34c176d1a5093c16a2e45ff3730b16a"
+      "output_sha256": "e210cda92d5bf4568ea98ac40914e00236c25d5fcd8b05f920e6a8aba99d0c1f"
      }
     }
    }
@@ -3490,7 +3490,7 @@
       "letter": "A",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/11e9b0305a3ed5de.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/5c4bb92ebe833730.png",
        "alt": "Figura extraída da questão 119, página 9; descrição detalhada pendente."
       }
      },
@@ -3498,7 +3498,7 @@
       "letter": "B",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/ba417eea267b7b26.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/959c7fbb060cb2c8.png",
        "alt": "Figura extraída da questão 119, página 9; descrição detalhada pendente."
       }
      },
@@ -3506,7 +3506,7 @@
       "letter": "C",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/32e5d6bb8cbf0ddb.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b8b184dc91804491.png",
        "alt": "Figura extraída da questão 119, página 9; descrição detalhada pendente."
       }
      },
@@ -3514,7 +3514,7 @@
       "letter": "D",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f8d56e5a19a08065.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/a6ee5319de82c716.png",
        "alt": "Figura extraída da questão 119, página 9; descrição detalhada pendente."
       }
      },
@@ -3522,7 +3522,7 @@
       "letter": "E",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/333004c8ccd08b86.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e78d85a83679004a.png",
        "alt": "Figura extraída da questão 119, página 9; descrição detalhada pendente."
       }
      }
@@ -3565,51 +3565,51 @@
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/11e9b0305a3ed5de.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/5c4bb92ebe833730.png",
         "page": 9,
         "bbox": [
          296.67620849609375,
          347.0971374511719,
          389.59619140625,
-         426.5146484375
+         426.42401123046875
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/ba417eea267b7b26.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/959c7fbb060cb2c8.png",
         "page": 9,
         "bbox": [
          296.67620849609375,
-         422.5146484375,
+         422.42401123046875,
          389.59619140625,
-         505.57855224609375
+         505.4879150390625
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/32e5d6bb8cbf0ddb.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b8b184dc91804491.png",
         "page": 9,
         "bbox": [
          296.67620849609375,
-         501.57855224609375,
+         501.4879150390625,
          389.59619140625,
-         584.3427734375
+         584.2521362304688
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f8d56e5a19a08065.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/a6ee5319de82c716.png",
         "page": 9,
         "bbox": [
          296.67620849609375,
-         580.3427734375,
+         580.2521362304688,
          389.59619140625,
-         663.126953125
+         663.0363159179688
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/333004c8ccd08b86.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e78d85a83679004a.png",
         "page": 9,
         "bbox": [
          296.67620849609375,
-         659.126953125,
+         659.0363159179688,
          389.59619140625,
          737.5541381835938
         ]
@@ -3627,7 +3627,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "2050351a4a7548bb0e8bcf82b83fce2d917d64d90d92cd69388e45a75a9eedad",
+      "input_sha256": "ec1e68c3572e58c2511a8433dfc7d4c06843fd064a9af7e90295731ebf66fa02",
       "changes": [
        {
         "location": "blocks[0]",
@@ -3653,7 +3653,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "82f5763cf64166e77d48ac079e0b5de58a780c0bae3e4380e10badf26ac911f5"
+      "output_sha256": "557600784fc8b2cf30180ff0111fbe2e7b0196c388851ea7fb5f546c301c781d"
      }
     }
    }
@@ -3827,7 +3827,7 @@
      },
      {
       "letter": "E",
-      "text": "bicarbonato de sódio. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "bicarbonato de sódio.",
       "image": null
      }
     ],
@@ -3862,11 +3862,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "33bee71000de2b9ed5ac6ef3c2e2d6f74db897f5be1c82b83403d293cc7a6abf",
+      "input_sha256": "ba2a4b4340baf598de47cff2524189a95759ee8ec2bbaff44bde1bcc3392a25d",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "e3aee64a48feb79b3f65b03e2d376988e81fd0a3836e7ae134791074917b7d19"
+      "output_sha256": "4a5da7f28c78f85633a91d7aaa7fff1a7b8bf06cc03d644ff05c46d6e46d6c9a"
      }
     }
    }
@@ -4343,7 +4343,7 @@
      },
      {
       "letter": "E",
-      "text": "$8{,}9\\,\\mathrm{g}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "$8{,}9\\,\\mathrm{g}$.",
       "image": null
      }
     ],
@@ -4378,7 +4378,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "1dd77a4888ab016ae3af4fcd826d738d95cb3247b3130aa11b9121a64979a5d2",
+      "input_sha256": "07174854873748612350065c84313f718408e9f4be604e24dbc39130a1b3c199",
       "changes": [
        {
         "location": "blocks[0]",
@@ -4425,13 +4425,13 @@
        {
         "location": "alternatives[4].text",
         "operation": "latex",
-        "before": "8,9 g. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
-        "after": "$8{,}9\\,\\mathrm{g}$. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE"
+        "before": "8,9 g.",
+        "after": "$8{,}9\\,\\mathrm{g}$."
        }
       ],
       "issues": [],
       "review_required": true,
-      "output_sha256": "c86da945109585eb050e629fcbb258ee6775b4e18a587dd1d7d7967f16aa9f3c"
+      "output_sha256": "5a609a2074dbcdd4c5b8025e3a0b80d2b897b39f4a81fb2f9990758f9e295f3f"
      }
     }
    }
@@ -4493,7 +4493,7 @@
      },
      {
       "letter": "E",
-      "text": "170 km/h para Leste, 180 km/h para Norte e 11 km/h para cima. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "170 km/h para Leste, 180 km/h para Norte e 11 km/h para cima.",
       "image": null
      }
     ],
@@ -4539,7 +4539,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "d0efbc4723349c7580e6b16359a91dd9357d7d1c4049bd6b39de86851fa77abe",
+      "input_sha256": "23bf843f1e8b70a35cf6d476a26d1e6ba61a5be7fcd1016f5f455481a735068f",
       "changes": [
        {
         "location": "blocks[1]",
@@ -4558,7 +4558,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "7f9e9984c749646042b2ff28b3bce6720a55d9949dd79de0be997abbbc1e24e1"
+      "output_sha256": "725c639a31111210058bf401aedbdb766261463e298ddb114b94916f95f8b8cd"
      }
     }
    }
@@ -4898,23 +4898,23 @@
       ],
       "rows": [
        [
-        "Aedesaegypti(larvas)",
-        "Baixaeficiência"
+        "Aedes aegypti (larvas)",
+        "Baixa eficiência"
        ],
        [
-        "BacilodeKoch",
-        "Médiaeficiência"
+        "Bacilo de Koch",
+        "Média eficiência"
        ],
        [
-        "Moluscosaquáticos(adultos)",
-        "Altaeficiência"
+        "Moluscos aquáticos (adultos)",
+        "Alta eficiência"
        ],
        [
-        "Pernilongo(larvas)",
-        "Médiaeficiência"
+        "Pernilongo (larvas)",
+        "Média eficiência"
        ],
        [
-        "Vermesplatelmintos",
+        "Vermes platelmintos",
         "Ineficiente"
        ]
       ],
@@ -4985,11 +4985,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "28562579aba14d3c0f9022d8f64d626b8752e0b7212c9acd07d5c0a7f2a7d0f7",
+      "input_sha256": "4b25fd6168fbeb76460310ec7a265e8573c965c7fc85d5e4045c204c91c985b4",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "0138ae72b3202b56665f716b8cd4223ce812fe191d61e1e8b5123061f4647092"
+      "output_sha256": "8ee5285c26b1144b23a6c9a4eb83d537997622864b186242bdb5e3cb72d6a1b9"
      }
     }
    }
@@ -5023,7 +5023,7 @@
       "letter": "A",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/00e4b98e5eb0a235.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/d094629f6076fa3f.png",
        "alt": "Figura extraída da questão 130, página 13; descrição detalhada pendente."
       }
      },
@@ -5031,7 +5031,7 @@
       "letter": "B",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/fc2791238ce861c4.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/449538a90995a80f.png",
        "alt": "Figura extraída da questão 130, página 13; descrição detalhada pendente."
       }
      },
@@ -5039,7 +5039,7 @@
       "letter": "C",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/a2c360275b6093fb.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/734690e2d7a27fcf.png",
        "alt": "Figura extraída da questão 130, página 13; descrição detalhada pendente."
       }
      },
@@ -5047,7 +5047,7 @@
       "letter": "D",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/7bfac78d87474fd8.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e229579c2d67b9a4.png",
        "alt": "Figura extraída da questão 130, página 13; descrição detalhada pendente."
       }
      },
@@ -5055,7 +5055,7 @@
       "letter": "E",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/628ddf35d1b9465a.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/3288aaa95e507443.png",
        "alt": "Figura extraída da questão 130, página 13; descrição detalhada pendente."
       }
      }
@@ -5088,51 +5088,51 @@
       "source_sha256": "39af0f0eaf3e30a3cd211bc19db9029204703965a2c76ff232fb3109181fa7c8",
       "figures": [
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/00e4b98e5eb0a235.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/d094629f6076fa3f.png",
         "page": 13,
         "bbox": [
          20.67620086669922,
          257.31585693359375,
          281.9202880859375,
-         374.316650390625
+         374.22601318359375
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/fc2791238ce861c4.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/449538a90995a80f.png",
         "page": 13,
         "bbox": [
          33.432106018066406,
-         370.316650390625,
+         370.22601318359375,
          281.9202880859375,
-         465.540283203125
+         465.44964599609375
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/a2c360275b6093fb.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/734690e2d7a27fcf.png",
         "page": 13,
         "bbox": [
          33.432106018066406,
-         461.540283203125,
+         461.44964599609375,
          281.9202880859375,
-         556.4638671875
+         556.3732299804688
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/7bfac78d87474fd8.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e229579c2d67b9a4.png",
         "page": 13,
         "bbox": [
          33.432106018066406,
-         552.4638671875,
+         552.3732299804688,
          281.9202880859375,
-         647.5274658203125
+         647.4368286132812
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/628ddf35d1b9465a.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/3288aaa95e507443.png",
         "page": 13,
         "bbox": [
          33.432106018066406,
-         643.5274658203125,
+         643.4368286132812,
          281.9202880859375,
          739.0079956054688
         ]
@@ -5164,7 +5164,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "3cea8ea1a2f1477c3a12fd8cf6efc45e6943c201a4259ddfe45d94054406312a",
+      "input_sha256": "3f7772140476d7bad9becc45e4be85d610c61241bc9099c81cd47c6f789aa6ea",
       "changes": [
        {
         "location": "blocks[1]",
@@ -5197,7 +5197,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "4fbbc8c0bacf3b0f104e53df1cf98deef1746b6ad0779b2bd2752ec13eca8b91"
+      "output_sha256": "2631f8b779719a3a8bc22eedc78c365610ec3fdeb2891b71fe3dd013e3f21ebc"
      }
     }
    }
@@ -5356,7 +5356,7 @@
    "content": {
     "number": 132,
     "area": "Ciências da Natureza",
-    "statement": "O nível sonoro, em decibel (dB), é calculado pela expressão:\n\n\u001b\n\nI n\n\n10 log\n\nO\n\n\u0019 10\n\nI\n\n\u001a 0\n\nUma conversa normal entre duas pessoas gera sons de níveis sonoros entre 50 e 60 dB, enquanto pessoas gritando podem gerar sons de níveis superiores a 100 dB. Supondo que, no centro de um estádio de futebol, foram realizadas medidas para avaliar o ruído médio de uma pessoa gritando a palavra “gol” em diferentes posições das arquibancadas. O valor médio obtido, considerando um grande número de medidas, foi de 100 dB. Com esse dado, estimou-se o ruído sonoro produzido por 10 000 pessoas, distribuídas aleatoriamente nas arquibancadas, enquanto gritavam, simultaneamente, a palavra “gol”.\n\nO valor médio estimado para o ruído produzido por essas pessoas, na posição central desse estádio hipotético, foi de",
+    "statement": "O nível sonoro, em decibel (dB), é calculado pela expressão:\n\nUma conversa normal entre duas pessoas gera sons de níveis sonoros entre 50 e 60 dB, enquanto pessoas gritando podem gerar sons de níveis superiores a 100 dB. Supondo que, no centro de um estádio de futebol, foram realizadas medidas para avaliar o ruído médio de uma pessoa gritando a palavra “gol” em diferentes posições das arquibancadas. O valor médio obtido, considerando um grande número de medidas, foi de 100 dB. Com esse dado, estimou-se o ruído sonoro produzido por 10 000 pessoas, distribuídas aleatoriamente nas arquibancadas, enquanto gritavam, simultaneamente, a palavra “gol”.\n\nO valor médio estimado para o ruído produzido por essas pessoas, na posição central desse estádio hipotético, foi de",
     "blocks": [
      {
       "type": "paragraph",
@@ -5364,39 +5364,8 @@
       "role": "body"
      },
      {
-      "type": "paragraph",
-      "text": "\u001b",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "I n",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "10 log",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "O",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "\u0019 10",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "I",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "\u001a 0",
-      "role": "body"
+      "type": "math",
+      "tex": "n = 10\\log_{10}\\left(\\dfrac{I}{I_0}\\right)"
      },
      {
       "type": "paragraph",
@@ -5433,7 +5402,7 @@
      },
      {
       "letter": "E",
-      "text": "800 dB. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "800 dB.",
       "image": null
      }
     ],
@@ -5464,31 +5433,25 @@
       "adapter": "pdf-geometry-v1",
       "source_sha256": "39af0f0eaf3e30a3cd211bc19db9029204703965a2c76ff232fb3109181fa7c8",
       "figures": [],
-      "issues": [
+      "issues": [],
+      "resolved": [
        {
         "code": "spatial_layout",
         "message": "Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.",
         "location": "page:13",
         "severity": "error",
-        "excerpt": ""
+        "excerpt": "",
+        "resolution": "Fórmula do nível sonoro reescrita em LaTeX. Transcrição manual conferida com o PDF original em 2026-11-06."
        }
       ]
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "261be79fb68330f8429c23efc611fef55ccdea0ca2d17e652b2b0d2c91b35b78",
+      "input_sha256": "b80d1083a8b9524c66aa8a4f25ddbe17c06ac29cd7fb250e115f571a76873139",
       "changes": [],
-      "issues": [
-       {
-        "code": "spatial_layout",
-        "message": "Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.",
-        "location": "page:13",
-        "severity": "error",
-        "excerpt": ""
-       }
-      ],
+      "issues": [],
       "review_required": true,
-      "output_sha256": "bd5f79d496356147cf09957179b22b8da7d53a0b8e0ece3e6bcb463e606e38ba"
+      "output_sha256": "841466275014225a6033f734f4fc67c2b11e49b03ade553a7513ec87bdb93cd8"
      }
     }
    }
@@ -5565,7 +5528,7 @@
      },
      {
       "letter": "E",
-      "text": "na malha de aço. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "na malha de aço.",
       "image": null
      }
     ],
@@ -5611,7 +5574,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "d2c7726e9c657e86fbaff5c6d7cd4245bb7237f085df434246c932e35a77362b",
+      "input_sha256": "2eb771e6e675eefeabe55ba10486c144333a6b30ea2311a29ab6aec25664e1e8",
       "changes": [
        {
         "location": "blocks[0]",
@@ -5644,7 +5607,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "272496980533bcfda82b23f440925d34a120f24149d4444063a7387638bbba9e"
+      "output_sha256": "1bcff696d77f5af6b5ce3e5b2a717dd14c6613f0dbe2bb7495ea94f824aefc7d"
      }
     }
    }
@@ -5759,7 +5722,7 @@
    "content": {
     "number": 135,
     "area": "Ciências da Natureza",
-    "statement": "ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE\n\nOs espectros de fotoluminescência do sensor no início e no final do tratamento estão esboçados no gráfico:",
+    "statement": "Os espectros de fotoluminescência do sensor no início e no final do tratamento estão esboçados no gráfico:",
     "blocks": [
      {
       "type": "image",
@@ -5773,11 +5736,6 @@
      },
      {
       "type": "paragraph",
-      "text": "ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
       "text": "Os espectros de fotoluminescência do sensor no início e no final do tratamento estão esboçados no gráfico:",
       "role": "body"
      }
@@ -5788,7 +5746,7 @@
       "letter": "A",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/d5d357c5fac88814.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/6f6f32da8387c701.png",
        "alt": "Figura extraída da questão 135, página 15; descrição detalhada pendente."
       }
      },
@@ -5796,7 +5754,7 @@
       "letter": "B",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/668d16475ead6c9a.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/5d2e45dd58dc9b9b.png",
        "alt": "Figura extraída da questão 135, página 15; descrição detalhada pendente."
       }
      },
@@ -5804,7 +5762,7 @@
       "letter": "C",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/463e89707e72895c.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/1c5b8751d73b0d9a.png",
        "alt": "Figura extraída da questão 135, página 15; descrição detalhada pendente."
       }
      },
@@ -5812,7 +5770,7 @@
       "letter": "D",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/33023196adb16c2f.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/be7c795736482c2b.png",
        "alt": "Figura extraída da questão 135, página 15; descrição detalhada pendente."
       }
      },
@@ -5820,7 +5778,7 @@
       "letter": "E",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/4b48555398e6167b.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/af5b96ea0e39bc3f.png",
        "alt": "Figura extraída da questão 135, página 15; descrição detalhada pendente."
       }
      }
@@ -5855,15 +5813,6 @@
         566.927490234375,
         745.0
        ]
-      },
-      {
-       "page": 16,
-       "bbox": [
-        0.0,
-        73.19099426269531,
-        566.927490234375,
-        110.09400939941406
-       ]
       }
      ],
      "extraction": {
@@ -5881,63 +5830,53 @@
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/d5d357c5fac88814.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/6f6f32da8387c701.png",
         "page": 15,
         "bbox": [
          296.67620849609375,
          104.53927612304688,
          529.0361938476562,
-         235.33975219726562
+         235.24911499023438
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/668d16475ead6c9a.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/5d2e45dd58dc9b9b.png",
         "page": 15,
         "bbox": [
          296.67620849609375,
-         231.33975219726562,
+         231.24911499023438,
          529.0361938476562,
-         361.96966552734375
+         361.8790283203125
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/463e89707e72895c.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/1c5b8751d73b0d9a.png",
         "page": 15,
         "bbox": [
          296.67620849609375,
-         357.96966552734375,
+         357.8790283203125,
          529.0361938476562,
-         488.599853515625
+         488.50921630859375
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/33023196adb16c2f.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/be7c795736482c2b.png",
         "page": 15,
         "bbox": [
          296.67620849609375,
-         484.599853515625,
+         484.50921630859375,
          529.0361938476562,
-         615.2301025390625
+         615.1394653320312
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/4b48555398e6167b.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/af5b96ea0e39bc3f.png",
         "page": 15,
         "bbox": [
          296.67620849609375,
-         611.2301025390625,
+         611.1394653320312,
          529.0361938476562,
          740.84716796875
-        ]
-       },
-       {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/1fc17b52d7e5c7e2.png",
-        "page": 16,
-        "bbox": [
-         27.762802124023438,
-         74.19099426269531,
-         546.2507934570312,
-         108.40472412109375
         ]
        }
       ],
@@ -5953,7 +5892,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "acb1d0a8bd4dba5d29c5ebc23b22933b5cb82e6e84ac0aaa13852e8f772fd911",
+      "input_sha256": "2111091533f174e248361444a0543ef94097a2429c5f190b9cf0c9308fe1beda",
       "changes": [],
       "issues": [
        {
@@ -5972,7 +5911,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "2105c0229994c8e8303b70d25cca188a7d545f3ac73a9b62d9f2a1003a937c46"
+      "output_sha256": "5b245b9b7ed62c276d0b7ce16f45ba9b152916a46d5dd21b97c19be162484cb0"
      }
     }
    }
@@ -6127,7 +6066,7 @@
      },
      {
       "letter": "E",
-      "text": "46 90 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "46 90",
       "image": null
      }
     ],
@@ -6173,7 +6112,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "e650e1b0cca410e005e56a808cb44bc4214274294df7207f3337fd357b4330a5",
+      "input_sha256": "87e526174c5cd9e9dce113ea58d532ad3e9c32203937d98cdad3eb32361ff63a",
       "changes": [
        {
         "location": "blocks[2]",
@@ -6200,7 +6139,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "a44fc04eb59d9edabe919b6608394c94090fe1fcfd91e0a6e843804e21e2da54"
+      "output_sha256": "ce6b1b8daef17fa12cae6f88119c1d80159bba7b93f91c7367979cbe7d71a32a"
      }
     }
    }
@@ -6244,7 +6183,7 @@
       "letter": "A",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/de12c3eec136edf8.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b86dd2794d87c76b.png",
        "alt": "Figura extraída da questão 138, página 17; descrição detalhada pendente."
       }
      },
@@ -6252,7 +6191,7 @@
       "letter": "B",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/5e74de59f911d4ba.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f886a5e6fb84708e.png",
        "alt": "Figura extraída da questão 138, página 17; descrição detalhada pendente."
       }
      },
@@ -6260,7 +6199,7 @@
       "letter": "C",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/1b22d6f88a414074.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/facd1b031dd37a98.png",
        "alt": "Figura extraída da questão 138, página 17; descrição detalhada pendente."
       }
      },
@@ -6268,7 +6207,7 @@
       "letter": "D",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/dc0e3adbdebaa076.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/d8e600d542a1f46b.png",
        "alt": "Figura extraída da questão 138, página 17; descrição detalhada pendente."
       }
      },
@@ -6276,7 +6215,7 @@
       "letter": "E",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/c92fa89d923c2207.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b5636cad6280148b.png",
        "alt": "Figura extraída da questão 138, página 17; descrição detalhada pendente."
       }
      }
@@ -6319,51 +6258,51 @@
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/de12c3eec136edf8.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b86dd2794d87c76b.png",
         "page": 17,
         "bbox": [
          33.43211364746094,
          332.069091796875,
          196.43209838867188,
-         466.2372131347656
+         466.14654541015625
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/5e74de59f911d4ba.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f886a5e6fb84708e.png",
         "page": 17,
         "bbox": [
          33.43211364746094,
-         462.2372131347656,
+         462.14654541015625,
          196.43209838867188,
-         597.2774658203125
+         597.186767578125
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/1b22d6f88a414074.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/facd1b031dd37a98.png",
         "page": 17,
         "bbox": [
          33.43211364746094,
-         593.2774658203125,
+         593.186767578125,
          196.43209838867188,
          729.8335571289062
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/dc0e3adbdebaa076.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/d8e600d542a1f46b.png",
         "page": 17,
         "bbox": [
          293.67620849609375,
          332.069091796875,
          456.67620849609375,
-         465.23516845703125
+         465.14453125
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/c92fa89d923c2207.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/b5636cad6280148b.png",
         "page": 17,
         "bbox": [
          293.67620849609375,
-         461.23516845703125,
+         461.14453125,
          456.67620849609375,
          597.7913208007812
         ]
@@ -6381,7 +6320,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "16e0ee511d4597fc5145ff8ae09c70466a025ea0d8f428f7071fab2fccf17c59",
+      "input_sha256": "6baee82ab319946f0ce653e4bc78e4bb9f2591ee492150f9d758deccf8cafb4e",
       "changes": [],
       "issues": [
        {
@@ -6400,7 +6339,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "7d2889e478b69c9cceda1eedc310d78bcf3ff3dfee92981662f3c3e3122d41bd"
+      "output_sha256": "32e6a60e319bf338e0ac30fcab87969f7c050a9743eb9ca81ae4c365905787d7"
      }
     }
    }
@@ -6574,7 +6513,7 @@
      },
      {
       "letter": "E",
-      "text": "5,0000 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "5,0000",
       "image": null
      }
     ],
@@ -6609,7 +6548,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "7aba6fcf73c55eb1ff378cd34bf3d9eaf1973115df8d59766e1a47e74f85878c",
+      "input_sha256": "f6349848aac59ac8fe63479bb1545807aae00375e39bb0097da5e97df942e65c",
       "changes": [
        {
         "location": "blocks[0]",
@@ -6626,7 +6565,7 @@
       ],
       "issues": [],
       "review_required": true,
-      "output_sha256": "146036bfc1082e4ec3017e725021f25326d48a5d3317a560ecc941f88ffa1510"
+      "output_sha256": "15cd7374b80a3704280d5ba126bd64d560666244a2f167d75f4f0486bb4f9244"
      }
     }
    }
@@ -6743,7 +6682,7 @@
       "type": "table",
       "headers": [
        "Cidades",
-       "Velocidadedereferência(MB/s)"
+       "Velocidade de referência (MB/s)"
       ],
       "rows": [
        [
@@ -6854,11 +6793,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "d5822c68a7380bcaace2a5e904094ed7b1ece112cd602be54f02f12ec482514f",
+      "input_sha256": "2ddbd442657308f14f14ebc6f7f8fe5cb11f55af87e81fd3d8a20c5d8244691a",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "1646e476a500d7a308d4287dc3d546828b5769b1c641bbf6c668b4e49f287d5c"
+      "output_sha256": "51fa5b8fa12c2b609f93a25c39e222f73d5413a5ed694a1495a4682a130a4c5a"
      }
     }
    }
@@ -7035,7 +6974,7 @@
      },
      {
       "letter": "E",
-      "text": "3 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "3",
       "image": null
      }
     ],
@@ -7070,11 +7009,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "ecc68642715da096ff0bdaae11828bbcaa2a0874350c94ecd095ae2126a67e85",
+      "input_sha256": "ec4aebe485a8ac4becbaf9b664db959be4eb58ff600c828bc230bf8fea57af31",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "5843c9872b2e17f6e90007b23b684c28247bdaf6bdca6cfbfe4ea725b976cf1c"
+      "output_sha256": "78332c0b650f5e734eda7e69a7d15e475a4e6f5b26977ff43984d17026e29b8c"
      }
     }
    }
@@ -7290,7 +7229,7 @@
      },
      {
       "letter": "E",
-      "text": "1,42 M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "1,42",
       "image": null
      }
     ],
@@ -7325,11 +7264,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "9981e89c7c49aa984d0c7eeda13a9771b8775868608c50d4eb8bcfc45606ba62",
+      "input_sha256": "a7f61d4ab972f30261e6fe8a3e1cc0574e3dace10da1933bb7b6819e8c0ef843",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "25df248b24cf9075be73293e7860ebcce95dac53d5a37599a44fd079958845eb"
+      "output_sha256": "5878bb4723df16337c856a9b2f2b4871ff53cf552e08f7ac4a7d5e3e33911c0c"
      }
     }
    }
@@ -7506,7 +7445,7 @@
      },
      {
       "letter": "E",
-      "text": "V. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "V.",
       "image": null
      }
     ],
@@ -7552,7 +7491,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "3a9627b3bf40f34b30d05d74bfd7067d8b0f2b0e89204668552211cbf7f8562a",
+      "input_sha256": "9b48bab7b4fa185171be2eb0cf3c1237903e81afc4263ae175d9be7753b5ac43",
       "changes": [],
       "issues": [
        {
@@ -7564,7 +7503,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "b0f046c1d864f259146b32beb047ebe8457cb151cfd429f75d6cb9caece44847"
+      "output_sha256": "275fd1bd8f7e71289eb076cc5867fd5d301c358fb7859c03382d835101bc8e5f"
      }
     }
    }
@@ -7731,7 +7670,7 @@
      },
      {
       "letter": "E",
-      "text": "2 520. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "2 520.",
       "image": null
      }
     ],
@@ -7766,11 +7705,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "9783b8178b7891b236dc05dd08b20229176827aa1aecc2f67c66effcd0177717",
+      "input_sha256": "e4faa42e50ab1b4dab2923444ffe0e69862edd7bb3d8eef2517605765de60477",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "8415695928b9ed364bbe83fb2dd92f6c982e72888e71e8666566baa621ac370e"
+      "output_sha256": "60a556b93f90845b35da70c2d4bb9ce19f158250b6e0f1e6ea46c7a2a02f034e"
      }
     }
    }
@@ -7913,7 +7852,7 @@
      },
      {
       "letter": "E",
-      "text": "1 256 M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "1 256",
       "image": null
      }
     ],
@@ -7948,11 +7887,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "59b7db7ada167f30ee3c296e4677e627ecd177306fc314bce8955677faaa1283",
+      "input_sha256": "847c02e236659a9c790c2c54efaee1d6b84ce2e7a445af12a7830c91b3777cc6",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "05cd34f85226a10075ee6c3b791bb16da2f671c5cf4d8dcacab393612ab2e38c"
+      "output_sha256": "07ecb223bc47f0320c303c80ee9f1a27283f60db269eaa63011943bc8d70d407"
      }
     }
    }
@@ -8014,7 +7953,7 @@
      },
      {
       "letter": "E",
-      "text": "y = 3x − 16 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "y = 3x − 16",
       "image": null
      }
     ],
@@ -8060,7 +7999,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "f02f873728eaa302575517f117d024a270c5d7aeaa22ed3f85cf91255ab3aa6b",
+      "input_sha256": "c6bf107c4bd517655f42586a267ae26781e6c6c3b742f3f833067ffef15ea6d8",
       "changes": [],
       "issues": [
        {
@@ -8072,7 +8011,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "4f28c2916f5f696dabf3ce838a055f0247fb4bd5eab90cfd1ca0cbb9676dd442"
+      "output_sha256": "7d704a3fb91fcb8f4b4c142a16892e354d71371a343e98a3f23d33cfb7f3e930"
      }
     }
    }
@@ -8325,7 +8264,7 @@
      },
      {
       "letter": "E",
-      "text": "1 : 150 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "1 : 150",
       "image": null
      }
     ],
@@ -8371,7 +8310,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "80bff59617315f6ef29b473601ad28d2cde4299a8cf0661743a119454003ae91",
+      "input_sha256": "49ff975c281534277724c34fee14056939c578564bc7098f16ea84ece1746df4",
       "changes": [
        {
         "location": "blocks[2]",
@@ -8390,7 +8329,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "174c5a728538ed40737336481665e63adadd193d535386150a43bdbb336d5cd6"
+      "output_sha256": "1f5129ed51845e2295efe29bccc3d5370fdf7a9d7ad15460b68daef59f1e0ec0"
      }
     }
    }
@@ -8626,7 +8565,7 @@
      },
      {
       "letter": "E",
-      "text": "800. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "800.",
       "image": null
      }
     ],
@@ -8661,7 +8600,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "7324415138d8d2a9e07374b8ee31c7dabb1a4f5a860a850d4ba7c036adf0a3b3",
+      "input_sha256": "6e303f29ff6d12634326ca89a6bae1cbd1982b245139c876bcf5f6c4dea779a8",
       "changes": [
        {
         "location": "blocks[0]",
@@ -8672,7 +8611,7 @@
       ],
       "issues": [],
       "review_required": true,
-      "output_sha256": "acb988ab6d582d14fa72124c93d3f520346ca5d8e84983c08da16b92218f5046"
+      "output_sha256": "4fc2ff61d4b4df70a62339245da929bcc65e80b100c4d1a2bb6ad9db64e3b21e"
      }
     }
    }
@@ -8682,7 +8621,7 @@
    "content": {
     "number": 160,
     "area": "Matemática",
-    "statement": "Um recipiente tem um formato que faz com que, ao ser enchido de água com uma vazão constante, a distância D da lâmina de água ao tampo da mesa, em centímetro, aumente em relação ao tempo T, em minuto, de acordo com uma função do tipo\n\nD = k + tg[p(T + m)],\n\nsendo os parâmetros k, p e m números reais, para T variando entre 0 e 4 minutos, conforme ilustrado na figura, na qual estão apresentadas assíntotas verticais da função tangente utilizada na definição de D.\n\nA expressão algébrica que representa a relação entre D e T é\n\n5 2\n\n\u0016\n\n3\n\n°\n\n\u0013\n\n\u0019",
+    "statement": "Um recipiente tem um formato que faz com que, ao ser enchido de água com uma vazão constante, a distância D da lâmina de água ao tampo da mesa, em centímetro, aumente em relação ao tempo T, em minuto, de acordo com uma função do tipo\n\nsendo os parâmetros k, p e m números reais, para T variando entre 0 e 4 minutos, conforme ilustrado na figura, na qual estão apresentadas assíntotas verticais da função tangente utilizada na definição de D.\n\nA expressão algébrica que representa a relação entre D e T é",
     "blocks": [
      {
       "type": "paragraph",
@@ -8690,9 +8629,8 @@
       "role": "body"
      },
      {
-      "type": "paragraph",
-      "text": "D = k + tg[p(T + m)],",
-      "role": "body"
+      "type": "math",
+      "tex": "D = k + \\operatorname{tg}\\left[p(T + m)\\right],"
      },
      {
       "type": "paragraph",
@@ -8703,7 +8641,7 @@
       "type": "image",
       "asset": {
        "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/114e760bba239c47.png",
-       "alt": "Figura extraída da questão 160, página 24; descrição detalhada pendente."
+       "alt": "Gráfico de D em função de T: curva da tangente que cruza D = 30 em T = 2,5, com assíntotas verticais tracejadas em T = (5 − 2π)/2 e T = (5 + 2π)/2; ao lado, um recipiente sobre o tampo da mesa, com linhas indicando os níveis de água correspondentes a T = 0 e T = 4."
       },
       "caption": "",
       "credit": "",
@@ -8713,63 +8651,33 @@
       "type": "paragraph",
       "text": "A expressão algébrica que representa a relação entre D e T é",
       "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "5 2",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "\u0016",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "3",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "°",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "\u0013",
-      "role": "body"
-     },
-     {
-      "type": "paragraph",
-      "text": "\u0019",
-      "role": "body"
      }
     ],
     "images": [],
     "alternatives": [
      {
       "letter": "A",
-      "text": "D T 2 5 , tg 30 O 1 3 \u001b\u001a \u0018\u0017 \u0015\u0014 \u0012\u0011 2 5 \u0017 \u0014 \u001a",
+      "text": "$D = 2{,}5 + \\operatorname{tg}\\left[30\\left(T - \\dfrac{5 - 2\\pi}{2}\\right)\\right]$",
       "image": null
      },
      {
       "letter": "B",
-      "text": "D 4 tg 30 T O 1 1 \u001b \u0019\u0018 \u0016\u0015 \u0013\u0012 2 5 2 \u0017 1 ° \u0014 \u001a",
+      "text": "$D = 4 + \\operatorname{tg}\\left[30\\left(T + \\dfrac{5}{2}\\right)\\right]$",
       "image": null
      },
      {
       "letter": "C",
-      "text": "D 4 tg 2 5 , T O 1 1 \u001b \u0019\u0018 \u0016\u0015 \u0013\u0012 2 1 \u001a \u0017 . /",
+      "text": "$D = 4 + \\operatorname{tg}\\left[2{,}5\\left(T + \\dfrac{5 + 2\\pi}{2}\\right)\\right]$",
       "image": null
      },
      {
       "letter": "D",
-      "text": "D 30 tg T 5 O 1 3 \u0019\u0018 \u0016\u0015 2 1 5 \u0016 \u0013 \u0019",
+      "text": "$D = 30 + \\operatorname{tg}\\left[\\dfrac{1}{2}(T - 5)\\right]$",
       "image": null
      },
      {
       "letter": "E",
-      "text": "D 30 T tg O 1 3 \u001b\u001a \u0018\u0017 \u0015\u0014 \u0012\u0011 2 2 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "$D = 30 + \\operatorname{tg}\\left[\\dfrac{1}{2}\\left(T - \\dfrac{5}{2}\\right)\\right]$",
       "image": null
      }
     ],
@@ -8811,38 +8719,25 @@
         ]
        }
       ],
-      "issues": [
+      "issues": [],
+      "resolved": [
        {
         "code": "spatial_layout",
         "message": "Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.",
         "location": "page:24",
         "severity": "error",
-        "excerpt": ""
+        "excerpt": "",
+        "resolution": "Expressões das alternativas reescritas em LaTeX; rótulos repetidos da figura removidos. Transcrição manual conferida com o PDF original em 2026-11-06."
        }
       ]
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "058a76cad62456748d1d00647d60743fffb0e82b6031b6666233b3bffab386ef",
+      "input_sha256": "d26ab64efd220bf5dc09d31c1178f7ad9c318123683bb1e4d88d39bd302020ef",
       "changes": [],
-      "issues": [
-       {
-        "code": "missing_description",
-        "severity": "warning",
-        "location": "blocks[3].asset.alt",
-        "message": "Descrição genérica da figura: substitua por uma descrição de seu conteúdo.",
-        "excerpt": "Figura extraída da questão 160, página 24; descrição detalhada pendente."
-       },
-       {
-        "code": "spatial_layout",
-        "message": "Linhas com múltiplas colunas fora de uma tabela reconhecida: confira tabela, fórmula ou diagrama e estruture os blocos.",
-        "location": "page:24",
-        "severity": "error",
-        "excerpt": ""
-       }
-      ],
+      "issues": [],
       "review_required": true,
-      "output_sha256": "25257f6250971282b2d078e15f717493dc912c26fc8de41a34bae9ac5cc619fb"
+      "output_sha256": "1550b9c168df79c0e5cefcba4e8d7bdb78a6e4cc9a48dfaad9792a6b8060920f"
      }
     }
    }
@@ -9097,7 +8992,7 @@
      },
      {
       "letter": "E",
-      "text": "240 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "240",
       "image": null
      }
     ],
@@ -9143,7 +9038,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "4d5a0eacb622808fae37f60822328f540578d07a6fb334ce389d6f750565e015",
+      "input_sha256": "f5e5baa4c8c448ede3c0fc269dc8cc7c0e4cc27cb6c2db676183491f5d82677b",
       "changes": [],
       "issues": [
        {
@@ -9155,7 +9050,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "4d5a0eacb622808fae37f60822328f540578d07a6fb334ce389d6f750565e015"
+      "output_sha256": "f5e5baa4c8c448ede3c0fc269dc8cc7c0e4cc27cb6c2db676183491f5d82677b"
      }
     }
    }
@@ -9252,7 +9147,7 @@
      },
      {
       "letter": "E",
-      "text": "45 e 6 horas. M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "45 e 6 horas.",
       "image": null
      }
     ],
@@ -9298,7 +9193,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "b939f1c6daee396224fe9a5433b5e01943258063490499e630e94a6727602d78",
+      "input_sha256": "063eacab0034418a3293c0364b768af1fa2b42dd65c40382d5435986fe2540ec",
       "changes": [],
       "issues": [
        {
@@ -9310,7 +9205,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "7c5a34e978a5ad1fbce3fe780f32c8a9ecb4b71e07edc1169ba2a1c097285fdc"
+      "output_sha256": "e313014e1950ba9cb5e9dae96344136cfad6a6b50dc3456367c2a89b867ee0bd"
      }
     }
    }
@@ -9331,12 +9226,12 @@
       "type": "table",
       "headers": [
        "Grupos",
-       "Menoridade",
-       "Maioridade",
+       "Menor idade",
+       "Maior idade",
        "Média",
        "Mediana",
        "Moda",
-       "Desviopadrão"
+       "Desvio padrão"
       ],
       "rows": [
        [
@@ -9457,11 +9352,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "a6961883eaefaa4a28ec2ff61ae27f18dd3bbfbc2dbcaf0669f18cdf1fee604e",
+      "input_sha256": "c647e3911a0f7eaecd1881a3bf1a27fa972954c80da92753b113a471e3601525",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "2565a6c12f5652d742256c3c542c59c5d083be273194836b4a91886f72336697"
+      "output_sha256": "a22f06a3854367f5445f7d1991e8614bc56a8f956bb80198e196132b19f9d96b"
      }
     }
    }
@@ -9528,7 +9423,7 @@
      },
      {
       "letter": "E",
-      "text": "15 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "15",
       "image": null
      }
     ],
@@ -9574,7 +9469,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "2dbe7a0b008abf330994eef79f2a2ece31acc7e6102b2db2ee3f4da6038df066",
+      "input_sha256": "60176196a67dc91aaf7ed804c81c424b88052cc27617ddc6c957115989bc55c2",
       "changes": [
        {
         "location": "blocks[0]",
@@ -9611,7 +9506,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "971cc32c0c1c221faf9c9c94b0160235a38c4a5ab1dd123d4494b1a0f901e694"
+      "output_sha256": "5e8e66d4110b74977959d42a5fe34a4f581342fd48a8dd4a0ba171ad54c505be"
      }
     }
    }
@@ -9775,9 +9670,9 @@
       "type": "table",
       "headers": [
        "Autoescola",
-       "Valordecadaaulateórica(R$)",
-       "Valordecadaaulaprática(R$)",
-       "Alugueldoveículo(R$)"
+       "Valor de cada aula teórica (R$)",
+       "Valor de cada aula prática (R$)",
+       "Aluguel do veículo (R$)"
       ],
       "rows": [
        [
@@ -9836,7 +9731,7 @@
      },
      {
       "letter": "E",
-      "text": "III, com o custo total de R$ 1 200,00. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "III, com o custo total de R$ 1 200,00.",
       "image": null
      }
     ],
@@ -9871,11 +9766,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "e8048129363c146dc696495c075f550b8cd1042837399bcb79e09d8afb7d316a",
+      "input_sha256": "2d8bc022ab65308a660ebe933f5bdeab2f839ee7572d56913cb310909369640a",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "b6103e42ddba6edb38a7f7664892f1dc052003abe75adcfbeb8090a4d962dd91"
+      "output_sha256": "3bd887a89df153dc724bae3db5b3798e49b3c512d1186da38ebb98661881cc49"
      }
     }
    }
@@ -9896,15 +9791,15 @@
       "type": "table",
       "headers": [
        "Safra",
-       "1112\n-",
-       "1213\n-",
-       "1314\n-",
-       "1415\n-",
-       "1516\n-"
+       "11-12",
+       "12-13",
+       "13-14",
+       "14-15",
+       "15-16"
       ],
       "rows": [
        [
-        "Á reacultivada(hectare)",
+        "Área cultivada (hectare)",
         "200",
         "220",
         "250",
@@ -9912,7 +9807,7 @@
         "200"
        ],
        [
-        "Produtividade(sacasde50kgporhectare)",
+        "Produtividade (sacas de $50\\,\\mathrm{kg}$ por hectare)",
         "40",
         "30",
         "45",
@@ -9934,7 +9829,7 @@
       "letter": "A",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/cdddd31438dde15f.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/62a537a50ebc9b1e.png",
        "alt": "Figura extraída da questão 169, página 28; descrição detalhada pendente."
       }
      },
@@ -9942,7 +9837,7 @@
       "letter": "B",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/bc65776d71b435be.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/12e1202b93764ca4.png",
        "alt": "Figura extraída da questão 169, página 28; descrição detalhada pendente."
       }
      },
@@ -9950,7 +9845,7 @@
       "letter": "C",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e681d4e732695db9.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e40ba75e8063a707.png",
        "alt": "Figura extraída da questão 169, página 28; descrição detalhada pendente."
       }
      },
@@ -9958,7 +9853,7 @@
       "letter": "D",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/20e076ea21674e50.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/23499bb2ed471881.png",
        "alt": "Figura extraída da questão 169, página 28; descrição detalhada pendente."
       }
      },
@@ -9966,7 +9861,7 @@
       "letter": "E",
       "text": "",
       "image": {
-       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/4dcb2a77e727e25b.png",
+       "path": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f5d75aa8cfe984db.png",
        "alt": "Figura extraída da questão 169, página 28; descrição detalhada pendente."
       }
      }
@@ -9999,51 +9894,51 @@
       "source_sha256": "39af0f0eaf3e30a3cd211bc19db9029204703965a2c76ff232fb3109181fa7c8",
       "figures": [
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/cdddd31438dde15f.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/62a537a50ebc9b1e.png",
         "page": 28,
         "bbox": [
          40.51872253417969,
          214.9783477783203,
          242.03872680664062,
-         388.4404602050781
+         388.3498229980469
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/bc65776d71b435be.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/12e1202b93764ca4.png",
         "page": 28,
         "bbox": [
          40.51872253417969,
-         384.4404602050781,
+         384.3498229980469,
          242.03872680664062,
-         561.3023681640625
+         561.2117309570312
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e681d4e732695db9.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/e40ba75e8063a707.png",
         "page": 28,
         "bbox": [
          40.51872253417969,
-         557.3023681640625,
+         557.2117309570312,
          242.03872680664062,
          731.01708984375
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/20e076ea21674e50.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/23499bb2ed471881.png",
         "page": 28,
         "bbox": [
          300.7628173828125,
          214.9783477783203,
          502.2828063964844,
-         388.4429931640625
+         388.35235595703125
         ]
        },
        {
-        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/4dcb2a77e727e25b.png",
+        "asset": "/assets/enem-2025-regular-dia2-caderno-7-azul/prepared/f5d75aa8cfe984db.png",
         "page": 28,
         "bbox": [
          300.7628173828125,
-         384.4429931640625,
+         384.35235595703125,
          502.2828063964844,
          558.65771484375
         ]
@@ -10061,8 +9956,15 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "abb38d0efe1ce52b97d3dd30f16e530291ea696411e287cd7f3bf0d11c9efd16",
-      "changes": [],
+      "input_sha256": "446d1f9abd9a3654dd383d951bf11215f4c1993316f9f8f699e0188f3d061dcd",
+      "changes": [
+       {
+        "location": "blocks[1].rows",
+        "operation": "latex",
+        "before": "Produtividade (sacas de 50 kg por hectare)",
+        "after": "Produtividade (sacas de $50\\,\\mathrm{kg}$ por hectare)"
+       }
+      ],
       "issues": [
        {
         "code": "graphical_options",
@@ -10073,7 +9975,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "ec81a6cadae749388b61bbdb13484c3a6d556c3efb93b2f4e4a42646bbd394dc"
+      "output_sha256": "7a26739bd2331619c6c73834184c959bbaa6b8f5ad3d3b4cb5f598a0ec580bd0"
      }
     }
    }
@@ -10120,7 +10022,7 @@
      },
      {
       "letter": "E",
-      "text": "2. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "2.",
       "image": null
      }
     ],
@@ -10166,7 +10068,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "87638855d2fd42d270425cdebe196c93645b3095dc70cb82ec1efaafee31e87f",
+      "input_sha256": "3e18cf748193d8f812f7130074a906f474bf5fd01d9da680861f230614a686ca",
       "changes": [],
       "issues": [
        {
@@ -10178,7 +10080,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "87638855d2fd42d270425cdebe196c93645b3095dc70cb82ec1efaafee31e87f"
+      "output_sha256": "3e18cf748193d8f812f7130074a906f474bf5fd01d9da680861f230614a686ca"
      }
     }
    }
@@ -10328,7 +10230,7 @@
      },
      {
       "letter": "E",
-      "text": "$25\\times10^{-2}$ M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "$25\\times10^{-2}$",
       "image": null
      }
     ],
@@ -10371,7 +10273,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "52a86aaec82eac4b83eda6dd2643133c3c02f3b54e671ea51a6b54716b19d890",
+      "input_sha256": "83ba2a08cca69e8e6ec0791fde12af7a83b427a262eb37242fbfc9b2861662af",
       "changes": [
        {
         "location": "alternatives[1].text",
@@ -10382,8 +10284,8 @@
        {
         "location": "alternatives[4].text",
         "operation": "latex",
-        "before": "25 × 10⁻² M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
-        "after": "$25\\times10^{-2}$ M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025"
+        "before": "25 × 10⁻²",
+        "after": "$25\\times10^{-2}$"
        }
       ],
       "issues": [
@@ -10396,7 +10298,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "7674b9d30d5be42d53215a694dc670e585d39a5781d30d00b3c17393caa8598e"
+      "output_sha256": "bcc26bcd8974f4b42f41c0a2d6123d3acfc9e8f9c804d8dd66fd980f2fb77015"
      }
     }
    }
@@ -10468,7 +10370,7 @@
      },
      {
       "letter": "E",
-      "text": "qualquer um dos dois, pois apresentam áreas de suas seções transversais com medidas iguais. ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2",
+      "text": "qualquer um dos dois, pois apresentam áreas de suas seções transversais com medidas iguais.",
       "image": null
      }
     ],
@@ -10514,7 +10416,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "a6c1a00ccee684e256440380ef4b48b6ffd96facba202f9cb95f72792eb78744",
+      "input_sha256": "d42fab9ebb4a889037482325f28fafb1cf3547ee3c46a90e9e7a42aa9bb5a263",
       "changes": [
        {
         "location": "alternatives[0].text",
@@ -10551,7 +10453,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "dee735871d03eceaec3cb25a150b8520b77a4d17f080981f0f24970ec947b78d"
+      "output_sha256": "058c1f8b38e272d6306a768f140cd59e4c6769fdf5fd46c25b704b8b3f09e524"
      }
     }
    }
@@ -11005,7 +10907,7 @@
      },
      {
       "letter": "E",
-      "text": "Artur, com probabilidade de 125 216 ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEN2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENE",
+      "text": "Artur, com probabilidade de 125 216",
       "image": null
      }
     ],
@@ -11040,11 +10942,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "4e03f374f5dad7aa27ac73a19ece29c94d49435772a34fa22c3cf413ead529b9",
+      "input_sha256": "8179626cb3824b6598ff7e747e3611a2a00565def4fd77c6fd26463d19c19ac2",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "4dbcaf9d7f2a41776d10cbf6cd44860dcc88930f3fab2f9d82d31d975f681338"
+      "output_sha256": "4a23ea7f3497f7f38b3ab417316ef9cb775800c0e96049f34f50fcbe22fe9c5f"
      }
     }
    }
@@ -11204,7 +11106,7 @@
      },
      {
       "letter": "E",
-      "text": "99 + 4n M2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025ENEM2025",
+      "text": "99 + 4n",
       "image": null
      }
     ],
@@ -11250,7 +11152,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "dbea99352f9c075ac3eb461d4c6553228fdc354703342e16890506350417090e",
+      "input_sha256": "4d20137fa7fd638e0d838e6601f2987c23e1b5c278e43fa6f399343f00f82a15",
       "changes": [],
       "issues": [
        {
@@ -11262,7 +11164,7 @@
        }
       ],
       "review_required": true,
-      "output_sha256": "949e276b20d7ad4dc62b8e160ad1d156cd31104398cb196d92aaf6fe96f4d81b"
+      "output_sha256": "cae60dc8304f8e1022801c020e693aa257bd43a2c163b4a0571b2e496e277489"
      }
     }
    }

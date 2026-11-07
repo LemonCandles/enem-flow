@@ -48,11 +48,13 @@ Falhas de rede e links oficiais quebrados ficam com `status: error`, sem arquivo
 
 ## O que fica no Git e na imagem da aplicação
 
-O espelho completo ocupa cerca de **2,5 GB** e é recuperável pelo manifesto. Os originais históricos baixados, a matriz de referência, o banco textual e os caches de `data/derived/` ficam locais e são ignorados pelo Git. A exceção são os PDFs de prova e gabarito do caderno azul das provas regulares de 2024 e 2025, versionados com seus JSONs e figuras como extração automática, sem conferência. Ficam versionados para conferência offline: as páginas oficiais, o catálogo, os certificados, o manifesto da matriz, os dois lotes conferidos (`data/enem-2024-dia2-azul.json` e `data/catalog/`), suas figuras, seus PDFs de prova e gabarito de 2023 e 2024, as bases de revisão em `data/derived/baselines/`, as anotações e o dataset de referência.
+O espelho completo ocupa cerca de **2,5 GB** e é recuperável pelo manifesto. Os originais históricos baixados, a matriz de referência, o banco textual e os caches de `data/derived/` ficam locais e são ignorados pelo Git. A exceção são os PDFs de prova e gabarito do caderno azul das provas regulares de 2024 e 2025, versionados com seus JSONs e figuras como extração automática conferida pela equipe em 06/11/2026. Ficam versionados para conferência offline: as páginas oficiais, o catálogo, os certificados, o manifesto da matriz, os dois lotes conferidos (`data/enem-2024-dia2-azul.json` e `data/catalog/`), suas figuras, seus PDFs de prova e gabarito de 2023 e 2024, as bases de revisão em `data/derived/baselines/`, as anotações e o dataset de referência.
 
 O banco textual comprimido em `data/bank/raw/{ano}.json.gz` é reconstruído com `scripts/build_bank.py` depois do `sync`; seu conteúdo é JSON, legível com `gzip` e `json` do Python.
 
 O contexto Docker exclui o espelho histórico e as páginas HTML. A imagem inclui o inventário do acervo, a taxonomia, o catálogo conferido, as anotações e as figuras; não inclui o banco textual, então o acervo da curadoria lista as fontes sem as extrações. Uma instalação por clone não tem os PDFs históricos nem o banco até executar `sync` e `build_bank.py`; os links oficiais continuam registrados na curadoria.
+
+No clone, `make setup` e `make migrate seed` instalam as seis provas regulares de 2024/2025 disponíveis no Git: duas opções de língua do primeiro dia e uma prova do segundo dia de cada ano. Os cinco cadernos automáticos mantêm origem e revisão pendente; o segundo dia de 2024 usa o lote conferido. A seção de Matemática de 2023 permanece como referência versionada, fora do catálogo local padrão. A imagem Docker continua instalando os dois lotes conferidos.
 
 ## Separação dos derivados
 

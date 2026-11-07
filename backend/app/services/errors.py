@@ -19,3 +19,7 @@ class InvalidContent(DomainError):
 
 class NotFound(DomainError):
     status_code = 404
+
+
+class Unavailable(DomainError):
+    status_code = 503

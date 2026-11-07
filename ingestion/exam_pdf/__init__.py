@@ -24,7 +24,7 @@ from .regions import (
 )
 from .answer_key import answer_key_rows
 from .figures import alternative_graphics, graphics
-from .exam import extract_exam, from_manifest
+from .exam import extract_exam, extract_question, from_manifest
 
 __all__ = [
     'LANGUAGE',
@@ -38,6 +38,7 @@ __all__ = [
     'diagnostic',
     'discover_regions',
     'extract_exam',
+    'extract_question',
     'from_manifest',
     'garbled',
     'graphics',

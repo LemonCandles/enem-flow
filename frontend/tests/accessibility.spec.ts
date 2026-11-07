@@ -38,12 +38,12 @@ test('acessibilidade automática, teclado, temas e reflow da jornada', async ({ 
   await audit('inicio-escuro');
   for (const [url, title] of [
     ['/exams', 'Banco de provas'],
-    ['/history', 'Histórico'],
+    ['/history', 'Histórico de provas'],
     ['/progress', 'Meu desempenho'],
     ['/settings', 'Configurações'],
   ]) {
     await page.goto(url);
-    await expect(page.locator('main h1')).toBeVisible();
+    await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible();
     await audit(url.slice(1));
   }
   const response = await page.request.post('/api/exam-runs', {

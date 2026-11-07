@@ -123,29 +123,11 @@ O ensaio executa a preparação em cadernos de anos, dias e aplicações diferen
 .venv/bin/python scripts/trial_preparation.py --years 2022 2024
 ```
 
-Resultado em 31/10/2026, com margem superior de 64 pontos (45 em 2012) e páginas até o último cabeçalho de questão:
-
-| Caderno | Questões | Bloqueantes | Alternativas gráficas | Bloqueantes por tipo |
-| --- | ---: | ---: | ---: | --- |
-| 2024, 1º dia azul, inglês | 90 | 1 | 0 | alternativa com duas figuras 1 |
-| 2024, 1º dia azul, espanhol | 90 | 1 | 0 | alternativa com duas figuras 1 |
-| 2024 PPL, 2º dia azul | 90 | 4 | 4 | células mescladas 3, layout espacial 1 |
-| 2022, 2º dia azul | 90 | 8 | 4 | células mescladas 6, layout espacial 2 |
-| 2021, 2º dia azul | 90 | 123 | 4 | codificação quebrada 95, LaTeX inválido 13, células mescladas 8, alternativas 4, layout espacial 3 |
-| 2019, 2º dia azul | 90 | 7 | 2 | layout espacial 4, células mescladas 3 |
-| 2017, 2º dia azul | 90 | 8 | 4 | layout espacial 5, células mescladas 3 |
-| 2015, 2º dia azul, inglês | 90 | 3 | 2 | layout espacial 2, células mescladas 1 |
-| 2012, 1º dia azul | 90 | 5 | 4 | layout espacial 4, alternativa com duas figuras 1 |
-
-O caderno de 2021 tem codificação quebrada e serve para mostrar o bloqueio: sem ele, 2021 seria preparado em silêncio com enunciados ilegíveis. Nenhuma das 720 questões dos cadernos legíveis acusou codificação quebrada.
-
-Antes das extensões deste ensaio, os cadernos com opção de língua (2024, 1º dia, e 2015) e o de 2012 nem chegavam ao relatório. 2022, 2019 e 2017 tinham 15, 14 e 10 pendências bloqueantes, por causa de alternativas em grade, letras duplicadas pela camada acessível e moedas como `US$` lidas como LaTeX. As 100 alternativas gráficas segmentadas foram conferidas contra a posição dos marcadores no PDF, sem divergências.
-
-As pendências restantes são casos que exigem revisão humana: tabelas com células mescladas, relações espaciais e alternativas com mais de uma figura. Os avisos (descrições de figuras, vínculos inferidos e notação ambígua) também exigem conferência. Nenhum desses rascunhos foi importado ou revisado. A incorporação de um novo caderno ao catálogo depende de curadoria, que não tem etapa no [roteiro atual](plano-implementacao/proximas-etapas.md).
+Confira relatórios por prova: texto ilegível, tabelas mescladas, relações espaciais, alternativas incompletas e vínculos inferidos exigem conferência. Os ensaios geram rascunhos, sem publicação automática.
 
 ## Publicação automática do acervo
 
-**Decisão de 31/10/2026:** as provas do acervo vão para o site sem curadoria. O tratamento de layout fica para a etapa 3 do [roteiro](plano-implementacao/proximas-etapas.md); a curadoria não tem etapa nele.
+A publicação automática é uma operação explícita e preserva origem e diagnósticos sem equivaler a conteúdo conferido.
 
 ```bash
 .venv/bin/python scripts/build_archive_exams.py          # gera JSON e figuras
@@ -172,20 +154,8 @@ make acervo                                              # os dois passos
 - Importa, aprova e publica cada prova com a identidade de serviço, registrando o motivo "publicação automática sem curadoria".
 - As pendências bloqueantes ficam nos relatórios das versões, mas não impedem a publicação. Só esse comando pode publicar com pendências; a API e a curadoria continuam bloqueando.
 - Cada prova é publicada ou recusada sozinha, inclusive quando um JSON é inválido. Conteúdo e versões já existentes não são substituídos. Instalações automáticas antigas recebem apenas o registro de origem e revisão pendente quando ausente.
-- O catálogo informa **Extração automática**, a resolução sinaliza que o caderno aguarda conferência e questões com erros conhecidos mostram vínculo à página original. A API expõe `content_quality` na prova e `preparation_errors` na questão; os gabaritos continuam privados até finalizar. A publicação manual válida encerra o estado pendente.
-
-**Resultado do ensaio inicial da frente integrada, em 31/10/2026:**
-
-- **96 provas geradas, com 8.595 questões.** Uma instalação desses arquivos, somada aos dois lotes conferidos, oferece 98 provas e 8.730 questões, de 2009 a 2025. Os arquivos não acompanham o clone; a quantidade instalada depende da geração e da publicação no banco escolhido. A integração posterior revalidou uma amostra, sem repetir o ensaio integral.
-- **Pendências registradas:** 506, sendo 222 de layout espacial, 154 alternativas não separadas e 130 tabelas com células mescladas.
-- **Alternativas não separadas:** essas questões mostram "Alternativa não extraída; conferir original." e continuam corrigidas pela letra do gabarito.
-- **Fora do site:**
-  - 2010 regular: o Inep publica a prova "com gabarito" marcado no próprio caderno, sem gabarito em texto;
-  - 2010 e 2011 PPL: sem gabarito no acervo;
-  - 3ª aplicação de 2014, 1º dia do PPL 2014 e 2021 impresso (regular e PPL): nenhuma cor tem texto legível;
-  - 1998–2008: sem gabarito no acervo, e o formato de 63 questões não tem áreas.
-
-**Instalação em 01/11/2026:** os 96 cadernos processados recebidos foram conferidos e instalados no banco local, com as figuras referenciadas e a correção de áreas de 2009 já integrada. O catálogo passou a oferecer 98 provas e 8.730 questões, incluindo os lotes conferidos. As respostas foram comparadas com cada gabarito oficial e as 96 provas passaram por início, preenchimento, finalização e repetição da finalização em uma cópia isolada. O resultado foi consistente em todas, com as anuladas excluídas. As 506 pendências afetam 489 questões e continuam sinalizadas. [Registro da incorporação](banco-classificacao.md#incorporação-do-acervo-processado).
+- O catálogo informa **Disponível** para todas as provas publicadas, sem aviso geral de extração automática na resolução. Questões com problemas conhecidos mantêm aviso específico e vínculo à página original. A API expõe `content_quality` na prova e `preparation_errors` na questão; os gabaritos continuam privados até finalizar. A publicação manual válida encerra o estado pendente.
+- No catálogo local, as provas listadas em `verified` de `data/catalog/profiles.json` passaram por conferência humana. `local-catalog` cria versões aprovadas com o conteúdo conferido quando a instalação anterior difere, preserva as tentativas e publica sem a exceção de pendências, o que marca a revisão como concluída. Prova retirada, em revisão, editada depois da instalação ou com gabarito divergente continua pendente.
 
 ## Implementação e validação
 
@@ -197,6 +167,4 @@ make acervo                                              # os dois passos
 - `ingestion/pdf_headings.py` compartilha o reconhecimento de cabeçalhos espaçados entre o banco textual e o adaptador nativo; `test_archive_layouts.py` verifica ambos com o mesmo PDF. Geração e ensaio compartilham áreas e duração, incluindo Natureza antes de Humanas em 2009.
 - O ensaio completo usa os 90 itens em arquivos temporários e mantém pendências visíveis. O resultado não substitui o JSON revisado nem é publicado automaticamente.
 
-Validação local em 31/10/2026: 55 testes de API em SQLite e 14 testes Playwright aprovados no build de produção, com TypeScript aprovado. No ensaio genérico dos 90 itens, 176 expressões compilaram e o relatório apontou cinco bloqueios: células mescladas na 139 e relações espaciais nas 148, 169, 170 e 180. Também há avisos de descrições, vínculos inferidos e notação ambígua. Esses números identificam os casos encontrados no ensaio; não selecionam regras do preparador. Nenhum desses rascunhos foi importado no banco local.
-
-[Painel de revisão no desktop](screenshots/curadoria-preparacao.png) e [no celular](screenshots/curadoria-preparacao-mobile.png), com dados simulados de curadoria. Este incremento passou a integrar a [regressão consolidada](primeira-entrega.md), incluindo PostgreSQL e CI. Outros cadernos e leitores de tela continuam exigindo validação própria.
+Os procedimentos de regressão estão em [validação](validation.md).

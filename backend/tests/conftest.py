@@ -1,3 +1,4 @@
+import copy
 import os
 
 import pytest
@@ -9,6 +10,27 @@ from backend.app.core.db import Base, get_db
 from backend.app.main import app
 from backend.app.models import User
 from backend.app.core.security import hash_password
+
+
+TUTOR_VARIABLES = (
+    'GROQ_API_KEY',
+    'TUTOR_BASE_URL',
+    'TUTOR_MODEL',
+    'TUTOR_TIMEOUT_SECONDS',
+    'TUTOR_MAX_OUTPUT_TOKENS',
+    'TUTOR_DAILY_LIMIT',
+    'TUTOR_PRICE_INPUT_PER_MTOK',
+    'TUTOR_PRICE_OUTPUT_PER_MTOK',
+    'TUTOR_MAX_COST_USD',
+    'TUTOR_REASONING_EFFORT',
+)
+
+
+@pytest.fixture(autouse=True)
+def no_tutor_provider(monkeypatch):
+    """The .env of a developer may hold a real key: tests never call the provider."""
+    for name in TUTOR_VARIABLES:
+        monkeypatch.delenv(name, raising=False)
 
 
 @pytest.fixture
@@ -137,3 +159,24 @@ def published(admin, exam_payload):
         == 200
     )
     return exam_payload
+
+
+@pytest.fixture
+def thematic(admin, exam_payload):
+    payload = copy.deepcopy(exam_payload)
+    payload['expected_items'] = 12
+    template = payload['questions'][0]
+    payload['questions'] = []
+    for n in range(1, 13):
+        q = copy.deepcopy(template)
+        q['question_id'] = f'adaptive-q{n}'
+        q['content'].update(number=n, statement=f'Questão sintética adaptativa {n}: calcule o resultado solicitado.')
+        q['content']['labels']['themes'] = ['Álgebra' if n % 2 else 'Geometria']
+        payload['questions'].append(q)
+    assert admin.post('/admin/imports', json=payload).status_code == 201
+    reason = {'action': 'approve', 'reason': 'Referência sintética para a prática'}
+    for q in payload['questions']:
+        assert admin.post(f"/admin/reviews/{q['question_id']}:1", json=reason).status_code == 200
+    published = {'action': 'publish', 'reason': 'Referência temática para a prática'}
+    assert admin.post('/admin/reviews/prova-teste', json=published).status_code == 200
+    return payload

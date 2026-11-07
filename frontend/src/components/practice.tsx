@@ -15,6 +15,7 @@ export default function PracticePage() {
   return (
     <>
       <SessionForm
+        practice
         eyebrow="PRÁTICA NO SEU RITMO"
         title="Iniciar prática"
         text="As questões são escolhidas pelo que você já respondeu: reforço onde houve erros repetidos, revisão do que ficou para trás e exploração de temas com poucas respostas."

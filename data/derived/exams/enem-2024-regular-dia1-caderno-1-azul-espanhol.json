@@ -463,7 +463,7 @@
      },
      {
       "letter": "E",
-      "text": "resistência dos astecas às mudanças feitas pelos colonizadores espanhóis na capital do Império. LINGUAGENS, CÓDIGOS E SUAS TECNOLOGIAS 2024ENEM2024ENEM2024 Questões de 06 a 45",
+      "text": "resistência dos astecas às mudanças feitas pelos colonizadores espanhóis na capital do Império.",
       "image": null
      }
     ],
@@ -488,15 +488,6 @@
         568.5823364257812,
         746.0
        ]
-      },
-      {
-       "page": 5,
-       "bbox": [
-        0.0,
-        62.33269500732422,
-        284.2911682128906,
-        90.68151092529297
-       ]
       }
      ],
      "language": "espanhol",
@@ -508,11 +499,11 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "0db59684195af90cab7616a007fb25f9d0461ad849db3021b93057d2d4209fed",
+      "input_sha256": "d2ee35aa89f6d52571e96f84ce4b8c361fa903a926d95343559120f3098c7585",
       "changes": [],
       "issues": [],
       "review_required": true,
-      "output_sha256": "bb69a0727d6b22a9a4ef157477ab76109fa294be42d099e5b5a5723eb06144e3"
+      "output_sha256": "34b5911db6e5889528184f2cc7eff32a45177a7024acaf628ccd94c88abd55e7"
      }
     }
    }
@@ -4424,7 +4415,7 @@
    "content": {
     "number": 41,
     "area": "Linguagens",
-    "statement": "O Brasil somou cerca de 60 mil novos casos de câncer de mama até o final de 2019, número que corresponde a $25\\%$ de todos os diagnósticos da condição registrados no país, segundo dados do Instituto Nacional do Câncer (Inca). Apesar de o Outubro Rosa ser o mês de conscientização sobre a questão voltada para as mulheres, é muito importante lembrar que um dos grandes mitos da medicina é o de que o câncer de mama não afeta o sexo masculino. Fatores importantes para detectar o câncer de mama masculino:\n\n1.\t\u0007  \u0007Genética: se houver casos na família, as chances são um pouco mais elevadas. 2.\t\u0007  \u0007Hormônios: homens podem desenvolver tecido real das glândulas mamárias por tomarem certos medicamentos ou apresentarem níveis hormonais anormais. 3.\t\u0007  \u0007Caroços: é necessário que os médicos se atentem a alguns sintomas suspeitos, como um caroço na área do tórax. 4.\t\u0007  \u0007Retração na pele: em situações mais graves do câncer de mama masculino, é possível também ocorrer uma retração do mamilo.\n\nDisponível em: https://pebmed.com.br.\n\nAcesso em: 24 nov. 2021 (adaptado).\n\nAs informações dessa reportagem auxiliam no combate ao câncer de mama masculino por apresentarem um alerta sobre o(s)",
+    "statement": "O Brasil somou cerca de 60 mil novos casos de câncer de mama até o final de 2019, número que corresponde a $25\\%$ de todos os diagnósticos da condição registrados no país, segundo dados do Instituto Nacional do Câncer (Inca). Apesar de o Outubro Rosa ser o mês de conscientização sobre a questão voltada para as mulheres, é muito importante lembrar que um dos grandes mitos da medicina é o de que o câncer de mama não afeta o sexo masculino. Fatores importantes para detectar o câncer de mama masculino:\n\n1. Genética: se houver casos na família, as chances são um pouco mais elevadas. 2. Hormônios: homens podem desenvolver tecido real das glândulas mamárias por tomarem certos medicamentos ou apresentarem níveis hormonais anormais. 3. Caroços: é necessário que os médicos se atentem a alguns sintomas suspeitos, como um caroço na área do tórax. 4. Retração na pele: em situações mais graves do câncer de mama masculino, é possível também ocorrer uma retração do mamilo.\n\nDisponível em: https://pebmed.com.br.\n\nAcesso em: 24 nov. 2021 (adaptado).\n\nAs informações dessa reportagem auxiliam no combate ao câncer de mama masculino por apresentarem um alerta sobre o(s)",
     "blocks": [
      {
       "type": "paragraph",
@@ -4433,7 +4424,7 @@
      },
      {
       "type": "paragraph",
-      "text": "1.\t\u0007  \u0007Genética: se houver casos na família, as chances são um pouco mais elevadas. 2.\t\u0007  \u0007Hormônios: homens podem desenvolver tecido real das glândulas mamárias por tomarem certos medicamentos ou apresentarem níveis hormonais anormais. 3.\t\u0007  \u0007Caroços: é necessário que os médicos se atentem a alguns sintomas suspeitos, como um caroço na área do tórax. 4.\t\u0007  \u0007Retração na pele: em situações mais graves do câncer de mama masculino, é possível também ocorrer uma retração do mamilo.",
+      "text": "1. Genética: se houver casos na família, as chances são um pouco mais elevadas. 2. Hormônios: homens podem desenvolver tecido real das glândulas mamárias por tomarem certos medicamentos ou apresentarem níveis hormonais anormais. 3. Caroços: é necessário que os médicos se atentem a alguns sintomas suspeitos, como um caroço na área do tórax. 4. Retração na pele: em situações mais graves do câncer de mama masculino, é possível também ocorrer uma retração do mamilo.",
       "role": "body"
      },
      {
@@ -4511,7 +4502,7 @@
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "06c64016df73e5191f9f03f1fbd1820d4916529637dce5be7da4632a5dd23dfa",
+      "input_sha256": "13e22dbc62bfa42d58d8e7442b21666e78a01f5ac2a9fc15b5079fa4a42e88ca",
       "changes": [
        {
         "location": "blocks[0]",
@@ -4522,7 +4513,7 @@
       ],
       "issues": [],
       "review_required": true,
-      "output_sha256": "d45cbe605fc18f39c7b19626471078221198697211095a4505cdb08a41b10292"
+      "output_sha256": "2a9495e1f887a8d27f86483d2847e395dd034b07638aafd72eee655931942637"
      }
     }
    }
@@ -4946,11 +4937,8 @@
      },
      {
       "letter": "E",
-      "text": "propagação de mensagens com objetivos políticos. 1.  O rascunho da redação deve ser feito no espaço apropriado. 2.  O texto definitivo deve ser escrito à tinta preta, na folha própria, em até 30 (trinta) linhas. 3.  \u0007A redação que apresentar cópia dos textos da Proposta de Redação ou do Caderno de Questões terá o número de linhas copiadas desconsiderado para a contagem de linhas. 4.  Receberá nota zero, em qualquer das situações expressas a seguir, a redação que: 4.1.  tiver até 7 (sete) linhas escritas, sendo considerada “texto insuficiente”; 4.2.  fugir ao tema ou não atender ao tipo dissertativo-argumentativo; 4.3.  apresentar parte do texto deliberadamente desconectada do tema proposto; 4.4.  apresentar nome, assinatura, rubrica ou outras formas de identificação no espaço destinado ao texto. TEXTO I TEXTO V Histórias para ninar gente grande Herança – o legado de crenças, conhecimentos, técnicas, G.R.E.S. Estação Primeira de Mangueira costumes, tradições, transmitido por um grupo social de (samba-enredo de 2019) geração para geração; cultura. Brasil, meu nego HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua Deixa eu te contar portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado). A história que a história não conta TEXTO II O avesso do mesmo lugar As culturas africanas e afro-brasileiras foram relegadas Na luta é que a gente se encontra ao campo do folclore com o propósito de confiná-las ao gueto Brasil, meu dengo fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via A Mangueira chegou de regra, alheias ao contexto que produziu essa cultura. Com versos que o livro apagou Desde 1500 tem mais invasão do que descobrimento OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009. Tem sangue retinto pisado Atrás do herói emoldurado Mulheres, tamoios, mulatos Eu quero um país que não está no retrato Brasil, o teu nome é Dandara E a tua cara é de cariri Não veio do céu Nem das mãos de Isabel A liberdade é um dragão no mar de Aracati Salve os caboclos de julho Quem foi de aço nos anos de chumbo Brasil, chegou a vez De ouvir as Marias, Mahins, Marielles, malês PAULINO, R. Ainda a lamentar. In: GONÇALVES, A. M. Um defeito de cor: romance. Rio de Janeiro: Record, 2024 (adaptado). Disponível em: www.mangueira.com.br. Acesso em: 30 maio 2024 (fragmento). TEXTO IV TEXTO VI História afro-brasileira nas escolas: professoras Alunos de escola municipal conhecem pontos comentam avanços e dificuldades As aulas sobre escravidão eram motivo de vergonha para uma professora quando ela estudava em uma escola municipal na zona sul de São Paulo. “Era o meu pior momento na escola”, lembra a ex-aluna. Naquela época, a história da população negra no Brasil era reduzida ao horror do período escravocrata. Não se falava na escola sobre temas como a história e a cultura afro-brasileira, muito menos sobre as grandes personalidades negras do país, como Luiz Gama e Carolina Maria de Jesus. A pedagoga, que é negra, tem orgulho de oferecer uma experiência diferente da que viveu em sala de aula para seus alunos. Agora os livros infantis levados para as turmas têm protagonistas pretos. Temas como a beleza do cabelo crespo e o combate ao racismo fazem parte do dia a dia da escola. Palmares na Pedra do Sal. Disponível em: www.oglobo.com. Acesso em: Disponível em: https://jornal.unesp.br. Acesso em: 3 jun. 2024 (adaptado). 29 maio 2024 (adaptado). PROPOSTA DE REDAÇÃO A partir da leitura dos textos motivadores e com base nos conhecimentos construídos ao longo de sua formação, redija texto dissertativo-argumentativo em modalidade escrita formal da língua portuguesa sobre o tema “Desafios para a valorização da herança africana no Brasil”, apresentando proposta de intervenção que respeite os direitos humanos. Selecione, organize e relacione, de forma coerente e coesa, argumentos e fatos para defesa de seu ponto de vista. CIÊNCIAS HUMANAS E SUAS TECNOLOGIAS 2024ENEM2024ENEM2024 Questões de 46 a 90",
-      "image": {
-       "path": "/assets/enem-2024-regular-dia1-caderno-1-azul-espanhol/prepared/6bad07a7d13cc66a.png",
-       "alt": "Figura extraída da questão 45, página 19; descrição detalhada pendente."
-      }
+      "text": "propagação de mensagens com objetivos políticos.",
+      "image": null
      }
     ],
     "correct_answer": "B",
@@ -4974,76 +4962,21 @@
         568.5823364257812,
         746.0
        ]
-      },
-      {
-       "page": 19,
-       "bbox": [
-        0.0,
-        62.33269500732422,
-        568.5823364257812,
-        746.0
-       ]
-      },
-      {
-       "page": 20,
-       "bbox": [
-        0.0,
-        62.33269500732422,
-        284.2911682128906,
-        90.37749481201172
-       ]
       }
      ],
      "extraction": {
       "adapter": "pdf-geometry-v1",
       "source_sha256": "b0adc1dc79a002aba36f725f1ef792cf53e47ff75ee012638ef34a4e6fbb18f5",
-      "figures": [
-       {
-        "asset": "/assets/enem-2024-regular-dia1-caderno-1-azul-espanhol/prepared/6bad07a7d13cc66a.png",
-        "page": 19,
-        "bbox": [
-         30.179298400878906,
-         313.95904541015625,
-         264.88592529296875,
-         447.78631591796875
-        ]
-       },
-       {
-        "asset": "/assets/enem-2024-regular-dia1-caderno-1-azul-espanhol/prepared/206edac457af0b0c.png",
-        "page": 19,
-        "bbox": [
-         306.8865966796875,
-         500.0534362792969,
-         530.3555297851562,
-         656.61962890625
-        ]
-       }
-      ],
-      "issues": [
-       {
-        "code": "alternative_layout",
-        "message": "Múltiplas figuras em uma alternativa: agrupe e confira manualmente.",
-        "location": "alternative:E",
-        "severity": "error",
-        "excerpt": ""
-       }
-      ]
+      "figures": [],
+      "issues": []
      },
      "preparation": {
       "version": "generic-v1",
-      "input_sha256": "86c2129be4d67a65f9e789cf370fbea80ee52543163ecb8fc4d847549025179f",
+      "input_sha256": "e1408892009dd40b3bdad5b088f2dcb1ce1cad48d57c291370501e977a97258b",
       "changes": [],
-      "issues": [
-       {
-        "code": "alternative_layout",
-        "message": "Múltiplas figuras em uma alternativa: agrupe e confira manualmente.",
-        "location": "alternative:E",
-        "severity": "error",
-        "excerpt": ""
-       }
-      ],
+      "issues": [],
       "review_required": true,
-      "output_sha256": "6e48cc371bdf6c5e35e6dd12c6be8054775255829a30823cd691bad18f199b90"
+      "output_sha256": "850842a85af666cd609fa50bbc6e6d0c8bcf04e45fb4bb99fe1778a994ca762a"
      }
     }
    }

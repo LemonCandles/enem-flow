@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "local": {
+    "reviewed": [
+      "enem-2024-dia2-azul"
+    ],
+    "automatic": [
+      "enem-2024-regular-dia1-caderno-1-azul-ingles",
+      "enem-2024-regular-dia1-caderno-1-azul-espanhol",
+      "enem-2025-regular-dia1-caderno-1-azul-ingles",
+      "enem-2025-regular-dia1-caderno-1-azul-espanhol",
+      "enem-2025-regular-dia2-caderno-7-azul"
+    ],
+    "verified": [
+      "enem-2024-regular-dia1-caderno-1-azul-ingles",
+      "enem-2024-regular-dia1-caderno-1-azul-espanhol",
+      "enem-2025-regular-dia1-caderno-1-azul-ingles",
+      "enem-2025-regular-dia1-caderno-1-azul-espanhol",
+      "enem-2025-regular-dia2-caderno-7-azul"
+    ],
+    "verification": "Conteúdo conferido pela equipe com o caderno e o gabarito originais em 2026-11-06."
+  },
+  "docker": {
+    "reviewed": [
+      "enem-2024-dia2-azul",
+      "enem-2023-matematica-azul"
+    ]
+  },
+  "historical": {
+    "mode": "explicit-generated-install"
+  }
+}

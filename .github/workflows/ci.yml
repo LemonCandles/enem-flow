@@ -9,7 +9,7 @@ jobs:
         database: [sqlite, postgres]
     services:
       postgres:
-        image: postgres:17.7-alpine
+        image: postgres:17.11-alpine
         env:
           POSTGRES_USER: enem
           POSTGRES_PASSWORD: test-password
@@ -19,12 +19,13 @@ jobs:
           --health-cmd "pg_isready -U enem -d enem_test"
           --health-interval 5s --health-timeout 5s --health-retries 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
       - run: pip install -r backend/requirements-dev.lock
-      - uses: actions/setup-node@v4
+      - run: ruff check . && ruff format --check .
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
           cache: npm
@@ -53,21 +54,21 @@ jobs:
   web:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
       - run: pip install -r backend/requirements.lock
       - run: |
           alembic upgrade head
-          python -m backend.app.cli seed --publish-reviewed
+          python -m backend.app.cli local-catalog
           uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 > /tmp/enem-api.log 2>&1 &
-      - run: npm ci && npm run check:content && node scripts/validate-latex.cjs ../data/catalog/enem-2023-matematica-azul.json && npm run typecheck && npm run build
+      - run: npm ci && npm run format:check && npm run check:content && node scripts/validate-latex.cjs ../data/catalog/enem-2023-matematica-azul.json && npm run typecheck && npm run build
         working-directory: frontend
       - run: npx playwright install --with-deps chromium
         working-directory: frontend
@@ -76,12 +77,12 @@ jobs:
           for i in $(seq 1 30); do curl -fsS http://localhost:3000/api/health && break || sleep 2; done
           npm run test:e2e -- --workers=1
         working-directory: frontend
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: failure()
         with:
           name: browser-traces
           path: frontend/test-results
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: browser-evidence
@@ -92,14 +93,14 @@ jobs:
   experiments:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
       - run: pip install -r backend/requirements-dev.lock
       - name: Reproduce bundled experiments without historical archive or external services
         run: python scripts/run_experiments.py --output /tmp/enem-experiments
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: data-ai-experiments
           path: /tmp/enem-experiments
@@ -111,8 +112,8 @@ jobs:
       ALLOWED_ORIGINS: http://localhost:3300,http://127.0.0.1:3300
       COOKIE_SECURE: 'false'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
       - name: Configure disposable environment
@@ -164,3 +165,20 @@ jobs:
       - name: Remove disposable CI containers and volumes
         if: always()
         run: docker compose -p enem-ci -f compose.yaml -f compose.test.yaml down -v
+
+  clean-install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '22'
+      - name: Prepare a fresh clone and repeat without duplicates
+        run: |
+          make setup
+          make setup
+          make doctor
+          .venv/bin/python scripts/verify_local_install.py
