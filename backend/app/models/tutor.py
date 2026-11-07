@@ -20,7 +20,7 @@ class TutorMaterial(Base):
     __table_args__ = (UniqueConstraint("question_id", "version"),)
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
     question_id: Mapped[str] = mapped_column(String(100), index=True)
-    canonical_id: Mapped[str | None] = mapped_column(String(36), nullable=True, index=True)
+    canonical_id: Mapped[str | None] = mapped_column(String(80), nullable=True, index=True)
     content_sha256: Mapped[str] = mapped_column(String(64), index=True)
     version: Mapped[int] = mapped_column(Integer)
     status: Mapped[str] = mapped_column(String(20), default='proposal')
