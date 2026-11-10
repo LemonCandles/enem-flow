@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Agrupa as questões das provas pelo layout, de forma determinística (`pdf-geometry-v2`).
+"""Agrupa as questões das provas pelo layout, de forma determinística (`pdf-geometry-v3`).
 
 Para cada questão: renderiza as regiões como uma imagem (150 dpi), tipa os blocos pela
 geometria e tipografia do PDF, calcula a assinatura estrutural e verifica as invariantes
