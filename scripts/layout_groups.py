@@ -7,15 +7,20 @@ dos dois canais (vetorial e raster). Questões com a mesma assinatura formam um 
 
 Saídas em `tmp/layout/<execução>/`: a imagem e a sobreposição de cada questão,
 `questions.json`, `groups.json` e `index.html` (folha de contato por grupo). Com
-`--catalog`, grava também o registro versionado dos grupos.
+`--reference`, rotula cada questão com um tipo de layout (automático se elegível, senão pela
+decisão manual registrada em `--decisions`) e grava a referência; com `--catalog`, grava o
+catálogo dos tipos. Os dois arquivos são determinísticos: regerar sem mudança dá os mesmos bytes.
 
     .venv/bin/python scripts/layout_groups.py                       # provas do perfil local
     .venv/bin/python scripts/layout_groups.py data/derived/exams/x.json --output tmp/layout/x
+    .venv/bin/python scripts/layout_groups.py --output tmp/layout/v3 \
+        --catalog data/catalog/layout-types.json --reference data/datasets/layout-types-reference-v1.json
 """
 
 import _bootstrap  # noqa: F401
 import argparse
 from collections import defaultdict
+import hashlib
 import html
 import json
 from pathlib import Path
@@ -23,11 +28,14 @@ import time
 
 import pymupdf
 
+from backend.app.services.presentation import content_fingerprint
 from ingestion.archive import local_source
+from ingestion.layout import reference
 from ingestion.layout.analysis import ADAPTER, UNSUPPORTED, analyze, overlay
 from ingestion.layout.render import furniture, save_png
 
 ROOT = Path(__file__).resolve().parents[1]
+DECISIONS = ROOT / 'data/datasets/layout-types-decisions-v1.json'
 
 
 def profile_exams():
@@ -46,6 +54,44 @@ def eligible(issues):
     return not any(i.get('severity') == 'error' for i in issues)
 
 
+def figure_attributes(blocks, regions):
+    """Largura de cada figura em relação à região da questão e o alinhamento horizontal nela."""
+    result = []
+    for block in blocks:
+        if block['type'] != 'image':
+            continue
+        x0, _, x1, _ = block['bbox']
+        candidates = [r['bbox'] for r in regions if r['page'] == block['page']]
+        left, _, right, _ = max(candidates, key=lambda r: min(r[2], x1) - max(r[0], x0))
+        width = max(1e-6, right - left)
+        margin_left, margin_right = x0 - left, right - x1
+        alignment = (
+            'centro'
+            if abs(margin_left - margin_right) <= 0.1 * width
+            else 'esquerda'
+            if margin_left < margin_right
+            else 'direita'
+        )
+        result.append(
+            {'alternative': block['alternative'], 'width_ratio': round((x1 - x0) / width, 3), 'alignment': alignment}
+        )
+    return result
+
+
+def support_group(source_hash, regions):
+    """Texto de apoio compartilhado: a mesma região impressa vale para todas as questões que a citam."""
+    shared = [{'page': r['page'], 'bbox': r['bbox']} for r in regions if r.get('shared_for')]
+    if not shared:
+        return None
+    return 'apoio-' + hashlib.sha256(json.dumps([source_hash, shared], sort_keys=True).encode()).hexdigest()[:16]
+
+
+def content_form(content):
+    """`imagem-unica` quando o JSON publica a questão inteira como uma figura, sem texto próprio."""
+    blocks = content.get('blocks') or []
+    return 'imagem-unica' if blocks and all(b['type'] == 'image' for b in blocks) else 'estruturado'
+
+
 def run(paths, output, assets_root):
     rows, seen = [], {}
     for path in paths:
@@ -60,9 +106,11 @@ def run(paths, output, assets_root):
                 content = question['content']
                 regions = content['layout']['blocks']
                 key = (source['sha256'], json.dumps(regions, sort_keys=True))
+                occurrence = {'exam': data['id'], 'number': content['number'], 'question_id': question['question_id']}
                 if key in seen:
                     # The same printed question in another language edition of the booklet.
                     seen[key]['occurrences'].append(f'{data["id"]}#{content["number"]}')
+                    seen[key]['occurrence_ids'].append(occurrence)
                     continue
                 result = analyze(doc, content, data['id'], source['sha256'], assets_root, background)
                 folder = output / data['id']
@@ -82,6 +130,13 @@ def run(paths, output, assets_root):
                     image=f'{data["id"]}/{name}.png',
                     overlay=f'{data["id"]}/{name}-overlay.png',
                     occurrences=[f'{data["id"]}#{content["number"]}'],
+                    occurrence_ids=[occurrence],
+                    source_sha256=source['sha256'],
+                    content_sha256=content_fingerprint(content),
+                    content_form=content_form(content),
+                    support_group=support_group(source['sha256'], regions),
+                    figures=figure_attributes(result['blocks'], regions),
+                    adapter=ADAPTER,
                 )
                 seen[key] = row
                 rows.append(row)
@@ -148,7 +203,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('exams', nargs='*', type=Path, help='JSON de provas com regiões; padrão: perfil local.')
     parser.add_argument('--output', type=Path, help='Pasta de saída; padrão: tmp/layout/<data-hora>.')
-    parser.add_argument('--catalog', type=Path, help='Grava o registro versionado dos grupos neste arquivo.')
+    parser.add_argument('--catalog', type=Path, help='Grava o catálogo dos tipos de layout (layout-types-v1).')
+    parser.add_argument('--reference', type=Path, help='Grava a referência rotulada por questão.')
+    parser.add_argument('--decisions', type=Path, default=DECISIONS, help='Decisões manuais versionadas.')
     args = parser.parse_args()
     paths = args.exams or profile_exams()
     output = args.output or ROOT / 'tmp/layout' / time.strftime('%Y%m%d-%H%M%S')
@@ -158,20 +215,37 @@ def main():
     (output / 'questions.json').write_text(json.dumps(rows, ensure_ascii=False, indent=1) + '\n')
     (output / 'groups.json').write_text(json.dumps(groups, ensure_ascii=False, indent=1) + '\n')
     (output / 'index.html').write_text(page(groups, rows, f'Grupos de layout ({ADAPTER})'))
-    if args.catalog:
+    eligible_count = sum(r['eligible'] for r in rows)
+    print(f'{len(rows)} questões, {len(groups)} grupos, {eligible_count} elegíveis. Relatório: {output / "index.html"}')
+    if args.catalog or args.reference:
+        decisions = args.decisions.read_bytes()
+        try:
+            items = reference.label(rows, json.loads(decisions))
+        except reference.LabelError as error:
+            raise SystemExit(str(error)) from None
         sources = []
         for path in paths:
             data = json.loads(Path(path).read_text())
-            sources.append({'exam': data['id'], 'sha256': data['source']['sha256']})
-        catalog = {
-            'version': 'layout-groups-v1',
-            'adapter': ADAPTER,
-            'sources': sources,
-            'groups': [{k: g[k] for k in ('signature', 'status', 'reasons', 'questions', 'members')} for g in groups],
-        }
-        args.catalog.write_text(json.dumps(catalog, ensure_ascii=False, indent=1) + '\n')
-    eligible_count = sum(r['eligible'] for r in rows)
-    print(f'{len(rows)} questões, {len(groups)} grupos, {eligible_count} elegíveis. Relatório: {output / "index.html"}')
+            sources.append(
+                {
+                    'exam': data['id'],
+                    'path': str(Path(path).resolve().relative_to(ROOT)),
+                    'url': data['source']['url'],
+                    'sha256': data['source']['sha256'],
+                }
+            )
+        if args.reference:
+            labeled = reference.reference(items, sources, ADAPTER, hashlib.sha256(decisions).hexdigest())
+            write(args.reference, labeled)
+        if args.catalog:
+            write(args.catalog, reference.catalog(items, ADAPTER))
+        manual = sum(item['provenance']['origin'] == 'manual' for item in items)
+        print(f'{len(items)} questões com tipo ({manual} por decisão manual), {len({i["type"] for i in items})} tipos.')
+
+
+def write(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=1) + '\n')
 
 
 if __name__ == '__main__':
