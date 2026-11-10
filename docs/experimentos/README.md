@@ -27,7 +27,7 @@ Comando completo e opções:
   --archive --ocr --proposal-limit 500
 ```
 
-`--only classification` e `--only layout` executam uma frente. Uma saída não vazia exige `--force`; apenas pastas dentro de `tmp/` ou `/tmp/` são aceitas. Configuração, seed, hashes dos dados e do código, versões do Python/pacotes, opções e horários ficam em `run.json`. Latências dependem da máquina e da carga; não são um teste de capacidade da aplicação. Somente um manifesto com `status: complete` identifica a conclusão; uma interrupção deixa `running`, inclusive ao regravar uma saída.
+`--only classification`, `--only layout` e `--only layout-types` executam uma frente. Uma saída não vazia exige `--force`; apenas pastas dentro de `tmp/` ou `/tmp/` são aceitas. Configuração, seed, hashes dos dados e do código, versões do Python/pacotes, opções e horários ficam em `run.json`. Latências dependem da máquina e da carga; não são um teste de capacidade da aplicação. Somente um manifesto com `status: complete` identifica a conclusão; uma interrupção deixa `running`, inclusive ao regravar uma saída.
 
 O workflow de CI executa o ciclo dos dados incluídos e guarda os relatórios, o modelo selecionado e a revisão local como artefato. A matriz de testes de backend também cobre as fronteiras dos experimentos. Não depende de acervo histórico, OCR ou conta externa.
 
@@ -127,6 +127,26 @@ Abra `review.html` da saída experimental em um navegador. Ele mostra recortes o
 
 O importador valida segundos positivos, decisão, justificativa, versão exata e duplicatas por alvo/método. Sem registros, tempo humano fica **não medido / `null`**. O cronômetro não representa a qualidade ou a independência da revisão; isso depende de quem executou e do protocolo de anotação.
 
+## Tipos de layout
+
+O produto apresenta cada questão com o layout do caderno a partir do JSON de conteúdo e das figuras recortadas. O catálogo fechado `layout-types-v1` (`data/catalog/layout-types.json`) define os tipos por três eixos: corpo (sequência canônica de texto, crédito, figura, figura com crédito ou legenda e tabela), alternativas (texto, linha, figura, grade, misto) e marcas (texto de apoio compartilhado, linhas numeradas, lado a lado). `ingestion/layout/types.py` decompõe a assinatura do adaptador `pdf-geometry-v3` nesses eixos e monta o identificador, por exemplo `texto-credito-texto.alt-texto`. Repetir imediatamente um bloco ou um par de blocos não cria tipo novo; a assinatura exata fica por questão. Token desconhecido é erro. Tipos com marcas ou alternativas mistas ficam no catálogo como ainda não representáveis pelo contrato de conteúdo.
+
+A referência `data/datasets/layout-types-reference-v1.json` rotula as 370 questões impressas únicas do perfil local (540 ocorrências; inglês e espanhol compartilham itens). Questão elegível ao adaptador recebe o rótulo automático. As demais, e as poucas elegíveis cuja leitura do caderno contradiz o adaptador, usam `data/datasets/layout-types-decisions-v1.json`: assinatura, tipo de decisão (`tipo-legitimo` ou `correcao-manual`) e justificativa, vinculados ao SHA-256 do conteúdo e da fonte. Mudança em qualquer um invalida a decisão e interrompe a geração até nova revisão. O rótulo descreve o layout impresso. Oito questões de 2025 estão no JSON como imagem única da questão inteira; ficam marcadas (`content_form: imagem-unica`) e são reportadas à parte.
+
+```bash
+# Regera folha de contato, catálogo e referência; duas execuções dão os mesmos bytes.
+.venv/bin/python scripts/layout_groups.py --output tmp/layout/v3 \
+  --catalog data/catalog/layout-types.json --reference data/datasets/layout-types-reference-v1.json
+
+# Compara os preditores e exporta o modelo publicado, verificando-o numa cópia isolada.
+.venv/bin/python scripts/run_experiments.py --only layout-types --output tmp/experiments/layout-types-01
+.venv/bin/python scripts/export_layout_model.py tmp/experiments/layout-types-01 --verify
+```
+
+O experimento (`experiments/layout_types.py`) prevê cada eixo separadamente e combina o identificador. Compara maioria, a regra determinística que lê só a ordem e o papel dos blocos do JSON, árvore de decisão (`fit_tree`) e Naive Bayes gaussiano, os dois últimos com e sem densidade de tinta das figuras. As características vêm do mesmo `types.py` publicado como `predict.py`; não incluem PDF, imagem da questão, ano, número, página, descrição nem caminho das figuras. As partições juntam identidade canônica, texto repetido e texto de apoio compartilhado, estratificadas por família de layout. Tipos com menos de três grupos ficam inteiros no treino e são listados à parte. A escolha por eixo usa o macro-F1 de desenvolvimento, com desempate pelo de treino; o teste não escolhe nem reajusta. O relatório traz tipo exato contra maioria e regra, macro-F1 por eixo, matriz de confusão, suporte por tipo e fatias por prova, forma do conteúdo e origem do rótulo.
+
+`scripts/export_layout_model.py` monta `tmp/huggingface/<repo>/` a partir de uma execução concluída, conferindo os hashes de relatório, modelo, catálogo, referência e código. A pasta tem `model.json`, `layout-types.json`, `config.json`, `predict.py` (só biblioteca padrão), `LICENSE`, o model card em pt-BR e um exemplo fictício, sem conteúdo das provas. `--verify` roda o `predict.py` de uma cópia isolada (`python -I`, fora do repositório) no teste e exige as mesmas previsões do experimento; `--check-copy <pasta>` repete a conferência com o repositório baixado do Hugging Face. O envio usa a CLI `hf`, instalada fora dos lockfiles, só com confirmação explícita; cada versão do catálogo ou do modelo vira uma tag.
+
 ## Recuperação dos casos difíceis
 
 Com `--archive`, `archive-layout-proposals.json` preserva os diagnósticos recebidos e acrescenta candidatos separados. Na primeira execução, a entrada continha 506 diagnósticos em 489 questões; uma nova execução usa o estado do acervo disponível:
@@ -147,12 +167,15 @@ Com `--archive`, `archive-layout-proposals.json` preserva os diagnósticos receb
 - `experiments/config.json`: configuração e regras congeladas do ciclo.
 - `experiments/classification.py`: partições, modelos, avaliação e propostas temáticas.
 - `experiments/layout.py`: localização, árvore, relações e métricas.
+- `experiments/layout_types.py`: tipos de layout por eixo a partir do JSON; `ingestion/layout/types.py` e `reference.py`: catálogo, regra, preditor e referência.
 - `experiments/recovery.py` e `ocr_worker.py`: casos difíceis e OCR local isolado.
 - `experiments/contracts.py`: contratos das referências, propostas e medições.
 - `experiments/review.py`: relatório visual e registro de tempo.
 - `scripts/run_experiments.py`: execução e proveniência.
 - `scripts/summarize_experiments.py`: registro compacto com verificação dos hashes da execução.
 - `data/datasets/{layout,recovery}-reference-v1.json`: amostras técnicas versionadas; sem novos cadernos completos.
+- `data/datasets/layout-types-{reference,decisions}-v1.json` e `data/catalog/layout-types.json`: referência rotulada, decisões manuais e catálogo dos tipos de layout.
+- `scripts/layout_groups.py` e `scripts/export_layout_model.py`: folha de contato e rótulos; exportação do modelo.
 
 ## Referências de método
 
