@@ -38,6 +38,7 @@ NEAR_TABLE = 25
 # Vector thresholds, in PDF points.
 GUTTER = 8  # blank space between blocks printed side by side; a line split by an inline fraction has none
 NUMBER_COLUMN = 3  # x tolerance of a column of line numbers
+WHOLE_REGION = (0.8, 0.95)  # width and height shares of a region spanned by a figure that is the whole question
 
 
 def union(boxes):
@@ -97,6 +98,13 @@ def vertical_overlap(a, b):
 
 def horizontal_overlap(a, b):
     return max(0, min(a[2], b[2]) - max(a[0], b[0])) / max(1e-6, min(a[2] - a[0], b[2] - b[0]))
+
+
+def spans(region, box):
+    """Shares of the region's width and height inside the box."""
+    width = max(0, min(region[2], box[2]) - max(region[0], box[0])) / max(1e-6, region[2] - region[0])
+    height = max(0, min(region[3], box[3]) - max(region[1], box[1])) / max(1e-6, region[3] - region[1])
+    return width, height
 
 
 def side_by_side(a, b):
@@ -430,6 +438,20 @@ def invariants(doc, regions, extraction, blocks, links, sig, findings):
                 lost[0]['text'],
             )
         )
+    # A figure that fills its region is the whole question printed as an image, with or without a text layer.
+    for figure in [b for b in blocks if b['type'] == 'image']:
+        for region in regions:
+            width, height = spans(region['bbox'], figure['bbox'])
+            if region['page'] == figure['page'] and width >= WHOLE_REGION[0] and height >= WHOLE_REGION[1]:
+                issues.append(
+                    diagnostic(
+                        'whole_region_image',
+                        'Figura ocupa quase toda a região: a questão foi impressa como imagem e o texto não tem camada própria.',
+                        figure['id'],
+                        'error',
+                    )
+                )
+                break
     # A figure crop must not swallow running text in the body style.
     font, size = body_style(extraction['ordered'])
     for figure in [b for b in blocks if b['type'] == 'image']:
