@@ -150,7 +150,8 @@ def card(repo, metadata, report, model, catalog, reference, example_output):
         'Só a biblioteca padrão do Python (verificado com 3.11 e 3.14).',
         '',
         '```bash',
-        'python predict.py exemplos/questao-ficticia.json --figures exemplos/figuras-ficticias.json',
+        'python predict.py exemplos/questao-ficticia.json'
+        + ('' if not attributes else ' --figures exemplos/figuras-ficticias.json'),
         '```',
         '',
         '```json',
@@ -162,7 +163,10 @@ def card(repo, metadata, report, model, catalog, reference, example_output):
         '## Modelo publicado',
         '',
         'Um preditor por eixo, escolhido pelo macro-F1 de desenvolvimento (empate pelo macro-F1 de treino e '
-        'depois pelo mais simples). O teste não participou da escolha nem de reajuste.',
+        'depois pelo mais simples). O teste não escolheu nem reajustou preditores. Ressalva: a regra '
+        'determinística foi revista uma vez (crédito que o JSON põe antes da figura; comando final em texto) '
+        'depois de uma execução cujos números agregados de teste já tinham sido vistos; a revisão partiu só dos '
+        'erros de treino e desenvolvimento.',
         '',
         '| Eixo | Preditor escolhido |',
         '| --- | --- |',
@@ -174,6 +178,10 @@ def card(repo, metadata, report, model, catalog, reference, example_output):
             'Nesta versão a regra determinística, que deriva o tipo da ordem e do papel dos blocos do JSON, '
             'venceu a árvore de decisão e o Naive Bayes no desenvolvimento nos três eixos. O modelo publicado é '
             'essa regra; os preditores aprendidos aparecem nas métricas para comparação.',
+            '',
+            'A regra nunca emite as alternativas `linha` e `grade` nem as marcas `compartilhado` e `lado-a-lado`: '
+            'o JSON atual não traz pistas delas. Questões desses tipos recebem o tipo sem a marca e com '
+            'alternativas `texto` ou `figura`; isso explica o macro-F1 de alternativas no teste.',
             '',
         ]
     lines += [

@@ -19,7 +19,7 @@ Tutor e layout dinâmico estão integrados (ver [estado](status-implementacao.md
 - Tipos de layout com o acervo histórico: mais edições para dar suporte à cauda do catálogo e às marcas, hoje só no treino.
 - Expansão por área, turmas e recursos multimodais mediante contratos e aceites próprios.
 
-Curadoria independente, publicação externa e piloto não são dependências nem entregas deste roteiro. Estudos de aprendizagem dependem de nova decisão de escopo e protocolo.
+Curadoria independente, publicação de conteúdo das provas e piloto não são dependências nem entregas deste roteiro; a publicação externa prevista é só a do classificador de tipos de layout, sem textos nem figuras das provas. Estudos de aprendizagem dependem de nova decisão de escopo e protocolo.
 
 ## Critério de entrega
 
