@@ -509,7 +509,7 @@ def main(argv=None):
         figures = {**shared, **item.get('figures', {})}
         if args.assets:
             figures.update(resolve_figures(content, args.assets))
-        output.append({'id': item.get('id'), **predict(model, content, figures)})
+        output.append(({} if single else {'id': item.get('id')}) | predict(model, content, figures))
     json.dump(output[0] if single else output, sys.stdout, ensure_ascii=False, indent=2)
     sys.stdout.write('\n')
     return 0
