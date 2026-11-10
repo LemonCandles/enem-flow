@@ -216,5 +216,23 @@
         ]
       }
     }
+  },
+  "layout_types": {
+    "reference": "data/datasets/layout-types-reference-v1.json",
+    "catalog": "data/catalog/layout-types.json",
+    "test_fraction": 0.2,
+    "development_fraction": 0.2,
+    "min_type_groups": 3,
+    "tree_max_depth": 6,
+    "tree_min_leaf": 2,
+    "variance_floor": 0.001,
+    "models": [
+      "majority",
+      "rule",
+      "tree:dimensoes",
+      "tree:completo",
+      "naive_bayes:dimensoes",
+      "naive_bayes:completo"
+    ]
   }
 }
