@@ -301,3 +301,22 @@ def test_predictor_cli_runs_from_a_clean_copy_without_the_repository(tmp_path):
     result = json.loads(output.stdout)
     assert result['type'] == 'texto.alt-texto' and result['in_catalog'] and result['representable']
     assert digest(model) == digest(json.loads((folder / 'model.json').read_text()))
+
+
+def test_rule_model_predicts_questions_with_figures_without_figure_attributes():
+    figure = {'type': 'image', 'asset': {'path': '/assets/x/f.png', 'alt': 'Figura fictícia.'}}
+    question = content([{'type': 'paragraph', 'text': 'Texto.'}, figure, {'type': 'paragraph', 'text': 'Pergunta?'}])
+    rule_model = {'catalog': [], 'axes': {axis: {'kind': 'rule'} for axis in types.AXES}}
+    assert types.required_attributes(rule_model) == []
+    assert types.predict(rule_model, question, {})['type'] == 'texto-figura-texto.alt-texto'
+    names = feature_sets()['dimensoes']
+    tree_model = {
+        'catalog': [],
+        'axes': {
+            axis: {'kind': 'tree', 'features': names, 'tree': {'label': 'texto' if axis != 'marcas' else 'nenhuma'}}
+            for axis in types.AXES
+        },
+    }
+    assert types.required_attributes(tree_model) == ['width', 'height']
+    with pytest.raises(ValueError, match='Figura sem'):
+        types.predict(tree_model, question, {})

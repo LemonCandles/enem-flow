@@ -368,7 +368,7 @@ def features(content, figures):
         return -1.0 if index is None else index / max(1, len(body) - 1)
 
     def attributes(paths, key):
-        return [float(figures[path].get(key, 0.0)) for path in paths]
+        return [float(figures.get(path, {}).get(key, 0.0)) for path in paths]
 
     body_paths = [b['asset']['path'] for b in images]
     option_paths = [a['image']['path'] for a in alternatives if a.get('image')]
