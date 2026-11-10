@@ -6,10 +6,11 @@ geometria e tipografia do PDF, calcula a assinatura estrutural e verifica as inv
 dos dois canais (vetorial e raster). Questões com a mesma assinatura formam um grupo.
 
 Saídas em `tmp/layout/<execução>/`: a imagem e a sobreposição de cada questão,
-`questions.json`, `groups.json` e `index.html` (folha de contato por grupo). Com
-`--reference`, rotula cada questão com um tipo de layout (automático se elegível, senão pela
-decisão manual registrada em `--decisions`) e grava a referência; com `--catalog`, grava o
-catálogo dos tipos. Os dois arquivos são determinísticos: regerar sem mudança dá os mesmos bytes.
+`questions.json`, `groups.json` e `index.html` (folha de contato por assinatura). Com
+`--reference` ou `--catalog`, rotula cada questão com um tipo de layout (automático se elegível,
+senão pela decisão manual registrada em `--decisions`), grava `tipos.html` (folha por tipo, com as
+decisões manuais em destaque) e os arquivos pedidos: a referência por questão e o catálogo dos
+tipos. Os dois são determinísticos: regerar sem mudança dá os mesmos bytes.
 
     .venv/bin/python scripts/layout_groups.py                       # provas do perfil local
     .venv/bin/python scripts/layout_groups.py data/derived/exams/x.json --output tmp/layout/x
@@ -199,6 +200,45 @@ def page(groups, rows, title):
     return '\n'.join(parts)
 
 
+def type_page(items, rows, title):
+    """Folha de contato por tipo; decisões manuais destacadas com a assinatura observada e a justificativa."""
+    images = {r['question_id']: r for r in rows}
+    grouped = defaultdict(list)
+    for item in items:
+        grouped[item['type']].append(item)
+    manual = sum(item['provenance']['origin'] == 'manual' for item in items)
+    parts = [
+        '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">',
+        f'<title>{html.escape(title)}</title>',
+        '<style>body{font:14px system-ui,sans-serif;margin:16px;background:#fafafa;color:#222}'
+        'h2{font-size:15px;margin:28px 0 6px;font-family:ui-monospace,monospace}'
+        '.grid{display:flex;flex-wrap:wrap;gap:10px}.q{width:220px;background:#fff;border:1px solid #ddd;padding:6px}'
+        '.q img{width:100%;height:auto;display:block}.manual{border:2px solid #c60}.meta{font-size:12px;color:#555}'
+        '.why{font-size:12px;color:#733;margin-top:4px}</style>',
+        f'<h1>{html.escape(title)}</h1>',
+        f'<p>{len(items)} questões, {len(grouped)} tipos, {manual} por decisão manual (borda laranja).</p>',
+    ]
+    for type_id, members in sorted(grouped.items(), key=lambda item: (-len(item[1]), item[0])):
+        parts.append(f'<h2>{html.escape(type_id)} · {len(members)}</h2><div class="grid">')
+        for item in members:
+            row, provenance = images[item['question_id']], item['provenance']
+            key = f'{item["exam"]}#{item["number"]}'
+            note = ''
+            if provenance['origin'] == 'manual':
+                note = (
+                    f'<div class="why">{html.escape(provenance["decision"])}: '
+                    f'{html.escape(provenance["observed_signature"])} → {html.escape(item["signature"])}. '
+                    f'{html.escape(provenance["justification"])}</div>'
+                )
+            parts.append(
+                f'<div class="q{" manual" if note else ""}"><a href="{row["overlay"]}">'
+                f'<img loading="lazy" src="{row["image"]}" alt="{html.escape(key)}"></a>'
+                f'<div class="meta">{html.escape(key)} · {html.escape(item["signature"])}</div>{note}</div>'
+            )
+        parts.append('</div>')
+    return '\n'.join(parts)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('exams', nargs='*', type=Path, help='JSON de provas com regiões; padrão: perfil local.')
@@ -239,8 +279,12 @@ def main():
             write(args.reference, labeled)
         if args.catalog:
             write(args.catalog, reference.catalog(items, ADAPTER))
+        (output / 'tipos.html').write_text(type_page(items, rows, f'Tipos de layout ({ADAPTER})'))
         manual = sum(item['provenance']['origin'] == 'manual' for item in items)
-        print(f'{len(items)} questões com tipo ({manual} por decisão manual), {len({i["type"] for i in items})} tipos.')
+        print(
+            f'{len(items)} questões com tipo ({manual} por decisão manual), {len({i["type"] for i in items})} tipos. '
+            f'Folha por tipo: {output / "tipos.html"}'
+        )
 
 
 def write(path, value):
