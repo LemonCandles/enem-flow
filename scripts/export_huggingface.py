@@ -11,12 +11,13 @@ externa), uma por tipo comum; a lista sai em `exemplos/fontes.json` para confer�
 
 import _bootstrap  # noqa: F401
 import argparse
+import hashlib
 from datetime import date
 import json
 from pathlib import Path
 import shutil
 
-from experiments.common import digest, file_digest, read_json
+from experiments.common import file_digest, read_json
 from ingestion.layout import types
 from layout_groups import profile_exams
 
@@ -38,9 +39,14 @@ MODEL_FILES = {
 THIRD_PARTY = ('disponível em', 'disponivel em', 'acesso em', 'fonte:', 'http', 'adaptado')
 
 
+def report_digest(report):
+    """Hash do relatório no mesmo formato de `ml/layout_types/train.py` (separadores padrão do json)."""
+    return hashlib.sha256(json.dumps(report, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+
+
 def verified(run):
     metadata, report = read_json(run / 'run.json'), read_json(run / 'report.json')
-    if metadata.get('status') != 'complete' or metadata['report_sha256'] != digest(report):
+    if metadata.get('status') != 'complete' or metadata['report_sha256'] != report_digest(report):
         raise SystemExit('Treino incompleto ou relatório divergente do run.json.')
     if file_digest(ROOT / metadata['manifest']) != metadata['manifest_sha256']:
         raise SystemExit('O manifesto mudou desde o treino.')
