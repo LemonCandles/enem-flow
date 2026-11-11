@@ -9,7 +9,7 @@ Tutor e layout dinâmico estão integrados (ver [estado](status-implementacao.md
 - Tutor: o material das questões publicadas é gerado e aprovado automaticamente pela IA (`tutor-material`); questões anuladas e as que o provedor não resolver dentro das regras ficam sem ajuda até nova execução ou material escrito pela equipe.
 - Layout: gerar propostas para as questões com apresentação simplificada, comparar com o original e aprovar caso a caso. Fórmulas detectadas pela geometria chegam como texto e precisam de transcrição.
 - Propostas de layout continuam fora do produto até aprovação humana.
-- Tipos de layout: publicar o classificador no Hugging Face (repositório de modelo público, tag por versão do catálogo ou do modelo) e conferir a cópia baixada com `export_layout_model.py --check-copy`. Depois, renderizar os tipos representáveis no frontend e estruturar as oito questões de 2025 que o JSON guarda como imagem única. Linhas numeradas, blocos lado a lado e alternativas mistas exigem mudança no contrato de conteúdo.
+- Tipos de layout: publicar a rede imagem → tipo no Hugging Face (modelo e Space públicos, tags da versão do modelo e do catálogo) após a conferência dos exemplos e das 34 decisões manuais, e verificar a cópia baixada num venv limpo. A rede ainda fica abaixo do adaptador e da regra sobre o JSON; um backbone pré-treinado ou mais rótulos revisados são o próximo ciclo. Depois, renderizar os tipos representáveis no frontend e estruturar as oito questões de 2025 que o JSON guarda como imagem única. Linhas numeradas, blocos lado a lado e alternativas mistas exigem mudança no contrato de conteúdo.
 
 ## Evolução posterior
 
@@ -19,7 +19,7 @@ Tutor e layout dinâmico estão integrados (ver [estado](status-implementacao.md
 - Tipos de layout com o acervo histórico: mais edições para dar suporte à cauda do catálogo e às marcas, hoje só no treino.
 - Expansão por área, turmas e recursos multimodais mediante contratos e aceites próprios.
 
-Curadoria independente, publicação de conteúdo das provas e piloto não são dependências nem entregas deste roteiro; a publicação externa prevista é só a do classificador de tipos de layout, sem textos nem figuras das provas. Estudos de aprendizagem dependem de nova decisão de escopo e protocolo.
+Curadoria independente, publicação de conteúdo das provas e piloto não são dependências nem entregas deste roteiro; a publicação externa prevista é só a da rede de tipos de layout, com até dez questões de exemplo de autoria do Inep, sem conteúdo de terceiros e com a fonte e o SHA-256 do caderno. Estudos de aprendizagem dependem de nova decisão de escopo e protocolo.
 
 ## Critério de entrega
 
