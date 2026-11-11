@@ -9,7 +9,8 @@ from enem_layout.predict import load_catalog, predict_images
 from huggingface_hub import snapshot_download
 
 REPO = os.environ.get('MODEL_REPO', '{repo_id}')
-folder = snapshot_download(REPO)
+# Uma pasta local em MODEL_REPO permite testar a demonstração antes do envio.
+folder = REPO if os.path.isdir(REPO) else snapshot_download(REPO)
 model = EnemLayoutClassifier.from_pretrained(folder)
 catalog = load_catalog(folder)
 examples = sorted(os.path.join('exemplos', name) for name in os.listdir('exemplos') if name.endswith('.png'))
@@ -30,7 +31,9 @@ demo = gr.Interface(
     description=(
         'Rede neural que classifica o layout de impressão de uma questão do ENEM. '
         'Projeto Enem Flow, de Cassio Lima Silva e Diogo Vieira de Castro: '
-        'https://github.com/LemonCandles/enem-flow'
+        'https://github.com/LemonCandles/enem-flow. '
+        'A rede erra cerca de 3 em cada 10 tipos: confira o campo needs_review e veja desempenho e limites '
+        'no card do modelo (https://huggingface.co/{repo_id}).'
     ),
 )
 
