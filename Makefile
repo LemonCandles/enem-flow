@@ -1,8 +1,9 @@
-.PHONY: dev doctor check-distribution setup migrate seed acervo api web test lint format clean build experiments experiments-archive audit-archive audit-archive-browser experiments-all
+.PHONY: dev doctor check-distribution setup migrate seed acervo api web test lint format clean build experiments experiments-archive audit-archive audit-archive-browser experiments-all ml-setup ml-train ml-test
 PYTHON = .venv/bin/python
 EXPERIMENT_OUTPUT ?= tmp/experiments/latest
 AUDIT_OUTPUT ?= tmp/acervo-validacao/latest
 AUDIT_URL ?= http://127.0.0.1:3100
+ML_OUTPUT ?= tmp/experiments/layout-neural-latest
 
 setup:
 	python3 scripts/local.py setup
@@ -73,3 +74,14 @@ audit-archive-browser:
 # Exige os modelos/relatórios de make experiments e o acervo histórico local.
 experiments-all:
 	$(PYTHON) scripts/experiment_archive_all.py --output "$(AUDIT_OUTPUT)/etapa3" --model "$(EXPERIMENT_OUTPUT)/classification-model.json"
+
+# Rede de tipos de layout: ambiente próprio em ml/ (uv), fora dos lockfiles do backend e do frontend.
+ml-setup:
+	cd ml && uv sync
+
+# A saída precisa estar em tmp/ e vazia; três seeds, o teste é medido só depois da escolha.
+ml-train:
+	cd ml && .venv/bin/python -m layout_types.train --output "../$(ML_OUTPUT)"
+
+ml-test:
+	cd ml && .venv/bin/python -m pytest -q
