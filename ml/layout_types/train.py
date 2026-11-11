@@ -33,7 +33,8 @@ CONFIG = {
     'width': 384,
     'height': 1024,
     'min_corpo_count': 10,
-    'epochs': 14,
+    'epochs': 40,
+    'mark_pos_weight_cap': 5.0,
     'batch_size': 12,
     'learning_rate': 2e-3,
     'weight_decay': 1e-4,
@@ -112,6 +113,23 @@ def calibrate(logits, items, labels):
     }
 
 
+def mark_threshold(logits, items, model):
+    """Limiar das marcas que maximiza o macro-F1 do eixo no desenvolvimento (com a temperatura já aplicada)."""
+    from experiments.common import classification_metrics
+
+    probabilities = torch.sigmoid(logits['marcas'] / model.temperature['marcas'])
+    expected = [item['axes']['marcas'] for item in items]
+
+    def score(threshold):
+        predicted = [
+            '.'.join(m for m, p in zip(model.labels['marcas'], row.tolist()) if p >= threshold) or 'nenhuma'
+            for row in probabilities
+        ]
+        return classification_metrics(expected, predicted, sorted(set(expected) | set(predicted)))['macro_f1']
+
+    return max([0.5 + 0.05 * k for k in range(10)], key=lambda t: (score(t), -abs(t - 0.5)))
+
+
 def review_threshold(items, outputs, target):
     """Menor confiança que mantém a acurácia das questões aceitas no alvo, no desenvolvimento."""
     pairs = sorted(((o['confidence'], int(o['type'] == i['type'])) for i, o in zip(items, outputs)), reverse=True)
@@ -151,14 +169,16 @@ def train_seed(seed, splits, images, output, device):
     )
     positives = torch.stack([m for _, _, m in indices]).sum(0)
     mark_loss = nn.BCEWithLogitsLoss(
-        pos_weight=((len(indices) - positives) / positives.clamp(min=1)).clamp(max=50).to(device)
+        pos_weight=((len(indices) - positives) / positives.clamp(min=1))
+        .clamp(max=CONFIG['mark_pos_weight_cap'])
+        .to(device)
     )
     optimizer = torch.optim.AdamW(model.parameters(), lr=CONFIG['learning_rate'], weight_decay=CONFIG['weight_decay'])
     schedule = torch.optim.lr_scheduler.OneCycleLR(
         optimizer, max_lr=CONFIG['learning_rate'], total_steps=CONFIG['epochs'] * len(loader)
     )
     scaler = torch.amp.GradScaler(enabled=device == 'cuda' and CONFIG['mixed_precision'])
-    history, best = [], (-1.0, None, -1)
+    history, best = [], ((-1.0, -1.0), None, -1)
     for epoch in range(CONFIG['epochs']):
         model.train()
         started, total, batches = time.perf_counter(), 0.0, 0
@@ -200,20 +220,27 @@ def train_seed(seed, splits, images, output, device):
             f'seed {seed} época {epoch + 1}: perda {total / batches:.4f}, dev F1 {score:.4f}, tipo {accuracy:.4f}',
             flush=True,
         )
-        if score > best[0]:
-            best = (score, {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}, epoch + 1)
+        # Escolha pela acurácia do tipo exato no desenvolvimento; o macro-F1 desempata (classes de 2–3 exemplos oscilam).
+        if (accuracy, score) > best[0]:
+            best = ((accuracy, score), {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}, epoch + 1)
     model.load_state_dict(best[1])
     _, logits = predict(
         model, splits['development'], images, device=device, workers=CONFIG['workers'], mixed=CONFIG['mixed_precision']
     )
     model.temperature = calibrate(logits, splits['development'], labels)
+    model.mark_threshold = mark_threshold(logits, splits['development'], model)
     outputs, _ = predict(
         model, splits['development'], images, device=device, workers=CONFIG['workers'], mixed=CONFIG['mixed_precision']
     )
     model.review_threshold = review_threshold(splits['development'], outputs, CONFIG['review_target_accuracy'])
     model.cpu()
     model.save_pretrained(output / 'model')
-    return model, {'history': history, 'best_epoch': best[2], 'development_mean_macro_f1': best[0]}
+    return model, {
+        'history': history,
+        'best_epoch': best[2],
+        'development_type_accuracy_at_best': best[0][0],
+        'development_mean_macro_f1': best[0][1],
+    }
 
 
 def provenance(manifest_path):
@@ -240,6 +267,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--seeds', type=int, nargs='+', default=[1, 2, 3])
     parser.add_argument('--epochs', type=int, default=CONFIG['epochs'])
+    parser.add_argument('--sem-teste', action='store_true', help='Rodada de ajuste: não mede o teste.')
     args = parser.parse_args()
     CONFIG['epochs'] = args.epochs
     output = args.output.resolve()
@@ -260,7 +288,7 @@ def main():
         model, training = train_seed(seed, splits, args.images, folder, device)
         model.to(device)
         results = {}
-        for split in ('development', 'test'):
+        for split in ('development',) if args.sem_teste else ('development', 'test'):
             items = splits[split]
             outputs, _ = predict(
                 model, items, args.images, device=device, workers=CONFIG['workers'], mixed=CONFIG['mixed_precision']
@@ -283,12 +311,16 @@ def main():
         del model
         torch.cuda.empty_cache()
     # A seed publicada é a melhor no desenvolvimento; o teste só é reportado.
-    selected = max(args.seeds, key=lambda s: (runs[s]['development_mean_macro_f1'], -s))
-    tests = [runs[s]['test']['type_accuracy'] for s in args.seeds]
+    selected = max(
+        args.seeds,
+        key=lambda s: (runs[s]['development_type_accuracy_at_best'], runs[s]['development_mean_macro_f1'], -s),
+    )
+    tests = [runs[s]['test']['type_accuracy'] if 'test' in runs[s] else 0.0 for s in args.seeds]
     mean = sum(tests) / len(tests)
     summary = {
         'selected_seed': selected,
-        'selection': 'maior média de macro-F1 dos eixos no desenvolvimento; teste não usado',
+        'test_measured': not args.sem_teste,
+        'selection': 'maior acurácia do tipo exato no desenvolvimento (macro-F1 médio desempata); teste não usado',
         'model_config': json.loads((output / f'seed-{selected}/model/config.json').read_text()),
         'counts': {split: len(items) for split, items in splits.items()},
         'train_support': support(splits['train']),
@@ -308,7 +340,9 @@ def main():
         selected_seed=selected,
     )
     write(output / 'run.json', metadata)
-    print(f'Concluído: seed {selected}; tipo exato no teste {runs[selected]["test"]["type_accuracy"]:.4f}')
+    print(
+        f'Concluído: seed {selected}; tipo exato no desenvolvimento {runs[selected]["development"]["type_accuracy"]:.4f}'
+    )
 
 
 if __name__ == '__main__':
