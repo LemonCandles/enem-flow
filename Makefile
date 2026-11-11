@@ -77,7 +77,7 @@ experiments-all:
 
 # Rede de tipos de layout: ambiente próprio em ml/ (uv), fora dos lockfiles do backend e do frontend.
 ml-setup:
-	cd ml && uv sync
+	cd ml && uv sync --locked
 
 # A saída precisa estar em tmp/ e vazia; três seeds, o teste é medido só depois da escolha.
 ml-train:
