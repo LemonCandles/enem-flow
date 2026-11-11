@@ -130,7 +130,7 @@ def warning(test):
     ]
 
 
-def card(repo_id, report, catalog, manifest, chosen, version):
+def card(repo_id, report, catalog, manifest, chosen, version, review):
     seed = str(report['selected_seed'])
     run = report['runs'][seed]
     test, development = run['test'], run['development']
@@ -199,16 +199,20 @@ def card(repo_id, report, catalog, manifest, chosen, version):
         '## Uso',
         '',
         '```bash',
+        'pip install -U huggingface_hub',
+        f'hf download {repo_id} --local-dir enem-layout-types && cd enem-layout-types',
         'pip install -r requirements.txt',
-        f'python -m enem_layout.predict exemplos/{Path(chosen[0]["image"]).name} --model {repo_id}',
+        f'python -m enem_layout.predict exemplos/{Path(chosen[0]["image"]).name} --model .',
         '```',
         '',
         '```python',
+        '# Dentro da pasta baixada: o catálogo (layout-types.json) preenche descrição, in_catalog e needs_review.',
         'from PIL import Image',
         'from enem_layout import EnemLayoutClassifier, predict_images',
+        'from enem_layout.predict import load_catalog',
         '',
-        f'model = EnemLayoutClassifier.from_pretrained("{repo_id}")',
-        'print(predict_images(model, [Image.open("questao.png")]))',
+        'model = EnemLayoutClassifier.from_pretrained(".")',
+        'print(predict_images(model, [Image.open("questao.png")], load_catalog(".")))',
         '```',
         '',
         'A imagem deve conter **uma questão inteira** (do título "QUESTÃO n" até a última alternativa), sem o '
@@ -254,7 +258,7 @@ def card(repo_id, report, catalog, manifest, chosen, version):
         ),
         '',
         f'Calibração (ECE) no teste: {number(test["calibration_error"])}. Com o limiar de revisão, o modelo aceita '
-        f'{percent(test["review"]["coverage"])} das questões de teste, com {percent(test["review"]["accuracy_accepted"])} '
+        f'{percent(review["coverage"])} das questões de teste, com {percent(review["accuracy_accepted"])} '
         'de acerto nelas.',
         '',
         'Por fatia do teste:',
@@ -382,6 +386,15 @@ def export(run, repo_id, output, limit):
     # Previsões gravadas no treino usam catálogo vazio: `needs_review` é refeito aqui com o catálogo e o limiar.
     predicted = {o['id']: o for o in read_json(model_folder.parent / 'predictions-test.json')}
     known = {entry['id'] for entry in catalog['types']}
+    accepted = [
+        o['type'] == o['expected']
+        for o in predicted.values()
+        if o['type'] in known and o['confidence'] >= config['review_threshold']
+    ]
+    review = {
+        'coverage': len(accepted) / len(predicted),
+        'accuracy_accepted': sum(accepted) / len(accepted) if accepted else None,
+    }
     for item in chosen:
         output_ = predicted[item['id']]
         item['predicted'] = output_['type']
@@ -410,7 +423,7 @@ def export(run, repo_id, output, limit):
         .read_text()
         .format(version=version, date=date.today().isoformat(), repo_id=repo_id)
     )
-    (output / 'README.md').write_text(card(repo_id, report, catalog, manifest, chosen, version))
+    (output / 'README.md').write_text(card(repo_id, report, catalog, manifest, chosen, version, review))
     unexpected = sorted(p.name for p in output.iterdir() if p.name not in MODEL_FILES)
     if unexpected:
         raise SystemExit(f'Arquivos inesperados: {unexpected}')
