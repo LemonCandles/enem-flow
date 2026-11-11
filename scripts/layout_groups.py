@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Agrupa as questões das provas pelo layout, de forma determinística (`pdf-geometry-v3`).
+"""Agrupa as questões das provas pelo layout, de forma determinística (`pdf-geometry-v4`).
 
 Para cada questão: renderiza as regiões como uma imagem (150 dpi), tipa os blocos pela
 geometria e tipografia do PDF, calcula a assinatura estrutural e verifica as invariantes
@@ -93,7 +93,7 @@ def content_form(content):
     return 'imagem-unica' if blocks and all(b['type'] == 'image' for b in blocks) else 'estruturado'
 
 
-def run(paths, output, assets_root):
+def run(paths, output, assets_root, overlays=True):
     rows, seen = [], {}
     for path in paths:
         data = json.loads(Path(path).read_text())
@@ -118,7 +118,8 @@ def run(paths, output, assets_root):
                 folder.mkdir(parents=True, exist_ok=True)
                 name = f'q{content["number"]:03d}'
                 save_png(result['image'], folder / f'{name}.png')
-                save_png(result['image'], folder / f'{name}-overlay.png', color=overlay(result))
+                if overlays:
+                    save_png(result['image'], folder / f'{name}-overlay.png', color=overlay(result))
                 row = dict(
                     exam=data['id'],
                     number=content['number'],

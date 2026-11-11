@@ -1,4 +1,4 @@
-"""Deterministic layout of one question: typed blocks, structural signature and invariants (`pdf-geometry-v3`).
+"""Deterministic layout of one question: typed blocks, structural signature and invariants (`pdf-geometry-v4`).
 
 The vector channel reuses the decisions of `extract_question` (regions, lines, figures, tables,
 alternatives) and types each body block by typography and position: paragraph, credit, caption,
@@ -22,7 +22,7 @@ from ingestion.pdf_headings import HEADING
 from . import raster
 from .render import furniture_mask, page_clip, render_question, to_pixels
 
-ADAPTER = 'pdf-geometry-v3'
+ADAPTER = 'pdf-geometry-v4'
 
 # Extraction diagnostics that already mean the vector channel could not structure the question.
 EXTRACTION_ERRORS = {'whole_region_image', 'merged_table_cells', 'spatial_layout', 'garbled_text', 'alternative_layout'}
@@ -38,6 +38,10 @@ NEAR_TABLE = 25
 # Vector thresholds, in PDF points.
 GUTTER = 8  # blank space between blocks printed side by side; a line split by an inline fraction has none
 NUMBER_COLUMN = 3  # x tolerance of a column of line numbers
+# A reference in a smaller font is a credit even when the author comes first ("NANI. Disponível em: ...").
+REFERENCE = re.compile(r'Dispon[ií]vel em\b|Acesso em\b')
+EDGE_MARGIN, EDGE_WIDTH = 50, 40  # a narrow tab within this distance of the page edge is decoration
+TITLE_BAND = 2.5  # a figure on the title line, at most this many title heights tall, is the title band
 WHOLE_REGION = (0.8, 0.95)  # width and height shares of a region spanned by a figure that is the whole question
 
 
@@ -161,7 +165,7 @@ def typed_blocks(extraction):
             kind = 'paragraph'
             if numbered(run):
                 kind = 'numbers'
-            elif CREDIT.match(text):
+            elif CREDIT.match(text) or (REFERENCE.search(text) and size < body_size - 0.5):
                 kind = 'credit'
             elif (
                 previous
@@ -484,11 +488,45 @@ def invariants(doc, regions, extraction, blocks, links, sig, findings):
     return issues
 
 
+def page_furniture(doc, regions, blocks):
+    """Body figures that are page decoration, not content.
+
+    Some booklets print a dark tab at the page edge (one per subject area) and a striped band beside
+    "Questão n"; the graphics detector returns both as figures. Their ink stays explained in the raster
+    channel because it belongs to an extracted block.
+    """
+    titles = []
+    for region in regions:
+        page, clip = page_clip(doc, region)
+        for block in page.get_text('dict', clip=clip)['blocks']:
+            for line in block.get('lines', []):
+                if HEADING.match(''.join(span['text'] for span in line['spans']).strip()):
+                    titles.append((region['page'], line['bbox']))
+    result = set()
+    for block in blocks:
+        if block['type'] != 'image' or block['alternative']:
+            continue
+        x0, y0, x1, y1 = block['bbox']
+        width = doc[block['page'] - 1].rect.width
+        edge = x1 - x0 <= EDGE_WIDTH and (x0 < EDGE_MARGIN or x1 > width - EDGE_MARGIN)
+        title = any(
+            page == block['page']
+            and vertical_overlap(box, block['bbox']) > 0.5
+            and y1 - y0 <= TITLE_BAND * (box[3] - box[1])
+            for page, box in titles
+        )
+        if edge or title:
+            result.add(block['id'])
+    return result
+
+
 def analyze(doc, content, exam_id, source_hash, assets_root, background=None):
     """Layout of one question: blocks, links, signature, findings and issues, plus its image."""
     regions = (content.get('layout') or {}).get('blocks', [])
     extraction = extract_question(doc, copy.deepcopy(content), source_hash, exam_id, assets_root)
     blocks = typed_blocks(extraction)
+    decoration = page_furniture(doc, regions, blocks)
+    blocks = [block for block in blocks if block['id'] not in decoration]
     links = figure_links(blocks)
     sig = signature(blocks, links, regions)
     image, placements, mask, findings = raster_channel(doc, regions, extraction, blocks, background)

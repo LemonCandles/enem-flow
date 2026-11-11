@@ -92,7 +92,7 @@ def rows_and_decisions():
         'figures': [],
         'source_sha256': 'a' * 64,
         'content_sha256': 'b' * 64,
-        'adapter': 'pdf-geometry-v3',
+        'adapter': 'pdf-geometry-v4',
     }
     eligible = {**row, 'question_id': 'q2', 'number': 2, 'signature': 'P ALT:texto', 'eligible': True, 'issues': []}
     decisions = {
