@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Se usar este modelo, cite-o com os dados abaixo."
+type: software
+title: "Enem Flow — tipos de layout de questões do ENEM"
+version: "{version}"
+date-released: "{date}"
+license: MIT
+repository-code: "https://github.com/LemonCandles/enem-flow"
+url: "https://huggingface.co/{repo_id}"
+authors:
+  - given-names: "Cassio"
+    family-names: "Lima Silva"
+  - given-names: "Diogo"
+    family-names: "Vieira de Castro"
+keywords:
+  - ENEM
+  - layout de documentos
+  - classificação de imagens

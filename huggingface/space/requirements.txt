@@ -1,0 +1,6 @@
+gradio>=5
+torch>=2.5
+huggingface_hub>=0.26
+safetensors>=0.4
+pillow>=11
+numpy>=2

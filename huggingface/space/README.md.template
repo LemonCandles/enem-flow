@@ -1,0 +1,16 @@
+---
+title: Enem Flow — tipos de layout
+emoji: 📄
+colorFrom: blue
+colorTo: green
+sdk: gradio
+app_file: app.py
+license: mit
+models:
+  - {repo_id}
+---
+
+Demonstração do modelo [{repo_id}](https://huggingface.co/{repo_id}): envie a imagem de uma questão
+do ENEM e receba o JSON com o tipo de layout.
+
+Autores: Cassio Lima Silva e Diogo Vieira de Castro. Projeto: https://github.com/LemonCandles/enem-flow
