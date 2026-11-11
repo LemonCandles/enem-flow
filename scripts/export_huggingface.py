@@ -315,12 +315,18 @@ def card(repo_id, report, catalog, manifest, chosen, version):
         'Questões reais do Inep, de autoria do próprio Inep (sem textos ou imagens de terceiros), em `exemplos/`; '
         'origem e SHA-256 de cada caderno em `exemplos/fontes.json`.',
         '',
-        '| Imagem | Questão | Tipo revisado |',
-        '| --- | --- | --- |',
+        '| Imagem | Questão | Tipo revisado | Previsão desta rede | Confiança | Revisar |',
+        '| --- | --- | --- | --- | --- | --- |',
         *(
-            f'| `{Path(item["image"]).name}` | {item["exam"]}, questão {item["number"]} | `{item["type"]}` |'
+            f'| `{Path(item["image"]).name}` | {item["exam"]}, questão {item["number"]} | `{item["type"]}` | '
+            f'{"`" + item["predicted"] + "`" if item["predicted"] else "`null` (corpo `outro`)"}'
+            f'{" ✓" if item["predicted"] == item["type"] else " ✗"} | {number(item["confidence"])} | '
+            f'{"sim" if item["needs_review"] else "não"} |'
             for item in chosen
         ),
+        '',
+        f'A rede acerta {sum(i["predicted"] == i["type"] for i in chosen)} de {len(chosen)} exemplos; '
+        'os exemplos cobrem tipos variados, inclusive raros, e não representam a distribuição do teste.',
         '',
         '## Uso pretendido e limites',
         '',
@@ -373,6 +379,14 @@ def export(run, repo_id, output, limit):
         shutil.copyfile(PACKAGE / name, output / name)
     shutil.copytree(PACKAGE / 'enem_layout', output / 'enem_layout', ignore=shutil.ignore_patterns('__pycache__'))
     chosen = examples(manifest, limit)
+    # Previsões gravadas no treino usam catálogo vazio: `needs_review` é refeito aqui com o catálogo e o limiar.
+    predicted = {o['id']: o for o in read_json(model_folder.parent / 'predictions-test.json')}
+    known = {entry['id'] for entry in catalog['types']}
+    for item in chosen:
+        output_ = predicted[item['id']]
+        item['predicted'] = output_['type']
+        item['confidence'] = output_['confidence']
+        item['needs_review'] = output_['type'] not in known or output_['confidence'] < config['review_threshold']
     sources = []
     for item in chosen:
         name = f'{item["exam"]}-q{item["number"]:03d}.png'
