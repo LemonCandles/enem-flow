@@ -1,0 +1,808 @@
+{
+ "version": "layout-types-v2",
+ "extends": "layout-types-v1",
+ "dataset": "layout-types-archive-v1",
+ "adapter": "pdf-geometry-v4",
+ "axes": {
+  "corpo": {
+   "P": "texto",
+   "Cr": "crédito",
+   "T": "tabela",
+   "F": "figura",
+   "F+Cr": "figura com crédito",
+   "F+Cap": "figura com legenda",
+   "F+Cap+Cr": "figura com legenda e crédito"
+  },
+  "alternativas": {
+   "texto": "alternativas em texto, uma por linha",
+   "linha": "alternativas curtas, várias na mesma linha",
+   "figura": "alternativas em figura, uma abaixo da outra",
+   "grade": "alternativas em figura, dispostas em colunas",
+   "misto": "alternativas que misturam texto e figura"
+  },
+  "marcas": {
+   "compartilhado": "Texto de apoio compartilhado com outras questões.",
+   "linhas-numeradas": "Texto com as linhas numeradas.",
+   "lado-a-lado": "Blocos impressos lado a lado."
+  }
+ },
+ "fusion_rule": "Duas assinaturas viram um tipo quando diferem só por algo que não muda a apresentação: repetição imediata de um bloco ou de um par de blocos (P Cr P Cr P = P Cr P), numeração de linhas e blocos lado a lado, que passam a marcas. A assinatura exata continua guardada por questão.",
+ "min_archive_support": 20,
+ "other_policy": "Corpo fora do catálogo vira `outro` no treino; o tipo exato continua no manifesto.",
+ "counts": {
+  "types": 27,
+  "new_from_archive": 3,
+  "archive_labeled": 3358,
+  "archive_outside_catalog": 99
+ },
+ "types": [
+  {
+   "id": "texto-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 1555,
+   "questions_reference": 166,
+   "archive_signatures": {
+    "P Cr P ALT:texto": 1489,
+    "P Cr P Cr P ALT:texto": 66
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 817,
+   "questions_reference": 66,
+   "archive_signatures": {
+    "P ALT:texto": 817
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 275,
+   "questions_reference": 41,
+   "archive_signatures": {
+    "P F P ALT:texto": 266,
+    "P F P F P ALT:texto": 9
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "figura+credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "F+Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "figura+credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com figura com crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 214,
+   "questions_reference": 18,
+   "archive_signatures": {
+    "F+Cr P ALT:texto": 214
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura+credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "F+Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura+credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura com crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 93,
+   "questions_reference": 29,
+   "archive_signatures": {
+    "P F+Cr P ALT:texto": 93
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-tabela-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "T",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-tabela-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, tabela e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 80,
+   "questions_reference": 8,
+   "archive_signatures": {
+    "P T P ALT:texto": 80
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "figura-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "F",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "figura-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com figura e texto; alternativas em texto, uma por linha.",
+   "origin": "acervo",
+   "review": "pendente",
+   "questions_archive": 62,
+   "questions_reference": 0,
+   "archive_signatures": {
+    "F P ALT:texto": 62
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-texto-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura-texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura, texto, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 46,
+   "questions_reference": 6,
+   "archive_signatures": {
+    "P F P Cr P ALT:texto": 44,
+    "P F P F P Cr P ALT:texto": 2
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "figura-texto-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "F",
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "figura-texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com figura, texto, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "acervo",
+   "review": "pendente",
+   "questions_archive": 30,
+   "questions_reference": 0,
+   "archive_signatures": {
+    "F P Cr P ALT:texto": 27,
+    "F P Cr P Cr P ALT:texto": 3
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-texto.alt-texto.lado-a-lado",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": [
+     "lado-a-lado"
+    ]
+   },
+   "labels": {
+    "corpo": "texto-figura-texto",
+    "alternativas": "texto",
+    "marcas": "lado-a-lado"
+   },
+   "description": "Enunciado com texto, figura e texto; alternativas em texto, uma por linha. Blocos impressos lado a lado.",
+   "origin": "acervo",
+   "review": "pendente",
+   "questions_archive": 22,
+   "questions_reference": 0,
+   "archive_signatures": {
+    "P F F|F|F F P ALT:texto": 1,
+    "P F F|F|F|F F|F|F F P ALT:texto": 1,
+    "P F P F P F P F|P F P F P ALT:texto": 1,
+    "P F|F F P ALT:texto": 2,
+    "P F|F P ALT:texto": 10,
+    "P F|F P F P ALT:texto": 1,
+    "P F|F|F P ALT:texto": 1,
+    "P F|F|F|F|F P ALT:texto": 1,
+    "P F|P F P ALT:texto": 1,
+    "P F|P P ALT:texto": 2,
+    "P F|P|P P F P ALT:texto": 1
+   },
+   "representable": false,
+   "reasons": [
+    "O contrato de conteúdo não representa blocos lado a lado."
+   ]
+  },
+  {
+   "id": "texto.alt-figura",
+   "axes": {
+    "corpo": [
+     "P"
+    ],
+    "alternativas": "figura",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto",
+    "alternativas": "figura",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto; alternativas em figura, uma abaixo da outra.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 13,
+   "questions_reference": 3,
+   "archive_signatures": {
+    "P ALT:figura": 13
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-tabela-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "T",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-tabela-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, tabela, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 13,
+   "questions_reference": 1,
+   "archive_signatures": {
+    "P T Cr P ALT:texto": 13
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura+credito-texto-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "F+Cr",
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura+credito-texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura com crédito, texto, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 9,
+   "questions_reference": 2,
+   "archive_signatures": {
+    "P F+Cr P Cr P ALT:texto": 9
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-texto.alt-grade",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P"
+    ],
+    "alternativas": "grade",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura-texto",
+    "alternativas": "grade",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura e texto; alternativas em figura, dispostas em colunas.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 7,
+   "questions_reference": 4,
+   "archive_signatures": {
+    "P F P ALT:grade": 7
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-texto.alt-figura",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P"
+    ],
+    "alternativas": "figura",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura-texto",
+    "alternativas": "figura",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura e texto; alternativas em figura, uma abaixo da outra.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 7,
+   "questions_reference": 3,
+   "archive_signatures": {
+    "P F P ALT:figura": 6,
+    "P F P F P ALT:figura": 1
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-credito-texto-figura+credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "Cr",
+     "P",
+     "F+Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-credito-texto-figura+credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, crédito, texto, figura com crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 5,
+   "questions_reference": 4,
+   "archive_signatures": {
+    "P Cr P Cr P F+Cr P ALT:texto": 1,
+    "P Cr P F+Cr P ALT:texto": 4
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto.alt-grade",
+   "axes": {
+    "corpo": [
+     "P"
+    ],
+    "alternativas": "grade",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto",
+    "alternativas": "grade",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto; alternativas em figura, dispostas em colunas.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 5,
+   "questions_reference": 1,
+   "archive_signatures": {
+    "P ALT:grade": 5
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-credito-texto.alt-texto.compartilhado.linhas-numeradas",
+   "axes": {
+    "corpo": [
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": [
+     "compartilhado",
+     "linhas-numeradas"
+    ]
+   },
+   "labels": {
+    "corpo": "texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "compartilhado.linhas-numeradas"
+   },
+   "description": "Enunciado com texto, crédito e texto; alternativas em texto, uma por linha. Texto de apoio compartilhado com outras questões. Texto com as linhas numeradas.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 5,
+   "archive_signatures": {},
+   "representable": false,
+   "reasons": [
+    "O contrato de conteúdo não representa a numeração das linhas."
+   ]
+  },
+  {
+   "id": "texto-figura+credito-texto.alt-figura",
+   "axes": {
+    "corpo": [
+     "P",
+     "F+Cr",
+     "P"
+    ],
+    "alternativas": "figura",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura+credito-texto",
+    "alternativas": "figura",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura com crédito e texto; alternativas em figura, uma abaixo da outra.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 2,
+   "questions_reference": 3,
+   "archive_signatures": {
+    "P F+Cr P ALT:figura": 2
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-texto-tabela-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P",
+     "T",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura-texto-tabela-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura, texto, tabela e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 3,
+   "questions_reference": 1,
+   "archive_signatures": {
+    "P F P T P ALT:texto": 2,
+    "P F P T P T P ALT:texto": 1
+   },
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-credito-texto-figura-texto-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "Cr",
+     "P",
+     "F",
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-credito-texto-figura-texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, crédito, texto, figura, texto, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 2,
+   "archive_signatures": {},
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-figura-credito-texto.alt-texto.lado-a-lado",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": [
+     "lado-a-lado"
+    ]
+   },
+   "labels": {
+    "corpo": "texto-figura-credito-texto",
+    "alternativas": "texto",
+    "marcas": "lado-a-lado"
+   },
+   "description": "Enunciado com texto, figura, crédito e texto; alternativas em texto, uma por linha. Blocos impressos lado a lado.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 1,
+   "questions_reference": 1,
+   "archive_signatures": {
+    "P F|F Cr P ALT:texto": 1
+   },
+   "representable": false,
+   "reasons": [
+    "O contrato de conteúdo não representa blocos lado a lado."
+   ]
+  },
+  {
+   "id": "texto-figura-texto-tabela-credito-texto.alt-texto",
+   "axes": {
+    "corpo": [
+     "P",
+     "F",
+     "P",
+     "T",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-figura-texto-tabela-credito-texto",
+    "alternativas": "texto",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, figura, texto, tabela, crédito e texto; alternativas em texto, uma por linha.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 2,
+   "archive_signatures": {},
+   "representable": true,
+   "reasons": []
+  },
+  {
+   "id": "texto-credito-texto.alt-texto.lado-a-lado",
+   "axes": {
+    "corpo": [
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": [
+     "lado-a-lado"
+    ]
+   },
+   "labels": {
+    "corpo": "texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "lado-a-lado"
+   },
+   "description": "Enunciado com texto, crédito e texto; alternativas em texto, uma por linha. Blocos impressos lado a lado.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 1,
+   "archive_signatures": {},
+   "representable": false,
+   "reasons": [
+    "O contrato de conteúdo não representa blocos lado a lado."
+   ]
+  },
+  {
+   "id": "texto-credito-texto.alt-texto.linhas-numeradas",
+   "axes": {
+    "corpo": [
+     "P",
+     "Cr",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": [
+     "linhas-numeradas"
+    ]
+   },
+   "labels": {
+    "corpo": "texto-credito-texto",
+    "alternativas": "texto",
+    "marcas": "linhas-numeradas"
+   },
+   "description": "Enunciado com texto, crédito e texto; alternativas em texto, uma por linha. Texto com as linhas numeradas.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 1,
+   "archive_signatures": {},
+   "representable": false,
+   "reasons": [
+    "O contrato de conteúdo não representa a numeração das linhas."
+   ]
+  },
+  {
+   "id": "texto-tabela-figura-texto.alt-texto.lado-a-lado",
+   "axes": {
+    "corpo": [
+     "P",
+     "T",
+     "F",
+     "P"
+    ],
+    "alternativas": "texto",
+    "marcas": [
+     "lado-a-lado"
+    ]
+   },
+   "labels": {
+    "corpo": "texto-tabela-figura-texto",
+    "alternativas": "texto",
+    "marcas": "lado-a-lado"
+   },
+   "description": "Enunciado com texto, tabela, figura e texto; alternativas em texto, uma por linha. Blocos impressos lado a lado.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 1,
+   "archive_signatures": {},
+   "representable": false,
+   "reasons": [
+    "O contrato de conteúdo não representa blocos lado a lado."
+   ]
+  },
+  {
+   "id": "texto-tabela-texto.alt-grade",
+   "axes": {
+    "corpo": [
+     "P",
+     "T",
+     "P"
+    ],
+    "alternativas": "grade",
+    "marcas": []
+   },
+   "labels": {
+    "corpo": "texto-tabela-texto",
+    "alternativas": "grade",
+    "marcas": "nenhuma"
+   },
+   "description": "Enunciado com texto, tabela e texto; alternativas em figura, dispostas em colunas.",
+   "origin": "layout-types-v1",
+   "review": "revisado",
+   "questions_archive": 0,
+   "questions_reference": 1,
+   "archive_signatures": {},
+   "representable": true,
+   "reasons": []
+  }
+ ]
+}

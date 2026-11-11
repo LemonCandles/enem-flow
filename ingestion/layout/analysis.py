@@ -1,4 +1,4 @@
-"""Deterministic layout of one question: typed blocks, structural signature and invariants (`pdf-geometry-v2`).
+"""Deterministic layout of one question: typed blocks, structural signature and invariants (`pdf-geometry-v4`).
 
 The vector channel reuses the decisions of `extract_question` (regions, lines, figures, tables,
 alternatives) and types each body block by typography and position: paragraph, credit, caption,
@@ -22,7 +22,7 @@ from ingestion.pdf_headings import HEADING
 from . import raster
 from .render import furniture_mask, page_clip, render_question, to_pixels
 
-ADAPTER = 'pdf-geometry-v2'
+ADAPTER = 'pdf-geometry-v4'
 
 # Extraction diagnostics that already mean the vector channel could not structure the question.
 EXTRACTION_ERRORS = {'whole_region_image', 'merged_table_cells', 'spatial_layout', 'garbled_text', 'alternative_layout'}
@@ -35,6 +35,14 @@ UNSUPPORTED = {
 MIN_COMPONENT = 30
 COLUMN_GAP = 18
 NEAR_TABLE = 25
+# Vector thresholds, in PDF points.
+GUTTER = 8  # blank space between blocks printed side by side; a line split by an inline fraction has none
+NUMBER_COLUMN = 3  # x tolerance of a column of line numbers
+# A reference in a smaller font is a credit even when the author comes first ("NANI. Disponível em: ...").
+REFERENCE = re.compile(r'Dispon[ií]vel em\b|Acesso em\b')
+EDGE_MARGIN, EDGE_WIDTH = 50, 40  # a narrow tab within this distance of the page edge is decoration
+TITLE_BAND = 2.5  # a figure on the title line, at most this many title heights tall, is the title band
+WHOLE_REGION = (0.8, 0.95)  # width and height shares of a region spanned by a figure that is the whole question
 
 
 def union(boxes):
@@ -55,12 +63,75 @@ def numbered(entries):
     return all(entry['type'] == 'text' and re.fullmatch(r'\d{1,3}', entry['text'].strip()) for entry in entries)
 
 
+def line_numbers(blocks):
+    """Keep `numbers` only for a column of increasing integers beside the text they number.
+
+    Line numbering is at least three integers aligned in x, increasing downwards, next to a paragraph
+    whose height they cover. An isolated digit (numerator, exponent, table cell) is ordinary text.
+    """
+    candidates = [b for b in blocks if b['type'] == 'numbers']
+    demoted = []
+    for block in candidates:
+        column = sorted(
+            (
+                other
+                for other in candidates
+                if other['page'] == block['page'] and abs(other['bbox'][0] - block['bbox'][0]) <= NUMBER_COLUMN
+            ),
+            key=lambda other: other['bbox'][1],
+        )
+        values = [int(e['text'].strip()) for other in column for e in other['entries']]
+        top, bottom = column[0]['bbox'][1], column[-1]['bbox'][3]
+        beside = any(
+            other['type'] == 'paragraph'
+            and other['page'] == block['page']
+            and other['bbox'][0] >= block['bbox'][2]
+            and other['bbox'][1] < bottom
+            and other['bbox'][3] > top
+            for other in blocks
+        )
+        if len(values) < 3 or values != sorted(set(values)) or not beside:
+            demoted.append(block)
+    for block in demoted:
+        block['type'] = 'paragraph'
+
+
 def vertical_overlap(a, b):
     return max(0, min(a[3], b[3]) - max(a[1], b[1])) / max(1e-6, min(a[3] - a[1], b[3] - b[1]))
 
 
 def horizontal_overlap(a, b):
     return max(0, min(a[2], b[2]) - max(a[0], b[0])) / max(1e-6, min(a[2] - a[0], b[2] - b[0]))
+
+
+def spans(region, box):
+    """Shares of the region's width and height inside the box."""
+    width = max(0, min(region[2], box[2]) - max(region[0], box[0])) / max(1e-6, region[2] - region[0])
+    height = max(0, min(region[3], box[3]) - max(region[1], box[1])) / max(1e-6, region[3] - region[1])
+    return width, height
+
+
+def side_by_side(a, b):
+    """Blocks on the same lines, each to one side of the other."""
+    return (
+        a['page'] == b['page']
+        and vertical_overlap(a['bbox'], b['bbox']) > 0.5
+        and horizontal_overlap(a['bbox'], b['bbox']) < 0.1
+    )
+
+
+def printed_beside(a, b):
+    """Side by side with a blank gutter and content on both sides.
+
+    A line split around an inline fraction has no gutter, and the loose glyphs of a formula
+    (digits, brackets, single letters) are not text printed in columns.
+    """
+
+    def substantial(block):
+        return block['type'] in {'image', 'table'} or len(re.sub(r'\s', '', block.get('text', ''))) >= 3
+
+    gap = max(a['bbox'][0], b['bbox'][0]) - min(a['bbox'][2], b['bbox'][2])
+    return side_by_side(a, b) and gap >= GUTTER and substantial(a) and substantial(b)
 
 
 def runs_by_size(entries, tolerance=0.8):
@@ -94,7 +165,7 @@ def typed_blocks(extraction):
             kind = 'paragraph'
             if numbered(run):
                 kind = 'numbers'
-            elif CREDIT.match(text):
+            elif CREDIT.match(text) or (REFERENCE.search(text) and size < body_size - 0.5):
                 kind = 'credit'
             elif (
                 previous
@@ -149,6 +220,7 @@ def typed_blocks(extraction):
                     type='alternative', alternative=letter, page=images[0]['page'], bbox=images[0]['bbox'], text=letter
                 )
             )
+    line_numbers([b for b in blocks if not b.get('alternative')])
     for order, block in enumerate(blocks):
         block['id'], block['order'] = f'b{order}', order
         block.setdefault('alternative', None)
@@ -215,12 +287,7 @@ def signature(blocks, links, regions):
                 suffix for relation, suffix in (('caption_of', '+Cap'), ('credit_of', '+Cr')) if relation in relations
             )
         previous = body[i - 1] if i else None
-        if (
-            previous
-            and previous['page'] == block['page']
-            and vertical_overlap(previous['bbox'], block['bbox']) > 0.5
-            and horizontal_overlap(previous['bbox'], block['bbox']) < 0.1
-        ):
+        if previous and printed_beside(previous, block):
             tokens[-1] = tokens[-1] + '|' + token
         else:
             tokens.append(token)
@@ -301,20 +368,12 @@ def raster_channel(doc, regions, extraction, blocks, background):
         and e['type'] == 'text'
         and (box := to_pixels(placements, e['page'], e['bbox'])) is not None
     ]
-    side_by_side = [
+    beside = [
         box
         for b in blocks
         if b['type'] != 'alternative'
         for box in [to_pixels(placements, b['page'], b['bbox'])]
-        if box is not None
-        and any(
-            o is not b
-            and o['page'] == b['page']
-            and vertical_overlap(o['bbox'], b['bbox']) > 0.5
-            and horizontal_overlap(o['bbox'], b['bbox']) < 0.1
-            for o in blocks
-            if o['type'] != 'alternative'
-        )
+        if box is not None and any(o is not b and side_by_side(o, b) for o in blocks if o['type'] != 'alternative')
     ]
     columns = []
     for band in raster.bands(text_mask, row_gap=2, column_gap=COLUMN_GAP):
@@ -322,7 +381,7 @@ def raster_channel(doc, regions, extraction, blocks, background):
         if sum(piece[2] - piece[0] >= 6 for piece in band['pieces']) < 2:
             continue
         x0, y0, x1, y1 = band['bbox']
-        if any(y0 < m[3] and y1 > m[1] for m in markers + side_by_side):
+        if any(y0 < m[3] and y1 > m[1] for m in markers + beside):
             continue
         columns.append(band['bbox'])
     return image, placements, mask, dict(blobs=blobs, near_tables=near_tables, rules=rules, columns=columns)
@@ -383,6 +442,20 @@ def invariants(doc, regions, extraction, blocks, links, sig, findings):
                 lost[0]['text'],
             )
         )
+    # A figure that fills its region is the whole question printed as an image, with or without a text layer.
+    for figure in [b for b in blocks if b['type'] == 'image']:
+        for region in regions:
+            width, height = spans(region['bbox'], figure['bbox'])
+            if region['page'] == figure['page'] and width >= WHOLE_REGION[0] and height >= WHOLE_REGION[1]:
+                issues.append(
+                    diagnostic(
+                        'whole_region_image',
+                        'Figura ocupa quase toda a região: a questão foi impressa como imagem e o texto não tem camada própria.',
+                        figure['id'],
+                        'error',
+                    )
+                )
+                break
     # A figure crop must not swallow running text in the body style.
     font, size = body_style(extraction['ordered'])
     for figure in [b for b in blocks if b['type'] == 'image']:
@@ -415,11 +488,45 @@ def invariants(doc, regions, extraction, blocks, links, sig, findings):
     return issues
 
 
+def page_furniture(doc, regions, blocks):
+    """Body figures that are page decoration, not content.
+
+    Some booklets print a dark tab at the page edge (one per subject area) and a striped band beside
+    "Questão n"; the graphics detector returns both as figures. Their ink stays explained in the raster
+    channel because it belongs to an extracted block.
+    """
+    titles = []
+    for region in regions:
+        page, clip = page_clip(doc, region)
+        for block in page.get_text('dict', clip=clip)['blocks']:
+            for line in block.get('lines', []):
+                if HEADING.match(''.join(span['text'] for span in line['spans']).strip()):
+                    titles.append((region['page'], line['bbox']))
+    result = set()
+    for block in blocks:
+        if block['type'] != 'image' or block['alternative']:
+            continue
+        x0, y0, x1, y1 = block['bbox']
+        width = doc[block['page'] - 1].rect.width
+        edge = x1 - x0 <= EDGE_WIDTH and (x0 < EDGE_MARGIN or x1 > width - EDGE_MARGIN)
+        title = any(
+            page == block['page']
+            and vertical_overlap(box, block['bbox']) > 0.5
+            and y1 - y0 <= TITLE_BAND * (box[3] - box[1])
+            for page, box in titles
+        )
+        if edge or title:
+            result.add(block['id'])
+    return result
+
+
 def analyze(doc, content, exam_id, source_hash, assets_root, background=None):
     """Layout of one question: blocks, links, signature, findings and issues, plus its image."""
     regions = (content.get('layout') or {}).get('blocks', [])
     extraction = extract_question(doc, copy.deepcopy(content), source_hash, exam_id, assets_root)
     blocks = typed_blocks(extraction)
+    decoration = page_furniture(doc, regions, blocks)
+    blocks = [block for block in blocks if block['id'] not in decoration]
     links = figure_links(blocks)
     sig = signature(blocks, links, regions)
     image, placements, mask, findings = raster_channel(doc, regions, extraction, blocks, background)

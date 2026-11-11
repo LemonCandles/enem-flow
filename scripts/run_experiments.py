@@ -14,7 +14,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, default=ROOT / 'experiments/config.json')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--only', choices=['classification', 'layout', 'adaptive', 'all'], default='all')
+    parser.add_argument(
+        '--only', choices=['classification', 'layout', 'layout-types', 'adaptive', 'all'], default='all'
+    )
     parser.add_argument(
         '--archive', action='store_true', help='Examina o acervo local e seus desafios; não baixa nem publica dados.'
     )
@@ -38,9 +40,9 @@ def main():
         parser.error('--proposal-limit deve ser positivo.')
     if args.ocr and not args.archive:
         parser.error('--ocr exige --archive.')
-    if args.only in {'classification', 'adaptive'} and (args.review_log or args.ocr):
+    if args.only in {'classification', 'layout-types', 'adaptive'} and (args.review_log or args.ocr):
         parser.error('--review-log e --ocr exigem a frente de layout.')
-    if args.only in {'layout', 'adaptive'} and args.external_predictions:
+    if args.only in {'layout', 'layout-types', 'adaptive'} and args.external_predictions:
         parser.error('--external-predictions exige a frente temática.')
     output = args.output.resolve()
     # Uma saída não pode coincidir com código, fontes, dataset ou banco instalado.
@@ -91,6 +93,11 @@ def main():
                 from experiments.recovery import run_archive
 
                 reports['archive'] = run_archive(config['layout'], output, args.ocr)
+        if args.only in {'layout-types', 'all'}:
+            from experiments.layout_types import run
+
+            print('Tipos de layout: comparando maioria, regra, árvore e Naive Bayes por eixo.', flush=True)
+            reports['layout-types'] = run(config['layout_types'], config['seed'], output)
         if args.only in {'adaptive', 'all'}:
             from experiments.adaptive import run
 
@@ -134,6 +141,21 @@ def validate_config(config):
         or set(layout['methods']) != {'coordinates', 'geometry', 'cart'}
     ):
         raise ValueError('Configuração de layout inválida.')
+    layout_types = config['layout_types']
+    fractions = [layout_types[key] for key in ['test_fraction', 'development_fraction']]
+    if (
+        any(not 0 < value < 1 for value in fractions)
+        or sum(fractions) >= 1
+        or layout_types['min_type_groups'] < 1
+        or not 1 <= layout_types['tree_max_depth'] <= 12
+        or layout_types['tree_min_leaf'] < 1
+        or layout_types['variance_floor'] <= 0
+        or not layout_types['models']
+        or len(set(layout_types['models'])) != len(layout_types['models'])
+        or set(layout_types['models'])
+        - {'majority', 'rule', 'tree:dimensoes', 'tree:completo', 'naive_bayes:dimensoes', 'naive_bayes:completo'}
+    ):
+        raise ValueError('Configuração dos tipos de layout inválida.')
     adaptive = config['adaptive']
     if (
         adaptive['repetitions'] < 1
@@ -141,7 +163,8 @@ def validate_config(config):
         or set(adaptive['policies']) != {'adaptive-v1', 'random-v1', 'reinforcement-simple-v1'}
     ):
         raise ValueError('Configuração da política adaptativa inválida.')
-    for path in [classification['reference'], layout['reference'], adaptive['reference']]:
+    references = [classification['reference'], layout['reference'], adaptive['reference']]
+    for path in [*references, layout_types['reference'], layout_types['catalog']]:
         if not (ROOT / path).resolve().is_relative_to(ROOT):
             raise ValueError('Referência fora do projeto.')
 

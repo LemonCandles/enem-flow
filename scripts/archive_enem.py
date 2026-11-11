@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import ssl
 
+from ingestion import archive
 from ingestion.archive import CATALOG, SOURCE_ROOT, download, inventory, sha, summary, sync
 
 
@@ -23,9 +24,10 @@ def main():
     )
     args = parser.parse_args()
     if args.ca_file:
-        global TLS_CONTEXT
-        TLS_CONTEXT = ssl.create_default_context()
-        TLS_CONTEXT.load_verify_locations(cafile=str(args.ca_file))
+        # `fetch` lê o contexto do módulo ingestion.archive; um global deste script não teria efeito.
+        context = ssl.create_default_context()
+        context.load_verify_locations(cafile=str(args.ca_file))
+        archive.TLS_CONTEXT = context
     catalog = inventory(args.refresh) if args.command == 'inventory' else json.loads(CATALOG.read_text())
     if args.command == 'reference':
         # The official matrix is a local, recoverable original; its immutable

@@ -12,6 +12,7 @@
 # Python: ambientes, bytecode, caches, cobertura e empacotamento.
 /.venv
 /venv/
+/ml/.venv/
 __pycache__/
 *.py[cod]
 *.egg-info/

@@ -27,7 +27,7 @@ Comando completo e opções:
   --archive --ocr --proposal-limit 500
 ```
 
-`--only classification` e `--only layout` executam uma frente. Uma saída não vazia exige `--force`; apenas pastas dentro de `tmp/` ou `/tmp/` são aceitas. Configuração, seed, hashes dos dados e do código, versões do Python/pacotes, opções e horários ficam em `run.json`. Latências dependem da máquina e da carga; não são um teste de capacidade da aplicação. Somente um manifesto com `status: complete` identifica a conclusão; uma interrupção deixa `running`, inclusive ao regravar uma saída.
+`--only classification`, `--only layout` e `--only layout-types` executam uma frente. Uma saída não vazia exige `--force`; apenas pastas dentro de `tmp/` ou `/tmp/` são aceitas. Configuração, seed, hashes dos dados e do código, versões do Python/pacotes, opções e horários ficam em `run.json`. Latências dependem da máquina e da carga; não são um teste de capacidade da aplicação. Somente um manifesto com `status: complete` identifica a conclusão; uma interrupção deixa `running`, inclusive ao regravar uma saída.
 
 O workflow de CI executa o ciclo dos dados incluídos e guarda os relatórios, o modelo selecionado e a revisão local como artefato. A matriz de testes de backend também cobre as fronteiras dos experimentos. Não depende de acervo histórico, OCR ou conta externa.
 
@@ -127,6 +127,35 @@ Abra `review.html` da saída experimental em um navegador. Ele mostra recortes o
 
 O importador valida segundos positivos, decisão, justificativa, versão exata e duplicatas por alvo/método. Sem registros, tempo humano fica **não medido / `null`**. O cronômetro não representa a qualidade ou a independência da revisão; isso depende de quem executou e do protocolo de anotação.
 
+## Tipos de layout
+
+O produto apresenta cada questão com o layout do caderno a partir do JSON de conteúdo e das figuras recortadas. O catálogo fechado `layout-types-v1` (`data/catalog/layout-types.json`) define os tipos por três eixos: corpo (sequência canônica de texto, crédito, figura, figura com crédito ou legenda e tabela), alternativas (texto, linha, figura, grade, misto) e marcas (texto de apoio compartilhado, linhas numeradas, lado a lado). `ingestion/layout/types.py` decompõe a assinatura do adaptador `pdf-geometry-v4` nesses eixos e monta o identificador, por exemplo `texto-credito-texto.alt-texto`. Repetir imediatamente um bloco ou um par de blocos não cria tipo novo; a assinatura exata fica por questão. Token desconhecido é erro. Tipos com marcas ou alternativas mistas ficam no catálogo como ainda não representáveis pelo contrato de conteúdo.
+
+A referência `data/datasets/layout-types-reference-v1.json` rotula as 370 questões impressas únicas do perfil local (540 ocorrências; inglês e espanhol compartilham itens). Questão elegível ao adaptador recebe o rótulo automático. As demais, e as poucas elegíveis cuja leitura do caderno contradiz o adaptador, usam `data/datasets/layout-types-decisions-v1.json`: assinatura, tipo de decisão (`tipo-legitimo` ou `correcao-manual`) e justificativa, vinculados ao SHA-256 do conteúdo e da fonte. Mudança em qualquer um invalida a decisão e interrompe a geração até nova revisão. O rótulo descreve o layout impresso. Oito questões de 2025 estão no JSON como imagem única da questão inteira; ficam marcadas (`content_form: imagem-unica`) e são reportadas à parte.
+
+```bash
+# Regera folha de contato, catálogo e referência; duas execuções dão os mesmos bytes.
+.venv/bin/python scripts/layout_groups.py --output tmp/layout/v3 \
+  --catalog data/catalog/layout-types.json --reference data/datasets/layout-types-reference-v1.json
+
+# Compara os preditores sobre o JSON e verifica o pacote da regra numa cópia isolada.
+.venv/bin/python scripts/run_experiments.py --only layout-types --output tmp/experiments/layout-types-01
+.venv/bin/python scripts/export_layout_model.py tmp/experiments/layout-types-01 --verify
+```
+
+O experimento (`experiments/layout_types.py`) prevê cada eixo separadamente e combina o identificador. Compara maioria, a regra determinística que lê só a ordem e o papel dos blocos do JSON, árvore de decisão (`fit_tree`) e Naive Bayes gaussiano, os dois últimos com e sem densidade de tinta das figuras. As características vêm do mesmo `types.py` publicado como `predict.py`; não incluem PDF, imagem da questão, ano, número, página, descrição nem caminho das figuras. As partições juntam identidade canônica, texto repetido e texto de apoio compartilhado, estratificadas por família de layout. Tipos com menos de três grupos ficam inteiros no treino e são listados à parte. A escolha por eixo usa o macro-F1 de desenvolvimento, com desempate pelo de treino; o teste não escolhe nem reajusta. O relatório traz tipo exato contra maioria e regra, macro-F1 por eixo, matriz de confusão, suporte por tipo e fatias por prova, forma do conteúdo e origem do rótulo.
+
+`scripts/export_layout_model.py` monta um pacote só com a regra (`model.json` e `predict.py` da biblioteca padrão) e `--verify` o confere numa cópia isolada. Esse pacote não é publicado: a regra fica no projeto como linha de base da rede abaixo.
+
+### Rede neural a partir da imagem
+
+A rede publicada no Hugging Face recebe só a **imagem** de uma questão (recorte do PDF a 150 dpi) e devolve o JSON com o tipo, os eixos, as probabilidades calibradas, a confiança e `needs_review`.
+
+- **Dados.** `scripts/layout_dataset.py` lê as provas impressas do acervo de 2009 a 2023 (`archive_enem.py sync` e `build_archive_exams.py`), analisa cada uma com o adaptador e renderiza as questões em `tmp/layout-dataset/layout-types-archive-v1/images/`. O manifesto versionado `data/datasets/layout-types-archive-v1.json` guarda, por questão, prova, número, hashes da fonte, do conteúdo e da imagem, assinatura, eixos, origem do rótulo e partição. Só as questões elegíveis recebem rótulo automático fraco (`automatic-weak`); as demais ficam como `unlabeled`. Grupos de identidade canônica, texto repetido e texto de apoio compartilhado nunca se dividem entre partições; ocorrências do acervo que reaparecem no teste ficam fora do treino. O teste são as 370 questões revisadas de 2024 e 2025 da referência. O catálogo `layout-types-v2` (`data/catalog/layout-types-v2.json`) é a v1 mais os tipos do acervo com pelo menos 20 questões, marcados para revisão; corpos raros saem como `outro`.
+- **Treino.** `ml/` é um ambiente próprio com lockfile (`make ml-setup`, PyTorch com CUDA 12.6), fora dos lockfiles do backend e do frontend. `make ml-train ML_OUTPUT=tmp/experiments/<nome>` treina três seeds de uma CNN pequena do zero, com três cabeças (corpo, alternativas, marcas), perda ponderada e aumentos leves sem espelhamento. A época e a seed são escolhidas pela acurácia do tipo exato no desenvolvimento; temperatura, limiar das marcas e limiar de revisão são calibrados no desenvolvimento. Só depois o teste é medido, junto com maioria, regra sobre o JSON e adaptador, com intervalos por bootstrap, ECE e fatias. `--sem-teste` serve às rodadas de ajuste. Precisão mista dá NaN na GTX 1650; o padrão é fp32. As previsões gravadas na execução usam catálogo vazio, então `needs_review` só vale no pacote exportado.
+- **Exportação.** `scripts/export_huggingface.py <execução> --repo-id CONTA/enem-layout-types` confere `status: complete`, os hashes do relatório, do manifesto, dos pesos e do código e monta `tmp/huggingface/enem-layout-types/` (pesos `safetensors`, `config.json`, catálogo, pacote `enem_layout`, `LICENSE` MIT, `CITATION.cff`, card em pt-BR) e `tmp/huggingface/enem-layout-types-space/` (demonstração Gradio). O card compara a rede com as linhas de base e traz um aviso quando ela fica abaixo delas. Os exemplos são questões de teste de autoria do Inep, sem crédito, link nem fonte externa, com URL e SHA-256 do caderno em `exemplos/fontes.json`. O material fixo está em `huggingface/`.
+- **Verificação.** Num venv novo só com o `requirements.txt` exportado, `python -m enem_layout.predict <imagens> --model .` precisa repetir os tipos e as confianças de `seed-N/predictions-test.json`. O Space roda localmente com `MODEL_REPO=<pasta exportada> python app.py`. O envio usa a CLI `hf`, instalada fora dos lockfiles, só com confirmação explícita: `hf repos create`, `hf upload`, `hf repos tag create` com a versão do modelo e a do catálogo, o Space num repositório `--type space` à parte e, por fim, a mesma verificação com a cópia baixada.
+
 ## Recuperação dos casos difíceis
 
 Com `--archive`, `archive-layout-proposals.json` preserva os diagnósticos recebidos e acrescenta candidatos separados. Na primeira execução, a entrada continha 506 diagnósticos em 489 questões; uma nova execução usa o estado do acervo disponível:
@@ -147,12 +176,17 @@ Com `--archive`, `archive-layout-proposals.json` preserva os diagnósticos receb
 - `experiments/config.json`: configuração e regras congeladas do ciclo.
 - `experiments/classification.py`: partições, modelos, avaliação e propostas temáticas.
 - `experiments/layout.py`: localização, árvore, relações e métricas.
+- `experiments/layout_types.py`: tipos de layout por eixo a partir do JSON; `ingestion/layout/types.py` e `reference.py`: catálogo, regra, preditor e referência.
 - `experiments/recovery.py` e `ocr_worker.py`: casos difíceis e OCR local isolado.
 - `experiments/contracts.py`: contratos das referências, propostas e medições.
 - `experiments/review.py`: relatório visual e registro de tempo.
 - `scripts/run_experiments.py`: execução e proveniência.
 - `scripts/summarize_experiments.py`: registro compacto com verificação dos hashes da execução.
 - `data/datasets/{layout,recovery}-reference-v1.json`: amostras técnicas versionadas; sem novos cadernos completos.
+- `data/datasets/layout-types-{reference,decisions}-v1.json` e `data/catalog/layout-types.json`: referência rotulada, decisões manuais e catálogo dos tipos de layout.
+- `scripts/layout_groups.py` e `scripts/export_layout_model.py`: folha de contato e rótulos; pacote da regra.
+- `scripts/layout_dataset.py`, `data/datasets/layout-types-archive-v1.json` e `data/catalog/layout-types-v2.json`: conjunto do acervo para a rede e catálogo v2.
+- `ml/layout_types/`: treino e avaliação da rede; `huggingface/`: pacote de inferência, licença, citação e Space; `scripts/export_huggingface.py`: montagem e conferência do repositório do Hub.
 
 ## Referências de método
 

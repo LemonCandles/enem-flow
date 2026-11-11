@@ -17,6 +17,8 @@ def summarize(directory):
         'classification': 'classification-report.json',
         'layout': 'layout-report.json',
         'archive': 'archive-layout-report.json',
+        'layout-types': 'layout-types-report.json',
+        'adaptive': 'adaptive-report.json',
     }
     reports = {}
     for name, expected in run['report_sha256'].items():
@@ -66,6 +68,18 @@ def summarize(directory):
             }
             for name, model in report['models'].items()
         }
+    if 'layout-types' in reports:
+        report = reports['layout-types']
+        result['layout-types'] = {key: value for key, value in report.items() if key != 'models'}
+        result['layout-types']['models'] = {
+            axis: {
+                name: {split: model[split]['macro_f1'] for split in ('train', 'development', 'test')}
+                for name, model in models.items()
+            }
+            for axis, models in report['models'].items()
+        }
+    if 'adaptive' in reports:
+        result['adaptive'] = reports['adaptive']
     if 'archive' in reports:
         result['archive'] = reports['archive']
         recoveries = read_json(directory / 'recovery-proposals.json')
