@@ -79,7 +79,8 @@ def examples(manifest, limit):
     for item in test:
         counts[item['type']] = counts.get(item['type'], 0) + 1
     for item in sorted(test, key=lambda i: (-counts[i['type']], i['type'], i['exam'], i['number'])):
-        if item['type'] in seen or not own_content(contents[item['question_id']]):
+        # Tipo com crédito significa texto ou imagem de outra fonte, mesmo quando o JSON não traz o link.
+        if item['type'] in seen or 'credito' in item['type'] or not own_content(contents[item['question_id']]):
             continue
         seen.add(item['type'])
         chosen.append(item)
@@ -88,16 +89,39 @@ def examples(manifest, limit):
     return chosen
 
 
+def decimal(value, digits):
+    return f'{value:.{digits}f}'.replace('.', ',')
+
+
 def percent(value):
-    return '—' if value is None else f'{100 * value:.1f}%'
+    return '—' if value is None else decimal(100 * value, 1) + '%'
 
 
 def number(value):
-    return '—' if value is None else f'{value:.3f}'
+    return '—' if value is None else decimal(value, 3)
 
 
 def interval(values):
-    return '—' if not values else f'{100 * values[0]:.1f}–{100 * values[1]:.1f}%'
+    return '—' if not values else f'{decimal(100 * values[0], 1)}–{decimal(100 * values[1], 1)}%'
+
+
+def warning(test):
+    """Aviso no topo do card quando a rede fica abaixo de uma linha de base que não usa a imagem."""
+    names = {'rule_json': 'da regra sobre o JSON de conteúdo', 'adapter': 'do adaptador que lê o PDF original'}
+    better = [
+        f'{names[name]} ({percent(values["type_accuracy"])})'
+        for name, values in test['baselines'].items()
+        if name in names and values['type_accuracy'] > test['type_accuracy']
+    ]
+    if not better:
+        return []
+    return [
+        f'> **Aviso.** No teste, esta rede acerta o tipo exato em {percent(test["type_accuracy"])} das questões, '
+        f'abaixo {" e ".join(better)}. Se você tem o PDF ou o JSON estruturado da questão, prefira esses '
+        'métodos, que estão no repositório do projeto. Esta rede serve quando só há a imagem da questão, e a '
+        'saída `needs_review` indica quando conferir.',
+        '',
+    ]
 
 
 def card(repo_id, report, catalog, manifest, chosen, version):
@@ -165,6 +189,7 @@ def card(repo_id, report, catalog, manifest, chosen, version):
         f'**Código, dados de treino e protocolo:** {GITHUB}  ',
         f'**Versão:** `{version}` · catálogo `{catalog["version"]}` · licença MIT',
         '',
+        *warning(test),
         '## Uso',
         '',
         '```bash',
@@ -208,7 +233,7 @@ def card(repo_id, report, catalog, manifest, chosen, version):
         ),
         '',
         f'Média de três seeds no teste: {percent(report["test_type_accuracy_mean"])} '
-        f'(desvio {100 * report["test_type_accuracy_std"]:.1f} p.p.). A seed publicada foi escolhida pelo '
+        f'(desvio {decimal(100 * report["test_type_accuracy_std"], 1)} p.p.). A seed publicada foi escolhida pelo '
         'desenvolvimento, sem olhar o teste.',
         '',
         'O adaptador lê o PDF original (texto, vetores e imagem) e foi a fonte dos rótulos automáticos; '
@@ -260,8 +285,13 @@ def card(repo_id, report, catalog, manifest, chosen, version):
         f'CNN de cerca de 10 milhões de parâmetros treinada do zero (sem pesos pré-treinados de terceiros), entrada '
         f'em tons de cinza de {config["width"]}×{config["height"]} com a proporção preservada, grade de posições '
         'verticais que preserva a ordem dos blocos, três cabeças (corpo e alternativas com softmax; marcas '
-        'multirrótulo), perda ponderada por classe, aumentos leves sem espelhamento, precisão mista e parada pelo '
-        'macro-F1 de desenvolvimento. Temperatura e limiar de revisão calibrados no desenvolvimento.',
+        'multirrótulo), perda ponderada por classe (peso das marcas limitado), aumentos leves sem espelhamento, '
+        'precisão simples (fp32) e escolha da época e da seed pela acurácia do tipo exato no desenvolvimento. '
+        'Temperatura, limiar das marcas e limiar de revisão calibrados no desenvolvimento.',
+        '',
+        'Houve três rodadas de ajuste antes do treino final. A primeira mediu o teste; nas seguintes, que mudaram o '
+        'peso e o limiar das marcas, o número de épocas, o critério de escolha e a resolução (512 px não ajudou), '
+        'só o desenvolvimento foi usado.',
         '',
         '## Tipos do catálogo',
         '',
